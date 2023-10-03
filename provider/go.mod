@@ -7,7 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/fivetran/terraform-provider-fivetran v1.1.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.1
-	github.com/pulumi/pulumi/sdk/v3 v3.83.0
+	github.com/pulumi/pulumi/sdk/v3 v3.86.0
 )
 
 require (
