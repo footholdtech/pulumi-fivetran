@@ -418,6 +418,199 @@ func (o ConnectorAuthClientAccessPtrOutput) UserAgent() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectorCertificatesCertificate struct {
+	// Base64 encoded certificate.
+	EncodedCert string `pulumi:"encodedCert"`
+	// Hash of the fingerprint.
+	Hash string `pulumi:"hash"`
+	// Certificate name.
+	Name *string `pulumi:"name"`
+	// Certificate public key.
+	PublicKey *string `pulumi:"publicKey"`
+	// Certificate sha1.
+	Sha1 *string `pulumi:"sha1"`
+	// Certificate sha256.
+	Sha256 *string `pulumi:"sha256"`
+	// Certificate type.
+	Type *string `pulumi:"type"`
+	// User name who validated the certificate.
+	ValidatedBy *string `pulumi:"validatedBy"`
+	// The date when the certificate was approved.
+	ValidatedDate *string `pulumi:"validatedDate"`
+}
+
+// ConnectorCertificatesCertificateInput is an input type that accepts ConnectorCertificatesCertificateArgs and ConnectorCertificatesCertificateOutput values.
+// You can construct a concrete instance of `ConnectorCertificatesCertificateInput` via:
+//
+//	ConnectorCertificatesCertificateArgs{...}
+type ConnectorCertificatesCertificateInput interface {
+	pulumi.Input
+
+	ToConnectorCertificatesCertificateOutput() ConnectorCertificatesCertificateOutput
+	ToConnectorCertificatesCertificateOutputWithContext(context.Context) ConnectorCertificatesCertificateOutput
+}
+
+type ConnectorCertificatesCertificateArgs struct {
+	// Base64 encoded certificate.
+	EncodedCert pulumi.StringInput `pulumi:"encodedCert"`
+	// Hash of the fingerprint.
+	Hash pulumi.StringInput `pulumi:"hash"`
+	// Certificate name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Certificate public key.
+	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+	// Certificate sha1.
+	Sha1 pulumi.StringPtrInput `pulumi:"sha1"`
+	// Certificate sha256.
+	Sha256 pulumi.StringPtrInput `pulumi:"sha256"`
+	// Certificate type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// User name who validated the certificate.
+	ValidatedBy pulumi.StringPtrInput `pulumi:"validatedBy"`
+	// The date when the certificate was approved.
+	ValidatedDate pulumi.StringPtrInput `pulumi:"validatedDate"`
+}
+
+func (ConnectorCertificatesCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorCertificatesCertificate)(nil)).Elem()
+}
+
+func (i ConnectorCertificatesCertificateArgs) ToConnectorCertificatesCertificateOutput() ConnectorCertificatesCertificateOutput {
+	return i.ToConnectorCertificatesCertificateOutputWithContext(context.Background())
+}
+
+func (i ConnectorCertificatesCertificateArgs) ToConnectorCertificatesCertificateOutputWithContext(ctx context.Context) ConnectorCertificatesCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorCertificatesCertificateOutput)
+}
+
+func (i ConnectorCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorCertificatesCertificate] {
+	return pulumix.Output[ConnectorCertificatesCertificate]{
+		OutputState: i.ToConnectorCertificatesCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConnectorCertificatesCertificateArrayInput is an input type that accepts ConnectorCertificatesCertificateArray and ConnectorCertificatesCertificateArrayOutput values.
+// You can construct a concrete instance of `ConnectorCertificatesCertificateArrayInput` via:
+//
+//	ConnectorCertificatesCertificateArray{ ConnectorCertificatesCertificateArgs{...} }
+type ConnectorCertificatesCertificateArrayInput interface {
+	pulumi.Input
+
+	ToConnectorCertificatesCertificateArrayOutput() ConnectorCertificatesCertificateArrayOutput
+	ToConnectorCertificatesCertificateArrayOutputWithContext(context.Context) ConnectorCertificatesCertificateArrayOutput
+}
+
+type ConnectorCertificatesCertificateArray []ConnectorCertificatesCertificateInput
+
+func (ConnectorCertificatesCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorCertificatesCertificate)(nil)).Elem()
+}
+
+func (i ConnectorCertificatesCertificateArray) ToConnectorCertificatesCertificateArrayOutput() ConnectorCertificatesCertificateArrayOutput {
+	return i.ToConnectorCertificatesCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorCertificatesCertificateArray) ToConnectorCertificatesCertificateArrayOutputWithContext(ctx context.Context) ConnectorCertificatesCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorCertificatesCertificateArrayOutput)
+}
+
+func (i ConnectorCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorCertificatesCertificate] {
+	return pulumix.Output[[]ConnectorCertificatesCertificate]{
+		OutputState: i.ToConnectorCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConnectorCertificatesCertificateOutput struct{ *pulumi.OutputState }
+
+func (ConnectorCertificatesCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorCertificatesCertificate)(nil)).Elem()
+}
+
+func (o ConnectorCertificatesCertificateOutput) ToConnectorCertificatesCertificateOutput() ConnectorCertificatesCertificateOutput {
+	return o
+}
+
+func (o ConnectorCertificatesCertificateOutput) ToConnectorCertificatesCertificateOutputWithContext(ctx context.Context) ConnectorCertificatesCertificateOutput {
+	return o
+}
+
+func (o ConnectorCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorCertificatesCertificate] {
+	return pulumix.Output[ConnectorCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Base64 encoded certificate.
+func (o ConnectorCertificatesCertificateOutput) EncodedCert() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCertificatesCertificate) string { return v.EncodedCert }).(pulumi.StringOutput)
+}
+
+// Hash of the fingerprint.
+func (o ConnectorCertificatesCertificateOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCertificatesCertificate) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// Certificate name.
+func (o ConnectorCertificatesCertificateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCertificatesCertificate) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Certificate public key.
+func (o ConnectorCertificatesCertificateOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCertificatesCertificate) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+// Certificate sha1.
+func (o ConnectorCertificatesCertificateOutput) Sha1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCertificatesCertificate) *string { return v.Sha1 }).(pulumi.StringPtrOutput)
+}
+
+// Certificate sha256.
+func (o ConnectorCertificatesCertificateOutput) Sha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCertificatesCertificate) *string { return v.Sha256 }).(pulumi.StringPtrOutput)
+}
+
+// Certificate type.
+func (o ConnectorCertificatesCertificateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCertificatesCertificate) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// User name who validated the certificate.
+func (o ConnectorCertificatesCertificateOutput) ValidatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCertificatesCertificate) *string { return v.ValidatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The date when the certificate was approved.
+func (o ConnectorCertificatesCertificateOutput) ValidatedDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCertificatesCertificate) *string { return v.ValidatedDate }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorCertificatesCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorCertificatesCertificate)(nil)).Elem()
+}
+
+func (o ConnectorCertificatesCertificateArrayOutput) ToConnectorCertificatesCertificateArrayOutput() ConnectorCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o ConnectorCertificatesCertificateArrayOutput) ToConnectorCertificatesCertificateArrayOutputWithContext(ctx context.Context) ConnectorCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o ConnectorCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorCertificatesCertificate] {
+	return pulumix.Output[[]ConnectorCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectorCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) ConnectorCertificatesCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorCertificatesCertificate {
+		return vs[0].([]ConnectorCertificatesCertificate)[vs[1].(int)]
+	}).(ConnectorCertificatesCertificateOutput)
+}
+
 type ConnectorConfig struct {
 	AbsConnectionMethod                    *string                                      `pulumi:"absConnectionMethod"`
 	AbsConnectionString                    *string                                      `pulumi:"absConnectionString"`
@@ -512,6 +705,7 @@ type ConnectorConfig struct {
 	BusinessUnitId                         *string                                      `pulumi:"businessUnitId"`
 	Certificate                            *string                                      `pulumi:"certificate"`
 	ClickAttributionWindow                 *string                                      `pulumi:"clickAttributionWindow"`
+	Client                                 *string                                      `pulumi:"client"`
 	ClientCert                             *string                                      `pulumi:"clientCert"`
 	ClientCertKey                          *string                                      `pulumi:"clientCertKey"`
 	ClientId                               *string                                      `pulumi:"clientId"`
@@ -522,6 +716,8 @@ type ConnectorConfig struct {
 	Columns                                []string                                     `pulumi:"columns"`
 	CompanyId                              *string                                      `pulumi:"companyId"`
 	CompanyKey                             *string                                      `pulumi:"companyKey"`
+	CompanyRequestToken                    *string                                      `pulumi:"companyRequestToken"`
+	CompanyUuid                            *string                                      `pulumi:"companyUuid"`
 	Compression                            *string                                      `pulumi:"compression"`
 	ConfigMethod                           *string                                      `pulumi:"configMethod"`
 	ConfigRepositoryUrl                    *string                                      `pulumi:"configRepositoryUrl"`
@@ -669,6 +865,8 @@ type ConnectorConfig struct {
 	Passphrase                             *string                                      `pulumi:"passphrase"`
 	Password                               *string                                      `pulumi:"password"`
 	Pat                                    *string                                      `pulumi:"pat"`
+	PatName                                *string                                      `pulumi:"patName"`
+	PatSecret                              *string                                      `pulumi:"patSecret"`
 	Path                                   *string                                      `pulumi:"path"`
 	Pattern                                *string                                      `pulumi:"pattern"`
 	PdbName                                *string                                      `pulumi:"pdbName"`
@@ -750,6 +948,7 @@ type ConnectorConfig struct {
 	SelectedExports                        []string                                     `pulumi:"selectedExports"`
 	SenderId                               *string                                      `pulumi:"senderId"`
 	SenderPassword                         *string                                      `pulumi:"senderPassword"`
+	ServerAddress                          *string                                      `pulumi:"serverAddress"`
 	ServerUrl                              *string                                      `pulumi:"serverUrl"`
 	Servers                                []string                                     `pulumi:"servers"`
 	ServiceAccount                         *string                                      `pulumi:"serviceAccount"`
@@ -797,6 +996,7 @@ type ConnectorConfig struct {
 	SyncPackMode                           *string                                      `pulumi:"syncPackMode"`
 	SyncPullApi                            *string                                      `pulumi:"syncPullApi"`
 	SyncType                               *string                                      `pulumi:"syncType"`
+	Sysnr                                  *string                                      `pulumi:"sysnr"`
 	TableName                              *string                                      `pulumi:"tableName"`
 	TdeCertificate                         *string                                      `pulumi:"tdeCertificate"`
 	TdeCertificateName                     *string                                      `pulumi:"tdeCertificateName"`
@@ -958,6 +1158,7 @@ type ConnectorConfigArgs struct {
 	BusinessUnitId                         pulumi.StringPtrInput                                `pulumi:"businessUnitId"`
 	Certificate                            pulumi.StringPtrInput                                `pulumi:"certificate"`
 	ClickAttributionWindow                 pulumi.StringPtrInput                                `pulumi:"clickAttributionWindow"`
+	Client                                 pulumi.StringPtrInput                                `pulumi:"client"`
 	ClientCert                             pulumi.StringPtrInput                                `pulumi:"clientCert"`
 	ClientCertKey                          pulumi.StringPtrInput                                `pulumi:"clientCertKey"`
 	ClientId                               pulumi.StringPtrInput                                `pulumi:"clientId"`
@@ -968,6 +1169,8 @@ type ConnectorConfigArgs struct {
 	Columns                                pulumi.StringArrayInput                              `pulumi:"columns"`
 	CompanyId                              pulumi.StringPtrInput                                `pulumi:"companyId"`
 	CompanyKey                             pulumi.StringPtrInput                                `pulumi:"companyKey"`
+	CompanyRequestToken                    pulumi.StringPtrInput                                `pulumi:"companyRequestToken"`
+	CompanyUuid                            pulumi.StringPtrInput                                `pulumi:"companyUuid"`
 	Compression                            pulumi.StringPtrInput                                `pulumi:"compression"`
 	ConfigMethod                           pulumi.StringPtrInput                                `pulumi:"configMethod"`
 	ConfigRepositoryUrl                    pulumi.StringPtrInput                                `pulumi:"configRepositoryUrl"`
@@ -1115,6 +1318,8 @@ type ConnectorConfigArgs struct {
 	Passphrase                             pulumi.StringPtrInput                                `pulumi:"passphrase"`
 	Password                               pulumi.StringPtrInput                                `pulumi:"password"`
 	Pat                                    pulumi.StringPtrInput                                `pulumi:"pat"`
+	PatName                                pulumi.StringPtrInput                                `pulumi:"patName"`
+	PatSecret                              pulumi.StringPtrInput                                `pulumi:"patSecret"`
 	Path                                   pulumi.StringPtrInput                                `pulumi:"path"`
 	Pattern                                pulumi.StringPtrInput                                `pulumi:"pattern"`
 	PdbName                                pulumi.StringPtrInput                                `pulumi:"pdbName"`
@@ -1196,6 +1401,7 @@ type ConnectorConfigArgs struct {
 	SelectedExports                        pulumi.StringArrayInput                              `pulumi:"selectedExports"`
 	SenderId                               pulumi.StringPtrInput                                `pulumi:"senderId"`
 	SenderPassword                         pulumi.StringPtrInput                                `pulumi:"senderPassword"`
+	ServerAddress                          pulumi.StringPtrInput                                `pulumi:"serverAddress"`
 	ServerUrl                              pulumi.StringPtrInput                                `pulumi:"serverUrl"`
 	Servers                                pulumi.StringArrayInput                              `pulumi:"servers"`
 	ServiceAccount                         pulumi.StringPtrInput                                `pulumi:"serviceAccount"`
@@ -1243,6 +1449,7 @@ type ConnectorConfigArgs struct {
 	SyncPackMode                           pulumi.StringPtrInput                                `pulumi:"syncPackMode"`
 	SyncPullApi                            pulumi.StringPtrInput                                `pulumi:"syncPullApi"`
 	SyncType                               pulumi.StringPtrInput                                `pulumi:"syncType"`
+	Sysnr                                  pulumi.StringPtrInput                                `pulumi:"sysnr"`
 	TableName                              pulumi.StringPtrInput                                `pulumi:"tableName"`
 	TdeCertificate                         pulumi.StringPtrInput                                `pulumi:"tdeCertificate"`
 	TdeCertificateName                     pulumi.StringPtrInput                                `pulumi:"tdeCertificateName"`
@@ -1768,6 +1975,10 @@ func (o ConnectorConfigOutput) ClickAttributionWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ClickAttributionWindow }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigOutput) Client() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Client }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
 }
@@ -1806,6 +2017,14 @@ func (o ConnectorConfigOutput) CompanyId() pulumi.StringPtrOutput {
 
 func (o ConnectorConfigOutput) CompanyKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.CompanyKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigOutput) CompanyRequestToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.CompanyRequestToken }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigOutput) CompanyUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.CompanyUuid }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigOutput) Compression() pulumi.StringPtrOutput {
@@ -2396,6 +2615,14 @@ func (o ConnectorConfigOutput) Pat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Pat }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigOutput) PatName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PatName }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigOutput) PatSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PatSecret }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -2720,6 +2947,10 @@ func (o ConnectorConfigOutput) SenderPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.SenderPassword }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigOutput) ServerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ServerUrl }).(pulumi.StringPtrOutput)
 }
@@ -2906,6 +3137,10 @@ func (o ConnectorConfigOutput) SyncPullApi() pulumi.StringPtrOutput {
 
 func (o ConnectorConfigOutput) SyncType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncType }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigOutput) Sysnr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Sysnr }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigOutput) TableName() pulumi.StringPtrOutput {
@@ -3991,6 +4226,15 @@ func (o ConnectorConfigPtrOutput) ClickAttributionWindow() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigPtrOutput) Client() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Client
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigPtrOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -4078,6 +4322,24 @@ func (o ConnectorConfigPtrOutput) CompanyKey() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.CompanyKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigPtrOutput) CompanyRequestToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyRequestToken
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigPtrOutput) CompanyUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyUuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5404,6 +5666,24 @@ func (o ConnectorConfigPtrOutput) Pat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigPtrOutput) PatName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PatName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigPtrOutput) PatSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PatSecret
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -6133,6 +6413,15 @@ func (o ConnectorConfigPtrOutput) SenderPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigPtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigPtrOutput) ServerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -6553,6 +6842,15 @@ func (o ConnectorConfigPtrOutput) SyncType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SyncType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigPtrOutput) Sysnr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sysnr
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8443,6 +8741,154 @@ func (o ConnectorDestinationSchemaPtrOutput) Table() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectorFingerprintsFingerprint struct {
+	// Hash of the fingerprint.
+	Hash string `pulumi:"hash"`
+	// The SSH public key.
+	PublicKey string `pulumi:"publicKey"`
+	// User name who validated the fingerprint.
+	ValidatedBy *string `pulumi:"validatedBy"`
+	// The date when SSH fingerprint was approved.
+	ValidatedDate *string `pulumi:"validatedDate"`
+}
+
+// ConnectorFingerprintsFingerprintInput is an input type that accepts ConnectorFingerprintsFingerprintArgs and ConnectorFingerprintsFingerprintOutput values.
+// You can construct a concrete instance of `ConnectorFingerprintsFingerprintInput` via:
+//
+//	ConnectorFingerprintsFingerprintArgs{...}
+type ConnectorFingerprintsFingerprintInput interface {
+	pulumi.Input
+
+	ToConnectorFingerprintsFingerprintOutput() ConnectorFingerprintsFingerprintOutput
+	ToConnectorFingerprintsFingerprintOutputWithContext(context.Context) ConnectorFingerprintsFingerprintOutput
+}
+
+type ConnectorFingerprintsFingerprintArgs struct {
+	// Hash of the fingerprint.
+	Hash pulumi.StringInput `pulumi:"hash"`
+	// The SSH public key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// User name who validated the fingerprint.
+	ValidatedBy pulumi.StringPtrInput `pulumi:"validatedBy"`
+	// The date when SSH fingerprint was approved.
+	ValidatedDate pulumi.StringPtrInput `pulumi:"validatedDate"`
+}
+
+func (ConnectorFingerprintsFingerprintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (i ConnectorFingerprintsFingerprintArgs) ToConnectorFingerprintsFingerprintOutput() ConnectorFingerprintsFingerprintOutput {
+	return i.ToConnectorFingerprintsFingerprintOutputWithContext(context.Background())
+}
+
+func (i ConnectorFingerprintsFingerprintArgs) ToConnectorFingerprintsFingerprintOutputWithContext(ctx context.Context) ConnectorFingerprintsFingerprintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorFingerprintsFingerprintOutput)
+}
+
+func (i ConnectorFingerprintsFingerprintArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorFingerprintsFingerprint] {
+	return pulumix.Output[ConnectorFingerprintsFingerprint]{
+		OutputState: i.ToConnectorFingerprintsFingerprintOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConnectorFingerprintsFingerprintArrayInput is an input type that accepts ConnectorFingerprintsFingerprintArray and ConnectorFingerprintsFingerprintArrayOutput values.
+// You can construct a concrete instance of `ConnectorFingerprintsFingerprintArrayInput` via:
+//
+//	ConnectorFingerprintsFingerprintArray{ ConnectorFingerprintsFingerprintArgs{...} }
+type ConnectorFingerprintsFingerprintArrayInput interface {
+	pulumi.Input
+
+	ToConnectorFingerprintsFingerprintArrayOutput() ConnectorFingerprintsFingerprintArrayOutput
+	ToConnectorFingerprintsFingerprintArrayOutputWithContext(context.Context) ConnectorFingerprintsFingerprintArrayOutput
+}
+
+type ConnectorFingerprintsFingerprintArray []ConnectorFingerprintsFingerprintInput
+
+func (ConnectorFingerprintsFingerprintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (i ConnectorFingerprintsFingerprintArray) ToConnectorFingerprintsFingerprintArrayOutput() ConnectorFingerprintsFingerprintArrayOutput {
+	return i.ToConnectorFingerprintsFingerprintArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorFingerprintsFingerprintArray) ToConnectorFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) ConnectorFingerprintsFingerprintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorFingerprintsFingerprintArrayOutput)
+}
+
+func (i ConnectorFingerprintsFingerprintArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorFingerprintsFingerprint] {
+	return pulumix.Output[[]ConnectorFingerprintsFingerprint]{
+		OutputState: i.ToConnectorFingerprintsFingerprintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConnectorFingerprintsFingerprintOutput struct{ *pulumi.OutputState }
+
+func (ConnectorFingerprintsFingerprintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (o ConnectorFingerprintsFingerprintOutput) ToConnectorFingerprintsFingerprintOutput() ConnectorFingerprintsFingerprintOutput {
+	return o
+}
+
+func (o ConnectorFingerprintsFingerprintOutput) ToConnectorFingerprintsFingerprintOutputWithContext(ctx context.Context) ConnectorFingerprintsFingerprintOutput {
+	return o
+}
+
+func (o ConnectorFingerprintsFingerprintOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorFingerprintsFingerprint] {
+	return pulumix.Output[ConnectorFingerprintsFingerprint]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Hash of the fingerprint.
+func (o ConnectorFingerprintsFingerprintOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorFingerprintsFingerprint) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// The SSH public key.
+func (o ConnectorFingerprintsFingerprintOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorFingerprintsFingerprint) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// User name who validated the fingerprint.
+func (o ConnectorFingerprintsFingerprintOutput) ValidatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorFingerprintsFingerprint) *string { return v.ValidatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The date when SSH fingerprint was approved.
+func (o ConnectorFingerprintsFingerprintOutput) ValidatedDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorFingerprintsFingerprint) *string { return v.ValidatedDate }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorFingerprintsFingerprintArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorFingerprintsFingerprintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (o ConnectorFingerprintsFingerprintArrayOutput) ToConnectorFingerprintsFingerprintArrayOutput() ConnectorFingerprintsFingerprintArrayOutput {
+	return o
+}
+
+func (o ConnectorFingerprintsFingerprintArrayOutput) ToConnectorFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) ConnectorFingerprintsFingerprintArrayOutput {
+	return o
+}
+
+func (o ConnectorFingerprintsFingerprintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorFingerprintsFingerprint] {
+	return pulumix.Output[[]ConnectorFingerprintsFingerprint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectorFingerprintsFingerprintArrayOutput) Index(i pulumi.IntInput) ConnectorFingerprintsFingerprintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorFingerprintsFingerprint {
+		return vs[0].([]ConnectorFingerprintsFingerprint)[vs[1].(int)]
+	}).(ConnectorFingerprintsFingerprintOutput)
+}
+
 type ConnectorSchemaConfigSchema struct {
 	// The boolean value specifying whether the sync for the schema into the destination is enabled.
 	Enabled *string `pulumi:"enabled"`
@@ -8580,10 +9026,13 @@ func (o ConnectorSchemaConfigSchemaArrayOutput) Index(i pulumi.IntInput) Connect
 }
 
 type ConnectorSchemaConfigSchemaTable struct {
-	Columns  []ConnectorSchemaConfigSchemaTableColumn `pulumi:"columns"`
-	Enabled  *string                                  `pulumi:"enabled"`
-	Name     string                                   `pulumi:"name"`
-	SyncMode *string                                  `pulumi:"syncMode"`
+	Columns []ConnectorSchemaConfigSchemaTableColumn `pulumi:"columns"`
+	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	Enabled *string `pulumi:"enabled"`
+	// The schema name within your destination in accordance with Fivetran conventional rules.
+	Name string `pulumi:"name"`
+	// This field appears in the response if the connector supports switching sync modes for tables.
+	SyncMode *string `pulumi:"syncMode"`
 }
 
 // ConnectorSchemaConfigSchemaTableInput is an input type that accepts ConnectorSchemaConfigSchemaTableArgs and ConnectorSchemaConfigSchemaTableOutput values.
@@ -8598,10 +9047,13 @@ type ConnectorSchemaConfigSchemaTableInput interface {
 }
 
 type ConnectorSchemaConfigSchemaTableArgs struct {
-	Columns  ConnectorSchemaConfigSchemaTableColumnArrayInput `pulumi:"columns"`
-	Enabled  pulumi.StringPtrInput                            `pulumi:"enabled"`
-	Name     pulumi.StringInput                               `pulumi:"name"`
-	SyncMode pulumi.StringPtrInput                            `pulumi:"syncMode"`
+	Columns ConnectorSchemaConfigSchemaTableColumnArrayInput `pulumi:"columns"`
+	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
+	// The schema name within your destination in accordance with Fivetran conventional rules.
+	Name pulumi.StringInput `pulumi:"name"`
+	// This field appears in the response if the connector supports switching sync modes for tables.
+	SyncMode pulumi.StringPtrInput `pulumi:"syncMode"`
 }
 
 func (ConnectorSchemaConfigSchemaTableArgs) ElementType() reflect.Type {
@@ -8677,14 +9129,17 @@ func (o ConnectorSchemaConfigSchemaTableOutput) Columns() ConnectorSchemaConfigS
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) []ConnectorSchemaConfigSchemaTableColumn { return v.Columns }).(ConnectorSchemaConfigSchemaTableColumnArrayOutput)
 }
 
+// The boolean value specifying whether the sync for the schema into the destination is enabled.
 func (o ConnectorSchemaConfigSchemaTableOutput) Enabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
 
+// The schema name within your destination in accordance with Fivetran conventional rules.
 func (o ConnectorSchemaConfigSchemaTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// This field appears in the response if the connector supports switching sync modes for tables.
 func (o ConnectorSchemaConfigSchemaTableOutput) SyncMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) *string { return v.SyncMode }).(pulumi.StringPtrOutput)
 }
@@ -8716,9 +9171,12 @@ func (o ConnectorSchemaConfigSchemaTableArrayOutput) Index(i pulumi.IntInput) Co
 }
 
 type ConnectorSchemaConfigSchemaTableColumn struct {
+	// The boolean value specifying whether the sync for the schema into the destination is enabled.
 	Enabled *string `pulumi:"enabled"`
-	Hashed  *string `pulumi:"hashed"`
-	Name    string  `pulumi:"name"`
+	// The boolean value specifying whether a column should be hashed
+	Hashed *string `pulumi:"hashed"`
+	// The schema name within your destination in accordance with Fivetran conventional rules.
+	Name string `pulumi:"name"`
 }
 
 // ConnectorSchemaConfigSchemaTableColumnInput is an input type that accepts ConnectorSchemaConfigSchemaTableColumnArgs and ConnectorSchemaConfigSchemaTableColumnOutput values.
@@ -8733,9 +9191,12 @@ type ConnectorSchemaConfigSchemaTableColumnInput interface {
 }
 
 type ConnectorSchemaConfigSchemaTableColumnArgs struct {
+	// The boolean value specifying whether the sync for the schema into the destination is enabled.
 	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
-	Hashed  pulumi.StringPtrInput `pulumi:"hashed"`
-	Name    pulumi.StringInput    `pulumi:"name"`
+	// The boolean value specifying whether a column should be hashed
+	Hashed pulumi.StringPtrInput `pulumi:"hashed"`
+	// The schema name within your destination in accordance with Fivetran conventional rules.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (ConnectorSchemaConfigSchemaTableColumnArgs) ElementType() reflect.Type {
@@ -8807,14 +9268,17 @@ func (o ConnectorSchemaConfigSchemaTableColumnOutput) ToOutput(ctx context.Conte
 	}
 }
 
+// The boolean value specifying whether the sync for the schema into the destination is enabled.
 func (o ConnectorSchemaConfigSchemaTableColumnOutput) Enabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
 
+// The boolean value specifying whether a column should be hashed
 func (o ConnectorSchemaConfigSchemaTableColumnOutput) Hashed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *string { return v.Hashed }).(pulumi.StringPtrOutput)
 }
 
+// The schema name within your destination in accordance with Fivetran conventional rules.
 func (o ConnectorSchemaConfigSchemaTableColumnOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9399,6 +9863,199 @@ func (o DbtTransformationSchedulePtrOutput) TimeOfDay() pulumi.StringPtrOutput {
 		}
 		return v.TimeOfDay
 	}).(pulumi.StringPtrOutput)
+}
+
+type DestinationCertificatesCertificate struct {
+	// Base64 encoded certificate.
+	EncodedCert string `pulumi:"encodedCert"`
+	// Hash of the fingerprint.
+	Hash string `pulumi:"hash"`
+	// Certificate name.
+	Name *string `pulumi:"name"`
+	// Certificate public key.
+	PublicKey *string `pulumi:"publicKey"`
+	// Certificate sha1.
+	Sha1 *string `pulumi:"sha1"`
+	// Certificate sha256.
+	Sha256 *string `pulumi:"sha256"`
+	// Certificate type.
+	Type *string `pulumi:"type"`
+	// User name who validated the certificate.
+	ValidatedBy *string `pulumi:"validatedBy"`
+	// The date when the certificate was approved.
+	ValidatedDate *string `pulumi:"validatedDate"`
+}
+
+// DestinationCertificatesCertificateInput is an input type that accepts DestinationCertificatesCertificateArgs and DestinationCertificatesCertificateOutput values.
+// You can construct a concrete instance of `DestinationCertificatesCertificateInput` via:
+//
+//	DestinationCertificatesCertificateArgs{...}
+type DestinationCertificatesCertificateInput interface {
+	pulumi.Input
+
+	ToDestinationCertificatesCertificateOutput() DestinationCertificatesCertificateOutput
+	ToDestinationCertificatesCertificateOutputWithContext(context.Context) DestinationCertificatesCertificateOutput
+}
+
+type DestinationCertificatesCertificateArgs struct {
+	// Base64 encoded certificate.
+	EncodedCert pulumi.StringInput `pulumi:"encodedCert"`
+	// Hash of the fingerprint.
+	Hash pulumi.StringInput `pulumi:"hash"`
+	// Certificate name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Certificate public key.
+	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+	// Certificate sha1.
+	Sha1 pulumi.StringPtrInput `pulumi:"sha1"`
+	// Certificate sha256.
+	Sha256 pulumi.StringPtrInput `pulumi:"sha256"`
+	// Certificate type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// User name who validated the certificate.
+	ValidatedBy pulumi.StringPtrInput `pulumi:"validatedBy"`
+	// The date when the certificate was approved.
+	ValidatedDate pulumi.StringPtrInput `pulumi:"validatedDate"`
+}
+
+func (DestinationCertificatesCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationCertificatesCertificate)(nil)).Elem()
+}
+
+func (i DestinationCertificatesCertificateArgs) ToDestinationCertificatesCertificateOutput() DestinationCertificatesCertificateOutput {
+	return i.ToDestinationCertificatesCertificateOutputWithContext(context.Background())
+}
+
+func (i DestinationCertificatesCertificateArgs) ToDestinationCertificatesCertificateOutputWithContext(ctx context.Context) DestinationCertificatesCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationCertificatesCertificateOutput)
+}
+
+func (i DestinationCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[DestinationCertificatesCertificate] {
+	return pulumix.Output[DestinationCertificatesCertificate]{
+		OutputState: i.ToDestinationCertificatesCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
+// DestinationCertificatesCertificateArrayInput is an input type that accepts DestinationCertificatesCertificateArray and DestinationCertificatesCertificateArrayOutput values.
+// You can construct a concrete instance of `DestinationCertificatesCertificateArrayInput` via:
+//
+//	DestinationCertificatesCertificateArray{ DestinationCertificatesCertificateArgs{...} }
+type DestinationCertificatesCertificateArrayInput interface {
+	pulumi.Input
+
+	ToDestinationCertificatesCertificateArrayOutput() DestinationCertificatesCertificateArrayOutput
+	ToDestinationCertificatesCertificateArrayOutputWithContext(context.Context) DestinationCertificatesCertificateArrayOutput
+}
+
+type DestinationCertificatesCertificateArray []DestinationCertificatesCertificateInput
+
+func (DestinationCertificatesCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationCertificatesCertificate)(nil)).Elem()
+}
+
+func (i DestinationCertificatesCertificateArray) ToDestinationCertificatesCertificateArrayOutput() DestinationCertificatesCertificateArrayOutput {
+	return i.ToDestinationCertificatesCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i DestinationCertificatesCertificateArray) ToDestinationCertificatesCertificateArrayOutputWithContext(ctx context.Context) DestinationCertificatesCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationCertificatesCertificateArrayOutput)
+}
+
+func (i DestinationCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]DestinationCertificatesCertificate] {
+	return pulumix.Output[[]DestinationCertificatesCertificate]{
+		OutputState: i.ToDestinationCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type DestinationCertificatesCertificateOutput struct{ *pulumi.OutputState }
+
+func (DestinationCertificatesCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationCertificatesCertificate)(nil)).Elem()
+}
+
+func (o DestinationCertificatesCertificateOutput) ToDestinationCertificatesCertificateOutput() DestinationCertificatesCertificateOutput {
+	return o
+}
+
+func (o DestinationCertificatesCertificateOutput) ToDestinationCertificatesCertificateOutputWithContext(ctx context.Context) DestinationCertificatesCertificateOutput {
+	return o
+}
+
+func (o DestinationCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationCertificatesCertificate] {
+	return pulumix.Output[DestinationCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Base64 encoded certificate.
+func (o DestinationCertificatesCertificateOutput) EncodedCert() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationCertificatesCertificate) string { return v.EncodedCert }).(pulumi.StringOutput)
+}
+
+// Hash of the fingerprint.
+func (o DestinationCertificatesCertificateOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationCertificatesCertificate) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// Certificate name.
+func (o DestinationCertificatesCertificateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationCertificatesCertificate) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Certificate public key.
+func (o DestinationCertificatesCertificateOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationCertificatesCertificate) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+// Certificate sha1.
+func (o DestinationCertificatesCertificateOutput) Sha1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationCertificatesCertificate) *string { return v.Sha1 }).(pulumi.StringPtrOutput)
+}
+
+// Certificate sha256.
+func (o DestinationCertificatesCertificateOutput) Sha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationCertificatesCertificate) *string { return v.Sha256 }).(pulumi.StringPtrOutput)
+}
+
+// Certificate type.
+func (o DestinationCertificatesCertificateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationCertificatesCertificate) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// User name who validated the certificate.
+func (o DestinationCertificatesCertificateOutput) ValidatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationCertificatesCertificate) *string { return v.ValidatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The date when the certificate was approved.
+func (o DestinationCertificatesCertificateOutput) ValidatedDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationCertificatesCertificate) *string { return v.ValidatedDate }).(pulumi.StringPtrOutput)
+}
+
+type DestinationCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (DestinationCertificatesCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationCertificatesCertificate)(nil)).Elem()
+}
+
+func (o DestinationCertificatesCertificateArrayOutput) ToDestinationCertificatesCertificateArrayOutput() DestinationCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o DestinationCertificatesCertificateArrayOutput) ToDestinationCertificatesCertificateArrayOutputWithContext(ctx context.Context) DestinationCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o DestinationCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DestinationCertificatesCertificate] {
+	return pulumix.Output[[]DestinationCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DestinationCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) DestinationCertificatesCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationCertificatesCertificate {
+		return vs[0].([]DestinationCertificatesCertificate)[vs[1].(int)]
+	}).(DestinationCertificatesCertificateOutput)
 }
 
 type DestinationConfig struct {
@@ -10151,6 +10808,562 @@ func (o DestinationConfigPtrOutput) User() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DestinationFingerprintsFingerprint struct {
+	// Hash of the fingerprint.
+	Hash string `pulumi:"hash"`
+	// The SSH public key.
+	PublicKey string `pulumi:"publicKey"`
+	// User name who validated the fingerprint.
+	ValidatedBy *string `pulumi:"validatedBy"`
+	// The date when SSH fingerprint was approved.
+	ValidatedDate *string `pulumi:"validatedDate"`
+}
+
+// DestinationFingerprintsFingerprintInput is an input type that accepts DestinationFingerprintsFingerprintArgs and DestinationFingerprintsFingerprintOutput values.
+// You can construct a concrete instance of `DestinationFingerprintsFingerprintInput` via:
+//
+//	DestinationFingerprintsFingerprintArgs{...}
+type DestinationFingerprintsFingerprintInput interface {
+	pulumi.Input
+
+	ToDestinationFingerprintsFingerprintOutput() DestinationFingerprintsFingerprintOutput
+	ToDestinationFingerprintsFingerprintOutputWithContext(context.Context) DestinationFingerprintsFingerprintOutput
+}
+
+type DestinationFingerprintsFingerprintArgs struct {
+	// Hash of the fingerprint.
+	Hash pulumi.StringInput `pulumi:"hash"`
+	// The SSH public key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// User name who validated the fingerprint.
+	ValidatedBy pulumi.StringPtrInput `pulumi:"validatedBy"`
+	// The date when SSH fingerprint was approved.
+	ValidatedDate pulumi.StringPtrInput `pulumi:"validatedDate"`
+}
+
+func (DestinationFingerprintsFingerprintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (i DestinationFingerprintsFingerprintArgs) ToDestinationFingerprintsFingerprintOutput() DestinationFingerprintsFingerprintOutput {
+	return i.ToDestinationFingerprintsFingerprintOutputWithContext(context.Background())
+}
+
+func (i DestinationFingerprintsFingerprintArgs) ToDestinationFingerprintsFingerprintOutputWithContext(ctx context.Context) DestinationFingerprintsFingerprintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationFingerprintsFingerprintOutput)
+}
+
+func (i DestinationFingerprintsFingerprintArgs) ToOutput(ctx context.Context) pulumix.Output[DestinationFingerprintsFingerprint] {
+	return pulumix.Output[DestinationFingerprintsFingerprint]{
+		OutputState: i.ToDestinationFingerprintsFingerprintOutputWithContext(ctx).OutputState,
+	}
+}
+
+// DestinationFingerprintsFingerprintArrayInput is an input type that accepts DestinationFingerprintsFingerprintArray and DestinationFingerprintsFingerprintArrayOutput values.
+// You can construct a concrete instance of `DestinationFingerprintsFingerprintArrayInput` via:
+//
+//	DestinationFingerprintsFingerprintArray{ DestinationFingerprintsFingerprintArgs{...} }
+type DestinationFingerprintsFingerprintArrayInput interface {
+	pulumi.Input
+
+	ToDestinationFingerprintsFingerprintArrayOutput() DestinationFingerprintsFingerprintArrayOutput
+	ToDestinationFingerprintsFingerprintArrayOutputWithContext(context.Context) DestinationFingerprintsFingerprintArrayOutput
+}
+
+type DestinationFingerprintsFingerprintArray []DestinationFingerprintsFingerprintInput
+
+func (DestinationFingerprintsFingerprintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (i DestinationFingerprintsFingerprintArray) ToDestinationFingerprintsFingerprintArrayOutput() DestinationFingerprintsFingerprintArrayOutput {
+	return i.ToDestinationFingerprintsFingerprintArrayOutputWithContext(context.Background())
+}
+
+func (i DestinationFingerprintsFingerprintArray) ToDestinationFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) DestinationFingerprintsFingerprintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationFingerprintsFingerprintArrayOutput)
+}
+
+func (i DestinationFingerprintsFingerprintArray) ToOutput(ctx context.Context) pulumix.Output[[]DestinationFingerprintsFingerprint] {
+	return pulumix.Output[[]DestinationFingerprintsFingerprint]{
+		OutputState: i.ToDestinationFingerprintsFingerprintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type DestinationFingerprintsFingerprintOutput struct{ *pulumi.OutputState }
+
+func (DestinationFingerprintsFingerprintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (o DestinationFingerprintsFingerprintOutput) ToDestinationFingerprintsFingerprintOutput() DestinationFingerprintsFingerprintOutput {
+	return o
+}
+
+func (o DestinationFingerprintsFingerprintOutput) ToDestinationFingerprintsFingerprintOutputWithContext(ctx context.Context) DestinationFingerprintsFingerprintOutput {
+	return o
+}
+
+func (o DestinationFingerprintsFingerprintOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationFingerprintsFingerprint] {
+	return pulumix.Output[DestinationFingerprintsFingerprint]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Hash of the fingerprint.
+func (o DestinationFingerprintsFingerprintOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationFingerprintsFingerprint) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// The SSH public key.
+func (o DestinationFingerprintsFingerprintOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationFingerprintsFingerprint) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// User name who validated the fingerprint.
+func (o DestinationFingerprintsFingerprintOutput) ValidatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationFingerprintsFingerprint) *string { return v.ValidatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The date when SSH fingerprint was approved.
+func (o DestinationFingerprintsFingerprintOutput) ValidatedDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationFingerprintsFingerprint) *string { return v.ValidatedDate }).(pulumi.StringPtrOutput)
+}
+
+type DestinationFingerprintsFingerprintArrayOutput struct{ *pulumi.OutputState }
+
+func (DestinationFingerprintsFingerprintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (o DestinationFingerprintsFingerprintArrayOutput) ToDestinationFingerprintsFingerprintArrayOutput() DestinationFingerprintsFingerprintArrayOutput {
+	return o
+}
+
+func (o DestinationFingerprintsFingerprintArrayOutput) ToDestinationFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) DestinationFingerprintsFingerprintArrayOutput {
+	return o
+}
+
+func (o DestinationFingerprintsFingerprintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DestinationFingerprintsFingerprint] {
+	return pulumix.Output[[]DestinationFingerprintsFingerprint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DestinationFingerprintsFingerprintArrayOutput) Index(i pulumi.IntInput) DestinationFingerprintsFingerprintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationFingerprintsFingerprint {
+		return vs[0].([]DestinationFingerprintsFingerprint)[vs[1].(int)]
+	}).(DestinationFingerprintsFingerprintOutput)
+}
+
+type ExternalLoggingConfig struct {
+	// API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Channel
+	Channel *string `pulumi:"channel"`
+	// Enable SSL
+	EnableSsl *bool `pulumi:"enableSsl"`
+	// external_id
+	ExternalId *string `pulumi:"externalId"`
+	// Server name
+	Host *string `pulumi:"host"`
+	// Server name
+	Hostname *string `pulumi:"hostname"`
+	// Log Group Name
+	LogGroupName *string `pulumi:"logGroupName"`
+	// Port
+	Port *int `pulumi:"port"`
+	// Primary Key
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// Region
+	Region *string `pulumi:"region"`
+	// Role Arn
+	RoleArn *string `pulumi:"roleArn"`
+	// Sub Domain
+	SubDomain *string `pulumi:"subDomain"`
+	// Token
+	Token *string `pulumi:"token"`
+	// Workspace ID
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// ExternalLoggingConfigInput is an input type that accepts ExternalLoggingConfigArgs and ExternalLoggingConfigOutput values.
+// You can construct a concrete instance of `ExternalLoggingConfigInput` via:
+//
+//	ExternalLoggingConfigArgs{...}
+type ExternalLoggingConfigInput interface {
+	pulumi.Input
+
+	ToExternalLoggingConfigOutput() ExternalLoggingConfigOutput
+	ToExternalLoggingConfigOutputWithContext(context.Context) ExternalLoggingConfigOutput
+}
+
+type ExternalLoggingConfigArgs struct {
+	// API Key
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Channel
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Enable SSL
+	EnableSsl pulumi.BoolPtrInput `pulumi:"enableSsl"`
+	// external_id
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	// Server name
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Server name
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Log Group Name
+	LogGroupName pulumi.StringPtrInput `pulumi:"logGroupName"`
+	// Port
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Primary Key
+	PrimaryKey pulumi.StringPtrInput `pulumi:"primaryKey"`
+	// Region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Role Arn
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Sub Domain
+	SubDomain pulumi.StringPtrInput `pulumi:"subDomain"`
+	// Token
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Workspace ID
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (ExternalLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLoggingConfig)(nil)).Elem()
+}
+
+func (i ExternalLoggingConfigArgs) ToExternalLoggingConfigOutput() ExternalLoggingConfigOutput {
+	return i.ToExternalLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i ExternalLoggingConfigArgs) ToExternalLoggingConfigOutputWithContext(ctx context.Context) ExternalLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingConfigOutput)
+}
+
+func (i ExternalLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ExternalLoggingConfig] {
+	return pulumix.Output[ExternalLoggingConfig]{
+		OutputState: i.ToExternalLoggingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ExternalLoggingConfigArgs) ToExternalLoggingConfigPtrOutput() ExternalLoggingConfigPtrOutput {
+	return i.ToExternalLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ExternalLoggingConfigArgs) ToExternalLoggingConfigPtrOutputWithContext(ctx context.Context) ExternalLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingConfigOutput).ToExternalLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// ExternalLoggingConfigPtrInput is an input type that accepts ExternalLoggingConfigArgs, ExternalLoggingConfigPtr and ExternalLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `ExternalLoggingConfigPtrInput` via:
+//
+//	        ExternalLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExternalLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToExternalLoggingConfigPtrOutput() ExternalLoggingConfigPtrOutput
+	ToExternalLoggingConfigPtrOutputWithContext(context.Context) ExternalLoggingConfigPtrOutput
+}
+
+type externalLoggingConfigPtrType ExternalLoggingConfigArgs
+
+func ExternalLoggingConfigPtr(v *ExternalLoggingConfigArgs) ExternalLoggingConfigPtrInput {
+	return (*externalLoggingConfigPtrType)(v)
+}
+
+func (*externalLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLoggingConfig)(nil)).Elem()
+}
+
+func (i *externalLoggingConfigPtrType) ToExternalLoggingConfigPtrOutput() ExternalLoggingConfigPtrOutput {
+	return i.ToExternalLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *externalLoggingConfigPtrType) ToExternalLoggingConfigPtrOutputWithContext(ctx context.Context) ExternalLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingConfigPtrOutput)
+}
+
+func (i *externalLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExternalLoggingConfig] {
+	return pulumix.Output[*ExternalLoggingConfig]{
+		OutputState: i.ToExternalLoggingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ExternalLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (ExternalLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLoggingConfig)(nil)).Elem()
+}
+
+func (o ExternalLoggingConfigOutput) ToExternalLoggingConfigOutput() ExternalLoggingConfigOutput {
+	return o
+}
+
+func (o ExternalLoggingConfigOutput) ToExternalLoggingConfigOutputWithContext(ctx context.Context) ExternalLoggingConfigOutput {
+	return o
+}
+
+func (o ExternalLoggingConfigOutput) ToExternalLoggingConfigPtrOutput() ExternalLoggingConfigPtrOutput {
+	return o.ToExternalLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalLoggingConfigOutput) ToExternalLoggingConfigPtrOutputWithContext(ctx context.Context) ExternalLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLoggingConfig) *ExternalLoggingConfig {
+		return &v
+	}).(ExternalLoggingConfigPtrOutput)
+}
+
+func (o ExternalLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ExternalLoggingConfig] {
+	return pulumix.Output[ExternalLoggingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// API Key
+func (o ExternalLoggingConfigOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Channel
+func (o ExternalLoggingConfigOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Enable SSL
+func (o ExternalLoggingConfigOutput) EnableSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *bool { return v.EnableSsl }).(pulumi.BoolPtrOutput)
+}
+
+// external_id
+func (o ExternalLoggingConfigOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
+// Server name
+func (o ExternalLoggingConfigOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Server name
+func (o ExternalLoggingConfigOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Log Group Name
+func (o ExternalLoggingConfigOutput) LogGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.LogGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Port
+func (o ExternalLoggingConfigOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Primary Key
+func (o ExternalLoggingConfigOutput) PrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
+}
+
+// Region
+func (o ExternalLoggingConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Role Arn
+func (o ExternalLoggingConfigOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Sub Domain
+func (o ExternalLoggingConfigOutput) SubDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.SubDomain }).(pulumi.StringPtrOutput)
+}
+
+// Token
+func (o ExternalLoggingConfigOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// Workspace ID
+func (o ExternalLoggingConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type ExternalLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLoggingConfig)(nil)).Elem()
+}
+
+func (o ExternalLoggingConfigPtrOutput) ToExternalLoggingConfigPtrOutput() ExternalLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ExternalLoggingConfigPtrOutput) ToExternalLoggingConfigPtrOutputWithContext(ctx context.Context) ExternalLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ExternalLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalLoggingConfig] {
+	return pulumix.Output[*ExternalLoggingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ExternalLoggingConfigPtrOutput) Elem() ExternalLoggingConfigOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) ExternalLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalLoggingConfig
+		return ret
+	}).(ExternalLoggingConfigOutput)
+}
+
+// API Key
+func (o ExternalLoggingConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Channel
+func (o ExternalLoggingConfigPtrOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Channel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable SSL
+func (o ExternalLoggingConfigPtrOutput) EnableSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSsl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// external_id
+func (o ExternalLoggingConfigPtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server name
+func (o ExternalLoggingConfigPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server name
+func (o ExternalLoggingConfigPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Log Group Name
+func (o ExternalLoggingConfigPtrOutput) LogGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port
+func (o ExternalLoggingConfigPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Primary Key
+func (o ExternalLoggingConfigPtrOutput) PrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region
+func (o ExternalLoggingConfigPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Role Arn
+func (o ExternalLoggingConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sub Domain
+func (o ExternalLoggingConfigPtrOutput) SubDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Token
+func (o ExternalLoggingConfigPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+// Workspace ID
+func (o ExternalLoggingConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GroupUsersUser struct {
 	// The email address that the user has associated with their user profile.
 	Email string `pulumi:"email"`
@@ -10290,6 +11503,598 @@ func (o GroupUsersUserArrayOutput) Index(i pulumi.IntInput) GroupUsersUserOutput
 	}).(GroupUsersUserOutput)
 }
 
+type TeamConnectorMembershipConnector struct {
+	// The connector unique identifier
+	ConnectorId string `pulumi:"connectorId"`
+	// The date and time the membership was created
+	CreatedAt *string `pulumi:"createdAt"`
+	// The team's role that links the team and the connector
+	Role string `pulumi:"role"`
+}
+
+// TeamConnectorMembershipConnectorInput is an input type that accepts TeamConnectorMembershipConnectorArgs and TeamConnectorMembershipConnectorOutput values.
+// You can construct a concrete instance of `TeamConnectorMembershipConnectorInput` via:
+//
+//	TeamConnectorMembershipConnectorArgs{...}
+type TeamConnectorMembershipConnectorInput interface {
+	pulumi.Input
+
+	ToTeamConnectorMembershipConnectorOutput() TeamConnectorMembershipConnectorOutput
+	ToTeamConnectorMembershipConnectorOutputWithContext(context.Context) TeamConnectorMembershipConnectorOutput
+}
+
+type TeamConnectorMembershipConnectorArgs struct {
+	// The connector unique identifier
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	// The date and time the membership was created
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The team's role that links the team and the connector
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (TeamConnectorMembershipConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamConnectorMembershipConnector)(nil)).Elem()
+}
+
+func (i TeamConnectorMembershipConnectorArgs) ToTeamConnectorMembershipConnectorOutput() TeamConnectorMembershipConnectorOutput {
+	return i.ToTeamConnectorMembershipConnectorOutputWithContext(context.Background())
+}
+
+func (i TeamConnectorMembershipConnectorArgs) ToTeamConnectorMembershipConnectorOutputWithContext(ctx context.Context) TeamConnectorMembershipConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamConnectorMembershipConnectorOutput)
+}
+
+func (i TeamConnectorMembershipConnectorArgs) ToOutput(ctx context.Context) pulumix.Output[TeamConnectorMembershipConnector] {
+	return pulumix.Output[TeamConnectorMembershipConnector]{
+		OutputState: i.ToTeamConnectorMembershipConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
+// TeamConnectorMembershipConnectorArrayInput is an input type that accepts TeamConnectorMembershipConnectorArray and TeamConnectorMembershipConnectorArrayOutput values.
+// You can construct a concrete instance of `TeamConnectorMembershipConnectorArrayInput` via:
+//
+//	TeamConnectorMembershipConnectorArray{ TeamConnectorMembershipConnectorArgs{...} }
+type TeamConnectorMembershipConnectorArrayInput interface {
+	pulumi.Input
+
+	ToTeamConnectorMembershipConnectorArrayOutput() TeamConnectorMembershipConnectorArrayOutput
+	ToTeamConnectorMembershipConnectorArrayOutputWithContext(context.Context) TeamConnectorMembershipConnectorArrayOutput
+}
+
+type TeamConnectorMembershipConnectorArray []TeamConnectorMembershipConnectorInput
+
+func (TeamConnectorMembershipConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamConnectorMembershipConnector)(nil)).Elem()
+}
+
+func (i TeamConnectorMembershipConnectorArray) ToTeamConnectorMembershipConnectorArrayOutput() TeamConnectorMembershipConnectorArrayOutput {
+	return i.ToTeamConnectorMembershipConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i TeamConnectorMembershipConnectorArray) ToTeamConnectorMembershipConnectorArrayOutputWithContext(ctx context.Context) TeamConnectorMembershipConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamConnectorMembershipConnectorArrayOutput)
+}
+
+func (i TeamConnectorMembershipConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]TeamConnectorMembershipConnector] {
+	return pulumix.Output[[]TeamConnectorMembershipConnector]{
+		OutputState: i.ToTeamConnectorMembershipConnectorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type TeamConnectorMembershipConnectorOutput struct{ *pulumi.OutputState }
+
+func (TeamConnectorMembershipConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamConnectorMembershipConnector)(nil)).Elem()
+}
+
+func (o TeamConnectorMembershipConnectorOutput) ToTeamConnectorMembershipConnectorOutput() TeamConnectorMembershipConnectorOutput {
+	return o
+}
+
+func (o TeamConnectorMembershipConnectorOutput) ToTeamConnectorMembershipConnectorOutputWithContext(ctx context.Context) TeamConnectorMembershipConnectorOutput {
+	return o
+}
+
+func (o TeamConnectorMembershipConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[TeamConnectorMembershipConnector] {
+	return pulumix.Output[TeamConnectorMembershipConnector]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The connector unique identifier
+func (o TeamConnectorMembershipConnectorOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamConnectorMembershipConnector) string { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+// The date and time the membership was created
+func (o TeamConnectorMembershipConnectorOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamConnectorMembershipConnector) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The team's role that links the team and the connector
+func (o TeamConnectorMembershipConnectorOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamConnectorMembershipConnector) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type TeamConnectorMembershipConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (TeamConnectorMembershipConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamConnectorMembershipConnector)(nil)).Elem()
+}
+
+func (o TeamConnectorMembershipConnectorArrayOutput) ToTeamConnectorMembershipConnectorArrayOutput() TeamConnectorMembershipConnectorArrayOutput {
+	return o
+}
+
+func (o TeamConnectorMembershipConnectorArrayOutput) ToTeamConnectorMembershipConnectorArrayOutputWithContext(ctx context.Context) TeamConnectorMembershipConnectorArrayOutput {
+	return o
+}
+
+func (o TeamConnectorMembershipConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TeamConnectorMembershipConnector] {
+	return pulumix.Output[[]TeamConnectorMembershipConnector]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TeamConnectorMembershipConnectorArrayOutput) Index(i pulumi.IntInput) TeamConnectorMembershipConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamConnectorMembershipConnector {
+		return vs[0].([]TeamConnectorMembershipConnector)[vs[1].(int)]
+	}).(TeamConnectorMembershipConnectorOutput)
+}
+
+type TeamGroupMembershipGroup struct {
+	// The date and time the membership was created
+	CreatedAt *string `pulumi:"createdAt"`
+	// The group unique identifier
+	GroupId string `pulumi:"groupId"`
+	// The team's role that links the team and the group
+	Role string `pulumi:"role"`
+}
+
+// TeamGroupMembershipGroupInput is an input type that accepts TeamGroupMembershipGroupArgs and TeamGroupMembershipGroupOutput values.
+// You can construct a concrete instance of `TeamGroupMembershipGroupInput` via:
+//
+//	TeamGroupMembershipGroupArgs{...}
+type TeamGroupMembershipGroupInput interface {
+	pulumi.Input
+
+	ToTeamGroupMembershipGroupOutput() TeamGroupMembershipGroupOutput
+	ToTeamGroupMembershipGroupOutputWithContext(context.Context) TeamGroupMembershipGroupOutput
+}
+
+type TeamGroupMembershipGroupArgs struct {
+	// The date and time the membership was created
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The group unique identifier
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The team's role that links the team and the group
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (TeamGroupMembershipGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamGroupMembershipGroup)(nil)).Elem()
+}
+
+func (i TeamGroupMembershipGroupArgs) ToTeamGroupMembershipGroupOutput() TeamGroupMembershipGroupOutput {
+	return i.ToTeamGroupMembershipGroupOutputWithContext(context.Background())
+}
+
+func (i TeamGroupMembershipGroupArgs) ToTeamGroupMembershipGroupOutputWithContext(ctx context.Context) TeamGroupMembershipGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamGroupMembershipGroupOutput)
+}
+
+func (i TeamGroupMembershipGroupArgs) ToOutput(ctx context.Context) pulumix.Output[TeamGroupMembershipGroup] {
+	return pulumix.Output[TeamGroupMembershipGroup]{
+		OutputState: i.ToTeamGroupMembershipGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
+// TeamGroupMembershipGroupArrayInput is an input type that accepts TeamGroupMembershipGroupArray and TeamGroupMembershipGroupArrayOutput values.
+// You can construct a concrete instance of `TeamGroupMembershipGroupArrayInput` via:
+//
+//	TeamGroupMembershipGroupArray{ TeamGroupMembershipGroupArgs{...} }
+type TeamGroupMembershipGroupArrayInput interface {
+	pulumi.Input
+
+	ToTeamGroupMembershipGroupArrayOutput() TeamGroupMembershipGroupArrayOutput
+	ToTeamGroupMembershipGroupArrayOutputWithContext(context.Context) TeamGroupMembershipGroupArrayOutput
+}
+
+type TeamGroupMembershipGroupArray []TeamGroupMembershipGroupInput
+
+func (TeamGroupMembershipGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamGroupMembershipGroup)(nil)).Elem()
+}
+
+func (i TeamGroupMembershipGroupArray) ToTeamGroupMembershipGroupArrayOutput() TeamGroupMembershipGroupArrayOutput {
+	return i.ToTeamGroupMembershipGroupArrayOutputWithContext(context.Background())
+}
+
+func (i TeamGroupMembershipGroupArray) ToTeamGroupMembershipGroupArrayOutputWithContext(ctx context.Context) TeamGroupMembershipGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamGroupMembershipGroupArrayOutput)
+}
+
+func (i TeamGroupMembershipGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]TeamGroupMembershipGroup] {
+	return pulumix.Output[[]TeamGroupMembershipGroup]{
+		OutputState: i.ToTeamGroupMembershipGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type TeamGroupMembershipGroupOutput struct{ *pulumi.OutputState }
+
+func (TeamGroupMembershipGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamGroupMembershipGroup)(nil)).Elem()
+}
+
+func (o TeamGroupMembershipGroupOutput) ToTeamGroupMembershipGroupOutput() TeamGroupMembershipGroupOutput {
+	return o
+}
+
+func (o TeamGroupMembershipGroupOutput) ToTeamGroupMembershipGroupOutputWithContext(ctx context.Context) TeamGroupMembershipGroupOutput {
+	return o
+}
+
+func (o TeamGroupMembershipGroupOutput) ToOutput(ctx context.Context) pulumix.Output[TeamGroupMembershipGroup] {
+	return pulumix.Output[TeamGroupMembershipGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The date and time the membership was created
+func (o TeamGroupMembershipGroupOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamGroupMembershipGroup) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The group unique identifier
+func (o TeamGroupMembershipGroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamGroupMembershipGroup) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The team's role that links the team and the group
+func (o TeamGroupMembershipGroupOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamGroupMembershipGroup) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type TeamGroupMembershipGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (TeamGroupMembershipGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamGroupMembershipGroup)(nil)).Elem()
+}
+
+func (o TeamGroupMembershipGroupArrayOutput) ToTeamGroupMembershipGroupArrayOutput() TeamGroupMembershipGroupArrayOutput {
+	return o
+}
+
+func (o TeamGroupMembershipGroupArrayOutput) ToTeamGroupMembershipGroupArrayOutputWithContext(ctx context.Context) TeamGroupMembershipGroupArrayOutput {
+	return o
+}
+
+func (o TeamGroupMembershipGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TeamGroupMembershipGroup] {
+	return pulumix.Output[[]TeamGroupMembershipGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TeamGroupMembershipGroupArrayOutput) Index(i pulumi.IntInput) TeamGroupMembershipGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamGroupMembershipGroup {
+		return vs[0].([]TeamGroupMembershipGroup)[vs[1].(int)]
+	}).(TeamGroupMembershipGroupOutput)
+}
+
+type TeamUserMembershipUser struct {
+	// The team's role that links the team and the user
+	Role string `pulumi:"role"`
+	// The user unique identifier
+	UserId string `pulumi:"userId"`
+}
+
+// TeamUserMembershipUserInput is an input type that accepts TeamUserMembershipUserArgs and TeamUserMembershipUserOutput values.
+// You can construct a concrete instance of `TeamUserMembershipUserInput` via:
+//
+//	TeamUserMembershipUserArgs{...}
+type TeamUserMembershipUserInput interface {
+	pulumi.Input
+
+	ToTeamUserMembershipUserOutput() TeamUserMembershipUserOutput
+	ToTeamUserMembershipUserOutputWithContext(context.Context) TeamUserMembershipUserOutput
+}
+
+type TeamUserMembershipUserArgs struct {
+	// The team's role that links the team and the user
+	Role pulumi.StringInput `pulumi:"role"`
+	// The user unique identifier
+	UserId pulumi.StringInput `pulumi:"userId"`
+}
+
+func (TeamUserMembershipUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamUserMembershipUser)(nil)).Elem()
+}
+
+func (i TeamUserMembershipUserArgs) ToTeamUserMembershipUserOutput() TeamUserMembershipUserOutput {
+	return i.ToTeamUserMembershipUserOutputWithContext(context.Background())
+}
+
+func (i TeamUserMembershipUserArgs) ToTeamUserMembershipUserOutputWithContext(ctx context.Context) TeamUserMembershipUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamUserMembershipUserOutput)
+}
+
+func (i TeamUserMembershipUserArgs) ToOutput(ctx context.Context) pulumix.Output[TeamUserMembershipUser] {
+	return pulumix.Output[TeamUserMembershipUser]{
+		OutputState: i.ToTeamUserMembershipUserOutputWithContext(ctx).OutputState,
+	}
+}
+
+// TeamUserMembershipUserArrayInput is an input type that accepts TeamUserMembershipUserArray and TeamUserMembershipUserArrayOutput values.
+// You can construct a concrete instance of `TeamUserMembershipUserArrayInput` via:
+//
+//	TeamUserMembershipUserArray{ TeamUserMembershipUserArgs{...} }
+type TeamUserMembershipUserArrayInput interface {
+	pulumi.Input
+
+	ToTeamUserMembershipUserArrayOutput() TeamUserMembershipUserArrayOutput
+	ToTeamUserMembershipUserArrayOutputWithContext(context.Context) TeamUserMembershipUserArrayOutput
+}
+
+type TeamUserMembershipUserArray []TeamUserMembershipUserInput
+
+func (TeamUserMembershipUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamUserMembershipUser)(nil)).Elem()
+}
+
+func (i TeamUserMembershipUserArray) ToTeamUserMembershipUserArrayOutput() TeamUserMembershipUserArrayOutput {
+	return i.ToTeamUserMembershipUserArrayOutputWithContext(context.Background())
+}
+
+func (i TeamUserMembershipUserArray) ToTeamUserMembershipUserArrayOutputWithContext(ctx context.Context) TeamUserMembershipUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamUserMembershipUserArrayOutput)
+}
+
+func (i TeamUserMembershipUserArray) ToOutput(ctx context.Context) pulumix.Output[[]TeamUserMembershipUser] {
+	return pulumix.Output[[]TeamUserMembershipUser]{
+		OutputState: i.ToTeamUserMembershipUserArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type TeamUserMembershipUserOutput struct{ *pulumi.OutputState }
+
+func (TeamUserMembershipUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamUserMembershipUser)(nil)).Elem()
+}
+
+func (o TeamUserMembershipUserOutput) ToTeamUserMembershipUserOutput() TeamUserMembershipUserOutput {
+	return o
+}
+
+func (o TeamUserMembershipUserOutput) ToTeamUserMembershipUserOutputWithContext(ctx context.Context) TeamUserMembershipUserOutput {
+	return o
+}
+
+func (o TeamUserMembershipUserOutput) ToOutput(ctx context.Context) pulumix.Output[TeamUserMembershipUser] {
+	return pulumix.Output[TeamUserMembershipUser]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The team's role that links the team and the user
+func (o TeamUserMembershipUserOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamUserMembershipUser) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The user unique identifier
+func (o TeamUserMembershipUserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamUserMembershipUser) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+type TeamUserMembershipUserArrayOutput struct{ *pulumi.OutputState }
+
+func (TeamUserMembershipUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamUserMembershipUser)(nil)).Elem()
+}
+
+func (o TeamUserMembershipUserArrayOutput) ToTeamUserMembershipUserArrayOutput() TeamUserMembershipUserArrayOutput {
+	return o
+}
+
+func (o TeamUserMembershipUserArrayOutput) ToTeamUserMembershipUserArrayOutputWithContext(ctx context.Context) TeamUserMembershipUserArrayOutput {
+	return o
+}
+
+func (o TeamUserMembershipUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TeamUserMembershipUser] {
+	return pulumix.Output[[]TeamUserMembershipUser]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TeamUserMembershipUserArrayOutput) Index(i pulumi.IntInput) TeamUserMembershipUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamUserMembershipUser {
+		return vs[0].([]TeamUserMembershipUser)[vs[1].(int)]
+	}).(TeamUserMembershipUserOutput)
+}
+
+type GetConnectorCertificatesCertificate struct {
+	// Hash of the fingerprint.
+	Hash string `pulumi:"hash"`
+	// Certificate name.
+	Name string `pulumi:"name"`
+	// Certificate public key.
+	PublicKey string `pulumi:"publicKey"`
+	// Certificate sha1.
+	Sha1 string `pulumi:"sha1"`
+	// Certificate sha256.
+	Sha256 string `pulumi:"sha256"`
+	// Certificate type.
+	Type string `pulumi:"type"`
+	// User name who validated the certificate.
+	ValidatedBy string `pulumi:"validatedBy"`
+	// The date when the certificate was approved.
+	ValidatedDate string `pulumi:"validatedDate"`
+}
+
+// GetConnectorCertificatesCertificateInput is an input type that accepts GetConnectorCertificatesCertificateArgs and GetConnectorCertificatesCertificateOutput values.
+// You can construct a concrete instance of `GetConnectorCertificatesCertificateInput` via:
+//
+//	GetConnectorCertificatesCertificateArgs{...}
+type GetConnectorCertificatesCertificateInput interface {
+	pulumi.Input
+
+	ToGetConnectorCertificatesCertificateOutput() GetConnectorCertificatesCertificateOutput
+	ToGetConnectorCertificatesCertificateOutputWithContext(context.Context) GetConnectorCertificatesCertificateOutput
+}
+
+type GetConnectorCertificatesCertificateArgs struct {
+	// Hash of the fingerprint.
+	Hash pulumi.StringInput `pulumi:"hash"`
+	// Certificate name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Certificate public key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// Certificate sha1.
+	Sha1 pulumi.StringInput `pulumi:"sha1"`
+	// Certificate sha256.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
+	// Certificate type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// User name who validated the certificate.
+	ValidatedBy pulumi.StringInput `pulumi:"validatedBy"`
+	// The date when the certificate was approved.
+	ValidatedDate pulumi.StringInput `pulumi:"validatedDate"`
+}
+
+func (GetConnectorCertificatesCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetConnectorCertificatesCertificateArgs) ToGetConnectorCertificatesCertificateOutput() GetConnectorCertificatesCertificateOutput {
+	return i.ToGetConnectorCertificatesCertificateOutputWithContext(context.Background())
+}
+
+func (i GetConnectorCertificatesCertificateArgs) ToGetConnectorCertificatesCertificateOutputWithContext(ctx context.Context) GetConnectorCertificatesCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorCertificatesCertificateOutput)
+}
+
+func (i GetConnectorCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorCertificatesCertificate] {
+	return pulumix.Output[GetConnectorCertificatesCertificate]{
+		OutputState: i.ToGetConnectorCertificatesCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetConnectorCertificatesCertificateArrayInput is an input type that accepts GetConnectorCertificatesCertificateArray and GetConnectorCertificatesCertificateArrayOutput values.
+// You can construct a concrete instance of `GetConnectorCertificatesCertificateArrayInput` via:
+//
+//	GetConnectorCertificatesCertificateArray{ GetConnectorCertificatesCertificateArgs{...} }
+type GetConnectorCertificatesCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorCertificatesCertificateArrayOutput() GetConnectorCertificatesCertificateArrayOutput
+	ToGetConnectorCertificatesCertificateArrayOutputWithContext(context.Context) GetConnectorCertificatesCertificateArrayOutput
+}
+
+type GetConnectorCertificatesCertificateArray []GetConnectorCertificatesCertificateInput
+
+func (GetConnectorCertificatesCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetConnectorCertificatesCertificateArray) ToGetConnectorCertificatesCertificateArrayOutput() GetConnectorCertificatesCertificateArrayOutput {
+	return i.ToGetConnectorCertificatesCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorCertificatesCertificateArray) ToGetConnectorCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetConnectorCertificatesCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorCertificatesCertificateArrayOutput)
+}
+
+func (i GetConnectorCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorCertificatesCertificate] {
+	return pulumix.Output[[]GetConnectorCertificatesCertificate]{
+		OutputState: i.ToGetConnectorCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetConnectorCertificatesCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorCertificatesCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetConnectorCertificatesCertificateOutput) ToGetConnectorCertificatesCertificateOutput() GetConnectorCertificatesCertificateOutput {
+	return o
+}
+
+func (o GetConnectorCertificatesCertificateOutput) ToGetConnectorCertificatesCertificateOutputWithContext(ctx context.Context) GetConnectorCertificatesCertificateOutput {
+	return o
+}
+
+func (o GetConnectorCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorCertificatesCertificate] {
+	return pulumix.Output[GetConnectorCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Hash of the fingerprint.
+func (o GetConnectorCertificatesCertificateOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorCertificatesCertificate) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// Certificate name.
+func (o GetConnectorCertificatesCertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Certificate public key.
+func (o GetConnectorCertificatesCertificateOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorCertificatesCertificate) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// Certificate sha1.
+func (o GetConnectorCertificatesCertificateOutput) Sha1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorCertificatesCertificate) string { return v.Sha1 }).(pulumi.StringOutput)
+}
+
+// Certificate sha256.
+func (o GetConnectorCertificatesCertificateOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorCertificatesCertificate) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+// Certificate type.
+func (o GetConnectorCertificatesCertificateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorCertificatesCertificate) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// User name who validated the certificate.
+func (o GetConnectorCertificatesCertificateOutput) ValidatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorCertificatesCertificate) string { return v.ValidatedBy }).(pulumi.StringOutput)
+}
+
+// The date when the certificate was approved.
+func (o GetConnectorCertificatesCertificateOutput) ValidatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorCertificatesCertificate) string { return v.ValidatedDate }).(pulumi.StringOutput)
+}
+
+type GetConnectorCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorCertificatesCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetConnectorCertificatesCertificateArrayOutput) ToGetConnectorCertificatesCertificateArrayOutput() GetConnectorCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetConnectorCertificatesCertificateArrayOutput) ToGetConnectorCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetConnectorCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetConnectorCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorCertificatesCertificate] {
+	return pulumix.Output[[]GetConnectorCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetConnectorCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetConnectorCertificatesCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorCertificatesCertificate {
+		return vs[0].([]GetConnectorCertificatesCertificate)[vs[1].(int)]
+	}).(GetConnectorCertificatesCertificateOutput)
+}
+
 type GetConnectorConfig struct {
 	AbsConnectionMethod                    string                                          `pulumi:"absConnectionMethod"`
 	AbsConnectionString                    string                                          `pulumi:"absConnectionString"`
@@ -10384,6 +12189,7 @@ type GetConnectorConfig struct {
 	BusinessUnitId                         string                                          `pulumi:"businessUnitId"`
 	Certificate                            string                                          `pulumi:"certificate"`
 	ClickAttributionWindow                 string                                          `pulumi:"clickAttributionWindow"`
+	Client                                 string                                          `pulumi:"client"`
 	ClientCert                             string                                          `pulumi:"clientCert"`
 	ClientCertKey                          string                                          `pulumi:"clientCertKey"`
 	ClientId                               string                                          `pulumi:"clientId"`
@@ -10394,6 +12200,8 @@ type GetConnectorConfig struct {
 	Columns                                []string                                        `pulumi:"columns"`
 	CompanyId                              string                                          `pulumi:"companyId"`
 	CompanyKey                             string                                          `pulumi:"companyKey"`
+	CompanyRequestToken                    string                                          `pulumi:"companyRequestToken"`
+	CompanyUuid                            string                                          `pulumi:"companyUuid"`
 	Compression                            string                                          `pulumi:"compression"`
 	ConfigMethod                           string                                          `pulumi:"configMethod"`
 	ConfigRepositoryUrl                    string                                          `pulumi:"configRepositoryUrl"`
@@ -10541,6 +12349,8 @@ type GetConnectorConfig struct {
 	Passphrase                             string                                          `pulumi:"passphrase"`
 	Password                               string                                          `pulumi:"password"`
 	Pat                                    string                                          `pulumi:"pat"`
+	PatName                                string                                          `pulumi:"patName"`
+	PatSecret                              string                                          `pulumi:"patSecret"`
 	Path                                   string                                          `pulumi:"path"`
 	Pattern                                string                                          `pulumi:"pattern"`
 	PdbName                                string                                          `pulumi:"pdbName"`
@@ -10622,6 +12432,7 @@ type GetConnectorConfig struct {
 	SelectedExports                        []string                                        `pulumi:"selectedExports"`
 	SenderId                               string                                          `pulumi:"senderId"`
 	SenderPassword                         string                                          `pulumi:"senderPassword"`
+	ServerAddress                          string                                          `pulumi:"serverAddress"`
 	ServerUrl                              string                                          `pulumi:"serverUrl"`
 	Servers                                []string                                        `pulumi:"servers"`
 	ServiceAccount                         string                                          `pulumi:"serviceAccount"`
@@ -10669,6 +12480,7 @@ type GetConnectorConfig struct {
 	SyncPackMode                           string                                          `pulumi:"syncPackMode"`
 	SyncPullApi                            string                                          `pulumi:"syncPullApi"`
 	SyncType                               string                                          `pulumi:"syncType"`
+	Sysnr                                  string                                          `pulumi:"sysnr"`
 	TableName                              string                                          `pulumi:"tableName"`
 	TdeCertificate                         string                                          `pulumi:"tdeCertificate"`
 	TdeCertificateName                     string                                          `pulumi:"tdeCertificateName"`
@@ -10830,6 +12642,7 @@ type GetConnectorConfigArgs struct {
 	BusinessUnitId                         pulumi.StringInput                                      `pulumi:"businessUnitId"`
 	Certificate                            pulumi.StringInput                                      `pulumi:"certificate"`
 	ClickAttributionWindow                 pulumi.StringInput                                      `pulumi:"clickAttributionWindow"`
+	Client                                 pulumi.StringInput                                      `pulumi:"client"`
 	ClientCert                             pulumi.StringInput                                      `pulumi:"clientCert"`
 	ClientCertKey                          pulumi.StringInput                                      `pulumi:"clientCertKey"`
 	ClientId                               pulumi.StringInput                                      `pulumi:"clientId"`
@@ -10840,6 +12653,8 @@ type GetConnectorConfigArgs struct {
 	Columns                                pulumi.StringArrayInput                                 `pulumi:"columns"`
 	CompanyId                              pulumi.StringInput                                      `pulumi:"companyId"`
 	CompanyKey                             pulumi.StringInput                                      `pulumi:"companyKey"`
+	CompanyRequestToken                    pulumi.StringInput                                      `pulumi:"companyRequestToken"`
+	CompanyUuid                            pulumi.StringInput                                      `pulumi:"companyUuid"`
 	Compression                            pulumi.StringInput                                      `pulumi:"compression"`
 	ConfigMethod                           pulumi.StringInput                                      `pulumi:"configMethod"`
 	ConfigRepositoryUrl                    pulumi.StringInput                                      `pulumi:"configRepositoryUrl"`
@@ -10987,6 +12802,8 @@ type GetConnectorConfigArgs struct {
 	Passphrase                             pulumi.StringInput                                      `pulumi:"passphrase"`
 	Password                               pulumi.StringInput                                      `pulumi:"password"`
 	Pat                                    pulumi.StringInput                                      `pulumi:"pat"`
+	PatName                                pulumi.StringInput                                      `pulumi:"patName"`
+	PatSecret                              pulumi.StringInput                                      `pulumi:"patSecret"`
 	Path                                   pulumi.StringInput                                      `pulumi:"path"`
 	Pattern                                pulumi.StringInput                                      `pulumi:"pattern"`
 	PdbName                                pulumi.StringInput                                      `pulumi:"pdbName"`
@@ -11068,6 +12885,7 @@ type GetConnectorConfigArgs struct {
 	SelectedExports                        pulumi.StringArrayInput                                 `pulumi:"selectedExports"`
 	SenderId                               pulumi.StringInput                                      `pulumi:"senderId"`
 	SenderPassword                         pulumi.StringInput                                      `pulumi:"senderPassword"`
+	ServerAddress                          pulumi.StringInput                                      `pulumi:"serverAddress"`
 	ServerUrl                              pulumi.StringInput                                      `pulumi:"serverUrl"`
 	Servers                                pulumi.StringArrayInput                                 `pulumi:"servers"`
 	ServiceAccount                         pulumi.StringInput                                      `pulumi:"serviceAccount"`
@@ -11115,6 +12933,7 @@ type GetConnectorConfigArgs struct {
 	SyncPackMode                           pulumi.StringInput                                      `pulumi:"syncPackMode"`
 	SyncPullApi                            pulumi.StringInput                                      `pulumi:"syncPullApi"`
 	SyncType                               pulumi.StringInput                                      `pulumi:"syncType"`
+	Sysnr                                  pulumi.StringInput                                      `pulumi:"sysnr"`
 	TableName                              pulumi.StringInput                                      `pulumi:"tableName"`
 	TdeCertificate                         pulumi.StringInput                                      `pulumi:"tdeCertificate"`
 	TdeCertificateName                     pulumi.StringInput                                      `pulumi:"tdeCertificateName"`
@@ -11614,6 +13433,10 @@ func (o GetConnectorConfigOutput) ClickAttributionWindow() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ClickAttributionWindow }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigOutput) Client() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.Client }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigOutput) ClientCert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ClientCert }).(pulumi.StringOutput)
 }
@@ -11652,6 +13475,14 @@ func (o GetConnectorConfigOutput) CompanyId() pulumi.StringOutput {
 
 func (o GetConnectorConfigOutput) CompanyKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.CompanyKey }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigOutput) CompanyRequestToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.CompanyRequestToken }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigOutput) CompanyUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.CompanyUuid }).(pulumi.StringOutput)
 }
 
 func (o GetConnectorConfigOutput) Compression() pulumi.StringOutput {
@@ -12242,6 +14073,14 @@ func (o GetConnectorConfigOutput) Pat() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Pat }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigOutput) PatName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.PatName }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigOutput) PatSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.PatSecret }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -12566,6 +14405,10 @@ func (o GetConnectorConfigOutput) SenderPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.SenderPassword }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigOutput) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigOutput) ServerUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ServerUrl }).(pulumi.StringOutput)
 }
@@ -12752,6 +14595,10 @@ func (o GetConnectorConfigOutput) SyncPullApi() pulumi.StringOutput {
 
 func (o GetConnectorConfigOutput) SyncType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.SyncType }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigOutput) Sysnr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.Sysnr }).(pulumi.StringOutput)
 }
 
 func (o GetConnectorConfigOutput) TableName() pulumi.StringOutput {
@@ -14340,6 +16187,154 @@ func (o GetConnectorDestinationSchemaArrayOutput) Index(i pulumi.IntInput) GetCo
 	}).(GetConnectorDestinationSchemaOutput)
 }
 
+type GetConnectorFingerprintsFingerprint struct {
+	// Hash of the fingerprint.
+	Hash string `pulumi:"hash"`
+	// The SSH public key.
+	PublicKey string `pulumi:"publicKey"`
+	// User name who validated the fingerprint.
+	ValidatedBy string `pulumi:"validatedBy"`
+	// The date when SSH fingerprint was approved.
+	ValidatedDate string `pulumi:"validatedDate"`
+}
+
+// GetConnectorFingerprintsFingerprintInput is an input type that accepts GetConnectorFingerprintsFingerprintArgs and GetConnectorFingerprintsFingerprintOutput values.
+// You can construct a concrete instance of `GetConnectorFingerprintsFingerprintInput` via:
+//
+//	GetConnectorFingerprintsFingerprintArgs{...}
+type GetConnectorFingerprintsFingerprintInput interface {
+	pulumi.Input
+
+	ToGetConnectorFingerprintsFingerprintOutput() GetConnectorFingerprintsFingerprintOutput
+	ToGetConnectorFingerprintsFingerprintOutputWithContext(context.Context) GetConnectorFingerprintsFingerprintOutput
+}
+
+type GetConnectorFingerprintsFingerprintArgs struct {
+	// Hash of the fingerprint.
+	Hash pulumi.StringInput `pulumi:"hash"`
+	// The SSH public key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// User name who validated the fingerprint.
+	ValidatedBy pulumi.StringInput `pulumi:"validatedBy"`
+	// The date when SSH fingerprint was approved.
+	ValidatedDate pulumi.StringInput `pulumi:"validatedDate"`
+}
+
+func (GetConnectorFingerprintsFingerprintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (i GetConnectorFingerprintsFingerprintArgs) ToGetConnectorFingerprintsFingerprintOutput() GetConnectorFingerprintsFingerprintOutput {
+	return i.ToGetConnectorFingerprintsFingerprintOutputWithContext(context.Background())
+}
+
+func (i GetConnectorFingerprintsFingerprintArgs) ToGetConnectorFingerprintsFingerprintOutputWithContext(ctx context.Context) GetConnectorFingerprintsFingerprintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorFingerprintsFingerprintOutput)
+}
+
+func (i GetConnectorFingerprintsFingerprintArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorFingerprintsFingerprint] {
+	return pulumix.Output[GetConnectorFingerprintsFingerprint]{
+		OutputState: i.ToGetConnectorFingerprintsFingerprintOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetConnectorFingerprintsFingerprintArrayInput is an input type that accepts GetConnectorFingerprintsFingerprintArray and GetConnectorFingerprintsFingerprintArrayOutput values.
+// You can construct a concrete instance of `GetConnectorFingerprintsFingerprintArrayInput` via:
+//
+//	GetConnectorFingerprintsFingerprintArray{ GetConnectorFingerprintsFingerprintArgs{...} }
+type GetConnectorFingerprintsFingerprintArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorFingerprintsFingerprintArrayOutput() GetConnectorFingerprintsFingerprintArrayOutput
+	ToGetConnectorFingerprintsFingerprintArrayOutputWithContext(context.Context) GetConnectorFingerprintsFingerprintArrayOutput
+}
+
+type GetConnectorFingerprintsFingerprintArray []GetConnectorFingerprintsFingerprintInput
+
+func (GetConnectorFingerprintsFingerprintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (i GetConnectorFingerprintsFingerprintArray) ToGetConnectorFingerprintsFingerprintArrayOutput() GetConnectorFingerprintsFingerprintArrayOutput {
+	return i.ToGetConnectorFingerprintsFingerprintArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorFingerprintsFingerprintArray) ToGetConnectorFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) GetConnectorFingerprintsFingerprintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorFingerprintsFingerprintArrayOutput)
+}
+
+func (i GetConnectorFingerprintsFingerprintArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorFingerprintsFingerprint] {
+	return pulumix.Output[[]GetConnectorFingerprintsFingerprint]{
+		OutputState: i.ToGetConnectorFingerprintsFingerprintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetConnectorFingerprintsFingerprintOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorFingerprintsFingerprintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (o GetConnectorFingerprintsFingerprintOutput) ToGetConnectorFingerprintsFingerprintOutput() GetConnectorFingerprintsFingerprintOutput {
+	return o
+}
+
+func (o GetConnectorFingerprintsFingerprintOutput) ToGetConnectorFingerprintsFingerprintOutputWithContext(ctx context.Context) GetConnectorFingerprintsFingerprintOutput {
+	return o
+}
+
+func (o GetConnectorFingerprintsFingerprintOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorFingerprintsFingerprint] {
+	return pulumix.Output[GetConnectorFingerprintsFingerprint]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Hash of the fingerprint.
+func (o GetConnectorFingerprintsFingerprintOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorFingerprintsFingerprint) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// The SSH public key.
+func (o GetConnectorFingerprintsFingerprintOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorFingerprintsFingerprint) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// User name who validated the fingerprint.
+func (o GetConnectorFingerprintsFingerprintOutput) ValidatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorFingerprintsFingerprint) string { return v.ValidatedBy }).(pulumi.StringOutput)
+}
+
+// The date when SSH fingerprint was approved.
+func (o GetConnectorFingerprintsFingerprintOutput) ValidatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorFingerprintsFingerprint) string { return v.ValidatedDate }).(pulumi.StringOutput)
+}
+
+type GetConnectorFingerprintsFingerprintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorFingerprintsFingerprintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (o GetConnectorFingerprintsFingerprintArrayOutput) ToGetConnectorFingerprintsFingerprintArrayOutput() GetConnectorFingerprintsFingerprintArrayOutput {
+	return o
+}
+
+func (o GetConnectorFingerprintsFingerprintArrayOutput) ToGetConnectorFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) GetConnectorFingerprintsFingerprintArrayOutput {
+	return o
+}
+
+func (o GetConnectorFingerprintsFingerprintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorFingerprintsFingerprint] {
+	return pulumix.Output[[]GetConnectorFingerprintsFingerprint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetConnectorFingerprintsFingerprintArrayOutput) Index(i pulumi.IntInput) GetConnectorFingerprintsFingerprintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorFingerprintsFingerprint {
+		return vs[0].([]GetConnectorFingerprintsFingerprint)[vs[1].(int)]
+	}).(GetConnectorFingerprintsFingerprintOutput)
+}
+
 type GetConnectorStatus struct {
 	IsHistoricalSync string                      `pulumi:"isHistoricalSync"`
 	SetupState       string                      `pulumi:"setupState"`
@@ -15603,6 +17598,190 @@ func (o GetDbtTransformationScheduleArrayOutput) Index(i pulumi.IntInput) GetDbt
 	}).(GetDbtTransformationScheduleOutput)
 }
 
+type GetDestinationCertificatesCertificate struct {
+	// Hash of the fingerprint.
+	Hash string `pulumi:"hash"`
+	// Certificate name.
+	Name string `pulumi:"name"`
+	// Certificate public key.
+	PublicKey string `pulumi:"publicKey"`
+	// Certificate sha1.
+	Sha1 string `pulumi:"sha1"`
+	// Certificate sha256.
+	Sha256 string `pulumi:"sha256"`
+	// Certificate type.
+	Type string `pulumi:"type"`
+	// User name who validated the certificate.
+	ValidatedBy string `pulumi:"validatedBy"`
+	// The date when the certificate was approved.
+	ValidatedDate string `pulumi:"validatedDate"`
+}
+
+// GetDestinationCertificatesCertificateInput is an input type that accepts GetDestinationCertificatesCertificateArgs and GetDestinationCertificatesCertificateOutput values.
+// You can construct a concrete instance of `GetDestinationCertificatesCertificateInput` via:
+//
+//	GetDestinationCertificatesCertificateArgs{...}
+type GetDestinationCertificatesCertificateInput interface {
+	pulumi.Input
+
+	ToGetDestinationCertificatesCertificateOutput() GetDestinationCertificatesCertificateOutput
+	ToGetDestinationCertificatesCertificateOutputWithContext(context.Context) GetDestinationCertificatesCertificateOutput
+}
+
+type GetDestinationCertificatesCertificateArgs struct {
+	// Hash of the fingerprint.
+	Hash pulumi.StringInput `pulumi:"hash"`
+	// Certificate name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Certificate public key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// Certificate sha1.
+	Sha1 pulumi.StringInput `pulumi:"sha1"`
+	// Certificate sha256.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
+	// Certificate type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// User name who validated the certificate.
+	ValidatedBy pulumi.StringInput `pulumi:"validatedBy"`
+	// The date when the certificate was approved.
+	ValidatedDate pulumi.StringInput `pulumi:"validatedDate"`
+}
+
+func (GetDestinationCertificatesCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDestinationCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetDestinationCertificatesCertificateArgs) ToGetDestinationCertificatesCertificateOutput() GetDestinationCertificatesCertificateOutput {
+	return i.ToGetDestinationCertificatesCertificateOutputWithContext(context.Background())
+}
+
+func (i GetDestinationCertificatesCertificateArgs) ToGetDestinationCertificatesCertificateOutputWithContext(ctx context.Context) GetDestinationCertificatesCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationCertificatesCertificateOutput)
+}
+
+func (i GetDestinationCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetDestinationCertificatesCertificate] {
+	return pulumix.Output[GetDestinationCertificatesCertificate]{
+		OutputState: i.ToGetDestinationCertificatesCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetDestinationCertificatesCertificateArrayInput is an input type that accepts GetDestinationCertificatesCertificateArray and GetDestinationCertificatesCertificateArrayOutput values.
+// You can construct a concrete instance of `GetDestinationCertificatesCertificateArrayInput` via:
+//
+//	GetDestinationCertificatesCertificateArray{ GetDestinationCertificatesCertificateArgs{...} }
+type GetDestinationCertificatesCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetDestinationCertificatesCertificateArrayOutput() GetDestinationCertificatesCertificateArrayOutput
+	ToGetDestinationCertificatesCertificateArrayOutputWithContext(context.Context) GetDestinationCertificatesCertificateArrayOutput
+}
+
+type GetDestinationCertificatesCertificateArray []GetDestinationCertificatesCertificateInput
+
+func (GetDestinationCertificatesCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDestinationCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetDestinationCertificatesCertificateArray) ToGetDestinationCertificatesCertificateArrayOutput() GetDestinationCertificatesCertificateArrayOutput {
+	return i.ToGetDestinationCertificatesCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetDestinationCertificatesCertificateArray) ToGetDestinationCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetDestinationCertificatesCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationCertificatesCertificateArrayOutput)
+}
+
+func (i GetDestinationCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDestinationCertificatesCertificate] {
+	return pulumix.Output[[]GetDestinationCertificatesCertificate]{
+		OutputState: i.ToGetDestinationCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetDestinationCertificatesCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetDestinationCertificatesCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDestinationCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetDestinationCertificatesCertificateOutput) ToGetDestinationCertificatesCertificateOutput() GetDestinationCertificatesCertificateOutput {
+	return o
+}
+
+func (o GetDestinationCertificatesCertificateOutput) ToGetDestinationCertificatesCertificateOutputWithContext(ctx context.Context) GetDestinationCertificatesCertificateOutput {
+	return o
+}
+
+func (o GetDestinationCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetDestinationCertificatesCertificate] {
+	return pulumix.Output[GetDestinationCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Hash of the fingerprint.
+func (o GetDestinationCertificatesCertificateOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationCertificatesCertificate) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// Certificate name.
+func (o GetDestinationCertificatesCertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Certificate public key.
+func (o GetDestinationCertificatesCertificateOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationCertificatesCertificate) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// Certificate sha1.
+func (o GetDestinationCertificatesCertificateOutput) Sha1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationCertificatesCertificate) string { return v.Sha1 }).(pulumi.StringOutput)
+}
+
+// Certificate sha256.
+func (o GetDestinationCertificatesCertificateOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationCertificatesCertificate) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+// Certificate type.
+func (o GetDestinationCertificatesCertificateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationCertificatesCertificate) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// User name who validated the certificate.
+func (o GetDestinationCertificatesCertificateOutput) ValidatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationCertificatesCertificate) string { return v.ValidatedBy }).(pulumi.StringOutput)
+}
+
+// The date when the certificate was approved.
+func (o GetDestinationCertificatesCertificateOutput) ValidatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationCertificatesCertificate) string { return v.ValidatedDate }).(pulumi.StringOutput)
+}
+
+type GetDestinationCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDestinationCertificatesCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDestinationCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetDestinationCertificatesCertificateArrayOutput) ToGetDestinationCertificatesCertificateArrayOutput() GetDestinationCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetDestinationCertificatesCertificateArrayOutput) ToGetDestinationCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetDestinationCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetDestinationCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDestinationCertificatesCertificate] {
+	return pulumix.Output[[]GetDestinationCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDestinationCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetDestinationCertificatesCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDestinationCertificatesCertificate {
+		return vs[0].([]GetDestinationCertificatesCertificate)[vs[1].(int)]
+	}).(GetDestinationCertificatesCertificateOutput)
+}
+
 type GetDestinationConfig struct {
 	// The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
 	Auth *string `pulumi:"auth"`
@@ -16003,6 +18182,392 @@ func (o GetDestinationConfigArrayOutput) Index(i pulumi.IntInput) GetDestination
 	}).(GetDestinationConfigOutput)
 }
 
+type GetDestinationFingerprintsFingerprint struct {
+	// Hash of the fingerprint.
+	Hash string `pulumi:"hash"`
+	// The SSH public key.
+	PublicKey string `pulumi:"publicKey"`
+	// User name who validated the fingerprint.
+	ValidatedBy string `pulumi:"validatedBy"`
+	// The date when SSH fingerprint was approved.
+	ValidatedDate string `pulumi:"validatedDate"`
+}
+
+// GetDestinationFingerprintsFingerprintInput is an input type that accepts GetDestinationFingerprintsFingerprintArgs and GetDestinationFingerprintsFingerprintOutput values.
+// You can construct a concrete instance of `GetDestinationFingerprintsFingerprintInput` via:
+//
+//	GetDestinationFingerprintsFingerprintArgs{...}
+type GetDestinationFingerprintsFingerprintInput interface {
+	pulumi.Input
+
+	ToGetDestinationFingerprintsFingerprintOutput() GetDestinationFingerprintsFingerprintOutput
+	ToGetDestinationFingerprintsFingerprintOutputWithContext(context.Context) GetDestinationFingerprintsFingerprintOutput
+}
+
+type GetDestinationFingerprintsFingerprintArgs struct {
+	// Hash of the fingerprint.
+	Hash pulumi.StringInput `pulumi:"hash"`
+	// The SSH public key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// User name who validated the fingerprint.
+	ValidatedBy pulumi.StringInput `pulumi:"validatedBy"`
+	// The date when SSH fingerprint was approved.
+	ValidatedDate pulumi.StringInput `pulumi:"validatedDate"`
+}
+
+func (GetDestinationFingerprintsFingerprintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDestinationFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (i GetDestinationFingerprintsFingerprintArgs) ToGetDestinationFingerprintsFingerprintOutput() GetDestinationFingerprintsFingerprintOutput {
+	return i.ToGetDestinationFingerprintsFingerprintOutputWithContext(context.Background())
+}
+
+func (i GetDestinationFingerprintsFingerprintArgs) ToGetDestinationFingerprintsFingerprintOutputWithContext(ctx context.Context) GetDestinationFingerprintsFingerprintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationFingerprintsFingerprintOutput)
+}
+
+func (i GetDestinationFingerprintsFingerprintArgs) ToOutput(ctx context.Context) pulumix.Output[GetDestinationFingerprintsFingerprint] {
+	return pulumix.Output[GetDestinationFingerprintsFingerprint]{
+		OutputState: i.ToGetDestinationFingerprintsFingerprintOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetDestinationFingerprintsFingerprintArrayInput is an input type that accepts GetDestinationFingerprintsFingerprintArray and GetDestinationFingerprintsFingerprintArrayOutput values.
+// You can construct a concrete instance of `GetDestinationFingerprintsFingerprintArrayInput` via:
+//
+//	GetDestinationFingerprintsFingerprintArray{ GetDestinationFingerprintsFingerprintArgs{...} }
+type GetDestinationFingerprintsFingerprintArrayInput interface {
+	pulumi.Input
+
+	ToGetDestinationFingerprintsFingerprintArrayOutput() GetDestinationFingerprintsFingerprintArrayOutput
+	ToGetDestinationFingerprintsFingerprintArrayOutputWithContext(context.Context) GetDestinationFingerprintsFingerprintArrayOutput
+}
+
+type GetDestinationFingerprintsFingerprintArray []GetDestinationFingerprintsFingerprintInput
+
+func (GetDestinationFingerprintsFingerprintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDestinationFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (i GetDestinationFingerprintsFingerprintArray) ToGetDestinationFingerprintsFingerprintArrayOutput() GetDestinationFingerprintsFingerprintArrayOutput {
+	return i.ToGetDestinationFingerprintsFingerprintArrayOutputWithContext(context.Background())
+}
+
+func (i GetDestinationFingerprintsFingerprintArray) ToGetDestinationFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) GetDestinationFingerprintsFingerprintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationFingerprintsFingerprintArrayOutput)
+}
+
+func (i GetDestinationFingerprintsFingerprintArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDestinationFingerprintsFingerprint] {
+	return pulumix.Output[[]GetDestinationFingerprintsFingerprint]{
+		OutputState: i.ToGetDestinationFingerprintsFingerprintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetDestinationFingerprintsFingerprintOutput struct{ *pulumi.OutputState }
+
+func (GetDestinationFingerprintsFingerprintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDestinationFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (o GetDestinationFingerprintsFingerprintOutput) ToGetDestinationFingerprintsFingerprintOutput() GetDestinationFingerprintsFingerprintOutput {
+	return o
+}
+
+func (o GetDestinationFingerprintsFingerprintOutput) ToGetDestinationFingerprintsFingerprintOutputWithContext(ctx context.Context) GetDestinationFingerprintsFingerprintOutput {
+	return o
+}
+
+func (o GetDestinationFingerprintsFingerprintOutput) ToOutput(ctx context.Context) pulumix.Output[GetDestinationFingerprintsFingerprint] {
+	return pulumix.Output[GetDestinationFingerprintsFingerprint]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Hash of the fingerprint.
+func (o GetDestinationFingerprintsFingerprintOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationFingerprintsFingerprint) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// The SSH public key.
+func (o GetDestinationFingerprintsFingerprintOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationFingerprintsFingerprint) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// User name who validated the fingerprint.
+func (o GetDestinationFingerprintsFingerprintOutput) ValidatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationFingerprintsFingerprint) string { return v.ValidatedBy }).(pulumi.StringOutput)
+}
+
+// The date when SSH fingerprint was approved.
+func (o GetDestinationFingerprintsFingerprintOutput) ValidatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationFingerprintsFingerprint) string { return v.ValidatedDate }).(pulumi.StringOutput)
+}
+
+type GetDestinationFingerprintsFingerprintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDestinationFingerprintsFingerprintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDestinationFingerprintsFingerprint)(nil)).Elem()
+}
+
+func (o GetDestinationFingerprintsFingerprintArrayOutput) ToGetDestinationFingerprintsFingerprintArrayOutput() GetDestinationFingerprintsFingerprintArrayOutput {
+	return o
+}
+
+func (o GetDestinationFingerprintsFingerprintArrayOutput) ToGetDestinationFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) GetDestinationFingerprintsFingerprintArrayOutput {
+	return o
+}
+
+func (o GetDestinationFingerprintsFingerprintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDestinationFingerprintsFingerprint] {
+	return pulumix.Output[[]GetDestinationFingerprintsFingerprint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDestinationFingerprintsFingerprintArrayOutput) Index(i pulumi.IntInput) GetDestinationFingerprintsFingerprintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDestinationFingerprintsFingerprint {
+		return vs[0].([]GetDestinationFingerprintsFingerprint)[vs[1].(int)]
+	}).(GetDestinationFingerprintsFingerprintOutput)
+}
+
+type GetExternalLoggingConfig struct {
+	// API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Channel
+	Channel *string `pulumi:"channel"`
+	// Enable SSL
+	EnableSsl *bool `pulumi:"enableSsl"`
+	// external_id
+	ExternalId *string `pulumi:"externalId"`
+	// Server name
+	Host *string `pulumi:"host"`
+	// Server name
+	Hostname *string `pulumi:"hostname"`
+	// Log Group Name
+	LogGroupName *string `pulumi:"logGroupName"`
+	// Port
+	Port *int `pulumi:"port"`
+	// Primary Key
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// Region
+	Region *string `pulumi:"region"`
+	// Role Arn
+	RoleArn *string `pulumi:"roleArn"`
+	// Sub Domain
+	SubDomain *string `pulumi:"subDomain"`
+	// Token
+	Token *string `pulumi:"token"`
+	// Workspace ID
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// GetExternalLoggingConfigInput is an input type that accepts GetExternalLoggingConfigArgs and GetExternalLoggingConfigOutput values.
+// You can construct a concrete instance of `GetExternalLoggingConfigInput` via:
+//
+//	GetExternalLoggingConfigArgs{...}
+type GetExternalLoggingConfigInput interface {
+	pulumi.Input
+
+	ToGetExternalLoggingConfigOutput() GetExternalLoggingConfigOutput
+	ToGetExternalLoggingConfigOutputWithContext(context.Context) GetExternalLoggingConfigOutput
+}
+
+type GetExternalLoggingConfigArgs struct {
+	// API Key
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Channel
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Enable SSL
+	EnableSsl pulumi.BoolPtrInput `pulumi:"enableSsl"`
+	// external_id
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	// Server name
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Server name
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Log Group Name
+	LogGroupName pulumi.StringPtrInput `pulumi:"logGroupName"`
+	// Port
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Primary Key
+	PrimaryKey pulumi.StringPtrInput `pulumi:"primaryKey"`
+	// Region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Role Arn
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Sub Domain
+	SubDomain pulumi.StringPtrInput `pulumi:"subDomain"`
+	// Token
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Workspace ID
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetExternalLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalLoggingConfig)(nil)).Elem()
+}
+
+func (i GetExternalLoggingConfigArgs) ToGetExternalLoggingConfigOutput() GetExternalLoggingConfigOutput {
+	return i.ToGetExternalLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i GetExternalLoggingConfigArgs) ToGetExternalLoggingConfigOutputWithContext(ctx context.Context) GetExternalLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLoggingConfigOutput)
+}
+
+func (i GetExternalLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetExternalLoggingConfig] {
+	return pulumix.Output[GetExternalLoggingConfig]{
+		OutputState: i.ToGetExternalLoggingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetExternalLoggingConfigArrayInput is an input type that accepts GetExternalLoggingConfigArray and GetExternalLoggingConfigArrayOutput values.
+// You can construct a concrete instance of `GetExternalLoggingConfigArrayInput` via:
+//
+//	GetExternalLoggingConfigArray{ GetExternalLoggingConfigArgs{...} }
+type GetExternalLoggingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetExternalLoggingConfigArrayOutput() GetExternalLoggingConfigArrayOutput
+	ToGetExternalLoggingConfigArrayOutputWithContext(context.Context) GetExternalLoggingConfigArrayOutput
+}
+
+type GetExternalLoggingConfigArray []GetExternalLoggingConfigInput
+
+func (GetExternalLoggingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExternalLoggingConfig)(nil)).Elem()
+}
+
+func (i GetExternalLoggingConfigArray) ToGetExternalLoggingConfigArrayOutput() GetExternalLoggingConfigArrayOutput {
+	return i.ToGetExternalLoggingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetExternalLoggingConfigArray) ToGetExternalLoggingConfigArrayOutputWithContext(ctx context.Context) GetExternalLoggingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLoggingConfigArrayOutput)
+}
+
+func (i GetExternalLoggingConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetExternalLoggingConfig] {
+	return pulumix.Output[[]GetExternalLoggingConfig]{
+		OutputState: i.ToGetExternalLoggingConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetExternalLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetExternalLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalLoggingConfig)(nil)).Elem()
+}
+
+func (o GetExternalLoggingConfigOutput) ToGetExternalLoggingConfigOutput() GetExternalLoggingConfigOutput {
+	return o
+}
+
+func (o GetExternalLoggingConfigOutput) ToGetExternalLoggingConfigOutputWithContext(ctx context.Context) GetExternalLoggingConfigOutput {
+	return o
+}
+
+func (o GetExternalLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetExternalLoggingConfig] {
+	return pulumix.Output[GetExternalLoggingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// API Key
+func (o GetExternalLoggingConfigOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Channel
+func (o GetExternalLoggingConfigOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Enable SSL
+func (o GetExternalLoggingConfigOutput) EnableSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *bool { return v.EnableSsl }).(pulumi.BoolPtrOutput)
+}
+
+// external_id
+func (o GetExternalLoggingConfigOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
+// Server name
+func (o GetExternalLoggingConfigOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Server name
+func (o GetExternalLoggingConfigOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Log Group Name
+func (o GetExternalLoggingConfigOutput) LogGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.LogGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Port
+func (o GetExternalLoggingConfigOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Primary Key
+func (o GetExternalLoggingConfigOutput) PrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
+}
+
+// Region
+func (o GetExternalLoggingConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Role Arn
+func (o GetExternalLoggingConfigOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Sub Domain
+func (o GetExternalLoggingConfigOutput) SubDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.SubDomain }).(pulumi.StringPtrOutput)
+}
+
+// Token
+func (o GetExternalLoggingConfigOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// Workspace ID
+func (o GetExternalLoggingConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type GetExternalLoggingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExternalLoggingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExternalLoggingConfig)(nil)).Elem()
+}
+
+func (o GetExternalLoggingConfigArrayOutput) ToGetExternalLoggingConfigArrayOutput() GetExternalLoggingConfigArrayOutput {
+	return o
+}
+
+func (o GetExternalLoggingConfigArrayOutput) ToGetExternalLoggingConfigArrayOutputWithContext(ctx context.Context) GetExternalLoggingConfigArrayOutput {
+	return o
+}
+
+func (o GetExternalLoggingConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetExternalLoggingConfig] {
+	return pulumix.Output[[]GetExternalLoggingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetExternalLoggingConfigArrayOutput) Index(i pulumi.IntInput) GetExternalLoggingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExternalLoggingConfig {
+		return vs[0].([]GetExternalLoggingConfig)[vs[1].(int)]
+	}).(GetExternalLoggingConfigOutput)
+}
+
 type GetGroupConnectorsConnector struct {
 	// The unique identifier of the user who has created the connector in your account
 	ConnectedBy string `pulumi:"connectedBy"`
@@ -16230,12 +18795,17 @@ func (o GetGroupConnectorsConnectorArrayOutput) Index(i pulumi.IntInput) GetGrou
 }
 
 type GetGroupConnectorsConnectorStatus struct {
-	IsHistoricalSync bool                                       `pulumi:"isHistoricalSync"`
-	SetupState       string                                     `pulumi:"setupState"`
-	SyncState        string                                     `pulumi:"syncState"`
-	Tasks            []GetGroupConnectorsConnectorStatusTask    `pulumi:"tasks"`
-	UpdateState      string                                     `pulumi:"updateState"`
-	Warnings         []GetGroupConnectorsConnectorStatusWarning `pulumi:"warnings"`
+	// The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
+	IsHistoricalSync bool `pulumi:"isHistoricalSync"`
+	// The current setup state of the connector. The available values are: \n\n - incomplete - the setup config is incomplete, the setup tests never succeeded \n\n - connected - the connector is properly set up \n\n - broken - the connector setup config is broken.
+	SetupState string `pulumi:"setupState"`
+	// The current sync state of the connector. The available values are: \n\n - scheduled - the sync is waiting to be run \n\n - syncing - the sync is currently running \n\n - paused - the sync is currently paused \n\n - rescheduled - the sync is waiting until more API calls are available in the source service.
+	SyncState string `pulumi:"syncState"`
+	// The collection of tasks for the connector
+	Tasks []GetGroupConnectorsConnectorStatusTask `pulumi:"tasks"`
+	// The current data update state of the connector. The available values are: \n\n - onSchedule - the sync is running smoothly, no delays \n\n - delayed - the data is delayed for a longer time than expected for the update.
+	UpdateState string                                     `pulumi:"updateState"`
+	Warnings    []GetGroupConnectorsConnectorStatusWarning `pulumi:"warnings"`
 }
 
 // GetGroupConnectorsConnectorStatusInput is an input type that accepts GetGroupConnectorsConnectorStatusArgs and GetGroupConnectorsConnectorStatusOutput values.
@@ -16250,12 +18820,17 @@ type GetGroupConnectorsConnectorStatusInput interface {
 }
 
 type GetGroupConnectorsConnectorStatusArgs struct {
-	IsHistoricalSync pulumi.BoolInput                                   `pulumi:"isHistoricalSync"`
-	SetupState       pulumi.StringInput                                 `pulumi:"setupState"`
-	SyncState        pulumi.StringInput                                 `pulumi:"syncState"`
-	Tasks            GetGroupConnectorsConnectorStatusTaskArrayInput    `pulumi:"tasks"`
-	UpdateState      pulumi.StringInput                                 `pulumi:"updateState"`
-	Warnings         GetGroupConnectorsConnectorStatusWarningArrayInput `pulumi:"warnings"`
+	// The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
+	IsHistoricalSync pulumi.BoolInput `pulumi:"isHistoricalSync"`
+	// The current setup state of the connector. The available values are: \n\n - incomplete - the setup config is incomplete, the setup tests never succeeded \n\n - connected - the connector is properly set up \n\n - broken - the connector setup config is broken.
+	SetupState pulumi.StringInput `pulumi:"setupState"`
+	// The current sync state of the connector. The available values are: \n\n - scheduled - the sync is waiting to be run \n\n - syncing - the sync is currently running \n\n - paused - the sync is currently paused \n\n - rescheduled - the sync is waiting until more API calls are available in the source service.
+	SyncState pulumi.StringInput `pulumi:"syncState"`
+	// The collection of tasks for the connector
+	Tasks GetGroupConnectorsConnectorStatusTaskArrayInput `pulumi:"tasks"`
+	// The current data update state of the connector. The available values are: \n\n - onSchedule - the sync is running smoothly, no delays \n\n - delayed - the data is delayed for a longer time than expected for the update.
+	UpdateState pulumi.StringInput                                 `pulumi:"updateState"`
+	Warnings    GetGroupConnectorsConnectorStatusWarningArrayInput `pulumi:"warnings"`
 }
 
 func (GetGroupConnectorsConnectorStatusArgs) ElementType() reflect.Type {
@@ -16327,22 +18902,27 @@ func (o GetGroupConnectorsConnectorStatusOutput) ToOutput(ctx context.Context) p
 	}
 }
 
+// The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
 func (o GetGroupConnectorsConnectorStatusOutput) IsHistoricalSync() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupConnectorsConnectorStatus) bool { return v.IsHistoricalSync }).(pulumi.BoolOutput)
 }
 
+// The current setup state of the connector. The available values are: \n\n - incomplete - the setup config is incomplete, the setup tests never succeeded \n\n - connected - the connector is properly set up \n\n - broken - the connector setup config is broken.
 func (o GetGroupConnectorsConnectorStatusOutput) SetupState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupConnectorsConnectorStatus) string { return v.SetupState }).(pulumi.StringOutput)
 }
 
+// The current sync state of the connector. The available values are: \n\n - scheduled - the sync is waiting to be run \n\n - syncing - the sync is currently running \n\n - paused - the sync is currently paused \n\n - rescheduled - the sync is waiting until more API calls are available in the source service.
 func (o GetGroupConnectorsConnectorStatusOutput) SyncState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupConnectorsConnectorStatus) string { return v.SyncState }).(pulumi.StringOutput)
 }
 
+// The collection of tasks for the connector
 func (o GetGroupConnectorsConnectorStatusOutput) Tasks() GetGroupConnectorsConnectorStatusTaskArrayOutput {
 	return o.ApplyT(func(v GetGroupConnectorsConnectorStatus) []GetGroupConnectorsConnectorStatusTask { return v.Tasks }).(GetGroupConnectorsConnectorStatusTaskArrayOutput)
 }
 
+// The current data update state of the connector. The available values are: \n\n - onSchedule - the sync is running smoothly, no delays \n\n - delayed - the data is delayed for a longer time than expected for the update.
 func (o GetGroupConnectorsConnectorStatusOutput) UpdateState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupConnectorsConnectorStatus) string { return v.UpdateState }).(pulumi.StringOutput)
 }
@@ -16380,7 +18960,9 @@ func (o GetGroupConnectorsConnectorStatusArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetGroupConnectorsConnectorStatusTask struct {
-	Code    string `pulumi:"code"`
+	// Response status code
+	Code string `pulumi:"code"`
+	// Response status text
 	Message string `pulumi:"message"`
 }
 
@@ -16396,7 +18978,9 @@ type GetGroupConnectorsConnectorStatusTaskInput interface {
 }
 
 type GetGroupConnectorsConnectorStatusTaskArgs struct {
-	Code    pulumi.StringInput `pulumi:"code"`
+	// Response status code
+	Code pulumi.StringInput `pulumi:"code"`
+	// Response status text
 	Message pulumi.StringInput `pulumi:"message"`
 }
 
@@ -16469,10 +19053,12 @@ func (o GetGroupConnectorsConnectorStatusTaskOutput) ToOutput(ctx context.Contex
 	}
 }
 
+// Response status code
 func (o GetGroupConnectorsConnectorStatusTaskOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupConnectorsConnectorStatusTask) string { return v.Code }).(pulumi.StringOutput)
 }
 
+// Response status text
 func (o GetGroupConnectorsConnectorStatusTaskOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupConnectorsConnectorStatusTask) string { return v.Message }).(pulumi.StringOutput)
 }
@@ -16504,7 +19090,9 @@ func (o GetGroupConnectorsConnectorStatusTaskArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetGroupConnectorsConnectorStatusWarning struct {
-	Code    string `pulumi:"code"`
+	// Response status code
+	Code string `pulumi:"code"`
+	// Response status text
 	Message string `pulumi:"message"`
 }
 
@@ -16520,7 +19108,9 @@ type GetGroupConnectorsConnectorStatusWarningInput interface {
 }
 
 type GetGroupConnectorsConnectorStatusWarningArgs struct {
-	Code    pulumi.StringInput `pulumi:"code"`
+	// Response status code
+	Code pulumi.StringInput `pulumi:"code"`
+	// Response status text
 	Message pulumi.StringInput `pulumi:"message"`
 }
 
@@ -16593,10 +19183,12 @@ func (o GetGroupConnectorsConnectorStatusWarningOutput) ToOutput(ctx context.Con
 	}
 }
 
+// Response status code
 func (o GetGroupConnectorsConnectorStatusWarningOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupConnectorsConnectorStatusWarning) string { return v.Code }).(pulumi.StringOutput)
 }
 
+// Response status text
 func (o GetGroupConnectorsConnectorStatusWarningOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupConnectorsConnectorStatusWarning) string { return v.Message }).(pulumi.StringOutput)
 }
@@ -16975,6 +19567,1181 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroup {
 		return vs[0].([]GetGroupsGroup)[vs[1].(int)]
 	}).(GetGroupsGroupOutput)
+}
+
+type GetMetadataColumnsMetadataColumn struct {
+	// The unique column identifier
+	Id string `pulumi:"id"`
+	// The boolean specifying whether the column is a foreign key
+	IsForeignKey bool `pulumi:"isForeignKey"`
+	// The boolean specifying whether the column is a primary key
+	IsPrimaryKey bool `pulumi:"isPrimaryKey"`
+	// The column name in the destination
+	NameInDestination string `pulumi:"nameInDestination"`
+	// The column name in the source
+	NameInSource string `pulumi:"nameInSource"`
+	// The unique identifier of the table associated with the column
+	ParentId string `pulumi:"parentId"`
+	// The column type in the destination
+	TypeInDestination string `pulumi:"typeInDestination"`
+	// The column type in the source
+	TypeInSource string `pulumi:"typeInSource"`
+}
+
+// GetMetadataColumnsMetadataColumnInput is an input type that accepts GetMetadataColumnsMetadataColumnArgs and GetMetadataColumnsMetadataColumnOutput values.
+// You can construct a concrete instance of `GetMetadataColumnsMetadataColumnInput` via:
+//
+//	GetMetadataColumnsMetadataColumnArgs{...}
+type GetMetadataColumnsMetadataColumnInput interface {
+	pulumi.Input
+
+	ToGetMetadataColumnsMetadataColumnOutput() GetMetadataColumnsMetadataColumnOutput
+	ToGetMetadataColumnsMetadataColumnOutputWithContext(context.Context) GetMetadataColumnsMetadataColumnOutput
+}
+
+type GetMetadataColumnsMetadataColumnArgs struct {
+	// The unique column identifier
+	Id pulumi.StringInput `pulumi:"id"`
+	// The boolean specifying whether the column is a foreign key
+	IsForeignKey pulumi.BoolInput `pulumi:"isForeignKey"`
+	// The boolean specifying whether the column is a primary key
+	IsPrimaryKey pulumi.BoolInput `pulumi:"isPrimaryKey"`
+	// The column name in the destination
+	NameInDestination pulumi.StringInput `pulumi:"nameInDestination"`
+	// The column name in the source
+	NameInSource pulumi.StringInput `pulumi:"nameInSource"`
+	// The unique identifier of the table associated with the column
+	ParentId pulumi.StringInput `pulumi:"parentId"`
+	// The column type in the destination
+	TypeInDestination pulumi.StringInput `pulumi:"typeInDestination"`
+	// The column type in the source
+	TypeInSource pulumi.StringInput `pulumi:"typeInSource"`
+}
+
+func (GetMetadataColumnsMetadataColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetadataColumnsMetadataColumn)(nil)).Elem()
+}
+
+func (i GetMetadataColumnsMetadataColumnArgs) ToGetMetadataColumnsMetadataColumnOutput() GetMetadataColumnsMetadataColumnOutput {
+	return i.ToGetMetadataColumnsMetadataColumnOutputWithContext(context.Background())
+}
+
+func (i GetMetadataColumnsMetadataColumnArgs) ToGetMetadataColumnsMetadataColumnOutputWithContext(ctx context.Context) GetMetadataColumnsMetadataColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataColumnsMetadataColumnOutput)
+}
+
+func (i GetMetadataColumnsMetadataColumnArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetadataColumnsMetadataColumn] {
+	return pulumix.Output[GetMetadataColumnsMetadataColumn]{
+		OutputState: i.ToGetMetadataColumnsMetadataColumnOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetMetadataColumnsMetadataColumnArrayInput is an input type that accepts GetMetadataColumnsMetadataColumnArray and GetMetadataColumnsMetadataColumnArrayOutput values.
+// You can construct a concrete instance of `GetMetadataColumnsMetadataColumnArrayInput` via:
+//
+//	GetMetadataColumnsMetadataColumnArray{ GetMetadataColumnsMetadataColumnArgs{...} }
+type GetMetadataColumnsMetadataColumnArrayInput interface {
+	pulumi.Input
+
+	ToGetMetadataColumnsMetadataColumnArrayOutput() GetMetadataColumnsMetadataColumnArrayOutput
+	ToGetMetadataColumnsMetadataColumnArrayOutputWithContext(context.Context) GetMetadataColumnsMetadataColumnArrayOutput
+}
+
+type GetMetadataColumnsMetadataColumnArray []GetMetadataColumnsMetadataColumnInput
+
+func (GetMetadataColumnsMetadataColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetadataColumnsMetadataColumn)(nil)).Elem()
+}
+
+func (i GetMetadataColumnsMetadataColumnArray) ToGetMetadataColumnsMetadataColumnArrayOutput() GetMetadataColumnsMetadataColumnArrayOutput {
+	return i.ToGetMetadataColumnsMetadataColumnArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetadataColumnsMetadataColumnArray) ToGetMetadataColumnsMetadataColumnArrayOutputWithContext(ctx context.Context) GetMetadataColumnsMetadataColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataColumnsMetadataColumnArrayOutput)
+}
+
+func (i GetMetadataColumnsMetadataColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataColumnsMetadataColumn] {
+	return pulumix.Output[[]GetMetadataColumnsMetadataColumn]{
+		OutputState: i.ToGetMetadataColumnsMetadataColumnArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetMetadataColumnsMetadataColumnOutput struct{ *pulumi.OutputState }
+
+func (GetMetadataColumnsMetadataColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetadataColumnsMetadataColumn)(nil)).Elem()
+}
+
+func (o GetMetadataColumnsMetadataColumnOutput) ToGetMetadataColumnsMetadataColumnOutput() GetMetadataColumnsMetadataColumnOutput {
+	return o
+}
+
+func (o GetMetadataColumnsMetadataColumnOutput) ToGetMetadataColumnsMetadataColumnOutputWithContext(ctx context.Context) GetMetadataColumnsMetadataColumnOutput {
+	return o
+}
+
+func (o GetMetadataColumnsMetadataColumnOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetadataColumnsMetadataColumn] {
+	return pulumix.Output[GetMetadataColumnsMetadataColumn]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The unique column identifier
+func (o GetMetadataColumnsMetadataColumnOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataColumnsMetadataColumn) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The boolean specifying whether the column is a foreign key
+func (o GetMetadataColumnsMetadataColumnOutput) IsForeignKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMetadataColumnsMetadataColumn) bool { return v.IsForeignKey }).(pulumi.BoolOutput)
+}
+
+// The boolean specifying whether the column is a primary key
+func (o GetMetadataColumnsMetadataColumnOutput) IsPrimaryKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMetadataColumnsMetadataColumn) bool { return v.IsPrimaryKey }).(pulumi.BoolOutput)
+}
+
+// The column name in the destination
+func (o GetMetadataColumnsMetadataColumnOutput) NameInDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataColumnsMetadataColumn) string { return v.NameInDestination }).(pulumi.StringOutput)
+}
+
+// The column name in the source
+func (o GetMetadataColumnsMetadataColumnOutput) NameInSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataColumnsMetadataColumn) string { return v.NameInSource }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the table associated with the column
+func (o GetMetadataColumnsMetadataColumnOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataColumnsMetadataColumn) string { return v.ParentId }).(pulumi.StringOutput)
+}
+
+// The column type in the destination
+func (o GetMetadataColumnsMetadataColumnOutput) TypeInDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataColumnsMetadataColumn) string { return v.TypeInDestination }).(pulumi.StringOutput)
+}
+
+// The column type in the source
+func (o GetMetadataColumnsMetadataColumnOutput) TypeInSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataColumnsMetadataColumn) string { return v.TypeInSource }).(pulumi.StringOutput)
+}
+
+type GetMetadataColumnsMetadataColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetadataColumnsMetadataColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetadataColumnsMetadataColumn)(nil)).Elem()
+}
+
+func (o GetMetadataColumnsMetadataColumnArrayOutput) ToGetMetadataColumnsMetadataColumnArrayOutput() GetMetadataColumnsMetadataColumnArrayOutput {
+	return o
+}
+
+func (o GetMetadataColumnsMetadataColumnArrayOutput) ToGetMetadataColumnsMetadataColumnArrayOutputWithContext(ctx context.Context) GetMetadataColumnsMetadataColumnArrayOutput {
+	return o
+}
+
+func (o GetMetadataColumnsMetadataColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataColumnsMetadataColumn] {
+	return pulumix.Output[[]GetMetadataColumnsMetadataColumn]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetMetadataColumnsMetadataColumnArrayOutput) Index(i pulumi.IntInput) GetMetadataColumnsMetadataColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetadataColumnsMetadataColumn {
+		return vs[0].([]GetMetadataColumnsMetadataColumn)[vs[1].(int)]
+	}).(GetMetadataColumnsMetadataColumnOutput)
+}
+
+type GetMetadataSchemasMetadataSchema struct {
+	// The unique schema identifier
+	Id string `pulumi:"id"`
+	// The schema name in the destination
+	NameInDestination string `pulumi:"nameInDestination"`
+	// The schema name in the source
+	NameInSource string `pulumi:"nameInSource"`
+}
+
+// GetMetadataSchemasMetadataSchemaInput is an input type that accepts GetMetadataSchemasMetadataSchemaArgs and GetMetadataSchemasMetadataSchemaOutput values.
+// You can construct a concrete instance of `GetMetadataSchemasMetadataSchemaInput` via:
+//
+//	GetMetadataSchemasMetadataSchemaArgs{...}
+type GetMetadataSchemasMetadataSchemaInput interface {
+	pulumi.Input
+
+	ToGetMetadataSchemasMetadataSchemaOutput() GetMetadataSchemasMetadataSchemaOutput
+	ToGetMetadataSchemasMetadataSchemaOutputWithContext(context.Context) GetMetadataSchemasMetadataSchemaOutput
+}
+
+type GetMetadataSchemasMetadataSchemaArgs struct {
+	// The unique schema identifier
+	Id pulumi.StringInput `pulumi:"id"`
+	// The schema name in the destination
+	NameInDestination pulumi.StringInput `pulumi:"nameInDestination"`
+	// The schema name in the source
+	NameInSource pulumi.StringInput `pulumi:"nameInSource"`
+}
+
+func (GetMetadataSchemasMetadataSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetadataSchemasMetadataSchema)(nil)).Elem()
+}
+
+func (i GetMetadataSchemasMetadataSchemaArgs) ToGetMetadataSchemasMetadataSchemaOutput() GetMetadataSchemasMetadataSchemaOutput {
+	return i.ToGetMetadataSchemasMetadataSchemaOutputWithContext(context.Background())
+}
+
+func (i GetMetadataSchemasMetadataSchemaArgs) ToGetMetadataSchemasMetadataSchemaOutputWithContext(ctx context.Context) GetMetadataSchemasMetadataSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataSchemasMetadataSchemaOutput)
+}
+
+func (i GetMetadataSchemasMetadataSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetadataSchemasMetadataSchema] {
+	return pulumix.Output[GetMetadataSchemasMetadataSchema]{
+		OutputState: i.ToGetMetadataSchemasMetadataSchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetMetadataSchemasMetadataSchemaArrayInput is an input type that accepts GetMetadataSchemasMetadataSchemaArray and GetMetadataSchemasMetadataSchemaArrayOutput values.
+// You can construct a concrete instance of `GetMetadataSchemasMetadataSchemaArrayInput` via:
+//
+//	GetMetadataSchemasMetadataSchemaArray{ GetMetadataSchemasMetadataSchemaArgs{...} }
+type GetMetadataSchemasMetadataSchemaArrayInput interface {
+	pulumi.Input
+
+	ToGetMetadataSchemasMetadataSchemaArrayOutput() GetMetadataSchemasMetadataSchemaArrayOutput
+	ToGetMetadataSchemasMetadataSchemaArrayOutputWithContext(context.Context) GetMetadataSchemasMetadataSchemaArrayOutput
+}
+
+type GetMetadataSchemasMetadataSchemaArray []GetMetadataSchemasMetadataSchemaInput
+
+func (GetMetadataSchemasMetadataSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetadataSchemasMetadataSchema)(nil)).Elem()
+}
+
+func (i GetMetadataSchemasMetadataSchemaArray) ToGetMetadataSchemasMetadataSchemaArrayOutput() GetMetadataSchemasMetadataSchemaArrayOutput {
+	return i.ToGetMetadataSchemasMetadataSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetadataSchemasMetadataSchemaArray) ToGetMetadataSchemasMetadataSchemaArrayOutputWithContext(ctx context.Context) GetMetadataSchemasMetadataSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataSchemasMetadataSchemaArrayOutput)
+}
+
+func (i GetMetadataSchemasMetadataSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataSchemasMetadataSchema] {
+	return pulumix.Output[[]GetMetadataSchemasMetadataSchema]{
+		OutputState: i.ToGetMetadataSchemasMetadataSchemaArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetMetadataSchemasMetadataSchemaOutput struct{ *pulumi.OutputState }
+
+func (GetMetadataSchemasMetadataSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetadataSchemasMetadataSchema)(nil)).Elem()
+}
+
+func (o GetMetadataSchemasMetadataSchemaOutput) ToGetMetadataSchemasMetadataSchemaOutput() GetMetadataSchemasMetadataSchemaOutput {
+	return o
+}
+
+func (o GetMetadataSchemasMetadataSchemaOutput) ToGetMetadataSchemasMetadataSchemaOutputWithContext(ctx context.Context) GetMetadataSchemasMetadataSchemaOutput {
+	return o
+}
+
+func (o GetMetadataSchemasMetadataSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetadataSchemasMetadataSchema] {
+	return pulumix.Output[GetMetadataSchemasMetadataSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The unique schema identifier
+func (o GetMetadataSchemasMetadataSchemaOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataSchemasMetadataSchema) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The schema name in the destination
+func (o GetMetadataSchemasMetadataSchemaOutput) NameInDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataSchemasMetadataSchema) string { return v.NameInDestination }).(pulumi.StringOutput)
+}
+
+// The schema name in the source
+func (o GetMetadataSchemasMetadataSchemaOutput) NameInSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataSchemasMetadataSchema) string { return v.NameInSource }).(pulumi.StringOutput)
+}
+
+type GetMetadataSchemasMetadataSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetadataSchemasMetadataSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetadataSchemasMetadataSchema)(nil)).Elem()
+}
+
+func (o GetMetadataSchemasMetadataSchemaArrayOutput) ToGetMetadataSchemasMetadataSchemaArrayOutput() GetMetadataSchemasMetadataSchemaArrayOutput {
+	return o
+}
+
+func (o GetMetadataSchemasMetadataSchemaArrayOutput) ToGetMetadataSchemasMetadataSchemaArrayOutputWithContext(ctx context.Context) GetMetadataSchemasMetadataSchemaArrayOutput {
+	return o
+}
+
+func (o GetMetadataSchemasMetadataSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataSchemasMetadataSchema] {
+	return pulumix.Output[[]GetMetadataSchemasMetadataSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetMetadataSchemasMetadataSchemaArrayOutput) Index(i pulumi.IntInput) GetMetadataSchemasMetadataSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetadataSchemasMetadataSchema {
+		return vs[0].([]GetMetadataSchemasMetadataSchema)[vs[1].(int)]
+	}).(GetMetadataSchemasMetadataSchemaOutput)
+}
+
+type GetMetadataTablesMetadataTable struct {
+	// The unique table identifier
+	Id string `pulumi:"id"`
+	// The table name in the destination
+	NameInDestination string `pulumi:"nameInDestination"`
+	// The table name in the source
+	NameInSource string `pulumi:"nameInSource"`
+	// The unique identifier of the schema associated with the table
+	ParentId string `pulumi:"parentId"`
+}
+
+// GetMetadataTablesMetadataTableInput is an input type that accepts GetMetadataTablesMetadataTableArgs and GetMetadataTablesMetadataTableOutput values.
+// You can construct a concrete instance of `GetMetadataTablesMetadataTableInput` via:
+//
+//	GetMetadataTablesMetadataTableArgs{...}
+type GetMetadataTablesMetadataTableInput interface {
+	pulumi.Input
+
+	ToGetMetadataTablesMetadataTableOutput() GetMetadataTablesMetadataTableOutput
+	ToGetMetadataTablesMetadataTableOutputWithContext(context.Context) GetMetadataTablesMetadataTableOutput
+}
+
+type GetMetadataTablesMetadataTableArgs struct {
+	// The unique table identifier
+	Id pulumi.StringInput `pulumi:"id"`
+	// The table name in the destination
+	NameInDestination pulumi.StringInput `pulumi:"nameInDestination"`
+	// The table name in the source
+	NameInSource pulumi.StringInput `pulumi:"nameInSource"`
+	// The unique identifier of the schema associated with the table
+	ParentId pulumi.StringInput `pulumi:"parentId"`
+}
+
+func (GetMetadataTablesMetadataTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetadataTablesMetadataTable)(nil)).Elem()
+}
+
+func (i GetMetadataTablesMetadataTableArgs) ToGetMetadataTablesMetadataTableOutput() GetMetadataTablesMetadataTableOutput {
+	return i.ToGetMetadataTablesMetadataTableOutputWithContext(context.Background())
+}
+
+func (i GetMetadataTablesMetadataTableArgs) ToGetMetadataTablesMetadataTableOutputWithContext(ctx context.Context) GetMetadataTablesMetadataTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataTablesMetadataTableOutput)
+}
+
+func (i GetMetadataTablesMetadataTableArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetadataTablesMetadataTable] {
+	return pulumix.Output[GetMetadataTablesMetadataTable]{
+		OutputState: i.ToGetMetadataTablesMetadataTableOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetMetadataTablesMetadataTableArrayInput is an input type that accepts GetMetadataTablesMetadataTableArray and GetMetadataTablesMetadataTableArrayOutput values.
+// You can construct a concrete instance of `GetMetadataTablesMetadataTableArrayInput` via:
+//
+//	GetMetadataTablesMetadataTableArray{ GetMetadataTablesMetadataTableArgs{...} }
+type GetMetadataTablesMetadataTableArrayInput interface {
+	pulumi.Input
+
+	ToGetMetadataTablesMetadataTableArrayOutput() GetMetadataTablesMetadataTableArrayOutput
+	ToGetMetadataTablesMetadataTableArrayOutputWithContext(context.Context) GetMetadataTablesMetadataTableArrayOutput
+}
+
+type GetMetadataTablesMetadataTableArray []GetMetadataTablesMetadataTableInput
+
+func (GetMetadataTablesMetadataTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetadataTablesMetadataTable)(nil)).Elem()
+}
+
+func (i GetMetadataTablesMetadataTableArray) ToGetMetadataTablesMetadataTableArrayOutput() GetMetadataTablesMetadataTableArrayOutput {
+	return i.ToGetMetadataTablesMetadataTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetadataTablesMetadataTableArray) ToGetMetadataTablesMetadataTableArrayOutputWithContext(ctx context.Context) GetMetadataTablesMetadataTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataTablesMetadataTableArrayOutput)
+}
+
+func (i GetMetadataTablesMetadataTableArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataTablesMetadataTable] {
+	return pulumix.Output[[]GetMetadataTablesMetadataTable]{
+		OutputState: i.ToGetMetadataTablesMetadataTableArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetMetadataTablesMetadataTableOutput struct{ *pulumi.OutputState }
+
+func (GetMetadataTablesMetadataTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetadataTablesMetadataTable)(nil)).Elem()
+}
+
+func (o GetMetadataTablesMetadataTableOutput) ToGetMetadataTablesMetadataTableOutput() GetMetadataTablesMetadataTableOutput {
+	return o
+}
+
+func (o GetMetadataTablesMetadataTableOutput) ToGetMetadataTablesMetadataTableOutputWithContext(ctx context.Context) GetMetadataTablesMetadataTableOutput {
+	return o
+}
+
+func (o GetMetadataTablesMetadataTableOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetadataTablesMetadataTable] {
+	return pulumix.Output[GetMetadataTablesMetadataTable]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The unique table identifier
+func (o GetMetadataTablesMetadataTableOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataTablesMetadataTable) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The table name in the destination
+func (o GetMetadataTablesMetadataTableOutput) NameInDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataTablesMetadataTable) string { return v.NameInDestination }).(pulumi.StringOutput)
+}
+
+// The table name in the source
+func (o GetMetadataTablesMetadataTableOutput) NameInSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataTablesMetadataTable) string { return v.NameInSource }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the schema associated with the table
+func (o GetMetadataTablesMetadataTableOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataTablesMetadataTable) string { return v.ParentId }).(pulumi.StringOutput)
+}
+
+type GetMetadataTablesMetadataTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetadataTablesMetadataTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetadataTablesMetadataTable)(nil)).Elem()
+}
+
+func (o GetMetadataTablesMetadataTableArrayOutput) ToGetMetadataTablesMetadataTableArrayOutput() GetMetadataTablesMetadataTableArrayOutput {
+	return o
+}
+
+func (o GetMetadataTablesMetadataTableArrayOutput) ToGetMetadataTablesMetadataTableArrayOutputWithContext(ctx context.Context) GetMetadataTablesMetadataTableArrayOutput {
+	return o
+}
+
+func (o GetMetadataTablesMetadataTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataTablesMetadataTable] {
+	return pulumix.Output[[]GetMetadataTablesMetadataTable]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetMetadataTablesMetadataTableArrayOutput) Index(i pulumi.IntInput) GetMetadataTablesMetadataTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetadataTablesMetadataTable {
+		return vs[0].([]GetMetadataTablesMetadataTable)[vs[1].(int)]
+	}).(GetMetadataTablesMetadataTableOutput)
+}
+
+type GetRolesRole struct {
+	// The role description
+	Description string `pulumi:"description"`
+	// TypeBool
+	IsCustom bool `pulumi:"isCustom"`
+	// The role name
+	Name string `pulumi:"name"`
+	// Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
+	Scopes []string `pulumi:"scopes"`
+}
+
+// GetRolesRoleInput is an input type that accepts GetRolesRoleArgs and GetRolesRoleOutput values.
+// You can construct a concrete instance of `GetRolesRoleInput` via:
+//
+//	GetRolesRoleArgs{...}
+type GetRolesRoleInput interface {
+	pulumi.Input
+
+	ToGetRolesRoleOutput() GetRolesRoleOutput
+	ToGetRolesRoleOutputWithContext(context.Context) GetRolesRoleOutput
+}
+
+type GetRolesRoleArgs struct {
+	// The role description
+	Description pulumi.StringInput `pulumi:"description"`
+	// TypeBool
+	IsCustom pulumi.BoolInput `pulumi:"isCustom"`
+	// The role name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (GetRolesRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolesRole)(nil)).Elem()
+}
+
+func (i GetRolesRoleArgs) ToGetRolesRoleOutput() GetRolesRoleOutput {
+	return i.ToGetRolesRoleOutputWithContext(context.Background())
+}
+
+func (i GetRolesRoleArgs) ToGetRolesRoleOutputWithContext(ctx context.Context) GetRolesRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolesRoleOutput)
+}
+
+func (i GetRolesRoleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRolesRole] {
+	return pulumix.Output[GetRolesRole]{
+		OutputState: i.ToGetRolesRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetRolesRoleArrayInput is an input type that accepts GetRolesRoleArray and GetRolesRoleArrayOutput values.
+// You can construct a concrete instance of `GetRolesRoleArrayInput` via:
+//
+//	GetRolesRoleArray{ GetRolesRoleArgs{...} }
+type GetRolesRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetRolesRoleArrayOutput() GetRolesRoleArrayOutput
+	ToGetRolesRoleArrayOutputWithContext(context.Context) GetRolesRoleArrayOutput
+}
+
+type GetRolesRoleArray []GetRolesRoleInput
+
+func (GetRolesRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolesRole)(nil)).Elem()
+}
+
+func (i GetRolesRoleArray) ToGetRolesRoleArrayOutput() GetRolesRoleArrayOutput {
+	return i.ToGetRolesRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRolesRoleArray) ToGetRolesRoleArrayOutputWithContext(ctx context.Context) GetRolesRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolesRoleArrayOutput)
+}
+
+func (i GetRolesRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRolesRole] {
+	return pulumix.Output[[]GetRolesRole]{
+		OutputState: i.ToGetRolesRoleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetRolesRoleOutput struct{ *pulumi.OutputState }
+
+func (GetRolesRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolesRole)(nil)).Elem()
+}
+
+func (o GetRolesRoleOutput) ToGetRolesRoleOutput() GetRolesRoleOutput {
+	return o
+}
+
+func (o GetRolesRoleOutput) ToGetRolesRoleOutputWithContext(ctx context.Context) GetRolesRoleOutput {
+	return o
+}
+
+func (o GetRolesRoleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRolesRole] {
+	return pulumix.Output[GetRolesRole]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The role description
+func (o GetRolesRoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesRole) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// TypeBool
+func (o GetRolesRoleOutput) IsCustom() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRolesRole) bool { return v.IsCustom }).(pulumi.BoolOutput)
+}
+
+// The role name
+func (o GetRolesRoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesRole) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
+func (o GetRolesRoleOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRolesRole) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type GetRolesRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRolesRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolesRole)(nil)).Elem()
+}
+
+func (o GetRolesRoleArrayOutput) ToGetRolesRoleArrayOutput() GetRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetRolesRoleArrayOutput) ToGetRolesRoleArrayOutputWithContext(ctx context.Context) GetRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetRolesRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRolesRole] {
+	return pulumix.Output[[]GetRolesRole]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetRolesRoleArrayOutput) Index(i pulumi.IntInput) GetRolesRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRolesRole {
+		return vs[0].([]GetRolesRole)[vs[1].(int)]
+	}).(GetRolesRoleOutput)
+}
+
+type GetTeamConnectorMembershipsConnector struct {
+	// The connector unique identifier
+	ConnectorId string `pulumi:"connectorId"`
+	// The date and time the membership was created
+	CreatedAt string `pulumi:"createdAt"`
+	// The team's role that links the team and the connector
+	Role string `pulumi:"role"`
+}
+
+// GetTeamConnectorMembershipsConnectorInput is an input type that accepts GetTeamConnectorMembershipsConnectorArgs and GetTeamConnectorMembershipsConnectorOutput values.
+// You can construct a concrete instance of `GetTeamConnectorMembershipsConnectorInput` via:
+//
+//	GetTeamConnectorMembershipsConnectorArgs{...}
+type GetTeamConnectorMembershipsConnectorInput interface {
+	pulumi.Input
+
+	ToGetTeamConnectorMembershipsConnectorOutput() GetTeamConnectorMembershipsConnectorOutput
+	ToGetTeamConnectorMembershipsConnectorOutputWithContext(context.Context) GetTeamConnectorMembershipsConnectorOutput
+}
+
+type GetTeamConnectorMembershipsConnectorArgs struct {
+	// The connector unique identifier
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	// The date and time the membership was created
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The team's role that links the team and the connector
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetTeamConnectorMembershipsConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamConnectorMembershipsConnector)(nil)).Elem()
+}
+
+func (i GetTeamConnectorMembershipsConnectorArgs) ToGetTeamConnectorMembershipsConnectorOutput() GetTeamConnectorMembershipsConnectorOutput {
+	return i.ToGetTeamConnectorMembershipsConnectorOutputWithContext(context.Background())
+}
+
+func (i GetTeamConnectorMembershipsConnectorArgs) ToGetTeamConnectorMembershipsConnectorOutputWithContext(ctx context.Context) GetTeamConnectorMembershipsConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamConnectorMembershipsConnectorOutput)
+}
+
+func (i GetTeamConnectorMembershipsConnectorArgs) ToOutput(ctx context.Context) pulumix.Output[GetTeamConnectorMembershipsConnector] {
+	return pulumix.Output[GetTeamConnectorMembershipsConnector]{
+		OutputState: i.ToGetTeamConnectorMembershipsConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetTeamConnectorMembershipsConnectorArrayInput is an input type that accepts GetTeamConnectorMembershipsConnectorArray and GetTeamConnectorMembershipsConnectorArrayOutput values.
+// You can construct a concrete instance of `GetTeamConnectorMembershipsConnectorArrayInput` via:
+//
+//	GetTeamConnectorMembershipsConnectorArray{ GetTeamConnectorMembershipsConnectorArgs{...} }
+type GetTeamConnectorMembershipsConnectorArrayInput interface {
+	pulumi.Input
+
+	ToGetTeamConnectorMembershipsConnectorArrayOutput() GetTeamConnectorMembershipsConnectorArrayOutput
+	ToGetTeamConnectorMembershipsConnectorArrayOutputWithContext(context.Context) GetTeamConnectorMembershipsConnectorArrayOutput
+}
+
+type GetTeamConnectorMembershipsConnectorArray []GetTeamConnectorMembershipsConnectorInput
+
+func (GetTeamConnectorMembershipsConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamConnectorMembershipsConnector)(nil)).Elem()
+}
+
+func (i GetTeamConnectorMembershipsConnectorArray) ToGetTeamConnectorMembershipsConnectorArrayOutput() GetTeamConnectorMembershipsConnectorArrayOutput {
+	return i.ToGetTeamConnectorMembershipsConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetTeamConnectorMembershipsConnectorArray) ToGetTeamConnectorMembershipsConnectorArrayOutputWithContext(ctx context.Context) GetTeamConnectorMembershipsConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamConnectorMembershipsConnectorArrayOutput)
+}
+
+func (i GetTeamConnectorMembershipsConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamConnectorMembershipsConnector] {
+	return pulumix.Output[[]GetTeamConnectorMembershipsConnector]{
+		OutputState: i.ToGetTeamConnectorMembershipsConnectorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetTeamConnectorMembershipsConnectorOutput struct{ *pulumi.OutputState }
+
+func (GetTeamConnectorMembershipsConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamConnectorMembershipsConnector)(nil)).Elem()
+}
+
+func (o GetTeamConnectorMembershipsConnectorOutput) ToGetTeamConnectorMembershipsConnectorOutput() GetTeamConnectorMembershipsConnectorOutput {
+	return o
+}
+
+func (o GetTeamConnectorMembershipsConnectorOutput) ToGetTeamConnectorMembershipsConnectorOutputWithContext(ctx context.Context) GetTeamConnectorMembershipsConnectorOutput {
+	return o
+}
+
+func (o GetTeamConnectorMembershipsConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamConnectorMembershipsConnector] {
+	return pulumix.Output[GetTeamConnectorMembershipsConnector]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The connector unique identifier
+func (o GetTeamConnectorMembershipsConnectorOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamConnectorMembershipsConnector) string { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+// The date and time the membership was created
+func (o GetTeamConnectorMembershipsConnectorOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamConnectorMembershipsConnector) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The team's role that links the team and the connector
+func (o GetTeamConnectorMembershipsConnectorOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamConnectorMembershipsConnector) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetTeamConnectorMembershipsConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTeamConnectorMembershipsConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamConnectorMembershipsConnector)(nil)).Elem()
+}
+
+func (o GetTeamConnectorMembershipsConnectorArrayOutput) ToGetTeamConnectorMembershipsConnectorArrayOutput() GetTeamConnectorMembershipsConnectorArrayOutput {
+	return o
+}
+
+func (o GetTeamConnectorMembershipsConnectorArrayOutput) ToGetTeamConnectorMembershipsConnectorArrayOutputWithContext(ctx context.Context) GetTeamConnectorMembershipsConnectorArrayOutput {
+	return o
+}
+
+func (o GetTeamConnectorMembershipsConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamConnectorMembershipsConnector] {
+	return pulumix.Output[[]GetTeamConnectorMembershipsConnector]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetTeamConnectorMembershipsConnectorArrayOutput) Index(i pulumi.IntInput) GetTeamConnectorMembershipsConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamConnectorMembershipsConnector {
+		return vs[0].([]GetTeamConnectorMembershipsConnector)[vs[1].(int)]
+	}).(GetTeamConnectorMembershipsConnectorOutput)
+}
+
+type GetTeamGroupMembershipsGroup struct {
+	// The date and time the membership was created
+	CreatedAt string `pulumi:"createdAt"`
+	// The group unique identifier
+	GroupId string `pulumi:"groupId"`
+	// The team's role that links the team and the group
+	Role string `pulumi:"role"`
+}
+
+// GetTeamGroupMembershipsGroupInput is an input type that accepts GetTeamGroupMembershipsGroupArgs and GetTeamGroupMembershipsGroupOutput values.
+// You can construct a concrete instance of `GetTeamGroupMembershipsGroupInput` via:
+//
+//	GetTeamGroupMembershipsGroupArgs{...}
+type GetTeamGroupMembershipsGroupInput interface {
+	pulumi.Input
+
+	ToGetTeamGroupMembershipsGroupOutput() GetTeamGroupMembershipsGroupOutput
+	ToGetTeamGroupMembershipsGroupOutputWithContext(context.Context) GetTeamGroupMembershipsGroupOutput
+}
+
+type GetTeamGroupMembershipsGroupArgs struct {
+	// The date and time the membership was created
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The group unique identifier
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The team's role that links the team and the group
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetTeamGroupMembershipsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamGroupMembershipsGroup)(nil)).Elem()
+}
+
+func (i GetTeamGroupMembershipsGroupArgs) ToGetTeamGroupMembershipsGroupOutput() GetTeamGroupMembershipsGroupOutput {
+	return i.ToGetTeamGroupMembershipsGroupOutputWithContext(context.Background())
+}
+
+func (i GetTeamGroupMembershipsGroupArgs) ToGetTeamGroupMembershipsGroupOutputWithContext(ctx context.Context) GetTeamGroupMembershipsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamGroupMembershipsGroupOutput)
+}
+
+func (i GetTeamGroupMembershipsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetTeamGroupMembershipsGroup] {
+	return pulumix.Output[GetTeamGroupMembershipsGroup]{
+		OutputState: i.ToGetTeamGroupMembershipsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetTeamGroupMembershipsGroupArrayInput is an input type that accepts GetTeamGroupMembershipsGroupArray and GetTeamGroupMembershipsGroupArrayOutput values.
+// You can construct a concrete instance of `GetTeamGroupMembershipsGroupArrayInput` via:
+//
+//	GetTeamGroupMembershipsGroupArray{ GetTeamGroupMembershipsGroupArgs{...} }
+type GetTeamGroupMembershipsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetTeamGroupMembershipsGroupArrayOutput() GetTeamGroupMembershipsGroupArrayOutput
+	ToGetTeamGroupMembershipsGroupArrayOutputWithContext(context.Context) GetTeamGroupMembershipsGroupArrayOutput
+}
+
+type GetTeamGroupMembershipsGroupArray []GetTeamGroupMembershipsGroupInput
+
+func (GetTeamGroupMembershipsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamGroupMembershipsGroup)(nil)).Elem()
+}
+
+func (i GetTeamGroupMembershipsGroupArray) ToGetTeamGroupMembershipsGroupArrayOutput() GetTeamGroupMembershipsGroupArrayOutput {
+	return i.ToGetTeamGroupMembershipsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetTeamGroupMembershipsGroupArray) ToGetTeamGroupMembershipsGroupArrayOutputWithContext(ctx context.Context) GetTeamGroupMembershipsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamGroupMembershipsGroupArrayOutput)
+}
+
+func (i GetTeamGroupMembershipsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamGroupMembershipsGroup] {
+	return pulumix.Output[[]GetTeamGroupMembershipsGroup]{
+		OutputState: i.ToGetTeamGroupMembershipsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetTeamGroupMembershipsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetTeamGroupMembershipsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamGroupMembershipsGroup)(nil)).Elem()
+}
+
+func (o GetTeamGroupMembershipsGroupOutput) ToGetTeamGroupMembershipsGroupOutput() GetTeamGroupMembershipsGroupOutput {
+	return o
+}
+
+func (o GetTeamGroupMembershipsGroupOutput) ToGetTeamGroupMembershipsGroupOutputWithContext(ctx context.Context) GetTeamGroupMembershipsGroupOutput {
+	return o
+}
+
+func (o GetTeamGroupMembershipsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamGroupMembershipsGroup] {
+	return pulumix.Output[GetTeamGroupMembershipsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The date and time the membership was created
+func (o GetTeamGroupMembershipsGroupOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamGroupMembershipsGroup) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The group unique identifier
+func (o GetTeamGroupMembershipsGroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamGroupMembershipsGroup) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The team's role that links the team and the group
+func (o GetTeamGroupMembershipsGroupOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamGroupMembershipsGroup) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetTeamGroupMembershipsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTeamGroupMembershipsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamGroupMembershipsGroup)(nil)).Elem()
+}
+
+func (o GetTeamGroupMembershipsGroupArrayOutput) ToGetTeamGroupMembershipsGroupArrayOutput() GetTeamGroupMembershipsGroupArrayOutput {
+	return o
+}
+
+func (o GetTeamGroupMembershipsGroupArrayOutput) ToGetTeamGroupMembershipsGroupArrayOutputWithContext(ctx context.Context) GetTeamGroupMembershipsGroupArrayOutput {
+	return o
+}
+
+func (o GetTeamGroupMembershipsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamGroupMembershipsGroup] {
+	return pulumix.Output[[]GetTeamGroupMembershipsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetTeamGroupMembershipsGroupArrayOutput) Index(i pulumi.IntInput) GetTeamGroupMembershipsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamGroupMembershipsGroup {
+		return vs[0].([]GetTeamGroupMembershipsGroup)[vs[1].(int)]
+	}).(GetTeamGroupMembershipsGroupOutput)
+}
+
+type GetTeamUserMembershipsUser struct {
+	// The team's role that links the team and the user
+	Role string `pulumi:"role"`
+	// The user unique identifier
+	UserId string `pulumi:"userId"`
+}
+
+// GetTeamUserMembershipsUserInput is an input type that accepts GetTeamUserMembershipsUserArgs and GetTeamUserMembershipsUserOutput values.
+// You can construct a concrete instance of `GetTeamUserMembershipsUserInput` via:
+//
+//	GetTeamUserMembershipsUserArgs{...}
+type GetTeamUserMembershipsUserInput interface {
+	pulumi.Input
+
+	ToGetTeamUserMembershipsUserOutput() GetTeamUserMembershipsUserOutput
+	ToGetTeamUserMembershipsUserOutputWithContext(context.Context) GetTeamUserMembershipsUserOutput
+}
+
+type GetTeamUserMembershipsUserArgs struct {
+	// The team's role that links the team and the user
+	Role pulumi.StringInput `pulumi:"role"`
+	// The user unique identifier
+	UserId pulumi.StringInput `pulumi:"userId"`
+}
+
+func (GetTeamUserMembershipsUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamUserMembershipsUser)(nil)).Elem()
+}
+
+func (i GetTeamUserMembershipsUserArgs) ToGetTeamUserMembershipsUserOutput() GetTeamUserMembershipsUserOutput {
+	return i.ToGetTeamUserMembershipsUserOutputWithContext(context.Background())
+}
+
+func (i GetTeamUserMembershipsUserArgs) ToGetTeamUserMembershipsUserOutputWithContext(ctx context.Context) GetTeamUserMembershipsUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamUserMembershipsUserOutput)
+}
+
+func (i GetTeamUserMembershipsUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetTeamUserMembershipsUser] {
+	return pulumix.Output[GetTeamUserMembershipsUser]{
+		OutputState: i.ToGetTeamUserMembershipsUserOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetTeamUserMembershipsUserArrayInput is an input type that accepts GetTeamUserMembershipsUserArray and GetTeamUserMembershipsUserArrayOutput values.
+// You can construct a concrete instance of `GetTeamUserMembershipsUserArrayInput` via:
+//
+//	GetTeamUserMembershipsUserArray{ GetTeamUserMembershipsUserArgs{...} }
+type GetTeamUserMembershipsUserArrayInput interface {
+	pulumi.Input
+
+	ToGetTeamUserMembershipsUserArrayOutput() GetTeamUserMembershipsUserArrayOutput
+	ToGetTeamUserMembershipsUserArrayOutputWithContext(context.Context) GetTeamUserMembershipsUserArrayOutput
+}
+
+type GetTeamUserMembershipsUserArray []GetTeamUserMembershipsUserInput
+
+func (GetTeamUserMembershipsUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamUserMembershipsUser)(nil)).Elem()
+}
+
+func (i GetTeamUserMembershipsUserArray) ToGetTeamUserMembershipsUserArrayOutput() GetTeamUserMembershipsUserArrayOutput {
+	return i.ToGetTeamUserMembershipsUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetTeamUserMembershipsUserArray) ToGetTeamUserMembershipsUserArrayOutputWithContext(ctx context.Context) GetTeamUserMembershipsUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamUserMembershipsUserArrayOutput)
+}
+
+func (i GetTeamUserMembershipsUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamUserMembershipsUser] {
+	return pulumix.Output[[]GetTeamUserMembershipsUser]{
+		OutputState: i.ToGetTeamUserMembershipsUserArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetTeamUserMembershipsUserOutput struct{ *pulumi.OutputState }
+
+func (GetTeamUserMembershipsUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamUserMembershipsUser)(nil)).Elem()
+}
+
+func (o GetTeamUserMembershipsUserOutput) ToGetTeamUserMembershipsUserOutput() GetTeamUserMembershipsUserOutput {
+	return o
+}
+
+func (o GetTeamUserMembershipsUserOutput) ToGetTeamUserMembershipsUserOutputWithContext(ctx context.Context) GetTeamUserMembershipsUserOutput {
+	return o
+}
+
+func (o GetTeamUserMembershipsUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamUserMembershipsUser] {
+	return pulumix.Output[GetTeamUserMembershipsUser]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The team's role that links the team and the user
+func (o GetTeamUserMembershipsUserOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamUserMembershipsUser) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The user unique identifier
+func (o GetTeamUserMembershipsUserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamUserMembershipsUser) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+type GetTeamUserMembershipsUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTeamUserMembershipsUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamUserMembershipsUser)(nil)).Elem()
+}
+
+func (o GetTeamUserMembershipsUserArrayOutput) ToGetTeamUserMembershipsUserArrayOutput() GetTeamUserMembershipsUserArrayOutput {
+	return o
+}
+
+func (o GetTeamUserMembershipsUserArrayOutput) ToGetTeamUserMembershipsUserArrayOutputWithContext(ctx context.Context) GetTeamUserMembershipsUserArrayOutput {
+	return o
+}
+
+func (o GetTeamUserMembershipsUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamUserMembershipsUser] {
+	return pulumix.Output[[]GetTeamUserMembershipsUser]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetTeamUserMembershipsUserArrayOutput) Index(i pulumi.IntInput) GetTeamUserMembershipsUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamUserMembershipsUser {
+		return vs[0].([]GetTeamUserMembershipsUser)[vs[1].(int)]
+	}).(GetTeamUserMembershipsUserOutput)
+}
+
+type GetTeamsTeam struct {
+	// The description of the team within your account.
+	Description string `pulumi:"description"`
+	// The unique identifier for the team within your account.
+	Id string `pulumi:"id"`
+	// The name of the team within your account.
+	Name string `pulumi:"name"`
+	// The account role of the team.
+	Role string `pulumi:"role"`
+}
+
+// GetTeamsTeamInput is an input type that accepts GetTeamsTeamArgs and GetTeamsTeamOutput values.
+// You can construct a concrete instance of `GetTeamsTeamInput` via:
+//
+//	GetTeamsTeamArgs{...}
+type GetTeamsTeamInput interface {
+	pulumi.Input
+
+	ToGetTeamsTeamOutput() GetTeamsTeamOutput
+	ToGetTeamsTeamOutputWithContext(context.Context) GetTeamsTeamOutput
+}
+
+type GetTeamsTeamArgs struct {
+	// The description of the team within your account.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The unique identifier for the team within your account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the team within your account.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The account role of the team.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetTeamsTeamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamsTeam)(nil)).Elem()
+}
+
+func (i GetTeamsTeamArgs) ToGetTeamsTeamOutput() GetTeamsTeamOutput {
+	return i.ToGetTeamsTeamOutputWithContext(context.Background())
+}
+
+func (i GetTeamsTeamArgs) ToGetTeamsTeamOutputWithContext(ctx context.Context) GetTeamsTeamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamsTeamOutput)
+}
+
+func (i GetTeamsTeamArgs) ToOutput(ctx context.Context) pulumix.Output[GetTeamsTeam] {
+	return pulumix.Output[GetTeamsTeam]{
+		OutputState: i.ToGetTeamsTeamOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetTeamsTeamArrayInput is an input type that accepts GetTeamsTeamArray and GetTeamsTeamArrayOutput values.
+// You can construct a concrete instance of `GetTeamsTeamArrayInput` via:
+//
+//	GetTeamsTeamArray{ GetTeamsTeamArgs{...} }
+type GetTeamsTeamArrayInput interface {
+	pulumi.Input
+
+	ToGetTeamsTeamArrayOutput() GetTeamsTeamArrayOutput
+	ToGetTeamsTeamArrayOutputWithContext(context.Context) GetTeamsTeamArrayOutput
+}
+
+type GetTeamsTeamArray []GetTeamsTeamInput
+
+func (GetTeamsTeamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamsTeam)(nil)).Elem()
+}
+
+func (i GetTeamsTeamArray) ToGetTeamsTeamArrayOutput() GetTeamsTeamArrayOutput {
+	return i.ToGetTeamsTeamArrayOutputWithContext(context.Background())
+}
+
+func (i GetTeamsTeamArray) ToGetTeamsTeamArrayOutputWithContext(ctx context.Context) GetTeamsTeamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamsTeamArrayOutput)
+}
+
+func (i GetTeamsTeamArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamsTeam] {
+	return pulumix.Output[[]GetTeamsTeam]{
+		OutputState: i.ToGetTeamsTeamArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetTeamsTeamOutput struct{ *pulumi.OutputState }
+
+func (GetTeamsTeamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamsTeam)(nil)).Elem()
+}
+
+func (o GetTeamsTeamOutput) ToGetTeamsTeamOutput() GetTeamsTeamOutput {
+	return o
+}
+
+func (o GetTeamsTeamOutput) ToGetTeamsTeamOutputWithContext(ctx context.Context) GetTeamsTeamOutput {
+	return o
+}
+
+func (o GetTeamsTeamOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamsTeam] {
+	return pulumix.Output[GetTeamsTeam]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The description of the team within your account.
+func (o GetTeamsTeamOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamsTeam) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the team within your account.
+func (o GetTeamsTeamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamsTeam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the team within your account.
+func (o GetTeamsTeamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamsTeam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The account role of the team.
+func (o GetTeamsTeamOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamsTeam) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetTeamsTeamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTeamsTeamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamsTeam)(nil)).Elem()
+}
+
+func (o GetTeamsTeamArrayOutput) ToGetTeamsTeamArrayOutput() GetTeamsTeamArrayOutput {
+	return o
+}
+
+func (o GetTeamsTeamArrayOutput) ToGetTeamsTeamArrayOutputWithContext(ctx context.Context) GetTeamsTeamArrayOutput {
+	return o
+}
+
+func (o GetTeamsTeamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamsTeam] {
+	return pulumix.Output[[]GetTeamsTeam]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetTeamsTeamArrayOutput) Index(i pulumi.IntInput) GetTeamsTeamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamsTeam {
+		return vs[0].([]GetTeamsTeam)[vs[1].(int)]
+	}).(GetTeamsTeamOutput)
 }
 
 type GetUsersUser struct {
@@ -17386,6 +21153,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAuthPtrInput)(nil)).Elem(), ConnectorAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAuthClientAccessInput)(nil)).Elem(), ConnectorAuthClientAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAuthClientAccessPtrInput)(nil)).Elem(), ConnectorAuthClientAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCertificatesCertificateInput)(nil)).Elem(), ConnectorCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCertificatesCertificateArrayInput)(nil)).Elem(), ConnectorCertificatesCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigInput)(nil)).Elem(), ConnectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigPtrInput)(nil)).Elem(), ConnectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigAccountsRedditAdInput)(nil)).Elem(), ConnectorConfigAccountsRedditAdArgs{})
@@ -17406,6 +21175,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigSecretsListArrayInput)(nil)).Elem(), ConnectorConfigSecretsListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorDestinationSchemaInput)(nil)).Elem(), ConnectorDestinationSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorDestinationSchemaPtrInput)(nil)).Elem(), ConnectorDestinationSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorFingerprintsFingerprintInput)(nil)).Elem(), ConnectorFingerprintsFingerprintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorFingerprintsFingerprintArrayInput)(nil)).Elem(), ConnectorFingerprintsFingerprintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemaInput)(nil)).Elem(), ConnectorSchemaConfigSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemaArrayInput)(nil)).Elem(), ConnectorSchemaConfigSchemaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemaTableInput)(nil)).Elem(), ConnectorSchemaConfigSchemaTableArgs{})
@@ -17418,10 +21189,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DbtProjectProjectConfigPtrInput)(nil)).Elem(), DbtProjectProjectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbtTransformationScheduleInput)(nil)).Elem(), DbtTransformationScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbtTransformationSchedulePtrInput)(nil)).Elem(), DbtTransformationScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationCertificatesCertificateInput)(nil)).Elem(), DestinationCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationCertificatesCertificateArrayInput)(nil)).Elem(), DestinationCertificatesCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigInput)(nil)).Elem(), DestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigPtrInput)(nil)).Elem(), DestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationFingerprintsFingerprintInput)(nil)).Elem(), DestinationFingerprintsFingerprintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationFingerprintsFingerprintArrayInput)(nil)).Elem(), DestinationFingerprintsFingerprintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLoggingConfigInput)(nil)).Elem(), ExternalLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLoggingConfigPtrInput)(nil)).Elem(), ExternalLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupUsersUserInput)(nil)).Elem(), GroupUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupUsersUserArrayInput)(nil)).Elem(), GroupUsersUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamConnectorMembershipConnectorInput)(nil)).Elem(), TeamConnectorMembershipConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamConnectorMembershipConnectorArrayInput)(nil)).Elem(), TeamConnectorMembershipConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamGroupMembershipGroupInput)(nil)).Elem(), TeamGroupMembershipGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamGroupMembershipGroupArrayInput)(nil)).Elem(), TeamGroupMembershipGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamUserMembershipUserInput)(nil)).Elem(), TeamUserMembershipUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamUserMembershipUserArrayInput)(nil)).Elem(), TeamUserMembershipUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCertificatesCertificateInput)(nil)).Elem(), GetConnectorCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCertificatesCertificateArrayInput)(nil)).Elem(), GetConnectorCertificatesCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigInput)(nil)).Elem(), GetConnectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigArrayInput)(nil)).Elem(), GetConnectorConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigAccountsRedditAdInput)(nil)).Elem(), GetConnectorConfigAccountsRedditAdArgs{})
@@ -17442,6 +21227,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigSecretsListArrayInput)(nil)).Elem(), GetConnectorConfigSecretsListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorDestinationSchemaInput)(nil)).Elem(), GetConnectorDestinationSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorDestinationSchemaArrayInput)(nil)).Elem(), GetConnectorDestinationSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorFingerprintsFingerprintInput)(nil)).Elem(), GetConnectorFingerprintsFingerprintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorFingerprintsFingerprintArrayInput)(nil)).Elem(), GetConnectorFingerprintsFingerprintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorStatusInput)(nil)).Elem(), GetConnectorStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorStatusArrayInput)(nil)).Elem(), GetConnectorStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorStatusTaskInput)(nil)).Elem(), GetConnectorStatusTaskArgs{})
@@ -17460,8 +21247,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbtProjectsProjectArrayInput)(nil)).Elem(), GetDbtProjectsProjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbtTransformationScheduleInput)(nil)).Elem(), GetDbtTransformationScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbtTransformationScheduleArrayInput)(nil)).Elem(), GetDbtTransformationScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationCertificatesCertificateInput)(nil)).Elem(), GetDestinationCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationCertificatesCertificateArrayInput)(nil)).Elem(), GetDestinationCertificatesCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationConfigInput)(nil)).Elem(), GetDestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationConfigArrayInput)(nil)).Elem(), GetDestinationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationFingerprintsFingerprintInput)(nil)).Elem(), GetDestinationFingerprintsFingerprintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationFingerprintsFingerprintArrayInput)(nil)).Elem(), GetDestinationFingerprintsFingerprintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLoggingConfigInput)(nil)).Elem(), GetExternalLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLoggingConfigArrayInput)(nil)).Elem(), GetExternalLoggingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupConnectorsConnectorInput)(nil)).Elem(), GetGroupConnectorsConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupConnectorsConnectorArrayInput)(nil)).Elem(), GetGroupConnectorsConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupConnectorsConnectorStatusInput)(nil)).Elem(), GetGroupConnectorsConnectorStatusArgs{})
@@ -17474,6 +21267,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupUsersUserArrayInput)(nil)).Elem(), GetGroupUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetadataColumnsMetadataColumnInput)(nil)).Elem(), GetMetadataColumnsMetadataColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetadataColumnsMetadataColumnArrayInput)(nil)).Elem(), GetMetadataColumnsMetadataColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetadataSchemasMetadataSchemaInput)(nil)).Elem(), GetMetadataSchemasMetadataSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetadataSchemasMetadataSchemaArrayInput)(nil)).Elem(), GetMetadataSchemasMetadataSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetadataTablesMetadataTableInput)(nil)).Elem(), GetMetadataTablesMetadataTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetadataTablesMetadataTableArrayInput)(nil)).Elem(), GetMetadataTablesMetadataTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleInput)(nil)).Elem(), GetRolesRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleArrayInput)(nil)).Elem(), GetRolesRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamConnectorMembershipsConnectorInput)(nil)).Elem(), GetTeamConnectorMembershipsConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamConnectorMembershipsConnectorArrayInput)(nil)).Elem(), GetTeamConnectorMembershipsConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamGroupMembershipsGroupInput)(nil)).Elem(), GetTeamGroupMembershipsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamGroupMembershipsGroupArrayInput)(nil)).Elem(), GetTeamGroupMembershipsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamUserMembershipsUserInput)(nil)).Elem(), GetTeamUserMembershipsUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamUserMembershipsUserArrayInput)(nil)).Elem(), GetTeamUserMembershipsUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamsTeamInput)(nil)).Elem(), GetTeamsTeamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamsTeamArrayInput)(nil)).Elem(), GetTeamsTeamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhooksWebhookInput)(nil)).Elem(), GetWebhooksWebhookArgs{})
@@ -17482,6 +21291,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectorAuthPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorAuthClientAccessOutput{})
 	pulumi.RegisterOutputType(ConnectorAuthClientAccessPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorCertificatesCertificateOutput{})
+	pulumi.RegisterOutputType(ConnectorCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorConfigOutput{})
 	pulumi.RegisterOutputType(ConnectorConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorConfigAccountsRedditAdOutput{})
@@ -17502,6 +21313,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectorConfigSecretsListArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorDestinationSchemaOutput{})
 	pulumi.RegisterOutputType(ConnectorDestinationSchemaPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorFingerprintsFingerprintOutput{})
+	pulumi.RegisterOutputType(ConnectorFingerprintsFingerprintArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemaOutput{})
 	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemaArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemaTableOutput{})
@@ -17514,10 +21327,24 @@ func init() {
 	pulumi.RegisterOutputType(DbtProjectProjectConfigPtrOutput{})
 	pulumi.RegisterOutputType(DbtTransformationScheduleOutput{})
 	pulumi.RegisterOutputType(DbtTransformationSchedulePtrOutput{})
+	pulumi.RegisterOutputType(DestinationCertificatesCertificateOutput{})
+	pulumi.RegisterOutputType(DestinationCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(DestinationConfigOutput{})
 	pulumi.RegisterOutputType(DestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(DestinationFingerprintsFingerprintOutput{})
+	pulumi.RegisterOutputType(DestinationFingerprintsFingerprintArrayOutput{})
+	pulumi.RegisterOutputType(ExternalLoggingConfigOutput{})
+	pulumi.RegisterOutputType(ExternalLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(GroupUsersUserOutput{})
 	pulumi.RegisterOutputType(GroupUsersUserArrayOutput{})
+	pulumi.RegisterOutputType(TeamConnectorMembershipConnectorOutput{})
+	pulumi.RegisterOutputType(TeamConnectorMembershipConnectorArrayOutput{})
+	pulumi.RegisterOutputType(TeamGroupMembershipGroupOutput{})
+	pulumi.RegisterOutputType(TeamGroupMembershipGroupArrayOutput{})
+	pulumi.RegisterOutputType(TeamUserMembershipUserOutput{})
+	pulumi.RegisterOutputType(TeamUserMembershipUserArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorCertificatesCertificateOutput{})
+	pulumi.RegisterOutputType(GetConnectorCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigAccountsRedditAdOutput{})
@@ -17538,6 +21365,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorConfigSecretsListArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorDestinationSchemaOutput{})
 	pulumi.RegisterOutputType(GetConnectorDestinationSchemaArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorFingerprintsFingerprintOutput{})
+	pulumi.RegisterOutputType(GetConnectorFingerprintsFingerprintArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorStatusOutput{})
 	pulumi.RegisterOutputType(GetConnectorStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorStatusTaskOutput{})
@@ -17556,8 +21385,14 @@ func init() {
 	pulumi.RegisterOutputType(GetDbtProjectsProjectArrayOutput{})
 	pulumi.RegisterOutputType(GetDbtTransformationScheduleOutput{})
 	pulumi.RegisterOutputType(GetDbtTransformationScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetDestinationCertificatesCertificateOutput{})
+	pulumi.RegisterOutputType(GetDestinationCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetDestinationConfigOutput{})
 	pulumi.RegisterOutputType(GetDestinationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDestinationFingerprintsFingerprintOutput{})
+	pulumi.RegisterOutputType(GetDestinationFingerprintsFingerprintArrayOutput{})
+	pulumi.RegisterOutputType(GetExternalLoggingConfigOutput{})
+	pulumi.RegisterOutputType(GetExternalLoggingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupConnectorsConnectorOutput{})
 	pulumi.RegisterOutputType(GetGroupConnectorsConnectorArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupConnectorsConnectorStatusOutput{})
@@ -17570,6 +21405,22 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetMetadataColumnsMetadataColumnOutput{})
+	pulumi.RegisterOutputType(GetMetadataColumnsMetadataColumnArrayOutput{})
+	pulumi.RegisterOutputType(GetMetadataSchemasMetadataSchemaOutput{})
+	pulumi.RegisterOutputType(GetMetadataSchemasMetadataSchemaArrayOutput{})
+	pulumi.RegisterOutputType(GetMetadataTablesMetadataTableOutput{})
+	pulumi.RegisterOutputType(GetMetadataTablesMetadataTableArrayOutput{})
+	pulumi.RegisterOutputType(GetRolesRoleOutput{})
+	pulumi.RegisterOutputType(GetRolesRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetTeamConnectorMembershipsConnectorOutput{})
+	pulumi.RegisterOutputType(GetTeamConnectorMembershipsConnectorArrayOutput{})
+	pulumi.RegisterOutputType(GetTeamGroupMembershipsGroupOutput{})
+	pulumi.RegisterOutputType(GetTeamGroupMembershipsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetTeamUserMembershipsUserOutput{})
+	pulumi.RegisterOutputType(GetTeamUserMembershipsUserArrayOutput{})
+	pulumi.RegisterOutputType(GetTeamsTeamOutput{})
+	pulumi.RegisterOutputType(GetTeamsTeamArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})
 	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetWebhooksWebhookOutput{})

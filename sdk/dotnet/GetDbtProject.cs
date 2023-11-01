@@ -73,7 +73,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetDbtProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the dbt Project within the Fivetran system.
+        /// The unique identifier for the dbt Model within the Fivetran system.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -99,7 +99,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetDbtProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the dbt Project within the Fivetran system.
+        /// The unique identifier for the dbt Model within the Fivetran system.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

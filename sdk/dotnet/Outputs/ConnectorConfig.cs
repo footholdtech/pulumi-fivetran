@@ -107,6 +107,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? BusinessUnitId;
         public readonly string? Certificate;
         public readonly string? ClickAttributionWindow;
+        public readonly string? Client;
         public readonly string? ClientCert;
         public readonly string? ClientCertKey;
         public readonly string? ClientId;
@@ -117,6 +118,8 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> Columns;
         public readonly string? CompanyId;
         public readonly string? CompanyKey;
+        public readonly string? CompanyRequestToken;
+        public readonly string? CompanyUuid;
         public readonly string? Compression;
         public readonly string? ConfigMethod;
         public readonly string? ConfigRepositoryUrl;
@@ -264,6 +267,8 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? Passphrase;
         public readonly string? Password;
         public readonly string? Pat;
+        public readonly string? PatName;
+        public readonly string? PatSecret;
         public readonly string? Path;
         public readonly string? Pattern;
         public readonly string? PdbName;
@@ -345,6 +350,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> SelectedExports;
         public readonly string? SenderId;
         public readonly string? SenderPassword;
+        public readonly string? ServerAddress;
         public readonly string? ServerUrl;
         public readonly ImmutableArray<string> Servers;
         public readonly string? ServiceAccount;
@@ -392,6 +398,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? SyncPackMode;
         public readonly string? SyncPullApi;
         public readonly string? SyncType;
+        public readonly string? Sysnr;
         public readonly string? TableName;
         public readonly string? TdeCertificate;
         public readonly string? TdeCertificateName;
@@ -635,6 +642,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? clickAttributionWindow,
 
+            string? client,
+
             string? clientCert,
 
             string? clientCertKey,
@@ -654,6 +663,10 @@ namespace Footholdtech.Fivetran.Outputs
             string? companyId,
 
             string? companyKey,
+
+            string? companyRequestToken,
+
+            string? companyUuid,
 
             string? compression,
 
@@ -949,6 +962,10 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? pat,
 
+            string? patName,
+
+            string? patSecret,
+
             string? path,
 
             string? pattern,
@@ -1111,6 +1128,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? senderPassword,
 
+            string? serverAddress,
+
             string? serverUrl,
 
             ImmutableArray<string> servers,
@@ -1204,6 +1223,8 @@ namespace Footholdtech.Fivetran.Outputs
             string? syncPullApi,
 
             string? syncType,
+
+            string? sysnr,
 
             string? tableName,
 
@@ -1406,6 +1427,7 @@ namespace Footholdtech.Fivetran.Outputs
             BusinessUnitId = businessUnitId;
             Certificate = certificate;
             ClickAttributionWindow = clickAttributionWindow;
+            Client = client;
             ClientCert = clientCert;
             ClientCertKey = clientCertKey;
             ClientId = clientId;
@@ -1416,6 +1438,8 @@ namespace Footholdtech.Fivetran.Outputs
             Columns = columns;
             CompanyId = companyId;
             CompanyKey = companyKey;
+            CompanyRequestToken = companyRequestToken;
+            CompanyUuid = companyUuid;
             Compression = compression;
             ConfigMethod = configMethod;
             ConfigRepositoryUrl = configRepositoryUrl;
@@ -1563,6 +1587,8 @@ namespace Footholdtech.Fivetran.Outputs
             Passphrase = passphrase;
             Password = password;
             Pat = pat;
+            PatName = patName;
+            PatSecret = patSecret;
             Path = path;
             Pattern = pattern;
             PdbName = pdbName;
@@ -1644,6 +1670,7 @@ namespace Footholdtech.Fivetran.Outputs
             SelectedExports = selectedExports;
             SenderId = senderId;
             SenderPassword = senderPassword;
+            ServerAddress = serverAddress;
             ServerUrl = serverUrl;
             Servers = servers;
             ServiceAccount = serviceAccount;
@@ -1691,6 +1718,7 @@ namespace Footholdtech.Fivetran.Outputs
             SyncPackMode = syncPackMode;
             SyncPullApi = syncPullApi;
             SyncType = syncType;
+            Sysnr = sysnr;
             TableName = tableName;
             TdeCertificate = tdeCertificate;
             TdeCertificateName = tdeCertificateName;

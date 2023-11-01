@@ -27,7 +27,7 @@ class DestinationArgs:
         """
         The set of arguments for constructing a Destination resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[str] region: Region of your AWS S3 bucket
         :param pulumi.Input[str] service: The destination type name within the Fivetran system.
         :param pulumi.Input[str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -71,7 +71,7 @@ class DestinationArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        Data processing location. This is where Fivetran will operate and run computation on data.
+        Region of your AWS S3 bucket
         """
         return pulumi.get(self, "region")
 
@@ -156,7 +156,7 @@ class _DestinationState:
         """
         Input properties used for looking up and filtering Destination resources.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[str] region: Region of your AWS S3 bucket
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[str] service: The destination type name within the Fivetran system.
         :param pulumi.Input[str] setup_status: Destination setup status
@@ -219,7 +219,7 @@ class _DestinationState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Data processing location. This is where Fivetran will operate and run computation on data.
+        Region of your AWS S3 bucket
         """
         return pulumi.get(self, "region")
 
@@ -334,7 +334,7 @@ class Destination(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[str] region: Region of your AWS S3 bucket
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[str] service: The destination type name within the Fivetran system.
         :param pulumi.Input[str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
@@ -444,7 +444,7 @@ class Destination(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[str] region: Region of your AWS S3 bucket
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[str] service: The destination type name within the Fivetran system.
         :param pulumi.Input[str] setup_status: Destination setup status
@@ -490,7 +490,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        Data processing location. This is where Fivetran will operate and run computation on data.
+        Region of your AWS S3 bucket
         """
         return pulumi.get(self, "region")
 

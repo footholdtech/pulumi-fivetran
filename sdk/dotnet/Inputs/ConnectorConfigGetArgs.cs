@@ -514,6 +514,9 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("clickAttributionWindow")]
         public Input<string>? ClickAttributionWindow { get; set; }
 
+        [Input("client")]
+        public Input<string>? Client { get; set; }
+
         [Input("clientCert")]
         private Input<string>? _clientCert;
         public Input<string>? ClientCert
@@ -593,6 +596,21 @@ namespace Footholdtech.Fivetran.Inputs
                 _companyKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("companyRequestToken")]
+        private Input<string>? _companyRequestToken;
+        public Input<string>? CompanyRequestToken
+        {
+            get => _companyRequestToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _companyRequestToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("companyUuid")]
+        public Input<string>? CompanyUuid { get; set; }
 
         [Input("compression")]
         public Input<string>? Compression { get; set; }
@@ -1256,6 +1274,21 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        [Input("patName")]
+        public Input<string>? PatName { get; set; }
+
+        [Input("patSecret")]
+        private Input<string>? _patSecret;
+        public Input<string>? PatSecret
+        {
+            get => _patSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _patSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("path")]
         public Input<string>? Path { get; set; }
 
@@ -1804,6 +1837,9 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        [Input("serverAddress")]
+        public Input<string>? ServerAddress { get; set; }
+
         [Input("serverUrl")]
         public Input<string>? ServerUrl { get; set; }
 
@@ -1981,6 +2017,9 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("syncType")]
         public Input<string>? SyncType { get; set; }
+
+        [Input("sysnr")]
+        public Input<string>? Sysnr { get; set; }
 
         [Input("tableName")]
         public Input<string>? TableName { get; set; }

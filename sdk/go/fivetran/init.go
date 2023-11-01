@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "fivetran:index/connector:Connector":
 		r = &Connector{}
+	case "fivetran:index/connectorCertificates:ConnectorCertificates":
+		r = &ConnectorCertificates{}
+	case "fivetran:index/connectorFingerprints:ConnectorFingerprints":
+		r = &ConnectorFingerprints{}
 	case "fivetran:index/connectorSchedule:ConnectorSchedule":
 		r = &ConnectorSchedule{}
 	case "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig":
@@ -33,10 +37,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DbtTransformation{}
 	case "fivetran:index/destination:Destination":
 		r = &Destination{}
+	case "fivetran:index/destinationCertificates:DestinationCertificates":
+		r = &DestinationCertificates{}
+	case "fivetran:index/destinationFingerprints:DestinationFingerprints":
+		r = &DestinationFingerprints{}
+	case "fivetran:index/externalLogging:ExternalLogging":
+		r = &ExternalLogging{}
 	case "fivetran:index/group:Group":
 		r = &Group{}
 	case "fivetran:index/groupUsers:GroupUsers":
 		r = &GroupUsers{}
+	case "fivetran:index/team:Team":
+		r = &Team{}
+	case "fivetran:index/teamConnectorMembership:TeamConnectorMembership":
+		r = &TeamConnectorMembership{}
+	case "fivetran:index/teamGroupMembership:TeamGroupMembership":
+		r = &TeamGroupMembership{}
+	case "fivetran:index/teamUserMembership:TeamUserMembership":
+		r = &TeamUserMembership{}
 	case "fivetran:index/user:User":
 		r = &User{}
 	case "fivetran:index/webhook:Webhook":
@@ -79,6 +97,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
+		"index/connectorCertificates",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/connectorFingerprints",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
 		"index/connectorSchedule",
 		&module{version},
 	)
@@ -104,12 +132,47 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
+		"index/destinationCertificates",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/destinationFingerprints",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/externalLogging",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
 		"index/group",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
 		"index/groupUsers",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/team",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/teamConnectorMembership",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/teamGroupMembership",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/teamUserMembership",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -83,13 +83,13 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The ID of this resource.
+        /// The unique identifier for the Connector within the Fivetran system.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
+        /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
         /// </summary>
         [Input("schema")]
         public string? Schema { get; set; }
@@ -111,13 +111,13 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The ID of this resource.
+        /// The unique identifier for the Connector within the Fivetran system.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
+        /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }

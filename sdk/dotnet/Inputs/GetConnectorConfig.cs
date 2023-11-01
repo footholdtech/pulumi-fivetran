@@ -442,6 +442,9 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("clickAttributionWindow", required: true)]
         public string ClickAttributionWindow { get; set; } = null!;
 
+        [Input("client", required: true)]
+        public string Client { get; set; } = null!;
+
         [Input("clientCert", required: true)]
         private string? _clientCert;
         public string? ClientCert
@@ -501,6 +504,17 @@ namespace Footholdtech.Fivetran.Inputs
             get => _companyKey;
             set => _companyKey = value;
         }
+
+        [Input("companyRequestToken", required: true)]
+        private string? _companyRequestToken;
+        public string? CompanyRequestToken
+        {
+            get => _companyRequestToken;
+            set => _companyRequestToken = value;
+        }
+
+        [Input("companyUuid", required: true)]
+        public string CompanyUuid { get; set; } = null!;
 
         [Input("compression", required: true)]
         public string Compression { get; set; } = null!;
@@ -1108,6 +1122,17 @@ namespace Footholdtech.Fivetran.Inputs
             set => _pat = value;
         }
 
+        [Input("patName", required: true)]
+        public string PatName { get; set; } = null!;
+
+        [Input("patSecret", required: true)]
+        private string? _patSecret;
+        public string? PatSecret
+        {
+            get => _patSecret;
+            set => _patSecret = value;
+        }
+
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
 
@@ -1556,6 +1581,9 @@ namespace Footholdtech.Fivetran.Inputs
             set => _senderPassword = value;
         }
 
+        [Input("serverAddress", required: true)]
+        public string ServerAddress { get; set; } = null!;
+
         [Input("serverUrl", required: true)]
         public string ServerUrl { get; set; } = null!;
 
@@ -1721,6 +1749,9 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("syncType", required: true)]
         public string SyncType { get; set; } = null!;
+
+        [Input("sysnr", required: true)]
+        public string Sysnr { get; set; } = null!;
 
         [Input("tableName", required: true)]
         public string TableName { get; set; } = null!;

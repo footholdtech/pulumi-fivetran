@@ -58,7 +58,7 @@ export class Destination extends pulumi.CustomResource {
     public readonly groupId!: pulumi.Output<string>;
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
-     * Data processing location. This is where Fivetran will operate and run computation on data.
+     * Region of your AWS S3 bucket
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -153,7 +153,7 @@ export interface DestinationState {
     groupId?: pulumi.Input<string>;
     lastUpdated?: pulumi.Input<string>;
     /**
-     * Data processing location. This is where Fivetran will operate and run computation on data.
+     * Region of your AWS S3 bucket
      */
     region?: pulumi.Input<string>;
     /**
@@ -192,7 +192,7 @@ export interface DestinationArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * Data processing location. This is where Fivetran will operate and run computation on data.
+     * Region of your AWS S3 bucket
      */
     region: pulumi.Input<string>;
     /**

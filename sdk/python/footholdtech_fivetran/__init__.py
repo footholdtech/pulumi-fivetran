@@ -6,22 +6,41 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .connector import *
+from .connector_certificates import *
+from .connector_fingerprints import *
 from .connector_schedule import *
 from .connector_schema_config import *
 from .dbt_project import *
 from .dbt_transformation import *
 from .destination import *
+from .destination_certificates import *
+from .destination_fingerprints import *
+from .external_logging import *
 from .get_connector import *
+from .get_connector_certificates import *
+from .get_connector_fingerprints import *
 from .get_connectors_metadata import *
 from .get_dbt_models import *
 from .get_dbt_project import *
 from .get_dbt_projects import *
 from .get_dbt_transformation import *
 from .get_destination import *
+from .get_destination_certificates import *
+from .get_destination_fingerprints import *
+from .get_external_logging import *
 from .get_group import *
 from .get_group_connectors import *
 from .get_group_users import *
 from .get_groups import *
+from .get_metadata_columns import *
+from .get_metadata_schemas import *
+from .get_metadata_tables import *
+from .get_roles import *
+from .get_team import *
+from .get_team_connector_memberships import *
+from .get_team_group_memberships import *
+from .get_team_user_memberships import *
+from .get_teams import *
 from .get_user import *
 from .get_users import *
 from .get_webhook import *
@@ -29,6 +48,10 @@ from .get_webhooks import *
 from .group import *
 from .group_users import *
 from .provider import *
+from .team import *
+from .team_connector_membership import *
+from .team_group_membership import *
+from .team_user_membership import *
 from .user import *
 from .webhook import *
 from ._inputs import *
@@ -50,6 +73,22 @@ _utilities.register(
   "fqn": "footholdtech_fivetran",
   "classes": {
    "fivetran:index/connector:Connector": "Connector"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/connectorCertificates",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/connectorCertificates:ConnectorCertificates": "ConnectorCertificates"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/connectorFingerprints",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/connectorFingerprints:ConnectorFingerprints": "ConnectorFingerprints"
   }
  },
  {
@@ -94,6 +133,30 @@ _utilities.register(
  },
  {
   "pkg": "fivetran",
+  "mod": "index/destinationCertificates",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/destinationCertificates:DestinationCertificates": "DestinationCertificates"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/destinationFingerprints",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/destinationFingerprints:DestinationFingerprints": "DestinationFingerprints"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/externalLogging",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/externalLogging:ExternalLogging": "ExternalLogging"
+  }
+ },
+ {
+  "pkg": "fivetran",
   "mod": "index/group",
   "fqn": "footholdtech_fivetran",
   "classes": {
@@ -106,6 +169,38 @@ _utilities.register(
   "fqn": "footholdtech_fivetran",
   "classes": {
    "fivetran:index/groupUsers:GroupUsers": "GroupUsers"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/team",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/team:Team": "Team"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/teamConnectorMembership",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/teamConnectorMembership:TeamConnectorMembership": "TeamConnectorMembership"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/teamGroupMembership",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/teamGroupMembership:TeamGroupMembership": "TeamGroupMembership"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/teamUserMembership",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/teamUserMembership:TeamUserMembership": "TeamUserMembership"
   }
  },
  {

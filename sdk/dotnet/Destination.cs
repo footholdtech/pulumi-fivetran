@@ -43,7 +43,7 @@ namespace Footholdtech.Fivetran
         public Output<string> LastUpdated { get; private set; } = null!;
 
         /// <summary>
-        /// Data processing location. This is where Fivetran will operate and run computation on data.
+        /// Region of your AWS S3 bucket
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Footholdtech.Fivetran
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// Data processing location. This is where Fivetran will operate and run computation on data.
+        /// Region of your AWS S3 bucket
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -197,7 +197,7 @@ namespace Footholdtech.Fivetran
         public Input<string>? LastUpdated { get; set; }
 
         /// <summary>
-        /// Data processing location. This is where Fivetran will operate and run computation on data.
+        /// Region of your AWS S3 bucket
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -38,7 +38,7 @@ type Destination struct {
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId     pulumi.StringOutput `pulumi:"groupId"`
 	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
-	// Data processing location. This is where Fivetran will operate and run computation on data.
+	// Region of your AWS S3 bucket
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests pulumi.BoolPtrOutput `pulumi:"runSetupTests"`
@@ -103,7 +103,7 @@ type destinationState struct {
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId     *string `pulumi:"groupId"`
 	LastUpdated *string `pulumi:"lastUpdated"`
-	// Data processing location. This is where Fivetran will operate and run computation on data.
+	// Region of your AWS S3 bucket
 	Region *string `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
@@ -124,7 +124,7 @@ type DestinationState struct {
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId     pulumi.StringPtrInput
 	LastUpdated pulumi.StringPtrInput
-	// Data processing location. This is where Fivetran will operate and run computation on data.
+	// Region of your AWS S3 bucket
 	Region pulumi.StringPtrInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests pulumi.BoolPtrInput
@@ -148,7 +148,7 @@ type destinationArgs struct {
 	Config DestinationConfig `pulumi:"config"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
-	// Data processing location. This is where Fivetran will operate and run computation on data.
+	// Region of your AWS S3 bucket
 	Region string `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
@@ -167,7 +167,7 @@ type DestinationArgs struct {
 	Config DestinationConfigInput
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringInput
-	// Data processing location. This is where Fivetran will operate and run computation on data.
+	// Region of your AWS S3 bucket
 	Region pulumi.StringInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests pulumi.BoolPtrInput
@@ -305,7 +305,7 @@ func (o DestinationOutput) LastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
 }
 
-// Data processing location. This is where Fivetran will operate and run computation on data.
+// Region of your AWS S3 bucket
 func (o DestinationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

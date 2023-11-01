@@ -13,9 +13,15 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class GetGroupConnectorsConnectorStatusWarningArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Response status code
+        /// </summary>
         [Input("code", required: true)]
         public string Code { get; set; } = null!;
 
+        /// <summary>
+        /// Response status text
+        /// </summary>
         [Input("message", required: true)]
         public string Message { get; set; } = null!;
 

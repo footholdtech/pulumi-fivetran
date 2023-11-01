@@ -215,7 +215,7 @@ def get_dbt_project(id: Optional[str] = None,
     ```
 
 
-    :param str id: The unique identifier for the dbt Project within the Fivetran system.
+    :param str id: The unique identifier for the dbt Model within the Fivetran system.
     :param Sequence[pulumi.InputType['GetDbtProjectModelArgs']] models: The collection of dbt Models.
     """
     __args__ = dict()
@@ -258,7 +258,7 @@ def get_dbt_project_output(id: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str id: The unique identifier for the dbt Project within the Fivetran system.
+    :param str id: The unique identifier for the dbt Model within the Fivetran system.
     :param Sequence[pulumi.InputType['GetDbtProjectModelArgs']] models: The collection of dbt Models.
     """
     ...

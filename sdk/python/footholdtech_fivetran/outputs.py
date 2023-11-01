@@ -13,6 +13,7 @@ from . import outputs
 __all__ = [
     'ConnectorAuth',
     'ConnectorAuthClientAccess',
+    'ConnectorCertificatesCertificate',
     'ConnectorConfig',
     'ConnectorConfigAccountsRedditAd',
     'ConnectorConfigAdobeAnalyticsConfiguration',
@@ -23,14 +24,22 @@ __all__ = [
     'ConnectorConfigReport',
     'ConnectorConfigSecretsList',
     'ConnectorDestinationSchema',
+    'ConnectorFingerprintsFingerprint',
     'ConnectorSchemaConfigSchema',
     'ConnectorSchemaConfigSchemaTable',
     'ConnectorSchemaConfigSchemaTableColumn',
     'DbtProjectModel',
     'DbtProjectProjectConfig',
     'DbtTransformationSchedule',
+    'DestinationCertificatesCertificate',
     'DestinationConfig',
+    'DestinationFingerprintsFingerprint',
+    'ExternalLoggingConfig',
     'GroupUsersUser',
+    'TeamConnectorMembershipConnector',
+    'TeamGroupMembershipGroup',
+    'TeamUserMembershipUser',
+    'GetConnectorCertificatesCertificateResult',
     'GetConnectorConfigResult',
     'GetConnectorConfigAccountsRedditAdResult',
     'GetConnectorConfigAdobeAnalyticsConfigurationResult',
@@ -41,6 +50,7 @@ __all__ = [
     'GetConnectorConfigReportResult',
     'GetConnectorConfigSecretsListResult',
     'GetConnectorDestinationSchemaResult',
+    'GetConnectorFingerprintsFingerprintResult',
     'GetConnectorStatusResult',
     'GetConnectorStatusTaskResult',
     'GetConnectorStatusWarningResult',
@@ -50,13 +60,24 @@ __all__ = [
     'GetDbtProjectProjectConfigResult',
     'GetDbtProjectsProjectResult',
     'GetDbtTransformationScheduleResult',
+    'GetDestinationCertificatesCertificateResult',
     'GetDestinationConfigResult',
+    'GetDestinationFingerprintsFingerprintResult',
+    'GetExternalLoggingConfigResult',
     'GetGroupConnectorsConnectorResult',
     'GetGroupConnectorsConnectorStatusResult',
     'GetGroupConnectorsConnectorStatusTaskResult',
     'GetGroupConnectorsConnectorStatusWarningResult',
     'GetGroupUsersUserResult',
     'GetGroupsGroupResult',
+    'GetMetadataColumnsMetadataColumnResult',
+    'GetMetadataSchemasMetadataSchemaResult',
+    'GetMetadataTablesMetadataTableResult',
+    'GetRolesRoleResult',
+    'GetTeamConnectorMembershipsConnectorResult',
+    'GetTeamGroupMembershipsGroupResult',
+    'GetTeamUserMembershipsUserResult',
+    'GetTeamsTeamResult',
     'GetUsersUserResult',
     'GetWebhooksWebhookResult',
 ]
@@ -179,6 +200,142 @@ class ConnectorAuthClientAccess(dict):
     @pulumi.getter(name="userAgent")
     def user_agent(self) -> Optional[str]:
         return pulumi.get(self, "user_agent")
+
+
+@pulumi.output_type
+class ConnectorCertificatesCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encodedCert":
+            suggest = "encoded_cert"
+        elif key == "publicKey":
+            suggest = "public_key"
+        elif key == "validatedBy":
+            suggest = "validated_by"
+        elif key == "validatedDate":
+            suggest = "validated_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorCertificatesCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorCertificatesCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorCertificatesCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encoded_cert: str,
+                 hash: str,
+                 name: Optional[str] = None,
+                 public_key: Optional[str] = None,
+                 sha1: Optional[str] = None,
+                 sha256: Optional[str] = None,
+                 type: Optional[str] = None,
+                 validated_by: Optional[str] = None,
+                 validated_date: Optional[str] = None):
+        """
+        :param str encoded_cert: Base64 encoded certificate.
+        :param str hash: Hash of the fingerprint.
+        :param str name: Certificate name.
+        :param str public_key: Certificate public key.
+        :param str sha1: Certificate sha1.
+        :param str sha256: Certificate sha256.
+        :param str type: Certificate type.
+        :param str validated_by: User name who validated the certificate.
+        :param str validated_date: The date when the certificate was approved.
+        """
+        pulumi.set(__self__, "encoded_cert", encoded_cert)
+        pulumi.set(__self__, "hash", hash)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if sha1 is not None:
+            pulumi.set(__self__, "sha1", sha1)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if validated_by is not None:
+            pulumi.set(__self__, "validated_by", validated_by)
+        if validated_date is not None:
+            pulumi.set(__self__, "validated_date", validated_date)
+
+    @property
+    @pulumi.getter(name="encodedCert")
+    def encoded_cert(self) -> str:
+        """
+        Base64 encoded certificate.
+        """
+        return pulumi.get(self, "encoded_cert")
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Certificate name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[str]:
+        """
+        Certificate public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter
+    def sha1(self) -> Optional[str]:
+        """
+        Certificate sha1.
+        """
+        return pulumi.get(self, "sha1")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        Certificate sha256.
+        """
+        return pulumi.get(self, "sha256")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Certificate type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> Optional[str]:
+        """
+        User name who validated the certificate.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> Optional[str]:
+        """
+        The date when the certificate was approved.
+        """
+        return pulumi.get(self, "validated_date")
 
 
 @pulumi.output_type
@@ -370,6 +527,10 @@ class ConnectorConfig(dict):
             suggest = "company_id"
         elif key == "companyKey":
             suggest = "company_key"
+        elif key == "companyRequestToken":
+            suggest = "company_request_token"
+        elif key == "companyUuid":
+            suggest = "company_uuid"
         elif key == "configMethod":
             suggest = "config_method"
         elif key == "configRepositoryUrl":
@@ -600,6 +761,10 @@ class ConnectorConfig(dict):
             suggest = "packed_mode_tables"
         elif key == "packingMode":
             suggest = "packing_mode"
+        elif key == "patName":
+            suggest = "pat_name"
+        elif key == "patSecret":
+            suggest = "pat_secret"
         elif key == "pdbName":
             suggest = "pdb_name"
         elif key == "pemCertificate":
@@ -728,6 +893,8 @@ class ConnectorConfig(dict):
             suggest = "sender_id"
         elif key == "senderPassword":
             suggest = "sender_password"
+        elif key == "serverAddress":
+            suggest = "server_address"
         elif key == "serverUrl":
             suggest = "server_url"
         elif key == "serviceAccount":
@@ -1012,6 +1179,7 @@ class ConnectorConfig(dict):
                  business_unit_id: Optional[str] = None,
                  certificate: Optional[str] = None,
                  click_attribution_window: Optional[str] = None,
+                 client: Optional[str] = None,
                  client_cert: Optional[str] = None,
                  client_cert_key: Optional[str] = None,
                  client_id: Optional[str] = None,
@@ -1022,6 +1190,8 @@ class ConnectorConfig(dict):
                  columns: Optional[Sequence[str]] = None,
                  company_id: Optional[str] = None,
                  company_key: Optional[str] = None,
+                 company_request_token: Optional[str] = None,
+                 company_uuid: Optional[str] = None,
                  compression: Optional[str] = None,
                  config_method: Optional[str] = None,
                  config_repository_url: Optional[str] = None,
@@ -1169,6 +1339,8 @@ class ConnectorConfig(dict):
                  passphrase: Optional[str] = None,
                  password: Optional[str] = None,
                  pat: Optional[str] = None,
+                 pat_name: Optional[str] = None,
+                 pat_secret: Optional[str] = None,
                  path: Optional[str] = None,
                  pattern: Optional[str] = None,
                  pdb_name: Optional[str] = None,
@@ -1250,6 +1422,7 @@ class ConnectorConfig(dict):
                  selected_exports: Optional[Sequence[str]] = None,
                  sender_id: Optional[str] = None,
                  sender_password: Optional[str] = None,
+                 server_address: Optional[str] = None,
                  server_url: Optional[str] = None,
                  servers: Optional[Sequence[str]] = None,
                  service_account: Optional[str] = None,
@@ -1297,6 +1470,7 @@ class ConnectorConfig(dict):
                  sync_pack_mode: Optional[str] = None,
                  sync_pull_api: Optional[str] = None,
                  sync_type: Optional[str] = None,
+                 sysnr: Optional[str] = None,
                  table_name: Optional[str] = None,
                  tde_certificate: Optional[str] = None,
                  tde_certificate_name: Optional[str] = None,
@@ -1537,6 +1711,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "certificate", certificate)
         if click_attribution_window is not None:
             pulumi.set(__self__, "click_attribution_window", click_attribution_window)
+        if client is not None:
+            pulumi.set(__self__, "client", client)
         if client_cert is not None:
             pulumi.set(__self__, "client_cert", client_cert)
         if client_cert_key is not None:
@@ -1557,6 +1733,10 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "company_id", company_id)
         if company_key is not None:
             pulumi.set(__self__, "company_key", company_key)
+        if company_request_token is not None:
+            pulumi.set(__self__, "company_request_token", company_request_token)
+        if company_uuid is not None:
+            pulumi.set(__self__, "company_uuid", company_uuid)
         if compression is not None:
             pulumi.set(__self__, "compression", compression)
         if config_method is not None:
@@ -1851,6 +2031,10 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "password", password)
         if pat is not None:
             pulumi.set(__self__, "pat", pat)
+        if pat_name is not None:
+            pulumi.set(__self__, "pat_name", pat_name)
+        if pat_secret is not None:
+            pulumi.set(__self__, "pat_secret", pat_secret)
         if path is not None:
             pulumi.set(__self__, "path", path)
         if pattern is not None:
@@ -2013,6 +2197,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "sender_id", sender_id)
         if sender_password is not None:
             pulumi.set(__self__, "sender_password", sender_password)
+        if server_address is not None:
+            pulumi.set(__self__, "server_address", server_address)
         if server_url is not None:
             pulumi.set(__self__, "server_url", server_url)
         if servers is not None:
@@ -2107,6 +2293,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "sync_pull_api", sync_pull_api)
         if sync_type is not None:
             pulumi.set(__self__, "sync_type", sync_type)
+        if sysnr is not None:
+            pulumi.set(__self__, "sysnr", sysnr)
         if table_name is not None:
             pulumi.set(__self__, "table_name", table_name)
         if tde_certificate is not None:
@@ -2682,6 +2870,11 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "click_attribution_window")
 
     @property
+    @pulumi.getter
+    def client(self) -> Optional[str]:
+        return pulumi.get(self, "client")
+
+    @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
         return pulumi.get(self, "client_cert")
@@ -2730,6 +2923,16 @@ class ConnectorConfig(dict):
     @pulumi.getter(name="companyKey")
     def company_key(self) -> Optional[str]:
         return pulumi.get(self, "company_key")
+
+    @property
+    @pulumi.getter(name="companyRequestToken")
+    def company_request_token(self) -> Optional[str]:
+        return pulumi.get(self, "company_request_token")
+
+    @property
+    @pulumi.getter(name="companyUuid")
+    def company_uuid(self) -> Optional[str]:
+        return pulumi.get(self, "company_uuid")
 
     @property
     @pulumi.getter
@@ -3467,6 +3670,16 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "pat")
 
     @property
+    @pulumi.getter(name="patName")
+    def pat_name(self) -> Optional[str]:
+        return pulumi.get(self, "pat_name")
+
+    @property
+    @pulumi.getter(name="patSecret")
+    def pat_secret(self) -> Optional[str]:
+        return pulumi.get(self, "pat_secret")
+
+    @property
     @pulumi.getter
     def path(self) -> Optional[str]:
         return pulumi.get(self, "path")
@@ -3872,6 +4085,11 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "sender_password")
 
     @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> Optional[str]:
+        return pulumi.get(self, "server_address")
+
+    @property
     @pulumi.getter(name="serverUrl")
     def server_url(self) -> Optional[str]:
         return pulumi.get(self, "server_url")
@@ -4105,6 +4323,11 @@ class ConnectorConfig(dict):
     @pulumi.getter(name="syncType")
     def sync_type(self) -> Optional[str]:
         return pulumi.get(self, "sync_type")
+
+    @property
+    @pulumi.getter
+    def sysnr(self) -> Optional[str]:
+        return pulumi.get(self, "sysnr")
 
     @property
     @pulumi.getter(name="tableName")
@@ -5017,6 +5240,80 @@ class ConnectorDestinationSchema(dict):
 
 
 @pulumi.output_type
+class ConnectorFingerprintsFingerprint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+        elif key == "validatedBy":
+            suggest = "validated_by"
+        elif key == "validatedDate":
+            suggest = "validated_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorFingerprintsFingerprint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorFingerprintsFingerprint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorFingerprintsFingerprint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hash: str,
+                 public_key: str,
+                 validated_by: Optional[str] = None,
+                 validated_date: Optional[str] = None):
+        """
+        :param str hash: Hash of the fingerprint.
+        :param str public_key: The SSH public key.
+        :param str validated_by: User name who validated the fingerprint.
+        :param str validated_date: The date when SSH fingerprint was approved.
+        """
+        pulumi.set(__self__, "hash", hash)
+        pulumi.set(__self__, "public_key", public_key)
+        if validated_by is not None:
+            pulumi.set(__self__, "validated_by", validated_by)
+        if validated_date is not None:
+            pulumi.set(__self__, "validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        The SSH public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> Optional[str]:
+        """
+        User name who validated the fingerprint.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> Optional[str]:
+        """
+        The date when SSH fingerprint was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+
+@pulumi.output_type
 class ConnectorSchemaConfigSchema(dict):
     def __init__(__self__, *,
                  name: str,
@@ -5078,6 +5375,11 @@ class ConnectorSchemaConfigSchemaTable(dict):
                  columns: Optional[Sequence['outputs.ConnectorSchemaConfigSchemaTableColumn']] = None,
                  enabled: Optional[str] = None,
                  sync_mode: Optional[str] = None):
+        """
+        :param str name: The schema name within your destination in accordance with Fivetran conventional rules.
+        :param str enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param str sync_mode: This field appears in the response if the connector supports switching sync modes for tables.
+        """
         pulumi.set(__self__, "name", name)
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
@@ -5089,6 +5391,9 @@ class ConnectorSchemaConfigSchemaTable(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The schema name within your destination in accordance with Fivetran conventional rules.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -5099,11 +5404,17 @@ class ConnectorSchemaConfigSchemaTable(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[str]:
+        """
+        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="syncMode")
     def sync_mode(self) -> Optional[str]:
+        """
+        This field appears in the response if the connector supports switching sync modes for tables.
+        """
         return pulumi.get(self, "sync_mode")
 
 
@@ -5113,6 +5424,11 @@ class ConnectorSchemaConfigSchemaTableColumn(dict):
                  name: str,
                  enabled: Optional[str] = None,
                  hashed: Optional[str] = None):
+        """
+        :param str name: The schema name within your destination in accordance with Fivetran conventional rules.
+        :param str enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param str hashed: The boolean value specifying whether a column should be hashed
+        """
         pulumi.set(__self__, "name", name)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -5122,16 +5438,25 @@ class ConnectorSchemaConfigSchemaTableColumn(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The schema name within your destination in accordance with Fivetran conventional rules.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[str]:
+        """
+        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def hashed(self) -> Optional[str]:
+        """
+        The boolean value specifying whether a column should be hashed
+        """
         return pulumi.get(self, "hashed")
 
 
@@ -5332,6 +5657,142 @@ class DbtTransformationSchedule(dict):
         The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
         """
         return pulumi.get(self, "time_of_day")
+
+
+@pulumi.output_type
+class DestinationCertificatesCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encodedCert":
+            suggest = "encoded_cert"
+        elif key == "publicKey":
+            suggest = "public_key"
+        elif key == "validatedBy":
+            suggest = "validated_by"
+        elif key == "validatedDate":
+            suggest = "validated_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DestinationCertificatesCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DestinationCertificatesCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DestinationCertificatesCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encoded_cert: str,
+                 hash: str,
+                 name: Optional[str] = None,
+                 public_key: Optional[str] = None,
+                 sha1: Optional[str] = None,
+                 sha256: Optional[str] = None,
+                 type: Optional[str] = None,
+                 validated_by: Optional[str] = None,
+                 validated_date: Optional[str] = None):
+        """
+        :param str encoded_cert: Base64 encoded certificate.
+        :param str hash: Hash of the fingerprint.
+        :param str name: Certificate name.
+        :param str public_key: Certificate public key.
+        :param str sha1: Certificate sha1.
+        :param str sha256: Certificate sha256.
+        :param str type: Certificate type.
+        :param str validated_by: User name who validated the certificate.
+        :param str validated_date: The date when the certificate was approved.
+        """
+        pulumi.set(__self__, "encoded_cert", encoded_cert)
+        pulumi.set(__self__, "hash", hash)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if sha1 is not None:
+            pulumi.set(__self__, "sha1", sha1)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if validated_by is not None:
+            pulumi.set(__self__, "validated_by", validated_by)
+        if validated_date is not None:
+            pulumi.set(__self__, "validated_date", validated_date)
+
+    @property
+    @pulumi.getter(name="encodedCert")
+    def encoded_cert(self) -> str:
+        """
+        Base64 encoded certificate.
+        """
+        return pulumi.get(self, "encoded_cert")
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Certificate name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[str]:
+        """
+        Certificate public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter
+    def sha1(self) -> Optional[str]:
+        """
+        Certificate sha1.
+        """
+        return pulumi.get(self, "sha1")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        Certificate sha256.
+        """
+        return pulumi.get(self, "sha256")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Certificate type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> Optional[str]:
+        """
+        User name who validated the certificate.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> Optional[str]:
+        """
+        The date when the certificate was approved.
+        """
+        return pulumi.get(self, "validated_date")
 
 
 @pulumi.output_type
@@ -5783,6 +6244,286 @@ class DestinationConfig(dict):
 
 
 @pulumi.output_type
+class DestinationFingerprintsFingerprint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+        elif key == "validatedBy":
+            suggest = "validated_by"
+        elif key == "validatedDate":
+            suggest = "validated_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DestinationFingerprintsFingerprint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DestinationFingerprintsFingerprint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DestinationFingerprintsFingerprint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hash: str,
+                 public_key: str,
+                 validated_by: Optional[str] = None,
+                 validated_date: Optional[str] = None):
+        """
+        :param str hash: Hash of the fingerprint.
+        :param str public_key: The SSH public key.
+        :param str validated_by: User name who validated the fingerprint.
+        :param str validated_date: The date when SSH fingerprint was approved.
+        """
+        pulumi.set(__self__, "hash", hash)
+        pulumi.set(__self__, "public_key", public_key)
+        if validated_by is not None:
+            pulumi.set(__self__, "validated_by", validated_by)
+        if validated_date is not None:
+            pulumi.set(__self__, "validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        The SSH public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> Optional[str]:
+        """
+        User name who validated the fingerprint.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> Optional[str]:
+        """
+        The date when SSH fingerprint was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+
+@pulumi.output_type
+class ExternalLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+        elif key == "enableSsl":
+            suggest = "enable_ssl"
+        elif key == "externalId":
+            suggest = "external_id"
+        elif key == "logGroupName":
+            suggest = "log_group_name"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+        elif key == "roleArn":
+            suggest = "role_arn"
+        elif key == "subDomain":
+            suggest = "sub_domain"
+        elif key == "workspaceId":
+            suggest = "workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExternalLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExternalLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExternalLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: Optional[str] = None,
+                 channel: Optional[str] = None,
+                 enable_ssl: Optional[bool] = None,
+                 external_id: Optional[str] = None,
+                 host: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 log_group_name: Optional[str] = None,
+                 port: Optional[int] = None,
+                 primary_key: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 sub_domain: Optional[str] = None,
+                 token: Optional[str] = None,
+                 workspace_id: Optional[str] = None):
+        """
+        :param str api_key: API Key
+        :param str channel: Channel
+        :param bool enable_ssl: Enable SSL
+        :param str external_id: external_id
+        :param str host: Server name
+        :param str hostname: Server name
+        :param str log_group_name: Log Group Name
+        :param int port: Port
+        :param str primary_key: Primary Key
+        :param str region: Region
+        :param str role_arn: Role Arn
+        :param str sub_domain: Sub Domain
+        :param str token: Token
+        :param str workspace_id: Workspace ID
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if log_group_name is not None:
+            pulumi.set(__self__, "log_group_name", log_group_name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if sub_domain is not None:
+            pulumi.set(__self__, "sub_domain", sub_domain)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[str]:
+        """
+        API Key
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[str]:
+        """
+        Channel
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[bool]:
+        """
+        Enable SSL
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        """
+        external_id
+        """
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        Server name
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        Server name
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="logGroupName")
+    def log_group_name(self) -> Optional[str]:
+        """
+        Log Group Name
+        """
+        return pulumi.get(self, "log_group_name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[str]:
+        """
+        Primary Key
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Region
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        Role Arn
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="subDomain")
+    def sub_domain(self) -> Optional[str]:
+        """
+        Sub Domain
+        """
+        return pulumi.get(self, "sub_domain")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        """
+        Token
+        """
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[str]:
+        """
+        Workspace ID
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
 class GroupUsersUser(dict):
     def __init__(__self__, *,
                  email: str,
@@ -5821,6 +6562,267 @@ class GroupUsersUser(dict):
         The unique identifier for the user within the account.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class TeamConnectorMembershipConnector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorId":
+            suggest = "connector_id"
+        elif key == "createdAt":
+            suggest = "created_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamConnectorMembershipConnector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamConnectorMembershipConnector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamConnectorMembershipConnector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connector_id: str,
+                 role: str,
+                 created_at: Optional[str] = None):
+        """
+        :param str connector_id: The connector unique identifier
+        :param str role: The team's role that links the team and the connector
+        :param str created_at: The date and time the membership was created
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        pulumi.set(__self__, "role", role)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+
+    @property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> str:
+        """
+        The connector unique identifier
+        """
+        return pulumi.get(self, "connector_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The team's role that links the team and the connector
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        """
+        The date and time the membership was created
+        """
+        return pulumi.get(self, "created_at")
+
+
+@pulumi.output_type
+class TeamGroupMembershipGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupId":
+            suggest = "group_id"
+        elif key == "createdAt":
+            suggest = "created_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamGroupMembershipGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamGroupMembershipGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamGroupMembershipGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 group_id: str,
+                 role: str,
+                 created_at: Optional[str] = None):
+        """
+        :param str group_id: The group unique identifier
+        :param str role: The team's role that links the team and the group
+        :param str created_at: The date and time the membership was created
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "role", role)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        The group unique identifier
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The team's role that links the team and the group
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        """
+        The date and time the membership was created
+        """
+        return pulumi.get(self, "created_at")
+
+
+@pulumi.output_type
+class TeamUserMembershipUser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamUserMembershipUser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamUserMembershipUser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamUserMembershipUser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 role: str,
+                 user_id: str):
+        """
+        :param str role: The team's role that links the team and the user
+        :param str user_id: The user unique identifier
+        """
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The team's role that links the team and the user
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        The user unique identifier
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetConnectorCertificatesCertificateResult(dict):
+    def __init__(__self__, *,
+                 hash: str,
+                 name: str,
+                 public_key: str,
+                 sha1: str,
+                 sha256: str,
+                 type: str,
+                 validated_by: str,
+                 validated_date: str):
+        """
+        :param str hash: Hash of the fingerprint.
+        :param str name: Certificate name.
+        :param str public_key: Certificate public key.
+        :param str sha1: Certificate sha1.
+        :param str sha256: Certificate sha256.
+        :param str type: Certificate type.
+        :param str validated_by: User name who validated the certificate.
+        :param str validated_date: The date when the certificate was approved.
+        """
+        pulumi.set(__self__, "hash", hash)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "sha1", sha1)
+        pulumi.set(__self__, "sha256", sha256)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "validated_by", validated_by)
+        pulumi.set(__self__, "validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Certificate name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        Certificate public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter
+    def sha1(self) -> str:
+        """
+        Certificate sha1.
+        """
+        return pulumi.get(self, "sha1")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        """
+        Certificate sha256.
+        """
+        return pulumi.get(self, "sha256")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Certificate type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> str:
+        """
+        User name who validated the certificate.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> str:
+        """
+        The date when the certificate was approved.
+        """
+        return pulumi.get(self, "validated_date")
 
 
 @pulumi.output_type
@@ -5919,6 +6921,7 @@ class GetConnectorConfigResult(dict):
                  business_unit_id: str,
                  certificate: str,
                  click_attribution_window: str,
+                 client: str,
                  client_cert: str,
                  client_cert_key: str,
                  client_id: str,
@@ -5929,6 +6932,8 @@ class GetConnectorConfigResult(dict):
                  columns: Sequence[str],
                  company_id: str,
                  company_key: str,
+                 company_request_token: str,
+                 company_uuid: str,
                  compression: str,
                  config_method: str,
                  config_repository_url: str,
@@ -6076,6 +7081,8 @@ class GetConnectorConfigResult(dict):
                  passphrase: str,
                  password: str,
                  pat: str,
+                 pat_name: str,
+                 pat_secret: str,
                  path: str,
                  pattern: str,
                  pdb_name: str,
@@ -6157,6 +7164,7 @@ class GetConnectorConfigResult(dict):
                  selected_exports: Sequence[str],
                  sender_id: str,
                  sender_password: str,
+                 server_address: str,
                  server_url: str,
                  servers: Sequence[str],
                  service_account: str,
@@ -6204,6 +7212,7 @@ class GetConnectorConfigResult(dict):
                  sync_pack_mode: str,
                  sync_pull_api: str,
                  sync_type: str,
+                 sysnr: str,
                  table_name: str,
                  tde_certificate: str,
                  tde_certificate_name: str,
@@ -6351,6 +7360,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "business_unit_id", business_unit_id)
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "click_attribution_window", click_attribution_window)
+        pulumi.set(__self__, "client", client)
         pulumi.set(__self__, "client_cert", client_cert)
         pulumi.set(__self__, "client_cert_key", client_cert_key)
         pulumi.set(__self__, "client_id", client_id)
@@ -6361,6 +7371,8 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "columns", columns)
         pulumi.set(__self__, "company_id", company_id)
         pulumi.set(__self__, "company_key", company_key)
+        pulumi.set(__self__, "company_request_token", company_request_token)
+        pulumi.set(__self__, "company_uuid", company_uuid)
         pulumi.set(__self__, "compression", compression)
         pulumi.set(__self__, "config_method", config_method)
         pulumi.set(__self__, "config_repository_url", config_repository_url)
@@ -6508,6 +7520,8 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "passphrase", passphrase)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "pat", pat)
+        pulumi.set(__self__, "pat_name", pat_name)
+        pulumi.set(__self__, "pat_secret", pat_secret)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "pattern", pattern)
         pulumi.set(__self__, "pdb_name", pdb_name)
@@ -6589,6 +7603,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "selected_exports", selected_exports)
         pulumi.set(__self__, "sender_id", sender_id)
         pulumi.set(__self__, "sender_password", sender_password)
+        pulumi.set(__self__, "server_address", server_address)
         pulumi.set(__self__, "server_url", server_url)
         pulumi.set(__self__, "servers", servers)
         pulumi.set(__self__, "service_account", service_account)
@@ -6636,6 +7651,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "sync_pack_mode", sync_pack_mode)
         pulumi.set(__self__, "sync_pull_api", sync_pull_api)
         pulumi.set(__self__, "sync_type", sync_type)
+        pulumi.set(__self__, "sysnr", sysnr)
         pulumi.set(__self__, "table_name", table_name)
         pulumi.set(__self__, "tde_certificate", tde_certificate)
         pulumi.set(__self__, "tde_certificate_name", tde_certificate_name)
@@ -7157,6 +8173,11 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "click_attribution_window")
 
     @property
+    @pulumi.getter
+    def client(self) -> str:
+        return pulumi.get(self, "client")
+
+    @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> str:
         return pulumi.get(self, "client_cert")
@@ -7205,6 +8226,16 @@ class GetConnectorConfigResult(dict):
     @pulumi.getter(name="companyKey")
     def company_key(self) -> str:
         return pulumi.get(self, "company_key")
+
+    @property
+    @pulumi.getter(name="companyRequestToken")
+    def company_request_token(self) -> str:
+        return pulumi.get(self, "company_request_token")
+
+    @property
+    @pulumi.getter(name="companyUuid")
+    def company_uuid(self) -> str:
+        return pulumi.get(self, "company_uuid")
 
     @property
     @pulumi.getter
@@ -7942,6 +8973,16 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "pat")
 
     @property
+    @pulumi.getter(name="patName")
+    def pat_name(self) -> str:
+        return pulumi.get(self, "pat_name")
+
+    @property
+    @pulumi.getter(name="patSecret")
+    def pat_secret(self) -> str:
+        return pulumi.get(self, "pat_secret")
+
+    @property
     @pulumi.getter
     def path(self) -> str:
         return pulumi.get(self, "path")
@@ -8347,6 +9388,11 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "sender_password")
 
     @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        return pulumi.get(self, "server_address")
+
+    @property
     @pulumi.getter(name="serverUrl")
     def server_url(self) -> str:
         return pulumi.get(self, "server_url")
@@ -8580,6 +9626,11 @@ class GetConnectorConfigResult(dict):
     @pulumi.getter(name="syncType")
     def sync_type(self) -> str:
         return pulumi.get(self, "sync_type")
+
+    @property
+    @pulumi.getter
+    def sysnr(self) -> str:
+        return pulumi.get(self, "sysnr")
 
     @property
     @pulumi.getter(name="tableName")
@@ -9290,6 +10341,57 @@ class GetConnectorDestinationSchemaResult(dict):
 
 
 @pulumi.output_type
+class GetConnectorFingerprintsFingerprintResult(dict):
+    def __init__(__self__, *,
+                 hash: str,
+                 public_key: str,
+                 validated_by: str,
+                 validated_date: str):
+        """
+        :param str hash: Hash of the fingerprint.
+        :param str public_key: The SSH public key.
+        :param str validated_by: User name who validated the fingerprint.
+        :param str validated_date: The date when SSH fingerprint was approved.
+        """
+        pulumi.set(__self__, "hash", hash)
+        pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "validated_by", validated_by)
+        pulumi.set(__self__, "validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        The SSH public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> str:
+        """
+        User name who validated the fingerprint.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> str:
+        """
+        The date when SSH fingerprint was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+
+@pulumi.output_type
 class GetConnectorStatusResult(dict):
     def __init__(__self__, *,
                  is_historical_sync: str,
@@ -9646,6 +10748,101 @@ class GetDbtTransformationScheduleResult(dict):
     @pulumi.getter(name="timeOfDay")
     def time_of_day(self) -> str:
         return pulumi.get(self, "time_of_day")
+
+
+@pulumi.output_type
+class GetDestinationCertificatesCertificateResult(dict):
+    def __init__(__self__, *,
+                 hash: str,
+                 name: str,
+                 public_key: str,
+                 sha1: str,
+                 sha256: str,
+                 type: str,
+                 validated_by: str,
+                 validated_date: str):
+        """
+        :param str hash: Hash of the fingerprint.
+        :param str name: Certificate name.
+        :param str public_key: Certificate public key.
+        :param str sha1: Certificate sha1.
+        :param str sha256: Certificate sha256.
+        :param str type: Certificate type.
+        :param str validated_by: User name who validated the certificate.
+        :param str validated_date: The date when the certificate was approved.
+        """
+        pulumi.set(__self__, "hash", hash)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "sha1", sha1)
+        pulumi.set(__self__, "sha256", sha256)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "validated_by", validated_by)
+        pulumi.set(__self__, "validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Certificate name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        Certificate public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter
+    def sha1(self) -> str:
+        """
+        Certificate sha1.
+        """
+        return pulumi.get(self, "sha1")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        """
+        Certificate sha256.
+        """
+        return pulumi.get(self, "sha256")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Certificate type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> str:
+        """
+        User name who validated the certificate.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> str:
+        """
+        The date when the certificate was approved.
+        """
+        return pulumi.get(self, "validated_date")
 
 
 @pulumi.output_type
@@ -10038,6 +11235,232 @@ class GetDestinationConfigResult(dict):
 
 
 @pulumi.output_type
+class GetDestinationFingerprintsFingerprintResult(dict):
+    def __init__(__self__, *,
+                 hash: str,
+                 public_key: str,
+                 validated_by: str,
+                 validated_date: str):
+        """
+        :param str hash: Hash of the fingerprint.
+        :param str public_key: The SSH public key.
+        :param str validated_by: User name who validated the fingerprint.
+        :param str validated_date: The date when SSH fingerprint was approved.
+        """
+        pulumi.set(__self__, "hash", hash)
+        pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "validated_by", validated_by)
+        pulumi.set(__self__, "validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        The SSH public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> str:
+        """
+        User name who validated the fingerprint.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> str:
+        """
+        The date when SSH fingerprint was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+
+@pulumi.output_type
+class GetExternalLoggingConfigResult(dict):
+    def __init__(__self__, *,
+                 api_key: Optional[str] = None,
+                 channel: Optional[str] = None,
+                 enable_ssl: Optional[bool] = None,
+                 external_id: Optional[str] = None,
+                 host: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 log_group_name: Optional[str] = None,
+                 port: Optional[int] = None,
+                 primary_key: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 sub_domain: Optional[str] = None,
+                 token: Optional[str] = None,
+                 workspace_id: Optional[str] = None):
+        """
+        :param str api_key: API Key
+        :param str channel: Channel
+        :param bool enable_ssl: Enable SSL
+        :param str external_id: external_id
+        :param str host: Server name
+        :param str hostname: Server name
+        :param str log_group_name: Log Group Name
+        :param int port: Port
+        :param str primary_key: Primary Key
+        :param str region: Region
+        :param str role_arn: Role Arn
+        :param str sub_domain: Sub Domain
+        :param str token: Token
+        :param str workspace_id: Workspace ID
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if log_group_name is not None:
+            pulumi.set(__self__, "log_group_name", log_group_name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if sub_domain is not None:
+            pulumi.set(__self__, "sub_domain", sub_domain)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[str]:
+        """
+        API Key
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[str]:
+        """
+        Channel
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[bool]:
+        """
+        Enable SSL
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        """
+        external_id
+        """
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        Server name
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        Server name
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="logGroupName")
+    def log_group_name(self) -> Optional[str]:
+        """
+        Log Group Name
+        """
+        return pulumi.get(self, "log_group_name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[str]:
+        """
+        Primary Key
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Region
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        Role Arn
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="subDomain")
+    def sub_domain(self) -> Optional[str]:
+        """
+        Sub Domain
+        """
+        return pulumi.get(self, "sub_domain")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        """
+        Token
+        """
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[str]:
+        """
+        Workspace ID
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
 class GetGroupConnectorsConnectorResult(dict):
     def __init__(__self__, *,
                  connected_by: str,
@@ -10192,6 +11615,13 @@ class GetGroupConnectorsConnectorStatusResult(dict):
                  tasks: Sequence['outputs.GetGroupConnectorsConnectorStatusTaskResult'],
                  update_state: str,
                  warnings: Sequence['outputs.GetGroupConnectorsConnectorStatusWarningResult']):
+        """
+        :param bool is_historical_sync: The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
+        :param str setup_state: The current setup state of the connector. The available values are: \\n\\n - incomplete - the setup config is incomplete, the setup tests never succeeded \\n\\n - connected - the connector is properly set up \\n\\n - broken - the connector setup config is broken.
+        :param str sync_state: The current sync state of the connector. The available values are: \\n\\n - scheduled - the sync is waiting to be run \\n\\n - syncing - the sync is currently running \\n\\n - paused - the sync is currently paused \\n\\n - rescheduled - the sync is waiting until more API calls are available in the source service.
+        :param Sequence['GetGroupConnectorsConnectorStatusTaskArgs'] tasks: The collection of tasks for the connector
+        :param str update_state: The current data update state of the connector. The available values are: \\n\\n - on_schedule - the sync is running smoothly, no delays \\n\\n - delayed - the data is delayed for a longer time than expected for the update.
+        """
         pulumi.set(__self__, "is_historical_sync", is_historical_sync)
         pulumi.set(__self__, "setup_state", setup_state)
         pulumi.set(__self__, "sync_state", sync_state)
@@ -10202,26 +11632,41 @@ class GetGroupConnectorsConnectorStatusResult(dict):
     @property
     @pulumi.getter(name="isHistoricalSync")
     def is_historical_sync(self) -> bool:
+        """
+        The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
+        """
         return pulumi.get(self, "is_historical_sync")
 
     @property
     @pulumi.getter(name="setupState")
     def setup_state(self) -> str:
+        """
+        The current setup state of the connector. The available values are: \\n\\n - incomplete - the setup config is incomplete, the setup tests never succeeded \\n\\n - connected - the connector is properly set up \\n\\n - broken - the connector setup config is broken.
+        """
         return pulumi.get(self, "setup_state")
 
     @property
     @pulumi.getter(name="syncState")
     def sync_state(self) -> str:
+        """
+        The current sync state of the connector. The available values are: \\n\\n - scheduled - the sync is waiting to be run \\n\\n - syncing - the sync is currently running \\n\\n - paused - the sync is currently paused \\n\\n - rescheduled - the sync is waiting until more API calls are available in the source service.
+        """
         return pulumi.get(self, "sync_state")
 
     @property
     @pulumi.getter
     def tasks(self) -> Sequence['outputs.GetGroupConnectorsConnectorStatusTaskResult']:
+        """
+        The collection of tasks for the connector
+        """
         return pulumi.get(self, "tasks")
 
     @property
     @pulumi.getter(name="updateState")
     def update_state(self) -> str:
+        """
+        The current data update state of the connector. The available values are: \\n\\n - on_schedule - the sync is running smoothly, no delays \\n\\n - delayed - the data is delayed for a longer time than expected for the update.
+        """
         return pulumi.get(self, "update_state")
 
     @property
@@ -10235,17 +11680,27 @@ class GetGroupConnectorsConnectorStatusTaskResult(dict):
     def __init__(__self__, *,
                  code: str,
                  message: str):
+        """
+        :param str code: Response status code
+        :param str message: Response status text
+        """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "message", message)
 
     @property
     @pulumi.getter
     def code(self) -> str:
+        """
+        Response status code
+        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        Response status text
+        """
         return pulumi.get(self, "message")
 
 
@@ -10254,17 +11709,27 @@ class GetGroupConnectorsConnectorStatusWarningResult(dict):
     def __init__(__self__, *,
                  code: str,
                  message: str):
+        """
+        :param str code: Response status code
+        :param str message: Response status text
+        """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "message", message)
 
     @property
     @pulumi.getter
     def code(self) -> str:
+        """
+        Response status code
+        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        Response status text
+        """
         return pulumi.get(self, "message")
 
 
@@ -10434,6 +11899,403 @@ class GetGroupsGroupResult(dict):
         The name of the group within your account.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetMetadataColumnsMetadataColumnResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 is_foreign_key: bool,
+                 is_primary_key: bool,
+                 name_in_destination: str,
+                 name_in_source: str,
+                 parent_id: str,
+                 type_in_destination: str,
+                 type_in_source: str):
+        """
+        :param str id: The unique column identifier
+        :param bool is_foreign_key: The boolean specifying whether the column is a foreign key
+        :param bool is_primary_key: The boolean specifying whether the column is a primary key
+        :param str name_in_destination: The column name in the destination
+        :param str name_in_source: The column name in the source
+        :param str parent_id: The unique identifier of the table associated with the column
+        :param str type_in_destination: The column type in the destination
+        :param str type_in_source: The column type in the source
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_foreign_key", is_foreign_key)
+        pulumi.set(__self__, "is_primary_key", is_primary_key)
+        pulumi.set(__self__, "name_in_destination", name_in_destination)
+        pulumi.set(__self__, "name_in_source", name_in_source)
+        pulumi.set(__self__, "parent_id", parent_id)
+        pulumi.set(__self__, "type_in_destination", type_in_destination)
+        pulumi.set(__self__, "type_in_source", type_in_source)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique column identifier
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isForeignKey")
+    def is_foreign_key(self) -> bool:
+        """
+        The boolean specifying whether the column is a foreign key
+        """
+        return pulumi.get(self, "is_foreign_key")
+
+    @property
+    @pulumi.getter(name="isPrimaryKey")
+    def is_primary_key(self) -> bool:
+        """
+        The boolean specifying whether the column is a primary key
+        """
+        return pulumi.get(self, "is_primary_key")
+
+    @property
+    @pulumi.getter(name="nameInDestination")
+    def name_in_destination(self) -> str:
+        """
+        The column name in the destination
+        """
+        return pulumi.get(self, "name_in_destination")
+
+    @property
+    @pulumi.getter(name="nameInSource")
+    def name_in_source(self) -> str:
+        """
+        The column name in the source
+        """
+        return pulumi.get(self, "name_in_source")
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> str:
+        """
+        The unique identifier of the table associated with the column
+        """
+        return pulumi.get(self, "parent_id")
+
+    @property
+    @pulumi.getter(name="typeInDestination")
+    def type_in_destination(self) -> str:
+        """
+        The column type in the destination
+        """
+        return pulumi.get(self, "type_in_destination")
+
+    @property
+    @pulumi.getter(name="typeInSource")
+    def type_in_source(self) -> str:
+        """
+        The column type in the source
+        """
+        return pulumi.get(self, "type_in_source")
+
+
+@pulumi.output_type
+class GetMetadataSchemasMetadataSchemaResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name_in_destination: str,
+                 name_in_source: str):
+        """
+        :param str id: The unique schema identifier
+        :param str name_in_destination: The schema name in the destination
+        :param str name_in_source: The schema name in the source
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name_in_destination", name_in_destination)
+        pulumi.set(__self__, "name_in_source", name_in_source)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique schema identifier
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nameInDestination")
+    def name_in_destination(self) -> str:
+        """
+        The schema name in the destination
+        """
+        return pulumi.get(self, "name_in_destination")
+
+    @property
+    @pulumi.getter(name="nameInSource")
+    def name_in_source(self) -> str:
+        """
+        The schema name in the source
+        """
+        return pulumi.get(self, "name_in_source")
+
+
+@pulumi.output_type
+class GetMetadataTablesMetadataTableResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name_in_destination: str,
+                 name_in_source: str,
+                 parent_id: str):
+        """
+        :param str id: The unique table identifier
+        :param str name_in_destination: The table name in the destination
+        :param str name_in_source: The table name in the source
+        :param str parent_id: The unique identifier of the schema associated with the table
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name_in_destination", name_in_destination)
+        pulumi.set(__self__, "name_in_source", name_in_source)
+        pulumi.set(__self__, "parent_id", parent_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique table identifier
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nameInDestination")
+    def name_in_destination(self) -> str:
+        """
+        The table name in the destination
+        """
+        return pulumi.get(self, "name_in_destination")
+
+    @property
+    @pulumi.getter(name="nameInSource")
+    def name_in_source(self) -> str:
+        """
+        The table name in the source
+        """
+        return pulumi.get(self, "name_in_source")
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> str:
+        """
+        The unique identifier of the schema associated with the table
+        """
+        return pulumi.get(self, "parent_id")
+
+
+@pulumi.output_type
+class GetRolesRoleResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 is_custom: bool,
+                 name: str,
+                 scopes: Sequence[str]):
+        """
+        :param str description: The role description
+        :param bool is_custom: TypeBool
+        :param str name: The role name
+        :param Sequence[str] scopes: Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "is_custom", is_custom)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The role description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="isCustom")
+    def is_custom(self) -> bool:
+        """
+        TypeBool
+        """
+        return pulumi.get(self, "is_custom")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The role name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        """
+        Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class GetTeamConnectorMembershipsConnectorResult(dict):
+    def __init__(__self__, *,
+                 connector_id: str,
+                 created_at: str,
+                 role: str):
+        """
+        :param str connector_id: The connector unique identifier
+        :param str created_at: The date and time the membership was created
+        :param str role: The team's role that links the team and the connector
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> str:
+        """
+        The connector unique identifier
+        """
+        return pulumi.get(self, "connector_id")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time the membership was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The team's role that links the team and the connector
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class GetTeamGroupMembershipsGroupResult(dict):
+    def __init__(__self__, *,
+                 created_at: str,
+                 group_id: str,
+                 role: str):
+        """
+        :param str created_at: The date and time the membership was created
+        :param str group_id: The group unique identifier
+        :param str role: The team's role that links the team and the group
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time the membership was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        The group unique identifier
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The team's role that links the team and the group
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class GetTeamUserMembershipsUserResult(dict):
+    def __init__(__self__, *,
+                 role: str,
+                 user_id: str):
+        """
+        :param str role: The team's role that links the team and the user
+        :param str user_id: The user unique identifier
+        """
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The team's role that links the team and the user
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        The user unique identifier
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetTeamsTeamResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 id: str,
+                 name: str,
+                 role: str):
+        """
+        :param str description: The description of the team within your account.
+        :param str id: The unique identifier for the team within your account.
+        :param str name: The name of the team within your account.
+        :param str role: The account role of the team.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the team within your account.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the team within your account.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the team within your account.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The account role of the team.
+        """
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type

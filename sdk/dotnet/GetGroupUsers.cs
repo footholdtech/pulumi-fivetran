@@ -73,7 +73,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetGroupUsersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
+        /// The unique identifier for the user within the account.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -95,7 +95,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetGroupUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
+        /// The unique identifier for the user within the account.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
