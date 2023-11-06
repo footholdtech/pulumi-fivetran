@@ -51,7 +51,7 @@ func LookupGroupUsers(ctx *pulumi.Context, args *LookupGroupUsersArgs, opts ...p
 
 // A collection of arguments for invoking getGroupUsers.
 type LookupGroupUsersArgs struct {
-	// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
+	// The unique identifier for the user within the account.
 	Id    string              `pulumi:"id"`
 	Users []GetGroupUsersUser `pulumi:"users"`
 }
@@ -78,7 +78,7 @@ func LookupGroupUsersOutput(ctx *pulumi.Context, args LookupGroupUsersOutputArgs
 
 // A collection of arguments for invoking getGroupUsers.
 type LookupGroupUsersOutputArgs struct {
-	// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
+	// The unique identifier for the user within the account.
 	Id    pulumi.StringInput          `pulumi:"id"`
 	Users GetGroupUsersUserArrayInput `pulumi:"users"`
 }

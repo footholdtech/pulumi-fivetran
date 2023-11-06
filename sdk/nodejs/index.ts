@@ -10,6 +10,16 @@ export type Connector = import("./connector").Connector;
 export const Connector: typeof import("./connector").Connector = null as any;
 utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
 
+export { ConnectorCertificatesArgs, ConnectorCertificatesState } from "./connectorCertificates";
+export type ConnectorCertificates = import("./connectorCertificates").ConnectorCertificates;
+export const ConnectorCertificates: typeof import("./connectorCertificates").ConnectorCertificates = null as any;
+utilities.lazyLoad(exports, ["ConnectorCertificates"], () => require("./connectorCertificates"));
+
+export { ConnectorFingerprintsArgs, ConnectorFingerprintsState } from "./connectorFingerprints";
+export type ConnectorFingerprints = import("./connectorFingerprints").ConnectorFingerprints;
+export const ConnectorFingerprints: typeof import("./connectorFingerprints").ConnectorFingerprints = null as any;
+utilities.lazyLoad(exports, ["ConnectorFingerprints"], () => require("./connectorFingerprints"));
+
 export { ConnectorScheduleArgs, ConnectorScheduleState } from "./connectorSchedule";
 export type ConnectorSchedule = import("./connectorSchedule").ConnectorSchedule;
 export const ConnectorSchedule: typeof import("./connectorSchedule").ConnectorSchedule = null as any;
@@ -35,10 +45,35 @@ export type Destination = import("./destination").Destination;
 export const Destination: typeof import("./destination").Destination = null as any;
 utilities.lazyLoad(exports, ["Destination"], () => require("./destination"));
 
+export { DestinationCertificatesArgs, DestinationCertificatesState } from "./destinationCertificates";
+export type DestinationCertificates = import("./destinationCertificates").DestinationCertificates;
+export const DestinationCertificates: typeof import("./destinationCertificates").DestinationCertificates = null as any;
+utilities.lazyLoad(exports, ["DestinationCertificates"], () => require("./destinationCertificates"));
+
+export { DestinationFingerprintsArgs, DestinationFingerprintsState } from "./destinationFingerprints";
+export type DestinationFingerprints = import("./destinationFingerprints").DestinationFingerprints;
+export const DestinationFingerprints: typeof import("./destinationFingerprints").DestinationFingerprints = null as any;
+utilities.lazyLoad(exports, ["DestinationFingerprints"], () => require("./destinationFingerprints"));
+
+export { ExternalLoggingArgs, ExternalLoggingState } from "./externalLogging";
+export type ExternalLogging = import("./externalLogging").ExternalLogging;
+export const ExternalLogging: typeof import("./externalLogging").ExternalLogging = null as any;
+utilities.lazyLoad(exports, ["ExternalLogging"], () => require("./externalLogging"));
+
 export { GetConnectorArgs, GetConnectorResult, GetConnectorOutputArgs } from "./getConnector";
 export const getConnector: typeof import("./getConnector").getConnector = null as any;
 export const getConnectorOutput: typeof import("./getConnector").getConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getConnector","getConnectorOutput"], () => require("./getConnector"));
+
+export { GetConnectorCertificatesArgs, GetConnectorCertificatesResult, GetConnectorCertificatesOutputArgs } from "./getConnectorCertificates";
+export const getConnectorCertificates: typeof import("./getConnectorCertificates").getConnectorCertificates = null as any;
+export const getConnectorCertificatesOutput: typeof import("./getConnectorCertificates").getConnectorCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorCertificates","getConnectorCertificatesOutput"], () => require("./getConnectorCertificates"));
+
+export { GetConnectorFingerprintsArgs, GetConnectorFingerprintsResult, GetConnectorFingerprintsOutputArgs } from "./getConnectorFingerprints";
+export const getConnectorFingerprints: typeof import("./getConnectorFingerprints").getConnectorFingerprints = null as any;
+export const getConnectorFingerprintsOutput: typeof import("./getConnectorFingerprints").getConnectorFingerprintsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorFingerprints","getConnectorFingerprintsOutput"], () => require("./getConnectorFingerprints"));
 
 export { GetConnectorsMetadataArgs, GetConnectorsMetadataResult, GetConnectorsMetadataOutputArgs } from "./getConnectorsMetadata";
 export const getConnectorsMetadata: typeof import("./getConnectorsMetadata").getConnectorsMetadata = null as any;
@@ -70,6 +105,21 @@ export const getDestination: typeof import("./getDestination").getDestination = 
 export const getDestinationOutput: typeof import("./getDestination").getDestinationOutput = null as any;
 utilities.lazyLoad(exports, ["getDestination","getDestinationOutput"], () => require("./getDestination"));
 
+export { GetDestinationCertificatesArgs, GetDestinationCertificatesResult, GetDestinationCertificatesOutputArgs } from "./getDestinationCertificates";
+export const getDestinationCertificates: typeof import("./getDestinationCertificates").getDestinationCertificates = null as any;
+export const getDestinationCertificatesOutput: typeof import("./getDestinationCertificates").getDestinationCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getDestinationCertificates","getDestinationCertificatesOutput"], () => require("./getDestinationCertificates"));
+
+export { GetDestinationFingerprintsArgs, GetDestinationFingerprintsResult, GetDestinationFingerprintsOutputArgs } from "./getDestinationFingerprints";
+export const getDestinationFingerprints: typeof import("./getDestinationFingerprints").getDestinationFingerprints = null as any;
+export const getDestinationFingerprintsOutput: typeof import("./getDestinationFingerprints").getDestinationFingerprintsOutput = null as any;
+utilities.lazyLoad(exports, ["getDestinationFingerprints","getDestinationFingerprintsOutput"], () => require("./getDestinationFingerprints"));
+
+export { GetExternalLoggingArgs, GetExternalLoggingResult, GetExternalLoggingOutputArgs } from "./getExternalLogging";
+export const getExternalLogging: typeof import("./getExternalLogging").getExternalLogging = null as any;
+export const getExternalLoggingOutput: typeof import("./getExternalLogging").getExternalLoggingOutput = null as any;
+utilities.lazyLoad(exports, ["getExternalLogging","getExternalLoggingOutput"], () => require("./getExternalLogging"));
+
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
@@ -89,6 +139,51 @@ export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups
 export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
+
+export { GetMetadataColumnsArgs, GetMetadataColumnsResult, GetMetadataColumnsOutputArgs } from "./getMetadataColumns";
+export const getMetadataColumns: typeof import("./getMetadataColumns").getMetadataColumns = null as any;
+export const getMetadataColumnsOutput: typeof import("./getMetadataColumns").getMetadataColumnsOutput = null as any;
+utilities.lazyLoad(exports, ["getMetadataColumns","getMetadataColumnsOutput"], () => require("./getMetadataColumns"));
+
+export { GetMetadataSchemasArgs, GetMetadataSchemasResult, GetMetadataSchemasOutputArgs } from "./getMetadataSchemas";
+export const getMetadataSchemas: typeof import("./getMetadataSchemas").getMetadataSchemas = null as any;
+export const getMetadataSchemasOutput: typeof import("./getMetadataSchemas").getMetadataSchemasOutput = null as any;
+utilities.lazyLoad(exports, ["getMetadataSchemas","getMetadataSchemasOutput"], () => require("./getMetadataSchemas"));
+
+export { GetMetadataTablesArgs, GetMetadataTablesResult, GetMetadataTablesOutputArgs } from "./getMetadataTables";
+export const getMetadataTables: typeof import("./getMetadataTables").getMetadataTables = null as any;
+export const getMetadataTablesOutput: typeof import("./getMetadataTables").getMetadataTablesOutput = null as any;
+utilities.lazyLoad(exports, ["getMetadataTables","getMetadataTablesOutput"], () => require("./getMetadataTables"));
+
+export { GetRolesArgs, GetRolesResult, GetRolesOutputArgs } from "./getRoles";
+export const getRoles: typeof import("./getRoles").getRoles = null as any;
+export const getRolesOutput: typeof import("./getRoles").getRolesOutput = null as any;
+utilities.lazyLoad(exports, ["getRoles","getRolesOutput"], () => require("./getRoles"));
+
+export { GetTeamArgs, GetTeamResult, GetTeamOutputArgs } from "./getTeam";
+export const getTeam: typeof import("./getTeam").getTeam = null as any;
+export const getTeamOutput: typeof import("./getTeam").getTeamOutput = null as any;
+utilities.lazyLoad(exports, ["getTeam","getTeamOutput"], () => require("./getTeam"));
+
+export { GetTeamConnectorMembershipsArgs, GetTeamConnectorMembershipsResult, GetTeamConnectorMembershipsOutputArgs } from "./getTeamConnectorMemberships";
+export const getTeamConnectorMemberships: typeof import("./getTeamConnectorMemberships").getTeamConnectorMemberships = null as any;
+export const getTeamConnectorMembershipsOutput: typeof import("./getTeamConnectorMemberships").getTeamConnectorMembershipsOutput = null as any;
+utilities.lazyLoad(exports, ["getTeamConnectorMemberships","getTeamConnectorMembershipsOutput"], () => require("./getTeamConnectorMemberships"));
+
+export { GetTeamGroupMembershipsArgs, GetTeamGroupMembershipsResult, GetTeamGroupMembershipsOutputArgs } from "./getTeamGroupMemberships";
+export const getTeamGroupMemberships: typeof import("./getTeamGroupMemberships").getTeamGroupMemberships = null as any;
+export const getTeamGroupMembershipsOutput: typeof import("./getTeamGroupMemberships").getTeamGroupMembershipsOutput = null as any;
+utilities.lazyLoad(exports, ["getTeamGroupMemberships","getTeamGroupMembershipsOutput"], () => require("./getTeamGroupMemberships"));
+
+export { GetTeamUserMembershipsArgs, GetTeamUserMembershipsResult, GetTeamUserMembershipsOutputArgs } from "./getTeamUserMemberships";
+export const getTeamUserMemberships: typeof import("./getTeamUserMemberships").getTeamUserMemberships = null as any;
+export const getTeamUserMembershipsOutput: typeof import("./getTeamUserMemberships").getTeamUserMembershipsOutput = null as any;
+utilities.lazyLoad(exports, ["getTeamUserMemberships","getTeamUserMembershipsOutput"], () => require("./getTeamUserMemberships"));
+
+export { GetTeamsArgs, GetTeamsResult, GetTeamsOutputArgs } from "./getTeams";
+export const getTeams: typeof import("./getTeams").getTeams = null as any;
+export const getTeamsOutput: typeof import("./getTeams").getTeamsOutput = null as any;
+utilities.lazyLoad(exports, ["getTeams","getTeamsOutput"], () => require("./getTeams"));
 
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
@@ -125,6 +220,26 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
+export { TeamArgs, TeamState } from "./team";
+export type Team = import("./team").Team;
+export const Team: typeof import("./team").Team = null as any;
+utilities.lazyLoad(exports, ["Team"], () => require("./team"));
+
+export { TeamConnectorMembershipArgs, TeamConnectorMembershipState } from "./teamConnectorMembership";
+export type TeamConnectorMembership = import("./teamConnectorMembership").TeamConnectorMembership;
+export const TeamConnectorMembership: typeof import("./teamConnectorMembership").TeamConnectorMembership = null as any;
+utilities.lazyLoad(exports, ["TeamConnectorMembership"], () => require("./teamConnectorMembership"));
+
+export { TeamGroupMembershipArgs, TeamGroupMembershipState } from "./teamGroupMembership";
+export type TeamGroupMembership = import("./teamGroupMembership").TeamGroupMembership;
+export const TeamGroupMembership: typeof import("./teamGroupMembership").TeamGroupMembership = null as any;
+utilities.lazyLoad(exports, ["TeamGroupMembership"], () => require("./teamGroupMembership"));
+
+export { TeamUserMembershipArgs, TeamUserMembershipState } from "./teamUserMembership";
+export type TeamUserMembership = import("./teamUserMembership").TeamUserMembership;
+export const TeamUserMembership: typeof import("./teamUserMembership").TeamUserMembership = null as any;
+utilities.lazyLoad(exports, ["TeamUserMembership"], () => require("./teamUserMembership"));
+
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
@@ -151,6 +266,10 @@ const _module = {
         switch (type) {
             case "fivetran:index/connector:Connector":
                 return new Connector(name, <any>undefined, { urn })
+            case "fivetran:index/connectorCertificates:ConnectorCertificates":
+                return new ConnectorCertificates(name, <any>undefined, { urn })
+            case "fivetran:index/connectorFingerprints:ConnectorFingerprints":
+                return new ConnectorFingerprints(name, <any>undefined, { urn })
             case "fivetran:index/connectorSchedule:ConnectorSchedule":
                 return new ConnectorSchedule(name, <any>undefined, { urn })
             case "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig":
@@ -161,10 +280,24 @@ const _module = {
                 return new DbtTransformation(name, <any>undefined, { urn })
             case "fivetran:index/destination:Destination":
                 return new Destination(name, <any>undefined, { urn })
+            case "fivetran:index/destinationCertificates:DestinationCertificates":
+                return new DestinationCertificates(name, <any>undefined, { urn })
+            case "fivetran:index/destinationFingerprints:DestinationFingerprints":
+                return new DestinationFingerprints(name, <any>undefined, { urn })
+            case "fivetran:index/externalLogging:ExternalLogging":
+                return new ExternalLogging(name, <any>undefined, { urn })
             case "fivetran:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "fivetran:index/groupUsers:GroupUsers":
                 return new GroupUsers(name, <any>undefined, { urn })
+            case "fivetran:index/team:Team":
+                return new Team(name, <any>undefined, { urn })
+            case "fivetran:index/teamConnectorMembership:TeamConnectorMembership":
+                return new TeamConnectorMembership(name, <any>undefined, { urn })
+            case "fivetran:index/teamGroupMembership:TeamGroupMembership":
+                return new TeamGroupMembership(name, <any>undefined, { urn })
+            case "fivetran:index/teamUserMembership:TeamUserMembership":
+                return new TeamUserMembership(name, <any>undefined, { urn })
             case "fivetran:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "fivetran:index/webhook:Webhook":
@@ -175,13 +308,22 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("fivetran", "index/connector", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/connectorCertificates", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/connectorFingerprints", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchedule", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchemaConfig", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/dbtProject", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/dbtTransformation", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destination", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/destinationCertificates", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/destinationFingerprints", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/externalLogging", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/group", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/groupUsers", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/team", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/teamConnectorMembership", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/teamGroupMembership", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/teamUserMembership", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/user", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("fivetran", {

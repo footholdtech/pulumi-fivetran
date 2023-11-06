@@ -34,7 +34,7 @@ export function getGroupUsers(args: GetGroupUsersArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetGroupUsersArgs {
     /**
-     * The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
+     * The unique identifier for the user within the account.
      */
     id: string;
     users?: inputs.GetGroupUsersUser[];
@@ -73,7 +73,7 @@ export function getGroupUsersOutput(args: GetGroupUsersOutputArgs, opts?: pulumi
  */
 export interface GetGroupUsersOutputArgs {
     /**
-     * The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
+     * The unique identifier for the user within the account.
      */
     id: pulumi.Input<string>;
     users?: pulumi.Input<pulumi.Input<inputs.GetGroupUsersUserArgs>[]>;

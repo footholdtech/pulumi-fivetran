@@ -14,8 +14,17 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class ConnectorSchemaConfigSchemaTableColumn
     {
+        /// <summary>
+        /// The boolean value specifying whether the sync for the schema into the destination is enabled.
+        /// </summary>
         public readonly string? Enabled;
+        /// <summary>
+        /// The boolean value specifying whether a column should be hashed
+        /// </summary>
         public readonly string? Hashed;
+        /// <summary>
+        /// The schema name within your destination in accordance with Fivetran conventional rules.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

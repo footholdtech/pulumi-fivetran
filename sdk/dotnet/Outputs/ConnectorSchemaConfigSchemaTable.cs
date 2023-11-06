@@ -15,8 +15,17 @@ namespace Footholdtech.Fivetran.Outputs
     public sealed class ConnectorSchemaConfigSchemaTable
     {
         public readonly ImmutableArray<Outputs.ConnectorSchemaConfigSchemaTableColumn> Columns;
+        /// <summary>
+        /// The boolean value specifying whether the sync for the schema into the destination is enabled.
+        /// </summary>
         public readonly string? Enabled;
+        /// <summary>
+        /// The schema name within your destination in accordance with Fivetran conventional rules.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// This field appears in the response if the connector supports switching sync modes for tables.
+        /// </summary>
         public readonly string? SyncMode;
 
         [OutputConstructor]

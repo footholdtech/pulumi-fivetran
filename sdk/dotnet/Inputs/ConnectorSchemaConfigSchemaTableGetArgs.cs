@@ -21,12 +21,21 @@ namespace Footholdtech.Fivetran.Inputs
             set => _columns = value;
         }
 
+        /// <summary>
+        /// The boolean value specifying whether the sync for the schema into the destination is enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<string>? Enabled { get; set; }
 
+        /// <summary>
+        /// The schema name within your destination in accordance with Fivetran conventional rules.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// This field appears in the response if the connector supports switching sync modes for tables.
+        /// </summary>
         [Input("syncMode")]
         public Input<string>? SyncMode { get; set; }
 

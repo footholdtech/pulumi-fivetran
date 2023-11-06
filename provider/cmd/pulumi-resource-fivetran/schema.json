@@ -132,6 +132,67 @@
             },
             "type": "object"
         },
+        "fivetran:index/ConnectorCertificatesCertificate:ConnectorCertificatesCertificate": {
+            "properties": {
+                "encodedCert": {
+                    "type": "string",
+                    "description": "Base64 encoded certificate.\n",
+                    "secret": true
+                },
+                "hash": {
+                    "type": "string",
+                    "description": "Hash of the fingerprint.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Certificate name.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Certificate public key.\n"
+                },
+                "sha1": {
+                    "type": "string",
+                    "description": "Certificate sha1.\n"
+                },
+                "sha256": {
+                    "type": "string",
+                    "description": "Certificate sha256.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Certificate type.\n"
+                },
+                "validatedBy": {
+                    "type": "string",
+                    "description": "User name who validated the certificate.\n"
+                },
+                "validatedDate": {
+                    "type": "string",
+                    "description": "The date when the certificate was approved.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "encodedCert",
+                "hash"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "encodedCert",
+                        "hash",
+                        "name",
+                        "publicKey",
+                        "sha1",
+                        "sha256",
+                        "type",
+                        "validatedBy",
+                        "validatedDate"
+                    ]
+                }
+            }
+        },
         "fivetran:index/ConnectorConfig:ConnectorConfig": {
             "properties": {
                 "absConnectionMethod": {
@@ -470,6 +531,9 @@
                 "clickAttributionWindow": {
                     "type": "string"
                 },
+                "client": {
+                    "type": "string"
+                },
                 "clientCert": {
                     "type": "string",
                     "secret": true
@@ -507,6 +571,13 @@
                 "companyKey": {
                     "type": "string",
                     "secret": true
+                },
+                "companyRequestToken": {
+                    "type": "string",
+                    "secret": true
+                },
+                "companyUuid": {
+                    "type": "string"
                 },
                 "compression": {
                     "type": "string"
@@ -1020,6 +1091,13 @@
                     "type": "string",
                     "secret": true
                 },
+                "patName": {
+                    "type": "string"
+                },
+                "patSecret": {
+                    "type": "string",
+                    "secret": true
+                },
                 "path": {
                     "type": "string"
                 },
@@ -1336,6 +1414,9 @@
                     "type": "string",
                     "secret": true
                 },
+                "serverAddress": {
+                    "type": "string"
+                },
                 "serverUrl": {
                     "type": "string"
                 },
@@ -1484,6 +1565,9 @@
                     "type": "string"
                 },
                 "syncType": {
+                    "type": "string"
+                },
+                "sysnr": {
                     "type": "string"
                 },
                 "tableName": {
@@ -2254,6 +2338,41 @@
             },
             "type": "object"
         },
+        "fivetran:index/ConnectorFingerprintsFingerprint:ConnectorFingerprintsFingerprint": {
+            "properties": {
+                "hash": {
+                    "type": "string",
+                    "description": "Hash of the fingerprint.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The SSH public key.\n"
+                },
+                "validatedBy": {
+                    "type": "string",
+                    "description": "User name who validated the fingerprint.\n"
+                },
+                "validatedDate": {
+                    "type": "string",
+                    "description": "The date when SSH fingerprint was approved.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hash",
+                "publicKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "hash",
+                        "publicKey",
+                        "validatedBy",
+                        "validatedDate"
+                    ]
+                }
+            }
+        },
         "fivetran:index/ConnectorSchemaConfigSchema:ConnectorSchemaConfigSchema": {
             "properties": {
                 "enabled": {
@@ -2285,13 +2404,16 @@
                     }
                 },
                 "enabled": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The boolean value specifying whether the sync for the schema into the destination is enabled.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The schema name within your destination in accordance with Fivetran conventional rules.\n"
                 },
                 "syncMode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This field appears in the response if the connector supports switching sync modes for tables.\n"
                 }
             },
             "type": "object",
@@ -2302,13 +2424,16 @@
         "fivetran:index/ConnectorSchemaConfigSchemaTableColumn:ConnectorSchemaConfigSchemaTableColumn": {
             "properties": {
                 "enabled": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The boolean value specifying whether the sync for the schema into the destination is enabled.\n"
                 },
                 "hashed": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The boolean value specifying whether a column should be hashed\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The schema name within your destination in accordance with Fivetran conventional rules.\n"
                 }
             },
             "type": "object",
@@ -2402,6 +2527,67 @@
                         "interval",
                         "scheduleType",
                         "timeOfDay"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/DestinationCertificatesCertificate:DestinationCertificatesCertificate": {
+            "properties": {
+                "encodedCert": {
+                    "type": "string",
+                    "description": "Base64 encoded certificate.\n",
+                    "secret": true
+                },
+                "hash": {
+                    "type": "string",
+                    "description": "Hash of the fingerprint.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Certificate name.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Certificate public key.\n"
+                },
+                "sha1": {
+                    "type": "string",
+                    "description": "Certificate sha1.\n"
+                },
+                "sha256": {
+                    "type": "string",
+                    "description": "Certificate sha256.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Certificate type.\n"
+                },
+                "validatedBy": {
+                    "type": "string",
+                    "description": "User name who validated the certificate.\n"
+                },
+                "validatedDate": {
+                    "type": "string",
+                    "description": "The date when the certificate was approved.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "encodedCert",
+                "hash"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "encodedCert",
+                        "hash",
+                        "name",
+                        "publicKey",
+                        "sha1",
+                        "sha256",
+                        "type",
+                        "validatedBy",
+                        "validatedDate"
                     ]
                 }
             }
@@ -2553,6 +2739,105 @@
                 }
             }
         },
+        "fivetran:index/DestinationFingerprintsFingerprint:DestinationFingerprintsFingerprint": {
+            "properties": {
+                "hash": {
+                    "type": "string",
+                    "description": "Hash of the fingerprint.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The SSH public key.\n"
+                },
+                "validatedBy": {
+                    "type": "string",
+                    "description": "User name who validated the fingerprint.\n"
+                },
+                "validatedDate": {
+                    "type": "string",
+                    "description": "The date when SSH fingerprint was approved.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hash",
+                "publicKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "hash",
+                        "publicKey",
+                        "validatedBy",
+                        "validatedDate"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/ExternalLoggingConfig:ExternalLoggingConfig": {
+            "properties": {
+                "apiKey": {
+                    "type": "string",
+                    "description": "API Key\n",
+                    "secret": true
+                },
+                "channel": {
+                    "type": "string",
+                    "description": "Channel\n"
+                },
+                "enableSsl": {
+                    "type": "boolean",
+                    "description": "Enable SSL\n"
+                },
+                "externalId": {
+                    "type": "string",
+                    "description": "external_id\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Server name\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Server name\n"
+                },
+                "logGroupName": {
+                    "type": "string",
+                    "description": "Log Group Name\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port\n"
+                },
+                "primaryKey": {
+                    "type": "string",
+                    "description": "Primary Key\n",
+                    "secret": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "Role Arn\n"
+                },
+                "subDomain": {
+                    "type": "string",
+                    "description": "Sub Domain\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "Token\n",
+                    "secret": true
+                },
+                "workspaceId": {
+                    "type": "string",
+                    "description": "Workspace ID\n"
+                }
+            },
+            "type": "object"
+        },
         "fivetran:index/GroupUsersUser:GroupUsersUser": {
             "properties": {
                 "email": {
@@ -2580,6 +2865,138 @@
                         "id",
                         "role"
                     ]
+                }
+            }
+        },
+        "fivetran:index/TeamConnectorMembershipConnector:TeamConnectorMembershipConnector": {
+            "properties": {
+                "connectorId": {
+                    "type": "string",
+                    "description": "The connector unique identifier\n",
+                    "willReplaceOnChanges": true
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the membership was created\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The team's role that links the team and the connector\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectorId",
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectorId",
+                        "createdAt",
+                        "role"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/TeamGroupMembershipGroup:TeamGroupMembershipGroup": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the membership was created\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The group unique identifier\n",
+                    "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The team's role that links the team and the group\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "groupId",
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdAt",
+                        "groupId",
+                        "role"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/TeamUserMembershipUser:TeamUserMembershipUser": {
+            "properties": {
+                "role": {
+                    "type": "string",
+                    "description": "The team's role that links the team and the user\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The user unique identifier\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "role",
+                "userId"
+            ]
+        },
+        "fivetran:index/getConnectorCertificatesCertificate:getConnectorCertificatesCertificate": {
+            "properties": {
+                "hash": {
+                    "type": "string",
+                    "description": "Hash of the fingerprint.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Certificate name.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Certificate public key.\n"
+                },
+                "sha1": {
+                    "type": "string",
+                    "description": "Certificate sha1.\n"
+                },
+                "sha256": {
+                    "type": "string",
+                    "description": "Certificate sha256.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Certificate type.\n"
+                },
+                "validatedBy": {
+                    "type": "string",
+                    "description": "User name who validated the certificate.\n"
+                },
+                "validatedDate": {
+                    "type": "string",
+                    "description": "The date when the certificate was approved.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hash",
+                "name",
+                "publicKey",
+                "sha1",
+                "sha256",
+                "type",
+                "validatedBy",
+                "validatedDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
                 }
             }
         },
@@ -2921,6 +3338,9 @@
                 "clickAttributionWindow": {
                     "type": "string"
                 },
+                "client": {
+                    "type": "string"
+                },
                 "clientCert": {
                     "type": "string",
                     "secret": true
@@ -2958,6 +3378,13 @@
                 "companyKey": {
                     "type": "string",
                     "secret": true
+                },
+                "companyRequestToken": {
+                    "type": "string",
+                    "secret": true
+                },
+                "companyUuid": {
+                    "type": "string"
                 },
                 "compression": {
                     "type": "string"
@@ -3471,6 +3898,13 @@
                     "type": "string",
                     "secret": true
                 },
+                "patName": {
+                    "type": "string"
+                },
+                "patSecret": {
+                    "type": "string",
+                    "secret": true
+                },
                 "path": {
                     "type": "string"
                 },
@@ -3787,6 +4221,9 @@
                     "type": "string",
                     "secret": true
                 },
+                "serverAddress": {
+                    "type": "string"
+                },
                 "serverUrl": {
                     "type": "string"
                 },
@@ -3935,6 +4372,9 @@
                     "type": "string"
                 },
                 "syncType": {
+                    "type": "string"
+                },
+                "sysnr": {
                     "type": "string"
                 },
                 "tableName": {
@@ -4215,6 +4655,7 @@
                 "businessUnitId",
                 "certificate",
                 "clickAttributionWindow",
+                "client",
                 "clientCert",
                 "clientCertKey",
                 "clientId",
@@ -4225,6 +4666,8 @@
                 "columns",
                 "companyId",
                 "companyKey",
+                "companyRequestToken",
+                "companyUuid",
                 "compression",
                 "configMethod",
                 "configRepositoryUrl",
@@ -4372,6 +4815,8 @@
                 "passphrase",
                 "password",
                 "pat",
+                "patName",
+                "patSecret",
                 "path",
                 "pattern",
                 "pdbName",
@@ -4453,6 +4898,7 @@
                 "selectedExports",
                 "senderId",
                 "senderPassword",
+                "serverAddress",
                 "serverUrl",
                 "servers",
                 "serviceAccount",
@@ -4500,6 +4946,7 @@
                 "syncPackMode",
                 "syncPullApi",
                 "syncType",
+                "sysnr",
                 "tableName",
                 "tdeCertificate",
                 "tdeCertificateName",
@@ -4953,6 +5400,38 @@
                 }
             }
         },
+        "fivetran:index/getConnectorFingerprintsFingerprint:getConnectorFingerprintsFingerprint": {
+            "properties": {
+                "hash": {
+                    "type": "string",
+                    "description": "Hash of the fingerprint.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The SSH public key.\n"
+                },
+                "validatedBy": {
+                    "type": "string",
+                    "description": "User name who validated the fingerprint.\n"
+                },
+                "validatedDate": {
+                    "type": "string",
+                    "description": "The date when SSH fingerprint was approved.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hash",
+                "publicKey",
+                "validatedBy",
+                "validatedDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "fivetran:index/getConnectorStatus:getConnectorStatus": {
             "properties": {
                 "isHistoricalSync": {
@@ -5223,6 +5702,58 @@
                 }
             }
         },
+        "fivetran:index/getDestinationCertificatesCertificate:getDestinationCertificatesCertificate": {
+            "properties": {
+                "hash": {
+                    "type": "string",
+                    "description": "Hash of the fingerprint.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Certificate name.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Certificate public key.\n"
+                },
+                "sha1": {
+                    "type": "string",
+                    "description": "Certificate sha1.\n"
+                },
+                "sha256": {
+                    "type": "string",
+                    "description": "Certificate sha256.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Certificate type.\n"
+                },
+                "validatedBy": {
+                    "type": "string",
+                    "description": "User name who validated the certificate.\n"
+                },
+                "validatedDate": {
+                    "type": "string",
+                    "description": "The date when the certificate was approved.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hash",
+                "name",
+                "publicKey",
+                "sha1",
+                "sha256",
+                "type",
+                "validatedBy",
+                "validatedDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "fivetran:index/getDestinationConfig:getDestinationConfig": {
             "properties": {
                 "auth": {
@@ -5371,6 +5902,102 @@
                 }
             }
         },
+        "fivetran:index/getDestinationFingerprintsFingerprint:getDestinationFingerprintsFingerprint": {
+            "properties": {
+                "hash": {
+                    "type": "string",
+                    "description": "Hash of the fingerprint.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The SSH public key.\n"
+                },
+                "validatedBy": {
+                    "type": "string",
+                    "description": "User name who validated the fingerprint.\n"
+                },
+                "validatedDate": {
+                    "type": "string",
+                    "description": "The date when SSH fingerprint was approved.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hash",
+                "publicKey",
+                "validatedBy",
+                "validatedDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getExternalLoggingConfig:getExternalLoggingConfig": {
+            "properties": {
+                "apiKey": {
+                    "type": "string",
+                    "description": "API Key\n",
+                    "secret": true
+                },
+                "channel": {
+                    "type": "string",
+                    "description": "Channel\n"
+                },
+                "enableSsl": {
+                    "type": "boolean",
+                    "description": "Enable SSL\n"
+                },
+                "externalId": {
+                    "type": "string",
+                    "description": "external_id\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Server name\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Server name\n"
+                },
+                "logGroupName": {
+                    "type": "string",
+                    "description": "Log Group Name\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port\n"
+                },
+                "primaryKey": {
+                    "type": "string",
+                    "description": "Primary Key\n",
+                    "secret": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "Role Arn\n"
+                },
+                "subDomain": {
+                    "type": "string",
+                    "description": "Sub Domain\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "Token\n",
+                    "secret": true
+                },
+                "workspaceId": {
+                    "type": "string",
+                    "description": "Workspace ID\n"
+                }
+            },
+            "type": "object"
+        },
         "fivetran:index/getGroupConnectorsConnector:getGroupConnectorsConnector": {
             "properties": {
                 "connectedBy": {
@@ -5453,22 +6080,27 @@
         "fivetran:index/getGroupConnectorsConnectorStatus:getGroupConnectorsConnectorStatus": {
             "properties": {
                 "isHistoricalSync": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.\n"
                 },
                 "setupState": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current setup state of the connector. The available values are: \\n\\n - incomplete - the setup config is incomplete, the setup tests never succeeded \\n\\n - connected - the connector is properly set up \\n\\n - broken - the connector setup config is broken.\n"
                 },
                 "syncState": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current sync state of the connector. The available values are: \\n\\n - scheduled - the sync is waiting to be run \\n\\n - syncing - the sync is currently running \\n\\n - paused - the sync is currently paused \\n\\n - rescheduled - the sync is waiting until more API calls are available in the source service.\n"
                 },
                 "tasks": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/fivetran:index/getGroupConnectorsConnectorStatusTask:getGroupConnectorsConnectorStatusTask"
-                    }
+                    },
+                    "description": "The collection of tasks for the connector\n"
                 },
                 "updateState": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current data update state of the connector. The available values are: \\n\\n - on_schedule - the sync is running smoothly, no delays \\n\\n - delayed - the data is delayed for a longer time than expected for the update.\n"
                 },
                 "warnings": {
                     "type": "array",
@@ -5495,10 +6127,12 @@
         "fivetran:index/getGroupConnectorsConnectorStatusTask:getGroupConnectorsConnectorStatusTask": {
             "properties": {
                 "code": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Response status code\n"
                 },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Response status text\n"
                 }
             },
             "type": "object",
@@ -5515,10 +6149,12 @@
         "fivetran:index/getGroupConnectorsConnectorStatusWarning:getGroupConnectorsConnectorStatusWarning": {
             "properties": {
                 "code": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Response status code\n"
                 },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Response status text\n"
                 }
             },
             "type": "object",
@@ -5626,6 +6262,268 @@
             "language": {
                 "nodejs": {
                     "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getMetadataColumnsMetadataColumn:getMetadataColumnsMetadataColumn": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The unique column identifier\n"
+                },
+                "isForeignKey": {
+                    "type": "boolean",
+                    "description": "The boolean specifying whether the column is a foreign key\n"
+                },
+                "isPrimaryKey": {
+                    "type": "boolean",
+                    "description": "The boolean specifying whether the column is a primary key\n"
+                },
+                "nameInDestination": {
+                    "type": "string",
+                    "description": "The column name in the destination\n"
+                },
+                "nameInSource": {
+                    "type": "string",
+                    "description": "The column name in the source\n"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "The unique identifier of the table associated with the column\n"
+                },
+                "typeInDestination": {
+                    "type": "string",
+                    "description": "The column type in the destination\n"
+                },
+                "typeInSource": {
+                    "type": "string",
+                    "description": "The column type in the source\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "isForeignKey",
+                "isPrimaryKey",
+                "nameInDestination",
+                "nameInSource",
+                "parentId",
+                "typeInDestination",
+                "typeInSource"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getMetadataSchemasMetadataSchema:getMetadataSchemasMetadataSchema": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The unique schema identifier\n"
+                },
+                "nameInDestination": {
+                    "type": "string",
+                    "description": "The schema name in the destination\n"
+                },
+                "nameInSource": {
+                    "type": "string",
+                    "description": "The schema name in the source\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "nameInDestination",
+                "nameInSource"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getMetadataTablesMetadataTable:getMetadataTablesMetadataTable": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The unique table identifier\n"
+                },
+                "nameInDestination": {
+                    "type": "string",
+                    "description": "The table name in the destination\n"
+                },
+                "nameInSource": {
+                    "type": "string",
+                    "description": "The table name in the source\n"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "The unique identifier of the schema associated with the table\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "nameInDestination",
+                "nameInSource",
+                "parentId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getRolesRole:getRolesRole": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The role description\n"
+                },
+                "isCustom": {
+                    "type": "boolean",
+                    "description": "TypeBool\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The role name\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "isCustom",
+                "name",
+                "scopes"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getTeamConnectorMembershipsConnector:getTeamConnectorMembershipsConnector": {
+            "properties": {
+                "connectorId": {
+                    "type": "string",
+                    "description": "The connector unique identifier\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the membership was created\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The team's role that links the team and the connector\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectorId",
+                "createdAt",
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "connectorId"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/getTeamGroupMembershipsGroup:getTeamGroupMembershipsGroup": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the membership was created\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The group unique identifier\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The team's role that links the team and the group\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "groupId",
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "groupId"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/getTeamUserMembershipsUser:getTeamUserMembershipsUser": {
+            "properties": {
+                "role": {
+                    "type": "string",
+                    "description": "The team's role that links the team and the user\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The user unique identifier\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "role",
+                "userId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "userId"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/getTeamsTeam:getTeamsTeam": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the team within your account.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for the team within your account.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the team within your account.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The account role of the team.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "id",
+                "name",
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
                 }
             }
         },
@@ -5945,6 +6843,107 @@
                     "trustFingerprints": {
                         "type": "string",
                         "description": "Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not\ntrusted automatically, it has to be approved with [Certificates Management API Approve a destination\nfingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/connectorCertificates:ConnectorCertificates": {
+            "properties": {
+                "certificates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/ConnectorCertificatesCertificate:ConnectorCertificatesCertificate"
+                    }
+                },
+                "connectorId": {
+                    "type": "string",
+                    "description": "The unique identifier for the target connector within the Fivetran system.\n"
+                }
+            },
+            "required": [
+                "connectorId"
+            ],
+            "inputProperties": {
+                "certificates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/ConnectorCertificatesCertificate:ConnectorCertificatesCertificate"
+                    }
+                },
+                "connectorId": {
+                    "type": "string",
+                    "description": "The unique identifier for the target connector within the Fivetran system.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "connectorId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectorCertificates resources.\n",
+                "properties": {
+                    "certificates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/ConnectorCertificatesCertificate:ConnectorCertificatesCertificate"
+                        }
+                    },
+                    "connectorId": {
+                        "type": "string",
+                        "description": "The unique identifier for the target connector within the Fivetran system.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/connectorFingerprints:ConnectorFingerprints": {
+            "description": "This resource allows you to manage list of approved SSH fingerprints for a particular connector.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst myConnectorApprovedFingerprints = new fivetran.ConnectorFingerprints(\"myConnectorApprovedFingerprints\", {\n    connectorId: fivetran_connector.my_connector.id,\n    fingerprints: [\n        {\n            hash: \"jhgfJfgrI6yy...\",\n            publicKey: \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        },\n        {\n            hash: \"eUtPirI6yytWe...\",\n            publicKey: \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nmy_connector_approved_fingerprints = fivetran.ConnectorFingerprints(\"myConnectorApprovedFingerprints\",\n    connector_id=fivetran_connector[\"my_connector\"][\"id\"],\n    fingerprints=[\n        fivetran.ConnectorFingerprintsFingerprintArgs(\n            hash=\"jhgfJfgrI6yy...\",\n            public_key=\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        ),\n        fivetran.ConnectorFingerprintsFingerprintArgs(\n            hash=\"eUtPirI6yytWe...\",\n            public_key=\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myConnectorApprovedFingerprints = new Fivetran.ConnectorFingerprints(\"myConnectorApprovedFingerprints\", new()\n    {\n        ConnectorId = fivetran_connector.My_connector.Id,\n        Fingerprints = new[]\n        {\n            new Fivetran.Inputs.ConnectorFingerprintsFingerprintArgs\n            {\n                Hash = \"jhgfJfgrI6yy...\",\n                PublicKey = \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n            },\n            new Fivetran.Inputs.ConnectorFingerprintsFingerprintArgs\n            {\n                Hash = \"eUtPirI6yytWe...\",\n                PublicKey = \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewConnectorFingerprints(ctx, \"myConnectorApprovedFingerprints\", \u0026fivetran.ConnectorFingerprintsArgs{\n\t\t\tConnectorId: pulumi.Any(fivetran_connector.My_connector.Id),\n\t\t\tFingerprints: fivetran.ConnectorFingerprintsFingerprintArray{\n\t\t\t\t\u0026fivetran.ConnectorFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"jhgfJfgrI6yy...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.ConnectorFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"eUtPirI6yytWe...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectorFingerprints;\nimport com.pulumi.fivetran.ConnectorFingerprintsArgs;\nimport com.pulumi.fivetran.inputs.ConnectorFingerprintsFingerprintArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myConnectorApprovedFingerprints = new ConnectorFingerprints(\"myConnectorApprovedFingerprints\", ConnectorFingerprintsArgs.builder()        \n            .connectorId(fivetran_connector.my_connector().id())\n            .fingerprints(            \n                ConnectorFingerprintsFingerprintArgs.builder()\n                    .hash(\"jhgfJfgrI6yy...\")\n                    .publicKey(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\")\n                    .build(),\n                ConnectorFingerprintsFingerprintArgs.builder()\n                    .hash(\"eUtPirI6yytWe...\")\n                    .publicKey(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myConnectorApprovedFingerprints:\n    type: fivetran:ConnectorFingerprints\n    properties:\n      connectorId: ${fivetran_connector.my_connector.id}\n      fingerprints:\n        - hash: jhgfJfgrI6yy...\n          publicKey: ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\n        - hash: eUtPirI6yytWe...\n          publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource \"fivetran_connector_fingerprints\" \"my_imported_connector_fingerprints\" { }\n\n```sh\n $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints\n\nRun the `terraform import` command\n```\n\n\n\n```sh\n $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints my_imported_connector_fingerprints {your Fivetran Connector ID}\n```\n\n 5.\n\nUse the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_fingerprints.my_imported_connector_fingerprints' 6. Copy the values and paste them to your `.tf` configuration. ",
+            "properties": {
+                "connectorId": {
+                    "type": "string",
+                    "description": "The unique identifier for the target connector within the Fivetran system.\n"
+                },
+                "fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/ConnectorFingerprintsFingerprint:ConnectorFingerprintsFingerprint"
+                    }
+                }
+            },
+            "required": [
+                "connectorId"
+            ],
+            "inputProperties": {
+                "connectorId": {
+                    "type": "string",
+                    "description": "The unique identifier for the target connector within the Fivetran system.\n",
+                    "willReplaceOnChanges": true
+                },
+                "fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/ConnectorFingerprintsFingerprint:ConnectorFingerprintsFingerprint"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "connectorId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectorFingerprints resources.\n",
+                "properties": {
+                    "connectorId": {
+                        "type": "string",
+                        "description": "The unique identifier for the target connector within the Fivetran system.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "fingerprints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/ConnectorFingerprintsFingerprint:ConnectorFingerprintsFingerprint"
+                        }
                     }
                 },
                 "type": "object"
@@ -6476,7 +7475,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                    "description": "Region of your AWS S3 bucket\n"
                 },
                 "runSetupTests": {
                     "type": "boolean",
@@ -6523,7 +7522,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                    "description": "Region of your AWS S3 bucket\n"
                 },
                 "runSetupTests": {
                     "type": "boolean",
@@ -6570,7 +7569,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                        "description": "Region of your AWS S3 bucket\n"
                     },
                     "runSetupTests": {
                         "type": "boolean",
@@ -6596,6 +7595,191 @@
                     "trustFingerprints": {
                         "type": "boolean",
                         "description": "Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/destinationCertificates:DestinationCertificates": {
+            "properties": {
+                "certificates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/DestinationCertificatesCertificate:DestinationCertificatesCertificate"
+                    }
+                },
+                "destinationId": {
+                    "type": "string",
+                    "description": "The unique identifier for the target destination within the Fivetran system.\n"
+                }
+            },
+            "required": [
+                "destinationId"
+            ],
+            "inputProperties": {
+                "certificates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/DestinationCertificatesCertificate:DestinationCertificatesCertificate"
+                    }
+                },
+                "destinationId": {
+                    "type": "string",
+                    "description": "The unique identifier for the target destination within the Fivetran system.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "destinationId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DestinationCertificates resources.\n",
+                "properties": {
+                    "certificates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/DestinationCertificatesCertificate:DestinationCertificatesCertificate"
+                        }
+                    },
+                    "destinationId": {
+                        "type": "string",
+                        "description": "The unique identifier for the target destination within the Fivetran system.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/destinationFingerprints:DestinationFingerprints": {
+            "description": "This resource allows you to manage list of approved SSH fingerprints for a particular destination.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst myDestinationApprovedFingerprints = new fivetran.DestinationFingerprints(\"myDestinationApprovedFingerprints\", {\n    destinationId: fivetran_destination.my_destination.id,\n    fingerprints: [\n        {\n            hash: \"jhgfJfgrI6yy...\",\n            publicKey: \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        },\n        {\n            hash: \"eUtPirI6yytWe...\",\n            publicKey: \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nmy_destination_approved_fingerprints = fivetran.DestinationFingerprints(\"myDestinationApprovedFingerprints\",\n    destination_id=fivetran_destination[\"my_destination\"][\"id\"],\n    fingerprints=[\n        fivetran.DestinationFingerprintsFingerprintArgs(\n            hash=\"jhgfJfgrI6yy...\",\n            public_key=\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        ),\n        fivetran.DestinationFingerprintsFingerprintArgs(\n            hash=\"eUtPirI6yytWe...\",\n            public_key=\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myDestinationApprovedFingerprints = new Fivetran.DestinationFingerprints(\"myDestinationApprovedFingerprints\", new()\n    {\n        DestinationId = fivetran_destination.My_destination.Id,\n        Fingerprints = new[]\n        {\n            new Fivetran.Inputs.DestinationFingerprintsFingerprintArgs\n            {\n                Hash = \"jhgfJfgrI6yy...\",\n                PublicKey = \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n            },\n            new Fivetran.Inputs.DestinationFingerprintsFingerprintArgs\n            {\n                Hash = \"eUtPirI6yytWe...\",\n                PublicKey = \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewDestinationFingerprints(ctx, \"myDestinationApprovedFingerprints\", \u0026fivetran.DestinationFingerprintsArgs{\n\t\t\tDestinationId: pulumi.Any(fivetran_destination.My_destination.Id),\n\t\t\tFingerprints: fivetran.DestinationFingerprintsFingerprintArray{\n\t\t\t\t\u0026fivetran.DestinationFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"jhgfJfgrI6yy...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.DestinationFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"eUtPirI6yytWe...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.DestinationFingerprints;\nimport com.pulumi.fivetran.DestinationFingerprintsArgs;\nimport com.pulumi.fivetran.inputs.DestinationFingerprintsFingerprintArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myDestinationApprovedFingerprints = new DestinationFingerprints(\"myDestinationApprovedFingerprints\", DestinationFingerprintsArgs.builder()        \n            .destinationId(fivetran_destination.my_destination().id())\n            .fingerprints(            \n                DestinationFingerprintsFingerprintArgs.builder()\n                    .hash(\"jhgfJfgrI6yy...\")\n                    .publicKey(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\")\n                    .build(),\n                DestinationFingerprintsFingerprintArgs.builder()\n                    .hash(\"eUtPirI6yytWe...\")\n                    .publicKey(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myDestinationApprovedFingerprints:\n    type: fivetran:DestinationFingerprints\n    properties:\n      destinationId: ${fivetran_destination.my_destination.id}\n      fingerprints:\n        - hash: jhgfJfgrI6yy...\n          publicKey: ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\n        - hash: eUtPirI6yytWe...\n          publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. 2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource \"fivetran_destination_fingerprints\" \"my_imported_destination_fingerprints\" { }\n\n```sh\n $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints\n\nRun the `terraform import` command\n```\n\n\n\n```sh\n $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}\n```\n\n 5.\n\nUse the `terraform state show` command to get the values from the stateterraform state show 'fivetran_destination_fingerprints.my_imported_destination_fingerprints' 6. Copy the values and paste them to your `.tf` configuration. ",
+            "properties": {
+                "destinationId": {
+                    "type": "string",
+                    "description": "The unique identifier for the target destination within the Fivetran system.\n"
+                },
+                "fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/DestinationFingerprintsFingerprint:DestinationFingerprintsFingerprint"
+                    }
+                }
+            },
+            "required": [
+                "destinationId"
+            ],
+            "inputProperties": {
+                "destinationId": {
+                    "type": "string",
+                    "description": "The unique identifier for the target destination within the Fivetran system.\n",
+                    "willReplaceOnChanges": true
+                },
+                "fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/DestinationFingerprintsFingerprint:DestinationFingerprintsFingerprint"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "destinationId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DestinationFingerprints resources.\n",
+                "properties": {
+                    "destinationId": {
+                        "type": "string",
+                        "description": "The unique identifier for the target destination within the Fivetran system.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "fingerprints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/DestinationFingerprintsFingerprint:DestinationFingerprintsFingerprint"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/externalLogging:ExternalLogging": {
+            "description": "\n\n\n## Import\n\n1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource \"fivetran_external_logging\" \"my_imported_external_logging\" { }\n\n```sh\n $ pulumi import fivetran:index/externalLogging:ExternalLogging\n\nRun the `terraform import` command with the following parameters\n```\n\n\n\n```sh\n $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}\n```\n\n 4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_external_logging.my_imported_external_logging' 5. Copy the values and paste them to your `.tf` configuration. -\u003e The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section. ",
+            "properties": {
+                "config": {
+                    "$ref": "#/types/fivetran:index/ExternalLoggingConfig:ExternalLoggingConfig"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "The boolean value specifying whether the log service is enabled.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the log service within the Fivetran system.\n"
+                },
+                "runSetupTests": {
+                    "type": "boolean",
+                    "description": "Specifies whether the setup tests should be run automatically. The default value is TRUE.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.\n"
+                }
+            },
+            "required": [
+                "config",
+                "groupId",
+                "service"
+            ],
+            "inputProperties": {
+                "config": {
+                    "$ref": "#/types/fivetran:index/ExternalLoggingConfig:ExternalLoggingConfig"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "The boolean value specifying whether the log service is enabled.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the log service within the Fivetran system.\n",
+                    "willReplaceOnChanges": true
+                },
+                "runSetupTests": {
+                    "type": "boolean",
+                    "description": "Specifies whether the setup tests should be run automatically. The default value is TRUE.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "config",
+                "groupId",
+                "service"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ExternalLogging resources.\n",
+                "properties": {
+                    "config": {
+                        "$ref": "#/types/fivetran:index/ExternalLoggingConfig:ExternalLoggingConfig"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "The boolean value specifying whether the log service is enabled.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The unique identifier for the log service within the Fivetran system.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "runSetupTests": {
+                        "type": "boolean",
+                        "description": "Specifies whether the setup tests should be run automatically. The default value is TRUE.\n"
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -6695,6 +7879,209 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/GroupUsersUser:GroupUsersUser"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/team:Team": {
+            "description": "This resource allows you to create, update, and delete teams.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testTeam = new fivetran.Team(\"testTeam\", {\n    description: \"test_description\",\n    role: \"Account Reviewer\",\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_team = fivetran.Team(\"testTeam\",\n    description=\"test_description\",\n    role=\"Account Reviewer\",\n    opts=pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testTeam = new Fivetran.Team(\"testTeam\", new()\n    {\n        Description = \"test_description\",\n        Role = \"Account Reviewer\",\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewTeam(ctx, \"testTeam\", \u0026fivetran.TeamArgs{\n\t\t\tDescription: pulumi.String(\"test_description\"),\n\t\t\tRole:        pulumi.String(\"Account Reviewer\"),\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.Team;\nimport com.pulumi.fivetran.TeamArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeam = new Team(\"testTeam\", TeamArgs.builder()        \n            .description(\"test_description\")\n            .role(\"Account Reviewer\")\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeam:\n    type: fivetran:Team\n    properties:\n      description: test_description\n      role: Account Reviewer\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n1. To import an existing `fivetran_team` resource into your Terraform state, you need to get `team_id`.\n\nYou can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource \"fivetran_team\" \"my_imported_fivetran_team\" { }\n\n```sh\n $ pulumi import fivetran:index/team:Team\n\nRun the `terraform import` command\n```\n\n\n\n```sh\n $ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}\n```\n\n 4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team.my_imported_fivetran_team' 5. Copy the values and paste them to your `.tf` configuration. ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the team within your account.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the team within your account.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The account role of the team.\n"
+                }
+            },
+            "required": [
+                "name",
+                "role"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the team within your account.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the team within your account.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The account role of the team.\n"
+                }
+            },
+            "requiredInputs": [
+                "role"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Team resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the team within your account.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the team within your account.\n"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The account role of the team.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/teamConnectorMembership:TeamConnectorMembership": {
+            "description": "This resource allows you to create, update, and delete connector membership for teams\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testTeamConnectorMembership = new fivetran.TeamConnectorMembership(\"testTeamConnectorMembership\", {\n    teamId: \"test_team\",\n    connectors: [\n        {\n            connectorId: \"test_connector\",\n            role: \"Connector Administrator\",\n            createdAt: \"2020-05-25T15:26:47.306509Z\",\n        },\n        {\n            connectorId: \"test_connector\",\n            role: \"Connector Administrator\",\n            createdAt: \"2020-05-25T15:26:47.306509Z\",\n        },\n    ],\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_team_connector_membership = fivetran.TeamConnectorMembership(\"testTeamConnectorMembership\",\n    team_id=\"test_team\",\n    connectors=[\n        fivetran.TeamConnectorMembershipConnectorArgs(\n            connector_id=\"test_connector\",\n            role=\"Connector Administrator\",\n            created_at=\"2020-05-25T15:26:47.306509Z\",\n        ),\n        fivetran.TeamConnectorMembershipConnectorArgs(\n            connector_id=\"test_connector\",\n            role=\"Connector Administrator\",\n            created_at=\"2020-05-25T15:26:47.306509Z\",\n        ),\n    ],\n    opts=pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testTeamConnectorMembership = new Fivetran.TeamConnectorMembership(\"testTeamConnectorMembership\", new()\n    {\n        TeamId = \"test_team\",\n        Connectors = new[]\n        {\n            new Fivetran.Inputs.TeamConnectorMembershipConnectorArgs\n            {\n                ConnectorId = \"test_connector\",\n                Role = \"Connector Administrator\",\n                CreatedAt = \"2020-05-25T15:26:47.306509Z\",\n            },\n            new Fivetran.Inputs.TeamConnectorMembershipConnectorArgs\n            {\n                ConnectorId = \"test_connector\",\n                Role = \"Connector Administrator\",\n                CreatedAt = \"2020-05-25T15:26:47.306509Z\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewTeamConnectorMembership(ctx, \"testTeamConnectorMembership\", \u0026fivetran.TeamConnectorMembershipArgs{\n\t\t\tTeamId: pulumi.String(\"test_team\"),\n\t\t\tConnectors: fivetran.TeamConnectorMembershipConnectorArray{\n\t\t\t\t\u0026fivetran.TeamConnectorMembershipConnectorArgs{\n\t\t\t\t\tConnectorId: pulumi.String(\"test_connector\"),\n\t\t\t\t\tRole:        pulumi.String(\"Connector Administrator\"),\n\t\t\t\t\tCreatedAt:   pulumi.String(\"2020-05-25T15:26:47.306509Z\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.TeamConnectorMembershipConnectorArgs{\n\t\t\t\t\tConnectorId: pulumi.String(\"test_connector\"),\n\t\t\t\t\tRole:        pulumi.String(\"Connector Administrator\"),\n\t\t\t\t\tCreatedAt:   pulumi.String(\"2020-05-25T15:26:47.306509Z\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.TeamConnectorMembership;\nimport com.pulumi.fivetran.TeamConnectorMembershipArgs;\nimport com.pulumi.fivetran.inputs.TeamConnectorMembershipConnectorArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeamConnectorMembership = new TeamConnectorMembership(\"testTeamConnectorMembership\", TeamConnectorMembershipArgs.builder()        \n            .teamId(\"test_team\")\n            .connectors(            \n                TeamConnectorMembershipConnectorArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .role(\"Connector Administrator\")\n                    .createdAt(\"2020-05-25T15:26:47.306509Z\")\n                    .build(),\n                TeamConnectorMembershipConnectorArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .role(\"Connector Administrator\")\n                    .createdAt(\"2020-05-25T15:26:47.306509Z\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeamConnectorMembership:\n    type: fivetran:TeamConnectorMembership\n    properties:\n      teamId: test_team\n      connectors:\n        - connectorId: test_connector\n          role: Connector Administrator\n          createdAt: 2020-05-25T15:26:47.306509Z\n        - connectorId: test_connector\n          role: Connector Administrator\n          createdAt: 2020-05-25T15:26:47.306509Z\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n1. To import an existing `fivetran_team_connector_membership` resource into your Terraform state, you need to get `team_id` and `connector_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource \"fivetran_team_connector_membership\" \"my_imported_fivetran_team_connector_membership\" { }\n\n```sh\n $ pulumi import fivetran:index/teamConnectorMembership:TeamConnectorMembership\n\nRun the `terraform import` command\n```\n\n\n\n```sh\n $ pulumi import fivetran:index/teamConnectorMembership:TeamConnectorMembership my_imported_fivetran_team_connector_membership {team_id}\n```\n\n 4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team_connector_membership.my_imported_fivetran_team_connector_membership' 5. Copy the values and paste them to your `.tf` configuration. ",
+            "properties": {
+                "connectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/TeamConnectorMembershipConnector:TeamConnectorMembershipConnector"
+                    }
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "The unique identifier for the team within your account.\n"
+                }
+            },
+            "required": [
+                "teamId"
+            ],
+            "inputProperties": {
+                "connectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/TeamConnectorMembershipConnector:TeamConnectorMembershipConnector"
+                    }
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "The unique identifier for the team within your account.\n"
+                }
+            },
+            "requiredInputs": [
+                "teamId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamConnectorMembership resources.\n",
+                "properties": {
+                    "connectors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/TeamConnectorMembershipConnector:TeamConnectorMembershipConnector"
+                        }
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/teamGroupMembership:TeamGroupMembership": {
+            "description": "This resource allows you to create, update, and delete group membership for teams\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.TeamGroupMembership;\nimport com.pulumi.fivetran.TeamGroupMembershipArgs;\nimport com.pulumi.fivetran.inputs.TeamGroupMembershipGroupArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeamGroupMembership = new TeamGroupMembership(\"testTeamGroupMembership\", TeamGroupMembershipArgs.builder()        \n            .teamId(\"test_team\")\n            .groups(            \n                TeamGroupMembershipGroupArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .groupId(\"test_group\")\n                    .role(\"Destination Administrator\")\n                    .build(),\n                TeamGroupMembershipGroupArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .groupId(\"test_group\")\n                    .role(\"Destination Administrator\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeamGroupMembership:\n    type: fivetran:TeamGroupMembership\n    properties:\n      teamId: test_team\n      groups:\n        - connectorId: test_connector\n          groupId: test_group\n          role: Destination Administrator\n        - connectorId: test_connector\n          groupId: test_group\n          role: Destination Administrator\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource \"fivetran_team_group_membership\" \"my_imported_fivetran_team_group_membership\" { }\n\n```sh\n $ pulumi import fivetran:index/teamGroupMembership:TeamGroupMembership\n\nRun the `terraform import` command\n```\n\n\n\n```sh\n $ pulumi import fivetran:index/teamGroupMembership:TeamGroupMembership my_imported_fivetran_team_group_membership {team_id}\n```\n\n 4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team_group_membership.my_imported_fivetran_team_group_membership' 5. Copy the values and paste them to your `.tf` configuration. ",
+            "properties": {
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/TeamGroupMembershipGroup:TeamGroupMembershipGroup"
+                    }
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "The unique identifier for the team within your account.\n"
+                }
+            },
+            "required": [
+                "teamId"
+            ],
+            "inputProperties": {
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/TeamGroupMembershipGroup:TeamGroupMembershipGroup"
+                    }
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "The unique identifier for the team within your account.\n"
+                }
+            },
+            "requiredInputs": [
+                "teamId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamGroupMembership resources.\n",
+                "properties": {
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/TeamGroupMembershipGroup:TeamGroupMembershipGroup"
+                        }
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/teamUserMembership:TeamUserMembership": {
+            "description": "This resource allows you to create, update, and delete user membership for teams\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testTeamUserMembership = new fivetran.TeamUserMembership(\"testTeamUserMembership\", {\n    teamId: \"test_team\",\n    users: [\n        {\n            userId: \"test_user\",\n            role: \"Connector Administrator\",\n        },\n        {\n            userId: \"test_user\",\n            role: \"Connector Administrator\",\n        },\n    ],\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_team_user_membership = fivetran.TeamUserMembership(\"testTeamUserMembership\",\n    team_id=\"test_team\",\n    users=[\n        fivetran.TeamUserMembershipUserArgs(\n            user_id=\"test_user\",\n            role=\"Connector Administrator\",\n        ),\n        fivetran.TeamUserMembershipUserArgs(\n            user_id=\"test_user\",\n            role=\"Connector Administrator\",\n        ),\n    ],\n    opts=pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testTeamUserMembership = new Fivetran.TeamUserMembership(\"testTeamUserMembership\", new()\n    {\n        TeamId = \"test_team\",\n        Users = new[]\n        {\n            new Fivetran.Inputs.TeamUserMembershipUserArgs\n            {\n                UserId = \"test_user\",\n                Role = \"Connector Administrator\",\n            },\n            new Fivetran.Inputs.TeamUserMembershipUserArgs\n            {\n                UserId = \"test_user\",\n                Role = \"Connector Administrator\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewTeamUserMembership(ctx, \"testTeamUserMembership\", \u0026fivetran.TeamUserMembershipArgs{\n\t\t\tTeamId: pulumi.String(\"test_team\"),\n\t\t\tUsers: fivetran.TeamUserMembershipUserArray{\n\t\t\t\t\u0026fivetran.TeamUserMembershipUserArgs{\n\t\t\t\t\tUserId: pulumi.String(\"test_user\"),\n\t\t\t\t\tRole:   pulumi.String(\"Connector Administrator\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.TeamUserMembershipUserArgs{\n\t\t\t\t\tUserId: pulumi.String(\"test_user\"),\n\t\t\t\t\tRole:   pulumi.String(\"Connector Administrator\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.TeamUserMembership;\nimport com.pulumi.fivetran.TeamUserMembershipArgs;\nimport com.pulumi.fivetran.inputs.TeamUserMembershipUserArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeamUserMembership = new TeamUserMembership(\"testTeamUserMembership\", TeamUserMembershipArgs.builder()        \n            .teamId(\"test_team\")\n            .users(            \n                TeamUserMembershipUserArgs.builder()\n                    .userId(\"test_user\")\n                    .role(\"Connector Administrator\")\n                    .build(),\n                TeamUserMembershipUserArgs.builder()\n                    .userId(\"test_user\")\n                    .role(\"Connector Administrator\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeamUserMembership:\n    type: fivetran:TeamUserMembership\n    properties:\n      teamId: test_team\n      users:\n        - userId: test_user\n          role: Connector Administrator\n        - userId: test_user\n          role: Connector Administrator\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource \"fivetran_team_user_membership\" \"my_imported_fivetran_team_user_membership\" { }\n\n```sh\n $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership\n\nRun the `terraform import` command\n```\n\n\n\n```sh\n $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership my_imported_fivetran_team_user_membership {team_id}\n```\n\n 4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership' 5. Copy the values and paste them to your `.tf` configuration. ",
+            "properties": {
+                "teamId": {
+                    "type": "string",
+                    "description": "The unique identifier for the team within your account.\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/TeamUserMembershipUser:TeamUserMembershipUser"
+                    }
+                }
+            },
+            "required": [
+                "teamId"
+            ],
+            "inputProperties": {
+                "teamId": {
+                    "type": "string",
+                    "description": "The unique identifier for the team within your account.\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/TeamUserMembershipUser:TeamUserMembershipUser"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "teamId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamUserMembership resources.\n",
+                "properties": {
+                    "teamId": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/TeamUserMembershipUser:TeamUserMembershipUser"
                         }
                     }
                 },
@@ -7094,6 +8481,97 @@
                 ]
             }
         },
+        "fivetran:index/getConnectorCertificates:getConnectorCertificates": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectorCertificates.\n",
+                "properties": {
+                    "certificates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getConnectorCertificatesCertificate:getConnectorCertificatesCertificate"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the resource. Equal to target connector id.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectorCertificates.\n",
+                "properties": {
+                    "certificates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getConnectorCertificatesCertificate:getConnectorCertificatesCertificate"
+                        }
+                    },
+                    "connectorId": {
+                        "type": "string",
+                        "description": "The unique identifier for the target connector within the Fivetran system.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the resource. Equal to target connector id.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectorId",
+                    "id"
+                ]
+            }
+        },
+        "fivetran:index/getConnectorFingerprints:getConnectorFingerprints": {
+            "description": "This data source returns a list of SSH fingerprints approved for specified connector.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst connectorFingerprints = fivetran.getConnectorFingerprints({\n    id: \"connector_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nconnector_fingerprints = fivetran.get_connector_fingerprints(id=\"connector_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var connectorFingerprints = Fivetran.GetConnectorFingerprints.Invoke(new()\n    {\n        Id = \"connector_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupConnectorFingerprints(ctx, \u0026fivetran.LookupConnectorFingerprintsArgs{\n\t\t\tId: \"connector_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetConnectorFingerprintsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var connectorFingerprints = FivetranFunctions.getConnectorFingerprints(GetConnectorFingerprintsArgs.builder()\n            .id(\"connector_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  connectorFingerprints:\n    fn::invoke:\n      Function: fivetran:getConnectorFingerprints\n      Arguments:\n        id: connector_id\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectorFingerprints.\n",
+                "properties": {
+                    "fingerprints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getConnectorFingerprintsFingerprint:getConnectorFingerprintsFingerprint"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the resource. Equal to target connector id.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectorFingerprints.\n",
+                "properties": {
+                    "connectorId": {
+                        "type": "string",
+                        "description": "The unique identifier for the target connector within the Fivetran system.\n"
+                    },
+                    "fingerprints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getConnectorFingerprintsFingerprint:getConnectorFingerprintsFingerprint"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the resource. Equal to target connector id.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectorId",
+                    "id"
+                ]
+            }
+        },
         "fivetran:index/getConnectorsMetadata:getConnectorsMetadata": {
             "description": "This data source returns all available source types within your Fivetran account. This data source makes it easier to display Fivetran connectors within your application because it provides metadata including the proper source name (‘Facebook Ad Account’ instead of facebook_ad_account), the source icon, and links to Fivetran resources. As we update source names and icons, that metadata will automatically update within this endpoint.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst sources = fivetran.getConnectorsMetadata({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nsources = fivetran.get_connectors_metadata()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sources = Fivetran.GetConnectorsMetadata.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetConnectorsMetadata(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetConnectorsMetadataArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var sources = FivetranFunctions.getConnectorsMetadata();\n\n    }\n}\n```\n```yaml\nvariables:\n  sources:\n    fn::invoke:\n      Function: fivetran:getConnectorsMetadata\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -7185,7 +8663,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The unique identifier for the dbt Project within the Fivetran system.\n"
+                        "description": "The unique identifier for the dbt Model within the Fivetran system.\n"
                     },
                     "models": {
                         "type": "array",
@@ -7477,6 +8955,162 @@
                 ]
             }
         },
+        "fivetran:index/getDestinationCertificates:getDestinationCertificates": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getDestinationCertificates.\n",
+                "properties": {
+                    "certificates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getDestinationCertificatesCertificate:getDestinationCertificatesCertificate"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the resource. Equal to target destination id.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDestinationCertificates.\n",
+                "properties": {
+                    "certificates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getDestinationCertificatesCertificate:getDestinationCertificatesCertificate"
+                        }
+                    },
+                    "destinationId": {
+                        "type": "string",
+                        "description": "The unique identifier for the target destination within the Fivetran system.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the resource. Equal to target destination id.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "destinationId",
+                    "id"
+                ]
+            }
+        },
+        "fivetran:index/getDestinationFingerprints:getDestinationFingerprints": {
+            "description": "This data source returns a list of SSH fingerprints approved for specified destination.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst destinationFingerprints = fivetran.getDestinationFingerprints({\n    id: \"destination_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ndestination_fingerprints = fivetran.get_destination_fingerprints(id=\"destination_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var destinationFingerprints = Fivetran.GetDestinationFingerprints.Invoke(new()\n    {\n        Id = \"destination_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupDestinationFingerprints(ctx, \u0026fivetran.LookupDestinationFingerprintsArgs{\n\t\t\tId: \"destination_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDestinationFingerprintsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var destinationFingerprints = FivetranFunctions.getDestinationFingerprints(GetDestinationFingerprintsArgs.builder()\n            .id(\"destination_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  destinationFingerprints:\n    fn::invoke:\n      Function: fivetran:getDestinationFingerprints\n      Arguments:\n        id: destination_id\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDestinationFingerprints.\n",
+                "properties": {
+                    "fingerprints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getDestinationFingerprintsFingerprint:getDestinationFingerprintsFingerprint"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the resource. Equal to target destination id.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDestinationFingerprints.\n",
+                "properties": {
+                    "destinationId": {
+                        "type": "string",
+                        "description": "The unique identifier for the target destination within the Fivetran system.\n"
+                    },
+                    "fingerprints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getDestinationFingerprintsFingerprint:getDestinationFingerprintsFingerprint"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the resource. Equal to target destination id.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "destinationId",
+                    "id"
+                ]
+            }
+        },
+        "fivetran:index/getExternalLogging:getExternalLogging": {
+            "description": "This data source returns a logging service object.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst extlog = fivetran.getExternalLogging({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nextlog = fivetran.get_external_logging(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var extlog = Fivetran.GetExternalLogging.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupExternalLogging(ctx, \u0026fivetran.LookupExternalLoggingArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetExternalLoggingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var extlog = FivetranFunctions.getExternalLogging(GetExternalLoggingArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  extlog:\n    fn::invoke:\n      Function: fivetran:getExternalLogging\n      Arguments:\n        id: anonymous_mystery\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getExternalLogging.\n",
+                "properties": {
+                    "configs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getExternalLoggingConfig:getExternalLoggingConfig"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the log service within the Fivetran system.\n"
+                    },
+                    "runSetupTests": {
+                        "type": "boolean",
+                        "description": "Specifies whether the setup tests should be run automatically. The default value is TRUE.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getExternalLogging.\n",
+                "properties": {
+                    "configs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getExternalLoggingConfig:getExternalLoggingConfig"
+                        }
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "The boolean value specifying whether the log service is enabled.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The unique identifier for the log service within the Fivetran system.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the log service within the Fivetran system.\n"
+                    },
+                    "runSetupTests": {
+                        "type": "boolean",
+                        "description": "Specifies whether the setup tests should be run automatically. The default value is TRUE.\n"
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "configs",
+                    "enabled",
+                    "groupId",
+                    "id",
+                    "service"
+                ]
+            }
+        },
         "fivetran:index/getGroup:getGroup": {
             "description": "This data source returns a group object.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myGroup = fivetran.getGroup({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_group = fivetran.get_group(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroup = Fivetran.GetGroup.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupGroup(ctx, \u0026fivetran.LookupGroupArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myGroup = FivetranFunctions.getGroup(GetGroupArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myGroup:\n    fn::invoke:\n      Function: fivetran:getGroup\n      Arguments:\n        id: anonymous_mystery\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -7529,11 +9163,11 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The ID of this resource.\n"
+                        "description": "The unique identifier for the Connector within the Fivetran system.\n"
                     },
                     "schema": {
                         "type": "string",
-                        "description": "Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.\n"
+                        "description": "The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination\n"
                     }
                 },
                 "type": "object",
@@ -7573,7 +9207,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.\n"
+                        "description": "The unique identifier for the user within the account.\n"
                     },
                     "users": {
                         "type": "array",
@@ -7639,6 +9273,384 @@
                 "type": "object",
                 "required": [
                     "groups",
+                    "id"
+                ]
+            }
+        },
+        "fivetran:index/getMetadataColumns:getMetadataColumns": {
+            "description": "This data source returns table-level metadata for an existing connector within your Fivetran account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst metadataColumns = fivetran.getMetadataColumns({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmetadata_columns = fivetran.get_metadata_columns()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var metadataColumns = Fivetran.GetMetadataColumns.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetMetadataColumns(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetMetadataColumnsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var metadataColumns = FivetranFunctions.getMetadataColumns();\n\n    }\n}\n```\n```yaml\nvariables:\n  metadataColumns:\n    fn::invoke:\n      Function: fivetran:getMetadataColumns\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMetadataColumns.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique column identifier\n"
+                    },
+                    "metadataColumns": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getMetadataColumnsMetadataColumn:getMetadataColumnsMetadataColumn"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMetadataColumns.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the connector within the Fivetran system. Data-source will represent a set of columns of connector.\n"
+                    },
+                    "metadataColumns": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getMetadataColumnsMetadataColumn:getMetadataColumnsMetadataColumn"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "metadataColumns"
+                ]
+            }
+        },
+        "fivetran:index/getMetadataSchemas:getMetadataSchemas": {
+            "description": "Returns schema-level metadata for an existing connector within your Fivetran account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst metadataSchemas = fivetran.getMetadataSchemas({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmetadata_schemas = fivetran.get_metadata_schemas()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var metadataSchemas = Fivetran.GetMetadataSchemas.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetMetadataSchemas(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetMetadataSchemasArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var metadataSchemas = FivetranFunctions.getMetadataSchemas();\n\n    }\n}\n```\n```yaml\nvariables:\n  metadataSchemas:\n    fn::invoke:\n      Function: fivetran:getMetadataSchemas\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMetadataSchemas.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique schema identifier\n"
+                    },
+                    "metadataSchemas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getMetadataSchemasMetadataSchema:getMetadataSchemasMetadataSchema"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMetadataSchemas.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the connector within the Fivetran system. Data-source will represent a set of schemas of connector.\n"
+                    },
+                    "metadataSchemas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getMetadataSchemasMetadataSchema:getMetadataSchemasMetadataSchema"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "metadataSchemas"
+                ]
+            }
+        },
+        "fivetran:index/getMetadataTables:getMetadataTables": {
+            "description": "This data source returns table-level metadata for an existing connector within your Fivetran account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst metadataTables = fivetran.getMetadataTables({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmetadata_tables = fivetran.get_metadata_tables()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var metadataTables = Fivetran.GetMetadataTables.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetMetadataTables(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetMetadataTablesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var metadataTables = FivetranFunctions.getMetadataTables();\n\n    }\n}\n```\n```yaml\nvariables:\n  metadataTables:\n    fn::invoke:\n      Function: fivetran:getMetadataTables\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMetadataTables.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique table identifier\n"
+                    },
+                    "metadataTables": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getMetadataTablesMetadataTable:getMetadataTablesMetadataTable"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMetadataTables.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the connector within the Fivetran system. Data-source will represent a set of tables of connector.\n"
+                    },
+                    "metadataTables": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getMetadataTablesMetadataTable:getMetadataTablesMetadataTable"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "metadataTables"
+                ]
+            }
+        },
+        "fivetran:index/getRoles:getRoles": {
+            "description": "This data source returns a list of all predefined and custom roles within your Fivetran account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst roles = fivetran.getRoles({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nroles = fivetran.get_roles()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var roles = Fivetran.GetRoles.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetRoles(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetRolesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var roles = FivetranFunctions.getRoles();\n\n    }\n}\n```\n```yaml\nvariables:\n  roles:\n    fn::invoke:\n      Function: fivetran:getRoles\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRoles.\n",
+                "properties": {
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getRolesRole:getRolesRole"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRoles.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getRolesRole:getRolesRole"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "roles",
+                    "id"
+                ]
+            }
+        },
+        "fivetran:index/getTeam:getTeam": {
+            "description": "This data source returns a team object.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst team = fivetran.getTeam({\n    id: \"team_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam = fivetran.get_team(id=\"team_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var team = Fivetran.GetTeam.Invoke(new()\n    {\n        Id = \"team_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupTeam(ctx, \u0026fivetran.LookupTeamArgs{\n\t\t\tId: \"team_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var team = FivetranFunctions.getTeam(GetTeamArgs.builder()\n            .id(\"team_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  team:\n    fn::invoke:\n      Function: fivetran:getTeam\n      Arguments:\n        id: team_id\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTeam.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTeam.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the team within your account.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the team within your account.\n"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The account role of the team.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "id",
+                    "name",
+                    "role"
+                ]
+            }
+        },
+        "fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships": {
+            "description": "This data source returns a connector membership within team object.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTeamConnectorMemberships.\n",
+                "properties": {
+                    "connectors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getTeamConnectorMembershipsConnector:getTeamConnectorMembershipsConnector"
+                        }
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "teamId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTeamConnectorMemberships.\n",
+                "properties": {
+                    "connectors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getTeamConnectorMembershipsConnector:getTeamConnectorMembershipsConnector"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for resource.\n"
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "teamId"
+                ]
+            }
+        },
+        "fivetran:index/getTeamGroupMemberships:getTeamGroupMemberships": {
+            "description": "This data source returns a list of group memberships within team object.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teamGroupMemberships = fivetran.getTeamGroupMemberships({\n    teamId: \"team_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam_group_memberships = fivetran.get_team_group_memberships(team_id=\"team_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teamGroupMemberships = Fivetran.GetTeamGroupMemberships.Invoke(new()\n    {\n        TeamId = \"team_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetTeamGroupMemberships(ctx, \u0026fivetran.GetTeamGroupMembershipsArgs{\n\t\t\tTeamId: \"team_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamGroupMembershipsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teamGroupMemberships = FivetranFunctions.getTeamGroupMemberships(GetTeamGroupMembershipsArgs.builder()\n            .teamId(\"team_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  teamGroupMemberships:\n    fn::invoke:\n      Function: fivetran:getTeamGroupMemberships\n      Arguments:\n        teamId: team_id\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTeamGroupMemberships.\n",
+                "properties": {
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getTeamGroupMembershipsGroup:getTeamGroupMembershipsGroup"
+                        }
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "teamId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTeamGroupMemberships.\n",
+                "properties": {
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getTeamGroupMembershipsGroup:getTeamGroupMembershipsGroup"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for resource.\n"
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "teamId"
+                ]
+            }
+        },
+        "fivetran:index/getTeamUserMemberships:getTeamUserMemberships": {
+            "description": "This data source returns a list of user memberships within team object.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teamUserMemberships = fivetran.getTeamUserMemberships({\n    teamId: \"team_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam_user_memberships = fivetran.get_team_user_memberships(team_id=\"team_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teamUserMemberships = Fivetran.GetTeamUserMemberships.Invoke(new()\n    {\n        TeamId = \"team_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetTeamUserMemberships(ctx, \u0026fivetran.GetTeamUserMembershipsArgs{\n\t\t\tTeamId: \"team_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamUserMembershipsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teamUserMemberships = FivetranFunctions.getTeamUserMemberships(GetTeamUserMembershipsArgs.builder()\n            .teamId(\"team_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  teamUserMemberships:\n    fn::invoke:\n      Function: fivetran:getTeamUserMemberships\n      Arguments:\n        teamId: team_id\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTeamUserMemberships.\n",
+                "properties": {
+                    "teamId": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getTeamUserMembershipsUser:getTeamUserMembershipsUser"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "teamId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTeamUserMemberships.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for resource.\n"
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "The unique identifier for the team within your account.\n"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getTeamUserMembershipsUser:getTeamUserMembershipsUser"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "teamId"
+                ]
+            }
+        },
+        "fivetran:index/getTeams:getTeams": {
+            "description": "This data source returns a list of all teams within your Fivetran account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teams = fivetran.getTeams({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteams = fivetran.get_teams()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teams = Fivetran.GetTeams.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetTeams(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teams = FivetranFunctions.getTeams();\n\n    }\n}\n```\n```yaml\nvariables:\n  teams:\n    fn::invoke:\n      Function: fivetran:getTeams\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTeams.\n",
+                "properties": {
+                    "teams": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getTeamsTeam:getTeamsTeam"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTeams.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "teams": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getTeamsTeam:getTeamsTeam"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "teams",
                     "id"
                 ]
             }

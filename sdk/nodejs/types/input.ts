@@ -19,6 +19,45 @@ export interface ConnectorAuthClientAccess {
     userAgent?: pulumi.Input<string>;
 }
 
+export interface ConnectorCertificatesCertificate {
+    /**
+     * Base64 encoded certificate.
+     */
+    encodedCert: pulumi.Input<string>;
+    /**
+     * Hash of the fingerprint.
+     */
+    hash: pulumi.Input<string>;
+    /**
+     * Certificate name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Certificate public key.
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Certificate sha1.
+     */
+    sha1?: pulumi.Input<string>;
+    /**
+     * Certificate sha256.
+     */
+    sha256?: pulumi.Input<string>;
+    /**
+     * Certificate type.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User name who validated the certificate.
+     */
+    validatedBy?: pulumi.Input<string>;
+    /**
+     * The date when the certificate was approved.
+     */
+    validatedDate?: pulumi.Input<string>;
+}
+
 export interface ConnectorConfig {
     absConnectionMethod?: pulumi.Input<string>;
     absConnectionString?: pulumi.Input<string>;
@@ -113,6 +152,7 @@ export interface ConnectorConfig {
     businessUnitId?: pulumi.Input<string>;
     certificate?: pulumi.Input<string>;
     clickAttributionWindow?: pulumi.Input<string>;
+    client?: pulumi.Input<string>;
     clientCert?: pulumi.Input<string>;
     clientCertKey?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
@@ -123,6 +163,8 @@ export interface ConnectorConfig {
     columns?: pulumi.Input<pulumi.Input<string>[]>;
     companyId?: pulumi.Input<string>;
     companyKey?: pulumi.Input<string>;
+    companyRequestToken?: pulumi.Input<string>;
+    companyUuid?: pulumi.Input<string>;
     compression?: pulumi.Input<string>;
     configMethod?: pulumi.Input<string>;
     configRepositoryUrl?: pulumi.Input<string>;
@@ -270,6 +312,8 @@ export interface ConnectorConfig {
     passphrase?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     pat?: pulumi.Input<string>;
+    patName?: pulumi.Input<string>;
+    patSecret?: pulumi.Input<string>;
     path?: pulumi.Input<string>;
     pattern?: pulumi.Input<string>;
     pdbName?: pulumi.Input<string>;
@@ -351,6 +395,7 @@ export interface ConnectorConfig {
     selectedExports?: pulumi.Input<pulumi.Input<string>[]>;
     senderId?: pulumi.Input<string>;
     senderPassword?: pulumi.Input<string>;
+    serverAddress?: pulumi.Input<string>;
     serverUrl?: pulumi.Input<string>;
     servers?: pulumi.Input<pulumi.Input<string>[]>;
     serviceAccount?: pulumi.Input<string>;
@@ -398,6 +443,7 @@ export interface ConnectorConfig {
     syncPackMode?: pulumi.Input<string>;
     syncPullApi?: pulumi.Input<string>;
     syncType?: pulumi.Input<string>;
+    sysnr?: pulumi.Input<string>;
     tableName?: pulumi.Input<string>;
     tdeCertificate?: pulumi.Input<string>;
     tdeCertificateName?: pulumi.Input<string>;
@@ -537,6 +583,25 @@ export interface ConnectorDestinationSchema {
     table?: pulumi.Input<string>;
 }
 
+export interface ConnectorFingerprintsFingerprint {
+    /**
+     * Hash of the fingerprint.
+     */
+    hash: pulumi.Input<string>;
+    /**
+     * The SSH public key.
+     */
+    publicKey: pulumi.Input<string>;
+    /**
+     * User name who validated the fingerprint.
+     */
+    validatedBy?: pulumi.Input<string>;
+    /**
+     * The date when SSH fingerprint was approved.
+     */
+    validatedDate?: pulumi.Input<string>;
+}
+
 export interface ConnectorSchemaConfigSchema {
     /**
      * The boolean value specifying whether the sync for the schema into the destination is enabled.
@@ -551,14 +616,32 @@ export interface ConnectorSchemaConfigSchema {
 
 export interface ConnectorSchemaConfigSchemaTable {
     columns?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchemaTableColumn>[]>;
+    /**
+     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     */
     enabled?: pulumi.Input<string>;
+    /**
+     * The schema name within your destination in accordance with Fivetran conventional rules.
+     */
     name: pulumi.Input<string>;
+    /**
+     * This field appears in the response if the connector supports switching sync modes for tables.
+     */
     syncMode?: pulumi.Input<string>;
 }
 
 export interface ConnectorSchemaConfigSchemaTableColumn {
+    /**
+     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     */
     enabled?: pulumi.Input<string>;
+    /**
+     * The boolean value specifying whether a column should be hashed
+     */
     hashed?: pulumi.Input<string>;
+    /**
+     * The schema name within your destination in accordance with Fivetran conventional rules.
+     */
     name: pulumi.Input<string>;
 }
 
@@ -609,6 +692,45 @@ export interface DbtTransformationSchedule {
      * The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
      */
     timeOfDay?: pulumi.Input<string>;
+}
+
+export interface DestinationCertificatesCertificate {
+    /**
+     * Base64 encoded certificate.
+     */
+    encodedCert: pulumi.Input<string>;
+    /**
+     * Hash of the fingerprint.
+     */
+    hash: pulumi.Input<string>;
+    /**
+     * Certificate name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Certificate public key.
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Certificate sha1.
+     */
+    sha1?: pulumi.Input<string>;
+    /**
+     * Certificate sha256.
+     */
+    sha256?: pulumi.Input<string>;
+    /**
+     * Certificate type.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User name who validated the certificate.
+     */
+    validatedBy?: pulumi.Input<string>;
+    /**
+     * The date when the certificate was approved.
+     */
+    validatedDate?: pulumi.Input<string>;
 }
 
 export interface DestinationConfig {
@@ -742,6 +864,154 @@ export interface DestinationConfig {
     user?: pulumi.Input<string>;
 }
 
+export interface DestinationFingerprintsFingerprint {
+    /**
+     * Hash of the fingerprint.
+     */
+    hash: pulumi.Input<string>;
+    /**
+     * The SSH public key.
+     */
+    publicKey: pulumi.Input<string>;
+    /**
+     * User name who validated the fingerprint.
+     */
+    validatedBy?: pulumi.Input<string>;
+    /**
+     * The date when SSH fingerprint was approved.
+     */
+    validatedDate?: pulumi.Input<string>;
+}
+
+export interface ExternalLoggingConfig {
+    /**
+     * API Key
+     */
+    apiKey?: pulumi.Input<string>;
+    /**
+     * Channel
+     */
+    channel?: pulumi.Input<string>;
+    /**
+     * Enable SSL
+     */
+    enableSsl?: pulumi.Input<boolean>;
+    /**
+     * external_id
+     */
+    externalId?: pulumi.Input<string>;
+    /**
+     * Server name
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Server name
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Log Group Name
+     */
+    logGroupName?: pulumi.Input<string>;
+    /**
+     * Port
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Primary Key
+     */
+    primaryKey?: pulumi.Input<string>;
+    /**
+     * Region
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Role Arn
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
+     * Sub Domain
+     */
+    subDomain?: pulumi.Input<string>;
+    /**
+     * Token
+     */
+    token?: pulumi.Input<string>;
+    /**
+     * Workspace ID
+     */
+    workspaceId?: pulumi.Input<string>;
+}
+
+export interface GetConnectorCertificatesCertificate {
+    /**
+     * Hash of the fingerprint.
+     */
+    hash?: string;
+    /**
+     * Certificate name.
+     */
+    name?: string;
+    /**
+     * Certificate public key.
+     */
+    publicKey?: string;
+    /**
+     * Certificate sha1.
+     */
+    sha1?: string;
+    /**
+     * Certificate sha256.
+     */
+    sha256?: string;
+    /**
+     * Certificate type.
+     */
+    type?: string;
+    /**
+     * User name who validated the certificate.
+     */
+    validatedBy?: string;
+    /**
+     * The date when the certificate was approved.
+     */
+    validatedDate?: string;
+}
+
+export interface GetConnectorCertificatesCertificateArgs {
+    /**
+     * Hash of the fingerprint.
+     */
+    hash?: pulumi.Input<string>;
+    /**
+     * Certificate name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Certificate public key.
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Certificate sha1.
+     */
+    sha1?: pulumi.Input<string>;
+    /**
+     * Certificate sha256.
+     */
+    sha256?: pulumi.Input<string>;
+    /**
+     * Certificate type.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User name who validated the certificate.
+     */
+    validatedBy?: pulumi.Input<string>;
+    /**
+     * The date when the certificate was approved.
+     */
+    validatedDate?: pulumi.Input<string>;
+}
+
 export interface GetConnectorConfig {
     absConnectionMethod?: string;
     absConnectionString?: string;
@@ -836,6 +1106,7 @@ export interface GetConnectorConfig {
     businessUnitId?: string;
     certificate?: string;
     clickAttributionWindow?: string;
+    client?: string;
     clientCert?: string;
     clientCertKey?: string;
     clientId?: string;
@@ -846,6 +1117,8 @@ export interface GetConnectorConfig {
     columns?: string[];
     companyId?: string;
     companyKey?: string;
+    companyRequestToken?: string;
+    companyUuid?: string;
     compression?: string;
     configMethod?: string;
     configRepositoryUrl?: string;
@@ -993,6 +1266,8 @@ export interface GetConnectorConfig {
     passphrase?: string;
     password?: string;
     pat?: string;
+    patName?: string;
+    patSecret?: string;
     path?: string;
     pattern?: string;
     pdbName?: string;
@@ -1074,6 +1349,7 @@ export interface GetConnectorConfig {
     selectedExports?: string[];
     senderId?: string;
     senderPassword?: string;
+    serverAddress?: string;
     serverUrl?: string;
     servers?: string[];
     serviceAccount?: string;
@@ -1121,6 +1397,7 @@ export interface GetConnectorConfig {
     syncPackMode?: string;
     syncPullApi?: string;
     syncType?: string;
+    sysnr?: string;
     tableName?: string;
     tdeCertificate?: string;
     tdeCertificateName?: string;
@@ -1271,6 +1548,7 @@ export interface GetConnectorConfigArgs {
     businessUnitId?: pulumi.Input<string>;
     certificate?: pulumi.Input<string>;
     clickAttributionWindow?: pulumi.Input<string>;
+    client?: pulumi.Input<string>;
     clientCert?: pulumi.Input<string>;
     clientCertKey?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
@@ -1281,6 +1559,8 @@ export interface GetConnectorConfigArgs {
     columns?: pulumi.Input<pulumi.Input<string>[]>;
     companyId?: pulumi.Input<string>;
     companyKey?: pulumi.Input<string>;
+    companyRequestToken?: pulumi.Input<string>;
+    companyUuid?: pulumi.Input<string>;
     compression?: pulumi.Input<string>;
     configMethod?: pulumi.Input<string>;
     configRepositoryUrl?: pulumi.Input<string>;
@@ -1428,6 +1708,8 @@ export interface GetConnectorConfigArgs {
     passphrase?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     pat?: pulumi.Input<string>;
+    patName?: pulumi.Input<string>;
+    patSecret?: pulumi.Input<string>;
     path?: pulumi.Input<string>;
     pattern?: pulumi.Input<string>;
     pdbName?: pulumi.Input<string>;
@@ -1509,6 +1791,7 @@ export interface GetConnectorConfigArgs {
     selectedExports?: pulumi.Input<pulumi.Input<string>[]>;
     senderId?: pulumi.Input<string>;
     senderPassword?: pulumi.Input<string>;
+    serverAddress?: pulumi.Input<string>;
     serverUrl?: pulumi.Input<string>;
     servers?: pulumi.Input<pulumi.Input<string>[]>;
     serviceAccount?: pulumi.Input<string>;
@@ -1556,6 +1839,7 @@ export interface GetConnectorConfigArgs {
     syncPackMode?: pulumi.Input<string>;
     syncPullApi?: pulumi.Input<string>;
     syncType?: pulumi.Input<string>;
+    sysnr?: pulumi.Input<string>;
     tableName?: pulumi.Input<string>;
     tdeCertificate?: pulumi.Input<string>;
     tdeCertificateName?: pulumi.Input<string>;
@@ -1766,6 +2050,44 @@ export interface GetConnectorConfigSecretsListArgs {
     value?: pulumi.Input<string>;
 }
 
+export interface GetConnectorFingerprintsFingerprint {
+    /**
+     * Hash of the fingerprint.
+     */
+    hash?: string;
+    /**
+     * The SSH public key.
+     */
+    publicKey?: string;
+    /**
+     * User name who validated the fingerprint.
+     */
+    validatedBy?: string;
+    /**
+     * The date when SSH fingerprint was approved.
+     */
+    validatedDate?: string;
+}
+
+export interface GetConnectorFingerprintsFingerprintArgs {
+    /**
+     * Hash of the fingerprint.
+     */
+    hash?: pulumi.Input<string>;
+    /**
+     * The SSH public key.
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * User name who validated the fingerprint.
+     */
+    validatedBy?: pulumi.Input<string>;
+    /**
+     * The date when SSH fingerprint was approved.
+     */
+    validatedDate?: pulumi.Input<string>;
+}
+
 export interface GetConnectorsMetadataSource {
     /**
      * The description characterizing the purpose of the connector.
@@ -1924,6 +2246,76 @@ export interface GetDbtProjectsProjectArgs {
      * The unique identifier for the dbt project within the Fivetran system.
      */
     id?: pulumi.Input<string>;
+}
+
+export interface GetDestinationCertificatesCertificate {
+    /**
+     * Hash of the fingerprint.
+     */
+    hash?: string;
+    /**
+     * Certificate name.
+     */
+    name?: string;
+    /**
+     * Certificate public key.
+     */
+    publicKey?: string;
+    /**
+     * Certificate sha1.
+     */
+    sha1?: string;
+    /**
+     * Certificate sha256.
+     */
+    sha256?: string;
+    /**
+     * Certificate type.
+     */
+    type?: string;
+    /**
+     * User name who validated the certificate.
+     */
+    validatedBy?: string;
+    /**
+     * The date when the certificate was approved.
+     */
+    validatedDate?: string;
+}
+
+export interface GetDestinationCertificatesCertificateArgs {
+    /**
+     * Hash of the fingerprint.
+     */
+    hash?: pulumi.Input<string>;
+    /**
+     * Certificate name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Certificate public key.
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Certificate sha1.
+     */
+    sha1?: pulumi.Input<string>;
+    /**
+     * Certificate sha256.
+     */
+    sha256?: pulumi.Input<string>;
+    /**
+     * Certificate type.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User name who validated the certificate.
+     */
+    validatedBy?: pulumi.Input<string>;
+    /**
+     * The date when the certificate was approved.
+     */
+    validatedDate?: pulumi.Input<string>;
 }
 
 export interface GetDestinationConfig {
@@ -2188,6 +2580,162 @@ export interface GetDestinationConfigArgs {
     user?: pulumi.Input<string>;
 }
 
+export interface GetDestinationFingerprintsFingerprint {
+    /**
+     * Hash of the fingerprint.
+     */
+    hash?: string;
+    /**
+     * The SSH public key.
+     */
+    publicKey?: string;
+    /**
+     * User name who validated the fingerprint.
+     */
+    validatedBy?: string;
+    /**
+     * The date when SSH fingerprint was approved.
+     */
+    validatedDate?: string;
+}
+
+export interface GetDestinationFingerprintsFingerprintArgs {
+    /**
+     * Hash of the fingerprint.
+     */
+    hash?: pulumi.Input<string>;
+    /**
+     * The SSH public key.
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * User name who validated the fingerprint.
+     */
+    validatedBy?: pulumi.Input<string>;
+    /**
+     * The date when SSH fingerprint was approved.
+     */
+    validatedDate?: pulumi.Input<string>;
+}
+
+export interface GetExternalLoggingConfig {
+    /**
+     * API Key
+     */
+    apiKey?: string;
+    /**
+     * Channel
+     */
+    channel?: string;
+    /**
+     * Enable SSL
+     */
+    enableSsl?: boolean;
+    /**
+     * external_id
+     */
+    externalId?: string;
+    /**
+     * Server name
+     */
+    host?: string;
+    /**
+     * Server name
+     */
+    hostname?: string;
+    /**
+     * Log Group Name
+     */
+    logGroupName?: string;
+    /**
+     * Port
+     */
+    port?: number;
+    /**
+     * Primary Key
+     */
+    primaryKey?: string;
+    /**
+     * Region
+     */
+    region?: string;
+    /**
+     * Role Arn
+     */
+    roleArn?: string;
+    /**
+     * Sub Domain
+     */
+    subDomain?: string;
+    /**
+     * Token
+     */
+    token?: string;
+    /**
+     * Workspace ID
+     */
+    workspaceId?: string;
+}
+
+export interface GetExternalLoggingConfigArgs {
+    /**
+     * API Key
+     */
+    apiKey?: pulumi.Input<string>;
+    /**
+     * Channel
+     */
+    channel?: pulumi.Input<string>;
+    /**
+     * Enable SSL
+     */
+    enableSsl?: pulumi.Input<boolean>;
+    /**
+     * external_id
+     */
+    externalId?: pulumi.Input<string>;
+    /**
+     * Server name
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Server name
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Log Group Name
+     */
+    logGroupName?: pulumi.Input<string>;
+    /**
+     * Port
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Primary Key
+     */
+    primaryKey?: pulumi.Input<string>;
+    /**
+     * Region
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Role Arn
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
+     * Sub Domain
+     */
+    subDomain?: pulumi.Input<string>;
+    /**
+     * Token
+     */
+    token?: pulumi.Input<string>;
+    /**
+     * Workspace ID
+     */
+    workspaceId?: pulumi.Input<string>;
+}
+
 export interface GetGroupConnectorsConnector {
     /**
      * The unique identifier of the user who has created the connector in your account
@@ -2293,40 +2841,94 @@ export interface GetGroupConnectorsConnectorArgs {
 }
 
 export interface GetGroupConnectorsConnectorStatus {
+    /**
+     * The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
+     */
     isHistoricalSync?: boolean;
+    /**
+     * The current setup state of the connector. The available values are: \n\n - incomplete - the setup config is incomplete, the setup tests never succeeded \n\n - connected - the connector is properly set up \n\n - broken - the connector setup config is broken.
+     */
     setupState?: string;
+    /**
+     * The current sync state of the connector. The available values are: \n\n - scheduled - the sync is waiting to be run \n\n - syncing - the sync is currently running \n\n - paused - the sync is currently paused \n\n - rescheduled - the sync is waiting until more API calls are available in the source service.
+     */
     syncState?: string;
+    /**
+     * The collection of tasks for the connector
+     */
     tasks?: inputs.GetGroupConnectorsConnectorStatusTask[];
+    /**
+     * The current data update state of the connector. The available values are: \n\n - onSchedule - the sync is running smoothly, no delays \n\n - delayed - the data is delayed for a longer time than expected for the update.
+     */
     updateState?: string;
     warnings?: inputs.GetGroupConnectorsConnectorStatusWarning[];
 }
 
 export interface GetGroupConnectorsConnectorStatusArgs {
+    /**
+     * The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
+     */
     isHistoricalSync?: pulumi.Input<boolean>;
+    /**
+     * The current setup state of the connector. The available values are: \n\n - incomplete - the setup config is incomplete, the setup tests never succeeded \n\n - connected - the connector is properly set up \n\n - broken - the connector setup config is broken.
+     */
     setupState?: pulumi.Input<string>;
+    /**
+     * The current sync state of the connector. The available values are: \n\n - scheduled - the sync is waiting to be run \n\n - syncing - the sync is currently running \n\n - paused - the sync is currently paused \n\n - rescheduled - the sync is waiting until more API calls are available in the source service.
+     */
     syncState?: pulumi.Input<string>;
+    /**
+     * The collection of tasks for the connector
+     */
     tasks?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectorsConnectorStatusTaskArgs>[]>;
+    /**
+     * The current data update state of the connector. The available values are: \n\n - onSchedule - the sync is running smoothly, no delays \n\n - delayed - the data is delayed for a longer time than expected for the update.
+     */
     updateState?: pulumi.Input<string>;
     warnings?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectorsConnectorStatusWarningArgs>[]>;
 }
 
 export interface GetGroupConnectorsConnectorStatusTask {
+    /**
+     * Response status code
+     */
     code?: string;
+    /**
+     * Response status text
+     */
     message?: string;
 }
 
 export interface GetGroupConnectorsConnectorStatusTaskArgs {
+    /**
+     * Response status code
+     */
     code?: pulumi.Input<string>;
+    /**
+     * Response status text
+     */
     message?: pulumi.Input<string>;
 }
 
 export interface GetGroupConnectorsConnectorStatusWarning {
+    /**
+     * Response status code
+     */
     code?: string;
+    /**
+     * Response status text
+     */
     message?: string;
 }
 
 export interface GetGroupConnectorsConnectorStatusWarningArgs {
+    /**
+     * Response status code
+     */
     code?: pulumi.Input<string>;
+    /**
+     * Response status text
+     */
     message?: pulumi.Input<string>;
 }
 
@@ -2452,6 +3054,302 @@ export interface GetGroupsGroupArgs {
      * The name of the group within your account.
      */
     name?: pulumi.Input<string>;
+}
+
+export interface GetMetadataColumnsMetadataColumn {
+    /**
+     * The unique column identifier
+     */
+    id?: string;
+    /**
+     * The boolean specifying whether the column is a foreign key
+     */
+    isForeignKey?: boolean;
+    /**
+     * The boolean specifying whether the column is a primary key
+     */
+    isPrimaryKey?: boolean;
+    /**
+     * The column name in the destination
+     */
+    nameInDestination?: string;
+    /**
+     * The column name in the source
+     */
+    nameInSource?: string;
+    /**
+     * The unique identifier of the table associated with the column
+     */
+    parentId?: string;
+    /**
+     * The column type in the destination
+     */
+    typeInDestination?: string;
+    /**
+     * The column type in the source
+     */
+    typeInSource?: string;
+}
+
+export interface GetMetadataColumnsMetadataColumnArgs {
+    /**
+     * The unique column identifier
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The boolean specifying whether the column is a foreign key
+     */
+    isForeignKey?: pulumi.Input<boolean>;
+    /**
+     * The boolean specifying whether the column is a primary key
+     */
+    isPrimaryKey?: pulumi.Input<boolean>;
+    /**
+     * The column name in the destination
+     */
+    nameInDestination?: pulumi.Input<string>;
+    /**
+     * The column name in the source
+     */
+    nameInSource?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the table associated with the column
+     */
+    parentId?: pulumi.Input<string>;
+    /**
+     * The column type in the destination
+     */
+    typeInDestination?: pulumi.Input<string>;
+    /**
+     * The column type in the source
+     */
+    typeInSource?: pulumi.Input<string>;
+}
+
+export interface GetMetadataSchemasMetadataSchema {
+    /**
+     * The unique schema identifier
+     */
+    id?: string;
+    /**
+     * The schema name in the destination
+     */
+    nameInDestination?: string;
+    /**
+     * The schema name in the source
+     */
+    nameInSource?: string;
+}
+
+export interface GetMetadataSchemasMetadataSchemaArgs {
+    /**
+     * The unique schema identifier
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The schema name in the destination
+     */
+    nameInDestination?: pulumi.Input<string>;
+    /**
+     * The schema name in the source
+     */
+    nameInSource?: pulumi.Input<string>;
+}
+
+export interface GetMetadataTablesMetadataTable {
+    /**
+     * The unique table identifier
+     */
+    id?: string;
+    /**
+     * The table name in the destination
+     */
+    nameInDestination?: string;
+    /**
+     * The table name in the source
+     */
+    nameInSource?: string;
+    /**
+     * The unique identifier of the schema associated with the table
+     */
+    parentId?: string;
+}
+
+export interface GetMetadataTablesMetadataTableArgs {
+    /**
+     * The unique table identifier
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The table name in the destination
+     */
+    nameInDestination?: pulumi.Input<string>;
+    /**
+     * The table name in the source
+     */
+    nameInSource?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the schema associated with the table
+     */
+    parentId?: pulumi.Input<string>;
+}
+
+export interface GetRolesRole {
+    /**
+     * The role description
+     */
+    description?: string;
+    /**
+     * TypeBool
+     */
+    isCustom?: boolean;
+    /**
+     * The role name
+     */
+    name?: string;
+    /**
+     * Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
+     */
+    scopes?: string[];
+}
+
+export interface GetRolesRoleArgs {
+    /**
+     * The role description
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * TypeBool
+     */
+    isCustom?: pulumi.Input<boolean>;
+    /**
+     * The role name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
+     */
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetTeamConnectorMembershipsConnector {
+    /**
+     * The connector unique identifier
+     */
+    connectorId: string;
+    /**
+     * The date and time the membership was created
+     */
+    createdAt?: string;
+    /**
+     * The team's role that links the team and the connector
+     */
+    role?: string;
+}
+
+export interface GetTeamConnectorMembershipsConnectorArgs {
+    /**
+     * The connector unique identifier
+     */
+    connectorId: pulumi.Input<string>;
+    /**
+     * The date and time the membership was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The team's role that links the team and the connector
+     */
+    role?: pulumi.Input<string>;
+}
+
+export interface GetTeamGroupMembershipsGroup {
+    /**
+     * The date and time the membership was created
+     */
+    createdAt?: string;
+    /**
+     * The group unique identifier
+     */
+    groupId: string;
+    /**
+     * The team's role that links the team and the group
+     */
+    role?: string;
+}
+
+export interface GetTeamGroupMembershipsGroupArgs {
+    /**
+     * The date and time the membership was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The group unique identifier
+     */
+    groupId: pulumi.Input<string>;
+    /**
+     * The team's role that links the team and the group
+     */
+    role?: pulumi.Input<string>;
+}
+
+export interface GetTeamUserMembershipsUser {
+    /**
+     * The team's role that links the team and the user
+     */
+    role?: string;
+    /**
+     * The user unique identifier
+     */
+    userId: string;
+}
+
+export interface GetTeamUserMembershipsUserArgs {
+    /**
+     * The team's role that links the team and the user
+     */
+    role?: pulumi.Input<string>;
+    /**
+     * The user unique identifier
+     */
+    userId: pulumi.Input<string>;
+}
+
+export interface GetTeamsTeam {
+    /**
+     * The description of the team within your account.
+     */
+    description?: string;
+    /**
+     * The unique identifier for the team within your account.
+     */
+    id: string;
+    /**
+     * The name of the team within your account.
+     */
+    name?: string;
+    /**
+     * The account role of the team.
+     */
+    role?: string;
+}
+
+export interface GetTeamsTeamArgs {
+    /**
+     * The description of the team within your account.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the team within your account.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The name of the team within your account.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The account role of the team.
+     */
+    role?: pulumi.Input<string>;
 }
 
 export interface GetUsersUser {
@@ -2639,4 +3537,45 @@ export interface GroupUsersUser {
      * The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
      */
     role: pulumi.Input<string>;
+}
+
+export interface TeamConnectorMembershipConnector {
+    /**
+     * The connector unique identifier
+     */
+    connectorId: pulumi.Input<string>;
+    /**
+     * The date and time the membership was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The team's role that links the team and the connector
+     */
+    role: pulumi.Input<string>;
+}
+
+export interface TeamGroupMembershipGroup {
+    /**
+     * The date and time the membership was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The group unique identifier
+     */
+    groupId: pulumi.Input<string>;
+    /**
+     * The team's role that links the team and the group
+     */
+    role: pulumi.Input<string>;
+}
+
+export interface TeamUserMembershipUser {
+    /**
+     * The team's role that links the team and the user
+     */
+    role: pulumi.Input<string>;
+    /**
+     * The user unique identifier
+     */
+    userId: pulumi.Input<string>;
 }

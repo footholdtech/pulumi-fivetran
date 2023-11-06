@@ -71,7 +71,7 @@ def get_group_users(id: Optional[str] = None,
     ```
 
 
-    :param str id: The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
+    :param str id: The unique identifier for the user within the account.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -101,6 +101,6 @@ def get_group_users_output(id: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str id: The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
+    :param str id: The unique identifier for the user within the account.
     """
     ...
