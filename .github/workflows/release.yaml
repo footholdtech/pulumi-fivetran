@@ -61,24 +61,6 @@ jobs:
         with:
           node-version: ${{ env.NODEVERSION }}
           registry-url: https://registry.npmjs.org
-      - name: Setup DotNet
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.DOTNETVERSION }}
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ env.PYTHONVERSION }}
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          cache: gradle
-          distribution: temurin
-          java-version: ${{ env.JAVAVERSION }}
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: ${{ env.GRADLEVERSION }}
       - name: Download provider + tfgen binaries
         uses: actions/download-artifact@v2
         with:
@@ -113,7 +95,18 @@ jobs:
       matrix:
         language:
           - nodejs
-          - python
-          - dotnet
           - go
-          - java
+  tag_sdk:
+    name: build_sdk
+    needs: publish_sdk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        with:
+          repo: pulumi/pulumictl
+      - name: Add SDK version tag
+        run: git tag "sdk/v$(pulumictl get version --language generic)" && git push origin
+          "sdk/v$(pulumictl get version --language generic)"
