@@ -163,9 +163,37 @@ jobs:
         language:
           - nodejs
           - go
+  publish:
+    name: publish
+    needs: build_sdk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow --tags
+      - name: Install Go
+        uses: actions/setup-go@v4
+        with:
+          cache-dependency-path: |
+            sdk/go.sum
+          go-version: 1.21.x
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        with:
+          repo: pulumi/pulumictl
+      - name: Install Pulumi CLI
+        uses: pulumi/action-install-pulumi-cli@v2
+      - name: Set PreRelease Version
+        run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> "$GITHUB_ENV"
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          args: -p 3 release --rm-dist --timeout 60m0s
+          version: latest
   tag_sdk:
     name: tag_sdk
-    needs: build_sdk
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
