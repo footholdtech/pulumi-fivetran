@@ -1,6 +1,6 @@
 module github.com/footholdtech/pulumi-fivetran/provider
 
-go 1.19
+go 1.21
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
 
