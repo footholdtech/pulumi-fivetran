@@ -97,8 +97,8 @@ jobs:
           - nodejs
           - go
   tag_sdk:
-    name: build_sdk
-    needs: publish_sdk
+    name: tag_sdk
+    needs: build_sdk
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
