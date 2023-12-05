@@ -120,7 +120,7 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
-			"fivetran_user":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
+			// "fivetran_user":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
 			"fivetran_group":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
 			"fivetran_group_users":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupUsers")},
 			"fivetran_destination":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Destination")},
@@ -144,12 +144,12 @@ func Provider() tfbridge.ProviderInfo {
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
-			"fivetran_user":                            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
+			// "fivetran_user":                            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
 			"fivetran_users":                           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUsers")},
 			"fivetran_group":                           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroup")},
 			"fivetran_groups":                          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroups")},
 			"fivetran_group_connectors":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupConnectors")},
-        "fivetran_group_users":                         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupUsers")},
+            "fivetran_group_users":                     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupUsers")},
 			"fivetran_destination":                     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDestination")},
 			"fivetran_destination_certificates":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDestinationCertificates")},
 			"fivetran_destination_fingerprints":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDestinationFingerprints")},
