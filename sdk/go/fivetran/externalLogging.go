@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -159,12 +158,6 @@ func (i *ExternalLogging) ToExternalLoggingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingOutput)
 }
 
-func (i *ExternalLogging) ToOutput(ctx context.Context) pulumix.Output[*ExternalLogging] {
-	return pulumix.Output[*ExternalLogging]{
-		OutputState: i.ToExternalLoggingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExternalLoggingArrayInput is an input type that accepts ExternalLoggingArray and ExternalLoggingArrayOutput values.
 // You can construct a concrete instance of `ExternalLoggingArrayInput` via:
 //
@@ -188,12 +181,6 @@ func (i ExternalLoggingArray) ToExternalLoggingArrayOutput() ExternalLoggingArra
 
 func (i ExternalLoggingArray) ToExternalLoggingArrayOutputWithContext(ctx context.Context) ExternalLoggingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingArrayOutput)
-}
-
-func (i ExternalLoggingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ExternalLogging] {
-	return pulumix.Output[[]*ExternalLogging]{
-		OutputState: i.ToExternalLoggingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ExternalLoggingMapInput is an input type that accepts ExternalLoggingMap and ExternalLoggingMapOutput values.
@@ -221,12 +208,6 @@ func (i ExternalLoggingMap) ToExternalLoggingMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingMapOutput)
 }
 
-func (i ExternalLoggingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExternalLogging] {
-	return pulumix.Output[map[string]*ExternalLogging]{
-		OutputState: i.ToExternalLoggingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExternalLoggingOutput struct{ *pulumi.OutputState }
 
 func (ExternalLoggingOutput) ElementType() reflect.Type {
@@ -239,12 +220,6 @@ func (o ExternalLoggingOutput) ToExternalLoggingOutput() ExternalLoggingOutput {
 
 func (o ExternalLoggingOutput) ToExternalLoggingOutputWithContext(ctx context.Context) ExternalLoggingOutput {
 	return o
-}
-
-func (o ExternalLoggingOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalLogging] {
-	return pulumix.Output[*ExternalLogging]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExternalLoggingOutput) Config() ExternalLoggingConfigOutput {
@@ -285,12 +260,6 @@ func (o ExternalLoggingArrayOutput) ToExternalLoggingArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ExternalLoggingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ExternalLogging] {
-	return pulumix.Output[[]*ExternalLogging]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExternalLoggingArrayOutput) Index(i pulumi.IntInput) ExternalLoggingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExternalLogging {
 		return vs[0].([]*ExternalLogging)[vs[1].(int)]
@@ -309,12 +278,6 @@ func (o ExternalLoggingMapOutput) ToExternalLoggingMapOutput() ExternalLoggingMa
 
 func (o ExternalLoggingMapOutput) ToExternalLoggingMapOutputWithContext(ctx context.Context) ExternalLoggingMapOutput {
 	return o
-}
-
-func (o ExternalLoggingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExternalLogging] {
-	return pulumix.Output[map[string]*ExternalLogging]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExternalLoggingMapOutput) MapIndex(k pulumi.StringInput) ExternalLoggingOutput {

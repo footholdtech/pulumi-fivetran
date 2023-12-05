@@ -7,9 +7,22 @@ import * as outputs from "../types/output";
 
 export interface ConnectorAuth {
     accessToken?: string;
+    awsAccessKey?: string;
+    awsSecretKey?: string;
     clientAccess?: outputs.ConnectorAuthClientAccess;
+    clientId?: string;
+    clientSecret?: string;
+    consumerKey?: string;
+    consumerSecret?: string;
+    keyId?: string;
+    oauthToken?: string;
+    oauthTokenSecret?: string;
+    previousRefreshToken?: string;
     realmId?: string;
     refreshToken?: string;
+    roleArn?: string;
+    teamId?: string;
+    userAccessToken?: string;
 }
 
 export interface ConnectorAuthClientAccess {
@@ -102,6 +115,7 @@ export interface ConnectorConfig {
     apiAccessToken: string;
     apiId?: string;
     apiKey: string;
+    apiKeyApiSecret?: string;
     apiKeys?: string[];
     apiQuota: string;
     apiRequestsPerMinute: string;
@@ -111,10 +125,12 @@ export interface ConnectorConfig {
     apiType: string;
     apiUrl: string;
     apiUsage?: string;
+    apiUtilizationPercentage?: string;
     apiVersion: string;
     appId?: string;
     appIds?: string[];
     appIdsAppsflyers?: outputs.ConnectorConfigAppIdsAppsflyer[];
+    appKey?: string;
     appSpecificPassword?: string;
     appSyncMode: string;
     appendFileOption: string;
@@ -205,6 +221,7 @@ export interface ConnectorConfig {
     delimiter: string;
     dimensionAttributes?: string[];
     dimensions?: string[];
+    distributedConnectorClusterSize: string;
     domain: string;
     domainHostName: string;
     domainName: string;
@@ -214,6 +231,8 @@ export interface ConnectorConfig {
     emptyHeader: string;
     enableAllDimensionCombinations: string;
     enableArchiveLogOnly: string;
+    enableDataExtensionsSyncing: string;
+    enableDistributedConnectorMode: string;
     enableEnrichments: string;
     enableExports: string;
     enableTde: string;
@@ -257,6 +276,7 @@ export interface ConnectorConfig {
     hostUser?: string;
     hosts?: string[];
     identity: string;
+    includeOcapiEndpoints: string;
     instance: string;
     instanceNumber?: string;
     instanceUrl?: string;
@@ -264,6 +284,7 @@ export interface ConnectorConfig {
     isAccountLevelConnector: string;
     isAuth2Enabled: string;
     isCustomApiCredentials: string;
+    isExternalActivitiesEndpointSelected: string;
     isFtps: string;
     isKeypair: string;
     isMultiEntityFeatureEnabled: string;
@@ -283,6 +304,7 @@ export interface ConnectorConfig {
     keystorePassword?: string;
     lastSyncedChangesUtc_: string;
     latestVersion: string;
+    limitForApiCallsToExternalActivitiesEndpoint: string;
     lineSeparator?: string;
     listStrategy: string;
     listSyncMode?: string;
@@ -300,6 +322,10 @@ export interface ConnectorConfig {
     nullSequence: string;
     oauthToken: string;
     oauthTokenSecret: string;
+    ocapiClientId?: string;
+    ocapiClientSecret?: string;
+    ocapiCustomObjectTypes?: string;
+    ocapiHostname?: string;
     onError: string;
     onPremise: string;
     organization: string;
@@ -308,6 +334,7 @@ export interface ConnectorConfig {
     packedModeTables?: string[];
     packingMode?: string;
     pages?: string[];
+    partnerCode?: string;
     partners?: string[];
     passphrase: string;
     password: string;
@@ -452,6 +479,7 @@ export interface ConnectorConfig {
     teamId?: string;
     technicalAccountId: string;
     templateLabels?: string[];
+    tenant?: string;
     tenantId?: string;
     testTableName: string;
     timeZone: string;
@@ -520,16 +548,22 @@ export interface ConnectorConfigAppIdsAppsflyer {
 
 export interface ConnectorConfigCustomReport {
     aggregate?: string;
+    baseMetricsFields?: string[];
+    breakdown?: string;
+    breakout?: string;
     conversionsReportIncluded: string;
     customEventsIncluded: string;
+    dimension?: string;
     dimensions?: string[];
     eventNames?: string[];
+    granularity?: string;
     level?: string;
     metrics?: string[];
     reportFields?: string[];
     reportName?: string;
     reportType?: string;
     segmentation?: string;
+    skAdMetricsFields?: string[];
     tableName?: string;
 }
 
@@ -562,10 +596,12 @@ export interface ConnectorConfigReport {
     fields?: string[];
     filter: string;
     filterFieldName?: string;
+    filterType?: string;
     filterValue?: string;
     metrics?: string[];
     prebuiltReport: string;
     reportType: string;
+    rollbackWindow: string;
     searchTypes?: string[];
     segmentIds?: string[];
     segments?: string[];
@@ -751,6 +787,10 @@ export interface DestinationConfig {
      */
     catalog?: string;
     /**
+     * ClientId of your Azure Data Lake Storage
+     */
+    clientId?: string;
+    /**
      * Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
      */
     clusterId?: string;
@@ -762,6 +802,10 @@ export interface DestinationConfig {
      * Connection method. Default value: `Directly`.
      */
     connectionType?: string;
+    /**
+     * Container Name of your Azure Data Lake Storage
+     */
+    containerName?: string;
     /**
      * Whether to create external tables
      */
@@ -794,6 +838,10 @@ export interface DestinationConfig {
      * Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
      */
     isPrivateKeyEncrypted: string;
+    /**
+     * OneLake lakehouse name
+     */
+    lakehouseName?: string;
     /**
      * In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
      */
@@ -843,9 +891,21 @@ export interface DestinationConfig {
      */
     secretKey?: string;
     /**
+     * Secret Value of your Azure Data Lake Storage
+     */
+    secretValue?: string;
+    /**
      * Server name
      */
     serverHostName?: string;
+    /**
+     * Storage Account Name of your Azure Data Lake Storage
+     */
+    storageAccountName?: string;
+    /**
+     * TenantId of your Azure Data Lake Storage
+     */
+    tenantId?: string;
     /**
      * SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      */
@@ -862,6 +922,10 @@ export interface DestinationConfig {
      * Database user name
      */
     user?: string;
+    /**
+     * OneLake workspace name
+     */
+    workspaceName?: string;
 }
 
 export interface DestinationFingerprintsFingerprint {
@@ -1021,6 +1085,7 @@ export interface GetConnectorConfig {
     apiAccessToken: string;
     apiId: string;
     apiKey: string;
+    apiKeyApiSecret: string;
     apiKeys: string[];
     apiQuota: string;
     apiRequestsPerMinute: string;
@@ -1030,10 +1095,12 @@ export interface GetConnectorConfig {
     apiType: string;
     apiUrl: string;
     apiUsage: string;
+    apiUtilizationPercentage: string;
     apiVersion: string;
     appId: string;
     appIds: string[];
     appIdsAppsflyers: outputs.GetConnectorConfigAppIdsAppsflyer[];
+    appKey: string;
     appSpecificPassword: string;
     appSyncMode: string;
     appendFileOption: string;
@@ -1124,6 +1191,7 @@ export interface GetConnectorConfig {
     delimiter: string;
     dimensionAttributes: string[];
     dimensions: string[];
+    distributedConnectorClusterSize: string;
     domain: string;
     domainHostName: string;
     domainName: string;
@@ -1133,6 +1201,8 @@ export interface GetConnectorConfig {
     emptyHeader: string;
     enableAllDimensionCombinations: string;
     enableArchiveLogOnly: string;
+    enableDataExtensionsSyncing: string;
+    enableDistributedConnectorMode: string;
     enableEnrichments: string;
     enableExports: string;
     enableTde: string;
@@ -1176,6 +1246,7 @@ export interface GetConnectorConfig {
     hostUser: string;
     hosts: string[];
     identity: string;
+    includeOcapiEndpoints: string;
     instance: string;
     instanceNumber: string;
     instanceUrl: string;
@@ -1183,6 +1254,7 @@ export interface GetConnectorConfig {
     isAccountLevelConnector: string;
     isAuth2Enabled: string;
     isCustomApiCredentials: string;
+    isExternalActivitiesEndpointSelected: string;
     isFtps: string;
     isKeypair: string;
     isMultiEntityFeatureEnabled: string;
@@ -1202,6 +1274,7 @@ export interface GetConnectorConfig {
     keystorePassword: string;
     lastSyncedChangesUtc_: string;
     latestVersion: string;
+    limitForApiCallsToExternalActivitiesEndpoint: string;
     lineSeparator: string;
     listStrategy: string;
     listSyncMode: string;
@@ -1219,6 +1292,10 @@ export interface GetConnectorConfig {
     nullSequence: string;
     oauthToken: string;
     oauthTokenSecret: string;
+    ocapiClientId: string;
+    ocapiClientSecret: string;
+    ocapiCustomObjectTypes: string;
+    ocapiHostname: string;
     onError: string;
     onPremise: string;
     organization: string;
@@ -1227,6 +1304,7 @@ export interface GetConnectorConfig {
     packedModeTables: string[];
     packingMode: string;
     pages: string[];
+    partnerCode: string;
     partners: string[];
     passphrase: string;
     password: string;
@@ -1371,6 +1449,7 @@ export interface GetConnectorConfig {
     teamId: string;
     technicalAccountId: string;
     templateLabels: string[];
+    tenant: string;
     tenantId: string;
     testTableName: string;
     timeZone: string;
@@ -1439,16 +1518,22 @@ export interface GetConnectorConfigAppIdsAppsflyer {
 
 export interface GetConnectorConfigCustomReport {
     aggregate: string;
+    baseMetricsFields: string[];
+    breakdown: string;
+    breakout: string;
     conversionsReportIncluded: string;
     customEventsIncluded: string;
+    dimension: string;
     dimensions: string[];
     eventNames: string[];
+    granularity: string;
     level: string;
     metrics: string[];
     reportFields: string[];
     reportName: string;
     reportType: string;
     segmentation: string;
+    skAdMetricsFields: string[];
     tableName: string;
 }
 
@@ -1481,10 +1566,12 @@ export interface GetConnectorConfigReport {
     fields: string[];
     filter: string;
     filterFieldName: string;
+    filterType: string;
     filterValue: string;
     metrics: string[];
     prebuiltReport: string;
     reportType: string;
+    rollbackWindow: string;
     searchTypes: string[];
     segmentIds: string[];
     segments: string[];
@@ -1686,6 +1773,10 @@ export interface GetDestinationConfig {
      */
     catalog?: string;
     /**
+     * ClientId of your Azure Data Lake Storage
+     */
+    clientId?: string;
+    /**
      * Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
      */
     clusterId?: string;
@@ -1697,6 +1788,10 @@ export interface GetDestinationConfig {
      * Connection method. Default value: `Directly`.
      */
     connectionType?: string;
+    /**
+     * Container Name of your Azure Data Lake Storage
+     */
+    containerName?: string;
     /**
      * Whether to create external tables
      */
@@ -1729,6 +1824,10 @@ export interface GetDestinationConfig {
      * Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
      */
     isPrivateKeyEncrypted: string;
+    /**
+     * OneLake lakehouse name
+     */
+    lakehouseName?: string;
     /**
      * In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
      */
@@ -1778,9 +1877,21 @@ export interface GetDestinationConfig {
      */
     secretKey?: string;
     /**
+     * Secret Value of your Azure Data Lake Storage
+     */
+    secretValue?: string;
+    /**
      * Server name
      */
     serverHostName?: string;
+    /**
+     * Storage Account Name of your Azure Data Lake Storage
+     */
+    storageAccountName?: string;
+    /**
+     * TenantId of your Azure Data Lake Storage
+     */
+    tenantId?: string;
     /**
      * SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      */
@@ -1797,6 +1908,10 @@ export interface GetDestinationConfig {
      * Database user name
      */
     user?: string;
+    /**
+     * OneLake workspace name
+     */
+    workspaceName?: string;
 }
 
 export interface GetDestinationFingerprintsFingerprint {

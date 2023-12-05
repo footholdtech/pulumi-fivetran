@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource is in ALPHA state.
@@ -279,12 +278,6 @@ func (i *DbtProject) ToDbtProjectOutputWithContext(ctx context.Context) DbtProje
 	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectOutput)
 }
 
-func (i *DbtProject) ToOutput(ctx context.Context) pulumix.Output[*DbtProject] {
-	return pulumix.Output[*DbtProject]{
-		OutputState: i.ToDbtProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DbtProjectArrayInput is an input type that accepts DbtProjectArray and DbtProjectArrayOutput values.
 // You can construct a concrete instance of `DbtProjectArrayInput` via:
 //
@@ -308,12 +301,6 @@ func (i DbtProjectArray) ToDbtProjectArrayOutput() DbtProjectArrayOutput {
 
 func (i DbtProjectArray) ToDbtProjectArrayOutputWithContext(ctx context.Context) DbtProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectArrayOutput)
-}
-
-func (i DbtProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbtProject] {
-	return pulumix.Output[[]*DbtProject]{
-		OutputState: i.ToDbtProjectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DbtProjectMapInput is an input type that accepts DbtProjectMap and DbtProjectMapOutput values.
@@ -341,12 +328,6 @@ func (i DbtProjectMap) ToDbtProjectMapOutputWithContext(ctx context.Context) Dbt
 	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectMapOutput)
 }
 
-func (i DbtProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbtProject] {
-	return pulumix.Output[map[string]*DbtProject]{
-		OutputState: i.ToDbtProjectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbtProjectOutput struct{ *pulumi.OutputState }
 
 func (DbtProjectOutput) ElementType() reflect.Type {
@@ -359,12 +340,6 @@ func (o DbtProjectOutput) ToDbtProjectOutput() DbtProjectOutput {
 
 func (o DbtProjectOutput) ToDbtProjectOutputWithContext(ctx context.Context) DbtProjectOutput {
 	return o
-}
-
-func (o DbtProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*DbtProject] {
-	return pulumix.Output[*DbtProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of the dbt Project creation.
@@ -450,12 +425,6 @@ func (o DbtProjectArrayOutput) ToDbtProjectArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DbtProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbtProject] {
-	return pulumix.Output[[]*DbtProject]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DbtProjectArrayOutput) Index(i pulumi.IntInput) DbtProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbtProject {
 		return vs[0].([]*DbtProject)[vs[1].(int)]
@@ -474,12 +443,6 @@ func (o DbtProjectMapOutput) ToDbtProjectMapOutput() DbtProjectMapOutput {
 
 func (o DbtProjectMapOutput) ToDbtProjectMapOutputWithContext(ctx context.Context) DbtProjectMapOutput {
 	return o
-}
-
-func (o DbtProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbtProject] {
-	return pulumix.Output[map[string]*DbtProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbtProjectMapOutput) MapIndex(k pulumi.StringInput) DbtProjectOutput {

@@ -16,11 +16,28 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("aggregate")]
         public Input<string>? Aggregate { get; set; }
 
+        [Input("baseMetricsFields")]
+        private InputList<string>? _baseMetricsFields;
+        public InputList<string> BaseMetricsFields
+        {
+            get => _baseMetricsFields ?? (_baseMetricsFields = new InputList<string>());
+            set => _baseMetricsFields = value;
+        }
+
+        [Input("breakdown")]
+        public Input<string>? Breakdown { get; set; }
+
+        [Input("breakout")]
+        public Input<string>? Breakout { get; set; }
+
         [Input("conversionsReportIncluded")]
         public Input<string>? ConversionsReportIncluded { get; set; }
 
         [Input("customEventsIncluded")]
         public Input<string>? CustomEventsIncluded { get; set; }
+
+        [Input("dimension")]
+        public Input<string>? Dimension { get; set; }
 
         [Input("dimensions")]
         private InputList<string>? _dimensions;
@@ -37,6 +54,9 @@ namespace Footholdtech.Fivetran.Inputs
             get => _eventNames ?? (_eventNames = new InputList<string>());
             set => _eventNames = value;
         }
+
+        [Input("granularity")]
+        public Input<string>? Granularity { get; set; }
 
         [Input("level")]
         public Input<string>? Level { get; set; }
@@ -65,6 +85,14 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("segmentation")]
         public Input<string>? Segmentation { get; set; }
+
+        [Input("skAdMetricsFields")]
+        private InputList<string>? _skAdMetricsFields;
+        public InputList<string> SkAdMetricsFields
+        {
+            get => _skAdMetricsFields ?? (_skAdMetricsFields = new InputList<string>());
+            set => _skAdMetricsFields = value;
+        }
 
         [Input("tableName")]
         public Input<string>? TableName { get; set; }

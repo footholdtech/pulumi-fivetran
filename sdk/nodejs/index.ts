@@ -185,11 +185,6 @@ export const getTeams: typeof import("./getTeams").getTeams = null as any;
 export const getTeamsOutput: typeof import("./getTeams").getTeamsOutput = null as any;
 utilities.lazyLoad(exports, ["getTeams","getTeamsOutput"], () => require("./getTeams"));
 
-export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
-export const getUser: typeof import("./getUser").getUser = null as any;
-export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
-utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
-
 export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
 export const getUsers: typeof import("./getUsers").getUsers = null as any;
 export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
@@ -239,11 +234,6 @@ export { TeamUserMembershipArgs, TeamUserMembershipState } from "./teamUserMembe
 export type TeamUserMembership = import("./teamUserMembership").TeamUserMembership;
 export const TeamUserMembership: typeof import("./teamUserMembership").TeamUserMembership = null as any;
 utilities.lazyLoad(exports, ["TeamUserMembership"], () => require("./teamUserMembership"));
-
-export { UserArgs, UserState } from "./user";
-export type User = import("./user").User;
-export const User: typeof import("./user").User = null as any;
-utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
@@ -298,8 +288,6 @@ const _module = {
                 return new TeamGroupMembership(name, <any>undefined, { urn })
             case "fivetran:index/teamUserMembership:TeamUserMembership":
                 return new TeamUserMembership(name, <any>undefined, { urn })
-            case "fivetran:index/user:User":
-                return new User(name, <any>undefined, { urn })
             case "fivetran:index/webhook:Webhook":
                 return new Webhook(name, <any>undefined, { urn })
             default:
@@ -324,7 +312,6 @@ pulumi.runtime.registerResourceModule("fivetran", "index/team", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/teamConnectorMembership", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/teamGroupMembership", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/teamUserMembership", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/user", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("fivetran", {
     version: utilities.getVersion(),

@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a team object.
@@ -103,12 +102,6 @@ func (o LookupTeamResultOutput) ToLookupTeamResultOutput() LookupTeamResultOutpu
 
 func (o LookupTeamResultOutput) ToLookupTeamResultOutputWithContext(ctx context.Context) LookupTeamResultOutput {
 	return o
-}
-
-func (o LookupTeamResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTeamResult] {
-	return pulumix.Output[LookupTeamResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the team within your account.

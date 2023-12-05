@@ -41,7 +41,6 @@ from .get_team_connector_memberships import *
 from .get_team_group_memberships import *
 from .get_team_user_memberships import *
 from .get_teams import *
-from .get_user import *
 from .get_users import *
 from .get_webhook import *
 from .get_webhooks import *
@@ -52,7 +51,6 @@ from .team import *
 from .team_connector_membership import *
 from .team_group_membership import *
 from .team_user_membership import *
-from .user import *
 from .webhook import *
 from ._inputs import *
 from . import outputs
@@ -201,14 +199,6 @@ _utilities.register(
   "fqn": "footholdtech_fivetran",
   "classes": {
    "fivetran:index/teamUserMembership:TeamUserMembership": "TeamUserMembership"
-  }
- },
- {
-  "pkg": "fivetran",
-  "mod": "index/user",
-  "fqn": "footholdtech_fivetran",
-  "classes": {
-   "fivetran:index/user:User": "User"
   }
  },
  {

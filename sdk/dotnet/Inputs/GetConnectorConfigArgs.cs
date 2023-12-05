@@ -245,6 +245,18 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        [Input("apiKeyApiSecret", required: true)]
+        private Input<string>? _apiKeyApiSecret;
+        public Input<string>? ApiKeyApiSecret
+        {
+            get => _apiKeyApiSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKeyApiSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("apiKeys", required: true)]
         private InputList<string>? _apiKeys;
         public InputList<string> ApiKeys
@@ -308,6 +320,9 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("apiUsage", required: true)]
         public Input<string> ApiUsage { get; set; } = null!;
 
+        [Input("apiUtilizationPercentage", required: true)]
+        public Input<string> ApiUtilizationPercentage { get; set; } = null!;
+
         [Input("apiVersion", required: true)]
         public Input<string> ApiVersion { get; set; } = null!;
 
@@ -338,6 +353,9 @@ namespace Footholdtech.Fivetran.Inputs
             get => _appIdsAppsflyers ?? (_appIdsAppsflyers = new InputList<Inputs.GetConnectorConfigAppIdsAppsflyerInputArgs>());
             set => _appIdsAppsflyers = value;
         }
+
+        [Input("appKey", required: true)]
+        public Input<string> AppKey { get; set; } = null!;
 
         [Input("appSpecificPassword", required: true)]
         private Input<string>? _appSpecificPassword;
@@ -790,6 +808,9 @@ namespace Footholdtech.Fivetran.Inputs
             set => _dimensions = value;
         }
 
+        [Input("distributedConnectorClusterSize", required: true)]
+        public Input<string> DistributedConnectorClusterSize { get; set; } = null!;
+
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
@@ -821,6 +842,12 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("enableArchiveLogOnly", required: true)]
         public Input<string> EnableArchiveLogOnly { get; set; } = null!;
+
+        [Input("enableDataExtensionsSyncing", required: true)]
+        public Input<string> EnableDataExtensionsSyncing { get; set; } = null!;
+
+        [Input("enableDistributedConnectorMode", required: true)]
+        public Input<string> EnableDistributedConnectorMode { get; set; } = null!;
 
         [Input("enableEnrichments", required: true)]
         public Input<string> EnableEnrichments { get; set; } = null!;
@@ -998,6 +1025,9 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("identity", required: true)]
         public Input<string> Identity { get; set; } = null!;
 
+        [Input("includeOcapiEndpoints", required: true)]
+        public Input<string> IncludeOcapiEndpoints { get; set; } = null!;
+
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
 
@@ -1018,6 +1048,9 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("isCustomApiCredentials", required: true)]
         public Input<string> IsCustomApiCredentials { get; set; } = null!;
+
+        [Input("isExternalActivitiesEndpointSelected", required: true)]
+        public Input<string> IsExternalActivitiesEndpointSelected { get; set; } = null!;
 
         [Input("isFtps", required: true)]
         public Input<string> IsFtps { get; set; } = null!;
@@ -1102,6 +1135,9 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("latestVersion", required: true)]
         public Input<string> LatestVersion { get; set; } = null!;
+
+        [Input("limitForApiCallsToExternalActivitiesEndpoint", required: true)]
+        public Input<string> LimitForApiCallsToExternalActivitiesEndpoint { get; set; } = null!;
 
         [Input("lineSeparator", required: true)]
         public Input<string> LineSeparator { get; set; } = null!;
@@ -1191,6 +1227,27 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        [Input("ocapiClientId", required: true)]
+        public Input<string> OcapiClientId { get; set; } = null!;
+
+        [Input("ocapiClientSecret", required: true)]
+        private Input<string>? _ocapiClientSecret;
+        public Input<string>? OcapiClientSecret
+        {
+            get => _ocapiClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ocapiClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("ocapiCustomObjectTypes", required: true)]
+        public Input<string> OcapiCustomObjectTypes { get; set; } = null!;
+
+        [Input("ocapiHostname", required: true)]
+        public Input<string> OcapiHostname { get; set; } = null!;
+
         [Input("onError", required: true)]
         public Input<string> OnError { get; set; } = null!;
 
@@ -1229,6 +1286,9 @@ namespace Footholdtech.Fivetran.Inputs
             get => _pages ?? (_pages = new InputList<string>());
             set => _pages = value;
         }
+
+        [Input("partnerCode", required: true)]
+        public Input<string> PartnerCode { get; set; } = null!;
 
         [Input("partners", required: true)]
         private InputList<string>? _partners;
@@ -2076,6 +2136,9 @@ namespace Footholdtech.Fivetran.Inputs
             get => _templateLabels ?? (_templateLabels = new InputList<string>());
             set => _templateLabels = value;
         }
+
+        [Input("tenant", required: true)]
+        public Input<string> Tenant { get; set; } = null!;
 
         [Input("tenantId", required: true)]
         private Input<string>? _tenantId;

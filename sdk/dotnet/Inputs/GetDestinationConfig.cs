@@ -38,6 +38,12 @@ namespace Footholdtech.Fivetran.Inputs
         public string? Catalog { get; set; }
 
         /// <summary>
+        /// ClientId of your Azure Data Lake Storage
+        /// </summary>
+        [Input("clientId")]
+        public string? ClientId { get; set; }
+
+        /// <summary>
         /// Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         /// </summary>
         [Input("clusterId")]
@@ -54,6 +60,12 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("connectionType")]
         public string? ConnectionType { get; set; }
+
+        /// <summary>
+        /// Container Name of your Azure Data Lake Storage
+        /// </summary>
+        [Input("containerName")]
+        public string? ContainerName { get; set; }
 
         /// <summary>
         /// Whether to create external tables
@@ -102,6 +114,18 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("isPrivateKeyEncrypted", required: true)]
         public string IsPrivateKeyEncrypted { get; set; } = null!;
+
+        [Input("lakehouseName")]
+        private string? _lakehouseName;
+
+        /// <summary>
+        /// OneLake lakehouse name
+        /// </summary>
+        public string? LakehouseName
+        {
+            get => _lakehouseName;
+            set => _lakehouseName = value;
+        }
 
         [Input("passphrase")]
         private string? _passphrase;
@@ -211,11 +235,35 @@ namespace Footholdtech.Fivetran.Inputs
             set => _secretKey = value;
         }
 
+        [Input("secretValue")]
+        private string? _secretValue;
+
+        /// <summary>
+        /// Secret Value of your Azure Data Lake Storage
+        /// </summary>
+        public string? SecretValue
+        {
+            get => _secretValue;
+            set => _secretValue = value;
+        }
+
         /// <summary>
         /// Server name
         /// </summary>
         [Input("serverHostName")]
         public string? ServerHostName { get; set; }
+
+        /// <summary>
+        /// Storage Account Name of your Azure Data Lake Storage
+        /// </summary>
+        [Input("storageAccountName")]
+        public string? StorageAccountName { get; set; }
+
+        /// <summary>
+        /// TenantId of your Azure Data Lake Storage
+        /// </summary>
+        [Input("tenantId")]
+        public string? TenantId { get; set; }
 
         /// <summary>
         /// SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -240,6 +288,18 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("user")]
         public string? User { get; set; }
+
+        [Input("workspaceName")]
+        private string? _workspaceName;
+
+        /// <summary>
+        /// OneLake workspace name
+        /// </summary>
+        public string? WorkspaceName
+        {
+            get => _workspaceName;
+            set => _workspaceName = value;
+        }
 
         public GetDestinationConfigArgs()
         {

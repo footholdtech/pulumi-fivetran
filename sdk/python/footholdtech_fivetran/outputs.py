@@ -89,12 +89,38 @@ class ConnectorAuth(dict):
         suggest = None
         if key == "accessToken":
             suggest = "access_token"
+        elif key == "awsAccessKey":
+            suggest = "aws_access_key"
+        elif key == "awsSecretKey":
+            suggest = "aws_secret_key"
         elif key == "clientAccess":
             suggest = "client_access"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "consumerKey":
+            suggest = "consumer_key"
+        elif key == "consumerSecret":
+            suggest = "consumer_secret"
+        elif key == "keyId":
+            suggest = "key_id"
+        elif key == "oauthToken":
+            suggest = "oauth_token"
+        elif key == "oauthTokenSecret":
+            suggest = "oauth_token_secret"
+        elif key == "previousRefreshToken":
+            suggest = "previous_refresh_token"
         elif key == "realmId":
             suggest = "realm_id"
         elif key == "refreshToken":
             suggest = "refresh_token"
+        elif key == "roleArn":
+            suggest = "role_arn"
+        elif key == "teamId":
+            suggest = "team_id"
+        elif key == "userAccessToken":
+            suggest = "user_access_token"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectorAuth. Access the value via the '{suggest}' property getter instead.")
@@ -109,17 +135,56 @@ class ConnectorAuth(dict):
 
     def __init__(__self__, *,
                  access_token: Optional[str] = None,
+                 aws_access_key: Optional[str] = None,
+                 aws_secret_key: Optional[str] = None,
                  client_access: Optional['outputs.ConnectorAuthClientAccess'] = None,
+                 client_id: Optional[str] = None,
+                 client_secret: Optional[str] = None,
+                 consumer_key: Optional[str] = None,
+                 consumer_secret: Optional[str] = None,
+                 key_id: Optional[str] = None,
+                 oauth_token: Optional[str] = None,
+                 oauth_token_secret: Optional[str] = None,
+                 previous_refresh_token: Optional[str] = None,
                  realm_id: Optional[str] = None,
-                 refresh_token: Optional[str] = None):
+                 refresh_token: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 team_id: Optional[str] = None,
+                 user_access_token: Optional[str] = None):
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
+        if aws_access_key is not None:
+            pulumi.set(__self__, "aws_access_key", aws_access_key)
+        if aws_secret_key is not None:
+            pulumi.set(__self__, "aws_secret_key", aws_secret_key)
         if client_access is not None:
             pulumi.set(__self__, "client_access", client_access)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if consumer_key is not None:
+            pulumi.set(__self__, "consumer_key", consumer_key)
+        if consumer_secret is not None:
+            pulumi.set(__self__, "consumer_secret", consumer_secret)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if oauth_token is not None:
+            pulumi.set(__self__, "oauth_token", oauth_token)
+        if oauth_token_secret is not None:
+            pulumi.set(__self__, "oauth_token_secret", oauth_token_secret)
+        if previous_refresh_token is not None:
+            pulumi.set(__self__, "previous_refresh_token", previous_refresh_token)
         if realm_id is not None:
             pulumi.set(__self__, "realm_id", realm_id)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if team_id is not None:
+            pulumi.set(__self__, "team_id", team_id)
+        if user_access_token is not None:
+            pulumi.set(__self__, "user_access_token", user_access_token)
 
     @property
     @pulumi.getter(name="accessToken")
@@ -127,9 +192,59 @@ class ConnectorAuth(dict):
         return pulumi.get(self, "access_token")
 
     @property
+    @pulumi.getter(name="awsAccessKey")
+    def aws_access_key(self) -> Optional[str]:
+        return pulumi.get(self, "aws_access_key")
+
+    @property
+    @pulumi.getter(name="awsSecretKey")
+    def aws_secret_key(self) -> Optional[str]:
+        return pulumi.get(self, "aws_secret_key")
+
+    @property
     @pulumi.getter(name="clientAccess")
     def client_access(self) -> Optional['outputs.ConnectorAuthClientAccess']:
         return pulumi.get(self, "client_access")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[str]:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="consumerKey")
+    def consumer_key(self) -> Optional[str]:
+        return pulumi.get(self, "consumer_key")
+
+    @property
+    @pulumi.getter(name="consumerSecret")
+    def consumer_secret(self) -> Optional[str]:
+        return pulumi.get(self, "consumer_secret")
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[str]:
+        return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> Optional[str]:
+        return pulumi.get(self, "oauth_token")
+
+    @property
+    @pulumi.getter(name="oauthTokenSecret")
+    def oauth_token_secret(self) -> Optional[str]:
+        return pulumi.get(self, "oauth_token_secret")
+
+    @property
+    @pulumi.getter(name="previousRefreshToken")
+    def previous_refresh_token(self) -> Optional[str]:
+        return pulumi.get(self, "previous_refresh_token")
 
     @property
     @pulumi.getter(name="realmId")
@@ -140,6 +255,21 @@ class ConnectorAuth(dict):
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> Optional[str]:
         return pulumi.get(self, "refresh_token")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> Optional[str]:
+        return pulumi.get(self, "team_id")
+
+    @property
+    @pulumi.getter(name="userAccessToken")
+    def user_access_token(self) -> Optional[str]:
+        return pulumi.get(self, "user_access_token")
 
 
 @pulumi.output_type
@@ -419,6 +549,8 @@ class ConnectorConfig(dict):
             suggest = "api_id"
         elif key == "apiKey":
             suggest = "api_key"
+        elif key == "apiKeyApiSecret":
+            suggest = "api_key_api_secret"
         elif key == "apiKeys":
             suggest = "api_keys"
         elif key == "apiQuota":
@@ -437,6 +569,8 @@ class ConnectorConfig(dict):
             suggest = "api_url"
         elif key == "apiUsage":
             suggest = "api_usage"
+        elif key == "apiUtilizationPercentage":
+            suggest = "api_utilization_percentage"
         elif key == "apiVersion":
             suggest = "api_version"
         elif key == "appId":
@@ -445,6 +579,8 @@ class ConnectorConfig(dict):
             suggest = "app_ids"
         elif key == "appIdsAppsflyers":
             suggest = "app_ids_appsflyers"
+        elif key == "appKey":
+            suggest = "app_key"
         elif key == "appSpecificPassword":
             suggest = "app_specific_password"
         elif key == "appSyncMode":
@@ -599,6 +735,8 @@ class ConnectorConfig(dict):
             suggest = "date_granularity"
         elif key == "dimensionAttributes":
             suggest = "dimension_attributes"
+        elif key == "distributedConnectorClusterSize":
+            suggest = "distributed_connector_cluster_size"
         elif key == "domainHostName":
             suggest = "domain_host_name"
         elif key == "domainName":
@@ -611,6 +749,10 @@ class ConnectorConfig(dict):
             suggest = "enable_all_dimension_combinations"
         elif key == "enableArchiveLogOnly":
             suggest = "enable_archive_log_only"
+        elif key == "enableDataExtensionsSyncing":
+            suggest = "enable_data_extensions_syncing"
+        elif key == "enableDistributedConnectorMode":
+            suggest = "enable_distributed_connector_mode"
         elif key == "enableEnrichments":
             suggest = "enable_enrichments"
         elif key == "enableExports":
@@ -677,6 +819,8 @@ class ConnectorConfig(dict):
             suggest = "host_ip"
         elif key == "hostUser":
             suggest = "host_user"
+        elif key == "includeOcapiEndpoints":
+            suggest = "include_ocapi_endpoints"
         elif key == "instanceNumber":
             suggest = "instance_number"
         elif key == "instanceUrl":
@@ -689,6 +833,8 @@ class ConnectorConfig(dict):
             suggest = "is_auth2_enabled"
         elif key == "isCustomApiCredentials":
             suggest = "is_custom_api_credentials"
+        elif key == "isExternalActivitiesEndpointSelected":
+            suggest = "is_external_activities_endpoint_selected"
         elif key == "isFtps":
             suggest = "is_ftps"
         elif key == "isKeypair":
@@ -723,6 +869,8 @@ class ConnectorConfig(dict):
             suggest = "last_synced_changes_utc_"
         elif key == "latestVersion":
             suggest = "latest_version"
+        elif key == "limitForApiCallsToExternalActivitiesEndpoint":
+            suggest = "limit_for_api_calls_to_external_activities_endpoint"
         elif key == "lineSeparator":
             suggest = "line_separator"
         elif key == "listStrategy":
@@ -751,6 +899,14 @@ class ConnectorConfig(dict):
             suggest = "oauth_token"
         elif key == "oauthTokenSecret":
             suggest = "oauth_token_secret"
+        elif key == "ocapiClientId":
+            suggest = "ocapi_client_id"
+        elif key == "ocapiClientSecret":
+            suggest = "ocapi_client_secret"
+        elif key == "ocapiCustomObjectTypes":
+            suggest = "ocapi_custom_object_types"
+        elif key == "ocapiHostname":
+            suggest = "ocapi_hostname"
         elif key == "onError":
             suggest = "on_error"
         elif key == "onPremise":
@@ -761,6 +917,8 @@ class ConnectorConfig(dict):
             suggest = "packed_mode_tables"
         elif key == "packingMode":
             suggest = "packing_mode"
+        elif key == "partnerCode":
+            suggest = "partner_code"
         elif key == "patName":
             suggest = "pat_name"
         elif key == "patSecret":
@@ -1129,6 +1287,7 @@ class ConnectorConfig(dict):
                  api_access_token: Optional[str] = None,
                  api_id: Optional[str] = None,
                  api_key: Optional[str] = None,
+                 api_key_api_secret: Optional[str] = None,
                  api_keys: Optional[Sequence[str]] = None,
                  api_quota: Optional[str] = None,
                  api_requests_per_minute: Optional[str] = None,
@@ -1138,10 +1297,12 @@ class ConnectorConfig(dict):
                  api_type: Optional[str] = None,
                  api_url: Optional[str] = None,
                  api_usage: Optional[str] = None,
+                 api_utilization_percentage: Optional[str] = None,
                  api_version: Optional[str] = None,
                  app_id: Optional[str] = None,
                  app_ids: Optional[Sequence[str]] = None,
                  app_ids_appsflyers: Optional[Sequence['outputs.ConnectorConfigAppIdsAppsflyer']] = None,
+                 app_key: Optional[str] = None,
                  app_specific_password: Optional[str] = None,
                  app_sync_mode: Optional[str] = None,
                  append_file_option: Optional[str] = None,
@@ -1232,6 +1393,7 @@ class ConnectorConfig(dict):
                  delimiter: Optional[str] = None,
                  dimension_attributes: Optional[Sequence[str]] = None,
                  dimensions: Optional[Sequence[str]] = None,
+                 distributed_connector_cluster_size: Optional[str] = None,
                  domain: Optional[str] = None,
                  domain_host_name: Optional[str] = None,
                  domain_name: Optional[str] = None,
@@ -1241,6 +1403,8 @@ class ConnectorConfig(dict):
                  empty_header: Optional[str] = None,
                  enable_all_dimension_combinations: Optional[str] = None,
                  enable_archive_log_only: Optional[str] = None,
+                 enable_data_extensions_syncing: Optional[str] = None,
+                 enable_distributed_connector_mode: Optional[str] = None,
                  enable_enrichments: Optional[str] = None,
                  enable_exports: Optional[str] = None,
                  enable_tde: Optional[str] = None,
@@ -1284,6 +1448,7 @@ class ConnectorConfig(dict):
                  host_user: Optional[str] = None,
                  hosts: Optional[Sequence[str]] = None,
                  identity: Optional[str] = None,
+                 include_ocapi_endpoints: Optional[str] = None,
                  instance: Optional[str] = None,
                  instance_number: Optional[str] = None,
                  instance_url: Optional[str] = None,
@@ -1291,6 +1456,7 @@ class ConnectorConfig(dict):
                  is_account_level_connector: Optional[str] = None,
                  is_auth2_enabled: Optional[str] = None,
                  is_custom_api_credentials: Optional[str] = None,
+                 is_external_activities_endpoint_selected: Optional[str] = None,
                  is_ftps: Optional[str] = None,
                  is_keypair: Optional[str] = None,
                  is_multi_entity_feature_enabled: Optional[str] = None,
@@ -1310,6 +1476,7 @@ class ConnectorConfig(dict):
                  keystore_password: Optional[str] = None,
                  last_synced_changes_utc_: Optional[str] = None,
                  latest_version: Optional[str] = None,
+                 limit_for_api_calls_to_external_activities_endpoint: Optional[str] = None,
                  line_separator: Optional[str] = None,
                  list_strategy: Optional[str] = None,
                  list_sync_mode: Optional[str] = None,
@@ -1327,6 +1494,10 @@ class ConnectorConfig(dict):
                  null_sequence: Optional[str] = None,
                  oauth_token: Optional[str] = None,
                  oauth_token_secret: Optional[str] = None,
+                 ocapi_client_id: Optional[str] = None,
+                 ocapi_client_secret: Optional[str] = None,
+                 ocapi_custom_object_types: Optional[str] = None,
+                 ocapi_hostname: Optional[str] = None,
                  on_error: Optional[str] = None,
                  on_premise: Optional[str] = None,
                  organization: Optional[str] = None,
@@ -1335,6 +1506,7 @@ class ConnectorConfig(dict):
                  packed_mode_tables: Optional[Sequence[str]] = None,
                  packing_mode: Optional[str] = None,
                  pages: Optional[Sequence[str]] = None,
+                 partner_code: Optional[str] = None,
                  partners: Optional[Sequence[str]] = None,
                  passphrase: Optional[str] = None,
                  password: Optional[str] = None,
@@ -1479,6 +1651,7 @@ class ConnectorConfig(dict):
                  team_id: Optional[str] = None,
                  technical_account_id: Optional[str] = None,
                  template_labels: Optional[Sequence[str]] = None,
+                 tenant: Optional[str] = None,
                  tenant_id: Optional[str] = None,
                  test_table_name: Optional[str] = None,
                  time_zone: Optional[str] = None,
@@ -1611,6 +1784,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "api_id", api_id)
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
+        if api_key_api_secret is not None:
+            pulumi.set(__self__, "api_key_api_secret", api_key_api_secret)
         if api_keys is not None:
             pulumi.set(__self__, "api_keys", api_keys)
         if api_quota is not None:
@@ -1629,6 +1804,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "api_url", api_url)
         if api_usage is not None:
             pulumi.set(__self__, "api_usage", api_usage)
+        if api_utilization_percentage is not None:
+            pulumi.set(__self__, "api_utilization_percentage", api_utilization_percentage)
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
         if app_id is not None:
@@ -1637,6 +1814,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "app_ids", app_ids)
         if app_ids_appsflyers is not None:
             pulumi.set(__self__, "app_ids_appsflyers", app_ids_appsflyers)
+        if app_key is not None:
+            pulumi.set(__self__, "app_key", app_key)
         if app_specific_password is not None:
             pulumi.set(__self__, "app_specific_password", app_specific_password)
         if app_sync_mode is not None:
@@ -1817,6 +1996,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "dimension_attributes", dimension_attributes)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
+        if distributed_connector_cluster_size is not None:
+            pulumi.set(__self__, "distributed_connector_cluster_size", distributed_connector_cluster_size)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if domain_host_name is not None:
@@ -1835,6 +2016,10 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "enable_all_dimension_combinations", enable_all_dimension_combinations)
         if enable_archive_log_only is not None:
             pulumi.set(__self__, "enable_archive_log_only", enable_archive_log_only)
+        if enable_data_extensions_syncing is not None:
+            pulumi.set(__self__, "enable_data_extensions_syncing", enable_data_extensions_syncing)
+        if enable_distributed_connector_mode is not None:
+            pulumi.set(__self__, "enable_distributed_connector_mode", enable_distributed_connector_mode)
         if enable_enrichments is not None:
             pulumi.set(__self__, "enable_enrichments", enable_enrichments)
         if enable_exports is not None:
@@ -1921,6 +2106,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "hosts", hosts)
         if identity is not None:
             pulumi.set(__self__, "identity", identity)
+        if include_ocapi_endpoints is not None:
+            pulumi.set(__self__, "include_ocapi_endpoints", include_ocapi_endpoints)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if instance_number is not None:
@@ -1935,6 +2122,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "is_auth2_enabled", is_auth2_enabled)
         if is_custom_api_credentials is not None:
             pulumi.set(__self__, "is_custom_api_credentials", is_custom_api_credentials)
+        if is_external_activities_endpoint_selected is not None:
+            pulumi.set(__self__, "is_external_activities_endpoint_selected", is_external_activities_endpoint_selected)
         if is_ftps is not None:
             pulumi.set(__self__, "is_ftps", is_ftps)
         if is_keypair is not None:
@@ -1973,6 +2162,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "last_synced_changes_utc_", last_synced_changes_utc_)
         if latest_version is not None:
             pulumi.set(__self__, "latest_version", latest_version)
+        if limit_for_api_calls_to_external_activities_endpoint is not None:
+            pulumi.set(__self__, "limit_for_api_calls_to_external_activities_endpoint", limit_for_api_calls_to_external_activities_endpoint)
         if line_separator is not None:
             pulumi.set(__self__, "line_separator", line_separator)
         if list_strategy is not None:
@@ -2007,6 +2198,14 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "oauth_token", oauth_token)
         if oauth_token_secret is not None:
             pulumi.set(__self__, "oauth_token_secret", oauth_token_secret)
+        if ocapi_client_id is not None:
+            pulumi.set(__self__, "ocapi_client_id", ocapi_client_id)
+        if ocapi_client_secret is not None:
+            pulumi.set(__self__, "ocapi_client_secret", ocapi_client_secret)
+        if ocapi_custom_object_types is not None:
+            pulumi.set(__self__, "ocapi_custom_object_types", ocapi_custom_object_types)
+        if ocapi_hostname is not None:
+            pulumi.set(__self__, "ocapi_hostname", ocapi_hostname)
         if on_error is not None:
             pulumi.set(__self__, "on_error", on_error)
         if on_premise is not None:
@@ -2023,6 +2222,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "packing_mode", packing_mode)
         if pages is not None:
             pulumi.set(__self__, "pages", pages)
+        if partner_code is not None:
+            pulumi.set(__self__, "partner_code", partner_code)
         if partners is not None:
             pulumi.set(__self__, "partners", partners)
         if passphrase is not None:
@@ -2311,6 +2512,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "technical_account_id", technical_account_id)
         if template_labels is not None:
             pulumi.set(__self__, "template_labels", template_labels)
+        if tenant is not None:
+            pulumi.set(__self__, "tenant", tenant)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if test_table_name is not None:
@@ -2620,6 +2823,11 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "api_key")
 
     @property
+    @pulumi.getter(name="apiKeyApiSecret")
+    def api_key_api_secret(self) -> Optional[str]:
+        return pulumi.get(self, "api_key_api_secret")
+
+    @property
     @pulumi.getter(name="apiKeys")
     def api_keys(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "api_keys")
@@ -2665,6 +2873,11 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "api_usage")
 
     @property
+    @pulumi.getter(name="apiUtilizationPercentage")
+    def api_utilization_percentage(self) -> Optional[str]:
+        return pulumi.get(self, "api_utilization_percentage")
+
+    @property
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> Optional[str]:
         return pulumi.get(self, "api_version")
@@ -2683,6 +2896,11 @@ class ConnectorConfig(dict):
     @pulumi.getter(name="appIdsAppsflyers")
     def app_ids_appsflyers(self) -> Optional[Sequence['outputs.ConnectorConfigAppIdsAppsflyer']]:
         return pulumi.get(self, "app_ids_appsflyers")
+
+    @property
+    @pulumi.getter(name="appKey")
+    def app_key(self) -> Optional[str]:
+        return pulumi.get(self, "app_key")
 
     @property
     @pulumi.getter(name="appSpecificPassword")
@@ -3135,6 +3353,11 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "dimensions")
 
     @property
+    @pulumi.getter(name="distributedConnectorClusterSize")
+    def distributed_connector_cluster_size(self) -> Optional[str]:
+        return pulumi.get(self, "distributed_connector_cluster_size")
+
+    @property
     @pulumi.getter
     def domain(self) -> Optional[str]:
         return pulumi.get(self, "domain")
@@ -3178,6 +3401,16 @@ class ConnectorConfig(dict):
     @pulumi.getter(name="enableArchiveLogOnly")
     def enable_archive_log_only(self) -> Optional[str]:
         return pulumi.get(self, "enable_archive_log_only")
+
+    @property
+    @pulumi.getter(name="enableDataExtensionsSyncing")
+    def enable_data_extensions_syncing(self) -> Optional[str]:
+        return pulumi.get(self, "enable_data_extensions_syncing")
+
+    @property
+    @pulumi.getter(name="enableDistributedConnectorMode")
+    def enable_distributed_connector_mode(self) -> Optional[str]:
+        return pulumi.get(self, "enable_distributed_connector_mode")
 
     @property
     @pulumi.getter(name="enableEnrichments")
@@ -3395,6 +3628,11 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "identity")
 
     @property
+    @pulumi.getter(name="includeOcapiEndpoints")
+    def include_ocapi_endpoints(self) -> Optional[str]:
+        return pulumi.get(self, "include_ocapi_endpoints")
+
+    @property
     @pulumi.getter
     def instance(self) -> Optional[str]:
         return pulumi.get(self, "instance")
@@ -3428,6 +3666,11 @@ class ConnectorConfig(dict):
     @pulumi.getter(name="isCustomApiCredentials")
     def is_custom_api_credentials(self) -> Optional[str]:
         return pulumi.get(self, "is_custom_api_credentials")
+
+    @property
+    @pulumi.getter(name="isExternalActivitiesEndpointSelected")
+    def is_external_activities_endpoint_selected(self) -> Optional[str]:
+        return pulumi.get(self, "is_external_activities_endpoint_selected")
 
     @property
     @pulumi.getter(name="isFtps")
@@ -3525,6 +3768,11 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "latest_version")
 
     @property
+    @pulumi.getter(name="limitForApiCallsToExternalActivitiesEndpoint")
+    def limit_for_api_calls_to_external_activities_endpoint(self) -> Optional[str]:
+        return pulumi.get(self, "limit_for_api_calls_to_external_activities_endpoint")
+
+    @property
     @pulumi.getter(name="lineSeparator")
     def line_separator(self) -> Optional[str]:
         return pulumi.get(self, "line_separator")
@@ -3610,6 +3858,26 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "oauth_token_secret")
 
     @property
+    @pulumi.getter(name="ocapiClientId")
+    def ocapi_client_id(self) -> Optional[str]:
+        return pulumi.get(self, "ocapi_client_id")
+
+    @property
+    @pulumi.getter(name="ocapiClientSecret")
+    def ocapi_client_secret(self) -> Optional[str]:
+        return pulumi.get(self, "ocapi_client_secret")
+
+    @property
+    @pulumi.getter(name="ocapiCustomObjectTypes")
+    def ocapi_custom_object_types(self) -> Optional[str]:
+        return pulumi.get(self, "ocapi_custom_object_types")
+
+    @property
+    @pulumi.getter(name="ocapiHostname")
+    def ocapi_hostname(self) -> Optional[str]:
+        return pulumi.get(self, "ocapi_hostname")
+
+    @property
     @pulumi.getter(name="onError")
     def on_error(self) -> Optional[str]:
         return pulumi.get(self, "on_error")
@@ -3648,6 +3916,11 @@ class ConnectorConfig(dict):
     @pulumi.getter
     def pages(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "pages")
+
+    @property
+    @pulumi.getter(name="partnerCode")
+    def partner_code(self) -> Optional[str]:
+        return pulumi.get(self, "partner_code")
 
     @property
     @pulumi.getter
@@ -4370,6 +4643,11 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "template_labels")
 
     @property
+    @pulumi.getter
+    def tenant(self) -> Optional[str]:
+        return pulumi.get(self, "tenant")
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[str]:
         return pulumi.get(self, "tenant_id")
@@ -4730,7 +5008,9 @@ class ConnectorConfigCustomReport(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "conversionsReportIncluded":
+        if key == "baseMetricsFields":
+            suggest = "base_metrics_fields"
+        elif key == "conversionsReportIncluded":
             suggest = "conversions_report_included"
         elif key == "customEventsIncluded":
             suggest = "custom_events_included"
@@ -4742,6 +5022,8 @@ class ConnectorConfigCustomReport(dict):
             suggest = "report_name"
         elif key == "reportType":
             suggest = "report_type"
+        elif key == "skAdMetricsFields":
+            suggest = "sk_ad_metrics_fields"
         elif key == "tableName":
             suggest = "table_name"
 
@@ -4758,27 +5040,43 @@ class ConnectorConfigCustomReport(dict):
 
     def __init__(__self__, *,
                  aggregate: Optional[str] = None,
+                 base_metrics_fields: Optional[Sequence[str]] = None,
+                 breakdown: Optional[str] = None,
+                 breakout: Optional[str] = None,
                  conversions_report_included: Optional[str] = None,
                  custom_events_included: Optional[str] = None,
+                 dimension: Optional[str] = None,
                  dimensions: Optional[Sequence[str]] = None,
                  event_names: Optional[Sequence[str]] = None,
+                 granularity: Optional[str] = None,
                  level: Optional[str] = None,
                  metrics: Optional[Sequence[str]] = None,
                  report_fields: Optional[Sequence[str]] = None,
                  report_name: Optional[str] = None,
                  report_type: Optional[str] = None,
                  segmentation: Optional[str] = None,
+                 sk_ad_metrics_fields: Optional[Sequence[str]] = None,
                  table_name: Optional[str] = None):
         if aggregate is not None:
             pulumi.set(__self__, "aggregate", aggregate)
+        if base_metrics_fields is not None:
+            pulumi.set(__self__, "base_metrics_fields", base_metrics_fields)
+        if breakdown is not None:
+            pulumi.set(__self__, "breakdown", breakdown)
+        if breakout is not None:
+            pulumi.set(__self__, "breakout", breakout)
         if conversions_report_included is not None:
             pulumi.set(__self__, "conversions_report_included", conversions_report_included)
         if custom_events_included is not None:
             pulumi.set(__self__, "custom_events_included", custom_events_included)
+        if dimension is not None:
+            pulumi.set(__self__, "dimension", dimension)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
         if event_names is not None:
             pulumi.set(__self__, "event_names", event_names)
+        if granularity is not None:
+            pulumi.set(__self__, "granularity", granularity)
         if level is not None:
             pulumi.set(__self__, "level", level)
         if metrics is not None:
@@ -4791,6 +5089,8 @@ class ConnectorConfigCustomReport(dict):
             pulumi.set(__self__, "report_type", report_type)
         if segmentation is not None:
             pulumi.set(__self__, "segmentation", segmentation)
+        if sk_ad_metrics_fields is not None:
+            pulumi.set(__self__, "sk_ad_metrics_fields", sk_ad_metrics_fields)
         if table_name is not None:
             pulumi.set(__self__, "table_name", table_name)
 
@@ -4798,6 +5098,21 @@ class ConnectorConfigCustomReport(dict):
     @pulumi.getter
     def aggregate(self) -> Optional[str]:
         return pulumi.get(self, "aggregate")
+
+    @property
+    @pulumi.getter(name="baseMetricsFields")
+    def base_metrics_fields(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "base_metrics_fields")
+
+    @property
+    @pulumi.getter
+    def breakdown(self) -> Optional[str]:
+        return pulumi.get(self, "breakdown")
+
+    @property
+    @pulumi.getter
+    def breakout(self) -> Optional[str]:
+        return pulumi.get(self, "breakout")
 
     @property
     @pulumi.getter(name="conversionsReportIncluded")
@@ -4811,6 +5126,11 @@ class ConnectorConfigCustomReport(dict):
 
     @property
     @pulumi.getter
+    def dimension(self) -> Optional[str]:
+        return pulumi.get(self, "dimension")
+
+    @property
+    @pulumi.getter
     def dimensions(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "dimensions")
 
@@ -4818,6 +5138,11 @@ class ConnectorConfigCustomReport(dict):
     @pulumi.getter(name="eventNames")
     def event_names(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "event_names")
+
+    @property
+    @pulumi.getter
+    def granularity(self) -> Optional[str]:
+        return pulumi.get(self, "granularity")
 
     @property
     @pulumi.getter
@@ -4848,6 +5173,11 @@ class ConnectorConfigCustomReport(dict):
     @pulumi.getter
     def segmentation(self) -> Optional[str]:
         return pulumi.get(self, "segmentation")
+
+    @property
+    @pulumi.getter(name="skAdMetricsFields")
+    def sk_ad_metrics_fields(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "sk_ad_metrics_fields")
 
     @property
     @pulumi.getter(name="tableName")
@@ -5044,12 +5374,16 @@ class ConnectorConfigReport(dict):
             suggest = "config_type"
         elif key == "filterFieldName":
             suggest = "filter_field_name"
+        elif key == "filterType":
+            suggest = "filter_type"
         elif key == "filterValue":
             suggest = "filter_value"
         elif key == "prebuiltReport":
             suggest = "prebuilt_report"
         elif key == "reportType":
             suggest = "report_type"
+        elif key == "rollbackWindow":
+            suggest = "rollback_window"
         elif key == "searchTypes":
             suggest = "search_types"
         elif key == "segmentIds":
@@ -5074,10 +5408,12 @@ class ConnectorConfigReport(dict):
                  fields: Optional[Sequence[str]] = None,
                  filter: Optional[str] = None,
                  filter_field_name: Optional[str] = None,
+                 filter_type: Optional[str] = None,
                  filter_value: Optional[str] = None,
                  metrics: Optional[Sequence[str]] = None,
                  prebuilt_report: Optional[str] = None,
                  report_type: Optional[str] = None,
+                 rollback_window: Optional[str] = None,
                  search_types: Optional[Sequence[str]] = None,
                  segment_ids: Optional[Sequence[str]] = None,
                  segments: Optional[Sequence[str]] = None,
@@ -5096,6 +5432,8 @@ class ConnectorConfigReport(dict):
             pulumi.set(__self__, "filter", filter)
         if filter_field_name is not None:
             pulumi.set(__self__, "filter_field_name", filter_field_name)
+        if filter_type is not None:
+            pulumi.set(__self__, "filter_type", filter_type)
         if filter_value is not None:
             pulumi.set(__self__, "filter_value", filter_value)
         if metrics is not None:
@@ -5104,6 +5442,8 @@ class ConnectorConfigReport(dict):
             pulumi.set(__self__, "prebuilt_report", prebuilt_report)
         if report_type is not None:
             pulumi.set(__self__, "report_type", report_type)
+        if rollback_window is not None:
+            pulumi.set(__self__, "rollback_window", rollback_window)
         if search_types is not None:
             pulumi.set(__self__, "search_types", search_types)
         if segment_ids is not None:
@@ -5149,6 +5489,11 @@ class ConnectorConfigReport(dict):
         return pulumi.get(self, "filter_field_name")
 
     @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> Optional[str]:
+        return pulumi.get(self, "filter_type")
+
+    @property
     @pulumi.getter(name="filterValue")
     def filter_value(self) -> Optional[str]:
         return pulumi.get(self, "filter_value")
@@ -5167,6 +5512,11 @@ class ConnectorConfigReport(dict):
     @pulumi.getter(name="reportType")
     def report_type(self) -> Optional[str]:
         return pulumi.get(self, "report_type")
+
+    @property
+    @pulumi.getter(name="rollbackWindow")
+    def rollback_window(self) -> Optional[str]:
+        return pulumi.get(self, "rollback_window")
 
     @property
     @pulumi.getter(name="searchTypes")
@@ -5802,12 +6152,16 @@ class DestinationConfig(dict):
         suggest = None
         if key == "authType":
             suggest = "auth_type"
+        elif key == "clientId":
+            suggest = "client_id"
         elif key == "clusterId":
             suggest = "cluster_id"
         elif key == "clusterRegion":
             suggest = "cluster_region"
         elif key == "connectionType":
             suggest = "connection_type"
+        elif key == "containerName":
+            suggest = "container_name"
         elif key == "createExternalTables":
             suggest = "create_external_tables"
         elif key == "dataSetLocation":
@@ -5820,6 +6174,8 @@ class DestinationConfig(dict):
             suggest = "http_path"
         elif key == "isPrivateKeyEncrypted":
             suggest = "is_private_key_encrypted"
+        elif key == "lakehouseName":
+            suggest = "lakehouse_name"
         elif key == "personalAccessToken":
             suggest = "personal_access_token"
         elif key == "prefixPath":
@@ -5834,14 +6190,22 @@ class DestinationConfig(dict):
             suggest = "role_arn"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "secretValue":
+            suggest = "secret_value"
         elif key == "serverHostName":
             suggest = "server_host_name"
+        elif key == "storageAccountName":
+            suggest = "storage_account_name"
+        elif key == "tenantId":
+            suggest = "tenant_id"
         elif key == "tunnelHost":
             suggest = "tunnel_host"
         elif key == "tunnelPort":
             suggest = "tunnel_port"
         elif key == "tunnelUser":
             suggest = "tunnel_user"
+        elif key == "workspaceName":
+            suggest = "workspace_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DestinationConfig. Access the value via the '{suggest}' property getter instead.")
@@ -5859,9 +6223,11 @@ class DestinationConfig(dict):
                  auth_type: Optional[str] = None,
                  bucket: Optional[str] = None,
                  catalog: Optional[str] = None,
+                 client_id: Optional[str] = None,
                  cluster_id: Optional[str] = None,
                  cluster_region: Optional[str] = None,
                  connection_type: Optional[str] = None,
+                 container_name: Optional[str] = None,
                  create_external_tables: Optional[str] = None,
                  data_set_location: Optional[str] = None,
                  database: Optional[str] = None,
@@ -5870,6 +6236,7 @@ class DestinationConfig(dict):
                  host: Optional[str] = None,
                  http_path: Optional[str] = None,
                  is_private_key_encrypted: Optional[str] = None,
+                 lakehouse_name: Optional[str] = None,
                  passphrase: Optional[str] = None,
                  password: Optional[str] = None,
                  personal_access_token: Optional[str] = None,
@@ -5882,19 +6249,25 @@ class DestinationConfig(dict):
                  role: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None,
+                 secret_value: Optional[str] = None,
                  server_host_name: Optional[str] = None,
+                 storage_account_name: Optional[str] = None,
+                 tenant_id: Optional[str] = None,
                  tunnel_host: Optional[str] = None,
                  tunnel_port: Optional[str] = None,
                  tunnel_user: Optional[str] = None,
-                 user: Optional[str] = None):
+                 user: Optional[str] = None,
+                 workspace_name: Optional[str] = None):
         """
         :param str auth: The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
         :param str auth_type: Authentication type. Default value: `PASSWORD`.
         :param str bucket: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
         :param str catalog: Catalog name
+        :param str client_id: ClientId of your Azure Data Lake Storage
         :param str cluster_id: Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         :param str cluster_region: Cluster region. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         :param str connection_type: Connection method. Default value: `Directly`.
+        :param str container_name: Container Name of your Azure Data Lake Storage
         :param str create_external_tables: Whether to create external tables
         :param str data_set_location: Data location. Datasets will reside in this location.
         :param str database: Database name
@@ -5903,6 +6276,7 @@ class DestinationConfig(dict):
         :param str host: Server name
         :param str http_path: HTTP path
         :param str is_private_key_encrypted: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
+        :param str lakehouse_name: OneLake lakehouse name
         :param str passphrase: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
         :param str password: Database user password
         :param str personal_access_token: Personal access token
@@ -5915,11 +6289,15 @@ class DestinationConfig(dict):
         :param str role: The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
         :param str role_arn: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         :param str secret_key: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        :param str secret_value: Secret Value of your Azure Data Lake Storage
         :param str server_host_name: Server name
+        :param str storage_account_name: Storage Account Name of your Azure Data Lake Storage
+        :param str tenant_id: TenantId of your Azure Data Lake Storage
         :param str tunnel_host: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param str tunnel_port: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param str tunnel_user: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param str user: Database user name
+        :param str workspace_name: OneLake workspace name
         """
         if auth is not None:
             pulumi.set(__self__, "auth", auth)
@@ -5929,12 +6307,16 @@ class DestinationConfig(dict):
             pulumi.set(__self__, "bucket", bucket)
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_region is not None:
             pulumi.set(__self__, "cluster_region", cluster_region)
         if connection_type is not None:
             pulumi.set(__self__, "connection_type", connection_type)
+        if container_name is not None:
+            pulumi.set(__self__, "container_name", container_name)
         if create_external_tables is not None:
             pulumi.set(__self__, "create_external_tables", create_external_tables)
         if data_set_location is not None:
@@ -5951,6 +6333,8 @@ class DestinationConfig(dict):
             pulumi.set(__self__, "http_path", http_path)
         if is_private_key_encrypted is not None:
             pulumi.set(__self__, "is_private_key_encrypted", is_private_key_encrypted)
+        if lakehouse_name is not None:
+            pulumi.set(__self__, "lakehouse_name", lakehouse_name)
         if passphrase is not None:
             pulumi.set(__self__, "passphrase", passphrase)
         if password is not None:
@@ -5975,8 +6359,14 @@ class DestinationConfig(dict):
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if secret_value is not None:
+            pulumi.set(__self__, "secret_value", secret_value)
         if server_host_name is not None:
             pulumi.set(__self__, "server_host_name", server_host_name)
+        if storage_account_name is not None:
+            pulumi.set(__self__, "storage_account_name", storage_account_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if tunnel_host is not None:
             pulumi.set(__self__, "tunnel_host", tunnel_host)
         if tunnel_port is not None:
@@ -5985,6 +6375,8 @@ class DestinationConfig(dict):
             pulumi.set(__self__, "tunnel_user", tunnel_user)
         if user is not None:
             pulumi.set(__self__, "user", user)
+        if workspace_name is not None:
+            pulumi.set(__self__, "workspace_name", workspace_name)
 
     @property
     @pulumi.getter
@@ -6019,6 +6411,14 @@ class DestinationConfig(dict):
         return pulumi.get(self, "catalog")
 
     @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        ClientId of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
         """
@@ -6041,6 +6441,14 @@ class DestinationConfig(dict):
         Connection method. Default value: `Directly`.
         """
         return pulumi.get(self, "connection_type")
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> Optional[str]:
+        """
+        Container Name of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "container_name")
 
     @property
     @pulumi.getter(name="createExternalTables")
@@ -6105,6 +6513,14 @@ class DestinationConfig(dict):
         Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
         """
         return pulumi.get(self, "is_private_key_encrypted")
+
+    @property
+    @pulumi.getter(name="lakehouseName")
+    def lakehouse_name(self) -> Optional[str]:
+        """
+        OneLake lakehouse name
+        """
+        return pulumi.get(self, "lakehouse_name")
 
     @property
     @pulumi.getter
@@ -6203,12 +6619,36 @@ class DestinationConfig(dict):
         return pulumi.get(self, "secret_key")
 
     @property
+    @pulumi.getter(name="secretValue")
+    def secret_value(self) -> Optional[str]:
+        """
+        Secret Value of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "secret_value")
+
+    @property
     @pulumi.getter(name="serverHostName")
     def server_host_name(self) -> Optional[str]:
         """
         Server name
         """
         return pulumi.get(self, "server_host_name")
+
+    @property
+    @pulumi.getter(name="storageAccountName")
+    def storage_account_name(self) -> Optional[str]:
+        """
+        Storage Account Name of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "storage_account_name")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        """
+        TenantId of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="tunnelHost")
@@ -6241,6 +6681,14 @@ class DestinationConfig(dict):
         Database user name
         """
         return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> Optional[str]:
+        """
+        OneLake workspace name
+        """
+        return pulumi.get(self, "workspace_name")
 
 
 @pulumi.output_type
@@ -6871,6 +7319,7 @@ class GetConnectorConfigResult(dict):
                  api_access_token: str,
                  api_id: str,
                  api_key: str,
+                 api_key_api_secret: str,
                  api_keys: Sequence[str],
                  api_quota: str,
                  api_requests_per_minute: str,
@@ -6880,10 +7329,12 @@ class GetConnectorConfigResult(dict):
                  api_type: str,
                  api_url: str,
                  api_usage: str,
+                 api_utilization_percentage: str,
                  api_version: str,
                  app_id: str,
                  app_ids: Sequence[str],
                  app_ids_appsflyers: Sequence['outputs.GetConnectorConfigAppIdsAppsflyerResult'],
+                 app_key: str,
                  app_specific_password: str,
                  app_sync_mode: str,
                  append_file_option: str,
@@ -6974,6 +7425,7 @@ class GetConnectorConfigResult(dict):
                  delimiter: str,
                  dimension_attributes: Sequence[str],
                  dimensions: Sequence[str],
+                 distributed_connector_cluster_size: str,
                  domain: str,
                  domain_host_name: str,
                  domain_name: str,
@@ -6983,6 +7435,8 @@ class GetConnectorConfigResult(dict):
                  empty_header: str,
                  enable_all_dimension_combinations: str,
                  enable_archive_log_only: str,
+                 enable_data_extensions_syncing: str,
+                 enable_distributed_connector_mode: str,
                  enable_enrichments: str,
                  enable_exports: str,
                  enable_tde: str,
@@ -7026,6 +7480,7 @@ class GetConnectorConfigResult(dict):
                  host_user: str,
                  hosts: Sequence[str],
                  identity: str,
+                 include_ocapi_endpoints: str,
                  instance: str,
                  instance_number: str,
                  instance_url: str,
@@ -7033,6 +7488,7 @@ class GetConnectorConfigResult(dict):
                  is_account_level_connector: str,
                  is_auth2_enabled: str,
                  is_custom_api_credentials: str,
+                 is_external_activities_endpoint_selected: str,
                  is_ftps: str,
                  is_keypair: str,
                  is_multi_entity_feature_enabled: str,
@@ -7052,6 +7508,7 @@ class GetConnectorConfigResult(dict):
                  keystore_password: str,
                  last_synced_changes_utc_: str,
                  latest_version: str,
+                 limit_for_api_calls_to_external_activities_endpoint: str,
                  line_separator: str,
                  list_strategy: str,
                  list_sync_mode: str,
@@ -7069,6 +7526,10 @@ class GetConnectorConfigResult(dict):
                  null_sequence: str,
                  oauth_token: str,
                  oauth_token_secret: str,
+                 ocapi_client_id: str,
+                 ocapi_client_secret: str,
+                 ocapi_custom_object_types: str,
+                 ocapi_hostname: str,
                  on_error: str,
                  on_premise: str,
                  organization: str,
@@ -7077,6 +7538,7 @@ class GetConnectorConfigResult(dict):
                  packed_mode_tables: Sequence[str],
                  packing_mode: str,
                  pages: Sequence[str],
+                 partner_code: str,
                  partners: Sequence[str],
                  passphrase: str,
                  password: str,
@@ -7221,6 +7683,7 @@ class GetConnectorConfigResult(dict):
                  team_id: str,
                  technical_account_id: str,
                  template_labels: Sequence[str],
+                 tenant: str,
                  tenant_id: str,
                  test_table_name: str,
                  time_zone: str,
@@ -7310,6 +7773,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "api_access_token", api_access_token)
         pulumi.set(__self__, "api_id", api_id)
         pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "api_key_api_secret", api_key_api_secret)
         pulumi.set(__self__, "api_keys", api_keys)
         pulumi.set(__self__, "api_quota", api_quota)
         pulumi.set(__self__, "api_requests_per_minute", api_requests_per_minute)
@@ -7319,10 +7783,12 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "api_type", api_type)
         pulumi.set(__self__, "api_url", api_url)
         pulumi.set(__self__, "api_usage", api_usage)
+        pulumi.set(__self__, "api_utilization_percentage", api_utilization_percentage)
         pulumi.set(__self__, "api_version", api_version)
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "app_ids", app_ids)
         pulumi.set(__self__, "app_ids_appsflyers", app_ids_appsflyers)
+        pulumi.set(__self__, "app_key", app_key)
         pulumi.set(__self__, "app_specific_password", app_specific_password)
         pulumi.set(__self__, "app_sync_mode", app_sync_mode)
         pulumi.set(__self__, "append_file_option", append_file_option)
@@ -7413,6 +7879,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "delimiter", delimiter)
         pulumi.set(__self__, "dimension_attributes", dimension_attributes)
         pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "distributed_connector_cluster_size", distributed_connector_cluster_size)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domain_host_name", domain_host_name)
         pulumi.set(__self__, "domain_name", domain_name)
@@ -7422,6 +7889,8 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "empty_header", empty_header)
         pulumi.set(__self__, "enable_all_dimension_combinations", enable_all_dimension_combinations)
         pulumi.set(__self__, "enable_archive_log_only", enable_archive_log_only)
+        pulumi.set(__self__, "enable_data_extensions_syncing", enable_data_extensions_syncing)
+        pulumi.set(__self__, "enable_distributed_connector_mode", enable_distributed_connector_mode)
         pulumi.set(__self__, "enable_enrichments", enable_enrichments)
         pulumi.set(__self__, "enable_exports", enable_exports)
         pulumi.set(__self__, "enable_tde", enable_tde)
@@ -7465,6 +7934,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "host_user", host_user)
         pulumi.set(__self__, "hosts", hosts)
         pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "include_ocapi_endpoints", include_ocapi_endpoints)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "instance_number", instance_number)
         pulumi.set(__self__, "instance_url", instance_url)
@@ -7472,6 +7942,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "is_account_level_connector", is_account_level_connector)
         pulumi.set(__self__, "is_auth2_enabled", is_auth2_enabled)
         pulumi.set(__self__, "is_custom_api_credentials", is_custom_api_credentials)
+        pulumi.set(__self__, "is_external_activities_endpoint_selected", is_external_activities_endpoint_selected)
         pulumi.set(__self__, "is_ftps", is_ftps)
         pulumi.set(__self__, "is_keypair", is_keypair)
         pulumi.set(__self__, "is_multi_entity_feature_enabled", is_multi_entity_feature_enabled)
@@ -7491,6 +7962,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "keystore_password", keystore_password)
         pulumi.set(__self__, "last_synced_changes_utc_", last_synced_changes_utc_)
         pulumi.set(__self__, "latest_version", latest_version)
+        pulumi.set(__self__, "limit_for_api_calls_to_external_activities_endpoint", limit_for_api_calls_to_external_activities_endpoint)
         pulumi.set(__self__, "line_separator", line_separator)
         pulumi.set(__self__, "list_strategy", list_strategy)
         pulumi.set(__self__, "list_sync_mode", list_sync_mode)
@@ -7508,6 +7980,10 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "null_sequence", null_sequence)
         pulumi.set(__self__, "oauth_token", oauth_token)
         pulumi.set(__self__, "oauth_token_secret", oauth_token_secret)
+        pulumi.set(__self__, "ocapi_client_id", ocapi_client_id)
+        pulumi.set(__self__, "ocapi_client_secret", ocapi_client_secret)
+        pulumi.set(__self__, "ocapi_custom_object_types", ocapi_custom_object_types)
+        pulumi.set(__self__, "ocapi_hostname", ocapi_hostname)
         pulumi.set(__self__, "on_error", on_error)
         pulumi.set(__self__, "on_premise", on_premise)
         pulumi.set(__self__, "organization", organization)
@@ -7516,6 +7992,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "packed_mode_tables", packed_mode_tables)
         pulumi.set(__self__, "packing_mode", packing_mode)
         pulumi.set(__self__, "pages", pages)
+        pulumi.set(__self__, "partner_code", partner_code)
         pulumi.set(__self__, "partners", partners)
         pulumi.set(__self__, "passphrase", passphrase)
         pulumi.set(__self__, "password", password)
@@ -7660,6 +8137,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "team_id", team_id)
         pulumi.set(__self__, "technical_account_id", technical_account_id)
         pulumi.set(__self__, "template_labels", template_labels)
+        pulumi.set(__self__, "tenant", tenant)
         pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "test_table_name", test_table_name)
         pulumi.set(__self__, "time_zone", time_zone)
@@ -7923,6 +8401,11 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "api_key")
 
     @property
+    @pulumi.getter(name="apiKeyApiSecret")
+    def api_key_api_secret(self) -> str:
+        return pulumi.get(self, "api_key_api_secret")
+
+    @property
     @pulumi.getter(name="apiKeys")
     def api_keys(self) -> Sequence[str]:
         return pulumi.get(self, "api_keys")
@@ -7968,6 +8451,11 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "api_usage")
 
     @property
+    @pulumi.getter(name="apiUtilizationPercentage")
+    def api_utilization_percentage(self) -> str:
+        return pulumi.get(self, "api_utilization_percentage")
+
+    @property
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> str:
         return pulumi.get(self, "api_version")
@@ -7986,6 +8474,11 @@ class GetConnectorConfigResult(dict):
     @pulumi.getter(name="appIdsAppsflyers")
     def app_ids_appsflyers(self) -> Sequence['outputs.GetConnectorConfigAppIdsAppsflyerResult']:
         return pulumi.get(self, "app_ids_appsflyers")
+
+    @property
+    @pulumi.getter(name="appKey")
+    def app_key(self) -> str:
+        return pulumi.get(self, "app_key")
 
     @property
     @pulumi.getter(name="appSpecificPassword")
@@ -8438,6 +8931,11 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "dimensions")
 
     @property
+    @pulumi.getter(name="distributedConnectorClusterSize")
+    def distributed_connector_cluster_size(self) -> str:
+        return pulumi.get(self, "distributed_connector_cluster_size")
+
+    @property
     @pulumi.getter
     def domain(self) -> str:
         return pulumi.get(self, "domain")
@@ -8481,6 +8979,16 @@ class GetConnectorConfigResult(dict):
     @pulumi.getter(name="enableArchiveLogOnly")
     def enable_archive_log_only(self) -> str:
         return pulumi.get(self, "enable_archive_log_only")
+
+    @property
+    @pulumi.getter(name="enableDataExtensionsSyncing")
+    def enable_data_extensions_syncing(self) -> str:
+        return pulumi.get(self, "enable_data_extensions_syncing")
+
+    @property
+    @pulumi.getter(name="enableDistributedConnectorMode")
+    def enable_distributed_connector_mode(self) -> str:
+        return pulumi.get(self, "enable_distributed_connector_mode")
 
     @property
     @pulumi.getter(name="enableEnrichments")
@@ -8698,6 +9206,11 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "identity")
 
     @property
+    @pulumi.getter(name="includeOcapiEndpoints")
+    def include_ocapi_endpoints(self) -> str:
+        return pulumi.get(self, "include_ocapi_endpoints")
+
+    @property
     @pulumi.getter
     def instance(self) -> str:
         return pulumi.get(self, "instance")
@@ -8731,6 +9244,11 @@ class GetConnectorConfigResult(dict):
     @pulumi.getter(name="isCustomApiCredentials")
     def is_custom_api_credentials(self) -> str:
         return pulumi.get(self, "is_custom_api_credentials")
+
+    @property
+    @pulumi.getter(name="isExternalActivitiesEndpointSelected")
+    def is_external_activities_endpoint_selected(self) -> str:
+        return pulumi.get(self, "is_external_activities_endpoint_selected")
 
     @property
     @pulumi.getter(name="isFtps")
@@ -8828,6 +9346,11 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "latest_version")
 
     @property
+    @pulumi.getter(name="limitForApiCallsToExternalActivitiesEndpoint")
+    def limit_for_api_calls_to_external_activities_endpoint(self) -> str:
+        return pulumi.get(self, "limit_for_api_calls_to_external_activities_endpoint")
+
+    @property
     @pulumi.getter(name="lineSeparator")
     def line_separator(self) -> str:
         return pulumi.get(self, "line_separator")
@@ -8913,6 +9436,26 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "oauth_token_secret")
 
     @property
+    @pulumi.getter(name="ocapiClientId")
+    def ocapi_client_id(self) -> str:
+        return pulumi.get(self, "ocapi_client_id")
+
+    @property
+    @pulumi.getter(name="ocapiClientSecret")
+    def ocapi_client_secret(self) -> str:
+        return pulumi.get(self, "ocapi_client_secret")
+
+    @property
+    @pulumi.getter(name="ocapiCustomObjectTypes")
+    def ocapi_custom_object_types(self) -> str:
+        return pulumi.get(self, "ocapi_custom_object_types")
+
+    @property
+    @pulumi.getter(name="ocapiHostname")
+    def ocapi_hostname(self) -> str:
+        return pulumi.get(self, "ocapi_hostname")
+
+    @property
     @pulumi.getter(name="onError")
     def on_error(self) -> str:
         return pulumi.get(self, "on_error")
@@ -8951,6 +9494,11 @@ class GetConnectorConfigResult(dict):
     @pulumi.getter
     def pages(self) -> Sequence[str]:
         return pulumi.get(self, "pages")
+
+    @property
+    @pulumi.getter(name="partnerCode")
+    def partner_code(self) -> str:
+        return pulumi.get(self, "partner_code")
 
     @property
     @pulumi.getter
@@ -9673,6 +10221,11 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "template_labels")
 
     @property
+    @pulumi.getter
+    def tenant(self) -> str:
+        return pulumi.get(self, "tenant")
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
         return pulumi.get(self, "tenant_id")
@@ -9985,34 +10538,61 @@ class GetConnectorConfigAppIdsAppsflyerResult(dict):
 class GetConnectorConfigCustomReportResult(dict):
     def __init__(__self__, *,
                  aggregate: str,
+                 base_metrics_fields: Sequence[str],
+                 breakdown: str,
+                 breakout: str,
                  conversions_report_included: str,
                  custom_events_included: str,
+                 dimension: str,
                  dimensions: Sequence[str],
                  event_names: Sequence[str],
+                 granularity: str,
                  level: str,
                  metrics: Sequence[str],
                  report_fields: Sequence[str],
                  report_name: str,
                  report_type: str,
                  segmentation: str,
+                 sk_ad_metrics_fields: Sequence[str],
                  table_name: str):
         pulumi.set(__self__, "aggregate", aggregate)
+        pulumi.set(__self__, "base_metrics_fields", base_metrics_fields)
+        pulumi.set(__self__, "breakdown", breakdown)
+        pulumi.set(__self__, "breakout", breakout)
         pulumi.set(__self__, "conversions_report_included", conversions_report_included)
         pulumi.set(__self__, "custom_events_included", custom_events_included)
+        pulumi.set(__self__, "dimension", dimension)
         pulumi.set(__self__, "dimensions", dimensions)
         pulumi.set(__self__, "event_names", event_names)
+        pulumi.set(__self__, "granularity", granularity)
         pulumi.set(__self__, "level", level)
         pulumi.set(__self__, "metrics", metrics)
         pulumi.set(__self__, "report_fields", report_fields)
         pulumi.set(__self__, "report_name", report_name)
         pulumi.set(__self__, "report_type", report_type)
         pulumi.set(__self__, "segmentation", segmentation)
+        pulumi.set(__self__, "sk_ad_metrics_fields", sk_ad_metrics_fields)
         pulumi.set(__self__, "table_name", table_name)
 
     @property
     @pulumi.getter
     def aggregate(self) -> str:
         return pulumi.get(self, "aggregate")
+
+    @property
+    @pulumi.getter(name="baseMetricsFields")
+    def base_metrics_fields(self) -> Sequence[str]:
+        return pulumi.get(self, "base_metrics_fields")
+
+    @property
+    @pulumi.getter
+    def breakdown(self) -> str:
+        return pulumi.get(self, "breakdown")
+
+    @property
+    @pulumi.getter
+    def breakout(self) -> str:
+        return pulumi.get(self, "breakout")
 
     @property
     @pulumi.getter(name="conversionsReportIncluded")
@@ -10026,6 +10606,11 @@ class GetConnectorConfigCustomReportResult(dict):
 
     @property
     @pulumi.getter
+    def dimension(self) -> str:
+        return pulumi.get(self, "dimension")
+
+    @property
+    @pulumi.getter
     def dimensions(self) -> Sequence[str]:
         return pulumi.get(self, "dimensions")
 
@@ -10033,6 +10618,11 @@ class GetConnectorConfigCustomReportResult(dict):
     @pulumi.getter(name="eventNames")
     def event_names(self) -> Sequence[str]:
         return pulumi.get(self, "event_names")
+
+    @property
+    @pulumi.getter
+    def granularity(self) -> str:
+        return pulumi.get(self, "granularity")
 
     @property
     @pulumi.getter
@@ -10063,6 +10653,11 @@ class GetConnectorConfigCustomReportResult(dict):
     @pulumi.getter
     def segmentation(self) -> str:
         return pulumi.get(self, "segmentation")
+
+    @property
+    @pulumi.getter(name="skAdMetricsFields")
+    def sk_ad_metrics_fields(self) -> Sequence[str]:
+        return pulumi.get(self, "sk_ad_metrics_fields")
 
     @property
     @pulumi.getter(name="tableName")
@@ -10195,10 +10790,12 @@ class GetConnectorConfigReportResult(dict):
                  fields: Sequence[str],
                  filter: str,
                  filter_field_name: str,
+                 filter_type: str,
                  filter_value: str,
                  metrics: Sequence[str],
                  prebuilt_report: str,
                  report_type: str,
+                 rollback_window: str,
                  search_types: Sequence[str],
                  segment_ids: Sequence[str],
                  segments: Sequence[str],
@@ -10210,10 +10807,12 @@ class GetConnectorConfigReportResult(dict):
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "filter_field_name", filter_field_name)
+        pulumi.set(__self__, "filter_type", filter_type)
         pulumi.set(__self__, "filter_value", filter_value)
         pulumi.set(__self__, "metrics", metrics)
         pulumi.set(__self__, "prebuilt_report", prebuilt_report)
         pulumi.set(__self__, "report_type", report_type)
+        pulumi.set(__self__, "rollback_window", rollback_window)
         pulumi.set(__self__, "search_types", search_types)
         pulumi.set(__self__, "segment_ids", segment_ids)
         pulumi.set(__self__, "segments", segments)
@@ -10255,6 +10854,11 @@ class GetConnectorConfigReportResult(dict):
         return pulumi.get(self, "filter_field_name")
 
     @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> str:
+        return pulumi.get(self, "filter_type")
+
+    @property
     @pulumi.getter(name="filterValue")
     def filter_value(self) -> str:
         return pulumi.get(self, "filter_value")
@@ -10273,6 +10877,11 @@ class GetConnectorConfigReportResult(dict):
     @pulumi.getter(name="reportType")
     def report_type(self) -> str:
         return pulumi.get(self, "report_type")
+
+    @property
+    @pulumi.getter(name="rollbackWindow")
+    def rollback_window(self) -> str:
+        return pulumi.get(self, "rollback_window")
 
     @property
     @pulumi.getter(name="searchTypes")
@@ -10854,9 +11463,11 @@ class GetDestinationConfigResult(dict):
                  auth_type: Optional[str] = None,
                  bucket: Optional[str] = None,
                  catalog: Optional[str] = None,
+                 client_id: Optional[str] = None,
                  cluster_id: Optional[str] = None,
                  cluster_region: Optional[str] = None,
                  connection_type: Optional[str] = None,
+                 container_name: Optional[str] = None,
                  create_external_tables: Optional[str] = None,
                  data_set_location: Optional[str] = None,
                  database: Optional[str] = None,
@@ -10864,6 +11475,7 @@ class GetDestinationConfigResult(dict):
                  fivetran_role_arn: Optional[str] = None,
                  host: Optional[str] = None,
                  http_path: Optional[str] = None,
+                 lakehouse_name: Optional[str] = None,
                  passphrase: Optional[str] = None,
                  password: Optional[str] = None,
                  personal_access_token: Optional[str] = None,
@@ -10875,11 +11487,15 @@ class GetDestinationConfigResult(dict):
                  role: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None,
+                 secret_value: Optional[str] = None,
                  server_host_name: Optional[str] = None,
+                 storage_account_name: Optional[str] = None,
+                 tenant_id: Optional[str] = None,
                  tunnel_host: Optional[str] = None,
                  tunnel_port: Optional[str] = None,
                  tunnel_user: Optional[str] = None,
-                 user: Optional[str] = None):
+                 user: Optional[str] = None,
+                 workspace_name: Optional[str] = None):
         """
         :param str is_private_key_encrypted: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
         :param str public_key: Public key to grant Fivetran SSH access to git repository.
@@ -10887,9 +11503,11 @@ class GetDestinationConfigResult(dict):
         :param str auth_type: Authentication type. Default value: `PASSWORD`.
         :param str bucket: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
         :param str catalog: Catalog name
+        :param str client_id: ClientId of your Azure Data Lake Storage
         :param str cluster_id: Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         :param str cluster_region: Cluster region. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         :param str connection_type: Connection method. Default value: `Directly`.
+        :param str container_name: Container Name of your Azure Data Lake Storage
         :param str create_external_tables: Whether to create external tables
         :param str data_set_location: Data location. Datasets will reside in this location.
         :param str database: Database name
@@ -10897,6 +11515,7 @@ class GetDestinationConfigResult(dict):
         :param str fivetran_role_arn: ARN of the role which you created with different required policy mentioned in our setup guide
         :param str host: Server name
         :param str http_path: HTTP path
+        :param str lakehouse_name: OneLake lakehouse name
         :param str passphrase: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
         :param str password: Database user password
         :param str personal_access_token: Personal access token
@@ -10908,11 +11527,15 @@ class GetDestinationConfigResult(dict):
         :param str role: The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
         :param str role_arn: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         :param str secret_key: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        :param str secret_value: Secret Value of your Azure Data Lake Storage
         :param str server_host_name: Server name
+        :param str storage_account_name: Storage Account Name of your Azure Data Lake Storage
+        :param str tenant_id: TenantId of your Azure Data Lake Storage
         :param str tunnel_host: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param str tunnel_port: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param str tunnel_user: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param str user: Database user name
+        :param str workspace_name: OneLake workspace name
         """
         pulumi.set(__self__, "is_private_key_encrypted", is_private_key_encrypted)
         pulumi.set(__self__, "public_key", public_key)
@@ -10924,12 +11547,16 @@ class GetDestinationConfigResult(dict):
             pulumi.set(__self__, "bucket", bucket)
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_region is not None:
             pulumi.set(__self__, "cluster_region", cluster_region)
         if connection_type is not None:
             pulumi.set(__self__, "connection_type", connection_type)
+        if container_name is not None:
+            pulumi.set(__self__, "container_name", container_name)
         if create_external_tables is not None:
             pulumi.set(__self__, "create_external_tables", create_external_tables)
         if data_set_location is not None:
@@ -10944,6 +11571,8 @@ class GetDestinationConfigResult(dict):
             pulumi.set(__self__, "host", host)
         if http_path is not None:
             pulumi.set(__self__, "http_path", http_path)
+        if lakehouse_name is not None:
+            pulumi.set(__self__, "lakehouse_name", lakehouse_name)
         if passphrase is not None:
             pulumi.set(__self__, "passphrase", passphrase)
         if password is not None:
@@ -10966,8 +11595,14 @@ class GetDestinationConfigResult(dict):
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if secret_value is not None:
+            pulumi.set(__self__, "secret_value", secret_value)
         if server_host_name is not None:
             pulumi.set(__self__, "server_host_name", server_host_name)
+        if storage_account_name is not None:
+            pulumi.set(__self__, "storage_account_name", storage_account_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if tunnel_host is not None:
             pulumi.set(__self__, "tunnel_host", tunnel_host)
         if tunnel_port is not None:
@@ -10976,6 +11611,8 @@ class GetDestinationConfigResult(dict):
             pulumi.set(__self__, "tunnel_user", tunnel_user)
         if user is not None:
             pulumi.set(__self__, "user", user)
+        if workspace_name is not None:
+            pulumi.set(__self__, "workspace_name", workspace_name)
 
     @property
     @pulumi.getter(name="isPrivateKeyEncrypted")
@@ -11026,6 +11663,14 @@ class GetDestinationConfigResult(dict):
         return pulumi.get(self, "catalog")
 
     @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        ClientId of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
         """
@@ -11048,6 +11693,14 @@ class GetDestinationConfigResult(dict):
         Connection method. Default value: `Directly`.
         """
         return pulumi.get(self, "connection_type")
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> Optional[str]:
+        """
+        Container Name of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "container_name")
 
     @property
     @pulumi.getter(name="createExternalTables")
@@ -11104,6 +11757,14 @@ class GetDestinationConfigResult(dict):
         HTTP path
         """
         return pulumi.get(self, "http_path")
+
+    @property
+    @pulumi.getter(name="lakehouseName")
+    def lakehouse_name(self) -> Optional[str]:
+        """
+        OneLake lakehouse name
+        """
+        return pulumi.get(self, "lakehouse_name")
 
     @property
     @pulumi.getter
@@ -11194,12 +11855,36 @@ class GetDestinationConfigResult(dict):
         return pulumi.get(self, "secret_key")
 
     @property
+    @pulumi.getter(name="secretValue")
+    def secret_value(self) -> Optional[str]:
+        """
+        Secret Value of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "secret_value")
+
+    @property
     @pulumi.getter(name="serverHostName")
     def server_host_name(self) -> Optional[str]:
         """
         Server name
         """
         return pulumi.get(self, "server_host_name")
+
+    @property
+    @pulumi.getter(name="storageAccountName")
+    def storage_account_name(self) -> Optional[str]:
+        """
+        Storage Account Name of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "storage_account_name")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        """
+        TenantId of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="tunnelHost")
@@ -11232,6 +11917,14 @@ class GetDestinationConfigResult(dict):
         Database user name
         """
         return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> Optional[str]:
+        """
+        OneLake workspace name
+        """
+        return pulumi.get(self, "workspace_name")
 
 
 @pulumi.output_type

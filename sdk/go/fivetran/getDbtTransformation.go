@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a dbt Transformation object.
@@ -117,12 +116,6 @@ func (o LookupDbtTransformationResultOutput) ToLookupDbtTransformationResultOutp
 
 func (o LookupDbtTransformationResultOutput) ToLookupDbtTransformationResultOutputWithContext(ctx context.Context) LookupDbtTransformationResultOutput {
 	return o
-}
-
-func (o LookupDbtTransformationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDbtTransformationResult] {
-	return pulumix.Output[LookupDbtTransformationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifiers of related connectors.

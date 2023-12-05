@@ -9,16 +9,28 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type ConnectorAuth struct {
-	AccessToken  *string                    `pulumi:"accessToken"`
-	ClientAccess *ConnectorAuthClientAccess `pulumi:"clientAccess"`
-	RealmId      *string                    `pulumi:"realmId"`
-	RefreshToken *string                    `pulumi:"refreshToken"`
+	AccessToken          *string                    `pulumi:"accessToken"`
+	AwsAccessKey         *string                    `pulumi:"awsAccessKey"`
+	AwsSecretKey         *string                    `pulumi:"awsSecretKey"`
+	ClientAccess         *ConnectorAuthClientAccess `pulumi:"clientAccess"`
+	ClientId             *string                    `pulumi:"clientId"`
+	ClientSecret         *string                    `pulumi:"clientSecret"`
+	ConsumerKey          *string                    `pulumi:"consumerKey"`
+	ConsumerSecret       *string                    `pulumi:"consumerSecret"`
+	KeyId                *string                    `pulumi:"keyId"`
+	OauthToken           *string                    `pulumi:"oauthToken"`
+	OauthTokenSecret     *string                    `pulumi:"oauthTokenSecret"`
+	PreviousRefreshToken *string                    `pulumi:"previousRefreshToken"`
+	RealmId              *string                    `pulumi:"realmId"`
+	RefreshToken         *string                    `pulumi:"refreshToken"`
+	RoleArn              *string                    `pulumi:"roleArn"`
+	TeamId               *string                    `pulumi:"teamId"`
+	UserAccessToken      *string                    `pulumi:"userAccessToken"`
 }
 
 // ConnectorAuthInput is an input type that accepts ConnectorAuthArgs and ConnectorAuthOutput values.
@@ -33,10 +45,23 @@ type ConnectorAuthInput interface {
 }
 
 type ConnectorAuthArgs struct {
-	AccessToken  pulumi.StringPtrInput             `pulumi:"accessToken"`
-	ClientAccess ConnectorAuthClientAccessPtrInput `pulumi:"clientAccess"`
-	RealmId      pulumi.StringPtrInput             `pulumi:"realmId"`
-	RefreshToken pulumi.StringPtrInput             `pulumi:"refreshToken"`
+	AccessToken          pulumi.StringPtrInput             `pulumi:"accessToken"`
+	AwsAccessKey         pulumi.StringPtrInput             `pulumi:"awsAccessKey"`
+	AwsSecretKey         pulumi.StringPtrInput             `pulumi:"awsSecretKey"`
+	ClientAccess         ConnectorAuthClientAccessPtrInput `pulumi:"clientAccess"`
+	ClientId             pulumi.StringPtrInput             `pulumi:"clientId"`
+	ClientSecret         pulumi.StringPtrInput             `pulumi:"clientSecret"`
+	ConsumerKey          pulumi.StringPtrInput             `pulumi:"consumerKey"`
+	ConsumerSecret       pulumi.StringPtrInput             `pulumi:"consumerSecret"`
+	KeyId                pulumi.StringPtrInput             `pulumi:"keyId"`
+	OauthToken           pulumi.StringPtrInput             `pulumi:"oauthToken"`
+	OauthTokenSecret     pulumi.StringPtrInput             `pulumi:"oauthTokenSecret"`
+	PreviousRefreshToken pulumi.StringPtrInput             `pulumi:"previousRefreshToken"`
+	RealmId              pulumi.StringPtrInput             `pulumi:"realmId"`
+	RefreshToken         pulumi.StringPtrInput             `pulumi:"refreshToken"`
+	RoleArn              pulumi.StringPtrInput             `pulumi:"roleArn"`
+	TeamId               pulumi.StringPtrInput             `pulumi:"teamId"`
+	UserAccessToken      pulumi.StringPtrInput             `pulumi:"userAccessToken"`
 }
 
 func (ConnectorAuthArgs) ElementType() reflect.Type {
@@ -49,12 +74,6 @@ func (i ConnectorAuthArgs) ToConnectorAuthOutput() ConnectorAuthOutput {
 
 func (i ConnectorAuthArgs) ToConnectorAuthOutputWithContext(ctx context.Context) ConnectorAuthOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAuthOutput)
-}
-
-func (i ConnectorAuthArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorAuth] {
-	return pulumix.Output[ConnectorAuth]{
-		OutputState: i.ToConnectorAuthOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ConnectorAuthArgs) ToConnectorAuthPtrOutput() ConnectorAuthPtrOutput {
@@ -98,12 +117,6 @@ func (i *connectorAuthPtrType) ToConnectorAuthPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAuthPtrOutput)
 }
 
-func (i *connectorAuthPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectorAuth] {
-	return pulumix.Output[*ConnectorAuth]{
-		OutputState: i.ToConnectorAuthPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorAuthOutput struct{ *pulumi.OutputState }
 
 func (ConnectorAuthOutput) ElementType() reflect.Type {
@@ -128,18 +141,52 @@ func (o ConnectorAuthOutput) ToConnectorAuthPtrOutputWithContext(ctx context.Con
 	}).(ConnectorAuthPtrOutput)
 }
 
-func (o ConnectorAuthOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorAuth] {
-	return pulumix.Output[ConnectorAuth]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorAuthOutput) AccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorAuth) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorAuthOutput) AwsAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.AwsAccessKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) AwsSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.AwsSecretKey }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorAuthOutput) ClientAccess() ConnectorAuthClientAccessPtrOutput {
 	return o.ApplyT(func(v ConnectorAuth) *ConnectorAuthClientAccess { return v.ClientAccess }).(ConnectorAuthClientAccessPtrOutput)
+}
+
+func (o ConnectorAuthOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) ConsumerKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.ConsumerKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) ConsumerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.ConsumerSecret }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) OauthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.OauthToken }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) OauthTokenSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.OauthTokenSecret }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) PreviousRefreshToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.PreviousRefreshToken }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorAuthOutput) RealmId() pulumi.StringPtrOutput {
@@ -148,6 +195,18 @@ func (o ConnectorAuthOutput) RealmId() pulumi.StringPtrOutput {
 
 func (o ConnectorAuthOutput) RefreshToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorAuth) *string { return v.RefreshToken }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.TeamId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthOutput) UserAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.UserAccessToken }).(pulumi.StringPtrOutput)
 }
 
 type ConnectorAuthPtrOutput struct{ *pulumi.OutputState }
@@ -162,12 +221,6 @@ func (o ConnectorAuthPtrOutput) ToConnectorAuthPtrOutput() ConnectorAuthPtrOutpu
 
 func (o ConnectorAuthPtrOutput) ToConnectorAuthPtrOutputWithContext(ctx context.Context) ConnectorAuthPtrOutput {
 	return o
-}
-
-func (o ConnectorAuthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorAuth] {
-	return pulumix.Output[*ConnectorAuth]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorAuthPtrOutput) Elem() ConnectorAuthOutput {
@@ -189,6 +242,24 @@ func (o ConnectorAuthPtrOutput) AccessToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorAuthPtrOutput) AwsAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) AwsSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorAuthPtrOutput) ClientAccess() ConnectorAuthClientAccessPtrOutput {
 	return o.ApplyT(func(v *ConnectorAuth) *ConnectorAuthClientAccess {
 		if v == nil {
@@ -196,6 +267,78 @@ func (o ConnectorAuthPtrOutput) ClientAccess() ConnectorAuthClientAccessPtrOutpu
 		}
 		return v.ClientAccess
 	}).(ConnectorAuthClientAccessPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) ConsumerKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) ConsumerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) OauthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OauthToken
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) OauthTokenSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OauthTokenSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) PreviousRefreshToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreviousRefreshToken
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorAuthPtrOutput) RealmId() pulumi.StringPtrOutput {
@@ -213,6 +356,33 @@ func (o ConnectorAuthPtrOutput) RefreshToken() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.RefreshToken
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TeamId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorAuthPtrOutput) UserAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAccessToken
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -251,12 +421,6 @@ func (i ConnectorAuthClientAccessArgs) ToConnectorAuthClientAccessOutput() Conne
 
 func (i ConnectorAuthClientAccessArgs) ToConnectorAuthClientAccessOutputWithContext(ctx context.Context) ConnectorAuthClientAccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAuthClientAccessOutput)
-}
-
-func (i ConnectorAuthClientAccessArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorAuthClientAccess] {
-	return pulumix.Output[ConnectorAuthClientAccess]{
-		OutputState: i.ToConnectorAuthClientAccessOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ConnectorAuthClientAccessArgs) ToConnectorAuthClientAccessPtrOutput() ConnectorAuthClientAccessPtrOutput {
@@ -300,12 +464,6 @@ func (i *connectorAuthClientAccessPtrType) ToConnectorAuthClientAccessPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAuthClientAccessPtrOutput)
 }
 
-func (i *connectorAuthClientAccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectorAuthClientAccess] {
-	return pulumix.Output[*ConnectorAuthClientAccess]{
-		OutputState: i.ToConnectorAuthClientAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorAuthClientAccessOutput struct{ *pulumi.OutputState }
 
 func (ConnectorAuthClientAccessOutput) ElementType() reflect.Type {
@@ -328,12 +486,6 @@ func (o ConnectorAuthClientAccessOutput) ToConnectorAuthClientAccessPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAuthClientAccess) *ConnectorAuthClientAccess {
 		return &v
 	}).(ConnectorAuthClientAccessPtrOutput)
-}
-
-func (o ConnectorAuthClientAccessOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorAuthClientAccess] {
-	return pulumix.Output[ConnectorAuthClientAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorAuthClientAccessOutput) ClientId() pulumi.StringPtrOutput {
@@ -364,12 +516,6 @@ func (o ConnectorAuthClientAccessPtrOutput) ToConnectorAuthClientAccessPtrOutput
 
 func (o ConnectorAuthClientAccessPtrOutput) ToConnectorAuthClientAccessPtrOutputWithContext(ctx context.Context) ConnectorAuthClientAccessPtrOutput {
 	return o
-}
-
-func (o ConnectorAuthClientAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorAuthClientAccess] {
-	return pulumix.Output[*ConnectorAuthClientAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorAuthClientAccessPtrOutput) Elem() ConnectorAuthClientAccessOutput {
@@ -483,12 +629,6 @@ func (i ConnectorCertificatesCertificateArgs) ToConnectorCertificatesCertificate
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorCertificatesCertificateOutput)
 }
 
-func (i ConnectorCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorCertificatesCertificate] {
-	return pulumix.Output[ConnectorCertificatesCertificate]{
-		OutputState: i.ToConnectorCertificatesCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorCertificatesCertificateArrayInput is an input type that accepts ConnectorCertificatesCertificateArray and ConnectorCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `ConnectorCertificatesCertificateArrayInput` via:
 //
@@ -514,12 +654,6 @@ func (i ConnectorCertificatesCertificateArray) ToConnectorCertificatesCertificat
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorCertificatesCertificateArrayOutput)
 }
 
-func (i ConnectorCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorCertificatesCertificate] {
-	return pulumix.Output[[]ConnectorCertificatesCertificate]{
-		OutputState: i.ToConnectorCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (ConnectorCertificatesCertificateOutput) ElementType() reflect.Type {
@@ -532,12 +666,6 @@ func (o ConnectorCertificatesCertificateOutput) ToConnectorCertificatesCertifica
 
 func (o ConnectorCertificatesCertificateOutput) ToConnectorCertificatesCertificateOutputWithContext(ctx context.Context) ConnectorCertificatesCertificateOutput {
 	return o
-}
-
-func (o ConnectorCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorCertificatesCertificate] {
-	return pulumix.Output[ConnectorCertificatesCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base64 encoded certificate.
@@ -599,12 +727,6 @@ func (o ConnectorCertificatesCertificateArrayOutput) ToConnectorCertificatesCert
 	return o
 }
 
-func (o ConnectorCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorCertificatesCertificate] {
-	return pulumix.Output[[]ConnectorCertificatesCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) ConnectorCertificatesCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorCertificatesCertificate {
 		return vs[0].([]ConnectorCertificatesCertificate)[vs[1].(int)]
@@ -612,445 +734,460 @@ func (o ConnectorCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) Co
 }
 
 type ConnectorConfig struct {
-	AbsConnectionMethod                    *string                                      `pulumi:"absConnectionMethod"`
-	AbsConnectionString                    *string                                      `pulumi:"absConnectionString"`
-	AbsContainerAddress                    *string                                      `pulumi:"absContainerAddress"`
-	AbsContainerName                       *string                                      `pulumi:"absContainerName"`
-	AbsHostIp                              *string                                      `pulumi:"absHostIp"`
-	AbsHostUser                            *string                                      `pulumi:"absHostUser"`
-	AbsPrefix                              *string                                      `pulumi:"absPrefix"`
-	AbsPublicKey                           *string                                      `pulumi:"absPublicKey"`
-	AccessKey                              *string                                      `pulumi:"accessKey"`
-	AccessKeyId                            *string                                      `pulumi:"accessKeyId"`
-	AccessKeySecret                        *string                                      `pulumi:"accessKeySecret"`
-	AccessToken                            *string                                      `pulumi:"accessToken"`
-	AccessType                             *string                                      `pulumi:"accessType"`
-	Account                                *string                                      `pulumi:"account"`
-	AccountId                              *string                                      `pulumi:"accountId"`
-	AccountIds                             []string                                     `pulumi:"accountIds"`
-	AccountKey                             *string                                      `pulumi:"accountKey"`
-	AccountName                            *string                                      `pulumi:"accountName"`
-	AccountSyncMode                        *string                                      `pulumi:"accountSyncMode"`
-	Accounts                               []string                                     `pulumi:"accounts"`
-	AccountsRedditAds                      []ConnectorConfigAccountsRedditAd            `pulumi:"accountsRedditAds"`
-	AccountsSyncMode                       *string                                      `pulumi:"accountsSyncMode"`
-	ActionBreakdowns                       []string                                     `pulumi:"actionBreakdowns"`
-	ActionReportTime                       *string                                      `pulumi:"actionReportTime"`
-	AdAnalytics                            *string                                      `pulumi:"adAnalytics"`
-	AdUnitView                             *string                                      `pulumi:"adUnitView"`
-	AdminApiKey                            *string                                      `pulumi:"adminApiKey"`
-	AdobeAnalyticsConfigurations           []ConnectorConfigAdobeAnalyticsConfiguration `pulumi:"adobeAnalyticsConfigurations"`
-	Advertisables                          []string                                     `pulumi:"advertisables"`
-	Advertisers                            []string                                     `pulumi:"advertisers"`
-	AdvertisersIds                         []string                                     `pulumi:"advertisersIds"`
-	AdvertisersSyncMode                    *string                                      `pulumi:"advertisersSyncMode"`
-	AgentHost                              *string                                      `pulumi:"agentHost"`
-	AgentOraHome                           *string                                      `pulumi:"agentOraHome"`
-	AgentPassword                          *string                                      `pulumi:"agentPassword"`
-	AgentPort                              *string                                      `pulumi:"agentPort"`
-	AgentPublicCert                        *string                                      `pulumi:"agentPublicCert"`
-	AgentUser                              *string                                      `pulumi:"agentUser"`
-	Aggregation                            *string                                      `pulumi:"aggregation"`
-	AlwaysEncrypted                        *string                                      `pulumi:"alwaysEncrypted"`
-	ApiAccessToken                         *string                                      `pulumi:"apiAccessToken"`
-	ApiId                                  *string                                      `pulumi:"apiId"`
-	ApiKey                                 *string                                      `pulumi:"apiKey"`
-	ApiKeys                                []string                                     `pulumi:"apiKeys"`
-	ApiQuota                               *string                                      `pulumi:"apiQuota"`
-	ApiRequestsPerMinute                   *string                                      `pulumi:"apiRequestsPerMinute"`
-	ApiSecret                              *string                                      `pulumi:"apiSecret"`
-	ApiSecretKey                           *string                                      `pulumi:"apiSecretKey"`
-	ApiToken                               *string                                      `pulumi:"apiToken"`
-	ApiType                                *string                                      `pulumi:"apiType"`
-	ApiUrl                                 *string                                      `pulumi:"apiUrl"`
-	ApiUsage                               *string                                      `pulumi:"apiUsage"`
-	ApiVersion                             *string                                      `pulumi:"apiVersion"`
-	AppId                                  *string                                      `pulumi:"appId"`
-	AppIds                                 []string                                     `pulumi:"appIds"`
-	AppIdsAppsflyers                       []ConnectorConfigAppIdsAppsflyer             `pulumi:"appIdsAppsflyers"`
-	AppSpecificPassword                    *string                                      `pulumi:"appSpecificPassword"`
-	AppSyncMode                            *string                                      `pulumi:"appSyncMode"`
-	AppendFileOption                       *string                                      `pulumi:"appendFileOption"`
-	ApplicationKey                         *string                                      `pulumi:"applicationKey"`
-	Apps                                   []string                                     `pulumi:"apps"`
-	ArchiveLogFormat                       *string                                      `pulumi:"archiveLogFormat"`
-	ArchiveLogPath                         *string                                      `pulumi:"archiveLogPath"`
-	ArchivePattern                         *string                                      `pulumi:"archivePattern"`
-	AreSoapCredentialsProvided             *string                                      `pulumi:"areSoapCredentialsProvided"`
-	AsbIp                                  *string                                      `pulumi:"asbIp"`
-	AsmOption                              *string                                      `pulumi:"asmOption"`
-	AsmOracleHome                          *string                                      `pulumi:"asmOracleHome"`
-	AsmPassword                            *string                                      `pulumi:"asmPassword"`
-	AsmTns                                 *string                                      `pulumi:"asmTns"`
-	AsmUser                                *string                                      `pulumi:"asmUser"`
-	AttributionWindow                      *string                                      `pulumi:"attributionWindow"`
-	AttributionWindowSize                  *string                                      `pulumi:"attributionWindowSize"`
-	Auth                                   *string                                      `pulumi:"auth"`
-	AuthMethod                             *string                                      `pulumi:"authMethod"`
-	AuthMode                               *string                                      `pulumi:"authMode"`
-	AuthType                               *string                                      `pulumi:"authType"`
-	AuthorizationMethod                    *string                                      `pulumi:"authorizationMethod"`
-	AwsRegionCode                          *string                                      `pulumi:"awsRegionCode"`
-	BaseCurrency                           *string                                      `pulumi:"baseCurrency"`
-	BaseDomain                             *string                                      `pulumi:"baseDomain"`
-	BaseId                                 *string                                      `pulumi:"baseId"`
-	BaseUrl                                *string                                      `pulumi:"baseUrl"`
-	BearerToken                            *string                                      `pulumi:"bearerToken"`
-	BlobSasUrl                             *string                                      `pulumi:"blobSasUrl"`
-	Breakdowns                             []string                                     `pulumi:"breakdowns"`
-	Bucket                                 *string                                      `pulumi:"bucket"`
-	BucketName                             *string                                      `pulumi:"bucketName"`
-	BucketService                          *string                                      `pulumi:"bucketService"`
-	BusinessId                             *string                                      `pulumi:"businessId"`
-	BusinessUnitId                         *string                                      `pulumi:"businessUnitId"`
-	Certificate                            *string                                      `pulumi:"certificate"`
-	ClickAttributionWindow                 *string                                      `pulumi:"clickAttributionWindow"`
-	Client                                 *string                                      `pulumi:"client"`
-	ClientCert                             *string                                      `pulumi:"clientCert"`
-	ClientCertKey                          *string                                      `pulumi:"clientCertKey"`
-	ClientId                               *string                                      `pulumi:"clientId"`
-	ClientKey                              *string                                      `pulumi:"clientKey"`
-	ClientName                             *string                                      `pulumi:"clientName"`
-	ClientSecret                           *string                                      `pulumi:"clientSecret"`
-	CloudStorageType                       *string                                      `pulumi:"cloudStorageType"`
-	Columns                                []string                                     `pulumi:"columns"`
-	CompanyId                              *string                                      `pulumi:"companyId"`
-	CompanyKey                             *string                                      `pulumi:"companyKey"`
-	CompanyRequestToken                    *string                                      `pulumi:"companyRequestToken"`
-	CompanyUuid                            *string                                      `pulumi:"companyUuid"`
-	Compression                            *string                                      `pulumi:"compression"`
-	ConfigMethod                           *string                                      `pulumi:"configMethod"`
-	ConfigRepositoryUrl                    *string                                      `pulumi:"configRepositoryUrl"`
-	ConfigType                             *string                                      `pulumi:"configType"`
-	ConnectingUser                         *string                                      `pulumi:"connectingUser"`
-	ConnectingUserEmail                    *string                                      `pulumi:"connectingUserEmail"`
-	ConnectionMethod                       *string                                      `pulumi:"connectionMethod"`
-	ConnectionString                       *string                                      `pulumi:"connectionString"`
-	ConnectionType                         *string                                      `pulumi:"connectionType"`
-	ConsumerGroup                          *string                                      `pulumi:"consumerGroup"`
-	ConsumerKey                            *string                                      `pulumi:"consumerKey"`
-	ConsumerSecret                         *string                                      `pulumi:"consumerSecret"`
-	ContainerAddress                       *string                                      `pulumi:"containerAddress"`
-	ContainerName                          *string                                      `pulumi:"containerName"`
-	ContentOwnerId                         *string                                      `pulumi:"contentOwnerId"`
-	ConversationWebhookUrl                 *string                                      `pulumi:"conversationWebhookUrl"`
-	ConversionDimensions                   []string                                     `pulumi:"conversionDimensions"`
-	ConversionReportTime                   *string                                      `pulumi:"conversionReportTime"`
-	ConversionWindowSize                   *string                                      `pulumi:"conversionWindowSize"`
-	CsvDefinition                          *string                                      `pulumi:"csvDefinition"`
-	Currency                               *string                                      `pulumi:"currency"`
-	CustomEventSyncMode                    *string                                      `pulumi:"customEventSyncMode"`
-	CustomEvents                           []string                                     `pulumi:"customEvents"`
-	CustomFieldIds                         []string                                     `pulumi:"customFieldIds"`
-	CustomFloodlightVariables              []string                                     `pulumi:"customFloodlightVariables"`
-	CustomReports                          []ConnectorConfigCustomReport                `pulumi:"customReports"`
-	CustomTables                           []ConnectorConfigCustomTable                 `pulumi:"customTables"`
-	CustomerId                             *string                                      `pulumi:"customerId"`
-	CustomerListId                         *string                                      `pulumi:"customerListId"`
-	DailyApiCallLimit                      *string                                      `pulumi:"dailyApiCallLimit"`
-	DataAccessMethod                       *string                                      `pulumi:"dataAccessMethod"`
-	DataCenter                             *string                                      `pulumi:"dataCenter"`
-	DataSetName                            *string                                      `pulumi:"dataSetName"`
-	Database                               *string                                      `pulumi:"database"`
-	DatasetId                              *string                                      `pulumi:"datasetId"`
-	Datasource                             *string                                      `pulumi:"datasource"`
-	DateGranularity                        *string                                      `pulumi:"dateGranularity"`
-	Delimiter                              *string                                      `pulumi:"delimiter"`
-	DimensionAttributes                    []string                                     `pulumi:"dimensionAttributes"`
-	Dimensions                             []string                                     `pulumi:"dimensions"`
-	Domain                                 *string                                      `pulumi:"domain"`
-	DomainHostName                         *string                                      `pulumi:"domainHostName"`
-	DomainName                             *string                                      `pulumi:"domainName"`
-	DomainType                             *string                                      `pulumi:"domainType"`
-	Elements                               []string                                     `pulumi:"elements"`
-	Email                                  *string                                      `pulumi:"email"`
-	EmptyHeader                            *string                                      `pulumi:"emptyHeader"`
-	EnableAllDimensionCombinations         *string                                      `pulumi:"enableAllDimensionCombinations"`
-	EnableArchiveLogOnly                   *string                                      `pulumi:"enableArchiveLogOnly"`
-	EnableEnrichments                      *string                                      `pulumi:"enableEnrichments"`
-	EnableExports                          *string                                      `pulumi:"enableExports"`
-	EnableTde                              *string                                      `pulumi:"enableTde"`
-	EncodedPublicKey                       *string                                      `pulumi:"encodedPublicKey"`
-	EncryptionKey                          *string                                      `pulumi:"encryptionKey"`
-	Endpoint                               *string                                      `pulumi:"endpoint"`
-	EngagementAttributionWindow            *string                                      `pulumi:"engagementAttributionWindow"`
-	EnrichedExport                         *string                                      `pulumi:"enrichedExport"`
-	EntityId                               *string                                      `pulumi:"entityId"`
-	Environment                            *string                                      `pulumi:"environment"`
-	EscapeChar                             *string                                      `pulumi:"escapeChar"`
-	EuRegion                               *string                                      `pulumi:"euRegion"`
-	Events                                 []string                                     `pulumi:"events"`
-	ExportStorageType                      *string                                      `pulumi:"exportStorageType"`
-	ExternalId                             *string                                      `pulumi:"externalId"`
-	Fields                                 []string                                     `pulumi:"fields"`
-	FileType                               *string                                      `pulumi:"fileType"`
-	Filter                                 *string                                      `pulumi:"filter"`
-	FinanceAccountSyncMode                 *string                                      `pulumi:"financeAccountSyncMode"`
-	FinanceAccounts                        []string                                     `pulumi:"financeAccounts"`
-	Folder                                 *string                                      `pulumi:"folder"`
-	FolderId                               *string                                      `pulumi:"folderId"`
-	FolderPath                             *string                                      `pulumi:"folderPath"`
-	ForecastId                             *string                                      `pulumi:"forecastId"`
-	FtpHost                                *string                                      `pulumi:"ftpHost"`
-	FtpPassword                            *string                                      `pulumi:"ftpPassword"`
-	FtpPort                                *string                                      `pulumi:"ftpPort"`
-	FtpUser                                *string                                      `pulumi:"ftpUser"`
-	Function                               *string                                      `pulumi:"function"`
-	FunctionApp                            *string                                      `pulumi:"functionApp"`
-	FunctionKey                            *string                                      `pulumi:"functionKey"`
-	FunctionName                           *string                                      `pulumi:"functionName"`
-	FunctionTrigger                        *string                                      `pulumi:"functionTrigger"`
-	GcsBucket                              *string                                      `pulumi:"gcsBucket"`
-	GcsFolder                              *string                                      `pulumi:"gcsFolder"`
-	GroupName                              *string                                      `pulumi:"groupName"`
-	HasManagePermissions                   *string                                      `pulumi:"hasManagePermissions"`
-	HomeFolder                             *string                                      `pulumi:"homeFolder"`
-	Host                                   *string                                      `pulumi:"host"`
-	HostIp                                 *string                                      `pulumi:"hostIp"`
-	HostUser                               *string                                      `pulumi:"hostUser"`
-	Hosts                                  []string                                     `pulumi:"hosts"`
-	Identity                               *string                                      `pulumi:"identity"`
-	Instance                               *string                                      `pulumi:"instance"`
-	InstanceNumber                         *string                                      `pulumi:"instanceNumber"`
-	InstanceUrl                            *string                                      `pulumi:"instanceUrl"`
-	IntegrationKey                         *string                                      `pulumi:"integrationKey"`
-	IsAccountLevelConnector                *string                                      `pulumi:"isAccountLevelConnector"`
-	IsAuth2Enabled                         *string                                      `pulumi:"isAuth2Enabled"`
-	IsCustomApiCredentials                 *string                                      `pulumi:"isCustomApiCredentials"`
-	IsFtps                                 *string                                      `pulumi:"isFtps"`
-	IsKeypair                              *string                                      `pulumi:"isKeypair"`
-	IsMultiEntityFeatureEnabled            *string                                      `pulumi:"isMultiEntityFeatureEnabled"`
-	IsNewPackage                           *string                                      `pulumi:"isNewPackage"`
-	IsPrivateKeyEncrypted                  *string                                      `pulumi:"isPrivateKeyEncrypted"`
-	IsPrivateLinkRequired                  *string                                      `pulumi:"isPrivateLinkRequired"`
-	IsPublic                               *string                                      `pulumi:"isPublic"`
-	IsSailthruConnectEnabled               *string                                      `pulumi:"isSailthruConnectEnabled"`
-	IsSecure                               *string                                      `pulumi:"isSecure"`
-	IsSingleTableMode                      *string                                      `pulumi:"isSingleTableMode"`
-	IsVendor                               *string                                      `pulumi:"isVendor"`
-	JsonDeliveryMode                       *string                                      `pulumi:"jsonDeliveryMode"`
-	Key                                    *string                                      `pulumi:"key"`
-	KeyPassword                            *string                                      `pulumi:"keyPassword"`
-	KeyStoreType                           *string                                      `pulumi:"keyStoreType"`
-	Keystore                               *string                                      `pulumi:"keystore"`
-	KeystorePassword                       *string                                      `pulumi:"keystorePassword"`
-	LastSyncedChangesUtc_                  *string                                      `pulumi:"lastSyncedChangesUtc_"`
-	LatestVersion                          *string                                      `pulumi:"latestVersion"`
-	LineSeparator                          *string                                      `pulumi:"lineSeparator"`
-	ListStrategy                           *string                                      `pulumi:"listStrategy"`
-	ListSyncMode                           *string                                      `pulumi:"listSyncMode"`
-	LogJournal                             *string                                      `pulumi:"logJournal"`
-	LogJournalSchema                       *string                                      `pulumi:"logJournalSchema"`
-	Login                                  *string                                      `pulumi:"login"`
-	LoginPassword                          *string                                      `pulumi:"loginPassword"`
-	ManagerAccounts                        []string                                     `pulumi:"managerAccounts"`
-	MerchantId                             *string                                      `pulumi:"merchantId"`
-	MessageType                            *string                                      `pulumi:"messageType"`
-	Metrics                                []string                                     `pulumi:"metrics"`
-	NamedRange                             *string                                      `pulumi:"namedRange"`
-	Namespace                              *string                                      `pulumi:"namespace"`
-	NetworkCode                            *string                                      `pulumi:"networkCode"`
-	NullSequence                           *string                                      `pulumi:"nullSequence"`
-	OauthToken                             *string                                      `pulumi:"oauthToken"`
-	OauthTokenSecret                       *string                                      `pulumi:"oauthTokenSecret"`
-	OnError                                *string                                      `pulumi:"onError"`
-	OnPremise                              *string                                      `pulumi:"onPremise"`
-	Organization                           *string                                      `pulumi:"organization"`
-	OrganizationId                         *string                                      `pulumi:"organizationId"`
-	Organizations                          []string                                     `pulumi:"organizations"`
-	PackedModeTables                       []string                                     `pulumi:"packedModeTables"`
-	PackingMode                            *string                                      `pulumi:"packingMode"`
-	Pages                                  []string                                     `pulumi:"pages"`
-	Partners                               []string                                     `pulumi:"partners"`
-	Passphrase                             *string                                      `pulumi:"passphrase"`
-	Password                               *string                                      `pulumi:"password"`
-	Pat                                    *string                                      `pulumi:"pat"`
-	PatName                                *string                                      `pulumi:"patName"`
-	PatSecret                              *string                                      `pulumi:"patSecret"`
-	Path                                   *string                                      `pulumi:"path"`
-	Pattern                                *string                                      `pulumi:"pattern"`
-	PdbName                                *string                                      `pulumi:"pdbName"`
-	PemCertificate                         *string                                      `pulumi:"pemCertificate"`
-	PemPrivateKey                          *string                                      `pulumi:"pemPrivateKey"`
-	PerInteractionDimensions               []string                                     `pulumi:"perInteractionDimensions"`
-	PersonalAccessToken                    *string                                      `pulumi:"personalAccessToken"`
-	PgpPassPhrase                          *string                                      `pulumi:"pgpPassPhrase"`
-	PgpSecretKey                           *string                                      `pulumi:"pgpSecretKey"`
-	PhoneNumber                            *string                                      `pulumi:"phoneNumber"`
-	Port                                   *string                                      `pulumi:"port"`
-	PostClickAttributionWindowSize         *string                                      `pulumi:"postClickAttributionWindowSize"`
-	PrebuiltReport                         *string                                      `pulumi:"prebuiltReport"`
-	Prefix                                 *string                                      `pulumi:"prefix"`
-	PrimaryKeys                            []string                                     `pulumi:"primaryKeys"`
-	PrivateKey                             *string                                      `pulumi:"privateKey"`
-	Profiles                               []string                                     `pulumi:"profiles"`
-	ProjectCredentials                     []ConnectorConfigProjectCredential           `pulumi:"projectCredentials"`
-	ProjectId                              *string                                      `pulumi:"projectId"`
-	Projects                               []string                                     `pulumi:"projects"`
-	Properties                             []string                                     `pulumi:"properties"`
-	PublicKey                              *string                                      `pulumi:"publicKey"`
-	PublicationName                        *string                                      `pulumi:"publicationName"`
-	QueryId                                *string                                      `pulumi:"queryId"`
-	QueryParamValue                        *string                                      `pulumi:"queryParamValue"`
-	RefreshTokenExpiresAt                  *string                                      `pulumi:"refreshTokenExpiresAt"`
-	Region                                 *string                                      `pulumi:"region"`
-	ReplicaId                              *string                                      `pulumi:"replicaId"`
-	ReplicationSlot                        *string                                      `pulumi:"replicationSlot"`
-	ReportConfigurationIds                 []string                                     `pulumi:"reportConfigurationIds"`
-	ReportFormatType                       *string                                      `pulumi:"reportFormatType"`
-	ReportSuites                           []string                                     `pulumi:"reportSuites"`
-	ReportTimezone                         *string                                      `pulumi:"reportTimezone"`
-	ReportType                             *string                                      `pulumi:"reportType"`
-	ReportUrl                              *string                                      `pulumi:"reportUrl"`
-	Reports                                []ConnectorConfigReport                      `pulumi:"reports"`
-	ReportsLinkedinAds                     []string                                     `pulumi:"reportsLinkedinAds"`
-	Repositories                           []string                                     `pulumi:"repositories"`
-	ResourceToken                          *string                                      `pulumi:"resourceToken"`
-	ResourceUrl                            *string                                      `pulumi:"resourceUrl"`
-	RestApiLimit                           *string                                      `pulumi:"restApiLimit"`
-	RfcLibraryPath                         *string                                      `pulumi:"rfcLibraryPath"`
-	Role                                   *string                                      `pulumi:"role"`
-	RoleArn                                *string                                      `pulumi:"roleArn"`
-	RollbackWindowSize                     *string                                      `pulumi:"rollbackWindowSize"`
-	S3Bucket                               *string                                      `pulumi:"s3Bucket"`
-	S3ExportBucket                         *string                                      `pulumi:"s3ExportBucket"`
-	S3ExportFolder                         *string                                      `pulumi:"s3ExportFolder"`
-	S3ExportRoleArn                        *string                                      `pulumi:"s3ExportRoleArn"`
-	S3RoleArn                              *string                                      `pulumi:"s3RoleArn"`
-	S3bucket                               *string                                      `pulumi:"s3bucket"`
-	S3externalId                           *string                                      `pulumi:"s3externalId"`
-	S3folder                               *string                                      `pulumi:"s3folder"`
-	S3path                                 *string                                      `pulumi:"s3path"`
-	S3roleArn                              *string                                      `pulumi:"s3roleArn"`
-	SalesAccountSyncMode                   *string                                      `pulumi:"salesAccountSyncMode"`
-	SalesAccounts                          []string                                     `pulumi:"salesAccounts"`
-	SalesforceSecurityToken                *string                                      `pulumi:"salesforceSecurityToken"`
-	SandboxAccount                         *string                                      `pulumi:"sandboxAccount"`
-	SapSchema                              *string                                      `pulumi:"sapSchema"`
-	SapUser                                *string                                      `pulumi:"sapUser"`
-	SaslMechanism                          *string                                      `pulumi:"saslMechanism"`
-	SaslPlainKey                           *string                                      `pulumi:"saslPlainKey"`
-	SaslPlainSecret                        *string                                      `pulumi:"saslPlainSecret"`
-	SaslScram256Key                        *string                                      `pulumi:"saslScram256Key"`
-	SaslScram256Secret                     *string                                      `pulumi:"saslScram256Secret"`
-	SaslScram512Key                        *string                                      `pulumi:"saslScram512Key"`
-	SaslScram512Secret                     *string                                      `pulumi:"saslScram512Secret"`
-	SchemaRegistryCredentialsSource        *string                                      `pulumi:"schemaRegistryCredentialsSource"`
-	SchemaRegistryKey                      *string                                      `pulumi:"schemaRegistryKey"`
-	SchemaRegistrySecret                   *string                                      `pulumi:"schemaRegistrySecret"`
-	SchemaRegistryUrls                     []string                                     `pulumi:"schemaRegistryUrls"`
-	Secret                                 *string                                      `pulumi:"secret"`
-	SecretKey                              *string                                      `pulumi:"secretKey"`
-	Secrets                                *string                                      `pulumi:"secrets"`
-	SecretsLists                           []ConnectorConfigSecretsList                 `pulumi:"secretsLists"`
-	SecurityProtocol                       *string                                      `pulumi:"securityProtocol"`
-	Segments                               []string                                     `pulumi:"segments"`
-	SelectedExports                        []string                                     `pulumi:"selectedExports"`
-	SenderId                               *string                                      `pulumi:"senderId"`
-	SenderPassword                         *string                                      `pulumi:"senderPassword"`
-	ServerAddress                          *string                                      `pulumi:"serverAddress"`
-	ServerUrl                              *string                                      `pulumi:"serverUrl"`
-	Servers                                []string                                     `pulumi:"servers"`
-	ServiceAccount                         *string                                      `pulumi:"serviceAccount"`
-	ServiceAccountEmail                    *string                                      `pulumi:"serviceAccountEmail"`
-	ServiceAccountKey                      *string                                      `pulumi:"serviceAccountKey"`
-	ServiceVersion                         *string                                      `pulumi:"serviceVersion"`
-	SftpHost                               *string                                      `pulumi:"sftpHost"`
-	SftpIsKeyPair                          *string                                      `pulumi:"sftpIsKeyPair"`
-	SftpPassword                           *string                                      `pulumi:"sftpPassword"`
-	SftpPort                               *string                                      `pulumi:"sftpPort"`
-	SftpPublicKey                          *string                                      `pulumi:"sftpPublicKey"`
-	SftpUser                               *string                                      `pulumi:"sftpUser"`
-	ShareUrl                               *string                                      `pulumi:"shareUrl"`
-	SheetId                                *string                                      `pulumi:"sheetId"`
-	Shop                                   *string                                      `pulumi:"shop"`
-	ShortCode                              *string                                      `pulumi:"shortCode"`
-	ShowRecordsWithNoMetrics               *string                                      `pulumi:"showRecordsWithNoMetrics"`
-	Sid                                    *string                                      `pulumi:"sid"`
-	SignerPublicKey                        *string                                      `pulumi:"signerPublicKey"`
-	SiteAddress                            *string                                      `pulumi:"siteAddress"`
-	SiteId                                 *string                                      `pulumi:"siteId"`
-	SiteName                               *string                                      `pulumi:"siteName"`
-	SiteUrls                               []string                                     `pulumi:"siteUrls"`
-	SkipAfter                              *string                                      `pulumi:"skipAfter"`
-	SkipBefore                             *string                                      `pulumi:"skipBefore"`
-	SoapUri                                *string                                      `pulumi:"soapUri"`
-	SocialDataSyncTimeframe                *string                                      `pulumi:"socialDataSyncTimeframe"`
-	Source                                 *string                                      `pulumi:"source"`
-	StoreHash                              *string                                      `pulumi:"storeHash"`
-	SubDomain                              *string                                      `pulumi:"subDomain"`
-	Subdomain                              *string                                      `pulumi:"subdomain"`
-	SubscriberName                         *string                                      `pulumi:"subscriberName"`
-	Subscription                           *string                                      `pulumi:"subscription"`
-	SupportConnectedAccountsSync           *string                                      `pulumi:"supportConnectedAccountsSync"`
-	SupportNestedColumns                   *string                                      `pulumi:"supportNestedColumns"`
-	SurveyIds                              *string                                      `pulumi:"surveyIds"`
-	SwipeAttributionWindow                 *string                                      `pulumi:"swipeAttributionWindow"`
-	SyncDataLocker                         *string                                      `pulumi:"syncDataLocker"`
-	SyncFormat                             *string                                      `pulumi:"syncFormat"`
-	SyncFormulaFields                      *string                                      `pulumi:"syncFormulaFields"`
-	SyncMetadata                           *string                                      `pulumi:"syncMetadata"`
-	SyncMethod                             *string                                      `pulumi:"syncMethod"`
-	SyncMode                               *string                                      `pulumi:"syncMode"`
-	SyncMultipleAccounts                   *string                                      `pulumi:"syncMultipleAccounts"`
-	SyncPackMode                           *string                                      `pulumi:"syncPackMode"`
-	SyncPullApi                            *string                                      `pulumi:"syncPullApi"`
-	SyncType                               *string                                      `pulumi:"syncType"`
-	Sysnr                                  *string                                      `pulumi:"sysnr"`
-	TableName                              *string                                      `pulumi:"tableName"`
-	TdeCertificate                         *string                                      `pulumi:"tdeCertificate"`
-	TdeCertificateName                     *string                                      `pulumi:"tdeCertificateName"`
-	TdePassword                            *string                                      `pulumi:"tdePassword"`
-	TdePrivateKey                          *string                                      `pulumi:"tdePrivateKey"`
-	TeamId                                 *string                                      `pulumi:"teamId"`
-	TechnicalAccountId                     *string                                      `pulumi:"technicalAccountId"`
-	TemplateLabels                         []string                                     `pulumi:"templateLabels"`
-	TenantId                               *string                                      `pulumi:"tenantId"`
-	TestTableName                          *string                                      `pulumi:"testTableName"`
-	TimeZone                               *string                                      `pulumi:"timeZone"`
-	TimeframeMonths                        *string                                      `pulumi:"timeframeMonths"`
-	Tns                                    *string                                      `pulumi:"tns"`
-	TokenAuthenticatedContainer            *string                                      `pulumi:"tokenAuthenticatedContainer"`
-	TokenAuthenticatedDatabase             *string                                      `pulumi:"tokenAuthenticatedDatabase"`
-	TokenId                                *string                                      `pulumi:"tokenId"`
-	TokenKey                               *string                                      `pulumi:"tokenKey"`
-	TokenSecret                            *string                                      `pulumi:"tokenSecret"`
-	TokenSecretKey                         *string                                      `pulumi:"tokenSecretKey"`
-	Topics                                 []string                                     `pulumi:"topics"`
-	TrustStoreType                         *string                                      `pulumi:"trustStoreType"`
-	TrustedCert                            *string                                      `pulumi:"trustedCert"`
-	Truststore                             *string                                      `pulumi:"truststore"`
-	TunnelHost                             *string                                      `pulumi:"tunnelHost"`
-	TunnelPort                             *string                                      `pulumi:"tunnelPort"`
-	TunnelUser                             *string                                      `pulumi:"tunnelUser"`
-	UniqueId                               *string                                      `pulumi:"uniqueId"`
-	UpdateConfigOnEachSync                 *string                                      `pulumi:"updateConfigOnEachSync"`
-	UpdateMethod                           *string                                      `pulumi:"updateMethod"`
-	Uri                                    *string                                      `pulumi:"uri"`
-	UseApiKeys                             *string                                      `pulumi:"useApiKeys"`
-	UseCustomerBucket                      *string                                      `pulumi:"useCustomerBucket"`
-	UseOracleRac                           *string                                      `pulumi:"useOracleRac"`
-	UsePgpEncryptionOptions                *string                                      `pulumi:"usePgpEncryptionOptions"`
-	UseServiceAccount                      *string                                      `pulumi:"useServiceAccount"`
-	UseTemplateLabels                      *string                                      `pulumi:"useTemplateLabels"`
-	UseWebhooks                            *string                                      `pulumi:"useWebhooks"`
-	UseWorkspace                           *string                                      `pulumi:"useWorkspace"`
-	User                                   *string                                      `pulumi:"user"`
-	UserId                                 *string                                      `pulumi:"userId"`
-	UserKey                                *string                                      `pulumi:"userKey"`
-	UserName                               *string                                      `pulumi:"userName"`
-	UserProfiles                           []string                                     `pulumi:"userProfiles"`
-	Username                               *string                                      `pulumi:"username"`
-	ViewAttributionWindow                  *string                                      `pulumi:"viewAttributionWindow"`
-	ViewThroughAttributionWindowSize       *string                                      `pulumi:"viewThroughAttributionWindowSize"`
-	WebhookEndpoint                        *string                                      `pulumi:"webhookEndpoint"`
-	WebhookKey                             *string                                      `pulumi:"webhookKey"`
-	WebhookUrl                             *string                                      `pulumi:"webhookUrl"`
-	WordPressSiteIdOrWoocommerceDomainName *string                                      `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
-	WorkspaceName                          *string                                      `pulumi:"workspaceName"`
-	WorkspaceSameAsSource                  *string                                      `pulumi:"workspaceSameAsSource"`
-	WorkspaceSchema                        *string                                      `pulumi:"workspaceSchema"`
-	WsCertificate                          *string                                      `pulumi:"wsCertificate"`
+	AbsConnectionMethod                          *string                                      `pulumi:"absConnectionMethod"`
+	AbsConnectionString                          *string                                      `pulumi:"absConnectionString"`
+	AbsContainerAddress                          *string                                      `pulumi:"absContainerAddress"`
+	AbsContainerName                             *string                                      `pulumi:"absContainerName"`
+	AbsHostIp                                    *string                                      `pulumi:"absHostIp"`
+	AbsHostUser                                  *string                                      `pulumi:"absHostUser"`
+	AbsPrefix                                    *string                                      `pulumi:"absPrefix"`
+	AbsPublicKey                                 *string                                      `pulumi:"absPublicKey"`
+	AccessKey                                    *string                                      `pulumi:"accessKey"`
+	AccessKeyId                                  *string                                      `pulumi:"accessKeyId"`
+	AccessKeySecret                              *string                                      `pulumi:"accessKeySecret"`
+	AccessToken                                  *string                                      `pulumi:"accessToken"`
+	AccessType                                   *string                                      `pulumi:"accessType"`
+	Account                                      *string                                      `pulumi:"account"`
+	AccountId                                    *string                                      `pulumi:"accountId"`
+	AccountIds                                   []string                                     `pulumi:"accountIds"`
+	AccountKey                                   *string                                      `pulumi:"accountKey"`
+	AccountName                                  *string                                      `pulumi:"accountName"`
+	AccountSyncMode                              *string                                      `pulumi:"accountSyncMode"`
+	Accounts                                     []string                                     `pulumi:"accounts"`
+	AccountsRedditAds                            []ConnectorConfigAccountsRedditAd            `pulumi:"accountsRedditAds"`
+	AccountsSyncMode                             *string                                      `pulumi:"accountsSyncMode"`
+	ActionBreakdowns                             []string                                     `pulumi:"actionBreakdowns"`
+	ActionReportTime                             *string                                      `pulumi:"actionReportTime"`
+	AdAnalytics                                  *string                                      `pulumi:"adAnalytics"`
+	AdUnitView                                   *string                                      `pulumi:"adUnitView"`
+	AdminApiKey                                  *string                                      `pulumi:"adminApiKey"`
+	AdobeAnalyticsConfigurations                 []ConnectorConfigAdobeAnalyticsConfiguration `pulumi:"adobeAnalyticsConfigurations"`
+	Advertisables                                []string                                     `pulumi:"advertisables"`
+	Advertisers                                  []string                                     `pulumi:"advertisers"`
+	AdvertisersIds                               []string                                     `pulumi:"advertisersIds"`
+	AdvertisersSyncMode                          *string                                      `pulumi:"advertisersSyncMode"`
+	AgentHost                                    *string                                      `pulumi:"agentHost"`
+	AgentOraHome                                 *string                                      `pulumi:"agentOraHome"`
+	AgentPassword                                *string                                      `pulumi:"agentPassword"`
+	AgentPort                                    *string                                      `pulumi:"agentPort"`
+	AgentPublicCert                              *string                                      `pulumi:"agentPublicCert"`
+	AgentUser                                    *string                                      `pulumi:"agentUser"`
+	Aggregation                                  *string                                      `pulumi:"aggregation"`
+	AlwaysEncrypted                              *string                                      `pulumi:"alwaysEncrypted"`
+	ApiAccessToken                               *string                                      `pulumi:"apiAccessToken"`
+	ApiId                                        *string                                      `pulumi:"apiId"`
+	ApiKey                                       *string                                      `pulumi:"apiKey"`
+	ApiKeyApiSecret                              *string                                      `pulumi:"apiKeyApiSecret"`
+	ApiKeys                                      []string                                     `pulumi:"apiKeys"`
+	ApiQuota                                     *string                                      `pulumi:"apiQuota"`
+	ApiRequestsPerMinute                         *string                                      `pulumi:"apiRequestsPerMinute"`
+	ApiSecret                                    *string                                      `pulumi:"apiSecret"`
+	ApiSecretKey                                 *string                                      `pulumi:"apiSecretKey"`
+	ApiToken                                     *string                                      `pulumi:"apiToken"`
+	ApiType                                      *string                                      `pulumi:"apiType"`
+	ApiUrl                                       *string                                      `pulumi:"apiUrl"`
+	ApiUsage                                     *string                                      `pulumi:"apiUsage"`
+	ApiUtilizationPercentage                     *string                                      `pulumi:"apiUtilizationPercentage"`
+	ApiVersion                                   *string                                      `pulumi:"apiVersion"`
+	AppId                                        *string                                      `pulumi:"appId"`
+	AppIds                                       []string                                     `pulumi:"appIds"`
+	AppIdsAppsflyers                             []ConnectorConfigAppIdsAppsflyer             `pulumi:"appIdsAppsflyers"`
+	AppKey                                       *string                                      `pulumi:"appKey"`
+	AppSpecificPassword                          *string                                      `pulumi:"appSpecificPassword"`
+	AppSyncMode                                  *string                                      `pulumi:"appSyncMode"`
+	AppendFileOption                             *string                                      `pulumi:"appendFileOption"`
+	ApplicationKey                               *string                                      `pulumi:"applicationKey"`
+	Apps                                         []string                                     `pulumi:"apps"`
+	ArchiveLogFormat                             *string                                      `pulumi:"archiveLogFormat"`
+	ArchiveLogPath                               *string                                      `pulumi:"archiveLogPath"`
+	ArchivePattern                               *string                                      `pulumi:"archivePattern"`
+	AreSoapCredentialsProvided                   *string                                      `pulumi:"areSoapCredentialsProvided"`
+	AsbIp                                        *string                                      `pulumi:"asbIp"`
+	AsmOption                                    *string                                      `pulumi:"asmOption"`
+	AsmOracleHome                                *string                                      `pulumi:"asmOracleHome"`
+	AsmPassword                                  *string                                      `pulumi:"asmPassword"`
+	AsmTns                                       *string                                      `pulumi:"asmTns"`
+	AsmUser                                      *string                                      `pulumi:"asmUser"`
+	AttributionWindow                            *string                                      `pulumi:"attributionWindow"`
+	AttributionWindowSize                        *string                                      `pulumi:"attributionWindowSize"`
+	Auth                                         *string                                      `pulumi:"auth"`
+	AuthMethod                                   *string                                      `pulumi:"authMethod"`
+	AuthMode                                     *string                                      `pulumi:"authMode"`
+	AuthType                                     *string                                      `pulumi:"authType"`
+	AuthorizationMethod                          *string                                      `pulumi:"authorizationMethod"`
+	AwsRegionCode                                *string                                      `pulumi:"awsRegionCode"`
+	BaseCurrency                                 *string                                      `pulumi:"baseCurrency"`
+	BaseDomain                                   *string                                      `pulumi:"baseDomain"`
+	BaseId                                       *string                                      `pulumi:"baseId"`
+	BaseUrl                                      *string                                      `pulumi:"baseUrl"`
+	BearerToken                                  *string                                      `pulumi:"bearerToken"`
+	BlobSasUrl                                   *string                                      `pulumi:"blobSasUrl"`
+	Breakdowns                                   []string                                     `pulumi:"breakdowns"`
+	Bucket                                       *string                                      `pulumi:"bucket"`
+	BucketName                                   *string                                      `pulumi:"bucketName"`
+	BucketService                                *string                                      `pulumi:"bucketService"`
+	BusinessId                                   *string                                      `pulumi:"businessId"`
+	BusinessUnitId                               *string                                      `pulumi:"businessUnitId"`
+	Certificate                                  *string                                      `pulumi:"certificate"`
+	ClickAttributionWindow                       *string                                      `pulumi:"clickAttributionWindow"`
+	Client                                       *string                                      `pulumi:"client"`
+	ClientCert                                   *string                                      `pulumi:"clientCert"`
+	ClientCertKey                                *string                                      `pulumi:"clientCertKey"`
+	ClientId                                     *string                                      `pulumi:"clientId"`
+	ClientKey                                    *string                                      `pulumi:"clientKey"`
+	ClientName                                   *string                                      `pulumi:"clientName"`
+	ClientSecret                                 *string                                      `pulumi:"clientSecret"`
+	CloudStorageType                             *string                                      `pulumi:"cloudStorageType"`
+	Columns                                      []string                                     `pulumi:"columns"`
+	CompanyId                                    *string                                      `pulumi:"companyId"`
+	CompanyKey                                   *string                                      `pulumi:"companyKey"`
+	CompanyRequestToken                          *string                                      `pulumi:"companyRequestToken"`
+	CompanyUuid                                  *string                                      `pulumi:"companyUuid"`
+	Compression                                  *string                                      `pulumi:"compression"`
+	ConfigMethod                                 *string                                      `pulumi:"configMethod"`
+	ConfigRepositoryUrl                          *string                                      `pulumi:"configRepositoryUrl"`
+	ConfigType                                   *string                                      `pulumi:"configType"`
+	ConnectingUser                               *string                                      `pulumi:"connectingUser"`
+	ConnectingUserEmail                          *string                                      `pulumi:"connectingUserEmail"`
+	ConnectionMethod                             *string                                      `pulumi:"connectionMethod"`
+	ConnectionString                             *string                                      `pulumi:"connectionString"`
+	ConnectionType                               *string                                      `pulumi:"connectionType"`
+	ConsumerGroup                                *string                                      `pulumi:"consumerGroup"`
+	ConsumerKey                                  *string                                      `pulumi:"consumerKey"`
+	ConsumerSecret                               *string                                      `pulumi:"consumerSecret"`
+	ContainerAddress                             *string                                      `pulumi:"containerAddress"`
+	ContainerName                                *string                                      `pulumi:"containerName"`
+	ContentOwnerId                               *string                                      `pulumi:"contentOwnerId"`
+	ConversationWebhookUrl                       *string                                      `pulumi:"conversationWebhookUrl"`
+	ConversionDimensions                         []string                                     `pulumi:"conversionDimensions"`
+	ConversionReportTime                         *string                                      `pulumi:"conversionReportTime"`
+	ConversionWindowSize                         *string                                      `pulumi:"conversionWindowSize"`
+	CsvDefinition                                *string                                      `pulumi:"csvDefinition"`
+	Currency                                     *string                                      `pulumi:"currency"`
+	CustomEventSyncMode                          *string                                      `pulumi:"customEventSyncMode"`
+	CustomEvents                                 []string                                     `pulumi:"customEvents"`
+	CustomFieldIds                               []string                                     `pulumi:"customFieldIds"`
+	CustomFloodlightVariables                    []string                                     `pulumi:"customFloodlightVariables"`
+	CustomReports                                []ConnectorConfigCustomReport                `pulumi:"customReports"`
+	CustomTables                                 []ConnectorConfigCustomTable                 `pulumi:"customTables"`
+	CustomerId                                   *string                                      `pulumi:"customerId"`
+	CustomerListId                               *string                                      `pulumi:"customerListId"`
+	DailyApiCallLimit                            *string                                      `pulumi:"dailyApiCallLimit"`
+	DataAccessMethod                             *string                                      `pulumi:"dataAccessMethod"`
+	DataCenter                                   *string                                      `pulumi:"dataCenter"`
+	DataSetName                                  *string                                      `pulumi:"dataSetName"`
+	Database                                     *string                                      `pulumi:"database"`
+	DatasetId                                    *string                                      `pulumi:"datasetId"`
+	Datasource                                   *string                                      `pulumi:"datasource"`
+	DateGranularity                              *string                                      `pulumi:"dateGranularity"`
+	Delimiter                                    *string                                      `pulumi:"delimiter"`
+	DimensionAttributes                          []string                                     `pulumi:"dimensionAttributes"`
+	Dimensions                                   []string                                     `pulumi:"dimensions"`
+	DistributedConnectorClusterSize              *string                                      `pulumi:"distributedConnectorClusterSize"`
+	Domain                                       *string                                      `pulumi:"domain"`
+	DomainHostName                               *string                                      `pulumi:"domainHostName"`
+	DomainName                                   *string                                      `pulumi:"domainName"`
+	DomainType                                   *string                                      `pulumi:"domainType"`
+	Elements                                     []string                                     `pulumi:"elements"`
+	Email                                        *string                                      `pulumi:"email"`
+	EmptyHeader                                  *string                                      `pulumi:"emptyHeader"`
+	EnableAllDimensionCombinations               *string                                      `pulumi:"enableAllDimensionCombinations"`
+	EnableArchiveLogOnly                         *string                                      `pulumi:"enableArchiveLogOnly"`
+	EnableDataExtensionsSyncing                  *string                                      `pulumi:"enableDataExtensionsSyncing"`
+	EnableDistributedConnectorMode               *string                                      `pulumi:"enableDistributedConnectorMode"`
+	EnableEnrichments                            *string                                      `pulumi:"enableEnrichments"`
+	EnableExports                                *string                                      `pulumi:"enableExports"`
+	EnableTde                                    *string                                      `pulumi:"enableTde"`
+	EncodedPublicKey                             *string                                      `pulumi:"encodedPublicKey"`
+	EncryptionKey                                *string                                      `pulumi:"encryptionKey"`
+	Endpoint                                     *string                                      `pulumi:"endpoint"`
+	EngagementAttributionWindow                  *string                                      `pulumi:"engagementAttributionWindow"`
+	EnrichedExport                               *string                                      `pulumi:"enrichedExport"`
+	EntityId                                     *string                                      `pulumi:"entityId"`
+	Environment                                  *string                                      `pulumi:"environment"`
+	EscapeChar                                   *string                                      `pulumi:"escapeChar"`
+	EuRegion                                     *string                                      `pulumi:"euRegion"`
+	Events                                       []string                                     `pulumi:"events"`
+	ExportStorageType                            *string                                      `pulumi:"exportStorageType"`
+	ExternalId                                   *string                                      `pulumi:"externalId"`
+	Fields                                       []string                                     `pulumi:"fields"`
+	FileType                                     *string                                      `pulumi:"fileType"`
+	Filter                                       *string                                      `pulumi:"filter"`
+	FinanceAccountSyncMode                       *string                                      `pulumi:"financeAccountSyncMode"`
+	FinanceAccounts                              []string                                     `pulumi:"financeAccounts"`
+	Folder                                       *string                                      `pulumi:"folder"`
+	FolderId                                     *string                                      `pulumi:"folderId"`
+	FolderPath                                   *string                                      `pulumi:"folderPath"`
+	ForecastId                                   *string                                      `pulumi:"forecastId"`
+	FtpHost                                      *string                                      `pulumi:"ftpHost"`
+	FtpPassword                                  *string                                      `pulumi:"ftpPassword"`
+	FtpPort                                      *string                                      `pulumi:"ftpPort"`
+	FtpUser                                      *string                                      `pulumi:"ftpUser"`
+	Function                                     *string                                      `pulumi:"function"`
+	FunctionApp                                  *string                                      `pulumi:"functionApp"`
+	FunctionKey                                  *string                                      `pulumi:"functionKey"`
+	FunctionName                                 *string                                      `pulumi:"functionName"`
+	FunctionTrigger                              *string                                      `pulumi:"functionTrigger"`
+	GcsBucket                                    *string                                      `pulumi:"gcsBucket"`
+	GcsFolder                                    *string                                      `pulumi:"gcsFolder"`
+	GroupName                                    *string                                      `pulumi:"groupName"`
+	HasManagePermissions                         *string                                      `pulumi:"hasManagePermissions"`
+	HomeFolder                                   *string                                      `pulumi:"homeFolder"`
+	Host                                         *string                                      `pulumi:"host"`
+	HostIp                                       *string                                      `pulumi:"hostIp"`
+	HostUser                                     *string                                      `pulumi:"hostUser"`
+	Hosts                                        []string                                     `pulumi:"hosts"`
+	Identity                                     *string                                      `pulumi:"identity"`
+	IncludeOcapiEndpoints                        *string                                      `pulumi:"includeOcapiEndpoints"`
+	Instance                                     *string                                      `pulumi:"instance"`
+	InstanceNumber                               *string                                      `pulumi:"instanceNumber"`
+	InstanceUrl                                  *string                                      `pulumi:"instanceUrl"`
+	IntegrationKey                               *string                                      `pulumi:"integrationKey"`
+	IsAccountLevelConnector                      *string                                      `pulumi:"isAccountLevelConnector"`
+	IsAuth2Enabled                               *string                                      `pulumi:"isAuth2Enabled"`
+	IsCustomApiCredentials                       *string                                      `pulumi:"isCustomApiCredentials"`
+	IsExternalActivitiesEndpointSelected         *string                                      `pulumi:"isExternalActivitiesEndpointSelected"`
+	IsFtps                                       *string                                      `pulumi:"isFtps"`
+	IsKeypair                                    *string                                      `pulumi:"isKeypair"`
+	IsMultiEntityFeatureEnabled                  *string                                      `pulumi:"isMultiEntityFeatureEnabled"`
+	IsNewPackage                                 *string                                      `pulumi:"isNewPackage"`
+	IsPrivateKeyEncrypted                        *string                                      `pulumi:"isPrivateKeyEncrypted"`
+	IsPrivateLinkRequired                        *string                                      `pulumi:"isPrivateLinkRequired"`
+	IsPublic                                     *string                                      `pulumi:"isPublic"`
+	IsSailthruConnectEnabled                     *string                                      `pulumi:"isSailthruConnectEnabled"`
+	IsSecure                                     *string                                      `pulumi:"isSecure"`
+	IsSingleTableMode                            *string                                      `pulumi:"isSingleTableMode"`
+	IsVendor                                     *string                                      `pulumi:"isVendor"`
+	JsonDeliveryMode                             *string                                      `pulumi:"jsonDeliveryMode"`
+	Key                                          *string                                      `pulumi:"key"`
+	KeyPassword                                  *string                                      `pulumi:"keyPassword"`
+	KeyStoreType                                 *string                                      `pulumi:"keyStoreType"`
+	Keystore                                     *string                                      `pulumi:"keystore"`
+	KeystorePassword                             *string                                      `pulumi:"keystorePassword"`
+	LastSyncedChangesUtc_                        *string                                      `pulumi:"lastSyncedChangesUtc_"`
+	LatestVersion                                *string                                      `pulumi:"latestVersion"`
+	LimitForApiCallsToExternalActivitiesEndpoint *string                                      `pulumi:"limitForApiCallsToExternalActivitiesEndpoint"`
+	LineSeparator                                *string                                      `pulumi:"lineSeparator"`
+	ListStrategy                                 *string                                      `pulumi:"listStrategy"`
+	ListSyncMode                                 *string                                      `pulumi:"listSyncMode"`
+	LogJournal                                   *string                                      `pulumi:"logJournal"`
+	LogJournalSchema                             *string                                      `pulumi:"logJournalSchema"`
+	Login                                        *string                                      `pulumi:"login"`
+	LoginPassword                                *string                                      `pulumi:"loginPassword"`
+	ManagerAccounts                              []string                                     `pulumi:"managerAccounts"`
+	MerchantId                                   *string                                      `pulumi:"merchantId"`
+	MessageType                                  *string                                      `pulumi:"messageType"`
+	Metrics                                      []string                                     `pulumi:"metrics"`
+	NamedRange                                   *string                                      `pulumi:"namedRange"`
+	Namespace                                    *string                                      `pulumi:"namespace"`
+	NetworkCode                                  *string                                      `pulumi:"networkCode"`
+	NullSequence                                 *string                                      `pulumi:"nullSequence"`
+	OauthToken                                   *string                                      `pulumi:"oauthToken"`
+	OauthTokenSecret                             *string                                      `pulumi:"oauthTokenSecret"`
+	OcapiClientId                                *string                                      `pulumi:"ocapiClientId"`
+	OcapiClientSecret                            *string                                      `pulumi:"ocapiClientSecret"`
+	OcapiCustomObjectTypes                       *string                                      `pulumi:"ocapiCustomObjectTypes"`
+	OcapiHostname                                *string                                      `pulumi:"ocapiHostname"`
+	OnError                                      *string                                      `pulumi:"onError"`
+	OnPremise                                    *string                                      `pulumi:"onPremise"`
+	Organization                                 *string                                      `pulumi:"organization"`
+	OrganizationId                               *string                                      `pulumi:"organizationId"`
+	Organizations                                []string                                     `pulumi:"organizations"`
+	PackedModeTables                             []string                                     `pulumi:"packedModeTables"`
+	PackingMode                                  *string                                      `pulumi:"packingMode"`
+	Pages                                        []string                                     `pulumi:"pages"`
+	PartnerCode                                  *string                                      `pulumi:"partnerCode"`
+	Partners                                     []string                                     `pulumi:"partners"`
+	Passphrase                                   *string                                      `pulumi:"passphrase"`
+	Password                                     *string                                      `pulumi:"password"`
+	Pat                                          *string                                      `pulumi:"pat"`
+	PatName                                      *string                                      `pulumi:"patName"`
+	PatSecret                                    *string                                      `pulumi:"patSecret"`
+	Path                                         *string                                      `pulumi:"path"`
+	Pattern                                      *string                                      `pulumi:"pattern"`
+	PdbName                                      *string                                      `pulumi:"pdbName"`
+	PemCertificate                               *string                                      `pulumi:"pemCertificate"`
+	PemPrivateKey                                *string                                      `pulumi:"pemPrivateKey"`
+	PerInteractionDimensions                     []string                                     `pulumi:"perInteractionDimensions"`
+	PersonalAccessToken                          *string                                      `pulumi:"personalAccessToken"`
+	PgpPassPhrase                                *string                                      `pulumi:"pgpPassPhrase"`
+	PgpSecretKey                                 *string                                      `pulumi:"pgpSecretKey"`
+	PhoneNumber                                  *string                                      `pulumi:"phoneNumber"`
+	Port                                         *string                                      `pulumi:"port"`
+	PostClickAttributionWindowSize               *string                                      `pulumi:"postClickAttributionWindowSize"`
+	PrebuiltReport                               *string                                      `pulumi:"prebuiltReport"`
+	Prefix                                       *string                                      `pulumi:"prefix"`
+	PrimaryKeys                                  []string                                     `pulumi:"primaryKeys"`
+	PrivateKey                                   *string                                      `pulumi:"privateKey"`
+	Profiles                                     []string                                     `pulumi:"profiles"`
+	ProjectCredentials                           []ConnectorConfigProjectCredential           `pulumi:"projectCredentials"`
+	ProjectId                                    *string                                      `pulumi:"projectId"`
+	Projects                                     []string                                     `pulumi:"projects"`
+	Properties                                   []string                                     `pulumi:"properties"`
+	PublicKey                                    *string                                      `pulumi:"publicKey"`
+	PublicationName                              *string                                      `pulumi:"publicationName"`
+	QueryId                                      *string                                      `pulumi:"queryId"`
+	QueryParamValue                              *string                                      `pulumi:"queryParamValue"`
+	RefreshTokenExpiresAt                        *string                                      `pulumi:"refreshTokenExpiresAt"`
+	Region                                       *string                                      `pulumi:"region"`
+	ReplicaId                                    *string                                      `pulumi:"replicaId"`
+	ReplicationSlot                              *string                                      `pulumi:"replicationSlot"`
+	ReportConfigurationIds                       []string                                     `pulumi:"reportConfigurationIds"`
+	ReportFormatType                             *string                                      `pulumi:"reportFormatType"`
+	ReportSuites                                 []string                                     `pulumi:"reportSuites"`
+	ReportTimezone                               *string                                      `pulumi:"reportTimezone"`
+	ReportType                                   *string                                      `pulumi:"reportType"`
+	ReportUrl                                    *string                                      `pulumi:"reportUrl"`
+	Reports                                      []ConnectorConfigReport                      `pulumi:"reports"`
+	ReportsLinkedinAds                           []string                                     `pulumi:"reportsLinkedinAds"`
+	Repositories                                 []string                                     `pulumi:"repositories"`
+	ResourceToken                                *string                                      `pulumi:"resourceToken"`
+	ResourceUrl                                  *string                                      `pulumi:"resourceUrl"`
+	RestApiLimit                                 *string                                      `pulumi:"restApiLimit"`
+	RfcLibraryPath                               *string                                      `pulumi:"rfcLibraryPath"`
+	Role                                         *string                                      `pulumi:"role"`
+	RoleArn                                      *string                                      `pulumi:"roleArn"`
+	RollbackWindowSize                           *string                                      `pulumi:"rollbackWindowSize"`
+	S3Bucket                                     *string                                      `pulumi:"s3Bucket"`
+	S3ExportBucket                               *string                                      `pulumi:"s3ExportBucket"`
+	S3ExportFolder                               *string                                      `pulumi:"s3ExportFolder"`
+	S3ExportRoleArn                              *string                                      `pulumi:"s3ExportRoleArn"`
+	S3RoleArn                                    *string                                      `pulumi:"s3RoleArn"`
+	S3bucket                                     *string                                      `pulumi:"s3bucket"`
+	S3externalId                                 *string                                      `pulumi:"s3externalId"`
+	S3folder                                     *string                                      `pulumi:"s3folder"`
+	S3path                                       *string                                      `pulumi:"s3path"`
+	S3roleArn                                    *string                                      `pulumi:"s3roleArn"`
+	SalesAccountSyncMode                         *string                                      `pulumi:"salesAccountSyncMode"`
+	SalesAccounts                                []string                                     `pulumi:"salesAccounts"`
+	SalesforceSecurityToken                      *string                                      `pulumi:"salesforceSecurityToken"`
+	SandboxAccount                               *string                                      `pulumi:"sandboxAccount"`
+	SapSchema                                    *string                                      `pulumi:"sapSchema"`
+	SapUser                                      *string                                      `pulumi:"sapUser"`
+	SaslMechanism                                *string                                      `pulumi:"saslMechanism"`
+	SaslPlainKey                                 *string                                      `pulumi:"saslPlainKey"`
+	SaslPlainSecret                              *string                                      `pulumi:"saslPlainSecret"`
+	SaslScram256Key                              *string                                      `pulumi:"saslScram256Key"`
+	SaslScram256Secret                           *string                                      `pulumi:"saslScram256Secret"`
+	SaslScram512Key                              *string                                      `pulumi:"saslScram512Key"`
+	SaslScram512Secret                           *string                                      `pulumi:"saslScram512Secret"`
+	SchemaRegistryCredentialsSource              *string                                      `pulumi:"schemaRegistryCredentialsSource"`
+	SchemaRegistryKey                            *string                                      `pulumi:"schemaRegistryKey"`
+	SchemaRegistrySecret                         *string                                      `pulumi:"schemaRegistrySecret"`
+	SchemaRegistryUrls                           []string                                     `pulumi:"schemaRegistryUrls"`
+	Secret                                       *string                                      `pulumi:"secret"`
+	SecretKey                                    *string                                      `pulumi:"secretKey"`
+	Secrets                                      *string                                      `pulumi:"secrets"`
+	SecretsLists                                 []ConnectorConfigSecretsList                 `pulumi:"secretsLists"`
+	SecurityProtocol                             *string                                      `pulumi:"securityProtocol"`
+	Segments                                     []string                                     `pulumi:"segments"`
+	SelectedExports                              []string                                     `pulumi:"selectedExports"`
+	SenderId                                     *string                                      `pulumi:"senderId"`
+	SenderPassword                               *string                                      `pulumi:"senderPassword"`
+	ServerAddress                                *string                                      `pulumi:"serverAddress"`
+	ServerUrl                                    *string                                      `pulumi:"serverUrl"`
+	Servers                                      []string                                     `pulumi:"servers"`
+	ServiceAccount                               *string                                      `pulumi:"serviceAccount"`
+	ServiceAccountEmail                          *string                                      `pulumi:"serviceAccountEmail"`
+	ServiceAccountKey                            *string                                      `pulumi:"serviceAccountKey"`
+	ServiceVersion                               *string                                      `pulumi:"serviceVersion"`
+	SftpHost                                     *string                                      `pulumi:"sftpHost"`
+	SftpIsKeyPair                                *string                                      `pulumi:"sftpIsKeyPair"`
+	SftpPassword                                 *string                                      `pulumi:"sftpPassword"`
+	SftpPort                                     *string                                      `pulumi:"sftpPort"`
+	SftpPublicKey                                *string                                      `pulumi:"sftpPublicKey"`
+	SftpUser                                     *string                                      `pulumi:"sftpUser"`
+	ShareUrl                                     *string                                      `pulumi:"shareUrl"`
+	SheetId                                      *string                                      `pulumi:"sheetId"`
+	Shop                                         *string                                      `pulumi:"shop"`
+	ShortCode                                    *string                                      `pulumi:"shortCode"`
+	ShowRecordsWithNoMetrics                     *string                                      `pulumi:"showRecordsWithNoMetrics"`
+	Sid                                          *string                                      `pulumi:"sid"`
+	SignerPublicKey                              *string                                      `pulumi:"signerPublicKey"`
+	SiteAddress                                  *string                                      `pulumi:"siteAddress"`
+	SiteId                                       *string                                      `pulumi:"siteId"`
+	SiteName                                     *string                                      `pulumi:"siteName"`
+	SiteUrls                                     []string                                     `pulumi:"siteUrls"`
+	SkipAfter                                    *string                                      `pulumi:"skipAfter"`
+	SkipBefore                                   *string                                      `pulumi:"skipBefore"`
+	SoapUri                                      *string                                      `pulumi:"soapUri"`
+	SocialDataSyncTimeframe                      *string                                      `pulumi:"socialDataSyncTimeframe"`
+	Source                                       *string                                      `pulumi:"source"`
+	StoreHash                                    *string                                      `pulumi:"storeHash"`
+	SubDomain                                    *string                                      `pulumi:"subDomain"`
+	Subdomain                                    *string                                      `pulumi:"subdomain"`
+	SubscriberName                               *string                                      `pulumi:"subscriberName"`
+	Subscription                                 *string                                      `pulumi:"subscription"`
+	SupportConnectedAccountsSync                 *string                                      `pulumi:"supportConnectedAccountsSync"`
+	SupportNestedColumns                         *string                                      `pulumi:"supportNestedColumns"`
+	SurveyIds                                    *string                                      `pulumi:"surveyIds"`
+	SwipeAttributionWindow                       *string                                      `pulumi:"swipeAttributionWindow"`
+	SyncDataLocker                               *string                                      `pulumi:"syncDataLocker"`
+	SyncFormat                                   *string                                      `pulumi:"syncFormat"`
+	SyncFormulaFields                            *string                                      `pulumi:"syncFormulaFields"`
+	SyncMetadata                                 *string                                      `pulumi:"syncMetadata"`
+	SyncMethod                                   *string                                      `pulumi:"syncMethod"`
+	SyncMode                                     *string                                      `pulumi:"syncMode"`
+	SyncMultipleAccounts                         *string                                      `pulumi:"syncMultipleAccounts"`
+	SyncPackMode                                 *string                                      `pulumi:"syncPackMode"`
+	SyncPullApi                                  *string                                      `pulumi:"syncPullApi"`
+	SyncType                                     *string                                      `pulumi:"syncType"`
+	Sysnr                                        *string                                      `pulumi:"sysnr"`
+	TableName                                    *string                                      `pulumi:"tableName"`
+	TdeCertificate                               *string                                      `pulumi:"tdeCertificate"`
+	TdeCertificateName                           *string                                      `pulumi:"tdeCertificateName"`
+	TdePassword                                  *string                                      `pulumi:"tdePassword"`
+	TdePrivateKey                                *string                                      `pulumi:"tdePrivateKey"`
+	TeamId                                       *string                                      `pulumi:"teamId"`
+	TechnicalAccountId                           *string                                      `pulumi:"technicalAccountId"`
+	TemplateLabels                               []string                                     `pulumi:"templateLabels"`
+	Tenant                                       *string                                      `pulumi:"tenant"`
+	TenantId                                     *string                                      `pulumi:"tenantId"`
+	TestTableName                                *string                                      `pulumi:"testTableName"`
+	TimeZone                                     *string                                      `pulumi:"timeZone"`
+	TimeframeMonths                              *string                                      `pulumi:"timeframeMonths"`
+	Tns                                          *string                                      `pulumi:"tns"`
+	TokenAuthenticatedContainer                  *string                                      `pulumi:"tokenAuthenticatedContainer"`
+	TokenAuthenticatedDatabase                   *string                                      `pulumi:"tokenAuthenticatedDatabase"`
+	TokenId                                      *string                                      `pulumi:"tokenId"`
+	TokenKey                                     *string                                      `pulumi:"tokenKey"`
+	TokenSecret                                  *string                                      `pulumi:"tokenSecret"`
+	TokenSecretKey                               *string                                      `pulumi:"tokenSecretKey"`
+	Topics                                       []string                                     `pulumi:"topics"`
+	TrustStoreType                               *string                                      `pulumi:"trustStoreType"`
+	TrustedCert                                  *string                                      `pulumi:"trustedCert"`
+	Truststore                                   *string                                      `pulumi:"truststore"`
+	TunnelHost                                   *string                                      `pulumi:"tunnelHost"`
+	TunnelPort                                   *string                                      `pulumi:"tunnelPort"`
+	TunnelUser                                   *string                                      `pulumi:"tunnelUser"`
+	UniqueId                                     *string                                      `pulumi:"uniqueId"`
+	UpdateConfigOnEachSync                       *string                                      `pulumi:"updateConfigOnEachSync"`
+	UpdateMethod                                 *string                                      `pulumi:"updateMethod"`
+	Uri                                          *string                                      `pulumi:"uri"`
+	UseApiKeys                                   *string                                      `pulumi:"useApiKeys"`
+	UseCustomerBucket                            *string                                      `pulumi:"useCustomerBucket"`
+	UseOracleRac                                 *string                                      `pulumi:"useOracleRac"`
+	UsePgpEncryptionOptions                      *string                                      `pulumi:"usePgpEncryptionOptions"`
+	UseServiceAccount                            *string                                      `pulumi:"useServiceAccount"`
+	UseTemplateLabels                            *string                                      `pulumi:"useTemplateLabels"`
+	UseWebhooks                                  *string                                      `pulumi:"useWebhooks"`
+	UseWorkspace                                 *string                                      `pulumi:"useWorkspace"`
+	User                                         *string                                      `pulumi:"user"`
+	UserId                                       *string                                      `pulumi:"userId"`
+	UserKey                                      *string                                      `pulumi:"userKey"`
+	UserName                                     *string                                      `pulumi:"userName"`
+	UserProfiles                                 []string                                     `pulumi:"userProfiles"`
+	Username                                     *string                                      `pulumi:"username"`
+	ViewAttributionWindow                        *string                                      `pulumi:"viewAttributionWindow"`
+	ViewThroughAttributionWindowSize             *string                                      `pulumi:"viewThroughAttributionWindowSize"`
+	WebhookEndpoint                              *string                                      `pulumi:"webhookEndpoint"`
+	WebhookKey                                   *string                                      `pulumi:"webhookKey"`
+	WebhookUrl                                   *string                                      `pulumi:"webhookUrl"`
+	WordPressSiteIdOrWoocommerceDomainName       *string                                      `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
+	WorkspaceName                                *string                                      `pulumi:"workspaceName"`
+	WorkspaceSameAsSource                        *string                                      `pulumi:"workspaceSameAsSource"`
+	WorkspaceSchema                              *string                                      `pulumi:"workspaceSchema"`
+	WsCertificate                                *string                                      `pulumi:"wsCertificate"`
 }
 
 // ConnectorConfigInput is an input type that accepts ConnectorConfigArgs and ConnectorConfigOutput values.
@@ -1065,445 +1202,460 @@ type ConnectorConfigInput interface {
 }
 
 type ConnectorConfigArgs struct {
-	AbsConnectionMethod                    pulumi.StringPtrInput                                `pulumi:"absConnectionMethod"`
-	AbsConnectionString                    pulumi.StringPtrInput                                `pulumi:"absConnectionString"`
-	AbsContainerAddress                    pulumi.StringPtrInput                                `pulumi:"absContainerAddress"`
-	AbsContainerName                       pulumi.StringPtrInput                                `pulumi:"absContainerName"`
-	AbsHostIp                              pulumi.StringPtrInput                                `pulumi:"absHostIp"`
-	AbsHostUser                            pulumi.StringPtrInput                                `pulumi:"absHostUser"`
-	AbsPrefix                              pulumi.StringPtrInput                                `pulumi:"absPrefix"`
-	AbsPublicKey                           pulumi.StringPtrInput                                `pulumi:"absPublicKey"`
-	AccessKey                              pulumi.StringPtrInput                                `pulumi:"accessKey"`
-	AccessKeyId                            pulumi.StringPtrInput                                `pulumi:"accessKeyId"`
-	AccessKeySecret                        pulumi.StringPtrInput                                `pulumi:"accessKeySecret"`
-	AccessToken                            pulumi.StringPtrInput                                `pulumi:"accessToken"`
-	AccessType                             pulumi.StringPtrInput                                `pulumi:"accessType"`
-	Account                                pulumi.StringPtrInput                                `pulumi:"account"`
-	AccountId                              pulumi.StringPtrInput                                `pulumi:"accountId"`
-	AccountIds                             pulumi.StringArrayInput                              `pulumi:"accountIds"`
-	AccountKey                             pulumi.StringPtrInput                                `pulumi:"accountKey"`
-	AccountName                            pulumi.StringPtrInput                                `pulumi:"accountName"`
-	AccountSyncMode                        pulumi.StringPtrInput                                `pulumi:"accountSyncMode"`
-	Accounts                               pulumi.StringArrayInput                              `pulumi:"accounts"`
-	AccountsRedditAds                      ConnectorConfigAccountsRedditAdArrayInput            `pulumi:"accountsRedditAds"`
-	AccountsSyncMode                       pulumi.StringPtrInput                                `pulumi:"accountsSyncMode"`
-	ActionBreakdowns                       pulumi.StringArrayInput                              `pulumi:"actionBreakdowns"`
-	ActionReportTime                       pulumi.StringPtrInput                                `pulumi:"actionReportTime"`
-	AdAnalytics                            pulumi.StringPtrInput                                `pulumi:"adAnalytics"`
-	AdUnitView                             pulumi.StringPtrInput                                `pulumi:"adUnitView"`
-	AdminApiKey                            pulumi.StringPtrInput                                `pulumi:"adminApiKey"`
-	AdobeAnalyticsConfigurations           ConnectorConfigAdobeAnalyticsConfigurationArrayInput `pulumi:"adobeAnalyticsConfigurations"`
-	Advertisables                          pulumi.StringArrayInput                              `pulumi:"advertisables"`
-	Advertisers                            pulumi.StringArrayInput                              `pulumi:"advertisers"`
-	AdvertisersIds                         pulumi.StringArrayInput                              `pulumi:"advertisersIds"`
-	AdvertisersSyncMode                    pulumi.StringPtrInput                                `pulumi:"advertisersSyncMode"`
-	AgentHost                              pulumi.StringPtrInput                                `pulumi:"agentHost"`
-	AgentOraHome                           pulumi.StringPtrInput                                `pulumi:"agentOraHome"`
-	AgentPassword                          pulumi.StringPtrInput                                `pulumi:"agentPassword"`
-	AgentPort                              pulumi.StringPtrInput                                `pulumi:"agentPort"`
-	AgentPublicCert                        pulumi.StringPtrInput                                `pulumi:"agentPublicCert"`
-	AgentUser                              pulumi.StringPtrInput                                `pulumi:"agentUser"`
-	Aggregation                            pulumi.StringPtrInput                                `pulumi:"aggregation"`
-	AlwaysEncrypted                        pulumi.StringPtrInput                                `pulumi:"alwaysEncrypted"`
-	ApiAccessToken                         pulumi.StringPtrInput                                `pulumi:"apiAccessToken"`
-	ApiId                                  pulumi.StringPtrInput                                `pulumi:"apiId"`
-	ApiKey                                 pulumi.StringPtrInput                                `pulumi:"apiKey"`
-	ApiKeys                                pulumi.StringArrayInput                              `pulumi:"apiKeys"`
-	ApiQuota                               pulumi.StringPtrInput                                `pulumi:"apiQuota"`
-	ApiRequestsPerMinute                   pulumi.StringPtrInput                                `pulumi:"apiRequestsPerMinute"`
-	ApiSecret                              pulumi.StringPtrInput                                `pulumi:"apiSecret"`
-	ApiSecretKey                           pulumi.StringPtrInput                                `pulumi:"apiSecretKey"`
-	ApiToken                               pulumi.StringPtrInput                                `pulumi:"apiToken"`
-	ApiType                                pulumi.StringPtrInput                                `pulumi:"apiType"`
-	ApiUrl                                 pulumi.StringPtrInput                                `pulumi:"apiUrl"`
-	ApiUsage                               pulumi.StringPtrInput                                `pulumi:"apiUsage"`
-	ApiVersion                             pulumi.StringPtrInput                                `pulumi:"apiVersion"`
-	AppId                                  pulumi.StringPtrInput                                `pulumi:"appId"`
-	AppIds                                 pulumi.StringArrayInput                              `pulumi:"appIds"`
-	AppIdsAppsflyers                       ConnectorConfigAppIdsAppsflyerArrayInput             `pulumi:"appIdsAppsflyers"`
-	AppSpecificPassword                    pulumi.StringPtrInput                                `pulumi:"appSpecificPassword"`
-	AppSyncMode                            pulumi.StringPtrInput                                `pulumi:"appSyncMode"`
-	AppendFileOption                       pulumi.StringPtrInput                                `pulumi:"appendFileOption"`
-	ApplicationKey                         pulumi.StringPtrInput                                `pulumi:"applicationKey"`
-	Apps                                   pulumi.StringArrayInput                              `pulumi:"apps"`
-	ArchiveLogFormat                       pulumi.StringPtrInput                                `pulumi:"archiveLogFormat"`
-	ArchiveLogPath                         pulumi.StringPtrInput                                `pulumi:"archiveLogPath"`
-	ArchivePattern                         pulumi.StringPtrInput                                `pulumi:"archivePattern"`
-	AreSoapCredentialsProvided             pulumi.StringPtrInput                                `pulumi:"areSoapCredentialsProvided"`
-	AsbIp                                  pulumi.StringPtrInput                                `pulumi:"asbIp"`
-	AsmOption                              pulumi.StringPtrInput                                `pulumi:"asmOption"`
-	AsmOracleHome                          pulumi.StringPtrInput                                `pulumi:"asmOracleHome"`
-	AsmPassword                            pulumi.StringPtrInput                                `pulumi:"asmPassword"`
-	AsmTns                                 pulumi.StringPtrInput                                `pulumi:"asmTns"`
-	AsmUser                                pulumi.StringPtrInput                                `pulumi:"asmUser"`
-	AttributionWindow                      pulumi.StringPtrInput                                `pulumi:"attributionWindow"`
-	AttributionWindowSize                  pulumi.StringPtrInput                                `pulumi:"attributionWindowSize"`
-	Auth                                   pulumi.StringPtrInput                                `pulumi:"auth"`
-	AuthMethod                             pulumi.StringPtrInput                                `pulumi:"authMethod"`
-	AuthMode                               pulumi.StringPtrInput                                `pulumi:"authMode"`
-	AuthType                               pulumi.StringPtrInput                                `pulumi:"authType"`
-	AuthorizationMethod                    pulumi.StringPtrInput                                `pulumi:"authorizationMethod"`
-	AwsRegionCode                          pulumi.StringPtrInput                                `pulumi:"awsRegionCode"`
-	BaseCurrency                           pulumi.StringPtrInput                                `pulumi:"baseCurrency"`
-	BaseDomain                             pulumi.StringPtrInput                                `pulumi:"baseDomain"`
-	BaseId                                 pulumi.StringPtrInput                                `pulumi:"baseId"`
-	BaseUrl                                pulumi.StringPtrInput                                `pulumi:"baseUrl"`
-	BearerToken                            pulumi.StringPtrInput                                `pulumi:"bearerToken"`
-	BlobSasUrl                             pulumi.StringPtrInput                                `pulumi:"blobSasUrl"`
-	Breakdowns                             pulumi.StringArrayInput                              `pulumi:"breakdowns"`
-	Bucket                                 pulumi.StringPtrInput                                `pulumi:"bucket"`
-	BucketName                             pulumi.StringPtrInput                                `pulumi:"bucketName"`
-	BucketService                          pulumi.StringPtrInput                                `pulumi:"bucketService"`
-	BusinessId                             pulumi.StringPtrInput                                `pulumi:"businessId"`
-	BusinessUnitId                         pulumi.StringPtrInput                                `pulumi:"businessUnitId"`
-	Certificate                            pulumi.StringPtrInput                                `pulumi:"certificate"`
-	ClickAttributionWindow                 pulumi.StringPtrInput                                `pulumi:"clickAttributionWindow"`
-	Client                                 pulumi.StringPtrInput                                `pulumi:"client"`
-	ClientCert                             pulumi.StringPtrInput                                `pulumi:"clientCert"`
-	ClientCertKey                          pulumi.StringPtrInput                                `pulumi:"clientCertKey"`
-	ClientId                               pulumi.StringPtrInput                                `pulumi:"clientId"`
-	ClientKey                              pulumi.StringPtrInput                                `pulumi:"clientKey"`
-	ClientName                             pulumi.StringPtrInput                                `pulumi:"clientName"`
-	ClientSecret                           pulumi.StringPtrInput                                `pulumi:"clientSecret"`
-	CloudStorageType                       pulumi.StringPtrInput                                `pulumi:"cloudStorageType"`
-	Columns                                pulumi.StringArrayInput                              `pulumi:"columns"`
-	CompanyId                              pulumi.StringPtrInput                                `pulumi:"companyId"`
-	CompanyKey                             pulumi.StringPtrInput                                `pulumi:"companyKey"`
-	CompanyRequestToken                    pulumi.StringPtrInput                                `pulumi:"companyRequestToken"`
-	CompanyUuid                            pulumi.StringPtrInput                                `pulumi:"companyUuid"`
-	Compression                            pulumi.StringPtrInput                                `pulumi:"compression"`
-	ConfigMethod                           pulumi.StringPtrInput                                `pulumi:"configMethod"`
-	ConfigRepositoryUrl                    pulumi.StringPtrInput                                `pulumi:"configRepositoryUrl"`
-	ConfigType                             pulumi.StringPtrInput                                `pulumi:"configType"`
-	ConnectingUser                         pulumi.StringPtrInput                                `pulumi:"connectingUser"`
-	ConnectingUserEmail                    pulumi.StringPtrInput                                `pulumi:"connectingUserEmail"`
-	ConnectionMethod                       pulumi.StringPtrInput                                `pulumi:"connectionMethod"`
-	ConnectionString                       pulumi.StringPtrInput                                `pulumi:"connectionString"`
-	ConnectionType                         pulumi.StringPtrInput                                `pulumi:"connectionType"`
-	ConsumerGroup                          pulumi.StringPtrInput                                `pulumi:"consumerGroup"`
-	ConsumerKey                            pulumi.StringPtrInput                                `pulumi:"consumerKey"`
-	ConsumerSecret                         pulumi.StringPtrInput                                `pulumi:"consumerSecret"`
-	ContainerAddress                       pulumi.StringPtrInput                                `pulumi:"containerAddress"`
-	ContainerName                          pulumi.StringPtrInput                                `pulumi:"containerName"`
-	ContentOwnerId                         pulumi.StringPtrInput                                `pulumi:"contentOwnerId"`
-	ConversationWebhookUrl                 pulumi.StringPtrInput                                `pulumi:"conversationWebhookUrl"`
-	ConversionDimensions                   pulumi.StringArrayInput                              `pulumi:"conversionDimensions"`
-	ConversionReportTime                   pulumi.StringPtrInput                                `pulumi:"conversionReportTime"`
-	ConversionWindowSize                   pulumi.StringPtrInput                                `pulumi:"conversionWindowSize"`
-	CsvDefinition                          pulumi.StringPtrInput                                `pulumi:"csvDefinition"`
-	Currency                               pulumi.StringPtrInput                                `pulumi:"currency"`
-	CustomEventSyncMode                    pulumi.StringPtrInput                                `pulumi:"customEventSyncMode"`
-	CustomEvents                           pulumi.StringArrayInput                              `pulumi:"customEvents"`
-	CustomFieldIds                         pulumi.StringArrayInput                              `pulumi:"customFieldIds"`
-	CustomFloodlightVariables              pulumi.StringArrayInput                              `pulumi:"customFloodlightVariables"`
-	CustomReports                          ConnectorConfigCustomReportArrayInput                `pulumi:"customReports"`
-	CustomTables                           ConnectorConfigCustomTableArrayInput                 `pulumi:"customTables"`
-	CustomerId                             pulumi.StringPtrInput                                `pulumi:"customerId"`
-	CustomerListId                         pulumi.StringPtrInput                                `pulumi:"customerListId"`
-	DailyApiCallLimit                      pulumi.StringPtrInput                                `pulumi:"dailyApiCallLimit"`
-	DataAccessMethod                       pulumi.StringPtrInput                                `pulumi:"dataAccessMethod"`
-	DataCenter                             pulumi.StringPtrInput                                `pulumi:"dataCenter"`
-	DataSetName                            pulumi.StringPtrInput                                `pulumi:"dataSetName"`
-	Database                               pulumi.StringPtrInput                                `pulumi:"database"`
-	DatasetId                              pulumi.StringPtrInput                                `pulumi:"datasetId"`
-	Datasource                             pulumi.StringPtrInput                                `pulumi:"datasource"`
-	DateGranularity                        pulumi.StringPtrInput                                `pulumi:"dateGranularity"`
-	Delimiter                              pulumi.StringPtrInput                                `pulumi:"delimiter"`
-	DimensionAttributes                    pulumi.StringArrayInput                              `pulumi:"dimensionAttributes"`
-	Dimensions                             pulumi.StringArrayInput                              `pulumi:"dimensions"`
-	Domain                                 pulumi.StringPtrInput                                `pulumi:"domain"`
-	DomainHostName                         pulumi.StringPtrInput                                `pulumi:"domainHostName"`
-	DomainName                             pulumi.StringPtrInput                                `pulumi:"domainName"`
-	DomainType                             pulumi.StringPtrInput                                `pulumi:"domainType"`
-	Elements                               pulumi.StringArrayInput                              `pulumi:"elements"`
-	Email                                  pulumi.StringPtrInput                                `pulumi:"email"`
-	EmptyHeader                            pulumi.StringPtrInput                                `pulumi:"emptyHeader"`
-	EnableAllDimensionCombinations         pulumi.StringPtrInput                                `pulumi:"enableAllDimensionCombinations"`
-	EnableArchiveLogOnly                   pulumi.StringPtrInput                                `pulumi:"enableArchiveLogOnly"`
-	EnableEnrichments                      pulumi.StringPtrInput                                `pulumi:"enableEnrichments"`
-	EnableExports                          pulumi.StringPtrInput                                `pulumi:"enableExports"`
-	EnableTde                              pulumi.StringPtrInput                                `pulumi:"enableTde"`
-	EncodedPublicKey                       pulumi.StringPtrInput                                `pulumi:"encodedPublicKey"`
-	EncryptionKey                          pulumi.StringPtrInput                                `pulumi:"encryptionKey"`
-	Endpoint                               pulumi.StringPtrInput                                `pulumi:"endpoint"`
-	EngagementAttributionWindow            pulumi.StringPtrInput                                `pulumi:"engagementAttributionWindow"`
-	EnrichedExport                         pulumi.StringPtrInput                                `pulumi:"enrichedExport"`
-	EntityId                               pulumi.StringPtrInput                                `pulumi:"entityId"`
-	Environment                            pulumi.StringPtrInput                                `pulumi:"environment"`
-	EscapeChar                             pulumi.StringPtrInput                                `pulumi:"escapeChar"`
-	EuRegion                               pulumi.StringPtrInput                                `pulumi:"euRegion"`
-	Events                                 pulumi.StringArrayInput                              `pulumi:"events"`
-	ExportStorageType                      pulumi.StringPtrInput                                `pulumi:"exportStorageType"`
-	ExternalId                             pulumi.StringPtrInput                                `pulumi:"externalId"`
-	Fields                                 pulumi.StringArrayInput                              `pulumi:"fields"`
-	FileType                               pulumi.StringPtrInput                                `pulumi:"fileType"`
-	Filter                                 pulumi.StringPtrInput                                `pulumi:"filter"`
-	FinanceAccountSyncMode                 pulumi.StringPtrInput                                `pulumi:"financeAccountSyncMode"`
-	FinanceAccounts                        pulumi.StringArrayInput                              `pulumi:"financeAccounts"`
-	Folder                                 pulumi.StringPtrInput                                `pulumi:"folder"`
-	FolderId                               pulumi.StringPtrInput                                `pulumi:"folderId"`
-	FolderPath                             pulumi.StringPtrInput                                `pulumi:"folderPath"`
-	ForecastId                             pulumi.StringPtrInput                                `pulumi:"forecastId"`
-	FtpHost                                pulumi.StringPtrInput                                `pulumi:"ftpHost"`
-	FtpPassword                            pulumi.StringPtrInput                                `pulumi:"ftpPassword"`
-	FtpPort                                pulumi.StringPtrInput                                `pulumi:"ftpPort"`
-	FtpUser                                pulumi.StringPtrInput                                `pulumi:"ftpUser"`
-	Function                               pulumi.StringPtrInput                                `pulumi:"function"`
-	FunctionApp                            pulumi.StringPtrInput                                `pulumi:"functionApp"`
-	FunctionKey                            pulumi.StringPtrInput                                `pulumi:"functionKey"`
-	FunctionName                           pulumi.StringPtrInput                                `pulumi:"functionName"`
-	FunctionTrigger                        pulumi.StringPtrInput                                `pulumi:"functionTrigger"`
-	GcsBucket                              pulumi.StringPtrInput                                `pulumi:"gcsBucket"`
-	GcsFolder                              pulumi.StringPtrInput                                `pulumi:"gcsFolder"`
-	GroupName                              pulumi.StringPtrInput                                `pulumi:"groupName"`
-	HasManagePermissions                   pulumi.StringPtrInput                                `pulumi:"hasManagePermissions"`
-	HomeFolder                             pulumi.StringPtrInput                                `pulumi:"homeFolder"`
-	Host                                   pulumi.StringPtrInput                                `pulumi:"host"`
-	HostIp                                 pulumi.StringPtrInput                                `pulumi:"hostIp"`
-	HostUser                               pulumi.StringPtrInput                                `pulumi:"hostUser"`
-	Hosts                                  pulumi.StringArrayInput                              `pulumi:"hosts"`
-	Identity                               pulumi.StringPtrInput                                `pulumi:"identity"`
-	Instance                               pulumi.StringPtrInput                                `pulumi:"instance"`
-	InstanceNumber                         pulumi.StringPtrInput                                `pulumi:"instanceNumber"`
-	InstanceUrl                            pulumi.StringPtrInput                                `pulumi:"instanceUrl"`
-	IntegrationKey                         pulumi.StringPtrInput                                `pulumi:"integrationKey"`
-	IsAccountLevelConnector                pulumi.StringPtrInput                                `pulumi:"isAccountLevelConnector"`
-	IsAuth2Enabled                         pulumi.StringPtrInput                                `pulumi:"isAuth2Enabled"`
-	IsCustomApiCredentials                 pulumi.StringPtrInput                                `pulumi:"isCustomApiCredentials"`
-	IsFtps                                 pulumi.StringPtrInput                                `pulumi:"isFtps"`
-	IsKeypair                              pulumi.StringPtrInput                                `pulumi:"isKeypair"`
-	IsMultiEntityFeatureEnabled            pulumi.StringPtrInput                                `pulumi:"isMultiEntityFeatureEnabled"`
-	IsNewPackage                           pulumi.StringPtrInput                                `pulumi:"isNewPackage"`
-	IsPrivateKeyEncrypted                  pulumi.StringPtrInput                                `pulumi:"isPrivateKeyEncrypted"`
-	IsPrivateLinkRequired                  pulumi.StringPtrInput                                `pulumi:"isPrivateLinkRequired"`
-	IsPublic                               pulumi.StringPtrInput                                `pulumi:"isPublic"`
-	IsSailthruConnectEnabled               pulumi.StringPtrInput                                `pulumi:"isSailthruConnectEnabled"`
-	IsSecure                               pulumi.StringPtrInput                                `pulumi:"isSecure"`
-	IsSingleTableMode                      pulumi.StringPtrInput                                `pulumi:"isSingleTableMode"`
-	IsVendor                               pulumi.StringPtrInput                                `pulumi:"isVendor"`
-	JsonDeliveryMode                       pulumi.StringPtrInput                                `pulumi:"jsonDeliveryMode"`
-	Key                                    pulumi.StringPtrInput                                `pulumi:"key"`
-	KeyPassword                            pulumi.StringPtrInput                                `pulumi:"keyPassword"`
-	KeyStoreType                           pulumi.StringPtrInput                                `pulumi:"keyStoreType"`
-	Keystore                               pulumi.StringPtrInput                                `pulumi:"keystore"`
-	KeystorePassword                       pulumi.StringPtrInput                                `pulumi:"keystorePassword"`
-	LastSyncedChangesUtc_                  pulumi.StringPtrInput                                `pulumi:"lastSyncedChangesUtc_"`
-	LatestVersion                          pulumi.StringPtrInput                                `pulumi:"latestVersion"`
-	LineSeparator                          pulumi.StringPtrInput                                `pulumi:"lineSeparator"`
-	ListStrategy                           pulumi.StringPtrInput                                `pulumi:"listStrategy"`
-	ListSyncMode                           pulumi.StringPtrInput                                `pulumi:"listSyncMode"`
-	LogJournal                             pulumi.StringPtrInput                                `pulumi:"logJournal"`
-	LogJournalSchema                       pulumi.StringPtrInput                                `pulumi:"logJournalSchema"`
-	Login                                  pulumi.StringPtrInput                                `pulumi:"login"`
-	LoginPassword                          pulumi.StringPtrInput                                `pulumi:"loginPassword"`
-	ManagerAccounts                        pulumi.StringArrayInput                              `pulumi:"managerAccounts"`
-	MerchantId                             pulumi.StringPtrInput                                `pulumi:"merchantId"`
-	MessageType                            pulumi.StringPtrInput                                `pulumi:"messageType"`
-	Metrics                                pulumi.StringArrayInput                              `pulumi:"metrics"`
-	NamedRange                             pulumi.StringPtrInput                                `pulumi:"namedRange"`
-	Namespace                              pulumi.StringPtrInput                                `pulumi:"namespace"`
-	NetworkCode                            pulumi.StringPtrInput                                `pulumi:"networkCode"`
-	NullSequence                           pulumi.StringPtrInput                                `pulumi:"nullSequence"`
-	OauthToken                             pulumi.StringPtrInput                                `pulumi:"oauthToken"`
-	OauthTokenSecret                       pulumi.StringPtrInput                                `pulumi:"oauthTokenSecret"`
-	OnError                                pulumi.StringPtrInput                                `pulumi:"onError"`
-	OnPremise                              pulumi.StringPtrInput                                `pulumi:"onPremise"`
-	Organization                           pulumi.StringPtrInput                                `pulumi:"organization"`
-	OrganizationId                         pulumi.StringPtrInput                                `pulumi:"organizationId"`
-	Organizations                          pulumi.StringArrayInput                              `pulumi:"organizations"`
-	PackedModeTables                       pulumi.StringArrayInput                              `pulumi:"packedModeTables"`
-	PackingMode                            pulumi.StringPtrInput                                `pulumi:"packingMode"`
-	Pages                                  pulumi.StringArrayInput                              `pulumi:"pages"`
-	Partners                               pulumi.StringArrayInput                              `pulumi:"partners"`
-	Passphrase                             pulumi.StringPtrInput                                `pulumi:"passphrase"`
-	Password                               pulumi.StringPtrInput                                `pulumi:"password"`
-	Pat                                    pulumi.StringPtrInput                                `pulumi:"pat"`
-	PatName                                pulumi.StringPtrInput                                `pulumi:"patName"`
-	PatSecret                              pulumi.StringPtrInput                                `pulumi:"patSecret"`
-	Path                                   pulumi.StringPtrInput                                `pulumi:"path"`
-	Pattern                                pulumi.StringPtrInput                                `pulumi:"pattern"`
-	PdbName                                pulumi.StringPtrInput                                `pulumi:"pdbName"`
-	PemCertificate                         pulumi.StringPtrInput                                `pulumi:"pemCertificate"`
-	PemPrivateKey                          pulumi.StringPtrInput                                `pulumi:"pemPrivateKey"`
-	PerInteractionDimensions               pulumi.StringArrayInput                              `pulumi:"perInteractionDimensions"`
-	PersonalAccessToken                    pulumi.StringPtrInput                                `pulumi:"personalAccessToken"`
-	PgpPassPhrase                          pulumi.StringPtrInput                                `pulumi:"pgpPassPhrase"`
-	PgpSecretKey                           pulumi.StringPtrInput                                `pulumi:"pgpSecretKey"`
-	PhoneNumber                            pulumi.StringPtrInput                                `pulumi:"phoneNumber"`
-	Port                                   pulumi.StringPtrInput                                `pulumi:"port"`
-	PostClickAttributionWindowSize         pulumi.StringPtrInput                                `pulumi:"postClickAttributionWindowSize"`
-	PrebuiltReport                         pulumi.StringPtrInput                                `pulumi:"prebuiltReport"`
-	Prefix                                 pulumi.StringPtrInput                                `pulumi:"prefix"`
-	PrimaryKeys                            pulumi.StringArrayInput                              `pulumi:"primaryKeys"`
-	PrivateKey                             pulumi.StringPtrInput                                `pulumi:"privateKey"`
-	Profiles                               pulumi.StringArrayInput                              `pulumi:"profiles"`
-	ProjectCredentials                     ConnectorConfigProjectCredentialArrayInput           `pulumi:"projectCredentials"`
-	ProjectId                              pulumi.StringPtrInput                                `pulumi:"projectId"`
-	Projects                               pulumi.StringArrayInput                              `pulumi:"projects"`
-	Properties                             pulumi.StringArrayInput                              `pulumi:"properties"`
-	PublicKey                              pulumi.StringPtrInput                                `pulumi:"publicKey"`
-	PublicationName                        pulumi.StringPtrInput                                `pulumi:"publicationName"`
-	QueryId                                pulumi.StringPtrInput                                `pulumi:"queryId"`
-	QueryParamValue                        pulumi.StringPtrInput                                `pulumi:"queryParamValue"`
-	RefreshTokenExpiresAt                  pulumi.StringPtrInput                                `pulumi:"refreshTokenExpiresAt"`
-	Region                                 pulumi.StringPtrInput                                `pulumi:"region"`
-	ReplicaId                              pulumi.StringPtrInput                                `pulumi:"replicaId"`
-	ReplicationSlot                        pulumi.StringPtrInput                                `pulumi:"replicationSlot"`
-	ReportConfigurationIds                 pulumi.StringArrayInput                              `pulumi:"reportConfigurationIds"`
-	ReportFormatType                       pulumi.StringPtrInput                                `pulumi:"reportFormatType"`
-	ReportSuites                           pulumi.StringArrayInput                              `pulumi:"reportSuites"`
-	ReportTimezone                         pulumi.StringPtrInput                                `pulumi:"reportTimezone"`
-	ReportType                             pulumi.StringPtrInput                                `pulumi:"reportType"`
-	ReportUrl                              pulumi.StringPtrInput                                `pulumi:"reportUrl"`
-	Reports                                ConnectorConfigReportArrayInput                      `pulumi:"reports"`
-	ReportsLinkedinAds                     pulumi.StringArrayInput                              `pulumi:"reportsLinkedinAds"`
-	Repositories                           pulumi.StringArrayInput                              `pulumi:"repositories"`
-	ResourceToken                          pulumi.StringPtrInput                                `pulumi:"resourceToken"`
-	ResourceUrl                            pulumi.StringPtrInput                                `pulumi:"resourceUrl"`
-	RestApiLimit                           pulumi.StringPtrInput                                `pulumi:"restApiLimit"`
-	RfcLibraryPath                         pulumi.StringPtrInput                                `pulumi:"rfcLibraryPath"`
-	Role                                   pulumi.StringPtrInput                                `pulumi:"role"`
-	RoleArn                                pulumi.StringPtrInput                                `pulumi:"roleArn"`
-	RollbackWindowSize                     pulumi.StringPtrInput                                `pulumi:"rollbackWindowSize"`
-	S3Bucket                               pulumi.StringPtrInput                                `pulumi:"s3Bucket"`
-	S3ExportBucket                         pulumi.StringPtrInput                                `pulumi:"s3ExportBucket"`
-	S3ExportFolder                         pulumi.StringPtrInput                                `pulumi:"s3ExportFolder"`
-	S3ExportRoleArn                        pulumi.StringPtrInput                                `pulumi:"s3ExportRoleArn"`
-	S3RoleArn                              pulumi.StringPtrInput                                `pulumi:"s3RoleArn"`
-	S3bucket                               pulumi.StringPtrInput                                `pulumi:"s3bucket"`
-	S3externalId                           pulumi.StringPtrInput                                `pulumi:"s3externalId"`
-	S3folder                               pulumi.StringPtrInput                                `pulumi:"s3folder"`
-	S3path                                 pulumi.StringPtrInput                                `pulumi:"s3path"`
-	S3roleArn                              pulumi.StringPtrInput                                `pulumi:"s3roleArn"`
-	SalesAccountSyncMode                   pulumi.StringPtrInput                                `pulumi:"salesAccountSyncMode"`
-	SalesAccounts                          pulumi.StringArrayInput                              `pulumi:"salesAccounts"`
-	SalesforceSecurityToken                pulumi.StringPtrInput                                `pulumi:"salesforceSecurityToken"`
-	SandboxAccount                         pulumi.StringPtrInput                                `pulumi:"sandboxAccount"`
-	SapSchema                              pulumi.StringPtrInput                                `pulumi:"sapSchema"`
-	SapUser                                pulumi.StringPtrInput                                `pulumi:"sapUser"`
-	SaslMechanism                          pulumi.StringPtrInput                                `pulumi:"saslMechanism"`
-	SaslPlainKey                           pulumi.StringPtrInput                                `pulumi:"saslPlainKey"`
-	SaslPlainSecret                        pulumi.StringPtrInput                                `pulumi:"saslPlainSecret"`
-	SaslScram256Key                        pulumi.StringPtrInput                                `pulumi:"saslScram256Key"`
-	SaslScram256Secret                     pulumi.StringPtrInput                                `pulumi:"saslScram256Secret"`
-	SaslScram512Key                        pulumi.StringPtrInput                                `pulumi:"saslScram512Key"`
-	SaslScram512Secret                     pulumi.StringPtrInput                                `pulumi:"saslScram512Secret"`
-	SchemaRegistryCredentialsSource        pulumi.StringPtrInput                                `pulumi:"schemaRegistryCredentialsSource"`
-	SchemaRegistryKey                      pulumi.StringPtrInput                                `pulumi:"schemaRegistryKey"`
-	SchemaRegistrySecret                   pulumi.StringPtrInput                                `pulumi:"schemaRegistrySecret"`
-	SchemaRegistryUrls                     pulumi.StringArrayInput                              `pulumi:"schemaRegistryUrls"`
-	Secret                                 pulumi.StringPtrInput                                `pulumi:"secret"`
-	SecretKey                              pulumi.StringPtrInput                                `pulumi:"secretKey"`
-	Secrets                                pulumi.StringPtrInput                                `pulumi:"secrets"`
-	SecretsLists                           ConnectorConfigSecretsListArrayInput                 `pulumi:"secretsLists"`
-	SecurityProtocol                       pulumi.StringPtrInput                                `pulumi:"securityProtocol"`
-	Segments                               pulumi.StringArrayInput                              `pulumi:"segments"`
-	SelectedExports                        pulumi.StringArrayInput                              `pulumi:"selectedExports"`
-	SenderId                               pulumi.StringPtrInput                                `pulumi:"senderId"`
-	SenderPassword                         pulumi.StringPtrInput                                `pulumi:"senderPassword"`
-	ServerAddress                          pulumi.StringPtrInput                                `pulumi:"serverAddress"`
-	ServerUrl                              pulumi.StringPtrInput                                `pulumi:"serverUrl"`
-	Servers                                pulumi.StringArrayInput                              `pulumi:"servers"`
-	ServiceAccount                         pulumi.StringPtrInput                                `pulumi:"serviceAccount"`
-	ServiceAccountEmail                    pulumi.StringPtrInput                                `pulumi:"serviceAccountEmail"`
-	ServiceAccountKey                      pulumi.StringPtrInput                                `pulumi:"serviceAccountKey"`
-	ServiceVersion                         pulumi.StringPtrInput                                `pulumi:"serviceVersion"`
-	SftpHost                               pulumi.StringPtrInput                                `pulumi:"sftpHost"`
-	SftpIsKeyPair                          pulumi.StringPtrInput                                `pulumi:"sftpIsKeyPair"`
-	SftpPassword                           pulumi.StringPtrInput                                `pulumi:"sftpPassword"`
-	SftpPort                               pulumi.StringPtrInput                                `pulumi:"sftpPort"`
-	SftpPublicKey                          pulumi.StringPtrInput                                `pulumi:"sftpPublicKey"`
-	SftpUser                               pulumi.StringPtrInput                                `pulumi:"sftpUser"`
-	ShareUrl                               pulumi.StringPtrInput                                `pulumi:"shareUrl"`
-	SheetId                                pulumi.StringPtrInput                                `pulumi:"sheetId"`
-	Shop                                   pulumi.StringPtrInput                                `pulumi:"shop"`
-	ShortCode                              pulumi.StringPtrInput                                `pulumi:"shortCode"`
-	ShowRecordsWithNoMetrics               pulumi.StringPtrInput                                `pulumi:"showRecordsWithNoMetrics"`
-	Sid                                    pulumi.StringPtrInput                                `pulumi:"sid"`
-	SignerPublicKey                        pulumi.StringPtrInput                                `pulumi:"signerPublicKey"`
-	SiteAddress                            pulumi.StringPtrInput                                `pulumi:"siteAddress"`
-	SiteId                                 pulumi.StringPtrInput                                `pulumi:"siteId"`
-	SiteName                               pulumi.StringPtrInput                                `pulumi:"siteName"`
-	SiteUrls                               pulumi.StringArrayInput                              `pulumi:"siteUrls"`
-	SkipAfter                              pulumi.StringPtrInput                                `pulumi:"skipAfter"`
-	SkipBefore                             pulumi.StringPtrInput                                `pulumi:"skipBefore"`
-	SoapUri                                pulumi.StringPtrInput                                `pulumi:"soapUri"`
-	SocialDataSyncTimeframe                pulumi.StringPtrInput                                `pulumi:"socialDataSyncTimeframe"`
-	Source                                 pulumi.StringPtrInput                                `pulumi:"source"`
-	StoreHash                              pulumi.StringPtrInput                                `pulumi:"storeHash"`
-	SubDomain                              pulumi.StringPtrInput                                `pulumi:"subDomain"`
-	Subdomain                              pulumi.StringPtrInput                                `pulumi:"subdomain"`
-	SubscriberName                         pulumi.StringPtrInput                                `pulumi:"subscriberName"`
-	Subscription                           pulumi.StringPtrInput                                `pulumi:"subscription"`
-	SupportConnectedAccountsSync           pulumi.StringPtrInput                                `pulumi:"supportConnectedAccountsSync"`
-	SupportNestedColumns                   pulumi.StringPtrInput                                `pulumi:"supportNestedColumns"`
-	SurveyIds                              pulumi.StringPtrInput                                `pulumi:"surveyIds"`
-	SwipeAttributionWindow                 pulumi.StringPtrInput                                `pulumi:"swipeAttributionWindow"`
-	SyncDataLocker                         pulumi.StringPtrInput                                `pulumi:"syncDataLocker"`
-	SyncFormat                             pulumi.StringPtrInput                                `pulumi:"syncFormat"`
-	SyncFormulaFields                      pulumi.StringPtrInput                                `pulumi:"syncFormulaFields"`
-	SyncMetadata                           pulumi.StringPtrInput                                `pulumi:"syncMetadata"`
-	SyncMethod                             pulumi.StringPtrInput                                `pulumi:"syncMethod"`
-	SyncMode                               pulumi.StringPtrInput                                `pulumi:"syncMode"`
-	SyncMultipleAccounts                   pulumi.StringPtrInput                                `pulumi:"syncMultipleAccounts"`
-	SyncPackMode                           pulumi.StringPtrInput                                `pulumi:"syncPackMode"`
-	SyncPullApi                            pulumi.StringPtrInput                                `pulumi:"syncPullApi"`
-	SyncType                               pulumi.StringPtrInput                                `pulumi:"syncType"`
-	Sysnr                                  pulumi.StringPtrInput                                `pulumi:"sysnr"`
-	TableName                              pulumi.StringPtrInput                                `pulumi:"tableName"`
-	TdeCertificate                         pulumi.StringPtrInput                                `pulumi:"tdeCertificate"`
-	TdeCertificateName                     pulumi.StringPtrInput                                `pulumi:"tdeCertificateName"`
-	TdePassword                            pulumi.StringPtrInput                                `pulumi:"tdePassword"`
-	TdePrivateKey                          pulumi.StringPtrInput                                `pulumi:"tdePrivateKey"`
-	TeamId                                 pulumi.StringPtrInput                                `pulumi:"teamId"`
-	TechnicalAccountId                     pulumi.StringPtrInput                                `pulumi:"technicalAccountId"`
-	TemplateLabels                         pulumi.StringArrayInput                              `pulumi:"templateLabels"`
-	TenantId                               pulumi.StringPtrInput                                `pulumi:"tenantId"`
-	TestTableName                          pulumi.StringPtrInput                                `pulumi:"testTableName"`
-	TimeZone                               pulumi.StringPtrInput                                `pulumi:"timeZone"`
-	TimeframeMonths                        pulumi.StringPtrInput                                `pulumi:"timeframeMonths"`
-	Tns                                    pulumi.StringPtrInput                                `pulumi:"tns"`
-	TokenAuthenticatedContainer            pulumi.StringPtrInput                                `pulumi:"tokenAuthenticatedContainer"`
-	TokenAuthenticatedDatabase             pulumi.StringPtrInput                                `pulumi:"tokenAuthenticatedDatabase"`
-	TokenId                                pulumi.StringPtrInput                                `pulumi:"tokenId"`
-	TokenKey                               pulumi.StringPtrInput                                `pulumi:"tokenKey"`
-	TokenSecret                            pulumi.StringPtrInput                                `pulumi:"tokenSecret"`
-	TokenSecretKey                         pulumi.StringPtrInput                                `pulumi:"tokenSecretKey"`
-	Topics                                 pulumi.StringArrayInput                              `pulumi:"topics"`
-	TrustStoreType                         pulumi.StringPtrInput                                `pulumi:"trustStoreType"`
-	TrustedCert                            pulumi.StringPtrInput                                `pulumi:"trustedCert"`
-	Truststore                             pulumi.StringPtrInput                                `pulumi:"truststore"`
-	TunnelHost                             pulumi.StringPtrInput                                `pulumi:"tunnelHost"`
-	TunnelPort                             pulumi.StringPtrInput                                `pulumi:"tunnelPort"`
-	TunnelUser                             pulumi.StringPtrInput                                `pulumi:"tunnelUser"`
-	UniqueId                               pulumi.StringPtrInput                                `pulumi:"uniqueId"`
-	UpdateConfigOnEachSync                 pulumi.StringPtrInput                                `pulumi:"updateConfigOnEachSync"`
-	UpdateMethod                           pulumi.StringPtrInput                                `pulumi:"updateMethod"`
-	Uri                                    pulumi.StringPtrInput                                `pulumi:"uri"`
-	UseApiKeys                             pulumi.StringPtrInput                                `pulumi:"useApiKeys"`
-	UseCustomerBucket                      pulumi.StringPtrInput                                `pulumi:"useCustomerBucket"`
-	UseOracleRac                           pulumi.StringPtrInput                                `pulumi:"useOracleRac"`
-	UsePgpEncryptionOptions                pulumi.StringPtrInput                                `pulumi:"usePgpEncryptionOptions"`
-	UseServiceAccount                      pulumi.StringPtrInput                                `pulumi:"useServiceAccount"`
-	UseTemplateLabels                      pulumi.StringPtrInput                                `pulumi:"useTemplateLabels"`
-	UseWebhooks                            pulumi.StringPtrInput                                `pulumi:"useWebhooks"`
-	UseWorkspace                           pulumi.StringPtrInput                                `pulumi:"useWorkspace"`
-	User                                   pulumi.StringPtrInput                                `pulumi:"user"`
-	UserId                                 pulumi.StringPtrInput                                `pulumi:"userId"`
-	UserKey                                pulumi.StringPtrInput                                `pulumi:"userKey"`
-	UserName                               pulumi.StringPtrInput                                `pulumi:"userName"`
-	UserProfiles                           pulumi.StringArrayInput                              `pulumi:"userProfiles"`
-	Username                               pulumi.StringPtrInput                                `pulumi:"username"`
-	ViewAttributionWindow                  pulumi.StringPtrInput                                `pulumi:"viewAttributionWindow"`
-	ViewThroughAttributionWindowSize       pulumi.StringPtrInput                                `pulumi:"viewThroughAttributionWindowSize"`
-	WebhookEndpoint                        pulumi.StringPtrInput                                `pulumi:"webhookEndpoint"`
-	WebhookKey                             pulumi.StringPtrInput                                `pulumi:"webhookKey"`
-	WebhookUrl                             pulumi.StringPtrInput                                `pulumi:"webhookUrl"`
-	WordPressSiteIdOrWoocommerceDomainName pulumi.StringPtrInput                                `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
-	WorkspaceName                          pulumi.StringPtrInput                                `pulumi:"workspaceName"`
-	WorkspaceSameAsSource                  pulumi.StringPtrInput                                `pulumi:"workspaceSameAsSource"`
-	WorkspaceSchema                        pulumi.StringPtrInput                                `pulumi:"workspaceSchema"`
-	WsCertificate                          pulumi.StringPtrInput                                `pulumi:"wsCertificate"`
+	AbsConnectionMethod                          pulumi.StringPtrInput                                `pulumi:"absConnectionMethod"`
+	AbsConnectionString                          pulumi.StringPtrInput                                `pulumi:"absConnectionString"`
+	AbsContainerAddress                          pulumi.StringPtrInput                                `pulumi:"absContainerAddress"`
+	AbsContainerName                             pulumi.StringPtrInput                                `pulumi:"absContainerName"`
+	AbsHostIp                                    pulumi.StringPtrInput                                `pulumi:"absHostIp"`
+	AbsHostUser                                  pulumi.StringPtrInput                                `pulumi:"absHostUser"`
+	AbsPrefix                                    pulumi.StringPtrInput                                `pulumi:"absPrefix"`
+	AbsPublicKey                                 pulumi.StringPtrInput                                `pulumi:"absPublicKey"`
+	AccessKey                                    pulumi.StringPtrInput                                `pulumi:"accessKey"`
+	AccessKeyId                                  pulumi.StringPtrInput                                `pulumi:"accessKeyId"`
+	AccessKeySecret                              pulumi.StringPtrInput                                `pulumi:"accessKeySecret"`
+	AccessToken                                  pulumi.StringPtrInput                                `pulumi:"accessToken"`
+	AccessType                                   pulumi.StringPtrInput                                `pulumi:"accessType"`
+	Account                                      pulumi.StringPtrInput                                `pulumi:"account"`
+	AccountId                                    pulumi.StringPtrInput                                `pulumi:"accountId"`
+	AccountIds                                   pulumi.StringArrayInput                              `pulumi:"accountIds"`
+	AccountKey                                   pulumi.StringPtrInput                                `pulumi:"accountKey"`
+	AccountName                                  pulumi.StringPtrInput                                `pulumi:"accountName"`
+	AccountSyncMode                              pulumi.StringPtrInput                                `pulumi:"accountSyncMode"`
+	Accounts                                     pulumi.StringArrayInput                              `pulumi:"accounts"`
+	AccountsRedditAds                            ConnectorConfigAccountsRedditAdArrayInput            `pulumi:"accountsRedditAds"`
+	AccountsSyncMode                             pulumi.StringPtrInput                                `pulumi:"accountsSyncMode"`
+	ActionBreakdowns                             pulumi.StringArrayInput                              `pulumi:"actionBreakdowns"`
+	ActionReportTime                             pulumi.StringPtrInput                                `pulumi:"actionReportTime"`
+	AdAnalytics                                  pulumi.StringPtrInput                                `pulumi:"adAnalytics"`
+	AdUnitView                                   pulumi.StringPtrInput                                `pulumi:"adUnitView"`
+	AdminApiKey                                  pulumi.StringPtrInput                                `pulumi:"adminApiKey"`
+	AdobeAnalyticsConfigurations                 ConnectorConfigAdobeAnalyticsConfigurationArrayInput `pulumi:"adobeAnalyticsConfigurations"`
+	Advertisables                                pulumi.StringArrayInput                              `pulumi:"advertisables"`
+	Advertisers                                  pulumi.StringArrayInput                              `pulumi:"advertisers"`
+	AdvertisersIds                               pulumi.StringArrayInput                              `pulumi:"advertisersIds"`
+	AdvertisersSyncMode                          pulumi.StringPtrInput                                `pulumi:"advertisersSyncMode"`
+	AgentHost                                    pulumi.StringPtrInput                                `pulumi:"agentHost"`
+	AgentOraHome                                 pulumi.StringPtrInput                                `pulumi:"agentOraHome"`
+	AgentPassword                                pulumi.StringPtrInput                                `pulumi:"agentPassword"`
+	AgentPort                                    pulumi.StringPtrInput                                `pulumi:"agentPort"`
+	AgentPublicCert                              pulumi.StringPtrInput                                `pulumi:"agentPublicCert"`
+	AgentUser                                    pulumi.StringPtrInput                                `pulumi:"agentUser"`
+	Aggregation                                  pulumi.StringPtrInput                                `pulumi:"aggregation"`
+	AlwaysEncrypted                              pulumi.StringPtrInput                                `pulumi:"alwaysEncrypted"`
+	ApiAccessToken                               pulumi.StringPtrInput                                `pulumi:"apiAccessToken"`
+	ApiId                                        pulumi.StringPtrInput                                `pulumi:"apiId"`
+	ApiKey                                       pulumi.StringPtrInput                                `pulumi:"apiKey"`
+	ApiKeyApiSecret                              pulumi.StringPtrInput                                `pulumi:"apiKeyApiSecret"`
+	ApiKeys                                      pulumi.StringArrayInput                              `pulumi:"apiKeys"`
+	ApiQuota                                     pulumi.StringPtrInput                                `pulumi:"apiQuota"`
+	ApiRequestsPerMinute                         pulumi.StringPtrInput                                `pulumi:"apiRequestsPerMinute"`
+	ApiSecret                                    pulumi.StringPtrInput                                `pulumi:"apiSecret"`
+	ApiSecretKey                                 pulumi.StringPtrInput                                `pulumi:"apiSecretKey"`
+	ApiToken                                     pulumi.StringPtrInput                                `pulumi:"apiToken"`
+	ApiType                                      pulumi.StringPtrInput                                `pulumi:"apiType"`
+	ApiUrl                                       pulumi.StringPtrInput                                `pulumi:"apiUrl"`
+	ApiUsage                                     pulumi.StringPtrInput                                `pulumi:"apiUsage"`
+	ApiUtilizationPercentage                     pulumi.StringPtrInput                                `pulumi:"apiUtilizationPercentage"`
+	ApiVersion                                   pulumi.StringPtrInput                                `pulumi:"apiVersion"`
+	AppId                                        pulumi.StringPtrInput                                `pulumi:"appId"`
+	AppIds                                       pulumi.StringArrayInput                              `pulumi:"appIds"`
+	AppIdsAppsflyers                             ConnectorConfigAppIdsAppsflyerArrayInput             `pulumi:"appIdsAppsflyers"`
+	AppKey                                       pulumi.StringPtrInput                                `pulumi:"appKey"`
+	AppSpecificPassword                          pulumi.StringPtrInput                                `pulumi:"appSpecificPassword"`
+	AppSyncMode                                  pulumi.StringPtrInput                                `pulumi:"appSyncMode"`
+	AppendFileOption                             pulumi.StringPtrInput                                `pulumi:"appendFileOption"`
+	ApplicationKey                               pulumi.StringPtrInput                                `pulumi:"applicationKey"`
+	Apps                                         pulumi.StringArrayInput                              `pulumi:"apps"`
+	ArchiveLogFormat                             pulumi.StringPtrInput                                `pulumi:"archiveLogFormat"`
+	ArchiveLogPath                               pulumi.StringPtrInput                                `pulumi:"archiveLogPath"`
+	ArchivePattern                               pulumi.StringPtrInput                                `pulumi:"archivePattern"`
+	AreSoapCredentialsProvided                   pulumi.StringPtrInput                                `pulumi:"areSoapCredentialsProvided"`
+	AsbIp                                        pulumi.StringPtrInput                                `pulumi:"asbIp"`
+	AsmOption                                    pulumi.StringPtrInput                                `pulumi:"asmOption"`
+	AsmOracleHome                                pulumi.StringPtrInput                                `pulumi:"asmOracleHome"`
+	AsmPassword                                  pulumi.StringPtrInput                                `pulumi:"asmPassword"`
+	AsmTns                                       pulumi.StringPtrInput                                `pulumi:"asmTns"`
+	AsmUser                                      pulumi.StringPtrInput                                `pulumi:"asmUser"`
+	AttributionWindow                            pulumi.StringPtrInput                                `pulumi:"attributionWindow"`
+	AttributionWindowSize                        pulumi.StringPtrInput                                `pulumi:"attributionWindowSize"`
+	Auth                                         pulumi.StringPtrInput                                `pulumi:"auth"`
+	AuthMethod                                   pulumi.StringPtrInput                                `pulumi:"authMethod"`
+	AuthMode                                     pulumi.StringPtrInput                                `pulumi:"authMode"`
+	AuthType                                     pulumi.StringPtrInput                                `pulumi:"authType"`
+	AuthorizationMethod                          pulumi.StringPtrInput                                `pulumi:"authorizationMethod"`
+	AwsRegionCode                                pulumi.StringPtrInput                                `pulumi:"awsRegionCode"`
+	BaseCurrency                                 pulumi.StringPtrInput                                `pulumi:"baseCurrency"`
+	BaseDomain                                   pulumi.StringPtrInput                                `pulumi:"baseDomain"`
+	BaseId                                       pulumi.StringPtrInput                                `pulumi:"baseId"`
+	BaseUrl                                      pulumi.StringPtrInput                                `pulumi:"baseUrl"`
+	BearerToken                                  pulumi.StringPtrInput                                `pulumi:"bearerToken"`
+	BlobSasUrl                                   pulumi.StringPtrInput                                `pulumi:"blobSasUrl"`
+	Breakdowns                                   pulumi.StringArrayInput                              `pulumi:"breakdowns"`
+	Bucket                                       pulumi.StringPtrInput                                `pulumi:"bucket"`
+	BucketName                                   pulumi.StringPtrInput                                `pulumi:"bucketName"`
+	BucketService                                pulumi.StringPtrInput                                `pulumi:"bucketService"`
+	BusinessId                                   pulumi.StringPtrInput                                `pulumi:"businessId"`
+	BusinessUnitId                               pulumi.StringPtrInput                                `pulumi:"businessUnitId"`
+	Certificate                                  pulumi.StringPtrInput                                `pulumi:"certificate"`
+	ClickAttributionWindow                       pulumi.StringPtrInput                                `pulumi:"clickAttributionWindow"`
+	Client                                       pulumi.StringPtrInput                                `pulumi:"client"`
+	ClientCert                                   pulumi.StringPtrInput                                `pulumi:"clientCert"`
+	ClientCertKey                                pulumi.StringPtrInput                                `pulumi:"clientCertKey"`
+	ClientId                                     pulumi.StringPtrInput                                `pulumi:"clientId"`
+	ClientKey                                    pulumi.StringPtrInput                                `pulumi:"clientKey"`
+	ClientName                                   pulumi.StringPtrInput                                `pulumi:"clientName"`
+	ClientSecret                                 pulumi.StringPtrInput                                `pulumi:"clientSecret"`
+	CloudStorageType                             pulumi.StringPtrInput                                `pulumi:"cloudStorageType"`
+	Columns                                      pulumi.StringArrayInput                              `pulumi:"columns"`
+	CompanyId                                    pulumi.StringPtrInput                                `pulumi:"companyId"`
+	CompanyKey                                   pulumi.StringPtrInput                                `pulumi:"companyKey"`
+	CompanyRequestToken                          pulumi.StringPtrInput                                `pulumi:"companyRequestToken"`
+	CompanyUuid                                  pulumi.StringPtrInput                                `pulumi:"companyUuid"`
+	Compression                                  pulumi.StringPtrInput                                `pulumi:"compression"`
+	ConfigMethod                                 pulumi.StringPtrInput                                `pulumi:"configMethod"`
+	ConfigRepositoryUrl                          pulumi.StringPtrInput                                `pulumi:"configRepositoryUrl"`
+	ConfigType                                   pulumi.StringPtrInput                                `pulumi:"configType"`
+	ConnectingUser                               pulumi.StringPtrInput                                `pulumi:"connectingUser"`
+	ConnectingUserEmail                          pulumi.StringPtrInput                                `pulumi:"connectingUserEmail"`
+	ConnectionMethod                             pulumi.StringPtrInput                                `pulumi:"connectionMethod"`
+	ConnectionString                             pulumi.StringPtrInput                                `pulumi:"connectionString"`
+	ConnectionType                               pulumi.StringPtrInput                                `pulumi:"connectionType"`
+	ConsumerGroup                                pulumi.StringPtrInput                                `pulumi:"consumerGroup"`
+	ConsumerKey                                  pulumi.StringPtrInput                                `pulumi:"consumerKey"`
+	ConsumerSecret                               pulumi.StringPtrInput                                `pulumi:"consumerSecret"`
+	ContainerAddress                             pulumi.StringPtrInput                                `pulumi:"containerAddress"`
+	ContainerName                                pulumi.StringPtrInput                                `pulumi:"containerName"`
+	ContentOwnerId                               pulumi.StringPtrInput                                `pulumi:"contentOwnerId"`
+	ConversationWebhookUrl                       pulumi.StringPtrInput                                `pulumi:"conversationWebhookUrl"`
+	ConversionDimensions                         pulumi.StringArrayInput                              `pulumi:"conversionDimensions"`
+	ConversionReportTime                         pulumi.StringPtrInput                                `pulumi:"conversionReportTime"`
+	ConversionWindowSize                         pulumi.StringPtrInput                                `pulumi:"conversionWindowSize"`
+	CsvDefinition                                pulumi.StringPtrInput                                `pulumi:"csvDefinition"`
+	Currency                                     pulumi.StringPtrInput                                `pulumi:"currency"`
+	CustomEventSyncMode                          pulumi.StringPtrInput                                `pulumi:"customEventSyncMode"`
+	CustomEvents                                 pulumi.StringArrayInput                              `pulumi:"customEvents"`
+	CustomFieldIds                               pulumi.StringArrayInput                              `pulumi:"customFieldIds"`
+	CustomFloodlightVariables                    pulumi.StringArrayInput                              `pulumi:"customFloodlightVariables"`
+	CustomReports                                ConnectorConfigCustomReportArrayInput                `pulumi:"customReports"`
+	CustomTables                                 ConnectorConfigCustomTableArrayInput                 `pulumi:"customTables"`
+	CustomerId                                   pulumi.StringPtrInput                                `pulumi:"customerId"`
+	CustomerListId                               pulumi.StringPtrInput                                `pulumi:"customerListId"`
+	DailyApiCallLimit                            pulumi.StringPtrInput                                `pulumi:"dailyApiCallLimit"`
+	DataAccessMethod                             pulumi.StringPtrInput                                `pulumi:"dataAccessMethod"`
+	DataCenter                                   pulumi.StringPtrInput                                `pulumi:"dataCenter"`
+	DataSetName                                  pulumi.StringPtrInput                                `pulumi:"dataSetName"`
+	Database                                     pulumi.StringPtrInput                                `pulumi:"database"`
+	DatasetId                                    pulumi.StringPtrInput                                `pulumi:"datasetId"`
+	Datasource                                   pulumi.StringPtrInput                                `pulumi:"datasource"`
+	DateGranularity                              pulumi.StringPtrInput                                `pulumi:"dateGranularity"`
+	Delimiter                                    pulumi.StringPtrInput                                `pulumi:"delimiter"`
+	DimensionAttributes                          pulumi.StringArrayInput                              `pulumi:"dimensionAttributes"`
+	Dimensions                                   pulumi.StringArrayInput                              `pulumi:"dimensions"`
+	DistributedConnectorClusterSize              pulumi.StringPtrInput                                `pulumi:"distributedConnectorClusterSize"`
+	Domain                                       pulumi.StringPtrInput                                `pulumi:"domain"`
+	DomainHostName                               pulumi.StringPtrInput                                `pulumi:"domainHostName"`
+	DomainName                                   pulumi.StringPtrInput                                `pulumi:"domainName"`
+	DomainType                                   pulumi.StringPtrInput                                `pulumi:"domainType"`
+	Elements                                     pulumi.StringArrayInput                              `pulumi:"elements"`
+	Email                                        pulumi.StringPtrInput                                `pulumi:"email"`
+	EmptyHeader                                  pulumi.StringPtrInput                                `pulumi:"emptyHeader"`
+	EnableAllDimensionCombinations               pulumi.StringPtrInput                                `pulumi:"enableAllDimensionCombinations"`
+	EnableArchiveLogOnly                         pulumi.StringPtrInput                                `pulumi:"enableArchiveLogOnly"`
+	EnableDataExtensionsSyncing                  pulumi.StringPtrInput                                `pulumi:"enableDataExtensionsSyncing"`
+	EnableDistributedConnectorMode               pulumi.StringPtrInput                                `pulumi:"enableDistributedConnectorMode"`
+	EnableEnrichments                            pulumi.StringPtrInput                                `pulumi:"enableEnrichments"`
+	EnableExports                                pulumi.StringPtrInput                                `pulumi:"enableExports"`
+	EnableTde                                    pulumi.StringPtrInput                                `pulumi:"enableTde"`
+	EncodedPublicKey                             pulumi.StringPtrInput                                `pulumi:"encodedPublicKey"`
+	EncryptionKey                                pulumi.StringPtrInput                                `pulumi:"encryptionKey"`
+	Endpoint                                     pulumi.StringPtrInput                                `pulumi:"endpoint"`
+	EngagementAttributionWindow                  pulumi.StringPtrInput                                `pulumi:"engagementAttributionWindow"`
+	EnrichedExport                               pulumi.StringPtrInput                                `pulumi:"enrichedExport"`
+	EntityId                                     pulumi.StringPtrInput                                `pulumi:"entityId"`
+	Environment                                  pulumi.StringPtrInput                                `pulumi:"environment"`
+	EscapeChar                                   pulumi.StringPtrInput                                `pulumi:"escapeChar"`
+	EuRegion                                     pulumi.StringPtrInput                                `pulumi:"euRegion"`
+	Events                                       pulumi.StringArrayInput                              `pulumi:"events"`
+	ExportStorageType                            pulumi.StringPtrInput                                `pulumi:"exportStorageType"`
+	ExternalId                                   pulumi.StringPtrInput                                `pulumi:"externalId"`
+	Fields                                       pulumi.StringArrayInput                              `pulumi:"fields"`
+	FileType                                     pulumi.StringPtrInput                                `pulumi:"fileType"`
+	Filter                                       pulumi.StringPtrInput                                `pulumi:"filter"`
+	FinanceAccountSyncMode                       pulumi.StringPtrInput                                `pulumi:"financeAccountSyncMode"`
+	FinanceAccounts                              pulumi.StringArrayInput                              `pulumi:"financeAccounts"`
+	Folder                                       pulumi.StringPtrInput                                `pulumi:"folder"`
+	FolderId                                     pulumi.StringPtrInput                                `pulumi:"folderId"`
+	FolderPath                                   pulumi.StringPtrInput                                `pulumi:"folderPath"`
+	ForecastId                                   pulumi.StringPtrInput                                `pulumi:"forecastId"`
+	FtpHost                                      pulumi.StringPtrInput                                `pulumi:"ftpHost"`
+	FtpPassword                                  pulumi.StringPtrInput                                `pulumi:"ftpPassword"`
+	FtpPort                                      pulumi.StringPtrInput                                `pulumi:"ftpPort"`
+	FtpUser                                      pulumi.StringPtrInput                                `pulumi:"ftpUser"`
+	Function                                     pulumi.StringPtrInput                                `pulumi:"function"`
+	FunctionApp                                  pulumi.StringPtrInput                                `pulumi:"functionApp"`
+	FunctionKey                                  pulumi.StringPtrInput                                `pulumi:"functionKey"`
+	FunctionName                                 pulumi.StringPtrInput                                `pulumi:"functionName"`
+	FunctionTrigger                              pulumi.StringPtrInput                                `pulumi:"functionTrigger"`
+	GcsBucket                                    pulumi.StringPtrInput                                `pulumi:"gcsBucket"`
+	GcsFolder                                    pulumi.StringPtrInput                                `pulumi:"gcsFolder"`
+	GroupName                                    pulumi.StringPtrInput                                `pulumi:"groupName"`
+	HasManagePermissions                         pulumi.StringPtrInput                                `pulumi:"hasManagePermissions"`
+	HomeFolder                                   pulumi.StringPtrInput                                `pulumi:"homeFolder"`
+	Host                                         pulumi.StringPtrInput                                `pulumi:"host"`
+	HostIp                                       pulumi.StringPtrInput                                `pulumi:"hostIp"`
+	HostUser                                     pulumi.StringPtrInput                                `pulumi:"hostUser"`
+	Hosts                                        pulumi.StringArrayInput                              `pulumi:"hosts"`
+	Identity                                     pulumi.StringPtrInput                                `pulumi:"identity"`
+	IncludeOcapiEndpoints                        pulumi.StringPtrInput                                `pulumi:"includeOcapiEndpoints"`
+	Instance                                     pulumi.StringPtrInput                                `pulumi:"instance"`
+	InstanceNumber                               pulumi.StringPtrInput                                `pulumi:"instanceNumber"`
+	InstanceUrl                                  pulumi.StringPtrInput                                `pulumi:"instanceUrl"`
+	IntegrationKey                               pulumi.StringPtrInput                                `pulumi:"integrationKey"`
+	IsAccountLevelConnector                      pulumi.StringPtrInput                                `pulumi:"isAccountLevelConnector"`
+	IsAuth2Enabled                               pulumi.StringPtrInput                                `pulumi:"isAuth2Enabled"`
+	IsCustomApiCredentials                       pulumi.StringPtrInput                                `pulumi:"isCustomApiCredentials"`
+	IsExternalActivitiesEndpointSelected         pulumi.StringPtrInput                                `pulumi:"isExternalActivitiesEndpointSelected"`
+	IsFtps                                       pulumi.StringPtrInput                                `pulumi:"isFtps"`
+	IsKeypair                                    pulumi.StringPtrInput                                `pulumi:"isKeypair"`
+	IsMultiEntityFeatureEnabled                  pulumi.StringPtrInput                                `pulumi:"isMultiEntityFeatureEnabled"`
+	IsNewPackage                                 pulumi.StringPtrInput                                `pulumi:"isNewPackage"`
+	IsPrivateKeyEncrypted                        pulumi.StringPtrInput                                `pulumi:"isPrivateKeyEncrypted"`
+	IsPrivateLinkRequired                        pulumi.StringPtrInput                                `pulumi:"isPrivateLinkRequired"`
+	IsPublic                                     pulumi.StringPtrInput                                `pulumi:"isPublic"`
+	IsSailthruConnectEnabled                     pulumi.StringPtrInput                                `pulumi:"isSailthruConnectEnabled"`
+	IsSecure                                     pulumi.StringPtrInput                                `pulumi:"isSecure"`
+	IsSingleTableMode                            pulumi.StringPtrInput                                `pulumi:"isSingleTableMode"`
+	IsVendor                                     pulumi.StringPtrInput                                `pulumi:"isVendor"`
+	JsonDeliveryMode                             pulumi.StringPtrInput                                `pulumi:"jsonDeliveryMode"`
+	Key                                          pulumi.StringPtrInput                                `pulumi:"key"`
+	KeyPassword                                  pulumi.StringPtrInput                                `pulumi:"keyPassword"`
+	KeyStoreType                                 pulumi.StringPtrInput                                `pulumi:"keyStoreType"`
+	Keystore                                     pulumi.StringPtrInput                                `pulumi:"keystore"`
+	KeystorePassword                             pulumi.StringPtrInput                                `pulumi:"keystorePassword"`
+	LastSyncedChangesUtc_                        pulumi.StringPtrInput                                `pulumi:"lastSyncedChangesUtc_"`
+	LatestVersion                                pulumi.StringPtrInput                                `pulumi:"latestVersion"`
+	LimitForApiCallsToExternalActivitiesEndpoint pulumi.StringPtrInput                                `pulumi:"limitForApiCallsToExternalActivitiesEndpoint"`
+	LineSeparator                                pulumi.StringPtrInput                                `pulumi:"lineSeparator"`
+	ListStrategy                                 pulumi.StringPtrInput                                `pulumi:"listStrategy"`
+	ListSyncMode                                 pulumi.StringPtrInput                                `pulumi:"listSyncMode"`
+	LogJournal                                   pulumi.StringPtrInput                                `pulumi:"logJournal"`
+	LogJournalSchema                             pulumi.StringPtrInput                                `pulumi:"logJournalSchema"`
+	Login                                        pulumi.StringPtrInput                                `pulumi:"login"`
+	LoginPassword                                pulumi.StringPtrInput                                `pulumi:"loginPassword"`
+	ManagerAccounts                              pulumi.StringArrayInput                              `pulumi:"managerAccounts"`
+	MerchantId                                   pulumi.StringPtrInput                                `pulumi:"merchantId"`
+	MessageType                                  pulumi.StringPtrInput                                `pulumi:"messageType"`
+	Metrics                                      pulumi.StringArrayInput                              `pulumi:"metrics"`
+	NamedRange                                   pulumi.StringPtrInput                                `pulumi:"namedRange"`
+	Namespace                                    pulumi.StringPtrInput                                `pulumi:"namespace"`
+	NetworkCode                                  pulumi.StringPtrInput                                `pulumi:"networkCode"`
+	NullSequence                                 pulumi.StringPtrInput                                `pulumi:"nullSequence"`
+	OauthToken                                   pulumi.StringPtrInput                                `pulumi:"oauthToken"`
+	OauthTokenSecret                             pulumi.StringPtrInput                                `pulumi:"oauthTokenSecret"`
+	OcapiClientId                                pulumi.StringPtrInput                                `pulumi:"ocapiClientId"`
+	OcapiClientSecret                            pulumi.StringPtrInput                                `pulumi:"ocapiClientSecret"`
+	OcapiCustomObjectTypes                       pulumi.StringPtrInput                                `pulumi:"ocapiCustomObjectTypes"`
+	OcapiHostname                                pulumi.StringPtrInput                                `pulumi:"ocapiHostname"`
+	OnError                                      pulumi.StringPtrInput                                `pulumi:"onError"`
+	OnPremise                                    pulumi.StringPtrInput                                `pulumi:"onPremise"`
+	Organization                                 pulumi.StringPtrInput                                `pulumi:"organization"`
+	OrganizationId                               pulumi.StringPtrInput                                `pulumi:"organizationId"`
+	Organizations                                pulumi.StringArrayInput                              `pulumi:"organizations"`
+	PackedModeTables                             pulumi.StringArrayInput                              `pulumi:"packedModeTables"`
+	PackingMode                                  pulumi.StringPtrInput                                `pulumi:"packingMode"`
+	Pages                                        pulumi.StringArrayInput                              `pulumi:"pages"`
+	PartnerCode                                  pulumi.StringPtrInput                                `pulumi:"partnerCode"`
+	Partners                                     pulumi.StringArrayInput                              `pulumi:"partners"`
+	Passphrase                                   pulumi.StringPtrInput                                `pulumi:"passphrase"`
+	Password                                     pulumi.StringPtrInput                                `pulumi:"password"`
+	Pat                                          pulumi.StringPtrInput                                `pulumi:"pat"`
+	PatName                                      pulumi.StringPtrInput                                `pulumi:"patName"`
+	PatSecret                                    pulumi.StringPtrInput                                `pulumi:"patSecret"`
+	Path                                         pulumi.StringPtrInput                                `pulumi:"path"`
+	Pattern                                      pulumi.StringPtrInput                                `pulumi:"pattern"`
+	PdbName                                      pulumi.StringPtrInput                                `pulumi:"pdbName"`
+	PemCertificate                               pulumi.StringPtrInput                                `pulumi:"pemCertificate"`
+	PemPrivateKey                                pulumi.StringPtrInput                                `pulumi:"pemPrivateKey"`
+	PerInteractionDimensions                     pulumi.StringArrayInput                              `pulumi:"perInteractionDimensions"`
+	PersonalAccessToken                          pulumi.StringPtrInput                                `pulumi:"personalAccessToken"`
+	PgpPassPhrase                                pulumi.StringPtrInput                                `pulumi:"pgpPassPhrase"`
+	PgpSecretKey                                 pulumi.StringPtrInput                                `pulumi:"pgpSecretKey"`
+	PhoneNumber                                  pulumi.StringPtrInput                                `pulumi:"phoneNumber"`
+	Port                                         pulumi.StringPtrInput                                `pulumi:"port"`
+	PostClickAttributionWindowSize               pulumi.StringPtrInput                                `pulumi:"postClickAttributionWindowSize"`
+	PrebuiltReport                               pulumi.StringPtrInput                                `pulumi:"prebuiltReport"`
+	Prefix                                       pulumi.StringPtrInput                                `pulumi:"prefix"`
+	PrimaryKeys                                  pulumi.StringArrayInput                              `pulumi:"primaryKeys"`
+	PrivateKey                                   pulumi.StringPtrInput                                `pulumi:"privateKey"`
+	Profiles                                     pulumi.StringArrayInput                              `pulumi:"profiles"`
+	ProjectCredentials                           ConnectorConfigProjectCredentialArrayInput           `pulumi:"projectCredentials"`
+	ProjectId                                    pulumi.StringPtrInput                                `pulumi:"projectId"`
+	Projects                                     pulumi.StringArrayInput                              `pulumi:"projects"`
+	Properties                                   pulumi.StringArrayInput                              `pulumi:"properties"`
+	PublicKey                                    pulumi.StringPtrInput                                `pulumi:"publicKey"`
+	PublicationName                              pulumi.StringPtrInput                                `pulumi:"publicationName"`
+	QueryId                                      pulumi.StringPtrInput                                `pulumi:"queryId"`
+	QueryParamValue                              pulumi.StringPtrInput                                `pulumi:"queryParamValue"`
+	RefreshTokenExpiresAt                        pulumi.StringPtrInput                                `pulumi:"refreshTokenExpiresAt"`
+	Region                                       pulumi.StringPtrInput                                `pulumi:"region"`
+	ReplicaId                                    pulumi.StringPtrInput                                `pulumi:"replicaId"`
+	ReplicationSlot                              pulumi.StringPtrInput                                `pulumi:"replicationSlot"`
+	ReportConfigurationIds                       pulumi.StringArrayInput                              `pulumi:"reportConfigurationIds"`
+	ReportFormatType                             pulumi.StringPtrInput                                `pulumi:"reportFormatType"`
+	ReportSuites                                 pulumi.StringArrayInput                              `pulumi:"reportSuites"`
+	ReportTimezone                               pulumi.StringPtrInput                                `pulumi:"reportTimezone"`
+	ReportType                                   pulumi.StringPtrInput                                `pulumi:"reportType"`
+	ReportUrl                                    pulumi.StringPtrInput                                `pulumi:"reportUrl"`
+	Reports                                      ConnectorConfigReportArrayInput                      `pulumi:"reports"`
+	ReportsLinkedinAds                           pulumi.StringArrayInput                              `pulumi:"reportsLinkedinAds"`
+	Repositories                                 pulumi.StringArrayInput                              `pulumi:"repositories"`
+	ResourceToken                                pulumi.StringPtrInput                                `pulumi:"resourceToken"`
+	ResourceUrl                                  pulumi.StringPtrInput                                `pulumi:"resourceUrl"`
+	RestApiLimit                                 pulumi.StringPtrInput                                `pulumi:"restApiLimit"`
+	RfcLibraryPath                               pulumi.StringPtrInput                                `pulumi:"rfcLibraryPath"`
+	Role                                         pulumi.StringPtrInput                                `pulumi:"role"`
+	RoleArn                                      pulumi.StringPtrInput                                `pulumi:"roleArn"`
+	RollbackWindowSize                           pulumi.StringPtrInput                                `pulumi:"rollbackWindowSize"`
+	S3Bucket                                     pulumi.StringPtrInput                                `pulumi:"s3Bucket"`
+	S3ExportBucket                               pulumi.StringPtrInput                                `pulumi:"s3ExportBucket"`
+	S3ExportFolder                               pulumi.StringPtrInput                                `pulumi:"s3ExportFolder"`
+	S3ExportRoleArn                              pulumi.StringPtrInput                                `pulumi:"s3ExportRoleArn"`
+	S3RoleArn                                    pulumi.StringPtrInput                                `pulumi:"s3RoleArn"`
+	S3bucket                                     pulumi.StringPtrInput                                `pulumi:"s3bucket"`
+	S3externalId                                 pulumi.StringPtrInput                                `pulumi:"s3externalId"`
+	S3folder                                     pulumi.StringPtrInput                                `pulumi:"s3folder"`
+	S3path                                       pulumi.StringPtrInput                                `pulumi:"s3path"`
+	S3roleArn                                    pulumi.StringPtrInput                                `pulumi:"s3roleArn"`
+	SalesAccountSyncMode                         pulumi.StringPtrInput                                `pulumi:"salesAccountSyncMode"`
+	SalesAccounts                                pulumi.StringArrayInput                              `pulumi:"salesAccounts"`
+	SalesforceSecurityToken                      pulumi.StringPtrInput                                `pulumi:"salesforceSecurityToken"`
+	SandboxAccount                               pulumi.StringPtrInput                                `pulumi:"sandboxAccount"`
+	SapSchema                                    pulumi.StringPtrInput                                `pulumi:"sapSchema"`
+	SapUser                                      pulumi.StringPtrInput                                `pulumi:"sapUser"`
+	SaslMechanism                                pulumi.StringPtrInput                                `pulumi:"saslMechanism"`
+	SaslPlainKey                                 pulumi.StringPtrInput                                `pulumi:"saslPlainKey"`
+	SaslPlainSecret                              pulumi.StringPtrInput                                `pulumi:"saslPlainSecret"`
+	SaslScram256Key                              pulumi.StringPtrInput                                `pulumi:"saslScram256Key"`
+	SaslScram256Secret                           pulumi.StringPtrInput                                `pulumi:"saslScram256Secret"`
+	SaslScram512Key                              pulumi.StringPtrInput                                `pulumi:"saslScram512Key"`
+	SaslScram512Secret                           pulumi.StringPtrInput                                `pulumi:"saslScram512Secret"`
+	SchemaRegistryCredentialsSource              pulumi.StringPtrInput                                `pulumi:"schemaRegistryCredentialsSource"`
+	SchemaRegistryKey                            pulumi.StringPtrInput                                `pulumi:"schemaRegistryKey"`
+	SchemaRegistrySecret                         pulumi.StringPtrInput                                `pulumi:"schemaRegistrySecret"`
+	SchemaRegistryUrls                           pulumi.StringArrayInput                              `pulumi:"schemaRegistryUrls"`
+	Secret                                       pulumi.StringPtrInput                                `pulumi:"secret"`
+	SecretKey                                    pulumi.StringPtrInput                                `pulumi:"secretKey"`
+	Secrets                                      pulumi.StringPtrInput                                `pulumi:"secrets"`
+	SecretsLists                                 ConnectorConfigSecretsListArrayInput                 `pulumi:"secretsLists"`
+	SecurityProtocol                             pulumi.StringPtrInput                                `pulumi:"securityProtocol"`
+	Segments                                     pulumi.StringArrayInput                              `pulumi:"segments"`
+	SelectedExports                              pulumi.StringArrayInput                              `pulumi:"selectedExports"`
+	SenderId                                     pulumi.StringPtrInput                                `pulumi:"senderId"`
+	SenderPassword                               pulumi.StringPtrInput                                `pulumi:"senderPassword"`
+	ServerAddress                                pulumi.StringPtrInput                                `pulumi:"serverAddress"`
+	ServerUrl                                    pulumi.StringPtrInput                                `pulumi:"serverUrl"`
+	Servers                                      pulumi.StringArrayInput                              `pulumi:"servers"`
+	ServiceAccount                               pulumi.StringPtrInput                                `pulumi:"serviceAccount"`
+	ServiceAccountEmail                          pulumi.StringPtrInput                                `pulumi:"serviceAccountEmail"`
+	ServiceAccountKey                            pulumi.StringPtrInput                                `pulumi:"serviceAccountKey"`
+	ServiceVersion                               pulumi.StringPtrInput                                `pulumi:"serviceVersion"`
+	SftpHost                                     pulumi.StringPtrInput                                `pulumi:"sftpHost"`
+	SftpIsKeyPair                                pulumi.StringPtrInput                                `pulumi:"sftpIsKeyPair"`
+	SftpPassword                                 pulumi.StringPtrInput                                `pulumi:"sftpPassword"`
+	SftpPort                                     pulumi.StringPtrInput                                `pulumi:"sftpPort"`
+	SftpPublicKey                                pulumi.StringPtrInput                                `pulumi:"sftpPublicKey"`
+	SftpUser                                     pulumi.StringPtrInput                                `pulumi:"sftpUser"`
+	ShareUrl                                     pulumi.StringPtrInput                                `pulumi:"shareUrl"`
+	SheetId                                      pulumi.StringPtrInput                                `pulumi:"sheetId"`
+	Shop                                         pulumi.StringPtrInput                                `pulumi:"shop"`
+	ShortCode                                    pulumi.StringPtrInput                                `pulumi:"shortCode"`
+	ShowRecordsWithNoMetrics                     pulumi.StringPtrInput                                `pulumi:"showRecordsWithNoMetrics"`
+	Sid                                          pulumi.StringPtrInput                                `pulumi:"sid"`
+	SignerPublicKey                              pulumi.StringPtrInput                                `pulumi:"signerPublicKey"`
+	SiteAddress                                  pulumi.StringPtrInput                                `pulumi:"siteAddress"`
+	SiteId                                       pulumi.StringPtrInput                                `pulumi:"siteId"`
+	SiteName                                     pulumi.StringPtrInput                                `pulumi:"siteName"`
+	SiteUrls                                     pulumi.StringArrayInput                              `pulumi:"siteUrls"`
+	SkipAfter                                    pulumi.StringPtrInput                                `pulumi:"skipAfter"`
+	SkipBefore                                   pulumi.StringPtrInput                                `pulumi:"skipBefore"`
+	SoapUri                                      pulumi.StringPtrInput                                `pulumi:"soapUri"`
+	SocialDataSyncTimeframe                      pulumi.StringPtrInput                                `pulumi:"socialDataSyncTimeframe"`
+	Source                                       pulumi.StringPtrInput                                `pulumi:"source"`
+	StoreHash                                    pulumi.StringPtrInput                                `pulumi:"storeHash"`
+	SubDomain                                    pulumi.StringPtrInput                                `pulumi:"subDomain"`
+	Subdomain                                    pulumi.StringPtrInput                                `pulumi:"subdomain"`
+	SubscriberName                               pulumi.StringPtrInput                                `pulumi:"subscriberName"`
+	Subscription                                 pulumi.StringPtrInput                                `pulumi:"subscription"`
+	SupportConnectedAccountsSync                 pulumi.StringPtrInput                                `pulumi:"supportConnectedAccountsSync"`
+	SupportNestedColumns                         pulumi.StringPtrInput                                `pulumi:"supportNestedColumns"`
+	SurveyIds                                    pulumi.StringPtrInput                                `pulumi:"surveyIds"`
+	SwipeAttributionWindow                       pulumi.StringPtrInput                                `pulumi:"swipeAttributionWindow"`
+	SyncDataLocker                               pulumi.StringPtrInput                                `pulumi:"syncDataLocker"`
+	SyncFormat                                   pulumi.StringPtrInput                                `pulumi:"syncFormat"`
+	SyncFormulaFields                            pulumi.StringPtrInput                                `pulumi:"syncFormulaFields"`
+	SyncMetadata                                 pulumi.StringPtrInput                                `pulumi:"syncMetadata"`
+	SyncMethod                                   pulumi.StringPtrInput                                `pulumi:"syncMethod"`
+	SyncMode                                     pulumi.StringPtrInput                                `pulumi:"syncMode"`
+	SyncMultipleAccounts                         pulumi.StringPtrInput                                `pulumi:"syncMultipleAccounts"`
+	SyncPackMode                                 pulumi.StringPtrInput                                `pulumi:"syncPackMode"`
+	SyncPullApi                                  pulumi.StringPtrInput                                `pulumi:"syncPullApi"`
+	SyncType                                     pulumi.StringPtrInput                                `pulumi:"syncType"`
+	Sysnr                                        pulumi.StringPtrInput                                `pulumi:"sysnr"`
+	TableName                                    pulumi.StringPtrInput                                `pulumi:"tableName"`
+	TdeCertificate                               pulumi.StringPtrInput                                `pulumi:"tdeCertificate"`
+	TdeCertificateName                           pulumi.StringPtrInput                                `pulumi:"tdeCertificateName"`
+	TdePassword                                  pulumi.StringPtrInput                                `pulumi:"tdePassword"`
+	TdePrivateKey                                pulumi.StringPtrInput                                `pulumi:"tdePrivateKey"`
+	TeamId                                       pulumi.StringPtrInput                                `pulumi:"teamId"`
+	TechnicalAccountId                           pulumi.StringPtrInput                                `pulumi:"technicalAccountId"`
+	TemplateLabels                               pulumi.StringArrayInput                              `pulumi:"templateLabels"`
+	Tenant                                       pulumi.StringPtrInput                                `pulumi:"tenant"`
+	TenantId                                     pulumi.StringPtrInput                                `pulumi:"tenantId"`
+	TestTableName                                pulumi.StringPtrInput                                `pulumi:"testTableName"`
+	TimeZone                                     pulumi.StringPtrInput                                `pulumi:"timeZone"`
+	TimeframeMonths                              pulumi.StringPtrInput                                `pulumi:"timeframeMonths"`
+	Tns                                          pulumi.StringPtrInput                                `pulumi:"tns"`
+	TokenAuthenticatedContainer                  pulumi.StringPtrInput                                `pulumi:"tokenAuthenticatedContainer"`
+	TokenAuthenticatedDatabase                   pulumi.StringPtrInput                                `pulumi:"tokenAuthenticatedDatabase"`
+	TokenId                                      pulumi.StringPtrInput                                `pulumi:"tokenId"`
+	TokenKey                                     pulumi.StringPtrInput                                `pulumi:"tokenKey"`
+	TokenSecret                                  pulumi.StringPtrInput                                `pulumi:"tokenSecret"`
+	TokenSecretKey                               pulumi.StringPtrInput                                `pulumi:"tokenSecretKey"`
+	Topics                                       pulumi.StringArrayInput                              `pulumi:"topics"`
+	TrustStoreType                               pulumi.StringPtrInput                                `pulumi:"trustStoreType"`
+	TrustedCert                                  pulumi.StringPtrInput                                `pulumi:"trustedCert"`
+	Truststore                                   pulumi.StringPtrInput                                `pulumi:"truststore"`
+	TunnelHost                                   pulumi.StringPtrInput                                `pulumi:"tunnelHost"`
+	TunnelPort                                   pulumi.StringPtrInput                                `pulumi:"tunnelPort"`
+	TunnelUser                                   pulumi.StringPtrInput                                `pulumi:"tunnelUser"`
+	UniqueId                                     pulumi.StringPtrInput                                `pulumi:"uniqueId"`
+	UpdateConfigOnEachSync                       pulumi.StringPtrInput                                `pulumi:"updateConfigOnEachSync"`
+	UpdateMethod                                 pulumi.StringPtrInput                                `pulumi:"updateMethod"`
+	Uri                                          pulumi.StringPtrInput                                `pulumi:"uri"`
+	UseApiKeys                                   pulumi.StringPtrInput                                `pulumi:"useApiKeys"`
+	UseCustomerBucket                            pulumi.StringPtrInput                                `pulumi:"useCustomerBucket"`
+	UseOracleRac                                 pulumi.StringPtrInput                                `pulumi:"useOracleRac"`
+	UsePgpEncryptionOptions                      pulumi.StringPtrInput                                `pulumi:"usePgpEncryptionOptions"`
+	UseServiceAccount                            pulumi.StringPtrInput                                `pulumi:"useServiceAccount"`
+	UseTemplateLabels                            pulumi.StringPtrInput                                `pulumi:"useTemplateLabels"`
+	UseWebhooks                                  pulumi.StringPtrInput                                `pulumi:"useWebhooks"`
+	UseWorkspace                                 pulumi.StringPtrInput                                `pulumi:"useWorkspace"`
+	User                                         pulumi.StringPtrInput                                `pulumi:"user"`
+	UserId                                       pulumi.StringPtrInput                                `pulumi:"userId"`
+	UserKey                                      pulumi.StringPtrInput                                `pulumi:"userKey"`
+	UserName                                     pulumi.StringPtrInput                                `pulumi:"userName"`
+	UserProfiles                                 pulumi.StringArrayInput                              `pulumi:"userProfiles"`
+	Username                                     pulumi.StringPtrInput                                `pulumi:"username"`
+	ViewAttributionWindow                        pulumi.StringPtrInput                                `pulumi:"viewAttributionWindow"`
+	ViewThroughAttributionWindowSize             pulumi.StringPtrInput                                `pulumi:"viewThroughAttributionWindowSize"`
+	WebhookEndpoint                              pulumi.StringPtrInput                                `pulumi:"webhookEndpoint"`
+	WebhookKey                                   pulumi.StringPtrInput                                `pulumi:"webhookKey"`
+	WebhookUrl                                   pulumi.StringPtrInput                                `pulumi:"webhookUrl"`
+	WordPressSiteIdOrWoocommerceDomainName       pulumi.StringPtrInput                                `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
+	WorkspaceName                                pulumi.StringPtrInput                                `pulumi:"workspaceName"`
+	WorkspaceSameAsSource                        pulumi.StringPtrInput                                `pulumi:"workspaceSameAsSource"`
+	WorkspaceSchema                              pulumi.StringPtrInput                                `pulumi:"workspaceSchema"`
+	WsCertificate                                pulumi.StringPtrInput                                `pulumi:"wsCertificate"`
 }
 
 func (ConnectorConfigArgs) ElementType() reflect.Type {
@@ -1516,12 +1668,6 @@ func (i ConnectorConfigArgs) ToConnectorConfigOutput() ConnectorConfigOutput {
 
 func (i ConnectorConfigArgs) ToConnectorConfigOutputWithContext(ctx context.Context) ConnectorConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigOutput)
-}
-
-func (i ConnectorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfig] {
-	return pulumix.Output[ConnectorConfig]{
-		OutputState: i.ToConnectorConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ConnectorConfigArgs) ToConnectorConfigPtrOutput() ConnectorConfigPtrOutput {
@@ -1565,12 +1711,6 @@ func (i *connectorConfigPtrType) ToConnectorConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigPtrOutput)
 }
 
-func (i *connectorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectorConfig] {
-	return pulumix.Output[*ConnectorConfig]{
-		OutputState: i.ToConnectorConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectorConfigOutput) ElementType() reflect.Type {
@@ -1593,12 +1733,6 @@ func (o ConnectorConfigOutput) ToConnectorConfigPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorConfig) *ConnectorConfig {
 		return &v
 	}).(ConnectorConfigPtrOutput)
-}
-
-func (o ConnectorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfig] {
-	return pulumix.Output[ConnectorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigOutput) AbsConnectionMethod() pulumi.StringPtrOutput {
@@ -1775,6 +1909,10 @@ func (o ConnectorConfigOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigOutput) ApiKeyApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiKeyApiSecret }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigOutput) ApiKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectorConfig) []string { return v.ApiKeys }).(pulumi.StringArrayOutput)
 }
@@ -1811,6 +1949,10 @@ func (o ConnectorConfigOutput) ApiUsage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiUsage }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigOutput) ApiUtilizationPercentage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiUtilizationPercentage }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigOutput) ApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
 }
@@ -1825,6 +1967,10 @@ func (o ConnectorConfigOutput) AppIds() pulumi.StringArrayOutput {
 
 func (o ConnectorConfigOutput) AppIdsAppsflyers() ConnectorConfigAppIdsAppsflyerArrayOutput {
 	return o.ApplyT(func(v ConnectorConfig) []ConnectorConfigAppIdsAppsflyer { return v.AppIdsAppsflyers }).(ConnectorConfigAppIdsAppsflyerArrayOutput)
+}
+
+func (o ConnectorConfigOutput) AppKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AppKey }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigOutput) AppSpecificPassword() pulumi.StringPtrOutput {
@@ -2187,6 +2333,10 @@ func (o ConnectorConfigOutput) Dimensions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectorConfig) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
 }
 
+func (o ConnectorConfigOutput) DistributedConnectorClusterSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.DistributedConnectorClusterSize }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -2221,6 +2371,14 @@ func (o ConnectorConfigOutput) EnableAllDimensionCombinations() pulumi.StringPtr
 
 func (o ConnectorConfigOutput) EnableArchiveLogOnly() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.EnableArchiveLogOnly }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigOutput) EnableDataExtensionsSyncing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EnableDataExtensionsSyncing }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigOutput) EnableDistributedConnectorMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EnableDistributedConnectorMode }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigOutput) EnableEnrichments() pulumi.StringPtrOutput {
@@ -2395,6 +2553,10 @@ func (o ConnectorConfigOutput) Identity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Identity }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigOutput) IncludeOcapiEndpoints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IncludeOcapiEndpoints }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
@@ -2421,6 +2583,10 @@ func (o ConnectorConfigOutput) IsAuth2Enabled() pulumi.StringPtrOutput {
 
 func (o ConnectorConfigOutput) IsCustomApiCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsCustomApiCredentials }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigOutput) IsExternalActivitiesEndpointSelected() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsExternalActivitiesEndpointSelected }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigOutput) IsFtps() pulumi.StringPtrOutput {
@@ -2499,6 +2665,10 @@ func (o ConnectorConfigOutput) LatestVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.LatestVersion }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigOutput) LimitForApiCallsToExternalActivitiesEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.LimitForApiCallsToExternalActivitiesEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigOutput) LineSeparator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.LineSeparator }).(pulumi.StringPtrOutput)
 }
@@ -2567,6 +2737,22 @@ func (o ConnectorConfigOutput) OauthTokenSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.OauthTokenSecret }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigOutput) OcapiClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.OcapiClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigOutput) OcapiClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.OcapiClientSecret }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigOutput) OcapiCustomObjectTypes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.OcapiCustomObjectTypes }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigOutput) OcapiHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.OcapiHostname }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigOutput) OnError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.OnError }).(pulumi.StringPtrOutput)
 }
@@ -2597,6 +2783,10 @@ func (o ConnectorConfigOutput) PackingMode() pulumi.StringPtrOutput {
 
 func (o ConnectorConfigOutput) Pages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectorConfig) []string { return v.Pages }).(pulumi.StringArrayOutput)
+}
+
+func (o ConnectorConfigOutput) PartnerCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PartnerCode }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigOutput) Partners() pulumi.StringArrayOutput {
@@ -3175,6 +3365,10 @@ func (o ConnectorConfigOutput) TemplateLabels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectorConfig) []string { return v.TemplateLabels }).(pulumi.StringArrayOutput)
 }
 
+func (o ConnectorConfigOutput) Tenant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Tenant }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
@@ -3371,12 +3565,6 @@ func (o ConnectorConfigPtrOutput) ToConnectorConfigPtrOutput() ConnectorConfigPt
 
 func (o ConnectorConfigPtrOutput) ToConnectorConfigPtrOutputWithContext(ctx context.Context) ConnectorConfigPtrOutput {
 	return o
-}
-
-func (o ConnectorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorConfig] {
-	return pulumix.Output[*ConnectorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigPtrOutput) Elem() ConnectorConfigOutput {
@@ -3776,6 +3964,15 @@ func (o ConnectorConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigPtrOutput) ApiKeyApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigPtrOutput) ApiKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
@@ -3857,6 +4054,15 @@ func (o ConnectorConfigPtrOutput) ApiUsage() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigPtrOutput) ApiUtilizationPercentage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiUtilizationPercentage
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigPtrOutput) ApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -3891,6 +4097,15 @@ func (o ConnectorConfigPtrOutput) AppIdsAppsflyers() ConnectorConfigAppIdsAppsfl
 		}
 		return v.AppIdsAppsflyers
 	}).(ConnectorConfigAppIdsAppsflyerArrayOutput)
+}
+
+func (o ConnectorConfigPtrOutput) AppKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppKey
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigPtrOutput) AppSpecificPassword() pulumi.StringPtrOutput {
@@ -4703,6 +4918,15 @@ func (o ConnectorConfigPtrOutput) Dimensions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o ConnectorConfigPtrOutput) DistributedConnectorClusterSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DistributedConnectorClusterSize
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -4781,6 +5005,24 @@ func (o ConnectorConfigPtrOutput) EnableArchiveLogOnly() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.EnableArchiveLogOnly
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigPtrOutput) EnableDataExtensionsSyncing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDataExtensionsSyncing
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigPtrOutput) EnableDistributedConnectorMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDistributedConnectorMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5171,6 +5413,15 @@ func (o ConnectorConfigPtrOutput) Identity() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigPtrOutput) IncludeOcapiEndpoints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeOcapiEndpoints
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigPtrOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -5231,6 +5482,15 @@ func (o ConnectorConfigPtrOutput) IsCustomApiCredentials() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.IsCustomApiCredentials
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigPtrOutput) IsExternalActivitiesEndpointSelected() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IsExternalActivitiesEndpointSelected
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5405,6 +5665,15 @@ func (o ConnectorConfigPtrOutput) LatestVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigPtrOutput) LimitForApiCallsToExternalActivitiesEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitForApiCallsToExternalActivitiesEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigPtrOutput) LineSeparator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -5558,6 +5827,42 @@ func (o ConnectorConfigPtrOutput) OauthTokenSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigPtrOutput) OcapiClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OcapiClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigPtrOutput) OcapiClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OcapiClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigPtrOutput) OcapiCustomObjectTypes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OcapiCustomObjectTypes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigPtrOutput) OcapiHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OcapiHostname
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigPtrOutput) OnError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -5628,6 +5933,15 @@ func (o ConnectorConfigPtrOutput) Pages() pulumi.StringArrayOutput {
 		}
 		return v.Pages
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o ConnectorConfigPtrOutput) PartnerCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PartnerCode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigPtrOutput) Partners() pulumi.StringArrayOutput {
@@ -6926,6 +7240,15 @@ func (o ConnectorConfigPtrOutput) TemplateLabels() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o ConnectorConfigPtrOutput) Tenant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tenant
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -7371,12 +7694,6 @@ func (i ConnectorConfigAccountsRedditAdArgs) ToConnectorConfigAccountsRedditAdOu
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAccountsRedditAdOutput)
 }
 
-func (i ConnectorConfigAccountsRedditAdArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[ConnectorConfigAccountsRedditAd]{
-		OutputState: i.ToConnectorConfigAccountsRedditAdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorConfigAccountsRedditAdArrayInput is an input type that accepts ConnectorConfigAccountsRedditAdArray and ConnectorConfigAccountsRedditAdArrayOutput values.
 // You can construct a concrete instance of `ConnectorConfigAccountsRedditAdArrayInput` via:
 //
@@ -7402,12 +7719,6 @@ func (i ConnectorConfigAccountsRedditAdArray) ToConnectorConfigAccountsRedditAdA
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAccountsRedditAdArrayOutput)
 }
 
-func (i ConnectorConfigAccountsRedditAdArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[[]ConnectorConfigAccountsRedditAd]{
-		OutputState: i.ToConnectorConfigAccountsRedditAdArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorConfigAccountsRedditAdOutput struct{ *pulumi.OutputState }
 
 func (ConnectorConfigAccountsRedditAdOutput) ElementType() reflect.Type {
@@ -7420,12 +7731,6 @@ func (o ConnectorConfigAccountsRedditAdOutput) ToConnectorConfigAccountsRedditAd
 
 func (o ConnectorConfigAccountsRedditAdOutput) ToConnectorConfigAccountsRedditAdOutputWithContext(ctx context.Context) ConnectorConfigAccountsRedditAdOutput {
 	return o
-}
-
-func (o ConnectorConfigAccountsRedditAdOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[ConnectorConfigAccountsRedditAd]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigAccountsRedditAdOutput) Name() pulumi.StringPtrOutput {
@@ -7444,12 +7749,6 @@ func (o ConnectorConfigAccountsRedditAdArrayOutput) ToConnectorConfigAccountsRed
 
 func (o ConnectorConfigAccountsRedditAdArrayOutput) ToConnectorConfigAccountsRedditAdArrayOutputWithContext(ctx context.Context) ConnectorConfigAccountsRedditAdArrayOutput {
 	return o
-}
-
-func (o ConnectorConfigAccountsRedditAdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[[]ConnectorConfigAccountsRedditAd]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigAccountsRedditAdArrayOutput) Index(i pulumi.IntInput) ConnectorConfigAccountsRedditAdOutput {
@@ -7501,12 +7800,6 @@ func (i ConnectorConfigAdobeAnalyticsConfigurationArgs) ToConnectorConfigAdobeAn
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAdobeAnalyticsConfigurationOutput)
 }
 
-func (i ConnectorConfigAdobeAnalyticsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[ConnectorConfigAdobeAnalyticsConfiguration]{
-		OutputState: i.ToConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorConfigAdobeAnalyticsConfigurationArrayInput is an input type that accepts ConnectorConfigAdobeAnalyticsConfigurationArray and ConnectorConfigAdobeAnalyticsConfigurationArrayOutput values.
 // You can construct a concrete instance of `ConnectorConfigAdobeAnalyticsConfigurationArrayInput` via:
 //
@@ -7532,12 +7825,6 @@ func (i ConnectorConfigAdobeAnalyticsConfigurationArray) ToConnectorConfigAdobeA
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAdobeAnalyticsConfigurationArrayOutput)
 }
 
-func (i ConnectorConfigAdobeAnalyticsConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[[]ConnectorConfigAdobeAnalyticsConfiguration]{
-		OutputState: i.ToConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorConfigAdobeAnalyticsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ConnectorConfigAdobeAnalyticsConfigurationOutput) ElementType() reflect.Type {
@@ -7550,12 +7837,6 @@ func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) ToConnectorConfigAdobe
 
 func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) ToConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(ctx context.Context) ConnectorConfigAdobeAnalyticsConfigurationOutput {
 	return o
-}
-
-func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[ConnectorConfigAdobeAnalyticsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) CalculatedMetrics() pulumi.StringArrayOutput {
@@ -7600,12 +7881,6 @@ func (o ConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ToConnectorConfig
 	return o
 }
 
-func (o ConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[[]ConnectorConfigAdobeAnalyticsConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorConfigAdobeAnalyticsConfigurationArrayOutput) Index(i pulumi.IntInput) ConnectorConfigAdobeAnalyticsConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigAdobeAnalyticsConfiguration {
 		return vs[0].([]ConnectorConfigAdobeAnalyticsConfiguration)[vs[1].(int)]
@@ -7643,12 +7918,6 @@ func (i ConnectorConfigAppIdsAppsflyerArgs) ToConnectorConfigAppIdsAppsflyerOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAppIdsAppsflyerOutput)
 }
 
-func (i ConnectorConfigAppIdsAppsflyerArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[ConnectorConfigAppIdsAppsflyer]{
-		OutputState: i.ToConnectorConfigAppIdsAppsflyerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorConfigAppIdsAppsflyerArrayInput is an input type that accepts ConnectorConfigAppIdsAppsflyerArray and ConnectorConfigAppIdsAppsflyerArrayOutput values.
 // You can construct a concrete instance of `ConnectorConfigAppIdsAppsflyerArrayInput` via:
 //
@@ -7674,12 +7943,6 @@ func (i ConnectorConfigAppIdsAppsflyerArray) ToConnectorConfigAppIdsAppsflyerArr
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAppIdsAppsflyerArrayOutput)
 }
 
-func (i ConnectorConfigAppIdsAppsflyerArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[[]ConnectorConfigAppIdsAppsflyer]{
-		OutputState: i.ToConnectorConfigAppIdsAppsflyerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorConfigAppIdsAppsflyerOutput struct{ *pulumi.OutputState }
 
 func (ConnectorConfigAppIdsAppsflyerOutput) ElementType() reflect.Type {
@@ -7692,12 +7955,6 @@ func (o ConnectorConfigAppIdsAppsflyerOutput) ToConnectorConfigAppIdsAppsflyerOu
 
 func (o ConnectorConfigAppIdsAppsflyerOutput) ToConnectorConfigAppIdsAppsflyerOutputWithContext(ctx context.Context) ConnectorConfigAppIdsAppsflyerOutput {
 	return o
-}
-
-func (o ConnectorConfigAppIdsAppsflyerOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[ConnectorConfigAppIdsAppsflyer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigAppIdsAppsflyerOutput) AppId() pulumi.StringPtrOutput {
@@ -7718,12 +7975,6 @@ func (o ConnectorConfigAppIdsAppsflyerArrayOutput) ToConnectorConfigAppIdsAppsfl
 	return o
 }
 
-func (o ConnectorConfigAppIdsAppsflyerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[[]ConnectorConfigAppIdsAppsflyer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorConfigAppIdsAppsflyerArrayOutput) Index(i pulumi.IntInput) ConnectorConfigAppIdsAppsflyerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigAppIdsAppsflyer {
 		return vs[0].([]ConnectorConfigAppIdsAppsflyer)[vs[1].(int)]
@@ -7732,16 +7983,22 @@ func (o ConnectorConfigAppIdsAppsflyerArrayOutput) Index(i pulumi.IntInput) Conn
 
 type ConnectorConfigCustomReport struct {
 	Aggregate                 *string  `pulumi:"aggregate"`
+	BaseMetricsFields         []string `pulumi:"baseMetricsFields"`
+	Breakdown                 *string  `pulumi:"breakdown"`
+	Breakout                  *string  `pulumi:"breakout"`
 	ConversionsReportIncluded *string  `pulumi:"conversionsReportIncluded"`
 	CustomEventsIncluded      *string  `pulumi:"customEventsIncluded"`
+	Dimension                 *string  `pulumi:"dimension"`
 	Dimensions                []string `pulumi:"dimensions"`
 	EventNames                []string `pulumi:"eventNames"`
+	Granularity               *string  `pulumi:"granularity"`
 	Level                     *string  `pulumi:"level"`
 	Metrics                   []string `pulumi:"metrics"`
 	ReportFields              []string `pulumi:"reportFields"`
 	ReportName                *string  `pulumi:"reportName"`
 	ReportType                *string  `pulumi:"reportType"`
 	Segmentation              *string  `pulumi:"segmentation"`
+	SkAdMetricsFields         []string `pulumi:"skAdMetricsFields"`
 	TableName                 *string  `pulumi:"tableName"`
 }
 
@@ -7758,16 +8015,22 @@ type ConnectorConfigCustomReportInput interface {
 
 type ConnectorConfigCustomReportArgs struct {
 	Aggregate                 pulumi.StringPtrInput   `pulumi:"aggregate"`
+	BaseMetricsFields         pulumi.StringArrayInput `pulumi:"baseMetricsFields"`
+	Breakdown                 pulumi.StringPtrInput   `pulumi:"breakdown"`
+	Breakout                  pulumi.StringPtrInput   `pulumi:"breakout"`
 	ConversionsReportIncluded pulumi.StringPtrInput   `pulumi:"conversionsReportIncluded"`
 	CustomEventsIncluded      pulumi.StringPtrInput   `pulumi:"customEventsIncluded"`
+	Dimension                 pulumi.StringPtrInput   `pulumi:"dimension"`
 	Dimensions                pulumi.StringArrayInput `pulumi:"dimensions"`
 	EventNames                pulumi.StringArrayInput `pulumi:"eventNames"`
+	Granularity               pulumi.StringPtrInput   `pulumi:"granularity"`
 	Level                     pulumi.StringPtrInput   `pulumi:"level"`
 	Metrics                   pulumi.StringArrayInput `pulumi:"metrics"`
 	ReportFields              pulumi.StringArrayInput `pulumi:"reportFields"`
 	ReportName                pulumi.StringPtrInput   `pulumi:"reportName"`
 	ReportType                pulumi.StringPtrInput   `pulumi:"reportType"`
 	Segmentation              pulumi.StringPtrInput   `pulumi:"segmentation"`
+	SkAdMetricsFields         pulumi.StringArrayInput `pulumi:"skAdMetricsFields"`
 	TableName                 pulumi.StringPtrInput   `pulumi:"tableName"`
 }
 
@@ -7781,12 +8044,6 @@ func (i ConnectorConfigCustomReportArgs) ToConnectorConfigCustomReportOutput() C
 
 func (i ConnectorConfigCustomReportArgs) ToConnectorConfigCustomReportOutputWithContext(ctx context.Context) ConnectorConfigCustomReportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigCustomReportOutput)
-}
-
-func (i ConnectorConfigCustomReportArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigCustomReport] {
-	return pulumix.Output[ConnectorConfigCustomReport]{
-		OutputState: i.ToConnectorConfigCustomReportOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectorConfigCustomReportArrayInput is an input type that accepts ConnectorConfigCustomReportArray and ConnectorConfigCustomReportArrayOutput values.
@@ -7814,12 +8071,6 @@ func (i ConnectorConfigCustomReportArray) ToConnectorConfigCustomReportArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigCustomReportArrayOutput)
 }
 
-func (i ConnectorConfigCustomReportArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigCustomReport] {
-	return pulumix.Output[[]ConnectorConfigCustomReport]{
-		OutputState: i.ToConnectorConfigCustomReportArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorConfigCustomReportOutput struct{ *pulumi.OutputState }
 
 func (ConnectorConfigCustomReportOutput) ElementType() reflect.Type {
@@ -7834,14 +8085,20 @@ func (o ConnectorConfigCustomReportOutput) ToConnectorConfigCustomReportOutputWi
 	return o
 }
 
-func (o ConnectorConfigCustomReportOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigCustomReport] {
-	return pulumix.Output[ConnectorConfigCustomReport]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorConfigCustomReportOutput) Aggregate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.Aggregate }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigCustomReportOutput) BaseMetricsFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) []string { return v.BaseMetricsFields }).(pulumi.StringArrayOutput)
+}
+
+func (o ConnectorConfigCustomReportOutput) Breakdown() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.Breakdown }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigCustomReportOutput) Breakout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.Breakout }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigCustomReportOutput) ConversionsReportIncluded() pulumi.StringPtrOutput {
@@ -7852,12 +8109,20 @@ func (o ConnectorConfigCustomReportOutput) CustomEventsIncluded() pulumi.StringP
 	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.CustomEventsIncluded }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigCustomReportOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.Dimension }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigCustomReportOutput) Dimensions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectorConfigCustomReport) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
 }
 
 func (o ConnectorConfigCustomReportOutput) EventNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectorConfigCustomReport) []string { return v.EventNames }).(pulumi.StringArrayOutput)
+}
+
+func (o ConnectorConfigCustomReportOutput) Granularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.Granularity }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigCustomReportOutput) Level() pulumi.StringPtrOutput {
@@ -7884,6 +8149,10 @@ func (o ConnectorConfigCustomReportOutput) Segmentation() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.Segmentation }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigCustomReportOutput) SkAdMetricsFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) []string { return v.SkAdMetricsFields }).(pulumi.StringArrayOutput)
+}
+
 func (o ConnectorConfigCustomReportOutput) TableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.TableName }).(pulumi.StringPtrOutput)
 }
@@ -7900,12 +8169,6 @@ func (o ConnectorConfigCustomReportArrayOutput) ToConnectorConfigCustomReportArr
 
 func (o ConnectorConfigCustomReportArrayOutput) ToConnectorConfigCustomReportArrayOutputWithContext(ctx context.Context) ConnectorConfigCustomReportArrayOutput {
 	return o
-}
-
-func (o ConnectorConfigCustomReportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigCustomReport] {
-	return pulumix.Output[[]ConnectorConfigCustomReport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigCustomReportArrayOutput) Index(i pulumi.IntInput) ConnectorConfigCustomReportOutput {
@@ -7967,12 +8230,6 @@ func (i ConnectorConfigCustomTableArgs) ToConnectorConfigCustomTableOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigCustomTableOutput)
 }
 
-func (i ConnectorConfigCustomTableArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigCustomTable] {
-	return pulumix.Output[ConnectorConfigCustomTable]{
-		OutputState: i.ToConnectorConfigCustomTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorConfigCustomTableArrayInput is an input type that accepts ConnectorConfigCustomTableArray and ConnectorConfigCustomTableArrayOutput values.
 // You can construct a concrete instance of `ConnectorConfigCustomTableArrayInput` via:
 //
@@ -7998,12 +8255,6 @@ func (i ConnectorConfigCustomTableArray) ToConnectorConfigCustomTableArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigCustomTableArrayOutput)
 }
 
-func (i ConnectorConfigCustomTableArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigCustomTable] {
-	return pulumix.Output[[]ConnectorConfigCustomTable]{
-		OutputState: i.ToConnectorConfigCustomTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorConfigCustomTableOutput struct{ *pulumi.OutputState }
 
 func (ConnectorConfigCustomTableOutput) ElementType() reflect.Type {
@@ -8016,12 +8267,6 @@ func (o ConnectorConfigCustomTableOutput) ToConnectorConfigCustomTableOutput() C
 
 func (o ConnectorConfigCustomTableOutput) ToConnectorConfigCustomTableOutputWithContext(ctx context.Context) ConnectorConfigCustomTableOutput {
 	return o
-}
-
-func (o ConnectorConfigCustomTableOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigCustomTable] {
-	return pulumix.Output[ConnectorConfigCustomTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigCustomTableOutput) ActionBreakdowns() pulumi.StringArrayOutput {
@@ -8086,12 +8331,6 @@ func (o ConnectorConfigCustomTableArrayOutput) ToConnectorConfigCustomTableArray
 	return o
 }
 
-func (o ConnectorConfigCustomTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigCustomTable] {
-	return pulumix.Output[[]ConnectorConfigCustomTable]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorConfigCustomTableArrayOutput) Index(i pulumi.IntInput) ConnectorConfigCustomTableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigCustomTable {
 		return vs[0].([]ConnectorConfigCustomTable)[vs[1].(int)]
@@ -8133,12 +8372,6 @@ func (i ConnectorConfigProjectCredentialArgs) ToConnectorConfigProjectCredential
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigProjectCredentialOutput)
 }
 
-func (i ConnectorConfigProjectCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigProjectCredential] {
-	return pulumix.Output[ConnectorConfigProjectCredential]{
-		OutputState: i.ToConnectorConfigProjectCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorConfigProjectCredentialArrayInput is an input type that accepts ConnectorConfigProjectCredentialArray and ConnectorConfigProjectCredentialArrayOutput values.
 // You can construct a concrete instance of `ConnectorConfigProjectCredentialArrayInput` via:
 //
@@ -8164,12 +8397,6 @@ func (i ConnectorConfigProjectCredentialArray) ToConnectorConfigProjectCredentia
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigProjectCredentialArrayOutput)
 }
 
-func (i ConnectorConfigProjectCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigProjectCredential] {
-	return pulumix.Output[[]ConnectorConfigProjectCredential]{
-		OutputState: i.ToConnectorConfigProjectCredentialArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorConfigProjectCredentialOutput struct{ *pulumi.OutputState }
 
 func (ConnectorConfigProjectCredentialOutput) ElementType() reflect.Type {
@@ -8182,12 +8409,6 @@ func (o ConnectorConfigProjectCredentialOutput) ToConnectorConfigProjectCredenti
 
 func (o ConnectorConfigProjectCredentialOutput) ToConnectorConfigProjectCredentialOutputWithContext(ctx context.Context) ConnectorConfigProjectCredentialOutput {
 	return o
-}
-
-func (o ConnectorConfigProjectCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigProjectCredential] {
-	return pulumix.Output[ConnectorConfigProjectCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigProjectCredentialOutput) ApiKey() pulumi.StringPtrOutput {
@@ -8216,12 +8437,6 @@ func (o ConnectorConfigProjectCredentialArrayOutput) ToConnectorConfigProjectCre
 	return o
 }
 
-func (o ConnectorConfigProjectCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigProjectCredential] {
-	return pulumix.Output[[]ConnectorConfigProjectCredential]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorConfigProjectCredentialArrayOutput) Index(i pulumi.IntInput) ConnectorConfigProjectCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigProjectCredential {
 		return vs[0].([]ConnectorConfigProjectCredential)[vs[1].(int)]
@@ -8236,10 +8451,12 @@ type ConnectorConfigReport struct {
 	Fields          []string `pulumi:"fields"`
 	Filter          *string  `pulumi:"filter"`
 	FilterFieldName *string  `pulumi:"filterFieldName"`
+	FilterType      *string  `pulumi:"filterType"`
 	FilterValue     *string  `pulumi:"filterValue"`
 	Metrics         []string `pulumi:"metrics"`
 	PrebuiltReport  *string  `pulumi:"prebuiltReport"`
 	ReportType      *string  `pulumi:"reportType"`
+	RollbackWindow  *string  `pulumi:"rollbackWindow"`
 	SearchTypes     []string `pulumi:"searchTypes"`
 	SegmentIds      []string `pulumi:"segmentIds"`
 	Segments        []string `pulumi:"segments"`
@@ -8265,10 +8482,12 @@ type ConnectorConfigReportArgs struct {
 	Fields          pulumi.StringArrayInput `pulumi:"fields"`
 	Filter          pulumi.StringPtrInput   `pulumi:"filter"`
 	FilterFieldName pulumi.StringPtrInput   `pulumi:"filterFieldName"`
+	FilterType      pulumi.StringPtrInput   `pulumi:"filterType"`
 	FilterValue     pulumi.StringPtrInput   `pulumi:"filterValue"`
 	Metrics         pulumi.StringArrayInput `pulumi:"metrics"`
 	PrebuiltReport  pulumi.StringPtrInput   `pulumi:"prebuiltReport"`
 	ReportType      pulumi.StringPtrInput   `pulumi:"reportType"`
+	RollbackWindow  pulumi.StringPtrInput   `pulumi:"rollbackWindow"`
 	SearchTypes     pulumi.StringArrayInput `pulumi:"searchTypes"`
 	SegmentIds      pulumi.StringArrayInput `pulumi:"segmentIds"`
 	Segments        pulumi.StringArrayInput `pulumi:"segments"`
@@ -8285,12 +8504,6 @@ func (i ConnectorConfigReportArgs) ToConnectorConfigReportOutput() ConnectorConf
 
 func (i ConnectorConfigReportArgs) ToConnectorConfigReportOutputWithContext(ctx context.Context) ConnectorConfigReportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigReportOutput)
-}
-
-func (i ConnectorConfigReportArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigReport] {
-	return pulumix.Output[ConnectorConfigReport]{
-		OutputState: i.ToConnectorConfigReportOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectorConfigReportArrayInput is an input type that accepts ConnectorConfigReportArray and ConnectorConfigReportArrayOutput values.
@@ -8318,12 +8531,6 @@ func (i ConnectorConfigReportArray) ToConnectorConfigReportArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigReportArrayOutput)
 }
 
-func (i ConnectorConfigReportArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigReport] {
-	return pulumix.Output[[]ConnectorConfigReport]{
-		OutputState: i.ToConnectorConfigReportArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorConfigReportOutput struct{ *pulumi.OutputState }
 
 func (ConnectorConfigReportOutput) ElementType() reflect.Type {
@@ -8336,12 +8543,6 @@ func (o ConnectorConfigReportOutput) ToConnectorConfigReportOutput() ConnectorCo
 
 func (o ConnectorConfigReportOutput) ToConnectorConfigReportOutputWithContext(ctx context.Context) ConnectorConfigReportOutput {
 	return o
-}
-
-func (o ConnectorConfigReportOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigReport] {
-	return pulumix.Output[ConnectorConfigReport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigReportOutput) Aggregation() pulumi.StringPtrOutput {
@@ -8372,6 +8573,10 @@ func (o ConnectorConfigReportOutput) FilterFieldName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.FilterFieldName }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectorConfigReportOutput) FilterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.FilterType }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectorConfigReportOutput) FilterValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.FilterValue }).(pulumi.StringPtrOutput)
 }
@@ -8386,6 +8591,10 @@ func (o ConnectorConfigReportOutput) PrebuiltReport() pulumi.StringPtrOutput {
 
 func (o ConnectorConfigReportOutput) ReportType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.ReportType }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorConfigReportOutput) RollbackWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.RollbackWindow }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigReportOutput) SearchTypes() pulumi.StringArrayOutput {
@@ -8416,12 +8625,6 @@ func (o ConnectorConfigReportArrayOutput) ToConnectorConfigReportArrayOutput() C
 
 func (o ConnectorConfigReportArrayOutput) ToConnectorConfigReportArrayOutputWithContext(ctx context.Context) ConnectorConfigReportArrayOutput {
 	return o
-}
-
-func (o ConnectorConfigReportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigReport] {
-	return pulumix.Output[[]ConnectorConfigReport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigReportArrayOutput) Index(i pulumi.IntInput) ConnectorConfigReportOutput {
@@ -8463,12 +8666,6 @@ func (i ConnectorConfigSecretsListArgs) ToConnectorConfigSecretsListOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigSecretsListOutput)
 }
 
-func (i ConnectorConfigSecretsListArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigSecretsList] {
-	return pulumix.Output[ConnectorConfigSecretsList]{
-		OutputState: i.ToConnectorConfigSecretsListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorConfigSecretsListArrayInput is an input type that accepts ConnectorConfigSecretsListArray and ConnectorConfigSecretsListArrayOutput values.
 // You can construct a concrete instance of `ConnectorConfigSecretsListArrayInput` via:
 //
@@ -8494,12 +8691,6 @@ func (i ConnectorConfigSecretsListArray) ToConnectorConfigSecretsListArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigSecretsListArrayOutput)
 }
 
-func (i ConnectorConfigSecretsListArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigSecretsList] {
-	return pulumix.Output[[]ConnectorConfigSecretsList]{
-		OutputState: i.ToConnectorConfigSecretsListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorConfigSecretsListOutput struct{ *pulumi.OutputState }
 
 func (ConnectorConfigSecretsListOutput) ElementType() reflect.Type {
@@ -8512,12 +8703,6 @@ func (o ConnectorConfigSecretsListOutput) ToConnectorConfigSecretsListOutput() C
 
 func (o ConnectorConfigSecretsListOutput) ToConnectorConfigSecretsListOutputWithContext(ctx context.Context) ConnectorConfigSecretsListOutput {
 	return o
-}
-
-func (o ConnectorConfigSecretsListOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigSecretsList] {
-	return pulumix.Output[ConnectorConfigSecretsList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigSecretsListOutput) Key() pulumi.StringPtrOutput {
@@ -8540,12 +8725,6 @@ func (o ConnectorConfigSecretsListArrayOutput) ToConnectorConfigSecretsListArray
 
 func (o ConnectorConfigSecretsListArrayOutput) ToConnectorConfigSecretsListArrayOutputWithContext(ctx context.Context) ConnectorConfigSecretsListArrayOutput {
 	return o
-}
-
-func (o ConnectorConfigSecretsListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigSecretsList] {
-	return pulumix.Output[[]ConnectorConfigSecretsList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorConfigSecretsListArrayOutput) Index(i pulumi.IntInput) ConnectorConfigSecretsListOutput {
@@ -8589,12 +8768,6 @@ func (i ConnectorDestinationSchemaArgs) ToConnectorDestinationSchemaOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDestinationSchemaOutput)
 }
 
-func (i ConnectorDestinationSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorDestinationSchema] {
-	return pulumix.Output[ConnectorDestinationSchema]{
-		OutputState: i.ToConnectorDestinationSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectorDestinationSchemaArgs) ToConnectorDestinationSchemaPtrOutput() ConnectorDestinationSchemaPtrOutput {
 	return i.ToConnectorDestinationSchemaPtrOutputWithContext(context.Background())
 }
@@ -8636,12 +8809,6 @@ func (i *connectorDestinationSchemaPtrType) ToConnectorDestinationSchemaPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDestinationSchemaPtrOutput)
 }
 
-func (i *connectorDestinationSchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectorDestinationSchema] {
-	return pulumix.Output[*ConnectorDestinationSchema]{
-		OutputState: i.ToConnectorDestinationSchemaPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorDestinationSchemaOutput struct{ *pulumi.OutputState }
 
 func (ConnectorDestinationSchemaOutput) ElementType() reflect.Type {
@@ -8664,12 +8831,6 @@ func (o ConnectorDestinationSchemaOutput) ToConnectorDestinationSchemaPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorDestinationSchema) *ConnectorDestinationSchema {
 		return &v
 	}).(ConnectorDestinationSchemaPtrOutput)
-}
-
-func (o ConnectorDestinationSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorDestinationSchema] {
-	return pulumix.Output[ConnectorDestinationSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorDestinationSchemaOutput) Name() pulumi.StringPtrOutput {
@@ -8696,12 +8857,6 @@ func (o ConnectorDestinationSchemaPtrOutput) ToConnectorDestinationSchemaPtrOutp
 
 func (o ConnectorDestinationSchemaPtrOutput) ToConnectorDestinationSchemaPtrOutputWithContext(ctx context.Context) ConnectorDestinationSchemaPtrOutput {
 	return o
-}
-
-func (o ConnectorDestinationSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorDestinationSchema] {
-	return pulumix.Output[*ConnectorDestinationSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorDestinationSchemaPtrOutput) Elem() ConnectorDestinationSchemaOutput {
@@ -8786,12 +8941,6 @@ func (i ConnectorFingerprintsFingerprintArgs) ToConnectorFingerprintsFingerprint
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorFingerprintsFingerprintOutput)
 }
 
-func (i ConnectorFingerprintsFingerprintArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorFingerprintsFingerprint] {
-	return pulumix.Output[ConnectorFingerprintsFingerprint]{
-		OutputState: i.ToConnectorFingerprintsFingerprintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorFingerprintsFingerprintArrayInput is an input type that accepts ConnectorFingerprintsFingerprintArray and ConnectorFingerprintsFingerprintArrayOutput values.
 // You can construct a concrete instance of `ConnectorFingerprintsFingerprintArrayInput` via:
 //
@@ -8817,12 +8966,6 @@ func (i ConnectorFingerprintsFingerprintArray) ToConnectorFingerprintsFingerprin
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorFingerprintsFingerprintArrayOutput)
 }
 
-func (i ConnectorFingerprintsFingerprintArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorFingerprintsFingerprint] {
-	return pulumix.Output[[]ConnectorFingerprintsFingerprint]{
-		OutputState: i.ToConnectorFingerprintsFingerprintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorFingerprintsFingerprintOutput struct{ *pulumi.OutputState }
 
 func (ConnectorFingerprintsFingerprintOutput) ElementType() reflect.Type {
@@ -8835,12 +8978,6 @@ func (o ConnectorFingerprintsFingerprintOutput) ToConnectorFingerprintsFingerpri
 
 func (o ConnectorFingerprintsFingerprintOutput) ToConnectorFingerprintsFingerprintOutputWithContext(ctx context.Context) ConnectorFingerprintsFingerprintOutput {
 	return o
-}
-
-func (o ConnectorFingerprintsFingerprintOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorFingerprintsFingerprint] {
-	return pulumix.Output[ConnectorFingerprintsFingerprint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hash of the fingerprint.
@@ -8875,12 +9012,6 @@ func (o ConnectorFingerprintsFingerprintArrayOutput) ToConnectorFingerprintsFing
 
 func (o ConnectorFingerprintsFingerprintArrayOutput) ToConnectorFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) ConnectorFingerprintsFingerprintArrayOutput {
 	return o
-}
-
-func (o ConnectorFingerprintsFingerprintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorFingerprintsFingerprint] {
-	return pulumix.Output[[]ConnectorFingerprintsFingerprint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorFingerprintsFingerprintArrayOutput) Index(i pulumi.IntInput) ConnectorFingerprintsFingerprintOutput {
@@ -8928,12 +9059,6 @@ func (i ConnectorSchemaConfigSchemaArgs) ToConnectorSchemaConfigSchemaOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaOutput)
 }
 
-func (i ConnectorSchemaConfigSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchema] {
-	return pulumix.Output[ConnectorSchemaConfigSchema]{
-		OutputState: i.ToConnectorSchemaConfigSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorSchemaConfigSchemaArrayInput is an input type that accepts ConnectorSchemaConfigSchemaArray and ConnectorSchemaConfigSchemaArrayOutput values.
 // You can construct a concrete instance of `ConnectorSchemaConfigSchemaArrayInput` via:
 //
@@ -8959,12 +9084,6 @@ func (i ConnectorSchemaConfigSchemaArray) ToConnectorSchemaConfigSchemaArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaArrayOutput)
 }
 
-func (i ConnectorSchemaConfigSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchema] {
-	return pulumix.Output[[]ConnectorSchemaConfigSchema]{
-		OutputState: i.ToConnectorSchemaConfigSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorSchemaConfigSchemaOutput struct{ *pulumi.OutputState }
 
 func (ConnectorSchemaConfigSchemaOutput) ElementType() reflect.Type {
@@ -8977,12 +9096,6 @@ func (o ConnectorSchemaConfigSchemaOutput) ToConnectorSchemaConfigSchemaOutput()
 
 func (o ConnectorSchemaConfigSchemaOutput) ToConnectorSchemaConfigSchemaOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaOutput {
 	return o
-}
-
-func (o ConnectorSchemaConfigSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchema] {
-	return pulumix.Output[ConnectorSchemaConfigSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The boolean value specifying whether the sync for the schema into the destination is enabled.
@@ -9011,12 +9124,6 @@ func (o ConnectorSchemaConfigSchemaArrayOutput) ToConnectorSchemaConfigSchemaArr
 
 func (o ConnectorSchemaConfigSchemaArrayOutput) ToConnectorSchemaConfigSchemaArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaArrayOutput {
 	return o
-}
-
-func (o ConnectorSchemaConfigSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchema] {
-	return pulumix.Output[[]ConnectorSchemaConfigSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorSchemaConfigSchemaArrayOutput) Index(i pulumi.IntInput) ConnectorSchemaConfigSchemaOutput {
@@ -9068,12 +9175,6 @@ func (i ConnectorSchemaConfigSchemaTableArgs) ToConnectorSchemaConfigSchemaTable
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaTableOutput)
 }
 
-func (i ConnectorSchemaConfigSchemaTableArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchemaTable] {
-	return pulumix.Output[ConnectorSchemaConfigSchemaTable]{
-		OutputState: i.ToConnectorSchemaConfigSchemaTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorSchemaConfigSchemaTableArrayInput is an input type that accepts ConnectorSchemaConfigSchemaTableArray and ConnectorSchemaConfigSchemaTableArrayOutput values.
 // You can construct a concrete instance of `ConnectorSchemaConfigSchemaTableArrayInput` via:
 //
@@ -9099,12 +9200,6 @@ func (i ConnectorSchemaConfigSchemaTableArray) ToConnectorSchemaConfigSchemaTabl
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaTableArrayOutput)
 }
 
-func (i ConnectorSchemaConfigSchemaTableArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchemaTable] {
-	return pulumix.Output[[]ConnectorSchemaConfigSchemaTable]{
-		OutputState: i.ToConnectorSchemaConfigSchemaTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorSchemaConfigSchemaTableOutput struct{ *pulumi.OutputState }
 
 func (ConnectorSchemaConfigSchemaTableOutput) ElementType() reflect.Type {
@@ -9117,12 +9212,6 @@ func (o ConnectorSchemaConfigSchemaTableOutput) ToConnectorSchemaConfigSchemaTab
 
 func (o ConnectorSchemaConfigSchemaTableOutput) ToConnectorSchemaConfigSchemaTableOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableOutput {
 	return o
-}
-
-func (o ConnectorSchemaConfigSchemaTableOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchemaTable] {
-	return pulumix.Output[ConnectorSchemaConfigSchemaTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorSchemaConfigSchemaTableOutput) Columns() ConnectorSchemaConfigSchemaTableColumnArrayOutput {
@@ -9156,12 +9245,6 @@ func (o ConnectorSchemaConfigSchemaTableArrayOutput) ToConnectorSchemaConfigSche
 
 func (o ConnectorSchemaConfigSchemaTableArrayOutput) ToConnectorSchemaConfigSchemaTableArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableArrayOutput {
 	return o
-}
-
-func (o ConnectorSchemaConfigSchemaTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchemaTable] {
-	return pulumix.Output[[]ConnectorSchemaConfigSchemaTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorSchemaConfigSchemaTableArrayOutput) Index(i pulumi.IntInput) ConnectorSchemaConfigSchemaTableOutput {
@@ -9211,12 +9294,6 @@ func (i ConnectorSchemaConfigSchemaTableColumnArgs) ToConnectorSchemaConfigSchem
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaTableColumnOutput)
 }
 
-func (i ConnectorSchemaConfigSchemaTableColumnArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchemaTableColumn] {
-	return pulumix.Output[ConnectorSchemaConfigSchemaTableColumn]{
-		OutputState: i.ToConnectorSchemaConfigSchemaTableColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorSchemaConfigSchemaTableColumnArrayInput is an input type that accepts ConnectorSchemaConfigSchemaTableColumnArray and ConnectorSchemaConfigSchemaTableColumnArrayOutput values.
 // You can construct a concrete instance of `ConnectorSchemaConfigSchemaTableColumnArrayInput` via:
 //
@@ -9242,12 +9319,6 @@ func (i ConnectorSchemaConfigSchemaTableColumnArray) ToConnectorSchemaConfigSche
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaTableColumnArrayOutput)
 }
 
-func (i ConnectorSchemaConfigSchemaTableColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchemaTableColumn] {
-	return pulumix.Output[[]ConnectorSchemaConfigSchemaTableColumn]{
-		OutputState: i.ToConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorSchemaConfigSchemaTableColumnOutput struct{ *pulumi.OutputState }
 
 func (ConnectorSchemaConfigSchemaTableColumnOutput) ElementType() reflect.Type {
@@ -9260,12 +9331,6 @@ func (o ConnectorSchemaConfigSchemaTableColumnOutput) ToConnectorSchemaConfigSch
 
 func (o ConnectorSchemaConfigSchemaTableColumnOutput) ToConnectorSchemaConfigSchemaTableColumnOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableColumnOutput {
 	return o
-}
-
-func (o ConnectorSchemaConfigSchemaTableColumnOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchemaTableColumn] {
-	return pulumix.Output[ConnectorSchemaConfigSchemaTableColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The boolean value specifying whether the sync for the schema into the destination is enabled.
@@ -9295,12 +9360,6 @@ func (o ConnectorSchemaConfigSchemaTableColumnArrayOutput) ToConnectorSchemaConf
 
 func (o ConnectorSchemaConfigSchemaTableColumnArrayOutput) ToConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableColumnArrayOutput {
 	return o
-}
-
-func (o ConnectorSchemaConfigSchemaTableColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchemaTableColumn] {
-	return pulumix.Output[[]ConnectorSchemaConfigSchemaTableColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorSchemaConfigSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) ConnectorSchemaConfigSchemaTableColumnOutput {
@@ -9350,12 +9409,6 @@ func (i DbtProjectModelArgs) ToDbtProjectModelOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectModelOutput)
 }
 
-func (i DbtProjectModelArgs) ToOutput(ctx context.Context) pulumix.Output[DbtProjectModel] {
-	return pulumix.Output[DbtProjectModel]{
-		OutputState: i.ToDbtProjectModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DbtProjectModelArrayInput is an input type that accepts DbtProjectModelArray and DbtProjectModelArrayOutput values.
 // You can construct a concrete instance of `DbtProjectModelArrayInput` via:
 //
@@ -9381,12 +9434,6 @@ func (i DbtProjectModelArray) ToDbtProjectModelArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectModelArrayOutput)
 }
 
-func (i DbtProjectModelArray) ToOutput(ctx context.Context) pulumix.Output[[]DbtProjectModel] {
-	return pulumix.Output[[]DbtProjectModel]{
-		OutputState: i.ToDbtProjectModelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbtProjectModelOutput struct{ *pulumi.OutputState }
 
 func (DbtProjectModelOutput) ElementType() reflect.Type {
@@ -9399,12 +9446,6 @@ func (o DbtProjectModelOutput) ToDbtProjectModelOutput() DbtProjectModelOutput {
 
 func (o DbtProjectModelOutput) ToDbtProjectModelOutputWithContext(ctx context.Context) DbtProjectModelOutput {
 	return o
-}
-
-func (o DbtProjectModelOutput) ToOutput(ctx context.Context) pulumix.Output[DbtProjectModel] {
-	return pulumix.Output[DbtProjectModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the dbt Model within the Fivetran system.
@@ -9434,12 +9475,6 @@ func (o DbtProjectModelArrayOutput) ToDbtProjectModelArrayOutput() DbtProjectMod
 
 func (o DbtProjectModelArrayOutput) ToDbtProjectModelArrayOutputWithContext(ctx context.Context) DbtProjectModelArrayOutput {
 	return o
-}
-
-func (o DbtProjectModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DbtProjectModel] {
-	return pulumix.Output[[]DbtProjectModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbtProjectModelArrayOutput) Index(i pulumi.IntInput) DbtProjectModelOutput {
@@ -9489,12 +9524,6 @@ func (i DbtProjectProjectConfigArgs) ToDbtProjectProjectConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectProjectConfigOutput)
 }
 
-func (i DbtProjectProjectConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DbtProjectProjectConfig] {
-	return pulumix.Output[DbtProjectProjectConfig]{
-		OutputState: i.ToDbtProjectProjectConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DbtProjectProjectConfigArgs) ToDbtProjectProjectConfigPtrOutput() DbtProjectProjectConfigPtrOutput {
 	return i.ToDbtProjectProjectConfigPtrOutputWithContext(context.Background())
 }
@@ -9536,12 +9565,6 @@ func (i *dbtProjectProjectConfigPtrType) ToDbtProjectProjectConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectProjectConfigPtrOutput)
 }
 
-func (i *dbtProjectProjectConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DbtProjectProjectConfig] {
-	return pulumix.Output[*DbtProjectProjectConfig]{
-		OutputState: i.ToDbtProjectProjectConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbtProjectProjectConfigOutput struct{ *pulumi.OutputState }
 
 func (DbtProjectProjectConfigOutput) ElementType() reflect.Type {
@@ -9564,12 +9587,6 @@ func (o DbtProjectProjectConfigOutput) ToDbtProjectProjectConfigPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbtProjectProjectConfig) *DbtProjectProjectConfig {
 		return &v
 	}).(DbtProjectProjectConfigPtrOutput)
-}
-
-func (o DbtProjectProjectConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DbtProjectProjectConfig] {
-	return pulumix.Output[DbtProjectProjectConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Folder in Git repo with your dbt project.
@@ -9599,12 +9616,6 @@ func (o DbtProjectProjectConfigPtrOutput) ToDbtProjectProjectConfigPtrOutput() D
 
 func (o DbtProjectProjectConfigPtrOutput) ToDbtProjectProjectConfigPtrOutputWithContext(ctx context.Context) DbtProjectProjectConfigPtrOutput {
 	return o
-}
-
-func (o DbtProjectProjectConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DbtProjectProjectConfig] {
-	return pulumix.Output[*DbtProjectProjectConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbtProjectProjectConfigPtrOutput) Elem() DbtProjectProjectConfigOutput {
@@ -9692,12 +9703,6 @@ func (i DbtTransformationScheduleArgs) ToDbtTransformationScheduleOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationScheduleOutput)
 }
 
-func (i DbtTransformationScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[DbtTransformationSchedule] {
-	return pulumix.Output[DbtTransformationSchedule]{
-		OutputState: i.ToDbtTransformationScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DbtTransformationScheduleArgs) ToDbtTransformationSchedulePtrOutput() DbtTransformationSchedulePtrOutput {
 	return i.ToDbtTransformationSchedulePtrOutputWithContext(context.Background())
 }
@@ -9739,12 +9744,6 @@ func (i *dbtTransformationSchedulePtrType) ToDbtTransformationSchedulePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationSchedulePtrOutput)
 }
 
-func (i *dbtTransformationSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*DbtTransformationSchedule] {
-	return pulumix.Output[*DbtTransformationSchedule]{
-		OutputState: i.ToDbtTransformationSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbtTransformationScheduleOutput struct{ *pulumi.OutputState }
 
 func (DbtTransformationScheduleOutput) ElementType() reflect.Type {
@@ -9767,12 +9766,6 @@ func (o DbtTransformationScheduleOutput) ToDbtTransformationSchedulePtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbtTransformationSchedule) *DbtTransformationSchedule {
 		return &v
 	}).(DbtTransformationSchedulePtrOutput)
-}
-
-func (o DbtTransformationScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[DbtTransformationSchedule] {
-	return pulumix.Output[DbtTransformationSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
@@ -9807,12 +9800,6 @@ func (o DbtTransformationSchedulePtrOutput) ToDbtTransformationSchedulePtrOutput
 
 func (o DbtTransformationSchedulePtrOutput) ToDbtTransformationSchedulePtrOutputWithContext(ctx context.Context) DbtTransformationSchedulePtrOutput {
 	return o
-}
-
-func (o DbtTransformationSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DbtTransformationSchedule] {
-	return pulumix.Output[*DbtTransformationSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbtTransformationSchedulePtrOutput) Elem() DbtTransformationScheduleOutput {
@@ -9930,12 +9917,6 @@ func (i DestinationCertificatesCertificateArgs) ToDestinationCertificatesCertifi
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationCertificatesCertificateOutput)
 }
 
-func (i DestinationCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[DestinationCertificatesCertificate] {
-	return pulumix.Output[DestinationCertificatesCertificate]{
-		OutputState: i.ToDestinationCertificatesCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DestinationCertificatesCertificateArrayInput is an input type that accepts DestinationCertificatesCertificateArray and DestinationCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `DestinationCertificatesCertificateArrayInput` via:
 //
@@ -9961,12 +9942,6 @@ func (i DestinationCertificatesCertificateArray) ToDestinationCertificatesCertif
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationCertificatesCertificateArrayOutput)
 }
 
-func (i DestinationCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]DestinationCertificatesCertificate] {
-	return pulumix.Output[[]DestinationCertificatesCertificate]{
-		OutputState: i.ToDestinationCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DestinationCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (DestinationCertificatesCertificateOutput) ElementType() reflect.Type {
@@ -9979,12 +9954,6 @@ func (o DestinationCertificatesCertificateOutput) ToDestinationCertificatesCerti
 
 func (o DestinationCertificatesCertificateOutput) ToDestinationCertificatesCertificateOutputWithContext(ctx context.Context) DestinationCertificatesCertificateOutput {
 	return o
-}
-
-func (o DestinationCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationCertificatesCertificate] {
-	return pulumix.Output[DestinationCertificatesCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base64 encoded certificate.
@@ -10046,12 +10015,6 @@ func (o DestinationCertificatesCertificateArrayOutput) ToDestinationCertificates
 	return o
 }
 
-func (o DestinationCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DestinationCertificatesCertificate] {
-	return pulumix.Output[[]DestinationCertificatesCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DestinationCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) DestinationCertificatesCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationCertificatesCertificate {
 		return vs[0].([]DestinationCertificatesCertificate)[vs[1].(int)]
@@ -10067,12 +10030,16 @@ type DestinationConfig struct {
 	Bucket *string `pulumi:"bucket"`
 	// Catalog name
 	Catalog *string `pulumi:"catalog"`
+	// ClientId of your Azure Data Lake Storage
+	ClientId *string `pulumi:"clientId"`
 	// Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 	ClusterId *string `pulumi:"clusterId"`
 	// Cluster region. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 	ClusterRegion *string `pulumi:"clusterRegion"`
 	// Connection method. Default value: `Directly`.
 	ConnectionType *string `pulumi:"connectionType"`
+	// Container Name of your Azure Data Lake Storage
+	ContainerName *string `pulumi:"containerName"`
 	// Whether to create external tables
 	CreateExternalTables *string `pulumi:"createExternalTables"`
 	// Data location. Datasets will reside in this location.
@@ -10089,6 +10056,8 @@ type DestinationConfig struct {
 	HttpPath *string `pulumi:"httpPath"`
 	// Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
 	IsPrivateKeyEncrypted *string `pulumi:"isPrivateKeyEncrypted"`
+	// OneLake lakehouse name
+	LakehouseName *string `pulumi:"lakehouseName"`
 	// In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
 	Passphrase *string `pulumi:"passphrase"`
 	// Database user password
@@ -10113,8 +10082,14 @@ type DestinationConfig struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
 	SecretKey *string `pulumi:"secretKey"`
+	// Secret Value of your Azure Data Lake Storage
+	SecretValue *string `pulumi:"secretValue"`
 	// Server name
 	ServerHostName *string `pulumi:"serverHostName"`
+	// Storage Account Name of your Azure Data Lake Storage
+	StorageAccountName *string `pulumi:"storageAccountName"`
+	// TenantId of your Azure Data Lake Storage
+	TenantId *string `pulumi:"tenantId"`
 	// SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	TunnelHost *string `pulumi:"tunnelHost"`
 	// SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -10123,6 +10098,8 @@ type DestinationConfig struct {
 	TunnelUser *string `pulumi:"tunnelUser"`
 	// Database user name
 	User *string `pulumi:"user"`
+	// OneLake workspace name
+	WorkspaceName *string `pulumi:"workspaceName"`
 }
 
 // DestinationConfigInput is an input type that accepts DestinationConfigArgs and DestinationConfigOutput values.
@@ -10145,12 +10122,16 @@ type DestinationConfigArgs struct {
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// Catalog name
 	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
+	// ClientId of your Azure Data Lake Storage
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
 	// Cluster region. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 	ClusterRegion pulumi.StringPtrInput `pulumi:"clusterRegion"`
 	// Connection method. Default value: `Directly`.
 	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// Container Name of your Azure Data Lake Storage
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
 	// Whether to create external tables
 	CreateExternalTables pulumi.StringPtrInput `pulumi:"createExternalTables"`
 	// Data location. Datasets will reside in this location.
@@ -10167,6 +10148,8 @@ type DestinationConfigArgs struct {
 	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
 	// Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
 	IsPrivateKeyEncrypted pulumi.StringPtrInput `pulumi:"isPrivateKeyEncrypted"`
+	// OneLake lakehouse name
+	LakehouseName pulumi.StringPtrInput `pulumi:"lakehouseName"`
 	// In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
 	Passphrase pulumi.StringPtrInput `pulumi:"passphrase"`
 	// Database user password
@@ -10191,8 +10174,14 @@ type DestinationConfigArgs struct {
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	// Secret Value of your Azure Data Lake Storage
+	SecretValue pulumi.StringPtrInput `pulumi:"secretValue"`
 	// Server name
 	ServerHostName pulumi.StringPtrInput `pulumi:"serverHostName"`
+	// Storage Account Name of your Azure Data Lake Storage
+	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
+	// TenantId of your Azure Data Lake Storage
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 	// SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	TunnelHost pulumi.StringPtrInput `pulumi:"tunnelHost"`
 	// SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -10201,6 +10190,8 @@ type DestinationConfigArgs struct {
 	TunnelUser pulumi.StringPtrInput `pulumi:"tunnelUser"`
 	// Database user name
 	User pulumi.StringPtrInput `pulumi:"user"`
+	// OneLake workspace name
+	WorkspaceName pulumi.StringPtrInput `pulumi:"workspaceName"`
 }
 
 func (DestinationConfigArgs) ElementType() reflect.Type {
@@ -10213,12 +10204,6 @@ func (i DestinationConfigArgs) ToDestinationConfigOutput() DestinationConfigOutp
 
 func (i DestinationConfigArgs) ToDestinationConfigOutputWithContext(ctx context.Context) DestinationConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigOutput)
-}
-
-func (i DestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DestinationConfig] {
-	return pulumix.Output[DestinationConfig]{
-		OutputState: i.ToDestinationConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DestinationConfigArgs) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
@@ -10262,12 +10247,6 @@ func (i *destinationConfigPtrType) ToDestinationConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigPtrOutput)
 }
 
-func (i *destinationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DestinationConfig] {
-	return pulumix.Output[*DestinationConfig]{
-		OutputState: i.ToDestinationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DestinationConfigOutput struct{ *pulumi.OutputState }
 
 func (DestinationConfigOutput) ElementType() reflect.Type {
@@ -10292,12 +10271,6 @@ func (o DestinationConfigOutput) ToDestinationConfigPtrOutputWithContext(ctx con
 	}).(DestinationConfigPtrOutput)
 }
 
-func (o DestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationConfig] {
-	return pulumix.Output[DestinationConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
 func (o DestinationConfigOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
@@ -10318,6 +10291,11 @@ func (o DestinationConfigOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.Catalog }).(pulumi.StringPtrOutput)
 }
 
+// ClientId of your Azure Data Lake Storage
+func (o DestinationConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
 // Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 func (o DestinationConfigOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
@@ -10331,6 +10309,11 @@ func (o DestinationConfigOutput) ClusterRegion() pulumi.StringPtrOutput {
 // Connection method. Default value: `Directly`.
 func (o DestinationConfigOutput) ConnectionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// Container Name of your Azure Data Lake Storage
+func (o DestinationConfigOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
 }
 
 // Whether to create external tables
@@ -10371,6 +10354,11 @@ func (o DestinationConfigOutput) HttpPath() pulumi.StringPtrOutput {
 // Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
 func (o DestinationConfigOutput) IsPrivateKeyEncrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.IsPrivateKeyEncrypted }).(pulumi.StringPtrOutput)
+}
+
+// OneLake lakehouse name
+func (o DestinationConfigOutput) LakehouseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.LakehouseName }).(pulumi.StringPtrOutput)
 }
 
 // In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
@@ -10433,9 +10421,24 @@ func (o DestinationConfigOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// Secret Value of your Azure Data Lake Storage
+func (o DestinationConfigOutput) SecretValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.SecretValue }).(pulumi.StringPtrOutput)
+}
+
 // Server name
 func (o DestinationConfigOutput) ServerHostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.ServerHostName }).(pulumi.StringPtrOutput)
+}
+
+// Storage Account Name of your Azure Data Lake Storage
+func (o DestinationConfigOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+// TenantId of your Azure Data Lake Storage
+func (o DestinationConfigOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 // SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -10458,6 +10461,11 @@ func (o DestinationConfigOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.User }).(pulumi.StringPtrOutput)
 }
 
+// OneLake workspace name
+func (o DestinationConfigOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
 type DestinationConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DestinationConfigPtrOutput) ElementType() reflect.Type {
@@ -10470,12 +10478,6 @@ func (o DestinationConfigPtrOutput) ToDestinationConfigPtrOutput() DestinationCo
 
 func (o DestinationConfigPtrOutput) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
 	return o
-}
-
-func (o DestinationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DestinationConfig] {
-	return pulumix.Output[*DestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DestinationConfigPtrOutput) Elem() DestinationConfigOutput {
@@ -10528,6 +10530,16 @@ func (o DestinationConfigPtrOutput) Catalog() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ClientId of your Azure Data Lake Storage
+func (o DestinationConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 func (o DestinationConfigPtrOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -10555,6 +10567,16 @@ func (o DestinationConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ConnectionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container Name of your Azure Data Lake Storage
+func (o DestinationConfigPtrOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10635,6 +10657,16 @@ func (o DestinationConfigPtrOutput) IsPrivateKeyEncrypted() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.IsPrivateKeyEncrypted
+	}).(pulumi.StringPtrOutput)
+}
+
+// OneLake lakehouse name
+func (o DestinationConfigPtrOutput) LakehouseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LakehouseName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10758,6 +10790,16 @@ func (o DestinationConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Secret Value of your Azure Data Lake Storage
+func (o DestinationConfigPtrOutput) SecretValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretValue
+	}).(pulumi.StringPtrOutput)
+}
+
 // Server name
 func (o DestinationConfigPtrOutput) ServerHostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -10765,6 +10807,26 @@ func (o DestinationConfigPtrOutput) ServerHostName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ServerHostName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Account Name of your Azure Data Lake Storage
+func (o DestinationConfigPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// TenantId of your Azure Data Lake Storage
+func (o DestinationConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10805,6 +10867,16 @@ func (o DestinationConfigPtrOutput) User() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
+// OneLake workspace name
+func (o DestinationConfigPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10853,12 +10925,6 @@ func (i DestinationFingerprintsFingerprintArgs) ToDestinationFingerprintsFingerp
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationFingerprintsFingerprintOutput)
 }
 
-func (i DestinationFingerprintsFingerprintArgs) ToOutput(ctx context.Context) pulumix.Output[DestinationFingerprintsFingerprint] {
-	return pulumix.Output[DestinationFingerprintsFingerprint]{
-		OutputState: i.ToDestinationFingerprintsFingerprintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DestinationFingerprintsFingerprintArrayInput is an input type that accepts DestinationFingerprintsFingerprintArray and DestinationFingerprintsFingerprintArrayOutput values.
 // You can construct a concrete instance of `DestinationFingerprintsFingerprintArrayInput` via:
 //
@@ -10884,12 +10950,6 @@ func (i DestinationFingerprintsFingerprintArray) ToDestinationFingerprintsFinger
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationFingerprintsFingerprintArrayOutput)
 }
 
-func (i DestinationFingerprintsFingerprintArray) ToOutput(ctx context.Context) pulumix.Output[[]DestinationFingerprintsFingerprint] {
-	return pulumix.Output[[]DestinationFingerprintsFingerprint]{
-		OutputState: i.ToDestinationFingerprintsFingerprintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DestinationFingerprintsFingerprintOutput struct{ *pulumi.OutputState }
 
 func (DestinationFingerprintsFingerprintOutput) ElementType() reflect.Type {
@@ -10902,12 +10962,6 @@ func (o DestinationFingerprintsFingerprintOutput) ToDestinationFingerprintsFinge
 
 func (o DestinationFingerprintsFingerprintOutput) ToDestinationFingerprintsFingerprintOutputWithContext(ctx context.Context) DestinationFingerprintsFingerprintOutput {
 	return o
-}
-
-func (o DestinationFingerprintsFingerprintOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationFingerprintsFingerprint] {
-	return pulumix.Output[DestinationFingerprintsFingerprint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hash of the fingerprint.
@@ -10942,12 +10996,6 @@ func (o DestinationFingerprintsFingerprintArrayOutput) ToDestinationFingerprints
 
 func (o DestinationFingerprintsFingerprintArrayOutput) ToDestinationFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) DestinationFingerprintsFingerprintArrayOutput {
 	return o
-}
-
-func (o DestinationFingerprintsFingerprintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DestinationFingerprintsFingerprint] {
-	return pulumix.Output[[]DestinationFingerprintsFingerprint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DestinationFingerprintsFingerprintArrayOutput) Index(i pulumi.IntInput) DestinationFingerprintsFingerprintOutput {
@@ -11041,12 +11089,6 @@ func (i ExternalLoggingConfigArgs) ToExternalLoggingConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingConfigOutput)
 }
 
-func (i ExternalLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ExternalLoggingConfig] {
-	return pulumix.Output[ExternalLoggingConfig]{
-		OutputState: i.ToExternalLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExternalLoggingConfigArgs) ToExternalLoggingConfigPtrOutput() ExternalLoggingConfigPtrOutput {
 	return i.ToExternalLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -11088,12 +11130,6 @@ func (i *externalLoggingConfigPtrType) ToExternalLoggingConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingConfigPtrOutput)
 }
 
-func (i *externalLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExternalLoggingConfig] {
-	return pulumix.Output[*ExternalLoggingConfig]{
-		OutputState: i.ToExternalLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExternalLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (ExternalLoggingConfigOutput) ElementType() reflect.Type {
@@ -11116,12 +11152,6 @@ func (o ExternalLoggingConfigOutput) ToExternalLoggingConfigPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLoggingConfig) *ExternalLoggingConfig {
 		return &v
 	}).(ExternalLoggingConfigPtrOutput)
-}
-
-func (o ExternalLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ExternalLoggingConfig] {
-	return pulumix.Output[ExternalLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API Key
@@ -11206,12 +11236,6 @@ func (o ExternalLoggingConfigPtrOutput) ToExternalLoggingConfigPtrOutput() Exter
 
 func (o ExternalLoggingConfigPtrOutput) ToExternalLoggingConfigPtrOutputWithContext(ctx context.Context) ExternalLoggingConfigPtrOutput {
 	return o
-}
-
-func (o ExternalLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalLoggingConfig] {
-	return pulumix.Output[*ExternalLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExternalLoggingConfigPtrOutput) Elem() ExternalLoggingConfigOutput {
@@ -11405,12 +11429,6 @@ func (i GroupUsersUserArgs) ToGroupUsersUserOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GroupUsersUserOutput)
 }
 
-func (i GroupUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[GroupUsersUser] {
-	return pulumix.Output[GroupUsersUser]{
-		OutputState: i.ToGroupUsersUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupUsersUserArrayInput is an input type that accepts GroupUsersUserArray and GroupUsersUserArrayOutput values.
 // You can construct a concrete instance of `GroupUsersUserArrayInput` via:
 //
@@ -11436,12 +11454,6 @@ func (i GroupUsersUserArray) ToGroupUsersUserArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GroupUsersUserArrayOutput)
 }
 
-func (i GroupUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GroupUsersUser] {
-	return pulumix.Output[[]GroupUsersUser]{
-		OutputState: i.ToGroupUsersUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GroupUsersUserOutput) ElementType() reflect.Type {
@@ -11454,12 +11466,6 @@ func (o GroupUsersUserOutput) ToGroupUsersUserOutput() GroupUsersUserOutput {
 
 func (o GroupUsersUserOutput) ToGroupUsersUserOutputWithContext(ctx context.Context) GroupUsersUserOutput {
 	return o
-}
-
-func (o GroupUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[GroupUsersUser] {
-	return pulumix.Output[GroupUsersUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email address that the user has associated with their user profile.
@@ -11489,12 +11495,6 @@ func (o GroupUsersUserArrayOutput) ToGroupUsersUserArrayOutput() GroupUsersUserA
 
 func (o GroupUsersUserArrayOutput) ToGroupUsersUserArrayOutputWithContext(ctx context.Context) GroupUsersUserArrayOutput {
 	return o
-}
-
-func (o GroupUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupUsersUser] {
-	return pulumix.Output[[]GroupUsersUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupUsersUserArrayOutput) Index(i pulumi.IntInput) GroupUsersUserOutput {
@@ -11544,12 +11544,6 @@ func (i TeamConnectorMembershipConnectorArgs) ToTeamConnectorMembershipConnector
 	return pulumi.ToOutputWithContext(ctx, i).(TeamConnectorMembershipConnectorOutput)
 }
 
-func (i TeamConnectorMembershipConnectorArgs) ToOutput(ctx context.Context) pulumix.Output[TeamConnectorMembershipConnector] {
-	return pulumix.Output[TeamConnectorMembershipConnector]{
-		OutputState: i.ToTeamConnectorMembershipConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TeamConnectorMembershipConnectorArrayInput is an input type that accepts TeamConnectorMembershipConnectorArray and TeamConnectorMembershipConnectorArrayOutput values.
 // You can construct a concrete instance of `TeamConnectorMembershipConnectorArrayInput` via:
 //
@@ -11575,12 +11569,6 @@ func (i TeamConnectorMembershipConnectorArray) ToTeamConnectorMembershipConnecto
 	return pulumi.ToOutputWithContext(ctx, i).(TeamConnectorMembershipConnectorArrayOutput)
 }
 
-func (i TeamConnectorMembershipConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]TeamConnectorMembershipConnector] {
-	return pulumix.Output[[]TeamConnectorMembershipConnector]{
-		OutputState: i.ToTeamConnectorMembershipConnectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TeamConnectorMembershipConnectorOutput struct{ *pulumi.OutputState }
 
 func (TeamConnectorMembershipConnectorOutput) ElementType() reflect.Type {
@@ -11593,12 +11581,6 @@ func (o TeamConnectorMembershipConnectorOutput) ToTeamConnectorMembershipConnect
 
 func (o TeamConnectorMembershipConnectorOutput) ToTeamConnectorMembershipConnectorOutputWithContext(ctx context.Context) TeamConnectorMembershipConnectorOutput {
 	return o
-}
-
-func (o TeamConnectorMembershipConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[TeamConnectorMembershipConnector] {
-	return pulumix.Output[TeamConnectorMembershipConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The connector unique identifier
@@ -11628,12 +11610,6 @@ func (o TeamConnectorMembershipConnectorArrayOutput) ToTeamConnectorMembershipCo
 
 func (o TeamConnectorMembershipConnectorArrayOutput) ToTeamConnectorMembershipConnectorArrayOutputWithContext(ctx context.Context) TeamConnectorMembershipConnectorArrayOutput {
 	return o
-}
-
-func (o TeamConnectorMembershipConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TeamConnectorMembershipConnector] {
-	return pulumix.Output[[]TeamConnectorMembershipConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamConnectorMembershipConnectorArrayOutput) Index(i pulumi.IntInput) TeamConnectorMembershipConnectorOutput {
@@ -11683,12 +11659,6 @@ func (i TeamGroupMembershipGroupArgs) ToTeamGroupMembershipGroupOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TeamGroupMembershipGroupOutput)
 }
 
-func (i TeamGroupMembershipGroupArgs) ToOutput(ctx context.Context) pulumix.Output[TeamGroupMembershipGroup] {
-	return pulumix.Output[TeamGroupMembershipGroup]{
-		OutputState: i.ToTeamGroupMembershipGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TeamGroupMembershipGroupArrayInput is an input type that accepts TeamGroupMembershipGroupArray and TeamGroupMembershipGroupArrayOutput values.
 // You can construct a concrete instance of `TeamGroupMembershipGroupArrayInput` via:
 //
@@ -11714,12 +11684,6 @@ func (i TeamGroupMembershipGroupArray) ToTeamGroupMembershipGroupArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TeamGroupMembershipGroupArrayOutput)
 }
 
-func (i TeamGroupMembershipGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]TeamGroupMembershipGroup] {
-	return pulumix.Output[[]TeamGroupMembershipGroup]{
-		OutputState: i.ToTeamGroupMembershipGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TeamGroupMembershipGroupOutput struct{ *pulumi.OutputState }
 
 func (TeamGroupMembershipGroupOutput) ElementType() reflect.Type {
@@ -11732,12 +11696,6 @@ func (o TeamGroupMembershipGroupOutput) ToTeamGroupMembershipGroupOutput() TeamG
 
 func (o TeamGroupMembershipGroupOutput) ToTeamGroupMembershipGroupOutputWithContext(ctx context.Context) TeamGroupMembershipGroupOutput {
 	return o
-}
-
-func (o TeamGroupMembershipGroupOutput) ToOutput(ctx context.Context) pulumix.Output[TeamGroupMembershipGroup] {
-	return pulumix.Output[TeamGroupMembershipGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time the membership was created
@@ -11767,12 +11725,6 @@ func (o TeamGroupMembershipGroupArrayOutput) ToTeamGroupMembershipGroupArrayOutp
 
 func (o TeamGroupMembershipGroupArrayOutput) ToTeamGroupMembershipGroupArrayOutputWithContext(ctx context.Context) TeamGroupMembershipGroupArrayOutput {
 	return o
-}
-
-func (o TeamGroupMembershipGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TeamGroupMembershipGroup] {
-	return pulumix.Output[[]TeamGroupMembershipGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamGroupMembershipGroupArrayOutput) Index(i pulumi.IntInput) TeamGroupMembershipGroupOutput {
@@ -11818,12 +11770,6 @@ func (i TeamUserMembershipUserArgs) ToTeamUserMembershipUserOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TeamUserMembershipUserOutput)
 }
 
-func (i TeamUserMembershipUserArgs) ToOutput(ctx context.Context) pulumix.Output[TeamUserMembershipUser] {
-	return pulumix.Output[TeamUserMembershipUser]{
-		OutputState: i.ToTeamUserMembershipUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TeamUserMembershipUserArrayInput is an input type that accepts TeamUserMembershipUserArray and TeamUserMembershipUserArrayOutput values.
 // You can construct a concrete instance of `TeamUserMembershipUserArrayInput` via:
 //
@@ -11849,12 +11795,6 @@ func (i TeamUserMembershipUserArray) ToTeamUserMembershipUserArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(TeamUserMembershipUserArrayOutput)
 }
 
-func (i TeamUserMembershipUserArray) ToOutput(ctx context.Context) pulumix.Output[[]TeamUserMembershipUser] {
-	return pulumix.Output[[]TeamUserMembershipUser]{
-		OutputState: i.ToTeamUserMembershipUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TeamUserMembershipUserOutput struct{ *pulumi.OutputState }
 
 func (TeamUserMembershipUserOutput) ElementType() reflect.Type {
@@ -11867,12 +11807,6 @@ func (o TeamUserMembershipUserOutput) ToTeamUserMembershipUserOutput() TeamUserM
 
 func (o TeamUserMembershipUserOutput) ToTeamUserMembershipUserOutputWithContext(ctx context.Context) TeamUserMembershipUserOutput {
 	return o
-}
-
-func (o TeamUserMembershipUserOutput) ToOutput(ctx context.Context) pulumix.Output[TeamUserMembershipUser] {
-	return pulumix.Output[TeamUserMembershipUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The team's role that links the team and the user
@@ -11897,12 +11831,6 @@ func (o TeamUserMembershipUserArrayOutput) ToTeamUserMembershipUserArrayOutput()
 
 func (o TeamUserMembershipUserArrayOutput) ToTeamUserMembershipUserArrayOutputWithContext(ctx context.Context) TeamUserMembershipUserArrayOutput {
 	return o
-}
-
-func (o TeamUserMembershipUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TeamUserMembershipUser] {
-	return pulumix.Output[[]TeamUserMembershipUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamUserMembershipUserArrayOutput) Index(i pulumi.IntInput) TeamUserMembershipUserOutput {
@@ -11972,12 +11900,6 @@ func (i GetConnectorCertificatesCertificateArgs) ToGetConnectorCertificatesCerti
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorCertificatesCertificateOutput)
 }
 
-func (i GetConnectorCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorCertificatesCertificate] {
-	return pulumix.Output[GetConnectorCertificatesCertificate]{
-		OutputState: i.ToGetConnectorCertificatesCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorCertificatesCertificateArrayInput is an input type that accepts GetConnectorCertificatesCertificateArray and GetConnectorCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetConnectorCertificatesCertificateArrayInput` via:
 //
@@ -12003,12 +11925,6 @@ func (i GetConnectorCertificatesCertificateArray) ToGetConnectorCertificatesCert
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorCertificatesCertificateArrayOutput)
 }
 
-func (i GetConnectorCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorCertificatesCertificate] {
-	return pulumix.Output[[]GetConnectorCertificatesCertificate]{
-		OutputState: i.ToGetConnectorCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorCertificatesCertificateOutput) ElementType() reflect.Type {
@@ -12021,12 +11937,6 @@ func (o GetConnectorCertificatesCertificateOutput) ToGetConnectorCertificatesCer
 
 func (o GetConnectorCertificatesCertificateOutput) ToGetConnectorCertificatesCertificateOutputWithContext(ctx context.Context) GetConnectorCertificatesCertificateOutput {
 	return o
-}
-
-func (o GetConnectorCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorCertificatesCertificate] {
-	return pulumix.Output[GetConnectorCertificatesCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hash of the fingerprint.
@@ -12083,12 +11993,6 @@ func (o GetConnectorCertificatesCertificateArrayOutput) ToGetConnectorCertificat
 	return o
 }
 
-func (o GetConnectorCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorCertificatesCertificate] {
-	return pulumix.Output[[]GetConnectorCertificatesCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetConnectorCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetConnectorCertificatesCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorCertificatesCertificate {
 		return vs[0].([]GetConnectorCertificatesCertificate)[vs[1].(int)]
@@ -12096,445 +12000,460 @@ func (o GetConnectorCertificatesCertificateArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetConnectorConfig struct {
-	AbsConnectionMethod                    string                                          `pulumi:"absConnectionMethod"`
-	AbsConnectionString                    string                                          `pulumi:"absConnectionString"`
-	AbsContainerAddress                    string                                          `pulumi:"absContainerAddress"`
-	AbsContainerName                       string                                          `pulumi:"absContainerName"`
-	AbsHostIp                              string                                          `pulumi:"absHostIp"`
-	AbsHostUser                            string                                          `pulumi:"absHostUser"`
-	AbsPrefix                              string                                          `pulumi:"absPrefix"`
-	AbsPublicKey                           string                                          `pulumi:"absPublicKey"`
-	AccessKey                              string                                          `pulumi:"accessKey"`
-	AccessKeyId                            string                                          `pulumi:"accessKeyId"`
-	AccessKeySecret                        string                                          `pulumi:"accessKeySecret"`
-	AccessToken                            string                                          `pulumi:"accessToken"`
-	AccessType                             string                                          `pulumi:"accessType"`
-	Account                                string                                          `pulumi:"account"`
-	AccountId                              string                                          `pulumi:"accountId"`
-	AccountIds                             []string                                        `pulumi:"accountIds"`
-	AccountKey                             string                                          `pulumi:"accountKey"`
-	AccountName                            string                                          `pulumi:"accountName"`
-	AccountSyncMode                        string                                          `pulumi:"accountSyncMode"`
-	Accounts                               []string                                        `pulumi:"accounts"`
-	AccountsRedditAds                      []GetConnectorConfigAccountsRedditAd            `pulumi:"accountsRedditAds"`
-	AccountsSyncMode                       string                                          `pulumi:"accountsSyncMode"`
-	ActionBreakdowns                       []string                                        `pulumi:"actionBreakdowns"`
-	ActionReportTime                       string                                          `pulumi:"actionReportTime"`
-	AdAnalytics                            string                                          `pulumi:"adAnalytics"`
-	AdUnitView                             string                                          `pulumi:"adUnitView"`
-	AdminApiKey                            string                                          `pulumi:"adminApiKey"`
-	AdobeAnalyticsConfigurations           []GetConnectorConfigAdobeAnalyticsConfiguration `pulumi:"adobeAnalyticsConfigurations"`
-	Advertisables                          []string                                        `pulumi:"advertisables"`
-	Advertisers                            []string                                        `pulumi:"advertisers"`
-	AdvertisersIds                         []string                                        `pulumi:"advertisersIds"`
-	AdvertisersSyncMode                    string                                          `pulumi:"advertisersSyncMode"`
-	AgentHost                              string                                          `pulumi:"agentHost"`
-	AgentOraHome                           string                                          `pulumi:"agentOraHome"`
-	AgentPassword                          string                                          `pulumi:"agentPassword"`
-	AgentPort                              string                                          `pulumi:"agentPort"`
-	AgentPublicCert                        string                                          `pulumi:"agentPublicCert"`
-	AgentUser                              string                                          `pulumi:"agentUser"`
-	Aggregation                            string                                          `pulumi:"aggregation"`
-	AlwaysEncrypted                        string                                          `pulumi:"alwaysEncrypted"`
-	ApiAccessToken                         string                                          `pulumi:"apiAccessToken"`
-	ApiId                                  string                                          `pulumi:"apiId"`
-	ApiKey                                 string                                          `pulumi:"apiKey"`
-	ApiKeys                                []string                                        `pulumi:"apiKeys"`
-	ApiQuota                               string                                          `pulumi:"apiQuota"`
-	ApiRequestsPerMinute                   string                                          `pulumi:"apiRequestsPerMinute"`
-	ApiSecret                              string                                          `pulumi:"apiSecret"`
-	ApiSecretKey                           string                                          `pulumi:"apiSecretKey"`
-	ApiToken                               string                                          `pulumi:"apiToken"`
-	ApiType                                string                                          `pulumi:"apiType"`
-	ApiUrl                                 string                                          `pulumi:"apiUrl"`
-	ApiUsage                               string                                          `pulumi:"apiUsage"`
-	ApiVersion                             string                                          `pulumi:"apiVersion"`
-	AppId                                  string                                          `pulumi:"appId"`
-	AppIds                                 []string                                        `pulumi:"appIds"`
-	AppIdsAppsflyers                       []GetConnectorConfigAppIdsAppsflyer             `pulumi:"appIdsAppsflyers"`
-	AppSpecificPassword                    string                                          `pulumi:"appSpecificPassword"`
-	AppSyncMode                            string                                          `pulumi:"appSyncMode"`
-	AppendFileOption                       string                                          `pulumi:"appendFileOption"`
-	ApplicationKey                         string                                          `pulumi:"applicationKey"`
-	Apps                                   []string                                        `pulumi:"apps"`
-	ArchiveLogFormat                       string                                          `pulumi:"archiveLogFormat"`
-	ArchiveLogPath                         string                                          `pulumi:"archiveLogPath"`
-	ArchivePattern                         string                                          `pulumi:"archivePattern"`
-	AreSoapCredentialsProvided             string                                          `pulumi:"areSoapCredentialsProvided"`
-	AsbIp                                  string                                          `pulumi:"asbIp"`
-	AsmOption                              string                                          `pulumi:"asmOption"`
-	AsmOracleHome                          string                                          `pulumi:"asmOracleHome"`
-	AsmPassword                            string                                          `pulumi:"asmPassword"`
-	AsmTns                                 string                                          `pulumi:"asmTns"`
-	AsmUser                                string                                          `pulumi:"asmUser"`
-	AttributionWindow                      string                                          `pulumi:"attributionWindow"`
-	AttributionWindowSize                  string                                          `pulumi:"attributionWindowSize"`
-	Auth                                   string                                          `pulumi:"auth"`
-	AuthMethod                             string                                          `pulumi:"authMethod"`
-	AuthMode                               string                                          `pulumi:"authMode"`
-	AuthType                               string                                          `pulumi:"authType"`
-	AuthorizationMethod                    string                                          `pulumi:"authorizationMethod"`
-	AwsRegionCode                          string                                          `pulumi:"awsRegionCode"`
-	BaseCurrency                           string                                          `pulumi:"baseCurrency"`
-	BaseDomain                             string                                          `pulumi:"baseDomain"`
-	BaseId                                 string                                          `pulumi:"baseId"`
-	BaseUrl                                string                                          `pulumi:"baseUrl"`
-	BearerToken                            string                                          `pulumi:"bearerToken"`
-	BlobSasUrl                             string                                          `pulumi:"blobSasUrl"`
-	Breakdowns                             []string                                        `pulumi:"breakdowns"`
-	Bucket                                 string                                          `pulumi:"bucket"`
-	BucketName                             string                                          `pulumi:"bucketName"`
-	BucketService                          string                                          `pulumi:"bucketService"`
-	BusinessId                             string                                          `pulumi:"businessId"`
-	BusinessUnitId                         string                                          `pulumi:"businessUnitId"`
-	Certificate                            string                                          `pulumi:"certificate"`
-	ClickAttributionWindow                 string                                          `pulumi:"clickAttributionWindow"`
-	Client                                 string                                          `pulumi:"client"`
-	ClientCert                             string                                          `pulumi:"clientCert"`
-	ClientCertKey                          string                                          `pulumi:"clientCertKey"`
-	ClientId                               string                                          `pulumi:"clientId"`
-	ClientKey                              string                                          `pulumi:"clientKey"`
-	ClientName                             string                                          `pulumi:"clientName"`
-	ClientSecret                           string                                          `pulumi:"clientSecret"`
-	CloudStorageType                       string                                          `pulumi:"cloudStorageType"`
-	Columns                                []string                                        `pulumi:"columns"`
-	CompanyId                              string                                          `pulumi:"companyId"`
-	CompanyKey                             string                                          `pulumi:"companyKey"`
-	CompanyRequestToken                    string                                          `pulumi:"companyRequestToken"`
-	CompanyUuid                            string                                          `pulumi:"companyUuid"`
-	Compression                            string                                          `pulumi:"compression"`
-	ConfigMethod                           string                                          `pulumi:"configMethod"`
-	ConfigRepositoryUrl                    string                                          `pulumi:"configRepositoryUrl"`
-	ConfigType                             string                                          `pulumi:"configType"`
-	ConnectingUser                         string                                          `pulumi:"connectingUser"`
-	ConnectingUserEmail                    string                                          `pulumi:"connectingUserEmail"`
-	ConnectionMethod                       string                                          `pulumi:"connectionMethod"`
-	ConnectionString                       string                                          `pulumi:"connectionString"`
-	ConnectionType                         string                                          `pulumi:"connectionType"`
-	ConsumerGroup                          string                                          `pulumi:"consumerGroup"`
-	ConsumerKey                            string                                          `pulumi:"consumerKey"`
-	ConsumerSecret                         string                                          `pulumi:"consumerSecret"`
-	ContainerAddress                       string                                          `pulumi:"containerAddress"`
-	ContainerName                          string                                          `pulumi:"containerName"`
-	ContentOwnerId                         string                                          `pulumi:"contentOwnerId"`
-	ConversationWebhookUrl                 string                                          `pulumi:"conversationWebhookUrl"`
-	ConversionDimensions                   []string                                        `pulumi:"conversionDimensions"`
-	ConversionReportTime                   string                                          `pulumi:"conversionReportTime"`
-	ConversionWindowSize                   string                                          `pulumi:"conversionWindowSize"`
-	CsvDefinition                          string                                          `pulumi:"csvDefinition"`
-	Currency                               string                                          `pulumi:"currency"`
-	CustomEventSyncMode                    string                                          `pulumi:"customEventSyncMode"`
-	CustomEvents                           []string                                        `pulumi:"customEvents"`
-	CustomFieldIds                         []string                                        `pulumi:"customFieldIds"`
-	CustomFloodlightVariables              []string                                        `pulumi:"customFloodlightVariables"`
-	CustomReports                          []GetConnectorConfigCustomReport                `pulumi:"customReports"`
-	CustomTables                           []GetConnectorConfigCustomTable                 `pulumi:"customTables"`
-	CustomerId                             string                                          `pulumi:"customerId"`
-	CustomerListId                         string                                          `pulumi:"customerListId"`
-	DailyApiCallLimit                      string                                          `pulumi:"dailyApiCallLimit"`
-	DataAccessMethod                       string                                          `pulumi:"dataAccessMethod"`
-	DataCenter                             string                                          `pulumi:"dataCenter"`
-	DataSetName                            string                                          `pulumi:"dataSetName"`
-	Database                               string                                          `pulumi:"database"`
-	DatasetId                              string                                          `pulumi:"datasetId"`
-	Datasource                             string                                          `pulumi:"datasource"`
-	DateGranularity                        string                                          `pulumi:"dateGranularity"`
-	Delimiter                              string                                          `pulumi:"delimiter"`
-	DimensionAttributes                    []string                                        `pulumi:"dimensionAttributes"`
-	Dimensions                             []string                                        `pulumi:"dimensions"`
-	Domain                                 string                                          `pulumi:"domain"`
-	DomainHostName                         string                                          `pulumi:"domainHostName"`
-	DomainName                             string                                          `pulumi:"domainName"`
-	DomainType                             string                                          `pulumi:"domainType"`
-	Elements                               []string                                        `pulumi:"elements"`
-	Email                                  string                                          `pulumi:"email"`
-	EmptyHeader                            string                                          `pulumi:"emptyHeader"`
-	EnableAllDimensionCombinations         string                                          `pulumi:"enableAllDimensionCombinations"`
-	EnableArchiveLogOnly                   string                                          `pulumi:"enableArchiveLogOnly"`
-	EnableEnrichments                      string                                          `pulumi:"enableEnrichments"`
-	EnableExports                          string                                          `pulumi:"enableExports"`
-	EnableTde                              string                                          `pulumi:"enableTde"`
-	EncodedPublicKey                       string                                          `pulumi:"encodedPublicKey"`
-	EncryptionKey                          string                                          `pulumi:"encryptionKey"`
-	Endpoint                               string                                          `pulumi:"endpoint"`
-	EngagementAttributionWindow            string                                          `pulumi:"engagementAttributionWindow"`
-	EnrichedExport                         string                                          `pulumi:"enrichedExport"`
-	EntityId                               string                                          `pulumi:"entityId"`
-	Environment                            string                                          `pulumi:"environment"`
-	EscapeChar                             string                                          `pulumi:"escapeChar"`
-	EuRegion                               string                                          `pulumi:"euRegion"`
-	Events                                 []string                                        `pulumi:"events"`
-	ExportStorageType                      string                                          `pulumi:"exportStorageType"`
-	ExternalId                             string                                          `pulumi:"externalId"`
-	Fields                                 []string                                        `pulumi:"fields"`
-	FileType                               string                                          `pulumi:"fileType"`
-	Filter                                 string                                          `pulumi:"filter"`
-	FinanceAccountSyncMode                 string                                          `pulumi:"financeAccountSyncMode"`
-	FinanceAccounts                        []string                                        `pulumi:"financeAccounts"`
-	Folder                                 string                                          `pulumi:"folder"`
-	FolderId                               string                                          `pulumi:"folderId"`
-	FolderPath                             string                                          `pulumi:"folderPath"`
-	ForecastId                             string                                          `pulumi:"forecastId"`
-	FtpHost                                string                                          `pulumi:"ftpHost"`
-	FtpPassword                            string                                          `pulumi:"ftpPassword"`
-	FtpPort                                string                                          `pulumi:"ftpPort"`
-	FtpUser                                string                                          `pulumi:"ftpUser"`
-	Function                               string                                          `pulumi:"function"`
-	FunctionApp                            string                                          `pulumi:"functionApp"`
-	FunctionKey                            string                                          `pulumi:"functionKey"`
-	FunctionName                           string                                          `pulumi:"functionName"`
-	FunctionTrigger                        string                                          `pulumi:"functionTrigger"`
-	GcsBucket                              string                                          `pulumi:"gcsBucket"`
-	GcsFolder                              string                                          `pulumi:"gcsFolder"`
-	GroupName                              string                                          `pulumi:"groupName"`
-	HasManagePermissions                   string                                          `pulumi:"hasManagePermissions"`
-	HomeFolder                             string                                          `pulumi:"homeFolder"`
-	Host                                   string                                          `pulumi:"host"`
-	HostIp                                 string                                          `pulumi:"hostIp"`
-	HostUser                               string                                          `pulumi:"hostUser"`
-	Hosts                                  []string                                        `pulumi:"hosts"`
-	Identity                               string                                          `pulumi:"identity"`
-	Instance                               string                                          `pulumi:"instance"`
-	InstanceNumber                         string                                          `pulumi:"instanceNumber"`
-	InstanceUrl                            string                                          `pulumi:"instanceUrl"`
-	IntegrationKey                         string                                          `pulumi:"integrationKey"`
-	IsAccountLevelConnector                string                                          `pulumi:"isAccountLevelConnector"`
-	IsAuth2Enabled                         string                                          `pulumi:"isAuth2Enabled"`
-	IsCustomApiCredentials                 string                                          `pulumi:"isCustomApiCredentials"`
-	IsFtps                                 string                                          `pulumi:"isFtps"`
-	IsKeypair                              string                                          `pulumi:"isKeypair"`
-	IsMultiEntityFeatureEnabled            string                                          `pulumi:"isMultiEntityFeatureEnabled"`
-	IsNewPackage                           string                                          `pulumi:"isNewPackage"`
-	IsPrivateKeyEncrypted                  string                                          `pulumi:"isPrivateKeyEncrypted"`
-	IsPrivateLinkRequired                  string                                          `pulumi:"isPrivateLinkRequired"`
-	IsPublic                               string                                          `pulumi:"isPublic"`
-	IsSailthruConnectEnabled               string                                          `pulumi:"isSailthruConnectEnabled"`
-	IsSecure                               string                                          `pulumi:"isSecure"`
-	IsSingleTableMode                      string                                          `pulumi:"isSingleTableMode"`
-	IsVendor                               string                                          `pulumi:"isVendor"`
-	JsonDeliveryMode                       string                                          `pulumi:"jsonDeliveryMode"`
-	Key                                    string                                          `pulumi:"key"`
-	KeyPassword                            string                                          `pulumi:"keyPassword"`
-	KeyStoreType                           string                                          `pulumi:"keyStoreType"`
-	Keystore                               string                                          `pulumi:"keystore"`
-	KeystorePassword                       string                                          `pulumi:"keystorePassword"`
-	LastSyncedChangesUtc_                  string                                          `pulumi:"lastSyncedChangesUtc_"`
-	LatestVersion                          string                                          `pulumi:"latestVersion"`
-	LineSeparator                          string                                          `pulumi:"lineSeparator"`
-	ListStrategy                           string                                          `pulumi:"listStrategy"`
-	ListSyncMode                           string                                          `pulumi:"listSyncMode"`
-	LogJournal                             string                                          `pulumi:"logJournal"`
-	LogJournalSchema                       string                                          `pulumi:"logJournalSchema"`
-	Login                                  string                                          `pulumi:"login"`
-	LoginPassword                          string                                          `pulumi:"loginPassword"`
-	ManagerAccounts                        []string                                        `pulumi:"managerAccounts"`
-	MerchantId                             string                                          `pulumi:"merchantId"`
-	MessageType                            string                                          `pulumi:"messageType"`
-	Metrics                                []string                                        `pulumi:"metrics"`
-	NamedRange                             string                                          `pulumi:"namedRange"`
-	Namespace                              string                                          `pulumi:"namespace"`
-	NetworkCode                            string                                          `pulumi:"networkCode"`
-	NullSequence                           string                                          `pulumi:"nullSequence"`
-	OauthToken                             string                                          `pulumi:"oauthToken"`
-	OauthTokenSecret                       string                                          `pulumi:"oauthTokenSecret"`
-	OnError                                string                                          `pulumi:"onError"`
-	OnPremise                              string                                          `pulumi:"onPremise"`
-	Organization                           string                                          `pulumi:"organization"`
-	OrganizationId                         string                                          `pulumi:"organizationId"`
-	Organizations                          []string                                        `pulumi:"organizations"`
-	PackedModeTables                       []string                                        `pulumi:"packedModeTables"`
-	PackingMode                            string                                          `pulumi:"packingMode"`
-	Pages                                  []string                                        `pulumi:"pages"`
-	Partners                               []string                                        `pulumi:"partners"`
-	Passphrase                             string                                          `pulumi:"passphrase"`
-	Password                               string                                          `pulumi:"password"`
-	Pat                                    string                                          `pulumi:"pat"`
-	PatName                                string                                          `pulumi:"patName"`
-	PatSecret                              string                                          `pulumi:"patSecret"`
-	Path                                   string                                          `pulumi:"path"`
-	Pattern                                string                                          `pulumi:"pattern"`
-	PdbName                                string                                          `pulumi:"pdbName"`
-	PemCertificate                         string                                          `pulumi:"pemCertificate"`
-	PemPrivateKey                          string                                          `pulumi:"pemPrivateKey"`
-	PerInteractionDimensions               []string                                        `pulumi:"perInteractionDimensions"`
-	PersonalAccessToken                    string                                          `pulumi:"personalAccessToken"`
-	PgpPassPhrase                          string                                          `pulumi:"pgpPassPhrase"`
-	PgpSecretKey                           string                                          `pulumi:"pgpSecretKey"`
-	PhoneNumber                            string                                          `pulumi:"phoneNumber"`
-	Port                                   string                                          `pulumi:"port"`
-	PostClickAttributionWindowSize         string                                          `pulumi:"postClickAttributionWindowSize"`
-	PrebuiltReport                         string                                          `pulumi:"prebuiltReport"`
-	Prefix                                 string                                          `pulumi:"prefix"`
-	PrimaryKeys                            []string                                        `pulumi:"primaryKeys"`
-	PrivateKey                             string                                          `pulumi:"privateKey"`
-	Profiles                               []string                                        `pulumi:"profiles"`
-	ProjectCredentials                     []GetConnectorConfigProjectCredential           `pulumi:"projectCredentials"`
-	ProjectId                              string                                          `pulumi:"projectId"`
-	Projects                               []string                                        `pulumi:"projects"`
-	Properties                             []string                                        `pulumi:"properties"`
-	PublicKey                              string                                          `pulumi:"publicKey"`
-	PublicationName                        string                                          `pulumi:"publicationName"`
-	QueryId                                string                                          `pulumi:"queryId"`
-	QueryParamValue                        string                                          `pulumi:"queryParamValue"`
-	RefreshTokenExpiresAt                  string                                          `pulumi:"refreshTokenExpiresAt"`
-	Region                                 string                                          `pulumi:"region"`
-	ReplicaId                              string                                          `pulumi:"replicaId"`
-	ReplicationSlot                        string                                          `pulumi:"replicationSlot"`
-	ReportConfigurationIds                 []string                                        `pulumi:"reportConfigurationIds"`
-	ReportFormatType                       string                                          `pulumi:"reportFormatType"`
-	ReportSuites                           []string                                        `pulumi:"reportSuites"`
-	ReportTimezone                         string                                          `pulumi:"reportTimezone"`
-	ReportType                             string                                          `pulumi:"reportType"`
-	ReportUrl                              string                                          `pulumi:"reportUrl"`
-	Reports                                []GetConnectorConfigReport                      `pulumi:"reports"`
-	ReportsLinkedinAds                     []string                                        `pulumi:"reportsLinkedinAds"`
-	Repositories                           []string                                        `pulumi:"repositories"`
-	ResourceToken                          string                                          `pulumi:"resourceToken"`
-	ResourceUrl                            string                                          `pulumi:"resourceUrl"`
-	RestApiLimit                           string                                          `pulumi:"restApiLimit"`
-	RfcLibraryPath                         string                                          `pulumi:"rfcLibraryPath"`
-	Role                                   string                                          `pulumi:"role"`
-	RoleArn                                string                                          `pulumi:"roleArn"`
-	RollbackWindowSize                     string                                          `pulumi:"rollbackWindowSize"`
-	S3Bucket                               string                                          `pulumi:"s3Bucket"`
-	S3ExportBucket                         string                                          `pulumi:"s3ExportBucket"`
-	S3ExportFolder                         string                                          `pulumi:"s3ExportFolder"`
-	S3ExportRoleArn                        string                                          `pulumi:"s3ExportRoleArn"`
-	S3RoleArn                              string                                          `pulumi:"s3RoleArn"`
-	S3bucket                               string                                          `pulumi:"s3bucket"`
-	S3externalId                           string                                          `pulumi:"s3externalId"`
-	S3folder                               string                                          `pulumi:"s3folder"`
-	S3path                                 string                                          `pulumi:"s3path"`
-	S3roleArn                              string                                          `pulumi:"s3roleArn"`
-	SalesAccountSyncMode                   string                                          `pulumi:"salesAccountSyncMode"`
-	SalesAccounts                          []string                                        `pulumi:"salesAccounts"`
-	SalesforceSecurityToken                string                                          `pulumi:"salesforceSecurityToken"`
-	SandboxAccount                         string                                          `pulumi:"sandboxAccount"`
-	SapSchema                              string                                          `pulumi:"sapSchema"`
-	SapUser                                string                                          `pulumi:"sapUser"`
-	SaslMechanism                          string                                          `pulumi:"saslMechanism"`
-	SaslPlainKey                           string                                          `pulumi:"saslPlainKey"`
-	SaslPlainSecret                        string                                          `pulumi:"saslPlainSecret"`
-	SaslScram256Key                        string                                          `pulumi:"saslScram256Key"`
-	SaslScram256Secret                     string                                          `pulumi:"saslScram256Secret"`
-	SaslScram512Key                        string                                          `pulumi:"saslScram512Key"`
-	SaslScram512Secret                     string                                          `pulumi:"saslScram512Secret"`
-	SchemaRegistryCredentialsSource        string                                          `pulumi:"schemaRegistryCredentialsSource"`
-	SchemaRegistryKey                      string                                          `pulumi:"schemaRegistryKey"`
-	SchemaRegistrySecret                   string                                          `pulumi:"schemaRegistrySecret"`
-	SchemaRegistryUrls                     []string                                        `pulumi:"schemaRegistryUrls"`
-	Secret                                 string                                          `pulumi:"secret"`
-	SecretKey                              string                                          `pulumi:"secretKey"`
-	Secrets                                string                                          `pulumi:"secrets"`
-	SecretsLists                           []GetConnectorConfigSecretsList                 `pulumi:"secretsLists"`
-	SecurityProtocol                       string                                          `pulumi:"securityProtocol"`
-	Segments                               []string                                        `pulumi:"segments"`
-	SelectedExports                        []string                                        `pulumi:"selectedExports"`
-	SenderId                               string                                          `pulumi:"senderId"`
-	SenderPassword                         string                                          `pulumi:"senderPassword"`
-	ServerAddress                          string                                          `pulumi:"serverAddress"`
-	ServerUrl                              string                                          `pulumi:"serverUrl"`
-	Servers                                []string                                        `pulumi:"servers"`
-	ServiceAccount                         string                                          `pulumi:"serviceAccount"`
-	ServiceAccountEmail                    string                                          `pulumi:"serviceAccountEmail"`
-	ServiceAccountKey                      string                                          `pulumi:"serviceAccountKey"`
-	ServiceVersion                         string                                          `pulumi:"serviceVersion"`
-	SftpHost                               string                                          `pulumi:"sftpHost"`
-	SftpIsKeyPair                          string                                          `pulumi:"sftpIsKeyPair"`
-	SftpPassword                           string                                          `pulumi:"sftpPassword"`
-	SftpPort                               string                                          `pulumi:"sftpPort"`
-	SftpPublicKey                          string                                          `pulumi:"sftpPublicKey"`
-	SftpUser                               string                                          `pulumi:"sftpUser"`
-	ShareUrl                               string                                          `pulumi:"shareUrl"`
-	SheetId                                string                                          `pulumi:"sheetId"`
-	Shop                                   string                                          `pulumi:"shop"`
-	ShortCode                              string                                          `pulumi:"shortCode"`
-	ShowRecordsWithNoMetrics               string                                          `pulumi:"showRecordsWithNoMetrics"`
-	Sid                                    string                                          `pulumi:"sid"`
-	SignerPublicKey                        string                                          `pulumi:"signerPublicKey"`
-	SiteAddress                            string                                          `pulumi:"siteAddress"`
-	SiteId                                 string                                          `pulumi:"siteId"`
-	SiteName                               string                                          `pulumi:"siteName"`
-	SiteUrls                               []string                                        `pulumi:"siteUrls"`
-	SkipAfter                              string                                          `pulumi:"skipAfter"`
-	SkipBefore                             string                                          `pulumi:"skipBefore"`
-	SoapUri                                string                                          `pulumi:"soapUri"`
-	SocialDataSyncTimeframe                string                                          `pulumi:"socialDataSyncTimeframe"`
-	Source                                 string                                          `pulumi:"source"`
-	StoreHash                              string                                          `pulumi:"storeHash"`
-	SubDomain                              string                                          `pulumi:"subDomain"`
-	Subdomain                              string                                          `pulumi:"subdomain"`
-	SubscriberName                         string                                          `pulumi:"subscriberName"`
-	Subscription                           string                                          `pulumi:"subscription"`
-	SupportConnectedAccountsSync           string                                          `pulumi:"supportConnectedAccountsSync"`
-	SupportNestedColumns                   string                                          `pulumi:"supportNestedColumns"`
-	SurveyIds                              string                                          `pulumi:"surveyIds"`
-	SwipeAttributionWindow                 string                                          `pulumi:"swipeAttributionWindow"`
-	SyncDataLocker                         string                                          `pulumi:"syncDataLocker"`
-	SyncFormat                             string                                          `pulumi:"syncFormat"`
-	SyncFormulaFields                      string                                          `pulumi:"syncFormulaFields"`
-	SyncMetadata                           string                                          `pulumi:"syncMetadata"`
-	SyncMethod                             string                                          `pulumi:"syncMethod"`
-	SyncMode                               string                                          `pulumi:"syncMode"`
-	SyncMultipleAccounts                   string                                          `pulumi:"syncMultipleAccounts"`
-	SyncPackMode                           string                                          `pulumi:"syncPackMode"`
-	SyncPullApi                            string                                          `pulumi:"syncPullApi"`
-	SyncType                               string                                          `pulumi:"syncType"`
-	Sysnr                                  string                                          `pulumi:"sysnr"`
-	TableName                              string                                          `pulumi:"tableName"`
-	TdeCertificate                         string                                          `pulumi:"tdeCertificate"`
-	TdeCertificateName                     string                                          `pulumi:"tdeCertificateName"`
-	TdePassword                            string                                          `pulumi:"tdePassword"`
-	TdePrivateKey                          string                                          `pulumi:"tdePrivateKey"`
-	TeamId                                 string                                          `pulumi:"teamId"`
-	TechnicalAccountId                     string                                          `pulumi:"technicalAccountId"`
-	TemplateLabels                         []string                                        `pulumi:"templateLabels"`
-	TenantId                               string                                          `pulumi:"tenantId"`
-	TestTableName                          string                                          `pulumi:"testTableName"`
-	TimeZone                               string                                          `pulumi:"timeZone"`
-	TimeframeMonths                        string                                          `pulumi:"timeframeMonths"`
-	Tns                                    string                                          `pulumi:"tns"`
-	TokenAuthenticatedContainer            string                                          `pulumi:"tokenAuthenticatedContainer"`
-	TokenAuthenticatedDatabase             string                                          `pulumi:"tokenAuthenticatedDatabase"`
-	TokenId                                string                                          `pulumi:"tokenId"`
-	TokenKey                               string                                          `pulumi:"tokenKey"`
-	TokenSecret                            string                                          `pulumi:"tokenSecret"`
-	TokenSecretKey                         string                                          `pulumi:"tokenSecretKey"`
-	Topics                                 []string                                        `pulumi:"topics"`
-	TrustStoreType                         string                                          `pulumi:"trustStoreType"`
-	TrustedCert                            string                                          `pulumi:"trustedCert"`
-	Truststore                             string                                          `pulumi:"truststore"`
-	TunnelHost                             string                                          `pulumi:"tunnelHost"`
-	TunnelPort                             string                                          `pulumi:"tunnelPort"`
-	TunnelUser                             string                                          `pulumi:"tunnelUser"`
-	UniqueId                               string                                          `pulumi:"uniqueId"`
-	UpdateConfigOnEachSync                 string                                          `pulumi:"updateConfigOnEachSync"`
-	UpdateMethod                           string                                          `pulumi:"updateMethod"`
-	Uri                                    string                                          `pulumi:"uri"`
-	UseApiKeys                             string                                          `pulumi:"useApiKeys"`
-	UseCustomerBucket                      string                                          `pulumi:"useCustomerBucket"`
-	UseOracleRac                           string                                          `pulumi:"useOracleRac"`
-	UsePgpEncryptionOptions                string                                          `pulumi:"usePgpEncryptionOptions"`
-	UseServiceAccount                      string                                          `pulumi:"useServiceAccount"`
-	UseTemplateLabels                      string                                          `pulumi:"useTemplateLabels"`
-	UseWebhooks                            string                                          `pulumi:"useWebhooks"`
-	UseWorkspace                           string                                          `pulumi:"useWorkspace"`
-	User                                   string                                          `pulumi:"user"`
-	UserId                                 string                                          `pulumi:"userId"`
-	UserKey                                string                                          `pulumi:"userKey"`
-	UserName                               string                                          `pulumi:"userName"`
-	UserProfiles                           []string                                        `pulumi:"userProfiles"`
-	Username                               string                                          `pulumi:"username"`
-	ViewAttributionWindow                  string                                          `pulumi:"viewAttributionWindow"`
-	ViewThroughAttributionWindowSize       string                                          `pulumi:"viewThroughAttributionWindowSize"`
-	WebhookEndpoint                        string                                          `pulumi:"webhookEndpoint"`
-	WebhookKey                             string                                          `pulumi:"webhookKey"`
-	WebhookUrl                             string                                          `pulumi:"webhookUrl"`
-	WordPressSiteIdOrWoocommerceDomainName string                                          `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
-	WorkspaceName                          string                                          `pulumi:"workspaceName"`
-	WorkspaceSameAsSource                  string                                          `pulumi:"workspaceSameAsSource"`
-	WorkspaceSchema                        string                                          `pulumi:"workspaceSchema"`
-	WsCertificate                          string                                          `pulumi:"wsCertificate"`
+	AbsConnectionMethod                          string                                          `pulumi:"absConnectionMethod"`
+	AbsConnectionString                          string                                          `pulumi:"absConnectionString"`
+	AbsContainerAddress                          string                                          `pulumi:"absContainerAddress"`
+	AbsContainerName                             string                                          `pulumi:"absContainerName"`
+	AbsHostIp                                    string                                          `pulumi:"absHostIp"`
+	AbsHostUser                                  string                                          `pulumi:"absHostUser"`
+	AbsPrefix                                    string                                          `pulumi:"absPrefix"`
+	AbsPublicKey                                 string                                          `pulumi:"absPublicKey"`
+	AccessKey                                    string                                          `pulumi:"accessKey"`
+	AccessKeyId                                  string                                          `pulumi:"accessKeyId"`
+	AccessKeySecret                              string                                          `pulumi:"accessKeySecret"`
+	AccessToken                                  string                                          `pulumi:"accessToken"`
+	AccessType                                   string                                          `pulumi:"accessType"`
+	Account                                      string                                          `pulumi:"account"`
+	AccountId                                    string                                          `pulumi:"accountId"`
+	AccountIds                                   []string                                        `pulumi:"accountIds"`
+	AccountKey                                   string                                          `pulumi:"accountKey"`
+	AccountName                                  string                                          `pulumi:"accountName"`
+	AccountSyncMode                              string                                          `pulumi:"accountSyncMode"`
+	Accounts                                     []string                                        `pulumi:"accounts"`
+	AccountsRedditAds                            []GetConnectorConfigAccountsRedditAd            `pulumi:"accountsRedditAds"`
+	AccountsSyncMode                             string                                          `pulumi:"accountsSyncMode"`
+	ActionBreakdowns                             []string                                        `pulumi:"actionBreakdowns"`
+	ActionReportTime                             string                                          `pulumi:"actionReportTime"`
+	AdAnalytics                                  string                                          `pulumi:"adAnalytics"`
+	AdUnitView                                   string                                          `pulumi:"adUnitView"`
+	AdminApiKey                                  string                                          `pulumi:"adminApiKey"`
+	AdobeAnalyticsConfigurations                 []GetConnectorConfigAdobeAnalyticsConfiguration `pulumi:"adobeAnalyticsConfigurations"`
+	Advertisables                                []string                                        `pulumi:"advertisables"`
+	Advertisers                                  []string                                        `pulumi:"advertisers"`
+	AdvertisersIds                               []string                                        `pulumi:"advertisersIds"`
+	AdvertisersSyncMode                          string                                          `pulumi:"advertisersSyncMode"`
+	AgentHost                                    string                                          `pulumi:"agentHost"`
+	AgentOraHome                                 string                                          `pulumi:"agentOraHome"`
+	AgentPassword                                string                                          `pulumi:"agentPassword"`
+	AgentPort                                    string                                          `pulumi:"agentPort"`
+	AgentPublicCert                              string                                          `pulumi:"agentPublicCert"`
+	AgentUser                                    string                                          `pulumi:"agentUser"`
+	Aggregation                                  string                                          `pulumi:"aggregation"`
+	AlwaysEncrypted                              string                                          `pulumi:"alwaysEncrypted"`
+	ApiAccessToken                               string                                          `pulumi:"apiAccessToken"`
+	ApiId                                        string                                          `pulumi:"apiId"`
+	ApiKey                                       string                                          `pulumi:"apiKey"`
+	ApiKeyApiSecret                              string                                          `pulumi:"apiKeyApiSecret"`
+	ApiKeys                                      []string                                        `pulumi:"apiKeys"`
+	ApiQuota                                     string                                          `pulumi:"apiQuota"`
+	ApiRequestsPerMinute                         string                                          `pulumi:"apiRequestsPerMinute"`
+	ApiSecret                                    string                                          `pulumi:"apiSecret"`
+	ApiSecretKey                                 string                                          `pulumi:"apiSecretKey"`
+	ApiToken                                     string                                          `pulumi:"apiToken"`
+	ApiType                                      string                                          `pulumi:"apiType"`
+	ApiUrl                                       string                                          `pulumi:"apiUrl"`
+	ApiUsage                                     string                                          `pulumi:"apiUsage"`
+	ApiUtilizationPercentage                     string                                          `pulumi:"apiUtilizationPercentage"`
+	ApiVersion                                   string                                          `pulumi:"apiVersion"`
+	AppId                                        string                                          `pulumi:"appId"`
+	AppIds                                       []string                                        `pulumi:"appIds"`
+	AppIdsAppsflyers                             []GetConnectorConfigAppIdsAppsflyer             `pulumi:"appIdsAppsflyers"`
+	AppKey                                       string                                          `pulumi:"appKey"`
+	AppSpecificPassword                          string                                          `pulumi:"appSpecificPassword"`
+	AppSyncMode                                  string                                          `pulumi:"appSyncMode"`
+	AppendFileOption                             string                                          `pulumi:"appendFileOption"`
+	ApplicationKey                               string                                          `pulumi:"applicationKey"`
+	Apps                                         []string                                        `pulumi:"apps"`
+	ArchiveLogFormat                             string                                          `pulumi:"archiveLogFormat"`
+	ArchiveLogPath                               string                                          `pulumi:"archiveLogPath"`
+	ArchivePattern                               string                                          `pulumi:"archivePattern"`
+	AreSoapCredentialsProvided                   string                                          `pulumi:"areSoapCredentialsProvided"`
+	AsbIp                                        string                                          `pulumi:"asbIp"`
+	AsmOption                                    string                                          `pulumi:"asmOption"`
+	AsmOracleHome                                string                                          `pulumi:"asmOracleHome"`
+	AsmPassword                                  string                                          `pulumi:"asmPassword"`
+	AsmTns                                       string                                          `pulumi:"asmTns"`
+	AsmUser                                      string                                          `pulumi:"asmUser"`
+	AttributionWindow                            string                                          `pulumi:"attributionWindow"`
+	AttributionWindowSize                        string                                          `pulumi:"attributionWindowSize"`
+	Auth                                         string                                          `pulumi:"auth"`
+	AuthMethod                                   string                                          `pulumi:"authMethod"`
+	AuthMode                                     string                                          `pulumi:"authMode"`
+	AuthType                                     string                                          `pulumi:"authType"`
+	AuthorizationMethod                          string                                          `pulumi:"authorizationMethod"`
+	AwsRegionCode                                string                                          `pulumi:"awsRegionCode"`
+	BaseCurrency                                 string                                          `pulumi:"baseCurrency"`
+	BaseDomain                                   string                                          `pulumi:"baseDomain"`
+	BaseId                                       string                                          `pulumi:"baseId"`
+	BaseUrl                                      string                                          `pulumi:"baseUrl"`
+	BearerToken                                  string                                          `pulumi:"bearerToken"`
+	BlobSasUrl                                   string                                          `pulumi:"blobSasUrl"`
+	Breakdowns                                   []string                                        `pulumi:"breakdowns"`
+	Bucket                                       string                                          `pulumi:"bucket"`
+	BucketName                                   string                                          `pulumi:"bucketName"`
+	BucketService                                string                                          `pulumi:"bucketService"`
+	BusinessId                                   string                                          `pulumi:"businessId"`
+	BusinessUnitId                               string                                          `pulumi:"businessUnitId"`
+	Certificate                                  string                                          `pulumi:"certificate"`
+	ClickAttributionWindow                       string                                          `pulumi:"clickAttributionWindow"`
+	Client                                       string                                          `pulumi:"client"`
+	ClientCert                                   string                                          `pulumi:"clientCert"`
+	ClientCertKey                                string                                          `pulumi:"clientCertKey"`
+	ClientId                                     string                                          `pulumi:"clientId"`
+	ClientKey                                    string                                          `pulumi:"clientKey"`
+	ClientName                                   string                                          `pulumi:"clientName"`
+	ClientSecret                                 string                                          `pulumi:"clientSecret"`
+	CloudStorageType                             string                                          `pulumi:"cloudStorageType"`
+	Columns                                      []string                                        `pulumi:"columns"`
+	CompanyId                                    string                                          `pulumi:"companyId"`
+	CompanyKey                                   string                                          `pulumi:"companyKey"`
+	CompanyRequestToken                          string                                          `pulumi:"companyRequestToken"`
+	CompanyUuid                                  string                                          `pulumi:"companyUuid"`
+	Compression                                  string                                          `pulumi:"compression"`
+	ConfigMethod                                 string                                          `pulumi:"configMethod"`
+	ConfigRepositoryUrl                          string                                          `pulumi:"configRepositoryUrl"`
+	ConfigType                                   string                                          `pulumi:"configType"`
+	ConnectingUser                               string                                          `pulumi:"connectingUser"`
+	ConnectingUserEmail                          string                                          `pulumi:"connectingUserEmail"`
+	ConnectionMethod                             string                                          `pulumi:"connectionMethod"`
+	ConnectionString                             string                                          `pulumi:"connectionString"`
+	ConnectionType                               string                                          `pulumi:"connectionType"`
+	ConsumerGroup                                string                                          `pulumi:"consumerGroup"`
+	ConsumerKey                                  string                                          `pulumi:"consumerKey"`
+	ConsumerSecret                               string                                          `pulumi:"consumerSecret"`
+	ContainerAddress                             string                                          `pulumi:"containerAddress"`
+	ContainerName                                string                                          `pulumi:"containerName"`
+	ContentOwnerId                               string                                          `pulumi:"contentOwnerId"`
+	ConversationWebhookUrl                       string                                          `pulumi:"conversationWebhookUrl"`
+	ConversionDimensions                         []string                                        `pulumi:"conversionDimensions"`
+	ConversionReportTime                         string                                          `pulumi:"conversionReportTime"`
+	ConversionWindowSize                         string                                          `pulumi:"conversionWindowSize"`
+	CsvDefinition                                string                                          `pulumi:"csvDefinition"`
+	Currency                                     string                                          `pulumi:"currency"`
+	CustomEventSyncMode                          string                                          `pulumi:"customEventSyncMode"`
+	CustomEvents                                 []string                                        `pulumi:"customEvents"`
+	CustomFieldIds                               []string                                        `pulumi:"customFieldIds"`
+	CustomFloodlightVariables                    []string                                        `pulumi:"customFloodlightVariables"`
+	CustomReports                                []GetConnectorConfigCustomReport                `pulumi:"customReports"`
+	CustomTables                                 []GetConnectorConfigCustomTable                 `pulumi:"customTables"`
+	CustomerId                                   string                                          `pulumi:"customerId"`
+	CustomerListId                               string                                          `pulumi:"customerListId"`
+	DailyApiCallLimit                            string                                          `pulumi:"dailyApiCallLimit"`
+	DataAccessMethod                             string                                          `pulumi:"dataAccessMethod"`
+	DataCenter                                   string                                          `pulumi:"dataCenter"`
+	DataSetName                                  string                                          `pulumi:"dataSetName"`
+	Database                                     string                                          `pulumi:"database"`
+	DatasetId                                    string                                          `pulumi:"datasetId"`
+	Datasource                                   string                                          `pulumi:"datasource"`
+	DateGranularity                              string                                          `pulumi:"dateGranularity"`
+	Delimiter                                    string                                          `pulumi:"delimiter"`
+	DimensionAttributes                          []string                                        `pulumi:"dimensionAttributes"`
+	Dimensions                                   []string                                        `pulumi:"dimensions"`
+	DistributedConnectorClusterSize              string                                          `pulumi:"distributedConnectorClusterSize"`
+	Domain                                       string                                          `pulumi:"domain"`
+	DomainHostName                               string                                          `pulumi:"domainHostName"`
+	DomainName                                   string                                          `pulumi:"domainName"`
+	DomainType                                   string                                          `pulumi:"domainType"`
+	Elements                                     []string                                        `pulumi:"elements"`
+	Email                                        string                                          `pulumi:"email"`
+	EmptyHeader                                  string                                          `pulumi:"emptyHeader"`
+	EnableAllDimensionCombinations               string                                          `pulumi:"enableAllDimensionCombinations"`
+	EnableArchiveLogOnly                         string                                          `pulumi:"enableArchiveLogOnly"`
+	EnableDataExtensionsSyncing                  string                                          `pulumi:"enableDataExtensionsSyncing"`
+	EnableDistributedConnectorMode               string                                          `pulumi:"enableDistributedConnectorMode"`
+	EnableEnrichments                            string                                          `pulumi:"enableEnrichments"`
+	EnableExports                                string                                          `pulumi:"enableExports"`
+	EnableTde                                    string                                          `pulumi:"enableTde"`
+	EncodedPublicKey                             string                                          `pulumi:"encodedPublicKey"`
+	EncryptionKey                                string                                          `pulumi:"encryptionKey"`
+	Endpoint                                     string                                          `pulumi:"endpoint"`
+	EngagementAttributionWindow                  string                                          `pulumi:"engagementAttributionWindow"`
+	EnrichedExport                               string                                          `pulumi:"enrichedExport"`
+	EntityId                                     string                                          `pulumi:"entityId"`
+	Environment                                  string                                          `pulumi:"environment"`
+	EscapeChar                                   string                                          `pulumi:"escapeChar"`
+	EuRegion                                     string                                          `pulumi:"euRegion"`
+	Events                                       []string                                        `pulumi:"events"`
+	ExportStorageType                            string                                          `pulumi:"exportStorageType"`
+	ExternalId                                   string                                          `pulumi:"externalId"`
+	Fields                                       []string                                        `pulumi:"fields"`
+	FileType                                     string                                          `pulumi:"fileType"`
+	Filter                                       string                                          `pulumi:"filter"`
+	FinanceAccountSyncMode                       string                                          `pulumi:"financeAccountSyncMode"`
+	FinanceAccounts                              []string                                        `pulumi:"financeAccounts"`
+	Folder                                       string                                          `pulumi:"folder"`
+	FolderId                                     string                                          `pulumi:"folderId"`
+	FolderPath                                   string                                          `pulumi:"folderPath"`
+	ForecastId                                   string                                          `pulumi:"forecastId"`
+	FtpHost                                      string                                          `pulumi:"ftpHost"`
+	FtpPassword                                  string                                          `pulumi:"ftpPassword"`
+	FtpPort                                      string                                          `pulumi:"ftpPort"`
+	FtpUser                                      string                                          `pulumi:"ftpUser"`
+	Function                                     string                                          `pulumi:"function"`
+	FunctionApp                                  string                                          `pulumi:"functionApp"`
+	FunctionKey                                  string                                          `pulumi:"functionKey"`
+	FunctionName                                 string                                          `pulumi:"functionName"`
+	FunctionTrigger                              string                                          `pulumi:"functionTrigger"`
+	GcsBucket                                    string                                          `pulumi:"gcsBucket"`
+	GcsFolder                                    string                                          `pulumi:"gcsFolder"`
+	GroupName                                    string                                          `pulumi:"groupName"`
+	HasManagePermissions                         string                                          `pulumi:"hasManagePermissions"`
+	HomeFolder                                   string                                          `pulumi:"homeFolder"`
+	Host                                         string                                          `pulumi:"host"`
+	HostIp                                       string                                          `pulumi:"hostIp"`
+	HostUser                                     string                                          `pulumi:"hostUser"`
+	Hosts                                        []string                                        `pulumi:"hosts"`
+	Identity                                     string                                          `pulumi:"identity"`
+	IncludeOcapiEndpoints                        string                                          `pulumi:"includeOcapiEndpoints"`
+	Instance                                     string                                          `pulumi:"instance"`
+	InstanceNumber                               string                                          `pulumi:"instanceNumber"`
+	InstanceUrl                                  string                                          `pulumi:"instanceUrl"`
+	IntegrationKey                               string                                          `pulumi:"integrationKey"`
+	IsAccountLevelConnector                      string                                          `pulumi:"isAccountLevelConnector"`
+	IsAuth2Enabled                               string                                          `pulumi:"isAuth2Enabled"`
+	IsCustomApiCredentials                       string                                          `pulumi:"isCustomApiCredentials"`
+	IsExternalActivitiesEndpointSelected         string                                          `pulumi:"isExternalActivitiesEndpointSelected"`
+	IsFtps                                       string                                          `pulumi:"isFtps"`
+	IsKeypair                                    string                                          `pulumi:"isKeypair"`
+	IsMultiEntityFeatureEnabled                  string                                          `pulumi:"isMultiEntityFeatureEnabled"`
+	IsNewPackage                                 string                                          `pulumi:"isNewPackage"`
+	IsPrivateKeyEncrypted                        string                                          `pulumi:"isPrivateKeyEncrypted"`
+	IsPrivateLinkRequired                        string                                          `pulumi:"isPrivateLinkRequired"`
+	IsPublic                                     string                                          `pulumi:"isPublic"`
+	IsSailthruConnectEnabled                     string                                          `pulumi:"isSailthruConnectEnabled"`
+	IsSecure                                     string                                          `pulumi:"isSecure"`
+	IsSingleTableMode                            string                                          `pulumi:"isSingleTableMode"`
+	IsVendor                                     string                                          `pulumi:"isVendor"`
+	JsonDeliveryMode                             string                                          `pulumi:"jsonDeliveryMode"`
+	Key                                          string                                          `pulumi:"key"`
+	KeyPassword                                  string                                          `pulumi:"keyPassword"`
+	KeyStoreType                                 string                                          `pulumi:"keyStoreType"`
+	Keystore                                     string                                          `pulumi:"keystore"`
+	KeystorePassword                             string                                          `pulumi:"keystorePassword"`
+	LastSyncedChangesUtc_                        string                                          `pulumi:"lastSyncedChangesUtc_"`
+	LatestVersion                                string                                          `pulumi:"latestVersion"`
+	LimitForApiCallsToExternalActivitiesEndpoint string                                          `pulumi:"limitForApiCallsToExternalActivitiesEndpoint"`
+	LineSeparator                                string                                          `pulumi:"lineSeparator"`
+	ListStrategy                                 string                                          `pulumi:"listStrategy"`
+	ListSyncMode                                 string                                          `pulumi:"listSyncMode"`
+	LogJournal                                   string                                          `pulumi:"logJournal"`
+	LogJournalSchema                             string                                          `pulumi:"logJournalSchema"`
+	Login                                        string                                          `pulumi:"login"`
+	LoginPassword                                string                                          `pulumi:"loginPassword"`
+	ManagerAccounts                              []string                                        `pulumi:"managerAccounts"`
+	MerchantId                                   string                                          `pulumi:"merchantId"`
+	MessageType                                  string                                          `pulumi:"messageType"`
+	Metrics                                      []string                                        `pulumi:"metrics"`
+	NamedRange                                   string                                          `pulumi:"namedRange"`
+	Namespace                                    string                                          `pulumi:"namespace"`
+	NetworkCode                                  string                                          `pulumi:"networkCode"`
+	NullSequence                                 string                                          `pulumi:"nullSequence"`
+	OauthToken                                   string                                          `pulumi:"oauthToken"`
+	OauthTokenSecret                             string                                          `pulumi:"oauthTokenSecret"`
+	OcapiClientId                                string                                          `pulumi:"ocapiClientId"`
+	OcapiClientSecret                            string                                          `pulumi:"ocapiClientSecret"`
+	OcapiCustomObjectTypes                       string                                          `pulumi:"ocapiCustomObjectTypes"`
+	OcapiHostname                                string                                          `pulumi:"ocapiHostname"`
+	OnError                                      string                                          `pulumi:"onError"`
+	OnPremise                                    string                                          `pulumi:"onPremise"`
+	Organization                                 string                                          `pulumi:"organization"`
+	OrganizationId                               string                                          `pulumi:"organizationId"`
+	Organizations                                []string                                        `pulumi:"organizations"`
+	PackedModeTables                             []string                                        `pulumi:"packedModeTables"`
+	PackingMode                                  string                                          `pulumi:"packingMode"`
+	Pages                                        []string                                        `pulumi:"pages"`
+	PartnerCode                                  string                                          `pulumi:"partnerCode"`
+	Partners                                     []string                                        `pulumi:"partners"`
+	Passphrase                                   string                                          `pulumi:"passphrase"`
+	Password                                     string                                          `pulumi:"password"`
+	Pat                                          string                                          `pulumi:"pat"`
+	PatName                                      string                                          `pulumi:"patName"`
+	PatSecret                                    string                                          `pulumi:"patSecret"`
+	Path                                         string                                          `pulumi:"path"`
+	Pattern                                      string                                          `pulumi:"pattern"`
+	PdbName                                      string                                          `pulumi:"pdbName"`
+	PemCertificate                               string                                          `pulumi:"pemCertificate"`
+	PemPrivateKey                                string                                          `pulumi:"pemPrivateKey"`
+	PerInteractionDimensions                     []string                                        `pulumi:"perInteractionDimensions"`
+	PersonalAccessToken                          string                                          `pulumi:"personalAccessToken"`
+	PgpPassPhrase                                string                                          `pulumi:"pgpPassPhrase"`
+	PgpSecretKey                                 string                                          `pulumi:"pgpSecretKey"`
+	PhoneNumber                                  string                                          `pulumi:"phoneNumber"`
+	Port                                         string                                          `pulumi:"port"`
+	PostClickAttributionWindowSize               string                                          `pulumi:"postClickAttributionWindowSize"`
+	PrebuiltReport                               string                                          `pulumi:"prebuiltReport"`
+	Prefix                                       string                                          `pulumi:"prefix"`
+	PrimaryKeys                                  []string                                        `pulumi:"primaryKeys"`
+	PrivateKey                                   string                                          `pulumi:"privateKey"`
+	Profiles                                     []string                                        `pulumi:"profiles"`
+	ProjectCredentials                           []GetConnectorConfigProjectCredential           `pulumi:"projectCredentials"`
+	ProjectId                                    string                                          `pulumi:"projectId"`
+	Projects                                     []string                                        `pulumi:"projects"`
+	Properties                                   []string                                        `pulumi:"properties"`
+	PublicKey                                    string                                          `pulumi:"publicKey"`
+	PublicationName                              string                                          `pulumi:"publicationName"`
+	QueryId                                      string                                          `pulumi:"queryId"`
+	QueryParamValue                              string                                          `pulumi:"queryParamValue"`
+	RefreshTokenExpiresAt                        string                                          `pulumi:"refreshTokenExpiresAt"`
+	Region                                       string                                          `pulumi:"region"`
+	ReplicaId                                    string                                          `pulumi:"replicaId"`
+	ReplicationSlot                              string                                          `pulumi:"replicationSlot"`
+	ReportConfigurationIds                       []string                                        `pulumi:"reportConfigurationIds"`
+	ReportFormatType                             string                                          `pulumi:"reportFormatType"`
+	ReportSuites                                 []string                                        `pulumi:"reportSuites"`
+	ReportTimezone                               string                                          `pulumi:"reportTimezone"`
+	ReportType                                   string                                          `pulumi:"reportType"`
+	ReportUrl                                    string                                          `pulumi:"reportUrl"`
+	Reports                                      []GetConnectorConfigReport                      `pulumi:"reports"`
+	ReportsLinkedinAds                           []string                                        `pulumi:"reportsLinkedinAds"`
+	Repositories                                 []string                                        `pulumi:"repositories"`
+	ResourceToken                                string                                          `pulumi:"resourceToken"`
+	ResourceUrl                                  string                                          `pulumi:"resourceUrl"`
+	RestApiLimit                                 string                                          `pulumi:"restApiLimit"`
+	RfcLibraryPath                               string                                          `pulumi:"rfcLibraryPath"`
+	Role                                         string                                          `pulumi:"role"`
+	RoleArn                                      string                                          `pulumi:"roleArn"`
+	RollbackWindowSize                           string                                          `pulumi:"rollbackWindowSize"`
+	S3Bucket                                     string                                          `pulumi:"s3Bucket"`
+	S3ExportBucket                               string                                          `pulumi:"s3ExportBucket"`
+	S3ExportFolder                               string                                          `pulumi:"s3ExportFolder"`
+	S3ExportRoleArn                              string                                          `pulumi:"s3ExportRoleArn"`
+	S3RoleArn                                    string                                          `pulumi:"s3RoleArn"`
+	S3bucket                                     string                                          `pulumi:"s3bucket"`
+	S3externalId                                 string                                          `pulumi:"s3externalId"`
+	S3folder                                     string                                          `pulumi:"s3folder"`
+	S3path                                       string                                          `pulumi:"s3path"`
+	S3roleArn                                    string                                          `pulumi:"s3roleArn"`
+	SalesAccountSyncMode                         string                                          `pulumi:"salesAccountSyncMode"`
+	SalesAccounts                                []string                                        `pulumi:"salesAccounts"`
+	SalesforceSecurityToken                      string                                          `pulumi:"salesforceSecurityToken"`
+	SandboxAccount                               string                                          `pulumi:"sandboxAccount"`
+	SapSchema                                    string                                          `pulumi:"sapSchema"`
+	SapUser                                      string                                          `pulumi:"sapUser"`
+	SaslMechanism                                string                                          `pulumi:"saslMechanism"`
+	SaslPlainKey                                 string                                          `pulumi:"saslPlainKey"`
+	SaslPlainSecret                              string                                          `pulumi:"saslPlainSecret"`
+	SaslScram256Key                              string                                          `pulumi:"saslScram256Key"`
+	SaslScram256Secret                           string                                          `pulumi:"saslScram256Secret"`
+	SaslScram512Key                              string                                          `pulumi:"saslScram512Key"`
+	SaslScram512Secret                           string                                          `pulumi:"saslScram512Secret"`
+	SchemaRegistryCredentialsSource              string                                          `pulumi:"schemaRegistryCredentialsSource"`
+	SchemaRegistryKey                            string                                          `pulumi:"schemaRegistryKey"`
+	SchemaRegistrySecret                         string                                          `pulumi:"schemaRegistrySecret"`
+	SchemaRegistryUrls                           []string                                        `pulumi:"schemaRegistryUrls"`
+	Secret                                       string                                          `pulumi:"secret"`
+	SecretKey                                    string                                          `pulumi:"secretKey"`
+	Secrets                                      string                                          `pulumi:"secrets"`
+	SecretsLists                                 []GetConnectorConfigSecretsList                 `pulumi:"secretsLists"`
+	SecurityProtocol                             string                                          `pulumi:"securityProtocol"`
+	Segments                                     []string                                        `pulumi:"segments"`
+	SelectedExports                              []string                                        `pulumi:"selectedExports"`
+	SenderId                                     string                                          `pulumi:"senderId"`
+	SenderPassword                               string                                          `pulumi:"senderPassword"`
+	ServerAddress                                string                                          `pulumi:"serverAddress"`
+	ServerUrl                                    string                                          `pulumi:"serverUrl"`
+	Servers                                      []string                                        `pulumi:"servers"`
+	ServiceAccount                               string                                          `pulumi:"serviceAccount"`
+	ServiceAccountEmail                          string                                          `pulumi:"serviceAccountEmail"`
+	ServiceAccountKey                            string                                          `pulumi:"serviceAccountKey"`
+	ServiceVersion                               string                                          `pulumi:"serviceVersion"`
+	SftpHost                                     string                                          `pulumi:"sftpHost"`
+	SftpIsKeyPair                                string                                          `pulumi:"sftpIsKeyPair"`
+	SftpPassword                                 string                                          `pulumi:"sftpPassword"`
+	SftpPort                                     string                                          `pulumi:"sftpPort"`
+	SftpPublicKey                                string                                          `pulumi:"sftpPublicKey"`
+	SftpUser                                     string                                          `pulumi:"sftpUser"`
+	ShareUrl                                     string                                          `pulumi:"shareUrl"`
+	SheetId                                      string                                          `pulumi:"sheetId"`
+	Shop                                         string                                          `pulumi:"shop"`
+	ShortCode                                    string                                          `pulumi:"shortCode"`
+	ShowRecordsWithNoMetrics                     string                                          `pulumi:"showRecordsWithNoMetrics"`
+	Sid                                          string                                          `pulumi:"sid"`
+	SignerPublicKey                              string                                          `pulumi:"signerPublicKey"`
+	SiteAddress                                  string                                          `pulumi:"siteAddress"`
+	SiteId                                       string                                          `pulumi:"siteId"`
+	SiteName                                     string                                          `pulumi:"siteName"`
+	SiteUrls                                     []string                                        `pulumi:"siteUrls"`
+	SkipAfter                                    string                                          `pulumi:"skipAfter"`
+	SkipBefore                                   string                                          `pulumi:"skipBefore"`
+	SoapUri                                      string                                          `pulumi:"soapUri"`
+	SocialDataSyncTimeframe                      string                                          `pulumi:"socialDataSyncTimeframe"`
+	Source                                       string                                          `pulumi:"source"`
+	StoreHash                                    string                                          `pulumi:"storeHash"`
+	SubDomain                                    string                                          `pulumi:"subDomain"`
+	Subdomain                                    string                                          `pulumi:"subdomain"`
+	SubscriberName                               string                                          `pulumi:"subscriberName"`
+	Subscription                                 string                                          `pulumi:"subscription"`
+	SupportConnectedAccountsSync                 string                                          `pulumi:"supportConnectedAccountsSync"`
+	SupportNestedColumns                         string                                          `pulumi:"supportNestedColumns"`
+	SurveyIds                                    string                                          `pulumi:"surveyIds"`
+	SwipeAttributionWindow                       string                                          `pulumi:"swipeAttributionWindow"`
+	SyncDataLocker                               string                                          `pulumi:"syncDataLocker"`
+	SyncFormat                                   string                                          `pulumi:"syncFormat"`
+	SyncFormulaFields                            string                                          `pulumi:"syncFormulaFields"`
+	SyncMetadata                                 string                                          `pulumi:"syncMetadata"`
+	SyncMethod                                   string                                          `pulumi:"syncMethod"`
+	SyncMode                                     string                                          `pulumi:"syncMode"`
+	SyncMultipleAccounts                         string                                          `pulumi:"syncMultipleAccounts"`
+	SyncPackMode                                 string                                          `pulumi:"syncPackMode"`
+	SyncPullApi                                  string                                          `pulumi:"syncPullApi"`
+	SyncType                                     string                                          `pulumi:"syncType"`
+	Sysnr                                        string                                          `pulumi:"sysnr"`
+	TableName                                    string                                          `pulumi:"tableName"`
+	TdeCertificate                               string                                          `pulumi:"tdeCertificate"`
+	TdeCertificateName                           string                                          `pulumi:"tdeCertificateName"`
+	TdePassword                                  string                                          `pulumi:"tdePassword"`
+	TdePrivateKey                                string                                          `pulumi:"tdePrivateKey"`
+	TeamId                                       string                                          `pulumi:"teamId"`
+	TechnicalAccountId                           string                                          `pulumi:"technicalAccountId"`
+	TemplateLabels                               []string                                        `pulumi:"templateLabels"`
+	Tenant                                       string                                          `pulumi:"tenant"`
+	TenantId                                     string                                          `pulumi:"tenantId"`
+	TestTableName                                string                                          `pulumi:"testTableName"`
+	TimeZone                                     string                                          `pulumi:"timeZone"`
+	TimeframeMonths                              string                                          `pulumi:"timeframeMonths"`
+	Tns                                          string                                          `pulumi:"tns"`
+	TokenAuthenticatedContainer                  string                                          `pulumi:"tokenAuthenticatedContainer"`
+	TokenAuthenticatedDatabase                   string                                          `pulumi:"tokenAuthenticatedDatabase"`
+	TokenId                                      string                                          `pulumi:"tokenId"`
+	TokenKey                                     string                                          `pulumi:"tokenKey"`
+	TokenSecret                                  string                                          `pulumi:"tokenSecret"`
+	TokenSecretKey                               string                                          `pulumi:"tokenSecretKey"`
+	Topics                                       []string                                        `pulumi:"topics"`
+	TrustStoreType                               string                                          `pulumi:"trustStoreType"`
+	TrustedCert                                  string                                          `pulumi:"trustedCert"`
+	Truststore                                   string                                          `pulumi:"truststore"`
+	TunnelHost                                   string                                          `pulumi:"tunnelHost"`
+	TunnelPort                                   string                                          `pulumi:"tunnelPort"`
+	TunnelUser                                   string                                          `pulumi:"tunnelUser"`
+	UniqueId                                     string                                          `pulumi:"uniqueId"`
+	UpdateConfigOnEachSync                       string                                          `pulumi:"updateConfigOnEachSync"`
+	UpdateMethod                                 string                                          `pulumi:"updateMethod"`
+	Uri                                          string                                          `pulumi:"uri"`
+	UseApiKeys                                   string                                          `pulumi:"useApiKeys"`
+	UseCustomerBucket                            string                                          `pulumi:"useCustomerBucket"`
+	UseOracleRac                                 string                                          `pulumi:"useOracleRac"`
+	UsePgpEncryptionOptions                      string                                          `pulumi:"usePgpEncryptionOptions"`
+	UseServiceAccount                            string                                          `pulumi:"useServiceAccount"`
+	UseTemplateLabels                            string                                          `pulumi:"useTemplateLabels"`
+	UseWebhooks                                  string                                          `pulumi:"useWebhooks"`
+	UseWorkspace                                 string                                          `pulumi:"useWorkspace"`
+	User                                         string                                          `pulumi:"user"`
+	UserId                                       string                                          `pulumi:"userId"`
+	UserKey                                      string                                          `pulumi:"userKey"`
+	UserName                                     string                                          `pulumi:"userName"`
+	UserProfiles                                 []string                                        `pulumi:"userProfiles"`
+	Username                                     string                                          `pulumi:"username"`
+	ViewAttributionWindow                        string                                          `pulumi:"viewAttributionWindow"`
+	ViewThroughAttributionWindowSize             string                                          `pulumi:"viewThroughAttributionWindowSize"`
+	WebhookEndpoint                              string                                          `pulumi:"webhookEndpoint"`
+	WebhookKey                                   string                                          `pulumi:"webhookKey"`
+	WebhookUrl                                   string                                          `pulumi:"webhookUrl"`
+	WordPressSiteIdOrWoocommerceDomainName       string                                          `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
+	WorkspaceName                                string                                          `pulumi:"workspaceName"`
+	WorkspaceSameAsSource                        string                                          `pulumi:"workspaceSameAsSource"`
+	WorkspaceSchema                              string                                          `pulumi:"workspaceSchema"`
+	WsCertificate                                string                                          `pulumi:"wsCertificate"`
 }
 
 // GetConnectorConfigInput is an input type that accepts GetConnectorConfigArgs and GetConnectorConfigOutput values.
@@ -12549,445 +12468,460 @@ type GetConnectorConfigInput interface {
 }
 
 type GetConnectorConfigArgs struct {
-	AbsConnectionMethod                    pulumi.StringInput                                      `pulumi:"absConnectionMethod"`
-	AbsConnectionString                    pulumi.StringInput                                      `pulumi:"absConnectionString"`
-	AbsContainerAddress                    pulumi.StringInput                                      `pulumi:"absContainerAddress"`
-	AbsContainerName                       pulumi.StringInput                                      `pulumi:"absContainerName"`
-	AbsHostIp                              pulumi.StringInput                                      `pulumi:"absHostIp"`
-	AbsHostUser                            pulumi.StringInput                                      `pulumi:"absHostUser"`
-	AbsPrefix                              pulumi.StringInput                                      `pulumi:"absPrefix"`
-	AbsPublicKey                           pulumi.StringInput                                      `pulumi:"absPublicKey"`
-	AccessKey                              pulumi.StringInput                                      `pulumi:"accessKey"`
-	AccessKeyId                            pulumi.StringInput                                      `pulumi:"accessKeyId"`
-	AccessKeySecret                        pulumi.StringInput                                      `pulumi:"accessKeySecret"`
-	AccessToken                            pulumi.StringInput                                      `pulumi:"accessToken"`
-	AccessType                             pulumi.StringInput                                      `pulumi:"accessType"`
-	Account                                pulumi.StringInput                                      `pulumi:"account"`
-	AccountId                              pulumi.StringInput                                      `pulumi:"accountId"`
-	AccountIds                             pulumi.StringArrayInput                                 `pulumi:"accountIds"`
-	AccountKey                             pulumi.StringInput                                      `pulumi:"accountKey"`
-	AccountName                            pulumi.StringInput                                      `pulumi:"accountName"`
-	AccountSyncMode                        pulumi.StringInput                                      `pulumi:"accountSyncMode"`
-	Accounts                               pulumi.StringArrayInput                                 `pulumi:"accounts"`
-	AccountsRedditAds                      GetConnectorConfigAccountsRedditAdArrayInput            `pulumi:"accountsRedditAds"`
-	AccountsSyncMode                       pulumi.StringInput                                      `pulumi:"accountsSyncMode"`
-	ActionBreakdowns                       pulumi.StringArrayInput                                 `pulumi:"actionBreakdowns"`
-	ActionReportTime                       pulumi.StringInput                                      `pulumi:"actionReportTime"`
-	AdAnalytics                            pulumi.StringInput                                      `pulumi:"adAnalytics"`
-	AdUnitView                             pulumi.StringInput                                      `pulumi:"adUnitView"`
-	AdminApiKey                            pulumi.StringInput                                      `pulumi:"adminApiKey"`
-	AdobeAnalyticsConfigurations           GetConnectorConfigAdobeAnalyticsConfigurationArrayInput `pulumi:"adobeAnalyticsConfigurations"`
-	Advertisables                          pulumi.StringArrayInput                                 `pulumi:"advertisables"`
-	Advertisers                            pulumi.StringArrayInput                                 `pulumi:"advertisers"`
-	AdvertisersIds                         pulumi.StringArrayInput                                 `pulumi:"advertisersIds"`
-	AdvertisersSyncMode                    pulumi.StringInput                                      `pulumi:"advertisersSyncMode"`
-	AgentHost                              pulumi.StringInput                                      `pulumi:"agentHost"`
-	AgentOraHome                           pulumi.StringInput                                      `pulumi:"agentOraHome"`
-	AgentPassword                          pulumi.StringInput                                      `pulumi:"agentPassword"`
-	AgentPort                              pulumi.StringInput                                      `pulumi:"agentPort"`
-	AgentPublicCert                        pulumi.StringInput                                      `pulumi:"agentPublicCert"`
-	AgentUser                              pulumi.StringInput                                      `pulumi:"agentUser"`
-	Aggregation                            pulumi.StringInput                                      `pulumi:"aggregation"`
-	AlwaysEncrypted                        pulumi.StringInput                                      `pulumi:"alwaysEncrypted"`
-	ApiAccessToken                         pulumi.StringInput                                      `pulumi:"apiAccessToken"`
-	ApiId                                  pulumi.StringInput                                      `pulumi:"apiId"`
-	ApiKey                                 pulumi.StringInput                                      `pulumi:"apiKey"`
-	ApiKeys                                pulumi.StringArrayInput                                 `pulumi:"apiKeys"`
-	ApiQuota                               pulumi.StringInput                                      `pulumi:"apiQuota"`
-	ApiRequestsPerMinute                   pulumi.StringInput                                      `pulumi:"apiRequestsPerMinute"`
-	ApiSecret                              pulumi.StringInput                                      `pulumi:"apiSecret"`
-	ApiSecretKey                           pulumi.StringInput                                      `pulumi:"apiSecretKey"`
-	ApiToken                               pulumi.StringInput                                      `pulumi:"apiToken"`
-	ApiType                                pulumi.StringInput                                      `pulumi:"apiType"`
-	ApiUrl                                 pulumi.StringInput                                      `pulumi:"apiUrl"`
-	ApiUsage                               pulumi.StringInput                                      `pulumi:"apiUsage"`
-	ApiVersion                             pulumi.StringInput                                      `pulumi:"apiVersion"`
-	AppId                                  pulumi.StringInput                                      `pulumi:"appId"`
-	AppIds                                 pulumi.StringArrayInput                                 `pulumi:"appIds"`
-	AppIdsAppsflyers                       GetConnectorConfigAppIdsAppsflyerArrayInput             `pulumi:"appIdsAppsflyers"`
-	AppSpecificPassword                    pulumi.StringInput                                      `pulumi:"appSpecificPassword"`
-	AppSyncMode                            pulumi.StringInput                                      `pulumi:"appSyncMode"`
-	AppendFileOption                       pulumi.StringInput                                      `pulumi:"appendFileOption"`
-	ApplicationKey                         pulumi.StringInput                                      `pulumi:"applicationKey"`
-	Apps                                   pulumi.StringArrayInput                                 `pulumi:"apps"`
-	ArchiveLogFormat                       pulumi.StringInput                                      `pulumi:"archiveLogFormat"`
-	ArchiveLogPath                         pulumi.StringInput                                      `pulumi:"archiveLogPath"`
-	ArchivePattern                         pulumi.StringInput                                      `pulumi:"archivePattern"`
-	AreSoapCredentialsProvided             pulumi.StringInput                                      `pulumi:"areSoapCredentialsProvided"`
-	AsbIp                                  pulumi.StringInput                                      `pulumi:"asbIp"`
-	AsmOption                              pulumi.StringInput                                      `pulumi:"asmOption"`
-	AsmOracleHome                          pulumi.StringInput                                      `pulumi:"asmOracleHome"`
-	AsmPassword                            pulumi.StringInput                                      `pulumi:"asmPassword"`
-	AsmTns                                 pulumi.StringInput                                      `pulumi:"asmTns"`
-	AsmUser                                pulumi.StringInput                                      `pulumi:"asmUser"`
-	AttributionWindow                      pulumi.StringInput                                      `pulumi:"attributionWindow"`
-	AttributionWindowSize                  pulumi.StringInput                                      `pulumi:"attributionWindowSize"`
-	Auth                                   pulumi.StringInput                                      `pulumi:"auth"`
-	AuthMethod                             pulumi.StringInput                                      `pulumi:"authMethod"`
-	AuthMode                               pulumi.StringInput                                      `pulumi:"authMode"`
-	AuthType                               pulumi.StringInput                                      `pulumi:"authType"`
-	AuthorizationMethod                    pulumi.StringInput                                      `pulumi:"authorizationMethod"`
-	AwsRegionCode                          pulumi.StringInput                                      `pulumi:"awsRegionCode"`
-	BaseCurrency                           pulumi.StringInput                                      `pulumi:"baseCurrency"`
-	BaseDomain                             pulumi.StringInput                                      `pulumi:"baseDomain"`
-	BaseId                                 pulumi.StringInput                                      `pulumi:"baseId"`
-	BaseUrl                                pulumi.StringInput                                      `pulumi:"baseUrl"`
-	BearerToken                            pulumi.StringInput                                      `pulumi:"bearerToken"`
-	BlobSasUrl                             pulumi.StringInput                                      `pulumi:"blobSasUrl"`
-	Breakdowns                             pulumi.StringArrayInput                                 `pulumi:"breakdowns"`
-	Bucket                                 pulumi.StringInput                                      `pulumi:"bucket"`
-	BucketName                             pulumi.StringInput                                      `pulumi:"bucketName"`
-	BucketService                          pulumi.StringInput                                      `pulumi:"bucketService"`
-	BusinessId                             pulumi.StringInput                                      `pulumi:"businessId"`
-	BusinessUnitId                         pulumi.StringInput                                      `pulumi:"businessUnitId"`
-	Certificate                            pulumi.StringInput                                      `pulumi:"certificate"`
-	ClickAttributionWindow                 pulumi.StringInput                                      `pulumi:"clickAttributionWindow"`
-	Client                                 pulumi.StringInput                                      `pulumi:"client"`
-	ClientCert                             pulumi.StringInput                                      `pulumi:"clientCert"`
-	ClientCertKey                          pulumi.StringInput                                      `pulumi:"clientCertKey"`
-	ClientId                               pulumi.StringInput                                      `pulumi:"clientId"`
-	ClientKey                              pulumi.StringInput                                      `pulumi:"clientKey"`
-	ClientName                             pulumi.StringInput                                      `pulumi:"clientName"`
-	ClientSecret                           pulumi.StringInput                                      `pulumi:"clientSecret"`
-	CloudStorageType                       pulumi.StringInput                                      `pulumi:"cloudStorageType"`
-	Columns                                pulumi.StringArrayInput                                 `pulumi:"columns"`
-	CompanyId                              pulumi.StringInput                                      `pulumi:"companyId"`
-	CompanyKey                             pulumi.StringInput                                      `pulumi:"companyKey"`
-	CompanyRequestToken                    pulumi.StringInput                                      `pulumi:"companyRequestToken"`
-	CompanyUuid                            pulumi.StringInput                                      `pulumi:"companyUuid"`
-	Compression                            pulumi.StringInput                                      `pulumi:"compression"`
-	ConfigMethod                           pulumi.StringInput                                      `pulumi:"configMethod"`
-	ConfigRepositoryUrl                    pulumi.StringInput                                      `pulumi:"configRepositoryUrl"`
-	ConfigType                             pulumi.StringInput                                      `pulumi:"configType"`
-	ConnectingUser                         pulumi.StringInput                                      `pulumi:"connectingUser"`
-	ConnectingUserEmail                    pulumi.StringInput                                      `pulumi:"connectingUserEmail"`
-	ConnectionMethod                       pulumi.StringInput                                      `pulumi:"connectionMethod"`
-	ConnectionString                       pulumi.StringInput                                      `pulumi:"connectionString"`
-	ConnectionType                         pulumi.StringInput                                      `pulumi:"connectionType"`
-	ConsumerGroup                          pulumi.StringInput                                      `pulumi:"consumerGroup"`
-	ConsumerKey                            pulumi.StringInput                                      `pulumi:"consumerKey"`
-	ConsumerSecret                         pulumi.StringInput                                      `pulumi:"consumerSecret"`
-	ContainerAddress                       pulumi.StringInput                                      `pulumi:"containerAddress"`
-	ContainerName                          pulumi.StringInput                                      `pulumi:"containerName"`
-	ContentOwnerId                         pulumi.StringInput                                      `pulumi:"contentOwnerId"`
-	ConversationWebhookUrl                 pulumi.StringInput                                      `pulumi:"conversationWebhookUrl"`
-	ConversionDimensions                   pulumi.StringArrayInput                                 `pulumi:"conversionDimensions"`
-	ConversionReportTime                   pulumi.StringInput                                      `pulumi:"conversionReportTime"`
-	ConversionWindowSize                   pulumi.StringInput                                      `pulumi:"conversionWindowSize"`
-	CsvDefinition                          pulumi.StringInput                                      `pulumi:"csvDefinition"`
-	Currency                               pulumi.StringInput                                      `pulumi:"currency"`
-	CustomEventSyncMode                    pulumi.StringInput                                      `pulumi:"customEventSyncMode"`
-	CustomEvents                           pulumi.StringArrayInput                                 `pulumi:"customEvents"`
-	CustomFieldIds                         pulumi.StringArrayInput                                 `pulumi:"customFieldIds"`
-	CustomFloodlightVariables              pulumi.StringArrayInput                                 `pulumi:"customFloodlightVariables"`
-	CustomReports                          GetConnectorConfigCustomReportArrayInput                `pulumi:"customReports"`
-	CustomTables                           GetConnectorConfigCustomTableArrayInput                 `pulumi:"customTables"`
-	CustomerId                             pulumi.StringInput                                      `pulumi:"customerId"`
-	CustomerListId                         pulumi.StringInput                                      `pulumi:"customerListId"`
-	DailyApiCallLimit                      pulumi.StringInput                                      `pulumi:"dailyApiCallLimit"`
-	DataAccessMethod                       pulumi.StringInput                                      `pulumi:"dataAccessMethod"`
-	DataCenter                             pulumi.StringInput                                      `pulumi:"dataCenter"`
-	DataSetName                            pulumi.StringInput                                      `pulumi:"dataSetName"`
-	Database                               pulumi.StringInput                                      `pulumi:"database"`
-	DatasetId                              pulumi.StringInput                                      `pulumi:"datasetId"`
-	Datasource                             pulumi.StringInput                                      `pulumi:"datasource"`
-	DateGranularity                        pulumi.StringInput                                      `pulumi:"dateGranularity"`
-	Delimiter                              pulumi.StringInput                                      `pulumi:"delimiter"`
-	DimensionAttributes                    pulumi.StringArrayInput                                 `pulumi:"dimensionAttributes"`
-	Dimensions                             pulumi.StringArrayInput                                 `pulumi:"dimensions"`
-	Domain                                 pulumi.StringInput                                      `pulumi:"domain"`
-	DomainHostName                         pulumi.StringInput                                      `pulumi:"domainHostName"`
-	DomainName                             pulumi.StringInput                                      `pulumi:"domainName"`
-	DomainType                             pulumi.StringInput                                      `pulumi:"domainType"`
-	Elements                               pulumi.StringArrayInput                                 `pulumi:"elements"`
-	Email                                  pulumi.StringInput                                      `pulumi:"email"`
-	EmptyHeader                            pulumi.StringInput                                      `pulumi:"emptyHeader"`
-	EnableAllDimensionCombinations         pulumi.StringInput                                      `pulumi:"enableAllDimensionCombinations"`
-	EnableArchiveLogOnly                   pulumi.StringInput                                      `pulumi:"enableArchiveLogOnly"`
-	EnableEnrichments                      pulumi.StringInput                                      `pulumi:"enableEnrichments"`
-	EnableExports                          pulumi.StringInput                                      `pulumi:"enableExports"`
-	EnableTde                              pulumi.StringInput                                      `pulumi:"enableTde"`
-	EncodedPublicKey                       pulumi.StringInput                                      `pulumi:"encodedPublicKey"`
-	EncryptionKey                          pulumi.StringInput                                      `pulumi:"encryptionKey"`
-	Endpoint                               pulumi.StringInput                                      `pulumi:"endpoint"`
-	EngagementAttributionWindow            pulumi.StringInput                                      `pulumi:"engagementAttributionWindow"`
-	EnrichedExport                         pulumi.StringInput                                      `pulumi:"enrichedExport"`
-	EntityId                               pulumi.StringInput                                      `pulumi:"entityId"`
-	Environment                            pulumi.StringInput                                      `pulumi:"environment"`
-	EscapeChar                             pulumi.StringInput                                      `pulumi:"escapeChar"`
-	EuRegion                               pulumi.StringInput                                      `pulumi:"euRegion"`
-	Events                                 pulumi.StringArrayInput                                 `pulumi:"events"`
-	ExportStorageType                      pulumi.StringInput                                      `pulumi:"exportStorageType"`
-	ExternalId                             pulumi.StringInput                                      `pulumi:"externalId"`
-	Fields                                 pulumi.StringArrayInput                                 `pulumi:"fields"`
-	FileType                               pulumi.StringInput                                      `pulumi:"fileType"`
-	Filter                                 pulumi.StringInput                                      `pulumi:"filter"`
-	FinanceAccountSyncMode                 pulumi.StringInput                                      `pulumi:"financeAccountSyncMode"`
-	FinanceAccounts                        pulumi.StringArrayInput                                 `pulumi:"financeAccounts"`
-	Folder                                 pulumi.StringInput                                      `pulumi:"folder"`
-	FolderId                               pulumi.StringInput                                      `pulumi:"folderId"`
-	FolderPath                             pulumi.StringInput                                      `pulumi:"folderPath"`
-	ForecastId                             pulumi.StringInput                                      `pulumi:"forecastId"`
-	FtpHost                                pulumi.StringInput                                      `pulumi:"ftpHost"`
-	FtpPassword                            pulumi.StringInput                                      `pulumi:"ftpPassword"`
-	FtpPort                                pulumi.StringInput                                      `pulumi:"ftpPort"`
-	FtpUser                                pulumi.StringInput                                      `pulumi:"ftpUser"`
-	Function                               pulumi.StringInput                                      `pulumi:"function"`
-	FunctionApp                            pulumi.StringInput                                      `pulumi:"functionApp"`
-	FunctionKey                            pulumi.StringInput                                      `pulumi:"functionKey"`
-	FunctionName                           pulumi.StringInput                                      `pulumi:"functionName"`
-	FunctionTrigger                        pulumi.StringInput                                      `pulumi:"functionTrigger"`
-	GcsBucket                              pulumi.StringInput                                      `pulumi:"gcsBucket"`
-	GcsFolder                              pulumi.StringInput                                      `pulumi:"gcsFolder"`
-	GroupName                              pulumi.StringInput                                      `pulumi:"groupName"`
-	HasManagePermissions                   pulumi.StringInput                                      `pulumi:"hasManagePermissions"`
-	HomeFolder                             pulumi.StringInput                                      `pulumi:"homeFolder"`
-	Host                                   pulumi.StringInput                                      `pulumi:"host"`
-	HostIp                                 pulumi.StringInput                                      `pulumi:"hostIp"`
-	HostUser                               pulumi.StringInput                                      `pulumi:"hostUser"`
-	Hosts                                  pulumi.StringArrayInput                                 `pulumi:"hosts"`
-	Identity                               pulumi.StringInput                                      `pulumi:"identity"`
-	Instance                               pulumi.StringInput                                      `pulumi:"instance"`
-	InstanceNumber                         pulumi.StringInput                                      `pulumi:"instanceNumber"`
-	InstanceUrl                            pulumi.StringInput                                      `pulumi:"instanceUrl"`
-	IntegrationKey                         pulumi.StringInput                                      `pulumi:"integrationKey"`
-	IsAccountLevelConnector                pulumi.StringInput                                      `pulumi:"isAccountLevelConnector"`
-	IsAuth2Enabled                         pulumi.StringInput                                      `pulumi:"isAuth2Enabled"`
-	IsCustomApiCredentials                 pulumi.StringInput                                      `pulumi:"isCustomApiCredentials"`
-	IsFtps                                 pulumi.StringInput                                      `pulumi:"isFtps"`
-	IsKeypair                              pulumi.StringInput                                      `pulumi:"isKeypair"`
-	IsMultiEntityFeatureEnabled            pulumi.StringInput                                      `pulumi:"isMultiEntityFeatureEnabled"`
-	IsNewPackage                           pulumi.StringInput                                      `pulumi:"isNewPackage"`
-	IsPrivateKeyEncrypted                  pulumi.StringInput                                      `pulumi:"isPrivateKeyEncrypted"`
-	IsPrivateLinkRequired                  pulumi.StringInput                                      `pulumi:"isPrivateLinkRequired"`
-	IsPublic                               pulumi.StringInput                                      `pulumi:"isPublic"`
-	IsSailthruConnectEnabled               pulumi.StringInput                                      `pulumi:"isSailthruConnectEnabled"`
-	IsSecure                               pulumi.StringInput                                      `pulumi:"isSecure"`
-	IsSingleTableMode                      pulumi.StringInput                                      `pulumi:"isSingleTableMode"`
-	IsVendor                               pulumi.StringInput                                      `pulumi:"isVendor"`
-	JsonDeliveryMode                       pulumi.StringInput                                      `pulumi:"jsonDeliveryMode"`
-	Key                                    pulumi.StringInput                                      `pulumi:"key"`
-	KeyPassword                            pulumi.StringInput                                      `pulumi:"keyPassword"`
-	KeyStoreType                           pulumi.StringInput                                      `pulumi:"keyStoreType"`
-	Keystore                               pulumi.StringInput                                      `pulumi:"keystore"`
-	KeystorePassword                       pulumi.StringInput                                      `pulumi:"keystorePassword"`
-	LastSyncedChangesUtc_                  pulumi.StringInput                                      `pulumi:"lastSyncedChangesUtc_"`
-	LatestVersion                          pulumi.StringInput                                      `pulumi:"latestVersion"`
-	LineSeparator                          pulumi.StringInput                                      `pulumi:"lineSeparator"`
-	ListStrategy                           pulumi.StringInput                                      `pulumi:"listStrategy"`
-	ListSyncMode                           pulumi.StringInput                                      `pulumi:"listSyncMode"`
-	LogJournal                             pulumi.StringInput                                      `pulumi:"logJournal"`
-	LogJournalSchema                       pulumi.StringInput                                      `pulumi:"logJournalSchema"`
-	Login                                  pulumi.StringInput                                      `pulumi:"login"`
-	LoginPassword                          pulumi.StringInput                                      `pulumi:"loginPassword"`
-	ManagerAccounts                        pulumi.StringArrayInput                                 `pulumi:"managerAccounts"`
-	MerchantId                             pulumi.StringInput                                      `pulumi:"merchantId"`
-	MessageType                            pulumi.StringInput                                      `pulumi:"messageType"`
-	Metrics                                pulumi.StringArrayInput                                 `pulumi:"metrics"`
-	NamedRange                             pulumi.StringInput                                      `pulumi:"namedRange"`
-	Namespace                              pulumi.StringInput                                      `pulumi:"namespace"`
-	NetworkCode                            pulumi.StringInput                                      `pulumi:"networkCode"`
-	NullSequence                           pulumi.StringInput                                      `pulumi:"nullSequence"`
-	OauthToken                             pulumi.StringInput                                      `pulumi:"oauthToken"`
-	OauthTokenSecret                       pulumi.StringInput                                      `pulumi:"oauthTokenSecret"`
-	OnError                                pulumi.StringInput                                      `pulumi:"onError"`
-	OnPremise                              pulumi.StringInput                                      `pulumi:"onPremise"`
-	Organization                           pulumi.StringInput                                      `pulumi:"organization"`
-	OrganizationId                         pulumi.StringInput                                      `pulumi:"organizationId"`
-	Organizations                          pulumi.StringArrayInput                                 `pulumi:"organizations"`
-	PackedModeTables                       pulumi.StringArrayInput                                 `pulumi:"packedModeTables"`
-	PackingMode                            pulumi.StringInput                                      `pulumi:"packingMode"`
-	Pages                                  pulumi.StringArrayInput                                 `pulumi:"pages"`
-	Partners                               pulumi.StringArrayInput                                 `pulumi:"partners"`
-	Passphrase                             pulumi.StringInput                                      `pulumi:"passphrase"`
-	Password                               pulumi.StringInput                                      `pulumi:"password"`
-	Pat                                    pulumi.StringInput                                      `pulumi:"pat"`
-	PatName                                pulumi.StringInput                                      `pulumi:"patName"`
-	PatSecret                              pulumi.StringInput                                      `pulumi:"patSecret"`
-	Path                                   pulumi.StringInput                                      `pulumi:"path"`
-	Pattern                                pulumi.StringInput                                      `pulumi:"pattern"`
-	PdbName                                pulumi.StringInput                                      `pulumi:"pdbName"`
-	PemCertificate                         pulumi.StringInput                                      `pulumi:"pemCertificate"`
-	PemPrivateKey                          pulumi.StringInput                                      `pulumi:"pemPrivateKey"`
-	PerInteractionDimensions               pulumi.StringArrayInput                                 `pulumi:"perInteractionDimensions"`
-	PersonalAccessToken                    pulumi.StringInput                                      `pulumi:"personalAccessToken"`
-	PgpPassPhrase                          pulumi.StringInput                                      `pulumi:"pgpPassPhrase"`
-	PgpSecretKey                           pulumi.StringInput                                      `pulumi:"pgpSecretKey"`
-	PhoneNumber                            pulumi.StringInput                                      `pulumi:"phoneNumber"`
-	Port                                   pulumi.StringInput                                      `pulumi:"port"`
-	PostClickAttributionWindowSize         pulumi.StringInput                                      `pulumi:"postClickAttributionWindowSize"`
-	PrebuiltReport                         pulumi.StringInput                                      `pulumi:"prebuiltReport"`
-	Prefix                                 pulumi.StringInput                                      `pulumi:"prefix"`
-	PrimaryKeys                            pulumi.StringArrayInput                                 `pulumi:"primaryKeys"`
-	PrivateKey                             pulumi.StringInput                                      `pulumi:"privateKey"`
-	Profiles                               pulumi.StringArrayInput                                 `pulumi:"profiles"`
-	ProjectCredentials                     GetConnectorConfigProjectCredentialArrayInput           `pulumi:"projectCredentials"`
-	ProjectId                              pulumi.StringInput                                      `pulumi:"projectId"`
-	Projects                               pulumi.StringArrayInput                                 `pulumi:"projects"`
-	Properties                             pulumi.StringArrayInput                                 `pulumi:"properties"`
-	PublicKey                              pulumi.StringInput                                      `pulumi:"publicKey"`
-	PublicationName                        pulumi.StringInput                                      `pulumi:"publicationName"`
-	QueryId                                pulumi.StringInput                                      `pulumi:"queryId"`
-	QueryParamValue                        pulumi.StringInput                                      `pulumi:"queryParamValue"`
-	RefreshTokenExpiresAt                  pulumi.StringInput                                      `pulumi:"refreshTokenExpiresAt"`
-	Region                                 pulumi.StringInput                                      `pulumi:"region"`
-	ReplicaId                              pulumi.StringInput                                      `pulumi:"replicaId"`
-	ReplicationSlot                        pulumi.StringInput                                      `pulumi:"replicationSlot"`
-	ReportConfigurationIds                 pulumi.StringArrayInput                                 `pulumi:"reportConfigurationIds"`
-	ReportFormatType                       pulumi.StringInput                                      `pulumi:"reportFormatType"`
-	ReportSuites                           pulumi.StringArrayInput                                 `pulumi:"reportSuites"`
-	ReportTimezone                         pulumi.StringInput                                      `pulumi:"reportTimezone"`
-	ReportType                             pulumi.StringInput                                      `pulumi:"reportType"`
-	ReportUrl                              pulumi.StringInput                                      `pulumi:"reportUrl"`
-	Reports                                GetConnectorConfigReportArrayInput                      `pulumi:"reports"`
-	ReportsLinkedinAds                     pulumi.StringArrayInput                                 `pulumi:"reportsLinkedinAds"`
-	Repositories                           pulumi.StringArrayInput                                 `pulumi:"repositories"`
-	ResourceToken                          pulumi.StringInput                                      `pulumi:"resourceToken"`
-	ResourceUrl                            pulumi.StringInput                                      `pulumi:"resourceUrl"`
-	RestApiLimit                           pulumi.StringInput                                      `pulumi:"restApiLimit"`
-	RfcLibraryPath                         pulumi.StringInput                                      `pulumi:"rfcLibraryPath"`
-	Role                                   pulumi.StringInput                                      `pulumi:"role"`
-	RoleArn                                pulumi.StringInput                                      `pulumi:"roleArn"`
-	RollbackWindowSize                     pulumi.StringInput                                      `pulumi:"rollbackWindowSize"`
-	S3Bucket                               pulumi.StringInput                                      `pulumi:"s3Bucket"`
-	S3ExportBucket                         pulumi.StringInput                                      `pulumi:"s3ExportBucket"`
-	S3ExportFolder                         pulumi.StringInput                                      `pulumi:"s3ExportFolder"`
-	S3ExportRoleArn                        pulumi.StringInput                                      `pulumi:"s3ExportRoleArn"`
-	S3RoleArn                              pulumi.StringInput                                      `pulumi:"s3RoleArn"`
-	S3bucket                               pulumi.StringInput                                      `pulumi:"s3bucket"`
-	S3externalId                           pulumi.StringInput                                      `pulumi:"s3externalId"`
-	S3folder                               pulumi.StringInput                                      `pulumi:"s3folder"`
-	S3path                                 pulumi.StringInput                                      `pulumi:"s3path"`
-	S3roleArn                              pulumi.StringInput                                      `pulumi:"s3roleArn"`
-	SalesAccountSyncMode                   pulumi.StringInput                                      `pulumi:"salesAccountSyncMode"`
-	SalesAccounts                          pulumi.StringArrayInput                                 `pulumi:"salesAccounts"`
-	SalesforceSecurityToken                pulumi.StringInput                                      `pulumi:"salesforceSecurityToken"`
-	SandboxAccount                         pulumi.StringInput                                      `pulumi:"sandboxAccount"`
-	SapSchema                              pulumi.StringInput                                      `pulumi:"sapSchema"`
-	SapUser                                pulumi.StringInput                                      `pulumi:"sapUser"`
-	SaslMechanism                          pulumi.StringInput                                      `pulumi:"saslMechanism"`
-	SaslPlainKey                           pulumi.StringInput                                      `pulumi:"saslPlainKey"`
-	SaslPlainSecret                        pulumi.StringInput                                      `pulumi:"saslPlainSecret"`
-	SaslScram256Key                        pulumi.StringInput                                      `pulumi:"saslScram256Key"`
-	SaslScram256Secret                     pulumi.StringInput                                      `pulumi:"saslScram256Secret"`
-	SaslScram512Key                        pulumi.StringInput                                      `pulumi:"saslScram512Key"`
-	SaslScram512Secret                     pulumi.StringInput                                      `pulumi:"saslScram512Secret"`
-	SchemaRegistryCredentialsSource        pulumi.StringInput                                      `pulumi:"schemaRegistryCredentialsSource"`
-	SchemaRegistryKey                      pulumi.StringInput                                      `pulumi:"schemaRegistryKey"`
-	SchemaRegistrySecret                   pulumi.StringInput                                      `pulumi:"schemaRegistrySecret"`
-	SchemaRegistryUrls                     pulumi.StringArrayInput                                 `pulumi:"schemaRegistryUrls"`
-	Secret                                 pulumi.StringInput                                      `pulumi:"secret"`
-	SecretKey                              pulumi.StringInput                                      `pulumi:"secretKey"`
-	Secrets                                pulumi.StringInput                                      `pulumi:"secrets"`
-	SecretsLists                           GetConnectorConfigSecretsListArrayInput                 `pulumi:"secretsLists"`
-	SecurityProtocol                       pulumi.StringInput                                      `pulumi:"securityProtocol"`
-	Segments                               pulumi.StringArrayInput                                 `pulumi:"segments"`
-	SelectedExports                        pulumi.StringArrayInput                                 `pulumi:"selectedExports"`
-	SenderId                               pulumi.StringInput                                      `pulumi:"senderId"`
-	SenderPassword                         pulumi.StringInput                                      `pulumi:"senderPassword"`
-	ServerAddress                          pulumi.StringInput                                      `pulumi:"serverAddress"`
-	ServerUrl                              pulumi.StringInput                                      `pulumi:"serverUrl"`
-	Servers                                pulumi.StringArrayInput                                 `pulumi:"servers"`
-	ServiceAccount                         pulumi.StringInput                                      `pulumi:"serviceAccount"`
-	ServiceAccountEmail                    pulumi.StringInput                                      `pulumi:"serviceAccountEmail"`
-	ServiceAccountKey                      pulumi.StringInput                                      `pulumi:"serviceAccountKey"`
-	ServiceVersion                         pulumi.StringInput                                      `pulumi:"serviceVersion"`
-	SftpHost                               pulumi.StringInput                                      `pulumi:"sftpHost"`
-	SftpIsKeyPair                          pulumi.StringInput                                      `pulumi:"sftpIsKeyPair"`
-	SftpPassword                           pulumi.StringInput                                      `pulumi:"sftpPassword"`
-	SftpPort                               pulumi.StringInput                                      `pulumi:"sftpPort"`
-	SftpPublicKey                          pulumi.StringInput                                      `pulumi:"sftpPublicKey"`
-	SftpUser                               pulumi.StringInput                                      `pulumi:"sftpUser"`
-	ShareUrl                               pulumi.StringInput                                      `pulumi:"shareUrl"`
-	SheetId                                pulumi.StringInput                                      `pulumi:"sheetId"`
-	Shop                                   pulumi.StringInput                                      `pulumi:"shop"`
-	ShortCode                              pulumi.StringInput                                      `pulumi:"shortCode"`
-	ShowRecordsWithNoMetrics               pulumi.StringInput                                      `pulumi:"showRecordsWithNoMetrics"`
-	Sid                                    pulumi.StringInput                                      `pulumi:"sid"`
-	SignerPublicKey                        pulumi.StringInput                                      `pulumi:"signerPublicKey"`
-	SiteAddress                            pulumi.StringInput                                      `pulumi:"siteAddress"`
-	SiteId                                 pulumi.StringInput                                      `pulumi:"siteId"`
-	SiteName                               pulumi.StringInput                                      `pulumi:"siteName"`
-	SiteUrls                               pulumi.StringArrayInput                                 `pulumi:"siteUrls"`
-	SkipAfter                              pulumi.StringInput                                      `pulumi:"skipAfter"`
-	SkipBefore                             pulumi.StringInput                                      `pulumi:"skipBefore"`
-	SoapUri                                pulumi.StringInput                                      `pulumi:"soapUri"`
-	SocialDataSyncTimeframe                pulumi.StringInput                                      `pulumi:"socialDataSyncTimeframe"`
-	Source                                 pulumi.StringInput                                      `pulumi:"source"`
-	StoreHash                              pulumi.StringInput                                      `pulumi:"storeHash"`
-	SubDomain                              pulumi.StringInput                                      `pulumi:"subDomain"`
-	Subdomain                              pulumi.StringInput                                      `pulumi:"subdomain"`
-	SubscriberName                         pulumi.StringInput                                      `pulumi:"subscriberName"`
-	Subscription                           pulumi.StringInput                                      `pulumi:"subscription"`
-	SupportConnectedAccountsSync           pulumi.StringInput                                      `pulumi:"supportConnectedAccountsSync"`
-	SupportNestedColumns                   pulumi.StringInput                                      `pulumi:"supportNestedColumns"`
-	SurveyIds                              pulumi.StringInput                                      `pulumi:"surveyIds"`
-	SwipeAttributionWindow                 pulumi.StringInput                                      `pulumi:"swipeAttributionWindow"`
-	SyncDataLocker                         pulumi.StringInput                                      `pulumi:"syncDataLocker"`
-	SyncFormat                             pulumi.StringInput                                      `pulumi:"syncFormat"`
-	SyncFormulaFields                      pulumi.StringInput                                      `pulumi:"syncFormulaFields"`
-	SyncMetadata                           pulumi.StringInput                                      `pulumi:"syncMetadata"`
-	SyncMethod                             pulumi.StringInput                                      `pulumi:"syncMethod"`
-	SyncMode                               pulumi.StringInput                                      `pulumi:"syncMode"`
-	SyncMultipleAccounts                   pulumi.StringInput                                      `pulumi:"syncMultipleAccounts"`
-	SyncPackMode                           pulumi.StringInput                                      `pulumi:"syncPackMode"`
-	SyncPullApi                            pulumi.StringInput                                      `pulumi:"syncPullApi"`
-	SyncType                               pulumi.StringInput                                      `pulumi:"syncType"`
-	Sysnr                                  pulumi.StringInput                                      `pulumi:"sysnr"`
-	TableName                              pulumi.StringInput                                      `pulumi:"tableName"`
-	TdeCertificate                         pulumi.StringInput                                      `pulumi:"tdeCertificate"`
-	TdeCertificateName                     pulumi.StringInput                                      `pulumi:"tdeCertificateName"`
-	TdePassword                            pulumi.StringInput                                      `pulumi:"tdePassword"`
-	TdePrivateKey                          pulumi.StringInput                                      `pulumi:"tdePrivateKey"`
-	TeamId                                 pulumi.StringInput                                      `pulumi:"teamId"`
-	TechnicalAccountId                     pulumi.StringInput                                      `pulumi:"technicalAccountId"`
-	TemplateLabels                         pulumi.StringArrayInput                                 `pulumi:"templateLabels"`
-	TenantId                               pulumi.StringInput                                      `pulumi:"tenantId"`
-	TestTableName                          pulumi.StringInput                                      `pulumi:"testTableName"`
-	TimeZone                               pulumi.StringInput                                      `pulumi:"timeZone"`
-	TimeframeMonths                        pulumi.StringInput                                      `pulumi:"timeframeMonths"`
-	Tns                                    pulumi.StringInput                                      `pulumi:"tns"`
-	TokenAuthenticatedContainer            pulumi.StringInput                                      `pulumi:"tokenAuthenticatedContainer"`
-	TokenAuthenticatedDatabase             pulumi.StringInput                                      `pulumi:"tokenAuthenticatedDatabase"`
-	TokenId                                pulumi.StringInput                                      `pulumi:"tokenId"`
-	TokenKey                               pulumi.StringInput                                      `pulumi:"tokenKey"`
-	TokenSecret                            pulumi.StringInput                                      `pulumi:"tokenSecret"`
-	TokenSecretKey                         pulumi.StringInput                                      `pulumi:"tokenSecretKey"`
-	Topics                                 pulumi.StringArrayInput                                 `pulumi:"topics"`
-	TrustStoreType                         pulumi.StringInput                                      `pulumi:"trustStoreType"`
-	TrustedCert                            pulumi.StringInput                                      `pulumi:"trustedCert"`
-	Truststore                             pulumi.StringInput                                      `pulumi:"truststore"`
-	TunnelHost                             pulumi.StringInput                                      `pulumi:"tunnelHost"`
-	TunnelPort                             pulumi.StringInput                                      `pulumi:"tunnelPort"`
-	TunnelUser                             pulumi.StringInput                                      `pulumi:"tunnelUser"`
-	UniqueId                               pulumi.StringInput                                      `pulumi:"uniqueId"`
-	UpdateConfigOnEachSync                 pulumi.StringInput                                      `pulumi:"updateConfigOnEachSync"`
-	UpdateMethod                           pulumi.StringInput                                      `pulumi:"updateMethod"`
-	Uri                                    pulumi.StringInput                                      `pulumi:"uri"`
-	UseApiKeys                             pulumi.StringInput                                      `pulumi:"useApiKeys"`
-	UseCustomerBucket                      pulumi.StringInput                                      `pulumi:"useCustomerBucket"`
-	UseOracleRac                           pulumi.StringInput                                      `pulumi:"useOracleRac"`
-	UsePgpEncryptionOptions                pulumi.StringInput                                      `pulumi:"usePgpEncryptionOptions"`
-	UseServiceAccount                      pulumi.StringInput                                      `pulumi:"useServiceAccount"`
-	UseTemplateLabels                      pulumi.StringInput                                      `pulumi:"useTemplateLabels"`
-	UseWebhooks                            pulumi.StringInput                                      `pulumi:"useWebhooks"`
-	UseWorkspace                           pulumi.StringInput                                      `pulumi:"useWorkspace"`
-	User                                   pulumi.StringInput                                      `pulumi:"user"`
-	UserId                                 pulumi.StringInput                                      `pulumi:"userId"`
-	UserKey                                pulumi.StringInput                                      `pulumi:"userKey"`
-	UserName                               pulumi.StringInput                                      `pulumi:"userName"`
-	UserProfiles                           pulumi.StringArrayInput                                 `pulumi:"userProfiles"`
-	Username                               pulumi.StringInput                                      `pulumi:"username"`
-	ViewAttributionWindow                  pulumi.StringInput                                      `pulumi:"viewAttributionWindow"`
-	ViewThroughAttributionWindowSize       pulumi.StringInput                                      `pulumi:"viewThroughAttributionWindowSize"`
-	WebhookEndpoint                        pulumi.StringInput                                      `pulumi:"webhookEndpoint"`
-	WebhookKey                             pulumi.StringInput                                      `pulumi:"webhookKey"`
-	WebhookUrl                             pulumi.StringInput                                      `pulumi:"webhookUrl"`
-	WordPressSiteIdOrWoocommerceDomainName pulumi.StringInput                                      `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
-	WorkspaceName                          pulumi.StringInput                                      `pulumi:"workspaceName"`
-	WorkspaceSameAsSource                  pulumi.StringInput                                      `pulumi:"workspaceSameAsSource"`
-	WorkspaceSchema                        pulumi.StringInput                                      `pulumi:"workspaceSchema"`
-	WsCertificate                          pulumi.StringInput                                      `pulumi:"wsCertificate"`
+	AbsConnectionMethod                          pulumi.StringInput                                      `pulumi:"absConnectionMethod"`
+	AbsConnectionString                          pulumi.StringInput                                      `pulumi:"absConnectionString"`
+	AbsContainerAddress                          pulumi.StringInput                                      `pulumi:"absContainerAddress"`
+	AbsContainerName                             pulumi.StringInput                                      `pulumi:"absContainerName"`
+	AbsHostIp                                    pulumi.StringInput                                      `pulumi:"absHostIp"`
+	AbsHostUser                                  pulumi.StringInput                                      `pulumi:"absHostUser"`
+	AbsPrefix                                    pulumi.StringInput                                      `pulumi:"absPrefix"`
+	AbsPublicKey                                 pulumi.StringInput                                      `pulumi:"absPublicKey"`
+	AccessKey                                    pulumi.StringInput                                      `pulumi:"accessKey"`
+	AccessKeyId                                  pulumi.StringInput                                      `pulumi:"accessKeyId"`
+	AccessKeySecret                              pulumi.StringInput                                      `pulumi:"accessKeySecret"`
+	AccessToken                                  pulumi.StringInput                                      `pulumi:"accessToken"`
+	AccessType                                   pulumi.StringInput                                      `pulumi:"accessType"`
+	Account                                      pulumi.StringInput                                      `pulumi:"account"`
+	AccountId                                    pulumi.StringInput                                      `pulumi:"accountId"`
+	AccountIds                                   pulumi.StringArrayInput                                 `pulumi:"accountIds"`
+	AccountKey                                   pulumi.StringInput                                      `pulumi:"accountKey"`
+	AccountName                                  pulumi.StringInput                                      `pulumi:"accountName"`
+	AccountSyncMode                              pulumi.StringInput                                      `pulumi:"accountSyncMode"`
+	Accounts                                     pulumi.StringArrayInput                                 `pulumi:"accounts"`
+	AccountsRedditAds                            GetConnectorConfigAccountsRedditAdArrayInput            `pulumi:"accountsRedditAds"`
+	AccountsSyncMode                             pulumi.StringInput                                      `pulumi:"accountsSyncMode"`
+	ActionBreakdowns                             pulumi.StringArrayInput                                 `pulumi:"actionBreakdowns"`
+	ActionReportTime                             pulumi.StringInput                                      `pulumi:"actionReportTime"`
+	AdAnalytics                                  pulumi.StringInput                                      `pulumi:"adAnalytics"`
+	AdUnitView                                   pulumi.StringInput                                      `pulumi:"adUnitView"`
+	AdminApiKey                                  pulumi.StringInput                                      `pulumi:"adminApiKey"`
+	AdobeAnalyticsConfigurations                 GetConnectorConfigAdobeAnalyticsConfigurationArrayInput `pulumi:"adobeAnalyticsConfigurations"`
+	Advertisables                                pulumi.StringArrayInput                                 `pulumi:"advertisables"`
+	Advertisers                                  pulumi.StringArrayInput                                 `pulumi:"advertisers"`
+	AdvertisersIds                               pulumi.StringArrayInput                                 `pulumi:"advertisersIds"`
+	AdvertisersSyncMode                          pulumi.StringInput                                      `pulumi:"advertisersSyncMode"`
+	AgentHost                                    pulumi.StringInput                                      `pulumi:"agentHost"`
+	AgentOraHome                                 pulumi.StringInput                                      `pulumi:"agentOraHome"`
+	AgentPassword                                pulumi.StringInput                                      `pulumi:"agentPassword"`
+	AgentPort                                    pulumi.StringInput                                      `pulumi:"agentPort"`
+	AgentPublicCert                              pulumi.StringInput                                      `pulumi:"agentPublicCert"`
+	AgentUser                                    pulumi.StringInput                                      `pulumi:"agentUser"`
+	Aggregation                                  pulumi.StringInput                                      `pulumi:"aggregation"`
+	AlwaysEncrypted                              pulumi.StringInput                                      `pulumi:"alwaysEncrypted"`
+	ApiAccessToken                               pulumi.StringInput                                      `pulumi:"apiAccessToken"`
+	ApiId                                        pulumi.StringInput                                      `pulumi:"apiId"`
+	ApiKey                                       pulumi.StringInput                                      `pulumi:"apiKey"`
+	ApiKeyApiSecret                              pulumi.StringInput                                      `pulumi:"apiKeyApiSecret"`
+	ApiKeys                                      pulumi.StringArrayInput                                 `pulumi:"apiKeys"`
+	ApiQuota                                     pulumi.StringInput                                      `pulumi:"apiQuota"`
+	ApiRequestsPerMinute                         pulumi.StringInput                                      `pulumi:"apiRequestsPerMinute"`
+	ApiSecret                                    pulumi.StringInput                                      `pulumi:"apiSecret"`
+	ApiSecretKey                                 pulumi.StringInput                                      `pulumi:"apiSecretKey"`
+	ApiToken                                     pulumi.StringInput                                      `pulumi:"apiToken"`
+	ApiType                                      pulumi.StringInput                                      `pulumi:"apiType"`
+	ApiUrl                                       pulumi.StringInput                                      `pulumi:"apiUrl"`
+	ApiUsage                                     pulumi.StringInput                                      `pulumi:"apiUsage"`
+	ApiUtilizationPercentage                     pulumi.StringInput                                      `pulumi:"apiUtilizationPercentage"`
+	ApiVersion                                   pulumi.StringInput                                      `pulumi:"apiVersion"`
+	AppId                                        pulumi.StringInput                                      `pulumi:"appId"`
+	AppIds                                       pulumi.StringArrayInput                                 `pulumi:"appIds"`
+	AppIdsAppsflyers                             GetConnectorConfigAppIdsAppsflyerArrayInput             `pulumi:"appIdsAppsflyers"`
+	AppKey                                       pulumi.StringInput                                      `pulumi:"appKey"`
+	AppSpecificPassword                          pulumi.StringInput                                      `pulumi:"appSpecificPassword"`
+	AppSyncMode                                  pulumi.StringInput                                      `pulumi:"appSyncMode"`
+	AppendFileOption                             pulumi.StringInput                                      `pulumi:"appendFileOption"`
+	ApplicationKey                               pulumi.StringInput                                      `pulumi:"applicationKey"`
+	Apps                                         pulumi.StringArrayInput                                 `pulumi:"apps"`
+	ArchiveLogFormat                             pulumi.StringInput                                      `pulumi:"archiveLogFormat"`
+	ArchiveLogPath                               pulumi.StringInput                                      `pulumi:"archiveLogPath"`
+	ArchivePattern                               pulumi.StringInput                                      `pulumi:"archivePattern"`
+	AreSoapCredentialsProvided                   pulumi.StringInput                                      `pulumi:"areSoapCredentialsProvided"`
+	AsbIp                                        pulumi.StringInput                                      `pulumi:"asbIp"`
+	AsmOption                                    pulumi.StringInput                                      `pulumi:"asmOption"`
+	AsmOracleHome                                pulumi.StringInput                                      `pulumi:"asmOracleHome"`
+	AsmPassword                                  pulumi.StringInput                                      `pulumi:"asmPassword"`
+	AsmTns                                       pulumi.StringInput                                      `pulumi:"asmTns"`
+	AsmUser                                      pulumi.StringInput                                      `pulumi:"asmUser"`
+	AttributionWindow                            pulumi.StringInput                                      `pulumi:"attributionWindow"`
+	AttributionWindowSize                        pulumi.StringInput                                      `pulumi:"attributionWindowSize"`
+	Auth                                         pulumi.StringInput                                      `pulumi:"auth"`
+	AuthMethod                                   pulumi.StringInput                                      `pulumi:"authMethod"`
+	AuthMode                                     pulumi.StringInput                                      `pulumi:"authMode"`
+	AuthType                                     pulumi.StringInput                                      `pulumi:"authType"`
+	AuthorizationMethod                          pulumi.StringInput                                      `pulumi:"authorizationMethod"`
+	AwsRegionCode                                pulumi.StringInput                                      `pulumi:"awsRegionCode"`
+	BaseCurrency                                 pulumi.StringInput                                      `pulumi:"baseCurrency"`
+	BaseDomain                                   pulumi.StringInput                                      `pulumi:"baseDomain"`
+	BaseId                                       pulumi.StringInput                                      `pulumi:"baseId"`
+	BaseUrl                                      pulumi.StringInput                                      `pulumi:"baseUrl"`
+	BearerToken                                  pulumi.StringInput                                      `pulumi:"bearerToken"`
+	BlobSasUrl                                   pulumi.StringInput                                      `pulumi:"blobSasUrl"`
+	Breakdowns                                   pulumi.StringArrayInput                                 `pulumi:"breakdowns"`
+	Bucket                                       pulumi.StringInput                                      `pulumi:"bucket"`
+	BucketName                                   pulumi.StringInput                                      `pulumi:"bucketName"`
+	BucketService                                pulumi.StringInput                                      `pulumi:"bucketService"`
+	BusinessId                                   pulumi.StringInput                                      `pulumi:"businessId"`
+	BusinessUnitId                               pulumi.StringInput                                      `pulumi:"businessUnitId"`
+	Certificate                                  pulumi.StringInput                                      `pulumi:"certificate"`
+	ClickAttributionWindow                       pulumi.StringInput                                      `pulumi:"clickAttributionWindow"`
+	Client                                       pulumi.StringInput                                      `pulumi:"client"`
+	ClientCert                                   pulumi.StringInput                                      `pulumi:"clientCert"`
+	ClientCertKey                                pulumi.StringInput                                      `pulumi:"clientCertKey"`
+	ClientId                                     pulumi.StringInput                                      `pulumi:"clientId"`
+	ClientKey                                    pulumi.StringInput                                      `pulumi:"clientKey"`
+	ClientName                                   pulumi.StringInput                                      `pulumi:"clientName"`
+	ClientSecret                                 pulumi.StringInput                                      `pulumi:"clientSecret"`
+	CloudStorageType                             pulumi.StringInput                                      `pulumi:"cloudStorageType"`
+	Columns                                      pulumi.StringArrayInput                                 `pulumi:"columns"`
+	CompanyId                                    pulumi.StringInput                                      `pulumi:"companyId"`
+	CompanyKey                                   pulumi.StringInput                                      `pulumi:"companyKey"`
+	CompanyRequestToken                          pulumi.StringInput                                      `pulumi:"companyRequestToken"`
+	CompanyUuid                                  pulumi.StringInput                                      `pulumi:"companyUuid"`
+	Compression                                  pulumi.StringInput                                      `pulumi:"compression"`
+	ConfigMethod                                 pulumi.StringInput                                      `pulumi:"configMethod"`
+	ConfigRepositoryUrl                          pulumi.StringInput                                      `pulumi:"configRepositoryUrl"`
+	ConfigType                                   pulumi.StringInput                                      `pulumi:"configType"`
+	ConnectingUser                               pulumi.StringInput                                      `pulumi:"connectingUser"`
+	ConnectingUserEmail                          pulumi.StringInput                                      `pulumi:"connectingUserEmail"`
+	ConnectionMethod                             pulumi.StringInput                                      `pulumi:"connectionMethod"`
+	ConnectionString                             pulumi.StringInput                                      `pulumi:"connectionString"`
+	ConnectionType                               pulumi.StringInput                                      `pulumi:"connectionType"`
+	ConsumerGroup                                pulumi.StringInput                                      `pulumi:"consumerGroup"`
+	ConsumerKey                                  pulumi.StringInput                                      `pulumi:"consumerKey"`
+	ConsumerSecret                               pulumi.StringInput                                      `pulumi:"consumerSecret"`
+	ContainerAddress                             pulumi.StringInput                                      `pulumi:"containerAddress"`
+	ContainerName                                pulumi.StringInput                                      `pulumi:"containerName"`
+	ContentOwnerId                               pulumi.StringInput                                      `pulumi:"contentOwnerId"`
+	ConversationWebhookUrl                       pulumi.StringInput                                      `pulumi:"conversationWebhookUrl"`
+	ConversionDimensions                         pulumi.StringArrayInput                                 `pulumi:"conversionDimensions"`
+	ConversionReportTime                         pulumi.StringInput                                      `pulumi:"conversionReportTime"`
+	ConversionWindowSize                         pulumi.StringInput                                      `pulumi:"conversionWindowSize"`
+	CsvDefinition                                pulumi.StringInput                                      `pulumi:"csvDefinition"`
+	Currency                                     pulumi.StringInput                                      `pulumi:"currency"`
+	CustomEventSyncMode                          pulumi.StringInput                                      `pulumi:"customEventSyncMode"`
+	CustomEvents                                 pulumi.StringArrayInput                                 `pulumi:"customEvents"`
+	CustomFieldIds                               pulumi.StringArrayInput                                 `pulumi:"customFieldIds"`
+	CustomFloodlightVariables                    pulumi.StringArrayInput                                 `pulumi:"customFloodlightVariables"`
+	CustomReports                                GetConnectorConfigCustomReportArrayInput                `pulumi:"customReports"`
+	CustomTables                                 GetConnectorConfigCustomTableArrayInput                 `pulumi:"customTables"`
+	CustomerId                                   pulumi.StringInput                                      `pulumi:"customerId"`
+	CustomerListId                               pulumi.StringInput                                      `pulumi:"customerListId"`
+	DailyApiCallLimit                            pulumi.StringInput                                      `pulumi:"dailyApiCallLimit"`
+	DataAccessMethod                             pulumi.StringInput                                      `pulumi:"dataAccessMethod"`
+	DataCenter                                   pulumi.StringInput                                      `pulumi:"dataCenter"`
+	DataSetName                                  pulumi.StringInput                                      `pulumi:"dataSetName"`
+	Database                                     pulumi.StringInput                                      `pulumi:"database"`
+	DatasetId                                    pulumi.StringInput                                      `pulumi:"datasetId"`
+	Datasource                                   pulumi.StringInput                                      `pulumi:"datasource"`
+	DateGranularity                              pulumi.StringInput                                      `pulumi:"dateGranularity"`
+	Delimiter                                    pulumi.StringInput                                      `pulumi:"delimiter"`
+	DimensionAttributes                          pulumi.StringArrayInput                                 `pulumi:"dimensionAttributes"`
+	Dimensions                                   pulumi.StringArrayInput                                 `pulumi:"dimensions"`
+	DistributedConnectorClusterSize              pulumi.StringInput                                      `pulumi:"distributedConnectorClusterSize"`
+	Domain                                       pulumi.StringInput                                      `pulumi:"domain"`
+	DomainHostName                               pulumi.StringInput                                      `pulumi:"domainHostName"`
+	DomainName                                   pulumi.StringInput                                      `pulumi:"domainName"`
+	DomainType                                   pulumi.StringInput                                      `pulumi:"domainType"`
+	Elements                                     pulumi.StringArrayInput                                 `pulumi:"elements"`
+	Email                                        pulumi.StringInput                                      `pulumi:"email"`
+	EmptyHeader                                  pulumi.StringInput                                      `pulumi:"emptyHeader"`
+	EnableAllDimensionCombinations               pulumi.StringInput                                      `pulumi:"enableAllDimensionCombinations"`
+	EnableArchiveLogOnly                         pulumi.StringInput                                      `pulumi:"enableArchiveLogOnly"`
+	EnableDataExtensionsSyncing                  pulumi.StringInput                                      `pulumi:"enableDataExtensionsSyncing"`
+	EnableDistributedConnectorMode               pulumi.StringInput                                      `pulumi:"enableDistributedConnectorMode"`
+	EnableEnrichments                            pulumi.StringInput                                      `pulumi:"enableEnrichments"`
+	EnableExports                                pulumi.StringInput                                      `pulumi:"enableExports"`
+	EnableTde                                    pulumi.StringInput                                      `pulumi:"enableTde"`
+	EncodedPublicKey                             pulumi.StringInput                                      `pulumi:"encodedPublicKey"`
+	EncryptionKey                                pulumi.StringInput                                      `pulumi:"encryptionKey"`
+	Endpoint                                     pulumi.StringInput                                      `pulumi:"endpoint"`
+	EngagementAttributionWindow                  pulumi.StringInput                                      `pulumi:"engagementAttributionWindow"`
+	EnrichedExport                               pulumi.StringInput                                      `pulumi:"enrichedExport"`
+	EntityId                                     pulumi.StringInput                                      `pulumi:"entityId"`
+	Environment                                  pulumi.StringInput                                      `pulumi:"environment"`
+	EscapeChar                                   pulumi.StringInput                                      `pulumi:"escapeChar"`
+	EuRegion                                     pulumi.StringInput                                      `pulumi:"euRegion"`
+	Events                                       pulumi.StringArrayInput                                 `pulumi:"events"`
+	ExportStorageType                            pulumi.StringInput                                      `pulumi:"exportStorageType"`
+	ExternalId                                   pulumi.StringInput                                      `pulumi:"externalId"`
+	Fields                                       pulumi.StringArrayInput                                 `pulumi:"fields"`
+	FileType                                     pulumi.StringInput                                      `pulumi:"fileType"`
+	Filter                                       pulumi.StringInput                                      `pulumi:"filter"`
+	FinanceAccountSyncMode                       pulumi.StringInput                                      `pulumi:"financeAccountSyncMode"`
+	FinanceAccounts                              pulumi.StringArrayInput                                 `pulumi:"financeAccounts"`
+	Folder                                       pulumi.StringInput                                      `pulumi:"folder"`
+	FolderId                                     pulumi.StringInput                                      `pulumi:"folderId"`
+	FolderPath                                   pulumi.StringInput                                      `pulumi:"folderPath"`
+	ForecastId                                   pulumi.StringInput                                      `pulumi:"forecastId"`
+	FtpHost                                      pulumi.StringInput                                      `pulumi:"ftpHost"`
+	FtpPassword                                  pulumi.StringInput                                      `pulumi:"ftpPassword"`
+	FtpPort                                      pulumi.StringInput                                      `pulumi:"ftpPort"`
+	FtpUser                                      pulumi.StringInput                                      `pulumi:"ftpUser"`
+	Function                                     pulumi.StringInput                                      `pulumi:"function"`
+	FunctionApp                                  pulumi.StringInput                                      `pulumi:"functionApp"`
+	FunctionKey                                  pulumi.StringInput                                      `pulumi:"functionKey"`
+	FunctionName                                 pulumi.StringInput                                      `pulumi:"functionName"`
+	FunctionTrigger                              pulumi.StringInput                                      `pulumi:"functionTrigger"`
+	GcsBucket                                    pulumi.StringInput                                      `pulumi:"gcsBucket"`
+	GcsFolder                                    pulumi.StringInput                                      `pulumi:"gcsFolder"`
+	GroupName                                    pulumi.StringInput                                      `pulumi:"groupName"`
+	HasManagePermissions                         pulumi.StringInput                                      `pulumi:"hasManagePermissions"`
+	HomeFolder                                   pulumi.StringInput                                      `pulumi:"homeFolder"`
+	Host                                         pulumi.StringInput                                      `pulumi:"host"`
+	HostIp                                       pulumi.StringInput                                      `pulumi:"hostIp"`
+	HostUser                                     pulumi.StringInput                                      `pulumi:"hostUser"`
+	Hosts                                        pulumi.StringArrayInput                                 `pulumi:"hosts"`
+	Identity                                     pulumi.StringInput                                      `pulumi:"identity"`
+	IncludeOcapiEndpoints                        pulumi.StringInput                                      `pulumi:"includeOcapiEndpoints"`
+	Instance                                     pulumi.StringInput                                      `pulumi:"instance"`
+	InstanceNumber                               pulumi.StringInput                                      `pulumi:"instanceNumber"`
+	InstanceUrl                                  pulumi.StringInput                                      `pulumi:"instanceUrl"`
+	IntegrationKey                               pulumi.StringInput                                      `pulumi:"integrationKey"`
+	IsAccountLevelConnector                      pulumi.StringInput                                      `pulumi:"isAccountLevelConnector"`
+	IsAuth2Enabled                               pulumi.StringInput                                      `pulumi:"isAuth2Enabled"`
+	IsCustomApiCredentials                       pulumi.StringInput                                      `pulumi:"isCustomApiCredentials"`
+	IsExternalActivitiesEndpointSelected         pulumi.StringInput                                      `pulumi:"isExternalActivitiesEndpointSelected"`
+	IsFtps                                       pulumi.StringInput                                      `pulumi:"isFtps"`
+	IsKeypair                                    pulumi.StringInput                                      `pulumi:"isKeypair"`
+	IsMultiEntityFeatureEnabled                  pulumi.StringInput                                      `pulumi:"isMultiEntityFeatureEnabled"`
+	IsNewPackage                                 pulumi.StringInput                                      `pulumi:"isNewPackage"`
+	IsPrivateKeyEncrypted                        pulumi.StringInput                                      `pulumi:"isPrivateKeyEncrypted"`
+	IsPrivateLinkRequired                        pulumi.StringInput                                      `pulumi:"isPrivateLinkRequired"`
+	IsPublic                                     pulumi.StringInput                                      `pulumi:"isPublic"`
+	IsSailthruConnectEnabled                     pulumi.StringInput                                      `pulumi:"isSailthruConnectEnabled"`
+	IsSecure                                     pulumi.StringInput                                      `pulumi:"isSecure"`
+	IsSingleTableMode                            pulumi.StringInput                                      `pulumi:"isSingleTableMode"`
+	IsVendor                                     pulumi.StringInput                                      `pulumi:"isVendor"`
+	JsonDeliveryMode                             pulumi.StringInput                                      `pulumi:"jsonDeliveryMode"`
+	Key                                          pulumi.StringInput                                      `pulumi:"key"`
+	KeyPassword                                  pulumi.StringInput                                      `pulumi:"keyPassword"`
+	KeyStoreType                                 pulumi.StringInput                                      `pulumi:"keyStoreType"`
+	Keystore                                     pulumi.StringInput                                      `pulumi:"keystore"`
+	KeystorePassword                             pulumi.StringInput                                      `pulumi:"keystorePassword"`
+	LastSyncedChangesUtc_                        pulumi.StringInput                                      `pulumi:"lastSyncedChangesUtc_"`
+	LatestVersion                                pulumi.StringInput                                      `pulumi:"latestVersion"`
+	LimitForApiCallsToExternalActivitiesEndpoint pulumi.StringInput                                      `pulumi:"limitForApiCallsToExternalActivitiesEndpoint"`
+	LineSeparator                                pulumi.StringInput                                      `pulumi:"lineSeparator"`
+	ListStrategy                                 pulumi.StringInput                                      `pulumi:"listStrategy"`
+	ListSyncMode                                 pulumi.StringInput                                      `pulumi:"listSyncMode"`
+	LogJournal                                   pulumi.StringInput                                      `pulumi:"logJournal"`
+	LogJournalSchema                             pulumi.StringInput                                      `pulumi:"logJournalSchema"`
+	Login                                        pulumi.StringInput                                      `pulumi:"login"`
+	LoginPassword                                pulumi.StringInput                                      `pulumi:"loginPassword"`
+	ManagerAccounts                              pulumi.StringArrayInput                                 `pulumi:"managerAccounts"`
+	MerchantId                                   pulumi.StringInput                                      `pulumi:"merchantId"`
+	MessageType                                  pulumi.StringInput                                      `pulumi:"messageType"`
+	Metrics                                      pulumi.StringArrayInput                                 `pulumi:"metrics"`
+	NamedRange                                   pulumi.StringInput                                      `pulumi:"namedRange"`
+	Namespace                                    pulumi.StringInput                                      `pulumi:"namespace"`
+	NetworkCode                                  pulumi.StringInput                                      `pulumi:"networkCode"`
+	NullSequence                                 pulumi.StringInput                                      `pulumi:"nullSequence"`
+	OauthToken                                   pulumi.StringInput                                      `pulumi:"oauthToken"`
+	OauthTokenSecret                             pulumi.StringInput                                      `pulumi:"oauthTokenSecret"`
+	OcapiClientId                                pulumi.StringInput                                      `pulumi:"ocapiClientId"`
+	OcapiClientSecret                            pulumi.StringInput                                      `pulumi:"ocapiClientSecret"`
+	OcapiCustomObjectTypes                       pulumi.StringInput                                      `pulumi:"ocapiCustomObjectTypes"`
+	OcapiHostname                                pulumi.StringInput                                      `pulumi:"ocapiHostname"`
+	OnError                                      pulumi.StringInput                                      `pulumi:"onError"`
+	OnPremise                                    pulumi.StringInput                                      `pulumi:"onPremise"`
+	Organization                                 pulumi.StringInput                                      `pulumi:"organization"`
+	OrganizationId                               pulumi.StringInput                                      `pulumi:"organizationId"`
+	Organizations                                pulumi.StringArrayInput                                 `pulumi:"organizations"`
+	PackedModeTables                             pulumi.StringArrayInput                                 `pulumi:"packedModeTables"`
+	PackingMode                                  pulumi.StringInput                                      `pulumi:"packingMode"`
+	Pages                                        pulumi.StringArrayInput                                 `pulumi:"pages"`
+	PartnerCode                                  pulumi.StringInput                                      `pulumi:"partnerCode"`
+	Partners                                     pulumi.StringArrayInput                                 `pulumi:"partners"`
+	Passphrase                                   pulumi.StringInput                                      `pulumi:"passphrase"`
+	Password                                     pulumi.StringInput                                      `pulumi:"password"`
+	Pat                                          pulumi.StringInput                                      `pulumi:"pat"`
+	PatName                                      pulumi.StringInput                                      `pulumi:"patName"`
+	PatSecret                                    pulumi.StringInput                                      `pulumi:"patSecret"`
+	Path                                         pulumi.StringInput                                      `pulumi:"path"`
+	Pattern                                      pulumi.StringInput                                      `pulumi:"pattern"`
+	PdbName                                      pulumi.StringInput                                      `pulumi:"pdbName"`
+	PemCertificate                               pulumi.StringInput                                      `pulumi:"pemCertificate"`
+	PemPrivateKey                                pulumi.StringInput                                      `pulumi:"pemPrivateKey"`
+	PerInteractionDimensions                     pulumi.StringArrayInput                                 `pulumi:"perInteractionDimensions"`
+	PersonalAccessToken                          pulumi.StringInput                                      `pulumi:"personalAccessToken"`
+	PgpPassPhrase                                pulumi.StringInput                                      `pulumi:"pgpPassPhrase"`
+	PgpSecretKey                                 pulumi.StringInput                                      `pulumi:"pgpSecretKey"`
+	PhoneNumber                                  pulumi.StringInput                                      `pulumi:"phoneNumber"`
+	Port                                         pulumi.StringInput                                      `pulumi:"port"`
+	PostClickAttributionWindowSize               pulumi.StringInput                                      `pulumi:"postClickAttributionWindowSize"`
+	PrebuiltReport                               pulumi.StringInput                                      `pulumi:"prebuiltReport"`
+	Prefix                                       pulumi.StringInput                                      `pulumi:"prefix"`
+	PrimaryKeys                                  pulumi.StringArrayInput                                 `pulumi:"primaryKeys"`
+	PrivateKey                                   pulumi.StringInput                                      `pulumi:"privateKey"`
+	Profiles                                     pulumi.StringArrayInput                                 `pulumi:"profiles"`
+	ProjectCredentials                           GetConnectorConfigProjectCredentialArrayInput           `pulumi:"projectCredentials"`
+	ProjectId                                    pulumi.StringInput                                      `pulumi:"projectId"`
+	Projects                                     pulumi.StringArrayInput                                 `pulumi:"projects"`
+	Properties                                   pulumi.StringArrayInput                                 `pulumi:"properties"`
+	PublicKey                                    pulumi.StringInput                                      `pulumi:"publicKey"`
+	PublicationName                              pulumi.StringInput                                      `pulumi:"publicationName"`
+	QueryId                                      pulumi.StringInput                                      `pulumi:"queryId"`
+	QueryParamValue                              pulumi.StringInput                                      `pulumi:"queryParamValue"`
+	RefreshTokenExpiresAt                        pulumi.StringInput                                      `pulumi:"refreshTokenExpiresAt"`
+	Region                                       pulumi.StringInput                                      `pulumi:"region"`
+	ReplicaId                                    pulumi.StringInput                                      `pulumi:"replicaId"`
+	ReplicationSlot                              pulumi.StringInput                                      `pulumi:"replicationSlot"`
+	ReportConfigurationIds                       pulumi.StringArrayInput                                 `pulumi:"reportConfigurationIds"`
+	ReportFormatType                             pulumi.StringInput                                      `pulumi:"reportFormatType"`
+	ReportSuites                                 pulumi.StringArrayInput                                 `pulumi:"reportSuites"`
+	ReportTimezone                               pulumi.StringInput                                      `pulumi:"reportTimezone"`
+	ReportType                                   pulumi.StringInput                                      `pulumi:"reportType"`
+	ReportUrl                                    pulumi.StringInput                                      `pulumi:"reportUrl"`
+	Reports                                      GetConnectorConfigReportArrayInput                      `pulumi:"reports"`
+	ReportsLinkedinAds                           pulumi.StringArrayInput                                 `pulumi:"reportsLinkedinAds"`
+	Repositories                                 pulumi.StringArrayInput                                 `pulumi:"repositories"`
+	ResourceToken                                pulumi.StringInput                                      `pulumi:"resourceToken"`
+	ResourceUrl                                  pulumi.StringInput                                      `pulumi:"resourceUrl"`
+	RestApiLimit                                 pulumi.StringInput                                      `pulumi:"restApiLimit"`
+	RfcLibraryPath                               pulumi.StringInput                                      `pulumi:"rfcLibraryPath"`
+	Role                                         pulumi.StringInput                                      `pulumi:"role"`
+	RoleArn                                      pulumi.StringInput                                      `pulumi:"roleArn"`
+	RollbackWindowSize                           pulumi.StringInput                                      `pulumi:"rollbackWindowSize"`
+	S3Bucket                                     pulumi.StringInput                                      `pulumi:"s3Bucket"`
+	S3ExportBucket                               pulumi.StringInput                                      `pulumi:"s3ExportBucket"`
+	S3ExportFolder                               pulumi.StringInput                                      `pulumi:"s3ExportFolder"`
+	S3ExportRoleArn                              pulumi.StringInput                                      `pulumi:"s3ExportRoleArn"`
+	S3RoleArn                                    pulumi.StringInput                                      `pulumi:"s3RoleArn"`
+	S3bucket                                     pulumi.StringInput                                      `pulumi:"s3bucket"`
+	S3externalId                                 pulumi.StringInput                                      `pulumi:"s3externalId"`
+	S3folder                                     pulumi.StringInput                                      `pulumi:"s3folder"`
+	S3path                                       pulumi.StringInput                                      `pulumi:"s3path"`
+	S3roleArn                                    pulumi.StringInput                                      `pulumi:"s3roleArn"`
+	SalesAccountSyncMode                         pulumi.StringInput                                      `pulumi:"salesAccountSyncMode"`
+	SalesAccounts                                pulumi.StringArrayInput                                 `pulumi:"salesAccounts"`
+	SalesforceSecurityToken                      pulumi.StringInput                                      `pulumi:"salesforceSecurityToken"`
+	SandboxAccount                               pulumi.StringInput                                      `pulumi:"sandboxAccount"`
+	SapSchema                                    pulumi.StringInput                                      `pulumi:"sapSchema"`
+	SapUser                                      pulumi.StringInput                                      `pulumi:"sapUser"`
+	SaslMechanism                                pulumi.StringInput                                      `pulumi:"saslMechanism"`
+	SaslPlainKey                                 pulumi.StringInput                                      `pulumi:"saslPlainKey"`
+	SaslPlainSecret                              pulumi.StringInput                                      `pulumi:"saslPlainSecret"`
+	SaslScram256Key                              pulumi.StringInput                                      `pulumi:"saslScram256Key"`
+	SaslScram256Secret                           pulumi.StringInput                                      `pulumi:"saslScram256Secret"`
+	SaslScram512Key                              pulumi.StringInput                                      `pulumi:"saslScram512Key"`
+	SaslScram512Secret                           pulumi.StringInput                                      `pulumi:"saslScram512Secret"`
+	SchemaRegistryCredentialsSource              pulumi.StringInput                                      `pulumi:"schemaRegistryCredentialsSource"`
+	SchemaRegistryKey                            pulumi.StringInput                                      `pulumi:"schemaRegistryKey"`
+	SchemaRegistrySecret                         pulumi.StringInput                                      `pulumi:"schemaRegistrySecret"`
+	SchemaRegistryUrls                           pulumi.StringArrayInput                                 `pulumi:"schemaRegistryUrls"`
+	Secret                                       pulumi.StringInput                                      `pulumi:"secret"`
+	SecretKey                                    pulumi.StringInput                                      `pulumi:"secretKey"`
+	Secrets                                      pulumi.StringInput                                      `pulumi:"secrets"`
+	SecretsLists                                 GetConnectorConfigSecretsListArrayInput                 `pulumi:"secretsLists"`
+	SecurityProtocol                             pulumi.StringInput                                      `pulumi:"securityProtocol"`
+	Segments                                     pulumi.StringArrayInput                                 `pulumi:"segments"`
+	SelectedExports                              pulumi.StringArrayInput                                 `pulumi:"selectedExports"`
+	SenderId                                     pulumi.StringInput                                      `pulumi:"senderId"`
+	SenderPassword                               pulumi.StringInput                                      `pulumi:"senderPassword"`
+	ServerAddress                                pulumi.StringInput                                      `pulumi:"serverAddress"`
+	ServerUrl                                    pulumi.StringInput                                      `pulumi:"serverUrl"`
+	Servers                                      pulumi.StringArrayInput                                 `pulumi:"servers"`
+	ServiceAccount                               pulumi.StringInput                                      `pulumi:"serviceAccount"`
+	ServiceAccountEmail                          pulumi.StringInput                                      `pulumi:"serviceAccountEmail"`
+	ServiceAccountKey                            pulumi.StringInput                                      `pulumi:"serviceAccountKey"`
+	ServiceVersion                               pulumi.StringInput                                      `pulumi:"serviceVersion"`
+	SftpHost                                     pulumi.StringInput                                      `pulumi:"sftpHost"`
+	SftpIsKeyPair                                pulumi.StringInput                                      `pulumi:"sftpIsKeyPair"`
+	SftpPassword                                 pulumi.StringInput                                      `pulumi:"sftpPassword"`
+	SftpPort                                     pulumi.StringInput                                      `pulumi:"sftpPort"`
+	SftpPublicKey                                pulumi.StringInput                                      `pulumi:"sftpPublicKey"`
+	SftpUser                                     pulumi.StringInput                                      `pulumi:"sftpUser"`
+	ShareUrl                                     pulumi.StringInput                                      `pulumi:"shareUrl"`
+	SheetId                                      pulumi.StringInput                                      `pulumi:"sheetId"`
+	Shop                                         pulumi.StringInput                                      `pulumi:"shop"`
+	ShortCode                                    pulumi.StringInput                                      `pulumi:"shortCode"`
+	ShowRecordsWithNoMetrics                     pulumi.StringInput                                      `pulumi:"showRecordsWithNoMetrics"`
+	Sid                                          pulumi.StringInput                                      `pulumi:"sid"`
+	SignerPublicKey                              pulumi.StringInput                                      `pulumi:"signerPublicKey"`
+	SiteAddress                                  pulumi.StringInput                                      `pulumi:"siteAddress"`
+	SiteId                                       pulumi.StringInput                                      `pulumi:"siteId"`
+	SiteName                                     pulumi.StringInput                                      `pulumi:"siteName"`
+	SiteUrls                                     pulumi.StringArrayInput                                 `pulumi:"siteUrls"`
+	SkipAfter                                    pulumi.StringInput                                      `pulumi:"skipAfter"`
+	SkipBefore                                   pulumi.StringInput                                      `pulumi:"skipBefore"`
+	SoapUri                                      pulumi.StringInput                                      `pulumi:"soapUri"`
+	SocialDataSyncTimeframe                      pulumi.StringInput                                      `pulumi:"socialDataSyncTimeframe"`
+	Source                                       pulumi.StringInput                                      `pulumi:"source"`
+	StoreHash                                    pulumi.StringInput                                      `pulumi:"storeHash"`
+	SubDomain                                    pulumi.StringInput                                      `pulumi:"subDomain"`
+	Subdomain                                    pulumi.StringInput                                      `pulumi:"subdomain"`
+	SubscriberName                               pulumi.StringInput                                      `pulumi:"subscriberName"`
+	Subscription                                 pulumi.StringInput                                      `pulumi:"subscription"`
+	SupportConnectedAccountsSync                 pulumi.StringInput                                      `pulumi:"supportConnectedAccountsSync"`
+	SupportNestedColumns                         pulumi.StringInput                                      `pulumi:"supportNestedColumns"`
+	SurveyIds                                    pulumi.StringInput                                      `pulumi:"surveyIds"`
+	SwipeAttributionWindow                       pulumi.StringInput                                      `pulumi:"swipeAttributionWindow"`
+	SyncDataLocker                               pulumi.StringInput                                      `pulumi:"syncDataLocker"`
+	SyncFormat                                   pulumi.StringInput                                      `pulumi:"syncFormat"`
+	SyncFormulaFields                            pulumi.StringInput                                      `pulumi:"syncFormulaFields"`
+	SyncMetadata                                 pulumi.StringInput                                      `pulumi:"syncMetadata"`
+	SyncMethod                                   pulumi.StringInput                                      `pulumi:"syncMethod"`
+	SyncMode                                     pulumi.StringInput                                      `pulumi:"syncMode"`
+	SyncMultipleAccounts                         pulumi.StringInput                                      `pulumi:"syncMultipleAccounts"`
+	SyncPackMode                                 pulumi.StringInput                                      `pulumi:"syncPackMode"`
+	SyncPullApi                                  pulumi.StringInput                                      `pulumi:"syncPullApi"`
+	SyncType                                     pulumi.StringInput                                      `pulumi:"syncType"`
+	Sysnr                                        pulumi.StringInput                                      `pulumi:"sysnr"`
+	TableName                                    pulumi.StringInput                                      `pulumi:"tableName"`
+	TdeCertificate                               pulumi.StringInput                                      `pulumi:"tdeCertificate"`
+	TdeCertificateName                           pulumi.StringInput                                      `pulumi:"tdeCertificateName"`
+	TdePassword                                  pulumi.StringInput                                      `pulumi:"tdePassword"`
+	TdePrivateKey                                pulumi.StringInput                                      `pulumi:"tdePrivateKey"`
+	TeamId                                       pulumi.StringInput                                      `pulumi:"teamId"`
+	TechnicalAccountId                           pulumi.StringInput                                      `pulumi:"technicalAccountId"`
+	TemplateLabels                               pulumi.StringArrayInput                                 `pulumi:"templateLabels"`
+	Tenant                                       pulumi.StringInput                                      `pulumi:"tenant"`
+	TenantId                                     pulumi.StringInput                                      `pulumi:"tenantId"`
+	TestTableName                                pulumi.StringInput                                      `pulumi:"testTableName"`
+	TimeZone                                     pulumi.StringInput                                      `pulumi:"timeZone"`
+	TimeframeMonths                              pulumi.StringInput                                      `pulumi:"timeframeMonths"`
+	Tns                                          pulumi.StringInput                                      `pulumi:"tns"`
+	TokenAuthenticatedContainer                  pulumi.StringInput                                      `pulumi:"tokenAuthenticatedContainer"`
+	TokenAuthenticatedDatabase                   pulumi.StringInput                                      `pulumi:"tokenAuthenticatedDatabase"`
+	TokenId                                      pulumi.StringInput                                      `pulumi:"tokenId"`
+	TokenKey                                     pulumi.StringInput                                      `pulumi:"tokenKey"`
+	TokenSecret                                  pulumi.StringInput                                      `pulumi:"tokenSecret"`
+	TokenSecretKey                               pulumi.StringInput                                      `pulumi:"tokenSecretKey"`
+	Topics                                       pulumi.StringArrayInput                                 `pulumi:"topics"`
+	TrustStoreType                               pulumi.StringInput                                      `pulumi:"trustStoreType"`
+	TrustedCert                                  pulumi.StringInput                                      `pulumi:"trustedCert"`
+	Truststore                                   pulumi.StringInput                                      `pulumi:"truststore"`
+	TunnelHost                                   pulumi.StringInput                                      `pulumi:"tunnelHost"`
+	TunnelPort                                   pulumi.StringInput                                      `pulumi:"tunnelPort"`
+	TunnelUser                                   pulumi.StringInput                                      `pulumi:"tunnelUser"`
+	UniqueId                                     pulumi.StringInput                                      `pulumi:"uniqueId"`
+	UpdateConfigOnEachSync                       pulumi.StringInput                                      `pulumi:"updateConfigOnEachSync"`
+	UpdateMethod                                 pulumi.StringInput                                      `pulumi:"updateMethod"`
+	Uri                                          pulumi.StringInput                                      `pulumi:"uri"`
+	UseApiKeys                                   pulumi.StringInput                                      `pulumi:"useApiKeys"`
+	UseCustomerBucket                            pulumi.StringInput                                      `pulumi:"useCustomerBucket"`
+	UseOracleRac                                 pulumi.StringInput                                      `pulumi:"useOracleRac"`
+	UsePgpEncryptionOptions                      pulumi.StringInput                                      `pulumi:"usePgpEncryptionOptions"`
+	UseServiceAccount                            pulumi.StringInput                                      `pulumi:"useServiceAccount"`
+	UseTemplateLabels                            pulumi.StringInput                                      `pulumi:"useTemplateLabels"`
+	UseWebhooks                                  pulumi.StringInput                                      `pulumi:"useWebhooks"`
+	UseWorkspace                                 pulumi.StringInput                                      `pulumi:"useWorkspace"`
+	User                                         pulumi.StringInput                                      `pulumi:"user"`
+	UserId                                       pulumi.StringInput                                      `pulumi:"userId"`
+	UserKey                                      pulumi.StringInput                                      `pulumi:"userKey"`
+	UserName                                     pulumi.StringInput                                      `pulumi:"userName"`
+	UserProfiles                                 pulumi.StringArrayInput                                 `pulumi:"userProfiles"`
+	Username                                     pulumi.StringInput                                      `pulumi:"username"`
+	ViewAttributionWindow                        pulumi.StringInput                                      `pulumi:"viewAttributionWindow"`
+	ViewThroughAttributionWindowSize             pulumi.StringInput                                      `pulumi:"viewThroughAttributionWindowSize"`
+	WebhookEndpoint                              pulumi.StringInput                                      `pulumi:"webhookEndpoint"`
+	WebhookKey                                   pulumi.StringInput                                      `pulumi:"webhookKey"`
+	WebhookUrl                                   pulumi.StringInput                                      `pulumi:"webhookUrl"`
+	WordPressSiteIdOrWoocommerceDomainName       pulumi.StringInput                                      `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
+	WorkspaceName                                pulumi.StringInput                                      `pulumi:"workspaceName"`
+	WorkspaceSameAsSource                        pulumi.StringInput                                      `pulumi:"workspaceSameAsSource"`
+	WorkspaceSchema                              pulumi.StringInput                                      `pulumi:"workspaceSchema"`
+	WsCertificate                                pulumi.StringInput                                      `pulumi:"wsCertificate"`
 }
 
 func (GetConnectorConfigArgs) ElementType() reflect.Type {
@@ -13000,12 +12934,6 @@ func (i GetConnectorConfigArgs) ToGetConnectorConfigOutput() GetConnectorConfigO
 
 func (i GetConnectorConfigArgs) ToGetConnectorConfigOutputWithContext(ctx context.Context) GetConnectorConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigOutput)
-}
-
-func (i GetConnectorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfig] {
-	return pulumix.Output[GetConnectorConfig]{
-		OutputState: i.ToGetConnectorConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GetConnectorConfigArrayInput is an input type that accepts GetConnectorConfigArray and GetConnectorConfigArrayOutput values.
@@ -13033,12 +12961,6 @@ func (i GetConnectorConfigArray) ToGetConnectorConfigArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigArrayOutput)
 }
 
-func (i GetConnectorConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfig] {
-	return pulumix.Output[[]GetConnectorConfig]{
-		OutputState: i.ToGetConnectorConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorConfigOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorConfigOutput) ElementType() reflect.Type {
@@ -13051,12 +12973,6 @@ func (o GetConnectorConfigOutput) ToGetConnectorConfigOutput() GetConnectorConfi
 
 func (o GetConnectorConfigOutput) ToGetConnectorConfigOutputWithContext(ctx context.Context) GetConnectorConfigOutput {
 	return o
-}
-
-func (o GetConnectorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfig] {
-	return pulumix.Output[GetConnectorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigOutput) AbsConnectionMethod() pulumi.StringOutput {
@@ -13233,6 +13149,10 @@ func (o GetConnectorConfigOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigOutput) ApiKeyApiSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.ApiKeyApiSecret }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigOutput) ApiKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfig) []string { return v.ApiKeys }).(pulumi.StringArrayOutput)
 }
@@ -13269,6 +13189,10 @@ func (o GetConnectorConfigOutput) ApiUsage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ApiUsage }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigOutput) ApiUtilizationPercentage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.ApiUtilizationPercentage }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigOutput) ApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ApiVersion }).(pulumi.StringOutput)
 }
@@ -13283,6 +13207,10 @@ func (o GetConnectorConfigOutput) AppIds() pulumi.StringArrayOutput {
 
 func (o GetConnectorConfigOutput) AppIdsAppsflyers() GetConnectorConfigAppIdsAppsflyerArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfig) []GetConnectorConfigAppIdsAppsflyer { return v.AppIdsAppsflyers }).(GetConnectorConfigAppIdsAppsflyerArrayOutput)
+}
+
+func (o GetConnectorConfigOutput) AppKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.AppKey }).(pulumi.StringOutput)
 }
 
 func (o GetConnectorConfigOutput) AppSpecificPassword() pulumi.StringOutput {
@@ -13645,6 +13573,10 @@ func (o GetConnectorConfigOutput) Dimensions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfig) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
 }
 
+func (o GetConnectorConfigOutput) DistributedConnectorClusterSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.DistributedConnectorClusterSize }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Domain }).(pulumi.StringOutput)
 }
@@ -13679,6 +13611,14 @@ func (o GetConnectorConfigOutput) EnableAllDimensionCombinations() pulumi.String
 
 func (o GetConnectorConfigOutput) EnableArchiveLogOnly() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.EnableArchiveLogOnly }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigOutput) EnableDataExtensionsSyncing() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.EnableDataExtensionsSyncing }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigOutput) EnableDistributedConnectorMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.EnableDistributedConnectorMode }).(pulumi.StringOutput)
 }
 
 func (o GetConnectorConfigOutput) EnableEnrichments() pulumi.StringOutput {
@@ -13853,6 +13793,10 @@ func (o GetConnectorConfigOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Identity }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigOutput) IncludeOcapiEndpoints() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.IncludeOcapiEndpoints }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Instance }).(pulumi.StringOutput)
 }
@@ -13879,6 +13823,10 @@ func (o GetConnectorConfigOutput) IsAuth2Enabled() pulumi.StringOutput {
 
 func (o GetConnectorConfigOutput) IsCustomApiCredentials() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.IsCustomApiCredentials }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigOutput) IsExternalActivitiesEndpointSelected() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.IsExternalActivitiesEndpointSelected }).(pulumi.StringOutput)
 }
 
 func (o GetConnectorConfigOutput) IsFtps() pulumi.StringOutput {
@@ -13957,6 +13905,10 @@ func (o GetConnectorConfigOutput) LatestVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.LatestVersion }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigOutput) LimitForApiCallsToExternalActivitiesEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.LimitForApiCallsToExternalActivitiesEndpoint }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigOutput) LineSeparator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.LineSeparator }).(pulumi.StringOutput)
 }
@@ -14025,6 +13977,22 @@ func (o GetConnectorConfigOutput) OauthTokenSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.OauthTokenSecret }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigOutput) OcapiClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.OcapiClientId }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigOutput) OcapiClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.OcapiClientSecret }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigOutput) OcapiCustomObjectTypes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.OcapiCustomObjectTypes }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigOutput) OcapiHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.OcapiHostname }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigOutput) OnError() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.OnError }).(pulumi.StringOutput)
 }
@@ -14055,6 +14023,10 @@ func (o GetConnectorConfigOutput) PackingMode() pulumi.StringOutput {
 
 func (o GetConnectorConfigOutput) Pages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfig) []string { return v.Pages }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectorConfigOutput) PartnerCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.PartnerCode }).(pulumi.StringOutput)
 }
 
 func (o GetConnectorConfigOutput) Partners() pulumi.StringArrayOutput {
@@ -14633,6 +14605,10 @@ func (o GetConnectorConfigOutput) TemplateLabels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfig) []string { return v.TemplateLabels }).(pulumi.StringArrayOutput)
 }
 
+func (o GetConnectorConfigOutput) Tenant() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.Tenant }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.TenantId }).(pulumi.StringOutput)
 }
@@ -14831,12 +14807,6 @@ func (o GetConnectorConfigArrayOutput) ToGetConnectorConfigArrayOutputWithContex
 	return o
 }
 
-func (o GetConnectorConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfig] {
-	return pulumix.Output[[]GetConnectorConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetConnectorConfigArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorConfig {
 		return vs[0].([]GetConnectorConfig)[vs[1].(int)]
@@ -14874,12 +14844,6 @@ func (i GetConnectorConfigAccountsRedditAdArgs) ToGetConnectorConfigAccountsRedd
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigAccountsRedditAdOutput)
 }
 
-func (i GetConnectorConfigAccountsRedditAdArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[GetConnectorConfigAccountsRedditAd]{
-		OutputState: i.ToGetConnectorConfigAccountsRedditAdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorConfigAccountsRedditAdArrayInput is an input type that accepts GetConnectorConfigAccountsRedditAdArray and GetConnectorConfigAccountsRedditAdArrayOutput values.
 // You can construct a concrete instance of `GetConnectorConfigAccountsRedditAdArrayInput` via:
 //
@@ -14905,12 +14869,6 @@ func (i GetConnectorConfigAccountsRedditAdArray) ToGetConnectorConfigAccountsRed
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigAccountsRedditAdArrayOutput)
 }
 
-func (i GetConnectorConfigAccountsRedditAdArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[[]GetConnectorConfigAccountsRedditAd]{
-		OutputState: i.ToGetConnectorConfigAccountsRedditAdArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorConfigAccountsRedditAdOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorConfigAccountsRedditAdOutput) ElementType() reflect.Type {
@@ -14923,12 +14881,6 @@ func (o GetConnectorConfigAccountsRedditAdOutput) ToGetConnectorConfigAccountsRe
 
 func (o GetConnectorConfigAccountsRedditAdOutput) ToGetConnectorConfigAccountsRedditAdOutputWithContext(ctx context.Context) GetConnectorConfigAccountsRedditAdOutput {
 	return o
-}
-
-func (o GetConnectorConfigAccountsRedditAdOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[GetConnectorConfigAccountsRedditAd]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigAccountsRedditAdOutput) Name() pulumi.StringOutput {
@@ -14947,12 +14899,6 @@ func (o GetConnectorConfigAccountsRedditAdArrayOutput) ToGetConnectorConfigAccou
 
 func (o GetConnectorConfigAccountsRedditAdArrayOutput) ToGetConnectorConfigAccountsRedditAdArrayOutputWithContext(ctx context.Context) GetConnectorConfigAccountsRedditAdArrayOutput {
 	return o
-}
-
-func (o GetConnectorConfigAccountsRedditAdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[[]GetConnectorConfigAccountsRedditAd]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigAccountsRedditAdArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigAccountsRedditAdOutput {
@@ -15004,12 +14950,6 @@ func (i GetConnectorConfigAdobeAnalyticsConfigurationArgs) ToGetConnectorConfigA
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigAdobeAnalyticsConfigurationOutput)
 }
 
-func (i GetConnectorConfigAdobeAnalyticsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[GetConnectorConfigAdobeAnalyticsConfiguration]{
-		OutputState: i.ToGetConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorConfigAdobeAnalyticsConfigurationArrayInput is an input type that accepts GetConnectorConfigAdobeAnalyticsConfigurationArray and GetConnectorConfigAdobeAnalyticsConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetConnectorConfigAdobeAnalyticsConfigurationArrayInput` via:
 //
@@ -15035,12 +14975,6 @@ func (i GetConnectorConfigAdobeAnalyticsConfigurationArray) ToGetConnectorConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigAdobeAnalyticsConfigurationArrayOutput)
 }
 
-func (i GetConnectorConfigAdobeAnalyticsConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[[]GetConnectorConfigAdobeAnalyticsConfiguration]{
-		OutputState: i.ToGetConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorConfigAdobeAnalyticsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorConfigAdobeAnalyticsConfigurationOutput) ElementType() reflect.Type {
@@ -15053,12 +14987,6 @@ func (o GetConnectorConfigAdobeAnalyticsConfigurationOutput) ToGetConnectorConfi
 
 func (o GetConnectorConfigAdobeAnalyticsConfigurationOutput) ToGetConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(ctx context.Context) GetConnectorConfigAdobeAnalyticsConfigurationOutput {
 	return o
-}
-
-func (o GetConnectorConfigAdobeAnalyticsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[GetConnectorConfigAdobeAnalyticsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigAdobeAnalyticsConfigurationOutput) CalculatedMetrics() pulumi.StringArrayOutput {
@@ -15103,12 +15031,6 @@ func (o GetConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ToGetConnector
 	return o
 }
 
-func (o GetConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[[]GetConnectorConfigAdobeAnalyticsConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetConnectorConfigAdobeAnalyticsConfigurationArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigAdobeAnalyticsConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorConfigAdobeAnalyticsConfiguration {
 		return vs[0].([]GetConnectorConfigAdobeAnalyticsConfiguration)[vs[1].(int)]
@@ -15146,12 +15068,6 @@ func (i GetConnectorConfigAppIdsAppsflyerArgs) ToGetConnectorConfigAppIdsAppsfly
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigAppIdsAppsflyerOutput)
 }
 
-func (i GetConnectorConfigAppIdsAppsflyerArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[GetConnectorConfigAppIdsAppsflyer]{
-		OutputState: i.ToGetConnectorConfigAppIdsAppsflyerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorConfigAppIdsAppsflyerArrayInput is an input type that accepts GetConnectorConfigAppIdsAppsflyerArray and GetConnectorConfigAppIdsAppsflyerArrayOutput values.
 // You can construct a concrete instance of `GetConnectorConfigAppIdsAppsflyerArrayInput` via:
 //
@@ -15177,12 +15093,6 @@ func (i GetConnectorConfigAppIdsAppsflyerArray) ToGetConnectorConfigAppIdsAppsfl
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigAppIdsAppsflyerArrayOutput)
 }
 
-func (i GetConnectorConfigAppIdsAppsflyerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[[]GetConnectorConfigAppIdsAppsflyer]{
-		OutputState: i.ToGetConnectorConfigAppIdsAppsflyerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorConfigAppIdsAppsflyerOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorConfigAppIdsAppsflyerOutput) ElementType() reflect.Type {
@@ -15195,12 +15105,6 @@ func (o GetConnectorConfigAppIdsAppsflyerOutput) ToGetConnectorConfigAppIdsAppsf
 
 func (o GetConnectorConfigAppIdsAppsflyerOutput) ToGetConnectorConfigAppIdsAppsflyerOutputWithContext(ctx context.Context) GetConnectorConfigAppIdsAppsflyerOutput {
 	return o
-}
-
-func (o GetConnectorConfigAppIdsAppsflyerOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[GetConnectorConfigAppIdsAppsflyer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigAppIdsAppsflyerOutput) AppId() pulumi.StringOutput {
@@ -15221,12 +15125,6 @@ func (o GetConnectorConfigAppIdsAppsflyerArrayOutput) ToGetConnectorConfigAppIds
 	return o
 }
 
-func (o GetConnectorConfigAppIdsAppsflyerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[[]GetConnectorConfigAppIdsAppsflyer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetConnectorConfigAppIdsAppsflyerArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigAppIdsAppsflyerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorConfigAppIdsAppsflyer {
 		return vs[0].([]GetConnectorConfigAppIdsAppsflyer)[vs[1].(int)]
@@ -15235,16 +15133,22 @@ func (o GetConnectorConfigAppIdsAppsflyerArrayOutput) Index(i pulumi.IntInput) G
 
 type GetConnectorConfigCustomReport struct {
 	Aggregate                 string   `pulumi:"aggregate"`
+	BaseMetricsFields         []string `pulumi:"baseMetricsFields"`
+	Breakdown                 string   `pulumi:"breakdown"`
+	Breakout                  string   `pulumi:"breakout"`
 	ConversionsReportIncluded string   `pulumi:"conversionsReportIncluded"`
 	CustomEventsIncluded      string   `pulumi:"customEventsIncluded"`
+	Dimension                 string   `pulumi:"dimension"`
 	Dimensions                []string `pulumi:"dimensions"`
 	EventNames                []string `pulumi:"eventNames"`
+	Granularity               string   `pulumi:"granularity"`
 	Level                     string   `pulumi:"level"`
 	Metrics                   []string `pulumi:"metrics"`
 	ReportFields              []string `pulumi:"reportFields"`
 	ReportName                string   `pulumi:"reportName"`
 	ReportType                string   `pulumi:"reportType"`
 	Segmentation              string   `pulumi:"segmentation"`
+	SkAdMetricsFields         []string `pulumi:"skAdMetricsFields"`
 	TableName                 string   `pulumi:"tableName"`
 }
 
@@ -15261,16 +15165,22 @@ type GetConnectorConfigCustomReportInput interface {
 
 type GetConnectorConfigCustomReportArgs struct {
 	Aggregate                 pulumi.StringInput      `pulumi:"aggregate"`
+	BaseMetricsFields         pulumi.StringArrayInput `pulumi:"baseMetricsFields"`
+	Breakdown                 pulumi.StringInput      `pulumi:"breakdown"`
+	Breakout                  pulumi.StringInput      `pulumi:"breakout"`
 	ConversionsReportIncluded pulumi.StringInput      `pulumi:"conversionsReportIncluded"`
 	CustomEventsIncluded      pulumi.StringInput      `pulumi:"customEventsIncluded"`
+	Dimension                 pulumi.StringInput      `pulumi:"dimension"`
 	Dimensions                pulumi.StringArrayInput `pulumi:"dimensions"`
 	EventNames                pulumi.StringArrayInput `pulumi:"eventNames"`
+	Granularity               pulumi.StringInput      `pulumi:"granularity"`
 	Level                     pulumi.StringInput      `pulumi:"level"`
 	Metrics                   pulumi.StringArrayInput `pulumi:"metrics"`
 	ReportFields              pulumi.StringArrayInput `pulumi:"reportFields"`
 	ReportName                pulumi.StringInput      `pulumi:"reportName"`
 	ReportType                pulumi.StringInput      `pulumi:"reportType"`
 	Segmentation              pulumi.StringInput      `pulumi:"segmentation"`
+	SkAdMetricsFields         pulumi.StringArrayInput `pulumi:"skAdMetricsFields"`
 	TableName                 pulumi.StringInput      `pulumi:"tableName"`
 }
 
@@ -15284,12 +15194,6 @@ func (i GetConnectorConfigCustomReportArgs) ToGetConnectorConfigCustomReportOutp
 
 func (i GetConnectorConfigCustomReportArgs) ToGetConnectorConfigCustomReportOutputWithContext(ctx context.Context) GetConnectorConfigCustomReportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigCustomReportOutput)
-}
-
-func (i GetConnectorConfigCustomReportArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigCustomReport] {
-	return pulumix.Output[GetConnectorConfigCustomReport]{
-		OutputState: i.ToGetConnectorConfigCustomReportOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GetConnectorConfigCustomReportArrayInput is an input type that accepts GetConnectorConfigCustomReportArray and GetConnectorConfigCustomReportArrayOutput values.
@@ -15317,12 +15221,6 @@ func (i GetConnectorConfigCustomReportArray) ToGetConnectorConfigCustomReportArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigCustomReportArrayOutput)
 }
 
-func (i GetConnectorConfigCustomReportArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigCustomReport] {
-	return pulumix.Output[[]GetConnectorConfigCustomReport]{
-		OutputState: i.ToGetConnectorConfigCustomReportArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorConfigCustomReportOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorConfigCustomReportOutput) ElementType() reflect.Type {
@@ -15337,14 +15235,20 @@ func (o GetConnectorConfigCustomReportOutput) ToGetConnectorConfigCustomReportOu
 	return o
 }
 
-func (o GetConnectorConfigCustomReportOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigCustomReport] {
-	return pulumix.Output[GetConnectorConfigCustomReport]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetConnectorConfigCustomReportOutput) Aggregate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigCustomReport) string { return v.Aggregate }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigCustomReportOutput) BaseMetricsFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigCustomReport) []string { return v.BaseMetricsFields }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectorConfigCustomReportOutput) Breakdown() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigCustomReport) string { return v.Breakdown }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigCustomReportOutput) Breakout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigCustomReport) string { return v.Breakout }).(pulumi.StringOutput)
 }
 
 func (o GetConnectorConfigCustomReportOutput) ConversionsReportIncluded() pulumi.StringOutput {
@@ -15355,12 +15259,20 @@ func (o GetConnectorConfigCustomReportOutput) CustomEventsIncluded() pulumi.Stri
 	return o.ApplyT(func(v GetConnectorConfigCustomReport) string { return v.CustomEventsIncluded }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigCustomReportOutput) Dimension() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigCustomReport) string { return v.Dimension }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigCustomReportOutput) Dimensions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfigCustomReport) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
 }
 
 func (o GetConnectorConfigCustomReportOutput) EventNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfigCustomReport) []string { return v.EventNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectorConfigCustomReportOutput) Granularity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigCustomReport) string { return v.Granularity }).(pulumi.StringOutput)
 }
 
 func (o GetConnectorConfigCustomReportOutput) Level() pulumi.StringOutput {
@@ -15387,6 +15299,10 @@ func (o GetConnectorConfigCustomReportOutput) Segmentation() pulumi.StringOutput
 	return o.ApplyT(func(v GetConnectorConfigCustomReport) string { return v.Segmentation }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigCustomReportOutput) SkAdMetricsFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigCustomReport) []string { return v.SkAdMetricsFields }).(pulumi.StringArrayOutput)
+}
+
 func (o GetConnectorConfigCustomReportOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigCustomReport) string { return v.TableName }).(pulumi.StringOutput)
 }
@@ -15403,12 +15319,6 @@ func (o GetConnectorConfigCustomReportArrayOutput) ToGetConnectorConfigCustomRep
 
 func (o GetConnectorConfigCustomReportArrayOutput) ToGetConnectorConfigCustomReportArrayOutputWithContext(ctx context.Context) GetConnectorConfigCustomReportArrayOutput {
 	return o
-}
-
-func (o GetConnectorConfigCustomReportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigCustomReport] {
-	return pulumix.Output[[]GetConnectorConfigCustomReport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigCustomReportArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigCustomReportOutput {
@@ -15470,12 +15380,6 @@ func (i GetConnectorConfigCustomTableArgs) ToGetConnectorConfigCustomTableOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigCustomTableOutput)
 }
 
-func (i GetConnectorConfigCustomTableArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigCustomTable] {
-	return pulumix.Output[GetConnectorConfigCustomTable]{
-		OutputState: i.ToGetConnectorConfigCustomTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorConfigCustomTableArrayInput is an input type that accepts GetConnectorConfigCustomTableArray and GetConnectorConfigCustomTableArrayOutput values.
 // You can construct a concrete instance of `GetConnectorConfigCustomTableArrayInput` via:
 //
@@ -15501,12 +15405,6 @@ func (i GetConnectorConfigCustomTableArray) ToGetConnectorConfigCustomTableArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigCustomTableArrayOutput)
 }
 
-func (i GetConnectorConfigCustomTableArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigCustomTable] {
-	return pulumix.Output[[]GetConnectorConfigCustomTable]{
-		OutputState: i.ToGetConnectorConfigCustomTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorConfigCustomTableOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorConfigCustomTableOutput) ElementType() reflect.Type {
@@ -15519,12 +15417,6 @@ func (o GetConnectorConfigCustomTableOutput) ToGetConnectorConfigCustomTableOutp
 
 func (o GetConnectorConfigCustomTableOutput) ToGetConnectorConfigCustomTableOutputWithContext(ctx context.Context) GetConnectorConfigCustomTableOutput {
 	return o
-}
-
-func (o GetConnectorConfigCustomTableOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigCustomTable] {
-	return pulumix.Output[GetConnectorConfigCustomTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigCustomTableOutput) ActionBreakdowns() pulumi.StringArrayOutput {
@@ -15589,12 +15481,6 @@ func (o GetConnectorConfigCustomTableArrayOutput) ToGetConnectorConfigCustomTabl
 	return o
 }
 
-func (o GetConnectorConfigCustomTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigCustomTable] {
-	return pulumix.Output[[]GetConnectorConfigCustomTable]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetConnectorConfigCustomTableArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigCustomTableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorConfigCustomTable {
 		return vs[0].([]GetConnectorConfigCustomTable)[vs[1].(int)]
@@ -15636,12 +15522,6 @@ func (i GetConnectorConfigProjectCredentialArgs) ToGetConnectorConfigProjectCred
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigProjectCredentialOutput)
 }
 
-func (i GetConnectorConfigProjectCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigProjectCredential] {
-	return pulumix.Output[GetConnectorConfigProjectCredential]{
-		OutputState: i.ToGetConnectorConfigProjectCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorConfigProjectCredentialArrayInput is an input type that accepts GetConnectorConfigProjectCredentialArray and GetConnectorConfigProjectCredentialArrayOutput values.
 // You can construct a concrete instance of `GetConnectorConfigProjectCredentialArrayInput` via:
 //
@@ -15667,12 +15547,6 @@ func (i GetConnectorConfigProjectCredentialArray) ToGetConnectorConfigProjectCre
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigProjectCredentialArrayOutput)
 }
 
-func (i GetConnectorConfigProjectCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigProjectCredential] {
-	return pulumix.Output[[]GetConnectorConfigProjectCredential]{
-		OutputState: i.ToGetConnectorConfigProjectCredentialArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorConfigProjectCredentialOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorConfigProjectCredentialOutput) ElementType() reflect.Type {
@@ -15685,12 +15559,6 @@ func (o GetConnectorConfigProjectCredentialOutput) ToGetConnectorConfigProjectCr
 
 func (o GetConnectorConfigProjectCredentialOutput) ToGetConnectorConfigProjectCredentialOutputWithContext(ctx context.Context) GetConnectorConfigProjectCredentialOutput {
 	return o
-}
-
-func (o GetConnectorConfigProjectCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigProjectCredential] {
-	return pulumix.Output[GetConnectorConfigProjectCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigProjectCredentialOutput) ApiKey() pulumi.StringOutput {
@@ -15719,12 +15587,6 @@ func (o GetConnectorConfigProjectCredentialArrayOutput) ToGetConnectorConfigProj
 	return o
 }
 
-func (o GetConnectorConfigProjectCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigProjectCredential] {
-	return pulumix.Output[[]GetConnectorConfigProjectCredential]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetConnectorConfigProjectCredentialArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigProjectCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorConfigProjectCredential {
 		return vs[0].([]GetConnectorConfigProjectCredential)[vs[1].(int)]
@@ -15739,10 +15601,12 @@ type GetConnectorConfigReport struct {
 	Fields          []string `pulumi:"fields"`
 	Filter          string   `pulumi:"filter"`
 	FilterFieldName string   `pulumi:"filterFieldName"`
+	FilterType      string   `pulumi:"filterType"`
 	FilterValue     string   `pulumi:"filterValue"`
 	Metrics         []string `pulumi:"metrics"`
 	PrebuiltReport  string   `pulumi:"prebuiltReport"`
 	ReportType      string   `pulumi:"reportType"`
+	RollbackWindow  string   `pulumi:"rollbackWindow"`
 	SearchTypes     []string `pulumi:"searchTypes"`
 	SegmentIds      []string `pulumi:"segmentIds"`
 	Segments        []string `pulumi:"segments"`
@@ -15768,10 +15632,12 @@ type GetConnectorConfigReportArgs struct {
 	Fields          pulumi.StringArrayInput `pulumi:"fields"`
 	Filter          pulumi.StringInput      `pulumi:"filter"`
 	FilterFieldName pulumi.StringInput      `pulumi:"filterFieldName"`
+	FilterType      pulumi.StringInput      `pulumi:"filterType"`
 	FilterValue     pulumi.StringInput      `pulumi:"filterValue"`
 	Metrics         pulumi.StringArrayInput `pulumi:"metrics"`
 	PrebuiltReport  pulumi.StringInput      `pulumi:"prebuiltReport"`
 	ReportType      pulumi.StringInput      `pulumi:"reportType"`
+	RollbackWindow  pulumi.StringInput      `pulumi:"rollbackWindow"`
 	SearchTypes     pulumi.StringArrayInput `pulumi:"searchTypes"`
 	SegmentIds      pulumi.StringArrayInput `pulumi:"segmentIds"`
 	Segments        pulumi.StringArrayInput `pulumi:"segments"`
@@ -15788,12 +15654,6 @@ func (i GetConnectorConfigReportArgs) ToGetConnectorConfigReportOutput() GetConn
 
 func (i GetConnectorConfigReportArgs) ToGetConnectorConfigReportOutputWithContext(ctx context.Context) GetConnectorConfigReportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigReportOutput)
-}
-
-func (i GetConnectorConfigReportArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigReport] {
-	return pulumix.Output[GetConnectorConfigReport]{
-		OutputState: i.ToGetConnectorConfigReportOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GetConnectorConfigReportArrayInput is an input type that accepts GetConnectorConfigReportArray and GetConnectorConfigReportArrayOutput values.
@@ -15821,12 +15681,6 @@ func (i GetConnectorConfigReportArray) ToGetConnectorConfigReportArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigReportArrayOutput)
 }
 
-func (i GetConnectorConfigReportArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigReport] {
-	return pulumix.Output[[]GetConnectorConfigReport]{
-		OutputState: i.ToGetConnectorConfigReportArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorConfigReportOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorConfigReportOutput) ElementType() reflect.Type {
@@ -15839,12 +15693,6 @@ func (o GetConnectorConfigReportOutput) ToGetConnectorConfigReportOutput() GetCo
 
 func (o GetConnectorConfigReportOutput) ToGetConnectorConfigReportOutputWithContext(ctx context.Context) GetConnectorConfigReportOutput {
 	return o
-}
-
-func (o GetConnectorConfigReportOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigReport] {
-	return pulumix.Output[GetConnectorConfigReport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigReportOutput) Aggregation() pulumi.StringOutput {
@@ -15875,6 +15723,10 @@ func (o GetConnectorConfigReportOutput) FilterFieldName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.FilterFieldName }).(pulumi.StringOutput)
 }
 
+func (o GetConnectorConfigReportOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
 func (o GetConnectorConfigReportOutput) FilterValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.FilterValue }).(pulumi.StringOutput)
 }
@@ -15889,6 +15741,10 @@ func (o GetConnectorConfigReportOutput) PrebuiltReport() pulumi.StringOutput {
 
 func (o GetConnectorConfigReportOutput) ReportType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.ReportType }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorConfigReportOutput) RollbackWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.RollbackWindow }).(pulumi.StringOutput)
 }
 
 func (o GetConnectorConfigReportOutput) SearchTypes() pulumi.StringArrayOutput {
@@ -15919,12 +15775,6 @@ func (o GetConnectorConfigReportArrayOutput) ToGetConnectorConfigReportArrayOutp
 
 func (o GetConnectorConfigReportArrayOutput) ToGetConnectorConfigReportArrayOutputWithContext(ctx context.Context) GetConnectorConfigReportArrayOutput {
 	return o
-}
-
-func (o GetConnectorConfigReportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigReport] {
-	return pulumix.Output[[]GetConnectorConfigReport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigReportArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigReportOutput {
@@ -15966,12 +15816,6 @@ func (i GetConnectorConfigSecretsListArgs) ToGetConnectorConfigSecretsListOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigSecretsListOutput)
 }
 
-func (i GetConnectorConfigSecretsListArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigSecretsList] {
-	return pulumix.Output[GetConnectorConfigSecretsList]{
-		OutputState: i.ToGetConnectorConfigSecretsListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorConfigSecretsListArrayInput is an input type that accepts GetConnectorConfigSecretsListArray and GetConnectorConfigSecretsListArrayOutput values.
 // You can construct a concrete instance of `GetConnectorConfigSecretsListArrayInput` via:
 //
@@ -15997,12 +15841,6 @@ func (i GetConnectorConfigSecretsListArray) ToGetConnectorConfigSecretsListArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigSecretsListArrayOutput)
 }
 
-func (i GetConnectorConfigSecretsListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigSecretsList] {
-	return pulumix.Output[[]GetConnectorConfigSecretsList]{
-		OutputState: i.ToGetConnectorConfigSecretsListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorConfigSecretsListOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorConfigSecretsListOutput) ElementType() reflect.Type {
@@ -16015,12 +15853,6 @@ func (o GetConnectorConfigSecretsListOutput) ToGetConnectorConfigSecretsListOutp
 
 func (o GetConnectorConfigSecretsListOutput) ToGetConnectorConfigSecretsListOutputWithContext(ctx context.Context) GetConnectorConfigSecretsListOutput {
 	return o
-}
-
-func (o GetConnectorConfigSecretsListOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorConfigSecretsList] {
-	return pulumix.Output[GetConnectorConfigSecretsList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigSecretsListOutput) Key() pulumi.StringOutput {
@@ -16043,12 +15875,6 @@ func (o GetConnectorConfigSecretsListArrayOutput) ToGetConnectorConfigSecretsLis
 
 func (o GetConnectorConfigSecretsListArrayOutput) ToGetConnectorConfigSecretsListArrayOutputWithContext(ctx context.Context) GetConnectorConfigSecretsListArrayOutput {
 	return o
-}
-
-func (o GetConnectorConfigSecretsListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorConfigSecretsList] {
-	return pulumix.Output[[]GetConnectorConfigSecretsList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorConfigSecretsListArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigSecretsListOutput {
@@ -16092,12 +15918,6 @@ func (i GetConnectorDestinationSchemaArgs) ToGetConnectorDestinationSchemaOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorDestinationSchemaOutput)
 }
 
-func (i GetConnectorDestinationSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorDestinationSchema] {
-	return pulumix.Output[GetConnectorDestinationSchema]{
-		OutputState: i.ToGetConnectorDestinationSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorDestinationSchemaArrayInput is an input type that accepts GetConnectorDestinationSchemaArray and GetConnectorDestinationSchemaArrayOutput values.
 // You can construct a concrete instance of `GetConnectorDestinationSchemaArrayInput` via:
 //
@@ -16123,12 +15943,6 @@ func (i GetConnectorDestinationSchemaArray) ToGetConnectorDestinationSchemaArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorDestinationSchemaArrayOutput)
 }
 
-func (i GetConnectorDestinationSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorDestinationSchema] {
-	return pulumix.Output[[]GetConnectorDestinationSchema]{
-		OutputState: i.ToGetConnectorDestinationSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorDestinationSchemaOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorDestinationSchemaOutput) ElementType() reflect.Type {
@@ -16141,12 +15955,6 @@ func (o GetConnectorDestinationSchemaOutput) ToGetConnectorDestinationSchemaOutp
 
 func (o GetConnectorDestinationSchemaOutput) ToGetConnectorDestinationSchemaOutputWithContext(ctx context.Context) GetConnectorDestinationSchemaOutput {
 	return o
-}
-
-func (o GetConnectorDestinationSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorDestinationSchema] {
-	return pulumix.Output[GetConnectorDestinationSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorDestinationSchemaOutput) Name() pulumi.StringOutput {
@@ -16173,12 +15981,6 @@ func (o GetConnectorDestinationSchemaArrayOutput) ToGetConnectorDestinationSchem
 
 func (o GetConnectorDestinationSchemaArrayOutput) ToGetConnectorDestinationSchemaArrayOutputWithContext(ctx context.Context) GetConnectorDestinationSchemaArrayOutput {
 	return o
-}
-
-func (o GetConnectorDestinationSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorDestinationSchema] {
-	return pulumix.Output[[]GetConnectorDestinationSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorDestinationSchemaArrayOutput) Index(i pulumi.IntInput) GetConnectorDestinationSchemaOutput {
@@ -16232,12 +16034,6 @@ func (i GetConnectorFingerprintsFingerprintArgs) ToGetConnectorFingerprintsFinge
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorFingerprintsFingerprintOutput)
 }
 
-func (i GetConnectorFingerprintsFingerprintArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorFingerprintsFingerprint] {
-	return pulumix.Output[GetConnectorFingerprintsFingerprint]{
-		OutputState: i.ToGetConnectorFingerprintsFingerprintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorFingerprintsFingerprintArrayInput is an input type that accepts GetConnectorFingerprintsFingerprintArray and GetConnectorFingerprintsFingerprintArrayOutput values.
 // You can construct a concrete instance of `GetConnectorFingerprintsFingerprintArrayInput` via:
 //
@@ -16263,12 +16059,6 @@ func (i GetConnectorFingerprintsFingerprintArray) ToGetConnectorFingerprintsFing
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorFingerprintsFingerprintArrayOutput)
 }
 
-func (i GetConnectorFingerprintsFingerprintArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorFingerprintsFingerprint] {
-	return pulumix.Output[[]GetConnectorFingerprintsFingerprint]{
-		OutputState: i.ToGetConnectorFingerprintsFingerprintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorFingerprintsFingerprintOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorFingerprintsFingerprintOutput) ElementType() reflect.Type {
@@ -16281,12 +16071,6 @@ func (o GetConnectorFingerprintsFingerprintOutput) ToGetConnectorFingerprintsFin
 
 func (o GetConnectorFingerprintsFingerprintOutput) ToGetConnectorFingerprintsFingerprintOutputWithContext(ctx context.Context) GetConnectorFingerprintsFingerprintOutput {
 	return o
-}
-
-func (o GetConnectorFingerprintsFingerprintOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorFingerprintsFingerprint] {
-	return pulumix.Output[GetConnectorFingerprintsFingerprint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hash of the fingerprint.
@@ -16321,12 +16105,6 @@ func (o GetConnectorFingerprintsFingerprintArrayOutput) ToGetConnectorFingerprin
 
 func (o GetConnectorFingerprintsFingerprintArrayOutput) ToGetConnectorFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) GetConnectorFingerprintsFingerprintArrayOutput {
 	return o
-}
-
-func (o GetConnectorFingerprintsFingerprintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorFingerprintsFingerprint] {
-	return pulumix.Output[[]GetConnectorFingerprintsFingerprint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorFingerprintsFingerprintArrayOutput) Index(i pulumi.IntInput) GetConnectorFingerprintsFingerprintOutput {
@@ -16376,12 +16154,6 @@ func (i GetConnectorStatusArgs) ToGetConnectorStatusOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorStatusOutput)
 }
 
-func (i GetConnectorStatusArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorStatus] {
-	return pulumix.Output[GetConnectorStatus]{
-		OutputState: i.ToGetConnectorStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorStatusArrayInput is an input type that accepts GetConnectorStatusArray and GetConnectorStatusArrayOutput values.
 // You can construct a concrete instance of `GetConnectorStatusArrayInput` via:
 //
@@ -16407,12 +16179,6 @@ func (i GetConnectorStatusArray) ToGetConnectorStatusArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorStatusArrayOutput)
 }
 
-func (i GetConnectorStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorStatus] {
-	return pulumix.Output[[]GetConnectorStatus]{
-		OutputState: i.ToGetConnectorStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorStatusOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorStatusOutput) ElementType() reflect.Type {
@@ -16425,12 +16191,6 @@ func (o GetConnectorStatusOutput) ToGetConnectorStatusOutput() GetConnectorStatu
 
 func (o GetConnectorStatusOutput) ToGetConnectorStatusOutputWithContext(ctx context.Context) GetConnectorStatusOutput {
 	return o
-}
-
-func (o GetConnectorStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorStatus] {
-	return pulumix.Output[GetConnectorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorStatusOutput) IsHistoricalSync() pulumi.StringOutput {
@@ -16469,12 +16229,6 @@ func (o GetConnectorStatusArrayOutput) ToGetConnectorStatusArrayOutput() GetConn
 
 func (o GetConnectorStatusArrayOutput) ToGetConnectorStatusArrayOutputWithContext(ctx context.Context) GetConnectorStatusArrayOutput {
 	return o
-}
-
-func (o GetConnectorStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorStatus] {
-	return pulumix.Output[[]GetConnectorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorStatusArrayOutput) Index(i pulumi.IntInput) GetConnectorStatusOutput {
@@ -16516,12 +16270,6 @@ func (i GetConnectorStatusTaskArgs) ToGetConnectorStatusTaskOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorStatusTaskOutput)
 }
 
-func (i GetConnectorStatusTaskArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorStatusTask] {
-	return pulumix.Output[GetConnectorStatusTask]{
-		OutputState: i.ToGetConnectorStatusTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorStatusTaskArrayInput is an input type that accepts GetConnectorStatusTaskArray and GetConnectorStatusTaskArrayOutput values.
 // You can construct a concrete instance of `GetConnectorStatusTaskArrayInput` via:
 //
@@ -16547,12 +16295,6 @@ func (i GetConnectorStatusTaskArray) ToGetConnectorStatusTaskArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorStatusTaskArrayOutput)
 }
 
-func (i GetConnectorStatusTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorStatusTask] {
-	return pulumix.Output[[]GetConnectorStatusTask]{
-		OutputState: i.ToGetConnectorStatusTaskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorStatusTaskOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorStatusTaskOutput) ElementType() reflect.Type {
@@ -16565,12 +16307,6 @@ func (o GetConnectorStatusTaskOutput) ToGetConnectorStatusTaskOutput() GetConnec
 
 func (o GetConnectorStatusTaskOutput) ToGetConnectorStatusTaskOutputWithContext(ctx context.Context) GetConnectorStatusTaskOutput {
 	return o
-}
-
-func (o GetConnectorStatusTaskOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorStatusTask] {
-	return pulumix.Output[GetConnectorStatusTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorStatusTaskOutput) Code() pulumi.StringOutput {
@@ -16593,12 +16329,6 @@ func (o GetConnectorStatusTaskArrayOutput) ToGetConnectorStatusTaskArrayOutput()
 
 func (o GetConnectorStatusTaskArrayOutput) ToGetConnectorStatusTaskArrayOutputWithContext(ctx context.Context) GetConnectorStatusTaskArrayOutput {
 	return o
-}
-
-func (o GetConnectorStatusTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorStatusTask] {
-	return pulumix.Output[[]GetConnectorStatusTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorStatusTaskArrayOutput) Index(i pulumi.IntInput) GetConnectorStatusTaskOutput {
@@ -16640,12 +16370,6 @@ func (i GetConnectorStatusWarningArgs) ToGetConnectorStatusWarningOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorStatusWarningOutput)
 }
 
-func (i GetConnectorStatusWarningArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorStatusWarning] {
-	return pulumix.Output[GetConnectorStatusWarning]{
-		OutputState: i.ToGetConnectorStatusWarningOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorStatusWarningArrayInput is an input type that accepts GetConnectorStatusWarningArray and GetConnectorStatusWarningArrayOutput values.
 // You can construct a concrete instance of `GetConnectorStatusWarningArrayInput` via:
 //
@@ -16671,12 +16395,6 @@ func (i GetConnectorStatusWarningArray) ToGetConnectorStatusWarningArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorStatusWarningArrayOutput)
 }
 
-func (i GetConnectorStatusWarningArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorStatusWarning] {
-	return pulumix.Output[[]GetConnectorStatusWarning]{
-		OutputState: i.ToGetConnectorStatusWarningArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorStatusWarningOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorStatusWarningOutput) ElementType() reflect.Type {
@@ -16689,12 +16407,6 @@ func (o GetConnectorStatusWarningOutput) ToGetConnectorStatusWarningOutput() Get
 
 func (o GetConnectorStatusWarningOutput) ToGetConnectorStatusWarningOutputWithContext(ctx context.Context) GetConnectorStatusWarningOutput {
 	return o
-}
-
-func (o GetConnectorStatusWarningOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorStatusWarning] {
-	return pulumix.Output[GetConnectorStatusWarning]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorStatusWarningOutput) Code() pulumi.StringOutput {
@@ -16717,12 +16429,6 @@ func (o GetConnectorStatusWarningArrayOutput) ToGetConnectorStatusWarningArrayOu
 
 func (o GetConnectorStatusWarningArrayOutput) ToGetConnectorStatusWarningArrayOutputWithContext(ctx context.Context) GetConnectorStatusWarningArrayOutput {
 	return o
-}
-
-func (o GetConnectorStatusWarningArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorStatusWarning] {
-	return pulumix.Output[[]GetConnectorStatusWarning]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorStatusWarningArrayOutput) Index(i pulumi.IntInput) GetConnectorStatusWarningOutput {
@@ -16788,12 +16494,6 @@ func (i GetConnectorsMetadataSourceArgs) ToGetConnectorsMetadataSourceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorsMetadataSourceOutput)
 }
 
-func (i GetConnectorsMetadataSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorsMetadataSource] {
-	return pulumix.Output[GetConnectorsMetadataSource]{
-		OutputState: i.ToGetConnectorsMetadataSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorsMetadataSourceArrayInput is an input type that accepts GetConnectorsMetadataSourceArray and GetConnectorsMetadataSourceArrayOutput values.
 // You can construct a concrete instance of `GetConnectorsMetadataSourceArrayInput` via:
 //
@@ -16819,12 +16519,6 @@ func (i GetConnectorsMetadataSourceArray) ToGetConnectorsMetadataSourceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorsMetadataSourceArrayOutput)
 }
 
-func (i GetConnectorsMetadataSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorsMetadataSource] {
-	return pulumix.Output[[]GetConnectorsMetadataSource]{
-		OutputState: i.ToGetConnectorsMetadataSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorsMetadataSourceOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorsMetadataSourceOutput) ElementType() reflect.Type {
@@ -16837,12 +16531,6 @@ func (o GetConnectorsMetadataSourceOutput) ToGetConnectorsMetadataSourceOutput()
 
 func (o GetConnectorsMetadataSourceOutput) ToGetConnectorsMetadataSourceOutputWithContext(ctx context.Context) GetConnectorsMetadataSourceOutput {
 	return o
-}
-
-func (o GetConnectorsMetadataSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorsMetadataSource] {
-	return pulumix.Output[GetConnectorsMetadataSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description characterizing the purpose of the connector.
@@ -16894,12 +16582,6 @@ func (o GetConnectorsMetadataSourceArrayOutput) ToGetConnectorsMetadataSourceArr
 	return o
 }
 
-func (o GetConnectorsMetadataSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorsMetadataSource] {
-	return pulumix.Output[[]GetConnectorsMetadataSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetConnectorsMetadataSourceArrayOutput) Index(i pulumi.IntInput) GetConnectorsMetadataSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorsMetadataSource {
 		return vs[0].([]GetConnectorsMetadataSource)[vs[1].(int)]
@@ -16947,12 +16629,6 @@ func (i GetDbtModelsModelArgs) ToGetDbtModelsModelOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbtModelsModelOutput)
 }
 
-func (i GetDbtModelsModelArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbtModelsModel] {
-	return pulumix.Output[GetDbtModelsModel]{
-		OutputState: i.ToGetDbtModelsModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDbtModelsModelArrayInput is an input type that accepts GetDbtModelsModelArray and GetDbtModelsModelArrayOutput values.
 // You can construct a concrete instance of `GetDbtModelsModelArrayInput` via:
 //
@@ -16978,12 +16654,6 @@ func (i GetDbtModelsModelArray) ToGetDbtModelsModelArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbtModelsModelArrayOutput)
 }
 
-func (i GetDbtModelsModelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbtModelsModel] {
-	return pulumix.Output[[]GetDbtModelsModel]{
-		OutputState: i.ToGetDbtModelsModelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDbtModelsModelOutput struct{ *pulumi.OutputState }
 
 func (GetDbtModelsModelOutput) ElementType() reflect.Type {
@@ -16996,12 +16666,6 @@ func (o GetDbtModelsModelOutput) ToGetDbtModelsModelOutput() GetDbtModelsModelOu
 
 func (o GetDbtModelsModelOutput) ToGetDbtModelsModelOutputWithContext(ctx context.Context) GetDbtModelsModelOutput {
 	return o
-}
-
-func (o GetDbtModelsModelOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbtModelsModel] {
-	return pulumix.Output[GetDbtModelsModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the dbt Model within the Fivetran system.
@@ -17031,12 +16695,6 @@ func (o GetDbtModelsModelArrayOutput) ToGetDbtModelsModelArrayOutput() GetDbtMod
 
 func (o GetDbtModelsModelArrayOutput) ToGetDbtModelsModelArrayOutputWithContext(ctx context.Context) GetDbtModelsModelArrayOutput {
 	return o
-}
-
-func (o GetDbtModelsModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbtModelsModel] {
-	return pulumix.Output[[]GetDbtModelsModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbtModelsModelArrayOutput) Index(i pulumi.IntInput) GetDbtModelsModelOutput {
@@ -17086,12 +16744,6 @@ func (i GetDbtProjectModelArgs) ToGetDbtProjectModelOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbtProjectModelOutput)
 }
 
-func (i GetDbtProjectModelArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbtProjectModel] {
-	return pulumix.Output[GetDbtProjectModel]{
-		OutputState: i.ToGetDbtProjectModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDbtProjectModelArrayInput is an input type that accepts GetDbtProjectModelArray and GetDbtProjectModelArrayOutput values.
 // You can construct a concrete instance of `GetDbtProjectModelArrayInput` via:
 //
@@ -17117,12 +16769,6 @@ func (i GetDbtProjectModelArray) ToGetDbtProjectModelArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbtProjectModelArrayOutput)
 }
 
-func (i GetDbtProjectModelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbtProjectModel] {
-	return pulumix.Output[[]GetDbtProjectModel]{
-		OutputState: i.ToGetDbtProjectModelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDbtProjectModelOutput struct{ *pulumi.OutputState }
 
 func (GetDbtProjectModelOutput) ElementType() reflect.Type {
@@ -17135,12 +16781,6 @@ func (o GetDbtProjectModelOutput) ToGetDbtProjectModelOutput() GetDbtProjectMode
 
 func (o GetDbtProjectModelOutput) ToGetDbtProjectModelOutputWithContext(ctx context.Context) GetDbtProjectModelOutput {
 	return o
-}
-
-func (o GetDbtProjectModelOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbtProjectModel] {
-	return pulumix.Output[GetDbtProjectModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the dbt Model within the Fivetran system.
@@ -17170,12 +16810,6 @@ func (o GetDbtProjectModelArrayOutput) ToGetDbtProjectModelArrayOutput() GetDbtP
 
 func (o GetDbtProjectModelArrayOutput) ToGetDbtProjectModelArrayOutputWithContext(ctx context.Context) GetDbtProjectModelArrayOutput {
 	return o
-}
-
-func (o GetDbtProjectModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbtProjectModel] {
-	return pulumix.Output[[]GetDbtProjectModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbtProjectModelArrayOutput) Index(i pulumi.IntInput) GetDbtProjectModelOutput {
@@ -17219,12 +16853,6 @@ func (i GetDbtProjectProjectConfigArgs) ToGetDbtProjectProjectConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbtProjectProjectConfigOutput)
 }
 
-func (i GetDbtProjectProjectConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbtProjectProjectConfig] {
-	return pulumix.Output[GetDbtProjectProjectConfig]{
-		OutputState: i.ToGetDbtProjectProjectConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDbtProjectProjectConfigArrayInput is an input type that accepts GetDbtProjectProjectConfigArray and GetDbtProjectProjectConfigArrayOutput values.
 // You can construct a concrete instance of `GetDbtProjectProjectConfigArrayInput` via:
 //
@@ -17250,12 +16878,6 @@ func (i GetDbtProjectProjectConfigArray) ToGetDbtProjectProjectConfigArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbtProjectProjectConfigArrayOutput)
 }
 
-func (i GetDbtProjectProjectConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbtProjectProjectConfig] {
-	return pulumix.Output[[]GetDbtProjectProjectConfig]{
-		OutputState: i.ToGetDbtProjectProjectConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDbtProjectProjectConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDbtProjectProjectConfigOutput) ElementType() reflect.Type {
@@ -17268,12 +16890,6 @@ func (o GetDbtProjectProjectConfigOutput) ToGetDbtProjectProjectConfigOutput() G
 
 func (o GetDbtProjectProjectConfigOutput) ToGetDbtProjectProjectConfigOutputWithContext(ctx context.Context) GetDbtProjectProjectConfigOutput {
 	return o
-}
-
-func (o GetDbtProjectProjectConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbtProjectProjectConfig] {
-	return pulumix.Output[GetDbtProjectProjectConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbtProjectProjectConfigOutput) FolderPath() pulumi.StringOutput {
@@ -17300,12 +16916,6 @@ func (o GetDbtProjectProjectConfigArrayOutput) ToGetDbtProjectProjectConfigArray
 
 func (o GetDbtProjectProjectConfigArrayOutput) ToGetDbtProjectProjectConfigArrayOutputWithContext(ctx context.Context) GetDbtProjectProjectConfigArrayOutput {
 	return o
-}
-
-func (o GetDbtProjectProjectConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbtProjectProjectConfig] {
-	return pulumix.Output[[]GetDbtProjectProjectConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbtProjectProjectConfigArrayOutput) Index(i pulumi.IntInput) GetDbtProjectProjectConfigOutput {
@@ -17359,12 +16969,6 @@ func (i GetDbtProjectsProjectArgs) ToGetDbtProjectsProjectOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbtProjectsProjectOutput)
 }
 
-func (i GetDbtProjectsProjectArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbtProjectsProject] {
-	return pulumix.Output[GetDbtProjectsProject]{
-		OutputState: i.ToGetDbtProjectsProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDbtProjectsProjectArrayInput is an input type that accepts GetDbtProjectsProjectArray and GetDbtProjectsProjectArrayOutput values.
 // You can construct a concrete instance of `GetDbtProjectsProjectArrayInput` via:
 //
@@ -17390,12 +16994,6 @@ func (i GetDbtProjectsProjectArray) ToGetDbtProjectsProjectArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbtProjectsProjectArrayOutput)
 }
 
-func (i GetDbtProjectsProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbtProjectsProject] {
-	return pulumix.Output[[]GetDbtProjectsProject]{
-		OutputState: i.ToGetDbtProjectsProjectArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDbtProjectsProjectOutput struct{ *pulumi.OutputState }
 
 func (GetDbtProjectsProjectOutput) ElementType() reflect.Type {
@@ -17408,12 +17006,6 @@ func (o GetDbtProjectsProjectOutput) ToGetDbtProjectsProjectOutput() GetDbtProje
 
 func (o GetDbtProjectsProjectOutput) ToGetDbtProjectsProjectOutputWithContext(ctx context.Context) GetDbtProjectsProjectOutput {
 	return o
-}
-
-func (o GetDbtProjectsProjectOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbtProjectsProject] {
-	return pulumix.Output[GetDbtProjectsProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of when the project was created in your account.
@@ -17448,12 +17040,6 @@ func (o GetDbtProjectsProjectArrayOutput) ToGetDbtProjectsProjectArrayOutput() G
 
 func (o GetDbtProjectsProjectArrayOutput) ToGetDbtProjectsProjectArrayOutputWithContext(ctx context.Context) GetDbtProjectsProjectArrayOutput {
 	return o
-}
-
-func (o GetDbtProjectsProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbtProjectsProject] {
-	return pulumix.Output[[]GetDbtProjectsProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbtProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetDbtProjectsProjectOutput {
@@ -17499,12 +17085,6 @@ func (i GetDbtTransformationScheduleArgs) ToGetDbtTransformationScheduleOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbtTransformationScheduleOutput)
 }
 
-func (i GetDbtTransformationScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbtTransformationSchedule] {
-	return pulumix.Output[GetDbtTransformationSchedule]{
-		OutputState: i.ToGetDbtTransformationScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDbtTransformationScheduleArrayInput is an input type that accepts GetDbtTransformationScheduleArray and GetDbtTransformationScheduleArrayOutput values.
 // You can construct a concrete instance of `GetDbtTransformationScheduleArrayInput` via:
 //
@@ -17530,12 +17110,6 @@ func (i GetDbtTransformationScheduleArray) ToGetDbtTransformationScheduleArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbtTransformationScheduleArrayOutput)
 }
 
-func (i GetDbtTransformationScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbtTransformationSchedule] {
-	return pulumix.Output[[]GetDbtTransformationSchedule]{
-		OutputState: i.ToGetDbtTransformationScheduleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDbtTransformationScheduleOutput struct{ *pulumi.OutputState }
 
 func (GetDbtTransformationScheduleOutput) ElementType() reflect.Type {
@@ -17548,12 +17122,6 @@ func (o GetDbtTransformationScheduleOutput) ToGetDbtTransformationScheduleOutput
 
 func (o GetDbtTransformationScheduleOutput) ToGetDbtTransformationScheduleOutputWithContext(ctx context.Context) GetDbtTransformationScheduleOutput {
 	return o
-}
-
-func (o GetDbtTransformationScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbtTransformationSchedule] {
-	return pulumix.Output[GetDbtTransformationSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbtTransformationScheduleOutput) DaysOfWeeks() pulumi.StringArrayOutput {
@@ -17584,12 +17152,6 @@ func (o GetDbtTransformationScheduleArrayOutput) ToGetDbtTransformationScheduleA
 
 func (o GetDbtTransformationScheduleArrayOutput) ToGetDbtTransformationScheduleArrayOutputWithContext(ctx context.Context) GetDbtTransformationScheduleArrayOutput {
 	return o
-}
-
-func (o GetDbtTransformationScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbtTransformationSchedule] {
-	return pulumix.Output[[]GetDbtTransformationSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbtTransformationScheduleArrayOutput) Index(i pulumi.IntInput) GetDbtTransformationScheduleOutput {
@@ -17659,12 +17221,6 @@ func (i GetDestinationCertificatesCertificateArgs) ToGetDestinationCertificatesC
 	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationCertificatesCertificateOutput)
 }
 
-func (i GetDestinationCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetDestinationCertificatesCertificate] {
-	return pulumix.Output[GetDestinationCertificatesCertificate]{
-		OutputState: i.ToGetDestinationCertificatesCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDestinationCertificatesCertificateArrayInput is an input type that accepts GetDestinationCertificatesCertificateArray and GetDestinationCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetDestinationCertificatesCertificateArrayInput` via:
 //
@@ -17690,12 +17246,6 @@ func (i GetDestinationCertificatesCertificateArray) ToGetDestinationCertificates
 	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationCertificatesCertificateArrayOutput)
 }
 
-func (i GetDestinationCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDestinationCertificatesCertificate] {
-	return pulumix.Output[[]GetDestinationCertificatesCertificate]{
-		OutputState: i.ToGetDestinationCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDestinationCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetDestinationCertificatesCertificateOutput) ElementType() reflect.Type {
@@ -17708,12 +17258,6 @@ func (o GetDestinationCertificatesCertificateOutput) ToGetDestinationCertificate
 
 func (o GetDestinationCertificatesCertificateOutput) ToGetDestinationCertificatesCertificateOutputWithContext(ctx context.Context) GetDestinationCertificatesCertificateOutput {
 	return o
-}
-
-func (o GetDestinationCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetDestinationCertificatesCertificate] {
-	return pulumix.Output[GetDestinationCertificatesCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hash of the fingerprint.
@@ -17770,12 +17314,6 @@ func (o GetDestinationCertificatesCertificateArrayOutput) ToGetDestinationCertif
 	return o
 }
 
-func (o GetDestinationCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDestinationCertificatesCertificate] {
-	return pulumix.Output[[]GetDestinationCertificatesCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDestinationCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetDestinationCertificatesCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDestinationCertificatesCertificate {
 		return vs[0].([]GetDestinationCertificatesCertificate)[vs[1].(int)]
@@ -17791,12 +17329,16 @@ type GetDestinationConfig struct {
 	Bucket *string `pulumi:"bucket"`
 	// Catalog name
 	Catalog *string `pulumi:"catalog"`
+	// ClientId of your Azure Data Lake Storage
+	ClientId *string `pulumi:"clientId"`
 	// Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 	ClusterId *string `pulumi:"clusterId"`
 	// Cluster region. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 	ClusterRegion *string `pulumi:"clusterRegion"`
 	// Connection method. Default value: `Directly`.
 	ConnectionType *string `pulumi:"connectionType"`
+	// Container Name of your Azure Data Lake Storage
+	ContainerName *string `pulumi:"containerName"`
 	// Whether to create external tables
 	CreateExternalTables *string `pulumi:"createExternalTables"`
 	// Data location. Datasets will reside in this location.
@@ -17813,6 +17355,8 @@ type GetDestinationConfig struct {
 	HttpPath *string `pulumi:"httpPath"`
 	// Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
 	IsPrivateKeyEncrypted string `pulumi:"isPrivateKeyEncrypted"`
+	// OneLake lakehouse name
+	LakehouseName *string `pulumi:"lakehouseName"`
 	// In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
 	Passphrase *string `pulumi:"passphrase"`
 	// Database user password
@@ -17837,8 +17381,14 @@ type GetDestinationConfig struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
 	SecretKey *string `pulumi:"secretKey"`
+	// Secret Value of your Azure Data Lake Storage
+	SecretValue *string `pulumi:"secretValue"`
 	// Server name
 	ServerHostName *string `pulumi:"serverHostName"`
+	// Storage Account Name of your Azure Data Lake Storage
+	StorageAccountName *string `pulumi:"storageAccountName"`
+	// TenantId of your Azure Data Lake Storage
+	TenantId *string `pulumi:"tenantId"`
 	// SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	TunnelHost *string `pulumi:"tunnelHost"`
 	// SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -17847,6 +17397,8 @@ type GetDestinationConfig struct {
 	TunnelUser *string `pulumi:"tunnelUser"`
 	// Database user name
 	User *string `pulumi:"user"`
+	// OneLake workspace name
+	WorkspaceName *string `pulumi:"workspaceName"`
 }
 
 // GetDestinationConfigInput is an input type that accepts GetDestinationConfigArgs and GetDestinationConfigOutput values.
@@ -17869,12 +17421,16 @@ type GetDestinationConfigArgs struct {
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// Catalog name
 	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
+	// ClientId of your Azure Data Lake Storage
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
 	// Cluster region. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 	ClusterRegion pulumi.StringPtrInput `pulumi:"clusterRegion"`
 	// Connection method. Default value: `Directly`.
 	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// Container Name of your Azure Data Lake Storage
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
 	// Whether to create external tables
 	CreateExternalTables pulumi.StringPtrInput `pulumi:"createExternalTables"`
 	// Data location. Datasets will reside in this location.
@@ -17891,6 +17447,8 @@ type GetDestinationConfigArgs struct {
 	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
 	// Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
 	IsPrivateKeyEncrypted pulumi.StringInput `pulumi:"isPrivateKeyEncrypted"`
+	// OneLake lakehouse name
+	LakehouseName pulumi.StringPtrInput `pulumi:"lakehouseName"`
 	// In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
 	Passphrase pulumi.StringPtrInput `pulumi:"passphrase"`
 	// Database user password
@@ -17915,8 +17473,14 @@ type GetDestinationConfigArgs struct {
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	// Secret Value of your Azure Data Lake Storage
+	SecretValue pulumi.StringPtrInput `pulumi:"secretValue"`
 	// Server name
 	ServerHostName pulumi.StringPtrInput `pulumi:"serverHostName"`
+	// Storage Account Name of your Azure Data Lake Storage
+	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
+	// TenantId of your Azure Data Lake Storage
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 	// SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	TunnelHost pulumi.StringPtrInput `pulumi:"tunnelHost"`
 	// SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -17925,6 +17489,8 @@ type GetDestinationConfigArgs struct {
 	TunnelUser pulumi.StringPtrInput `pulumi:"tunnelUser"`
 	// Database user name
 	User pulumi.StringPtrInput `pulumi:"user"`
+	// OneLake workspace name
+	WorkspaceName pulumi.StringPtrInput `pulumi:"workspaceName"`
 }
 
 func (GetDestinationConfigArgs) ElementType() reflect.Type {
@@ -17937,12 +17503,6 @@ func (i GetDestinationConfigArgs) ToGetDestinationConfigOutput() GetDestinationC
 
 func (i GetDestinationConfigArgs) ToGetDestinationConfigOutputWithContext(ctx context.Context) GetDestinationConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationConfigOutput)
-}
-
-func (i GetDestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDestinationConfig] {
-	return pulumix.Output[GetDestinationConfig]{
-		OutputState: i.ToGetDestinationConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GetDestinationConfigArrayInput is an input type that accepts GetDestinationConfigArray and GetDestinationConfigArrayOutput values.
@@ -17970,12 +17530,6 @@ func (i GetDestinationConfigArray) ToGetDestinationConfigArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationConfigArrayOutput)
 }
 
-func (i GetDestinationConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDestinationConfig] {
-	return pulumix.Output[[]GetDestinationConfig]{
-		OutputState: i.ToGetDestinationConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDestinationConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDestinationConfigOutput) ElementType() reflect.Type {
@@ -17988,12 +17542,6 @@ func (o GetDestinationConfigOutput) ToGetDestinationConfigOutput() GetDestinatio
 
 func (o GetDestinationConfigOutput) ToGetDestinationConfigOutputWithContext(ctx context.Context) GetDestinationConfigOutput {
 	return o
-}
-
-func (o GetDestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDestinationConfig] {
-	return pulumix.Output[GetDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
@@ -18016,6 +17564,11 @@ func (o GetDestinationConfigOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDestinationConfig) *string { return v.Catalog }).(pulumi.StringPtrOutput)
 }
 
+// ClientId of your Azure Data Lake Storage
+func (o GetDestinationConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDestinationConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
 // Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
 func (o GetDestinationConfigOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDestinationConfig) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
@@ -18029,6 +17582,11 @@ func (o GetDestinationConfigOutput) ClusterRegion() pulumi.StringPtrOutput {
 // Connection method. Default value: `Directly`.
 func (o GetDestinationConfigOutput) ConnectionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDestinationConfig) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// Container Name of your Azure Data Lake Storage
+func (o GetDestinationConfigOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDestinationConfig) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
 }
 
 // Whether to create external tables
@@ -18069,6 +17627,11 @@ func (o GetDestinationConfigOutput) HttpPath() pulumi.StringPtrOutput {
 // Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
 func (o GetDestinationConfigOutput) IsPrivateKeyEncrypted() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.IsPrivateKeyEncrypted }).(pulumi.StringOutput)
+}
+
+// OneLake lakehouse name
+func (o GetDestinationConfigOutput) LakehouseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDestinationConfig) *string { return v.LakehouseName }).(pulumi.StringPtrOutput)
 }
 
 // In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
@@ -18131,9 +17694,24 @@ func (o GetDestinationConfigOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDestinationConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// Secret Value of your Azure Data Lake Storage
+func (o GetDestinationConfigOutput) SecretValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDestinationConfig) *string { return v.SecretValue }).(pulumi.StringPtrOutput)
+}
+
 // Server name
 func (o GetDestinationConfigOutput) ServerHostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDestinationConfig) *string { return v.ServerHostName }).(pulumi.StringPtrOutput)
+}
+
+// Storage Account Name of your Azure Data Lake Storage
+func (o GetDestinationConfigOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDestinationConfig) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+// TenantId of your Azure Data Lake Storage
+func (o GetDestinationConfigOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDestinationConfig) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 // SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -18156,6 +17734,11 @@ func (o GetDestinationConfigOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDestinationConfig) *string { return v.User }).(pulumi.StringPtrOutput)
 }
 
+// OneLake workspace name
+func (o GetDestinationConfigOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDestinationConfig) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
 type GetDestinationConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDestinationConfigArrayOutput) ElementType() reflect.Type {
@@ -18168,12 +17751,6 @@ func (o GetDestinationConfigArrayOutput) ToGetDestinationConfigArrayOutput() Get
 
 func (o GetDestinationConfigArrayOutput) ToGetDestinationConfigArrayOutputWithContext(ctx context.Context) GetDestinationConfigArrayOutput {
 	return o
-}
-
-func (o GetDestinationConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDestinationConfig] {
-	return pulumix.Output[[]GetDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDestinationConfigArrayOutput) Index(i pulumi.IntInput) GetDestinationConfigOutput {
@@ -18227,12 +17804,6 @@ func (i GetDestinationFingerprintsFingerprintArgs) ToGetDestinationFingerprintsF
 	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationFingerprintsFingerprintOutput)
 }
 
-func (i GetDestinationFingerprintsFingerprintArgs) ToOutput(ctx context.Context) pulumix.Output[GetDestinationFingerprintsFingerprint] {
-	return pulumix.Output[GetDestinationFingerprintsFingerprint]{
-		OutputState: i.ToGetDestinationFingerprintsFingerprintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDestinationFingerprintsFingerprintArrayInput is an input type that accepts GetDestinationFingerprintsFingerprintArray and GetDestinationFingerprintsFingerprintArrayOutput values.
 // You can construct a concrete instance of `GetDestinationFingerprintsFingerprintArrayInput` via:
 //
@@ -18258,12 +17829,6 @@ func (i GetDestinationFingerprintsFingerprintArray) ToGetDestinationFingerprints
 	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationFingerprintsFingerprintArrayOutput)
 }
 
-func (i GetDestinationFingerprintsFingerprintArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDestinationFingerprintsFingerprint] {
-	return pulumix.Output[[]GetDestinationFingerprintsFingerprint]{
-		OutputState: i.ToGetDestinationFingerprintsFingerprintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDestinationFingerprintsFingerprintOutput struct{ *pulumi.OutputState }
 
 func (GetDestinationFingerprintsFingerprintOutput) ElementType() reflect.Type {
@@ -18276,12 +17841,6 @@ func (o GetDestinationFingerprintsFingerprintOutput) ToGetDestinationFingerprint
 
 func (o GetDestinationFingerprintsFingerprintOutput) ToGetDestinationFingerprintsFingerprintOutputWithContext(ctx context.Context) GetDestinationFingerprintsFingerprintOutput {
 	return o
-}
-
-func (o GetDestinationFingerprintsFingerprintOutput) ToOutput(ctx context.Context) pulumix.Output[GetDestinationFingerprintsFingerprint] {
-	return pulumix.Output[GetDestinationFingerprintsFingerprint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hash of the fingerprint.
@@ -18316,12 +17875,6 @@ func (o GetDestinationFingerprintsFingerprintArrayOutput) ToGetDestinationFinger
 
 func (o GetDestinationFingerprintsFingerprintArrayOutput) ToGetDestinationFingerprintsFingerprintArrayOutputWithContext(ctx context.Context) GetDestinationFingerprintsFingerprintArrayOutput {
 	return o
-}
-
-func (o GetDestinationFingerprintsFingerprintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDestinationFingerprintsFingerprint] {
-	return pulumix.Output[[]GetDestinationFingerprintsFingerprint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDestinationFingerprintsFingerprintArrayOutput) Index(i pulumi.IntInput) GetDestinationFingerprintsFingerprintOutput {
@@ -18415,12 +17968,6 @@ func (i GetExternalLoggingConfigArgs) ToGetExternalLoggingConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLoggingConfigOutput)
 }
 
-func (i GetExternalLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetExternalLoggingConfig] {
-	return pulumix.Output[GetExternalLoggingConfig]{
-		OutputState: i.ToGetExternalLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetExternalLoggingConfigArrayInput is an input type that accepts GetExternalLoggingConfigArray and GetExternalLoggingConfigArrayOutput values.
 // You can construct a concrete instance of `GetExternalLoggingConfigArrayInput` via:
 //
@@ -18446,12 +17993,6 @@ func (i GetExternalLoggingConfigArray) ToGetExternalLoggingConfigArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLoggingConfigArrayOutput)
 }
 
-func (i GetExternalLoggingConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetExternalLoggingConfig] {
-	return pulumix.Output[[]GetExternalLoggingConfig]{
-		OutputState: i.ToGetExternalLoggingConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetExternalLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (GetExternalLoggingConfigOutput) ElementType() reflect.Type {
@@ -18464,12 +18005,6 @@ func (o GetExternalLoggingConfigOutput) ToGetExternalLoggingConfigOutput() GetEx
 
 func (o GetExternalLoggingConfigOutput) ToGetExternalLoggingConfigOutputWithContext(ctx context.Context) GetExternalLoggingConfigOutput {
 	return o
-}
-
-func (o GetExternalLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetExternalLoggingConfig] {
-	return pulumix.Output[GetExternalLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API Key
@@ -18554,12 +18089,6 @@ func (o GetExternalLoggingConfigArrayOutput) ToGetExternalLoggingConfigArrayOutp
 
 func (o GetExternalLoggingConfigArrayOutput) ToGetExternalLoggingConfigArrayOutputWithContext(ctx context.Context) GetExternalLoggingConfigArrayOutput {
 	return o
-}
-
-func (o GetExternalLoggingConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetExternalLoggingConfig] {
-	return pulumix.Output[[]GetExternalLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetExternalLoggingConfigArrayOutput) Index(i pulumi.IntInput) GetExternalLoggingConfigOutput {
@@ -18647,12 +18176,6 @@ func (i GetGroupConnectorsConnectorArgs) ToGetGroupConnectorsConnectorOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupConnectorsConnectorOutput)
 }
 
-func (i GetGroupConnectorsConnectorArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupConnectorsConnector] {
-	return pulumix.Output[GetGroupConnectorsConnector]{
-		OutputState: i.ToGetGroupConnectorsConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupConnectorsConnectorArrayInput is an input type that accepts GetGroupConnectorsConnectorArray and GetGroupConnectorsConnectorArrayOutput values.
 // You can construct a concrete instance of `GetGroupConnectorsConnectorArrayInput` via:
 //
@@ -18678,12 +18201,6 @@ func (i GetGroupConnectorsConnectorArray) ToGetGroupConnectorsConnectorArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupConnectorsConnectorArrayOutput)
 }
 
-func (i GetGroupConnectorsConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupConnectorsConnector] {
-	return pulumix.Output[[]GetGroupConnectorsConnector]{
-		OutputState: i.ToGetGroupConnectorsConnectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupConnectorsConnectorOutput struct{ *pulumi.OutputState }
 
 func (GetGroupConnectorsConnectorOutput) ElementType() reflect.Type {
@@ -18696,12 +18213,6 @@ func (o GetGroupConnectorsConnectorOutput) ToGetGroupConnectorsConnectorOutput()
 
 func (o GetGroupConnectorsConnectorOutput) ToGetGroupConnectorsConnectorOutputWithContext(ctx context.Context) GetGroupConnectorsConnectorOutput {
 	return o
-}
-
-func (o GetGroupConnectorsConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupConnectorsConnector] {
-	return pulumix.Output[GetGroupConnectorsConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier of the user who has created the connector in your account
@@ -18782,12 +18293,6 @@ func (o GetGroupConnectorsConnectorArrayOutput) ToGetGroupConnectorsConnectorArr
 	return o
 }
 
-func (o GetGroupConnectorsConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupConnectorsConnector] {
-	return pulumix.Output[[]GetGroupConnectorsConnector]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetGroupConnectorsConnectorArrayOutput) Index(i pulumi.IntInput) GetGroupConnectorsConnectorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupConnectorsConnector {
 		return vs[0].([]GetGroupConnectorsConnector)[vs[1].(int)]
@@ -18845,12 +18350,6 @@ func (i GetGroupConnectorsConnectorStatusArgs) ToGetGroupConnectorsConnectorStat
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupConnectorsConnectorStatusOutput)
 }
 
-func (i GetGroupConnectorsConnectorStatusArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupConnectorsConnectorStatus] {
-	return pulumix.Output[GetGroupConnectorsConnectorStatus]{
-		OutputState: i.ToGetGroupConnectorsConnectorStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupConnectorsConnectorStatusArrayInput is an input type that accepts GetGroupConnectorsConnectorStatusArray and GetGroupConnectorsConnectorStatusArrayOutput values.
 // You can construct a concrete instance of `GetGroupConnectorsConnectorStatusArrayInput` via:
 //
@@ -18876,12 +18375,6 @@ func (i GetGroupConnectorsConnectorStatusArray) ToGetGroupConnectorsConnectorSta
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupConnectorsConnectorStatusArrayOutput)
 }
 
-func (i GetGroupConnectorsConnectorStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupConnectorsConnectorStatus] {
-	return pulumix.Output[[]GetGroupConnectorsConnectorStatus]{
-		OutputState: i.ToGetGroupConnectorsConnectorStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupConnectorsConnectorStatusOutput struct{ *pulumi.OutputState }
 
 func (GetGroupConnectorsConnectorStatusOutput) ElementType() reflect.Type {
@@ -18894,12 +18387,6 @@ func (o GetGroupConnectorsConnectorStatusOutput) ToGetGroupConnectorsConnectorSt
 
 func (o GetGroupConnectorsConnectorStatusOutput) ToGetGroupConnectorsConnectorStatusOutputWithContext(ctx context.Context) GetGroupConnectorsConnectorStatusOutput {
 	return o
-}
-
-func (o GetGroupConnectorsConnectorStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupConnectorsConnectorStatus] {
-	return pulumix.Output[GetGroupConnectorsConnectorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
@@ -18947,12 +18434,6 @@ func (o GetGroupConnectorsConnectorStatusArrayOutput) ToGetGroupConnectorsConnec
 	return o
 }
 
-func (o GetGroupConnectorsConnectorStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupConnectorsConnectorStatus] {
-	return pulumix.Output[[]GetGroupConnectorsConnectorStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetGroupConnectorsConnectorStatusArrayOutput) Index(i pulumi.IntInput) GetGroupConnectorsConnectorStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupConnectorsConnectorStatus {
 		return vs[0].([]GetGroupConnectorsConnectorStatus)[vs[1].(int)]
@@ -18996,12 +18477,6 @@ func (i GetGroupConnectorsConnectorStatusTaskArgs) ToGetGroupConnectorsConnector
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupConnectorsConnectorStatusTaskOutput)
 }
 
-func (i GetGroupConnectorsConnectorStatusTaskArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupConnectorsConnectorStatusTask] {
-	return pulumix.Output[GetGroupConnectorsConnectorStatusTask]{
-		OutputState: i.ToGetGroupConnectorsConnectorStatusTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupConnectorsConnectorStatusTaskArrayInput is an input type that accepts GetGroupConnectorsConnectorStatusTaskArray and GetGroupConnectorsConnectorStatusTaskArrayOutput values.
 // You can construct a concrete instance of `GetGroupConnectorsConnectorStatusTaskArrayInput` via:
 //
@@ -19027,12 +18502,6 @@ func (i GetGroupConnectorsConnectorStatusTaskArray) ToGetGroupConnectorsConnecto
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupConnectorsConnectorStatusTaskArrayOutput)
 }
 
-func (i GetGroupConnectorsConnectorStatusTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupConnectorsConnectorStatusTask] {
-	return pulumix.Output[[]GetGroupConnectorsConnectorStatusTask]{
-		OutputState: i.ToGetGroupConnectorsConnectorStatusTaskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupConnectorsConnectorStatusTaskOutput struct{ *pulumi.OutputState }
 
 func (GetGroupConnectorsConnectorStatusTaskOutput) ElementType() reflect.Type {
@@ -19045,12 +18514,6 @@ func (o GetGroupConnectorsConnectorStatusTaskOutput) ToGetGroupConnectorsConnect
 
 func (o GetGroupConnectorsConnectorStatusTaskOutput) ToGetGroupConnectorsConnectorStatusTaskOutputWithContext(ctx context.Context) GetGroupConnectorsConnectorStatusTaskOutput {
 	return o
-}
-
-func (o GetGroupConnectorsConnectorStatusTaskOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupConnectorsConnectorStatusTask] {
-	return pulumix.Output[GetGroupConnectorsConnectorStatusTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Response status code
@@ -19075,12 +18538,6 @@ func (o GetGroupConnectorsConnectorStatusTaskArrayOutput) ToGetGroupConnectorsCo
 
 func (o GetGroupConnectorsConnectorStatusTaskArrayOutput) ToGetGroupConnectorsConnectorStatusTaskArrayOutputWithContext(ctx context.Context) GetGroupConnectorsConnectorStatusTaskArrayOutput {
 	return o
-}
-
-func (o GetGroupConnectorsConnectorStatusTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupConnectorsConnectorStatusTask] {
-	return pulumix.Output[[]GetGroupConnectorsConnectorStatusTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupConnectorsConnectorStatusTaskArrayOutput) Index(i pulumi.IntInput) GetGroupConnectorsConnectorStatusTaskOutput {
@@ -19126,12 +18583,6 @@ func (i GetGroupConnectorsConnectorStatusWarningArgs) ToGetGroupConnectorsConnec
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupConnectorsConnectorStatusWarningOutput)
 }
 
-func (i GetGroupConnectorsConnectorStatusWarningArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupConnectorsConnectorStatusWarning] {
-	return pulumix.Output[GetGroupConnectorsConnectorStatusWarning]{
-		OutputState: i.ToGetGroupConnectorsConnectorStatusWarningOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupConnectorsConnectorStatusWarningArrayInput is an input type that accepts GetGroupConnectorsConnectorStatusWarningArray and GetGroupConnectorsConnectorStatusWarningArrayOutput values.
 // You can construct a concrete instance of `GetGroupConnectorsConnectorStatusWarningArrayInput` via:
 //
@@ -19157,12 +18608,6 @@ func (i GetGroupConnectorsConnectorStatusWarningArray) ToGetGroupConnectorsConne
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupConnectorsConnectorStatusWarningArrayOutput)
 }
 
-func (i GetGroupConnectorsConnectorStatusWarningArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupConnectorsConnectorStatusWarning] {
-	return pulumix.Output[[]GetGroupConnectorsConnectorStatusWarning]{
-		OutputState: i.ToGetGroupConnectorsConnectorStatusWarningArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupConnectorsConnectorStatusWarningOutput struct{ *pulumi.OutputState }
 
 func (GetGroupConnectorsConnectorStatusWarningOutput) ElementType() reflect.Type {
@@ -19175,12 +18620,6 @@ func (o GetGroupConnectorsConnectorStatusWarningOutput) ToGetGroupConnectorsConn
 
 func (o GetGroupConnectorsConnectorStatusWarningOutput) ToGetGroupConnectorsConnectorStatusWarningOutputWithContext(ctx context.Context) GetGroupConnectorsConnectorStatusWarningOutput {
 	return o
-}
-
-func (o GetGroupConnectorsConnectorStatusWarningOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupConnectorsConnectorStatusWarning] {
-	return pulumix.Output[GetGroupConnectorsConnectorStatusWarning]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Response status code
@@ -19205,12 +18644,6 @@ func (o GetGroupConnectorsConnectorStatusWarningArrayOutput) ToGetGroupConnector
 
 func (o GetGroupConnectorsConnectorStatusWarningArrayOutput) ToGetGroupConnectorsConnectorStatusWarningArrayOutputWithContext(ctx context.Context) GetGroupConnectorsConnectorStatusWarningArrayOutput {
 	return o
-}
-
-func (o GetGroupConnectorsConnectorStatusWarningArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupConnectorsConnectorStatusWarning] {
-	return pulumix.Output[[]GetGroupConnectorsConnectorStatusWarning]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupConnectorsConnectorStatusWarningArrayOutput) Index(i pulumi.IntInput) GetGroupConnectorsConnectorStatusWarningOutput {
@@ -19292,12 +18725,6 @@ func (i GetGroupUsersUserArgs) ToGetGroupUsersUserOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupUsersUserOutput)
 }
 
-func (i GetGroupUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupUsersUser] {
-	return pulumix.Output[GetGroupUsersUser]{
-		OutputState: i.ToGetGroupUsersUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupUsersUserArrayInput is an input type that accepts GetGroupUsersUserArray and GetGroupUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetGroupUsersUserArrayInput` via:
 //
@@ -19323,12 +18750,6 @@ func (i GetGroupUsersUserArray) ToGetGroupUsersUserArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupUsersUserArrayOutput)
 }
 
-func (i GetGroupUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupUsersUser] {
-	return pulumix.Output[[]GetGroupUsersUser]{
-		OutputState: i.ToGetGroupUsersUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GetGroupUsersUserOutput) ElementType() reflect.Type {
@@ -19341,12 +18762,6 @@ func (o GetGroupUsersUserOutput) ToGetGroupUsersUserOutput() GetGroupUsersUserOu
 
 func (o GetGroupUsersUserOutput) ToGetGroupUsersUserOutputWithContext(ctx context.Context) GetGroupUsersUserOutput {
 	return o
-}
-
-func (o GetGroupUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupUsersUser] {
-	return pulumix.Output[GetGroupUsersUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp that the user created their Fivetran account
@@ -19418,12 +18833,6 @@ func (o GetGroupUsersUserArrayOutput) ToGetGroupUsersUserArrayOutputWithContext(
 	return o
 }
 
-func (o GetGroupUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupUsersUser] {
-	return pulumix.Output[[]GetGroupUsersUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetGroupUsersUserArrayOutput) Index(i pulumi.IntInput) GetGroupUsersUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupUsersUser {
 		return vs[0].([]GetGroupUsersUser)[vs[1].(int)]
@@ -19471,12 +18880,6 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupOutput)
 }
 
-func (i GetGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
-	return pulumix.Output[GetGroupsGroup]{
-		OutputState: i.ToGetGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
@@ -19502,12 +18905,6 @@ func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
 }
 
-func (i GetGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
-	return pulumix.Output[[]GetGroupsGroup]{
-		OutputState: i.ToGetGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupOutput) ElementType() reflect.Type {
@@ -19520,12 +18917,6 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
 
 func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
 	return o
-}
-
-func (o GetGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
-	return pulumix.Output[GetGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of when the group was created in your account.
@@ -19555,12 +18946,6 @@ func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutput() GetGroupsGroupA
 
 func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
 	return o
-}
-
-func (o GetGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
-	return pulumix.Output[[]GetGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
@@ -19630,12 +19015,6 @@ func (i GetMetadataColumnsMetadataColumnArgs) ToGetMetadataColumnsMetadataColumn
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataColumnsMetadataColumnOutput)
 }
 
-func (i GetMetadataColumnsMetadataColumnArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetadataColumnsMetadataColumn] {
-	return pulumix.Output[GetMetadataColumnsMetadataColumn]{
-		OutputState: i.ToGetMetadataColumnsMetadataColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMetadataColumnsMetadataColumnArrayInput is an input type that accepts GetMetadataColumnsMetadataColumnArray and GetMetadataColumnsMetadataColumnArrayOutput values.
 // You can construct a concrete instance of `GetMetadataColumnsMetadataColumnArrayInput` via:
 //
@@ -19661,12 +19040,6 @@ func (i GetMetadataColumnsMetadataColumnArray) ToGetMetadataColumnsMetadataColum
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataColumnsMetadataColumnArrayOutput)
 }
 
-func (i GetMetadataColumnsMetadataColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataColumnsMetadataColumn] {
-	return pulumix.Output[[]GetMetadataColumnsMetadataColumn]{
-		OutputState: i.ToGetMetadataColumnsMetadataColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMetadataColumnsMetadataColumnOutput struct{ *pulumi.OutputState }
 
 func (GetMetadataColumnsMetadataColumnOutput) ElementType() reflect.Type {
@@ -19679,12 +19052,6 @@ func (o GetMetadataColumnsMetadataColumnOutput) ToGetMetadataColumnsMetadataColu
 
 func (o GetMetadataColumnsMetadataColumnOutput) ToGetMetadataColumnsMetadataColumnOutputWithContext(ctx context.Context) GetMetadataColumnsMetadataColumnOutput {
 	return o
-}
-
-func (o GetMetadataColumnsMetadataColumnOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetadataColumnsMetadataColumn] {
-	return pulumix.Output[GetMetadataColumnsMetadataColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique column identifier
@@ -19741,12 +19108,6 @@ func (o GetMetadataColumnsMetadataColumnArrayOutput) ToGetMetadataColumnsMetadat
 	return o
 }
 
-func (o GetMetadataColumnsMetadataColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataColumnsMetadataColumn] {
-	return pulumix.Output[[]GetMetadataColumnsMetadataColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetMetadataColumnsMetadataColumnArrayOutput) Index(i pulumi.IntInput) GetMetadataColumnsMetadataColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetadataColumnsMetadataColumn {
 		return vs[0].([]GetMetadataColumnsMetadataColumn)[vs[1].(int)]
@@ -19794,12 +19155,6 @@ func (i GetMetadataSchemasMetadataSchemaArgs) ToGetMetadataSchemasMetadataSchema
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataSchemasMetadataSchemaOutput)
 }
 
-func (i GetMetadataSchemasMetadataSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetadataSchemasMetadataSchema] {
-	return pulumix.Output[GetMetadataSchemasMetadataSchema]{
-		OutputState: i.ToGetMetadataSchemasMetadataSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMetadataSchemasMetadataSchemaArrayInput is an input type that accepts GetMetadataSchemasMetadataSchemaArray and GetMetadataSchemasMetadataSchemaArrayOutput values.
 // You can construct a concrete instance of `GetMetadataSchemasMetadataSchemaArrayInput` via:
 //
@@ -19825,12 +19180,6 @@ func (i GetMetadataSchemasMetadataSchemaArray) ToGetMetadataSchemasMetadataSchem
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataSchemasMetadataSchemaArrayOutput)
 }
 
-func (i GetMetadataSchemasMetadataSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataSchemasMetadataSchema] {
-	return pulumix.Output[[]GetMetadataSchemasMetadataSchema]{
-		OutputState: i.ToGetMetadataSchemasMetadataSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMetadataSchemasMetadataSchemaOutput struct{ *pulumi.OutputState }
 
 func (GetMetadataSchemasMetadataSchemaOutput) ElementType() reflect.Type {
@@ -19843,12 +19192,6 @@ func (o GetMetadataSchemasMetadataSchemaOutput) ToGetMetadataSchemasMetadataSche
 
 func (o GetMetadataSchemasMetadataSchemaOutput) ToGetMetadataSchemasMetadataSchemaOutputWithContext(ctx context.Context) GetMetadataSchemasMetadataSchemaOutput {
 	return o
-}
-
-func (o GetMetadataSchemasMetadataSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetadataSchemasMetadataSchema] {
-	return pulumix.Output[GetMetadataSchemasMetadataSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique schema identifier
@@ -19878,12 +19221,6 @@ func (o GetMetadataSchemasMetadataSchemaArrayOutput) ToGetMetadataSchemasMetadat
 
 func (o GetMetadataSchemasMetadataSchemaArrayOutput) ToGetMetadataSchemasMetadataSchemaArrayOutputWithContext(ctx context.Context) GetMetadataSchemasMetadataSchemaArrayOutput {
 	return o
-}
-
-func (o GetMetadataSchemasMetadataSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataSchemasMetadataSchema] {
-	return pulumix.Output[[]GetMetadataSchemasMetadataSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMetadataSchemasMetadataSchemaArrayOutput) Index(i pulumi.IntInput) GetMetadataSchemasMetadataSchemaOutput {
@@ -19937,12 +19274,6 @@ func (i GetMetadataTablesMetadataTableArgs) ToGetMetadataTablesMetadataTableOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataTablesMetadataTableOutput)
 }
 
-func (i GetMetadataTablesMetadataTableArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetadataTablesMetadataTable] {
-	return pulumix.Output[GetMetadataTablesMetadataTable]{
-		OutputState: i.ToGetMetadataTablesMetadataTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMetadataTablesMetadataTableArrayInput is an input type that accepts GetMetadataTablesMetadataTableArray and GetMetadataTablesMetadataTableArrayOutput values.
 // You can construct a concrete instance of `GetMetadataTablesMetadataTableArrayInput` via:
 //
@@ -19968,12 +19299,6 @@ func (i GetMetadataTablesMetadataTableArray) ToGetMetadataTablesMetadataTableArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetadataTablesMetadataTableArrayOutput)
 }
 
-func (i GetMetadataTablesMetadataTableArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataTablesMetadataTable] {
-	return pulumix.Output[[]GetMetadataTablesMetadataTable]{
-		OutputState: i.ToGetMetadataTablesMetadataTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMetadataTablesMetadataTableOutput struct{ *pulumi.OutputState }
 
 func (GetMetadataTablesMetadataTableOutput) ElementType() reflect.Type {
@@ -19986,12 +19311,6 @@ func (o GetMetadataTablesMetadataTableOutput) ToGetMetadataTablesMetadataTableOu
 
 func (o GetMetadataTablesMetadataTableOutput) ToGetMetadataTablesMetadataTableOutputWithContext(ctx context.Context) GetMetadataTablesMetadataTableOutput {
 	return o
-}
-
-func (o GetMetadataTablesMetadataTableOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetadataTablesMetadataTable] {
-	return pulumix.Output[GetMetadataTablesMetadataTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique table identifier
@@ -20026,12 +19345,6 @@ func (o GetMetadataTablesMetadataTableArrayOutput) ToGetMetadataTablesMetadataTa
 
 func (o GetMetadataTablesMetadataTableArrayOutput) ToGetMetadataTablesMetadataTableArrayOutputWithContext(ctx context.Context) GetMetadataTablesMetadataTableArrayOutput {
 	return o
-}
-
-func (o GetMetadataTablesMetadataTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetadataTablesMetadataTable] {
-	return pulumix.Output[[]GetMetadataTablesMetadataTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMetadataTablesMetadataTableArrayOutput) Index(i pulumi.IntInput) GetMetadataTablesMetadataTableOutput {
@@ -20085,12 +19398,6 @@ func (i GetRolesRoleArgs) ToGetRolesRoleOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetRolesRoleOutput)
 }
 
-func (i GetRolesRoleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRolesRole] {
-	return pulumix.Output[GetRolesRole]{
-		OutputState: i.ToGetRolesRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRolesRoleArrayInput is an input type that accepts GetRolesRoleArray and GetRolesRoleArrayOutput values.
 // You can construct a concrete instance of `GetRolesRoleArrayInput` via:
 //
@@ -20116,12 +19423,6 @@ func (i GetRolesRoleArray) ToGetRolesRoleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRolesRoleArrayOutput)
 }
 
-func (i GetRolesRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRolesRole] {
-	return pulumix.Output[[]GetRolesRole]{
-		OutputState: i.ToGetRolesRoleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRolesRoleOutput struct{ *pulumi.OutputState }
 
 func (GetRolesRoleOutput) ElementType() reflect.Type {
@@ -20134,12 +19435,6 @@ func (o GetRolesRoleOutput) ToGetRolesRoleOutput() GetRolesRoleOutput {
 
 func (o GetRolesRoleOutput) ToGetRolesRoleOutputWithContext(ctx context.Context) GetRolesRoleOutput {
 	return o
-}
-
-func (o GetRolesRoleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRolesRole] {
-	return pulumix.Output[GetRolesRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The role description
@@ -20174,12 +19469,6 @@ func (o GetRolesRoleArrayOutput) ToGetRolesRoleArrayOutput() GetRolesRoleArrayOu
 
 func (o GetRolesRoleArrayOutput) ToGetRolesRoleArrayOutputWithContext(ctx context.Context) GetRolesRoleArrayOutput {
 	return o
-}
-
-func (o GetRolesRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRolesRole] {
-	return pulumix.Output[[]GetRolesRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRolesRoleArrayOutput) Index(i pulumi.IntInput) GetRolesRoleOutput {
@@ -20229,12 +19518,6 @@ func (i GetTeamConnectorMembershipsConnectorArgs) ToGetTeamConnectorMembershipsC
 	return pulumi.ToOutputWithContext(ctx, i).(GetTeamConnectorMembershipsConnectorOutput)
 }
 
-func (i GetTeamConnectorMembershipsConnectorArgs) ToOutput(ctx context.Context) pulumix.Output[GetTeamConnectorMembershipsConnector] {
-	return pulumix.Output[GetTeamConnectorMembershipsConnector]{
-		OutputState: i.ToGetTeamConnectorMembershipsConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTeamConnectorMembershipsConnectorArrayInput is an input type that accepts GetTeamConnectorMembershipsConnectorArray and GetTeamConnectorMembershipsConnectorArrayOutput values.
 // You can construct a concrete instance of `GetTeamConnectorMembershipsConnectorArrayInput` via:
 //
@@ -20260,12 +19543,6 @@ func (i GetTeamConnectorMembershipsConnectorArray) ToGetTeamConnectorMemberships
 	return pulumi.ToOutputWithContext(ctx, i).(GetTeamConnectorMembershipsConnectorArrayOutput)
 }
 
-func (i GetTeamConnectorMembershipsConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamConnectorMembershipsConnector] {
-	return pulumix.Output[[]GetTeamConnectorMembershipsConnector]{
-		OutputState: i.ToGetTeamConnectorMembershipsConnectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTeamConnectorMembershipsConnectorOutput struct{ *pulumi.OutputState }
 
 func (GetTeamConnectorMembershipsConnectorOutput) ElementType() reflect.Type {
@@ -20278,12 +19555,6 @@ func (o GetTeamConnectorMembershipsConnectorOutput) ToGetTeamConnectorMembership
 
 func (o GetTeamConnectorMembershipsConnectorOutput) ToGetTeamConnectorMembershipsConnectorOutputWithContext(ctx context.Context) GetTeamConnectorMembershipsConnectorOutput {
 	return o
-}
-
-func (o GetTeamConnectorMembershipsConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamConnectorMembershipsConnector] {
-	return pulumix.Output[GetTeamConnectorMembershipsConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The connector unique identifier
@@ -20313,12 +19584,6 @@ func (o GetTeamConnectorMembershipsConnectorArrayOutput) ToGetTeamConnectorMembe
 
 func (o GetTeamConnectorMembershipsConnectorArrayOutput) ToGetTeamConnectorMembershipsConnectorArrayOutputWithContext(ctx context.Context) GetTeamConnectorMembershipsConnectorArrayOutput {
 	return o
-}
-
-func (o GetTeamConnectorMembershipsConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamConnectorMembershipsConnector] {
-	return pulumix.Output[[]GetTeamConnectorMembershipsConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTeamConnectorMembershipsConnectorArrayOutput) Index(i pulumi.IntInput) GetTeamConnectorMembershipsConnectorOutput {
@@ -20368,12 +19633,6 @@ func (i GetTeamGroupMembershipsGroupArgs) ToGetTeamGroupMembershipsGroupOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetTeamGroupMembershipsGroupOutput)
 }
 
-func (i GetTeamGroupMembershipsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetTeamGroupMembershipsGroup] {
-	return pulumix.Output[GetTeamGroupMembershipsGroup]{
-		OutputState: i.ToGetTeamGroupMembershipsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTeamGroupMembershipsGroupArrayInput is an input type that accepts GetTeamGroupMembershipsGroupArray and GetTeamGroupMembershipsGroupArrayOutput values.
 // You can construct a concrete instance of `GetTeamGroupMembershipsGroupArrayInput` via:
 //
@@ -20399,12 +19658,6 @@ func (i GetTeamGroupMembershipsGroupArray) ToGetTeamGroupMembershipsGroupArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetTeamGroupMembershipsGroupArrayOutput)
 }
 
-func (i GetTeamGroupMembershipsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamGroupMembershipsGroup] {
-	return pulumix.Output[[]GetTeamGroupMembershipsGroup]{
-		OutputState: i.ToGetTeamGroupMembershipsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTeamGroupMembershipsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetTeamGroupMembershipsGroupOutput) ElementType() reflect.Type {
@@ -20417,12 +19670,6 @@ func (o GetTeamGroupMembershipsGroupOutput) ToGetTeamGroupMembershipsGroupOutput
 
 func (o GetTeamGroupMembershipsGroupOutput) ToGetTeamGroupMembershipsGroupOutputWithContext(ctx context.Context) GetTeamGroupMembershipsGroupOutput {
 	return o
-}
-
-func (o GetTeamGroupMembershipsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamGroupMembershipsGroup] {
-	return pulumix.Output[GetTeamGroupMembershipsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time the membership was created
@@ -20452,12 +19699,6 @@ func (o GetTeamGroupMembershipsGroupArrayOutput) ToGetTeamGroupMembershipsGroupA
 
 func (o GetTeamGroupMembershipsGroupArrayOutput) ToGetTeamGroupMembershipsGroupArrayOutputWithContext(ctx context.Context) GetTeamGroupMembershipsGroupArrayOutput {
 	return o
-}
-
-func (o GetTeamGroupMembershipsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamGroupMembershipsGroup] {
-	return pulumix.Output[[]GetTeamGroupMembershipsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTeamGroupMembershipsGroupArrayOutput) Index(i pulumi.IntInput) GetTeamGroupMembershipsGroupOutput {
@@ -20503,12 +19744,6 @@ func (i GetTeamUserMembershipsUserArgs) ToGetTeamUserMembershipsUserOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetTeamUserMembershipsUserOutput)
 }
 
-func (i GetTeamUserMembershipsUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetTeamUserMembershipsUser] {
-	return pulumix.Output[GetTeamUserMembershipsUser]{
-		OutputState: i.ToGetTeamUserMembershipsUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTeamUserMembershipsUserArrayInput is an input type that accepts GetTeamUserMembershipsUserArray and GetTeamUserMembershipsUserArrayOutput values.
 // You can construct a concrete instance of `GetTeamUserMembershipsUserArrayInput` via:
 //
@@ -20534,12 +19769,6 @@ func (i GetTeamUserMembershipsUserArray) ToGetTeamUserMembershipsUserArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetTeamUserMembershipsUserArrayOutput)
 }
 
-func (i GetTeamUserMembershipsUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamUserMembershipsUser] {
-	return pulumix.Output[[]GetTeamUserMembershipsUser]{
-		OutputState: i.ToGetTeamUserMembershipsUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTeamUserMembershipsUserOutput struct{ *pulumi.OutputState }
 
 func (GetTeamUserMembershipsUserOutput) ElementType() reflect.Type {
@@ -20552,12 +19781,6 @@ func (o GetTeamUserMembershipsUserOutput) ToGetTeamUserMembershipsUserOutput() G
 
 func (o GetTeamUserMembershipsUserOutput) ToGetTeamUserMembershipsUserOutputWithContext(ctx context.Context) GetTeamUserMembershipsUserOutput {
 	return o
-}
-
-func (o GetTeamUserMembershipsUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamUserMembershipsUser] {
-	return pulumix.Output[GetTeamUserMembershipsUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The team's role that links the team and the user
@@ -20582,12 +19805,6 @@ func (o GetTeamUserMembershipsUserArrayOutput) ToGetTeamUserMembershipsUserArray
 
 func (o GetTeamUserMembershipsUserArrayOutput) ToGetTeamUserMembershipsUserArrayOutputWithContext(ctx context.Context) GetTeamUserMembershipsUserArrayOutput {
 	return o
-}
-
-func (o GetTeamUserMembershipsUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamUserMembershipsUser] {
-	return pulumix.Output[[]GetTeamUserMembershipsUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTeamUserMembershipsUserArrayOutput) Index(i pulumi.IntInput) GetTeamUserMembershipsUserOutput {
@@ -20641,12 +19858,6 @@ func (i GetTeamsTeamArgs) ToGetTeamsTeamOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetTeamsTeamOutput)
 }
 
-func (i GetTeamsTeamArgs) ToOutput(ctx context.Context) pulumix.Output[GetTeamsTeam] {
-	return pulumix.Output[GetTeamsTeam]{
-		OutputState: i.ToGetTeamsTeamOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTeamsTeamArrayInput is an input type that accepts GetTeamsTeamArray and GetTeamsTeamArrayOutput values.
 // You can construct a concrete instance of `GetTeamsTeamArrayInput` via:
 //
@@ -20672,12 +19883,6 @@ func (i GetTeamsTeamArray) ToGetTeamsTeamArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTeamsTeamArrayOutput)
 }
 
-func (i GetTeamsTeamArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamsTeam] {
-	return pulumix.Output[[]GetTeamsTeam]{
-		OutputState: i.ToGetTeamsTeamArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTeamsTeamOutput struct{ *pulumi.OutputState }
 
 func (GetTeamsTeamOutput) ElementType() reflect.Type {
@@ -20690,12 +19895,6 @@ func (o GetTeamsTeamOutput) ToGetTeamsTeamOutput() GetTeamsTeamOutput {
 
 func (o GetTeamsTeamOutput) ToGetTeamsTeamOutputWithContext(ctx context.Context) GetTeamsTeamOutput {
 	return o
-}
-
-func (o GetTeamsTeamOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamsTeam] {
-	return pulumix.Output[GetTeamsTeam]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the team within your account.
@@ -20730,12 +19929,6 @@ func (o GetTeamsTeamArrayOutput) ToGetTeamsTeamArrayOutput() GetTeamsTeamArrayOu
 
 func (o GetTeamsTeamArrayOutput) ToGetTeamsTeamArrayOutputWithContext(ctx context.Context) GetTeamsTeamArrayOutput {
 	return o
-}
-
-func (o GetTeamsTeamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTeamsTeam] {
-	return pulumix.Output[[]GetTeamsTeam]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTeamsTeamArrayOutput) Index(i pulumi.IntInput) GetTeamsTeamOutput {
@@ -20813,12 +20006,6 @@ func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
 }
 
-func (i GetUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetUsersUser] {
-	return pulumix.Output[GetUsersUser]{
-		OutputState: i.ToGetUsersUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
@@ -20844,12 +20031,6 @@ func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
 }
 
-func (i GetUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersUser] {
-	return pulumix.Output[[]GetUsersUser]{
-		OutputState: i.ToGetUsersUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GetUsersUserOutput) ElementType() reflect.Type {
@@ -20862,12 +20043,6 @@ func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
 
 func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
 	return o
-}
-
-func (o GetUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetUsersUser] {
-	return pulumix.Output[GetUsersUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp that the user created their Fivetran account
@@ -20932,12 +20107,6 @@ func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutput() GetUsersUserArrayOu
 
 func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
 	return o
-}
-
-func (o GetUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersUser] {
-	return pulumix.Output[[]GetUsersUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
@@ -21015,12 +20184,6 @@ func (i GetWebhooksWebhookArgs) ToGetWebhooksWebhookOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetWebhooksWebhookOutput)
 }
 
-func (i GetWebhooksWebhookArgs) ToOutput(ctx context.Context) pulumix.Output[GetWebhooksWebhook] {
-	return pulumix.Output[GetWebhooksWebhook]{
-		OutputState: i.ToGetWebhooksWebhookOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetWebhooksWebhookArrayInput is an input type that accepts GetWebhooksWebhookArray and GetWebhooksWebhookArrayOutput values.
 // You can construct a concrete instance of `GetWebhooksWebhookArrayInput` via:
 //
@@ -21046,12 +20209,6 @@ func (i GetWebhooksWebhookArray) ToGetWebhooksWebhookArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetWebhooksWebhookArrayOutput)
 }
 
-func (i GetWebhooksWebhookArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWebhooksWebhook] {
-	return pulumix.Output[[]GetWebhooksWebhook]{
-		OutputState: i.ToGetWebhooksWebhookArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetWebhooksWebhookOutput struct{ *pulumi.OutputState }
 
 func (GetWebhooksWebhookOutput) ElementType() reflect.Type {
@@ -21064,12 +20221,6 @@ func (o GetWebhooksWebhookOutput) ToGetWebhooksWebhookOutput() GetWebhooksWebhoo
 
 func (o GetWebhooksWebhookOutput) ToGetWebhooksWebhookOutputWithContext(ctx context.Context) GetWebhooksWebhookOutput {
 	return o
-}
-
-func (o GetWebhooksWebhookOutput) ToOutput(ctx context.Context) pulumix.Output[GetWebhooksWebhook] {
-	return pulumix.Output[GetWebhooksWebhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Boolean, if set to true, webhooks are immediately sent in response to events
@@ -21134,12 +20285,6 @@ func (o GetWebhooksWebhookArrayOutput) ToGetWebhooksWebhookArrayOutput() GetWebh
 
 func (o GetWebhooksWebhookArrayOutput) ToGetWebhooksWebhookArrayOutputWithContext(ctx context.Context) GetWebhooksWebhookArrayOutput {
 	return o
-}
-
-func (o GetWebhooksWebhookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWebhooksWebhook] {
-	return pulumix.Output[[]GetWebhooksWebhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetWebhooksWebhookArrayOutput) Index(i pulumi.IntInput) GetWebhooksWebhookOutput {

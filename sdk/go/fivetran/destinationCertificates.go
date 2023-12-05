@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DestinationCertificates struct {
@@ -105,12 +104,6 @@ func (i *DestinationCertificates) ToDestinationCertificatesOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationCertificatesOutput)
 }
 
-func (i *DestinationCertificates) ToOutput(ctx context.Context) pulumix.Output[*DestinationCertificates] {
-	return pulumix.Output[*DestinationCertificates]{
-		OutputState: i.ToDestinationCertificatesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DestinationCertificatesArrayInput is an input type that accepts DestinationCertificatesArray and DestinationCertificatesArrayOutput values.
 // You can construct a concrete instance of `DestinationCertificatesArrayInput` via:
 //
@@ -134,12 +127,6 @@ func (i DestinationCertificatesArray) ToDestinationCertificatesArrayOutput() Des
 
 func (i DestinationCertificatesArray) ToDestinationCertificatesArrayOutputWithContext(ctx context.Context) DestinationCertificatesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationCertificatesArrayOutput)
-}
-
-func (i DestinationCertificatesArray) ToOutput(ctx context.Context) pulumix.Output[[]*DestinationCertificates] {
-	return pulumix.Output[[]*DestinationCertificates]{
-		OutputState: i.ToDestinationCertificatesArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DestinationCertificatesMapInput is an input type that accepts DestinationCertificatesMap and DestinationCertificatesMapOutput values.
@@ -167,12 +154,6 @@ func (i DestinationCertificatesMap) ToDestinationCertificatesMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationCertificatesMapOutput)
 }
 
-func (i DestinationCertificatesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DestinationCertificates] {
-	return pulumix.Output[map[string]*DestinationCertificates]{
-		OutputState: i.ToDestinationCertificatesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DestinationCertificatesOutput struct{ *pulumi.OutputState }
 
 func (DestinationCertificatesOutput) ElementType() reflect.Type {
@@ -185,12 +166,6 @@ func (o DestinationCertificatesOutput) ToDestinationCertificatesOutput() Destina
 
 func (o DestinationCertificatesOutput) ToDestinationCertificatesOutputWithContext(ctx context.Context) DestinationCertificatesOutput {
 	return o
-}
-
-func (o DestinationCertificatesOutput) ToOutput(ctx context.Context) pulumix.Output[*DestinationCertificates] {
-	return pulumix.Output[*DestinationCertificates]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DestinationCertificatesOutput) Certificates() DestinationCertificatesCertificateArrayOutput {
@@ -216,12 +191,6 @@ func (o DestinationCertificatesArrayOutput) ToDestinationCertificatesArrayOutput
 	return o
 }
 
-func (o DestinationCertificatesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DestinationCertificates] {
-	return pulumix.Output[[]*DestinationCertificates]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DestinationCertificatesArrayOutput) Index(i pulumi.IntInput) DestinationCertificatesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DestinationCertificates {
 		return vs[0].([]*DestinationCertificates)[vs[1].(int)]
@@ -240,12 +209,6 @@ func (o DestinationCertificatesMapOutput) ToDestinationCertificatesMapOutput() D
 
 func (o DestinationCertificatesMapOutput) ToDestinationCertificatesMapOutputWithContext(ctx context.Context) DestinationCertificatesMapOutput {
 	return o
-}
-
-func (o DestinationCertificatesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DestinationCertificates] {
-	return pulumix.Output[map[string]*DestinationCertificates]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DestinationCertificatesMapOutput) MapIndex(k pulumi.StringInput) DestinationCertificatesOutput {

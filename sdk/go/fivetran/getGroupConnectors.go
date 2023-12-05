@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a list of information about all connectors within a group in your Fivetran account.
@@ -107,12 +106,6 @@ func (o GetGroupConnectorsResultOutput) ToGetGroupConnectorsResultOutput() GetGr
 
 func (o GetGroupConnectorsResultOutput) ToGetGroupConnectorsResultOutputWithContext(ctx context.Context) GetGroupConnectorsResultOutput {
 	return o
-}
-
-func (o GetGroupConnectorsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupConnectorsResult] {
-	return pulumix.Output[GetGroupConnectorsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupConnectorsResultOutput) Connectors() GetGroupConnectorsConnectorArrayOutput {

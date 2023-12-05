@@ -51,7 +51,6 @@
         "getTeamGroupMemberships.ts",
         "getTeamUserMemberships.ts",
         "getTeams.ts",
-        "getUser.ts",
         "getUsers.ts",
         "getWebhook.ts",
         "getWebhooks.ts",
@@ -66,7 +65,6 @@
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
-        "user.ts",
         "utilities.ts",
         "webhook.ts"
     ]

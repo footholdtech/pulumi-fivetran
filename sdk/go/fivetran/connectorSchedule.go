@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // -This resource allows you to manage connectors schedule: pause/unpause connector, set dailySyncTime and sync_frequency.
@@ -88,7 +87,7 @@ type ConnectorSchedule struct {
 	Paused pulumi.StringOutput `pulumi:"paused"`
 	// The connector schedule configuration type. Supported values: auto, manual
 	ScheduleType pulumi.StringOutput `pulumi:"scheduleType"`
-	// The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency pulumi.StringOutput `pulumi:"syncFrequency"`
 }
 
@@ -135,7 +134,7 @@ type connectorScheduleState struct {
 	Paused *string `pulumi:"paused"`
 	// The connector schedule configuration type. Supported values: auto, manual
 	ScheduleType *string `pulumi:"scheduleType"`
-	// The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency *string `pulumi:"syncFrequency"`
 }
 
@@ -150,7 +149,7 @@ type ConnectorScheduleState struct {
 	Paused pulumi.StringPtrInput
 	// The connector schedule configuration type. Supported values: auto, manual
 	ScheduleType pulumi.StringPtrInput
-	// The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency pulumi.StringPtrInput
 }
 
@@ -169,7 +168,7 @@ type connectorScheduleArgs struct {
 	Paused *string `pulumi:"paused"`
 	// The connector schedule configuration type. Supported values: auto, manual
 	ScheduleType *string `pulumi:"scheduleType"`
-	// The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency *string `pulumi:"syncFrequency"`
 }
 
@@ -185,7 +184,7 @@ type ConnectorScheduleArgs struct {
 	Paused pulumi.StringPtrInput
 	// The connector schedule configuration type. Supported values: auto, manual
 	ScheduleType pulumi.StringPtrInput
-	// The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency pulumi.StringPtrInput
 }
 
@@ -210,12 +209,6 @@ func (i *ConnectorSchedule) ToConnectorScheduleOutput() ConnectorScheduleOutput 
 
 func (i *ConnectorSchedule) ToConnectorScheduleOutputWithContext(ctx context.Context) ConnectorScheduleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorScheduleOutput)
-}
-
-func (i *ConnectorSchedule) ToOutput(ctx context.Context) pulumix.Output[*ConnectorSchedule] {
-	return pulumix.Output[*ConnectorSchedule]{
-		OutputState: i.ToConnectorScheduleOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectorScheduleArrayInput is an input type that accepts ConnectorScheduleArray and ConnectorScheduleArrayOutput values.
@@ -243,12 +236,6 @@ func (i ConnectorScheduleArray) ToConnectorScheduleArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorScheduleArrayOutput)
 }
 
-func (i ConnectorScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectorSchedule] {
-	return pulumix.Output[[]*ConnectorSchedule]{
-		OutputState: i.ToConnectorScheduleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorScheduleMapInput is an input type that accepts ConnectorScheduleMap and ConnectorScheduleMapOutput values.
 // You can construct a concrete instance of `ConnectorScheduleMapInput` via:
 //
@@ -274,12 +261,6 @@ func (i ConnectorScheduleMap) ToConnectorScheduleMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorScheduleMapOutput)
 }
 
-func (i ConnectorScheduleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectorSchedule] {
-	return pulumix.Output[map[string]*ConnectorSchedule]{
-		OutputState: i.ToConnectorScheduleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorScheduleOutput struct{ *pulumi.OutputState }
 
 func (ConnectorScheduleOutput) ElementType() reflect.Type {
@@ -292,12 +273,6 @@ func (o ConnectorScheduleOutput) ToConnectorScheduleOutput() ConnectorScheduleOu
 
 func (o ConnectorScheduleOutput) ToConnectorScheduleOutputWithContext(ctx context.Context) ConnectorScheduleOutput {
 	return o
-}
-
-func (o ConnectorScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorSchedule] {
-	return pulumix.Output[*ConnectorSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the connector
@@ -325,7 +300,7 @@ func (o ConnectorScheduleOutput) ScheduleType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringOutput { return v.ScheduleType }).(pulumi.StringOutput)
 }
 
-// The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 func (o ConnectorScheduleOutput) SyncFrequency() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringOutput { return v.SyncFrequency }).(pulumi.StringOutput)
 }
@@ -342,12 +317,6 @@ func (o ConnectorScheduleArrayOutput) ToConnectorScheduleArrayOutput() Connector
 
 func (o ConnectorScheduleArrayOutput) ToConnectorScheduleArrayOutputWithContext(ctx context.Context) ConnectorScheduleArrayOutput {
 	return o
-}
-
-func (o ConnectorScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectorSchedule] {
-	return pulumix.Output[[]*ConnectorSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorScheduleArrayOutput) Index(i pulumi.IntInput) ConnectorScheduleOutput {
@@ -368,12 +337,6 @@ func (o ConnectorScheduleMapOutput) ToConnectorScheduleMapOutput() ConnectorSche
 
 func (o ConnectorScheduleMapOutput) ToConnectorScheduleMapOutputWithContext(ctx context.Context) ConnectorScheduleMapOutput {
 	return o
-}
-
-func (o ConnectorScheduleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectorSchedule] {
-	return pulumix.Output[map[string]*ConnectorSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorScheduleMapOutput) MapIndex(k pulumi.StringInput) ConnectorScheduleOutput {

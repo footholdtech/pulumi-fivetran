@@ -15,24 +15,76 @@ namespace Footholdtech.Fivetran.Outputs
     public sealed class ConnectorAuth
     {
         public readonly string? AccessToken;
+        public readonly string? AwsAccessKey;
+        public readonly string? AwsSecretKey;
         public readonly Outputs.ConnectorAuthClientAccess? ClientAccess;
+        public readonly string? ClientId;
+        public readonly string? ClientSecret;
+        public readonly string? ConsumerKey;
+        public readonly string? ConsumerSecret;
+        public readonly string? KeyId;
+        public readonly string? OauthToken;
+        public readonly string? OauthTokenSecret;
+        public readonly string? PreviousRefreshToken;
         public readonly string? RealmId;
         public readonly string? RefreshToken;
+        public readonly string? RoleArn;
+        public readonly string? TeamId;
+        public readonly string? UserAccessToken;
 
         [OutputConstructor]
         private ConnectorAuth(
             string? accessToken,
 
+            string? awsAccessKey,
+
+            string? awsSecretKey,
+
             Outputs.ConnectorAuthClientAccess? clientAccess,
+
+            string? clientId,
+
+            string? clientSecret,
+
+            string? consumerKey,
+
+            string? consumerSecret,
+
+            string? keyId,
+
+            string? oauthToken,
+
+            string? oauthTokenSecret,
+
+            string? previousRefreshToken,
 
             string? realmId,
 
-            string? refreshToken)
+            string? refreshToken,
+
+            string? roleArn,
+
+            string? teamId,
+
+            string? userAccessToken)
         {
             AccessToken = accessToken;
+            AwsAccessKey = awsAccessKey;
+            AwsSecretKey = awsSecretKey;
             ClientAccess = clientAccess;
+            ClientId = clientId;
+            ClientSecret = clientSecret;
+            ConsumerKey = consumerKey;
+            ConsumerSecret = consumerSecret;
+            KeyId = keyId;
+            OauthToken = oauthToken;
+            OauthTokenSecret = oauthTokenSecret;
+            PreviousRefreshToken = previousRefreshToken;
             RealmId = realmId;
             RefreshToken = refreshToken;
+            RoleArn = roleArn;
+            TeamId = teamId;
+            UserAccessToken = userAccessToken;
         }
     }
 }

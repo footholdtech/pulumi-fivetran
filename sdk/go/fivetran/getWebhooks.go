@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a list of all webhooks within your Fivetran account.
@@ -94,12 +93,6 @@ func (o GetWebhooksResultOutput) ToGetWebhooksResultOutput() GetWebhooksResultOu
 
 func (o GetWebhooksResultOutput) ToGetWebhooksResultOutputWithContext(ctx context.Context) GetWebhooksResultOutput {
 	return o
-}
-
-func (o GetWebhooksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetWebhooksResult] {
-	return pulumix.Output[GetWebhooksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

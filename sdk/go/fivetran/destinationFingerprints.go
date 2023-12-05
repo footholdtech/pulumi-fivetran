@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to manage list of approved SSH fingerprints for a particular destination.
@@ -163,12 +162,6 @@ func (i *DestinationFingerprints) ToDestinationFingerprintsOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationFingerprintsOutput)
 }
 
-func (i *DestinationFingerprints) ToOutput(ctx context.Context) pulumix.Output[*DestinationFingerprints] {
-	return pulumix.Output[*DestinationFingerprints]{
-		OutputState: i.ToDestinationFingerprintsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DestinationFingerprintsArrayInput is an input type that accepts DestinationFingerprintsArray and DestinationFingerprintsArrayOutput values.
 // You can construct a concrete instance of `DestinationFingerprintsArrayInput` via:
 //
@@ -192,12 +185,6 @@ func (i DestinationFingerprintsArray) ToDestinationFingerprintsArrayOutput() Des
 
 func (i DestinationFingerprintsArray) ToDestinationFingerprintsArrayOutputWithContext(ctx context.Context) DestinationFingerprintsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationFingerprintsArrayOutput)
-}
-
-func (i DestinationFingerprintsArray) ToOutput(ctx context.Context) pulumix.Output[[]*DestinationFingerprints] {
-	return pulumix.Output[[]*DestinationFingerprints]{
-		OutputState: i.ToDestinationFingerprintsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DestinationFingerprintsMapInput is an input type that accepts DestinationFingerprintsMap and DestinationFingerprintsMapOutput values.
@@ -225,12 +212,6 @@ func (i DestinationFingerprintsMap) ToDestinationFingerprintsMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationFingerprintsMapOutput)
 }
 
-func (i DestinationFingerprintsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DestinationFingerprints] {
-	return pulumix.Output[map[string]*DestinationFingerprints]{
-		OutputState: i.ToDestinationFingerprintsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DestinationFingerprintsOutput struct{ *pulumi.OutputState }
 
 func (DestinationFingerprintsOutput) ElementType() reflect.Type {
@@ -243,12 +224,6 @@ func (o DestinationFingerprintsOutput) ToDestinationFingerprintsOutput() Destina
 
 func (o DestinationFingerprintsOutput) ToDestinationFingerprintsOutputWithContext(ctx context.Context) DestinationFingerprintsOutput {
 	return o
-}
-
-func (o DestinationFingerprintsOutput) ToOutput(ctx context.Context) pulumix.Output[*DestinationFingerprints] {
-	return pulumix.Output[*DestinationFingerprints]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the target destination within the Fivetran system.
@@ -274,12 +249,6 @@ func (o DestinationFingerprintsArrayOutput) ToDestinationFingerprintsArrayOutput
 	return o
 }
 
-func (o DestinationFingerprintsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DestinationFingerprints] {
-	return pulumix.Output[[]*DestinationFingerprints]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DestinationFingerprintsArrayOutput) Index(i pulumi.IntInput) DestinationFingerprintsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DestinationFingerprints {
 		return vs[0].([]*DestinationFingerprints)[vs[1].(int)]
@@ -298,12 +267,6 @@ func (o DestinationFingerprintsMapOutput) ToDestinationFingerprintsMapOutput() D
 
 func (o DestinationFingerprintsMapOutput) ToDestinationFingerprintsMapOutputWithContext(ctx context.Context) DestinationFingerprintsMapOutput {
 	return o
-}
-
-func (o DestinationFingerprintsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DestinationFingerprints] {
-	return pulumix.Output[map[string]*DestinationFingerprints]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DestinationFingerprintsMapOutput) MapIndex(k pulumi.StringInput) DestinationFingerprintsOutput {

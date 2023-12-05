@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns all available source types within your Fivetran account. This data source makes it easier to display Fivetran connectors within your application because it provides metadata including the proper source name (‘Facebook Ad Account’ instead of facebook_ad_account), the source icon, and links to Fivetran resources. As we update source names and icons, that metadata will automatically update within this endpoint.
@@ -94,12 +93,6 @@ func (o GetConnectorsMetadataResultOutput) ToGetConnectorsMetadataResultOutput()
 
 func (o GetConnectorsMetadataResultOutput) ToGetConnectorsMetadataResultOutputWithContext(ctx context.Context) GetConnectorsMetadataResultOutput {
 	return o
-}
-
-func (o GetConnectorsMetadataResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorsMetadataResult] {
-	return pulumix.Output[GetConnectorsMetadataResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

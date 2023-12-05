@@ -21,10 +21,12 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> Fields;
         public readonly string Filter;
         public readonly string FilterFieldName;
+        public readonly string FilterType;
         public readonly string FilterValue;
         public readonly ImmutableArray<string> Metrics;
         public readonly string PrebuiltReport;
         public readonly string ReportType;
+        public readonly string RollbackWindow;
         public readonly ImmutableArray<string> SearchTypes;
         public readonly ImmutableArray<string> SegmentIds;
         public readonly ImmutableArray<string> Segments;
@@ -46,6 +48,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string filterFieldName,
 
+            string filterType,
+
             string filterValue,
 
             ImmutableArray<string> metrics,
@@ -53,6 +57,8 @@ namespace Footholdtech.Fivetran.Outputs
             string prebuiltReport,
 
             string reportType,
+
+            string rollbackWindow,
 
             ImmutableArray<string> searchTypes,
 
@@ -69,10 +75,12 @@ namespace Footholdtech.Fivetran.Outputs
             Fields = fields;
             Filter = filter;
             FilterFieldName = filterFieldName;
+            FilterType = filterType;
             FilterValue = filterValue;
             Metrics = metrics;
             PrebuiltReport = prebuiltReport;
             ReportType = reportType;
+            RollbackWindow = rollbackWindow;
             SearchTypes = searchTypes;
             SegmentIds = segmentIds;
             Segments = segments;

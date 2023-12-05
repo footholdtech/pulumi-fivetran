@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource is in ALPHA state.
@@ -242,12 +241,6 @@ func (i *DbtTransformation) ToDbtTransformationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationOutput)
 }
 
-func (i *DbtTransformation) ToOutput(ctx context.Context) pulumix.Output[*DbtTransformation] {
-	return pulumix.Output[*DbtTransformation]{
-		OutputState: i.ToDbtTransformationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DbtTransformationArrayInput is an input type that accepts DbtTransformationArray and DbtTransformationArrayOutput values.
 // You can construct a concrete instance of `DbtTransformationArrayInput` via:
 //
@@ -271,12 +264,6 @@ func (i DbtTransformationArray) ToDbtTransformationArrayOutput() DbtTransformati
 
 func (i DbtTransformationArray) ToDbtTransformationArrayOutputWithContext(ctx context.Context) DbtTransformationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationArrayOutput)
-}
-
-func (i DbtTransformationArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbtTransformation] {
-	return pulumix.Output[[]*DbtTransformation]{
-		OutputState: i.ToDbtTransformationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DbtTransformationMapInput is an input type that accepts DbtTransformationMap and DbtTransformationMapOutput values.
@@ -304,12 +291,6 @@ func (i DbtTransformationMap) ToDbtTransformationMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationMapOutput)
 }
 
-func (i DbtTransformationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbtTransformation] {
-	return pulumix.Output[map[string]*DbtTransformation]{
-		OutputState: i.ToDbtTransformationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbtTransformationOutput struct{ *pulumi.OutputState }
 
 func (DbtTransformationOutput) ElementType() reflect.Type {
@@ -322,12 +303,6 @@ func (o DbtTransformationOutput) ToDbtTransformationOutput() DbtTransformationOu
 
 func (o DbtTransformationOutput) ToDbtTransformationOutputWithContext(ctx context.Context) DbtTransformationOutput {
 	return o
-}
-
-func (o DbtTransformationOutput) ToOutput(ctx context.Context) pulumix.Output[*DbtTransformation] {
-	return pulumix.Output[*DbtTransformation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifiers of related connectors.
@@ -394,12 +369,6 @@ func (o DbtTransformationArrayOutput) ToDbtTransformationArrayOutputWithContext(
 	return o
 }
 
-func (o DbtTransformationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbtTransformation] {
-	return pulumix.Output[[]*DbtTransformation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DbtTransformationArrayOutput) Index(i pulumi.IntInput) DbtTransformationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbtTransformation {
 		return vs[0].([]*DbtTransformation)[vs[1].(int)]
@@ -418,12 +387,6 @@ func (o DbtTransformationMapOutput) ToDbtTransformationMapOutput() DbtTransforma
 
 func (o DbtTransformationMapOutput) ToDbtTransformationMapOutputWithContext(ctx context.Context) DbtTransformationMapOutput {
 	return o
-}
-
-func (o DbtTransformationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbtTransformation] {
-	return pulumix.Output[map[string]*DbtTransformation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbtTransformationMapOutput) MapIndex(k pulumi.StringInput) DbtTransformationOutput {

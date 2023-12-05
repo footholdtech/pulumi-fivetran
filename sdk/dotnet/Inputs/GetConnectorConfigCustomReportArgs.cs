@@ -16,11 +16,28 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("aggregate", required: true)]
         public Input<string> Aggregate { get; set; } = null!;
 
+        [Input("baseMetricsFields", required: true)]
+        private InputList<string>? _baseMetricsFields;
+        public InputList<string> BaseMetricsFields
+        {
+            get => _baseMetricsFields ?? (_baseMetricsFields = new InputList<string>());
+            set => _baseMetricsFields = value;
+        }
+
+        [Input("breakdown", required: true)]
+        public Input<string> Breakdown { get; set; } = null!;
+
+        [Input("breakout", required: true)]
+        public Input<string> Breakout { get; set; } = null!;
+
         [Input("conversionsReportIncluded", required: true)]
         public Input<string> ConversionsReportIncluded { get; set; } = null!;
 
         [Input("customEventsIncluded", required: true)]
         public Input<string> CustomEventsIncluded { get; set; } = null!;
+
+        [Input("dimension", required: true)]
+        public Input<string> Dimension { get; set; } = null!;
 
         [Input("dimensions", required: true)]
         private InputList<string>? _dimensions;
@@ -37,6 +54,9 @@ namespace Footholdtech.Fivetran.Inputs
             get => _eventNames ?? (_eventNames = new InputList<string>());
             set => _eventNames = value;
         }
+
+        [Input("granularity", required: true)]
+        public Input<string> Granularity { get; set; } = null!;
 
         [Input("level", required: true)]
         public Input<string> Level { get; set; } = null!;
@@ -65,6 +85,14 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("segmentation", required: true)]
         public Input<string> Segmentation { get; set; } = null!;
+
+        [Input("skAdMetricsFields", required: true)]
+        private InputList<string>? _skAdMetricsFields;
+        public InputList<string> SkAdMetricsFields
+        {
+            get => _skAdMetricsFields ?? (_skAdMetricsFields = new InputList<string>());
+            set => _skAdMetricsFields = value;
+        }
 
         [Input("tableName", required: true)]
         public Input<string> TableName { get; set; } = null!;
