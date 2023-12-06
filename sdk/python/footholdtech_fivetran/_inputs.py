@@ -79,17 +79,56 @@ __all__ = [
 class ConnectorAuthArgs:
     def __init__(__self__, *,
                  access_token: Optional[pulumi.Input[str]] = None,
+                 aws_access_key: Optional[pulumi.Input[str]] = None,
+                 aws_secret_key: Optional[pulumi.Input[str]] = None,
                  client_access: Optional[pulumi.Input['ConnectorAuthClientAccessArgs']] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 consumer_key: Optional[pulumi.Input[str]] = None,
+                 consumer_secret: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 oauth_token: Optional[pulumi.Input[str]] = None,
+                 oauth_token_secret: Optional[pulumi.Input[str]] = None,
+                 previous_refresh_token: Optional[pulumi.Input[str]] = None,
                  realm_id: Optional[pulumi.Input[str]] = None,
-                 refresh_token: Optional[pulumi.Input[str]] = None):
+                 refresh_token: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 team_id: Optional[pulumi.Input[str]] = None,
+                 user_access_token: Optional[pulumi.Input[str]] = None):
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
+        if aws_access_key is not None:
+            pulumi.set(__self__, "aws_access_key", aws_access_key)
+        if aws_secret_key is not None:
+            pulumi.set(__self__, "aws_secret_key", aws_secret_key)
         if client_access is not None:
             pulumi.set(__self__, "client_access", client_access)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if consumer_key is not None:
+            pulumi.set(__self__, "consumer_key", consumer_key)
+        if consumer_secret is not None:
+            pulumi.set(__self__, "consumer_secret", consumer_secret)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if oauth_token is not None:
+            pulumi.set(__self__, "oauth_token", oauth_token)
+        if oauth_token_secret is not None:
+            pulumi.set(__self__, "oauth_token_secret", oauth_token_secret)
+        if previous_refresh_token is not None:
+            pulumi.set(__self__, "previous_refresh_token", previous_refresh_token)
         if realm_id is not None:
             pulumi.set(__self__, "realm_id", realm_id)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if team_id is not None:
+            pulumi.set(__self__, "team_id", team_id)
+        if user_access_token is not None:
+            pulumi.set(__self__, "user_access_token", user_access_token)
 
     @property
     @pulumi.getter(name="accessToken")
@@ -101,6 +140,24 @@ class ConnectorAuthArgs:
         pulumi.set(self, "access_token", value)
 
     @property
+    @pulumi.getter(name="awsAccessKey")
+    def aws_access_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aws_access_key")
+
+    @aws_access_key.setter
+    def aws_access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_access_key", value)
+
+    @property
+    @pulumi.getter(name="awsSecretKey")
+    def aws_secret_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aws_secret_key")
+
+    @aws_secret_key.setter
+    def aws_secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_secret_key", value)
+
+    @property
     @pulumi.getter(name="clientAccess")
     def client_access(self) -> Optional[pulumi.Input['ConnectorAuthClientAccessArgs']]:
         return pulumi.get(self, "client_access")
@@ -108,6 +165,78 @@ class ConnectorAuthArgs:
     @client_access.setter
     def client_access(self, value: Optional[pulumi.Input['ConnectorAuthClientAccessArgs']]):
         pulumi.set(self, "client_access", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="consumerKey")
+    def consumer_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_key")
+
+    @consumer_key.setter
+    def consumer_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_key", value)
+
+    @property
+    @pulumi.getter(name="consumerSecret")
+    def consumer_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_secret")
+
+    @consumer_secret.setter
+    def consumer_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_secret", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "oauth_token")
+
+    @oauth_token.setter
+    def oauth_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth_token", value)
+
+    @property
+    @pulumi.getter(name="oauthTokenSecret")
+    def oauth_token_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "oauth_token_secret")
+
+    @oauth_token_secret.setter
+    def oauth_token_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth_token_secret", value)
+
+    @property
+    @pulumi.getter(name="previousRefreshToken")
+    def previous_refresh_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "previous_refresh_token")
+
+    @previous_refresh_token.setter
+    def previous_refresh_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "previous_refresh_token", value)
 
     @property
     @pulumi.getter(name="realmId")
@@ -126,6 +255,33 @@ class ConnectorAuthArgs:
     @refresh_token.setter
     def refresh_token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "refresh_token", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "team_id")
+
+    @team_id.setter
+    def team_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team_id", value)
+
+    @property
+    @pulumi.getter(name="userAccessToken")
+    def user_access_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_access_token")
+
+    @user_access_token.setter
+    def user_access_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_access_token", value)
 
 
 @pulumi.input_type
@@ -376,6 +532,7 @@ class ConnectorConfigArgs:
                  api_access_token: Optional[pulumi.Input[str]] = None,
                  api_id: Optional[pulumi.Input[str]] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
+                 api_key_api_secret: Optional[pulumi.Input[str]] = None,
                  api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  api_quota: Optional[pulumi.Input[str]] = None,
                  api_requests_per_minute: Optional[pulumi.Input[str]] = None,
@@ -385,10 +542,12 @@ class ConnectorConfigArgs:
                  api_type: Optional[pulumi.Input[str]] = None,
                  api_url: Optional[pulumi.Input[str]] = None,
                  api_usage: Optional[pulumi.Input[str]] = None,
+                 api_utilization_percentage: Optional[pulumi.Input[str]] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_ids_appsflyers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAppIdsAppsflyerArgs']]]] = None,
+                 app_key: Optional[pulumi.Input[str]] = None,
                  app_specific_password: Optional[pulumi.Input[str]] = None,
                  app_sync_mode: Optional[pulumi.Input[str]] = None,
                  append_file_option: Optional[pulumi.Input[str]] = None,
@@ -479,6 +638,7 @@ class ConnectorConfigArgs:
                  delimiter: Optional[pulumi.Input[str]] = None,
                  dimension_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 distributed_connector_cluster_size: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  domain_host_name: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
@@ -488,6 +648,8 @@ class ConnectorConfigArgs:
                  empty_header: Optional[pulumi.Input[str]] = None,
                  enable_all_dimension_combinations: Optional[pulumi.Input[str]] = None,
                  enable_archive_log_only: Optional[pulumi.Input[str]] = None,
+                 enable_data_extensions_syncing: Optional[pulumi.Input[str]] = None,
+                 enable_distributed_connector_mode: Optional[pulumi.Input[str]] = None,
                  enable_enrichments: Optional[pulumi.Input[str]] = None,
                  enable_exports: Optional[pulumi.Input[str]] = None,
                  enable_tde: Optional[pulumi.Input[str]] = None,
@@ -531,6 +693,7 @@ class ConnectorConfigArgs:
                  host_user: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity: Optional[pulumi.Input[str]] = None,
+                 include_ocapi_endpoints: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  instance_number: Optional[pulumi.Input[str]] = None,
                  instance_url: Optional[pulumi.Input[str]] = None,
@@ -538,6 +701,7 @@ class ConnectorConfigArgs:
                  is_account_level_connector: Optional[pulumi.Input[str]] = None,
                  is_auth2_enabled: Optional[pulumi.Input[str]] = None,
                  is_custom_api_credentials: Optional[pulumi.Input[str]] = None,
+                 is_external_activities_endpoint_selected: Optional[pulumi.Input[str]] = None,
                  is_ftps: Optional[pulumi.Input[str]] = None,
                  is_keypair: Optional[pulumi.Input[str]] = None,
                  is_multi_entity_feature_enabled: Optional[pulumi.Input[str]] = None,
@@ -557,6 +721,7 @@ class ConnectorConfigArgs:
                  keystore_password: Optional[pulumi.Input[str]] = None,
                  last_synced_changes_utc_: Optional[pulumi.Input[str]] = None,
                  latest_version: Optional[pulumi.Input[str]] = None,
+                 limit_for_api_calls_to_external_activities_endpoint: Optional[pulumi.Input[str]] = None,
                  line_separator: Optional[pulumi.Input[str]] = None,
                  list_strategy: Optional[pulumi.Input[str]] = None,
                  list_sync_mode: Optional[pulumi.Input[str]] = None,
@@ -574,6 +739,10 @@ class ConnectorConfigArgs:
                  null_sequence: Optional[pulumi.Input[str]] = None,
                  oauth_token: Optional[pulumi.Input[str]] = None,
                  oauth_token_secret: Optional[pulumi.Input[str]] = None,
+                 ocapi_client_id: Optional[pulumi.Input[str]] = None,
+                 ocapi_client_secret: Optional[pulumi.Input[str]] = None,
+                 ocapi_custom_object_types: Optional[pulumi.Input[str]] = None,
+                 ocapi_hostname: Optional[pulumi.Input[str]] = None,
                  on_error: Optional[pulumi.Input[str]] = None,
                  on_premise: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
@@ -582,6 +751,7 @@ class ConnectorConfigArgs:
                  packed_mode_tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  packing_mode: Optional[pulumi.Input[str]] = None,
                  pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 partner_code: Optional[pulumi.Input[str]] = None,
                  partners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  passphrase: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -726,6 +896,7 @@ class ConnectorConfigArgs:
                  team_id: Optional[pulumi.Input[str]] = None,
                  technical_account_id: Optional[pulumi.Input[str]] = None,
                  template_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tenant: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  test_table_name: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
@@ -858,6 +1029,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "api_id", api_id)
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
+        if api_key_api_secret is not None:
+            pulumi.set(__self__, "api_key_api_secret", api_key_api_secret)
         if api_keys is not None:
             pulumi.set(__self__, "api_keys", api_keys)
         if api_quota is not None:
@@ -876,6 +1049,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "api_url", api_url)
         if api_usage is not None:
             pulumi.set(__self__, "api_usage", api_usage)
+        if api_utilization_percentage is not None:
+            pulumi.set(__self__, "api_utilization_percentage", api_utilization_percentage)
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
         if app_id is not None:
@@ -884,6 +1059,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "app_ids", app_ids)
         if app_ids_appsflyers is not None:
             pulumi.set(__self__, "app_ids_appsflyers", app_ids_appsflyers)
+        if app_key is not None:
+            pulumi.set(__self__, "app_key", app_key)
         if app_specific_password is not None:
             pulumi.set(__self__, "app_specific_password", app_specific_password)
         if app_sync_mode is not None:
@@ -1064,6 +1241,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "dimension_attributes", dimension_attributes)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
+        if distributed_connector_cluster_size is not None:
+            pulumi.set(__self__, "distributed_connector_cluster_size", distributed_connector_cluster_size)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if domain_host_name is not None:
@@ -1082,6 +1261,10 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "enable_all_dimension_combinations", enable_all_dimension_combinations)
         if enable_archive_log_only is not None:
             pulumi.set(__self__, "enable_archive_log_only", enable_archive_log_only)
+        if enable_data_extensions_syncing is not None:
+            pulumi.set(__self__, "enable_data_extensions_syncing", enable_data_extensions_syncing)
+        if enable_distributed_connector_mode is not None:
+            pulumi.set(__self__, "enable_distributed_connector_mode", enable_distributed_connector_mode)
         if enable_enrichments is not None:
             pulumi.set(__self__, "enable_enrichments", enable_enrichments)
         if enable_exports is not None:
@@ -1168,6 +1351,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "hosts", hosts)
         if identity is not None:
             pulumi.set(__self__, "identity", identity)
+        if include_ocapi_endpoints is not None:
+            pulumi.set(__self__, "include_ocapi_endpoints", include_ocapi_endpoints)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if instance_number is not None:
@@ -1182,6 +1367,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "is_auth2_enabled", is_auth2_enabled)
         if is_custom_api_credentials is not None:
             pulumi.set(__self__, "is_custom_api_credentials", is_custom_api_credentials)
+        if is_external_activities_endpoint_selected is not None:
+            pulumi.set(__self__, "is_external_activities_endpoint_selected", is_external_activities_endpoint_selected)
         if is_ftps is not None:
             pulumi.set(__self__, "is_ftps", is_ftps)
         if is_keypair is not None:
@@ -1220,6 +1407,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "last_synced_changes_utc_", last_synced_changes_utc_)
         if latest_version is not None:
             pulumi.set(__self__, "latest_version", latest_version)
+        if limit_for_api_calls_to_external_activities_endpoint is not None:
+            pulumi.set(__self__, "limit_for_api_calls_to_external_activities_endpoint", limit_for_api_calls_to_external_activities_endpoint)
         if line_separator is not None:
             pulumi.set(__self__, "line_separator", line_separator)
         if list_strategy is not None:
@@ -1254,6 +1443,14 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "oauth_token", oauth_token)
         if oauth_token_secret is not None:
             pulumi.set(__self__, "oauth_token_secret", oauth_token_secret)
+        if ocapi_client_id is not None:
+            pulumi.set(__self__, "ocapi_client_id", ocapi_client_id)
+        if ocapi_client_secret is not None:
+            pulumi.set(__self__, "ocapi_client_secret", ocapi_client_secret)
+        if ocapi_custom_object_types is not None:
+            pulumi.set(__self__, "ocapi_custom_object_types", ocapi_custom_object_types)
+        if ocapi_hostname is not None:
+            pulumi.set(__self__, "ocapi_hostname", ocapi_hostname)
         if on_error is not None:
             pulumi.set(__self__, "on_error", on_error)
         if on_premise is not None:
@@ -1270,6 +1467,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "packing_mode", packing_mode)
         if pages is not None:
             pulumi.set(__self__, "pages", pages)
+        if partner_code is not None:
+            pulumi.set(__self__, "partner_code", partner_code)
         if partners is not None:
             pulumi.set(__self__, "partners", partners)
         if passphrase is not None:
@@ -1558,6 +1757,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "technical_account_id", technical_account_id)
         if template_labels is not None:
             pulumi.set(__self__, "template_labels", template_labels)
+        if tenant is not None:
+            pulumi.set(__self__, "tenant", tenant)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if test_table_name is not None:
@@ -2039,6 +2240,15 @@ class ConnectorConfigArgs:
         pulumi.set(self, "api_key", value)
 
     @property
+    @pulumi.getter(name="apiKeyApiSecret")
+    def api_key_api_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "api_key_api_secret")
+
+    @api_key_api_secret.setter
+    def api_key_api_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_key_api_secret", value)
+
+    @property
     @pulumi.getter(name="apiKeys")
     def api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "api_keys")
@@ -2120,6 +2330,15 @@ class ConnectorConfigArgs:
         pulumi.set(self, "api_usage", value)
 
     @property
+    @pulumi.getter(name="apiUtilizationPercentage")
+    def api_utilization_percentage(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "api_utilization_percentage")
+
+    @api_utilization_percentage.setter
+    def api_utilization_percentage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_utilization_percentage", value)
+
+    @property
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "api_version")
@@ -2154,6 +2373,15 @@ class ConnectorConfigArgs:
     @app_ids_appsflyers.setter
     def app_ids_appsflyers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAppIdsAppsflyerArgs']]]]):
         pulumi.set(self, "app_ids_appsflyers", value)
+
+    @property
+    @pulumi.getter(name="appKey")
+    def app_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "app_key")
+
+    @app_key.setter
+    def app_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_key", value)
 
     @property
     @pulumi.getter(name="appSpecificPassword")
@@ -2966,6 +3194,15 @@ class ConnectorConfigArgs:
         pulumi.set(self, "dimensions", value)
 
     @property
+    @pulumi.getter(name="distributedConnectorClusterSize")
+    def distributed_connector_cluster_size(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "distributed_connector_cluster_size")
+
+    @distributed_connector_cluster_size.setter
+    def distributed_connector_cluster_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "distributed_connector_cluster_size", value)
+
+    @property
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "domain")
@@ -3045,6 +3282,24 @@ class ConnectorConfigArgs:
     @enable_archive_log_only.setter
     def enable_archive_log_only(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "enable_archive_log_only", value)
+
+    @property
+    @pulumi.getter(name="enableDataExtensionsSyncing")
+    def enable_data_extensions_syncing(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "enable_data_extensions_syncing")
+
+    @enable_data_extensions_syncing.setter
+    def enable_data_extensions_syncing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enable_data_extensions_syncing", value)
+
+    @property
+    @pulumi.getter(name="enableDistributedConnectorMode")
+    def enable_distributed_connector_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "enable_distributed_connector_mode")
+
+    @enable_distributed_connector_mode.setter
+    def enable_distributed_connector_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enable_distributed_connector_mode", value)
 
     @property
     @pulumi.getter(name="enableEnrichments")
@@ -3434,6 +3689,15 @@ class ConnectorConfigArgs:
         pulumi.set(self, "identity", value)
 
     @property
+    @pulumi.getter(name="includeOcapiEndpoints")
+    def include_ocapi_endpoints(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "include_ocapi_endpoints")
+
+    @include_ocapi_endpoints.setter
+    def include_ocapi_endpoints(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "include_ocapi_endpoints", value)
+
+    @property
     @pulumi.getter
     def instance(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "instance")
@@ -3495,6 +3759,15 @@ class ConnectorConfigArgs:
     @is_custom_api_credentials.setter
     def is_custom_api_credentials(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "is_custom_api_credentials", value)
+
+    @property
+    @pulumi.getter(name="isExternalActivitiesEndpointSelected")
+    def is_external_activities_endpoint_selected(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "is_external_activities_endpoint_selected")
+
+    @is_external_activities_endpoint_selected.setter
+    def is_external_activities_endpoint_selected(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "is_external_activities_endpoint_selected", value)
 
     @property
     @pulumi.getter(name="isFtps")
@@ -3668,6 +3941,15 @@ class ConnectorConfigArgs:
         pulumi.set(self, "latest_version", value)
 
     @property
+    @pulumi.getter(name="limitForApiCallsToExternalActivitiesEndpoint")
+    def limit_for_api_calls_to_external_activities_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "limit_for_api_calls_to_external_activities_endpoint")
+
+    @limit_for_api_calls_to_external_activities_endpoint.setter
+    def limit_for_api_calls_to_external_activities_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "limit_for_api_calls_to_external_activities_endpoint", value)
+
+    @property
     @pulumi.getter(name="lineSeparator")
     def line_separator(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "line_separator")
@@ -3821,6 +4103,42 @@ class ConnectorConfigArgs:
         pulumi.set(self, "oauth_token_secret", value)
 
     @property
+    @pulumi.getter(name="ocapiClientId")
+    def ocapi_client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ocapi_client_id")
+
+    @ocapi_client_id.setter
+    def ocapi_client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ocapi_client_id", value)
+
+    @property
+    @pulumi.getter(name="ocapiClientSecret")
+    def ocapi_client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ocapi_client_secret")
+
+    @ocapi_client_secret.setter
+    def ocapi_client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ocapi_client_secret", value)
+
+    @property
+    @pulumi.getter(name="ocapiCustomObjectTypes")
+    def ocapi_custom_object_types(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ocapi_custom_object_types")
+
+    @ocapi_custom_object_types.setter
+    def ocapi_custom_object_types(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ocapi_custom_object_types", value)
+
+    @property
+    @pulumi.getter(name="ocapiHostname")
+    def ocapi_hostname(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ocapi_hostname")
+
+    @ocapi_hostname.setter
+    def ocapi_hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ocapi_hostname", value)
+
+    @property
     @pulumi.getter(name="onError")
     def on_error(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "on_error")
@@ -3891,6 +4209,15 @@ class ConnectorConfigArgs:
     @pages.setter
     def pages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "pages", value)
+
+    @property
+    @pulumi.getter(name="partnerCode")
+    def partner_code(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "partner_code")
+
+    @partner_code.setter
+    def partner_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partner_code", value)
 
     @property
     @pulumi.getter
@@ -5189,6 +5516,15 @@ class ConnectorConfigArgs:
         pulumi.set(self, "template_labels", value)
 
     @property
+    @pulumi.getter
+    def tenant(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant")
+
+    @tenant.setter
+    def tenant(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "tenant_id")
@@ -5730,27 +6066,43 @@ class ConnectorConfigAppIdsAppsflyerArgs:
 class ConnectorConfigCustomReportArgs:
     def __init__(__self__, *,
                  aggregate: Optional[pulumi.Input[str]] = None,
+                 base_metrics_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 breakdown: Optional[pulumi.Input[str]] = None,
+                 breakout: Optional[pulumi.Input[str]] = None,
                  conversions_report_included: Optional[pulumi.Input[str]] = None,
                  custom_events_included: Optional[pulumi.Input[str]] = None,
+                 dimension: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  event_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 granularity: Optional[pulumi.Input[str]] = None,
                  level: Optional[pulumi.Input[str]] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  report_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  report_name: Optional[pulumi.Input[str]] = None,
                  report_type: Optional[pulumi.Input[str]] = None,
                  segmentation: Optional[pulumi.Input[str]] = None,
+                 sk_ad_metrics_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  table_name: Optional[pulumi.Input[str]] = None):
         if aggregate is not None:
             pulumi.set(__self__, "aggregate", aggregate)
+        if base_metrics_fields is not None:
+            pulumi.set(__self__, "base_metrics_fields", base_metrics_fields)
+        if breakdown is not None:
+            pulumi.set(__self__, "breakdown", breakdown)
+        if breakout is not None:
+            pulumi.set(__self__, "breakout", breakout)
         if conversions_report_included is not None:
             pulumi.set(__self__, "conversions_report_included", conversions_report_included)
         if custom_events_included is not None:
             pulumi.set(__self__, "custom_events_included", custom_events_included)
+        if dimension is not None:
+            pulumi.set(__self__, "dimension", dimension)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
         if event_names is not None:
             pulumi.set(__self__, "event_names", event_names)
+        if granularity is not None:
+            pulumi.set(__self__, "granularity", granularity)
         if level is not None:
             pulumi.set(__self__, "level", level)
         if metrics is not None:
@@ -5763,6 +6115,8 @@ class ConnectorConfigCustomReportArgs:
             pulumi.set(__self__, "report_type", report_type)
         if segmentation is not None:
             pulumi.set(__self__, "segmentation", segmentation)
+        if sk_ad_metrics_fields is not None:
+            pulumi.set(__self__, "sk_ad_metrics_fields", sk_ad_metrics_fields)
         if table_name is not None:
             pulumi.set(__self__, "table_name", table_name)
 
@@ -5774,6 +6128,33 @@ class ConnectorConfigCustomReportArgs:
     @aggregate.setter
     def aggregate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aggregate", value)
+
+    @property
+    @pulumi.getter(name="baseMetricsFields")
+    def base_metrics_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "base_metrics_fields")
+
+    @base_metrics_fields.setter
+    def base_metrics_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "base_metrics_fields", value)
+
+    @property
+    @pulumi.getter
+    def breakdown(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "breakdown")
+
+    @breakdown.setter
+    def breakdown(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "breakdown", value)
+
+    @property
+    @pulumi.getter
+    def breakout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "breakout")
+
+    @breakout.setter
+    def breakout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "breakout", value)
 
     @property
     @pulumi.getter(name="conversionsReportIncluded")
@@ -5795,6 +6176,15 @@ class ConnectorConfigCustomReportArgs:
 
     @property
     @pulumi.getter
+    def dimension(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dimension")
+
+    @dimension.setter
+    def dimension(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dimension", value)
+
+    @property
+    @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "dimensions")
 
@@ -5810,6 +6200,15 @@ class ConnectorConfigCustomReportArgs:
     @event_names.setter
     def event_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "event_names", value)
+
+    @property
+    @pulumi.getter
+    def granularity(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "granularity")
+
+    @granularity.setter
+    def granularity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "granularity", value)
 
     @property
     @pulumi.getter
@@ -5864,6 +6263,15 @@ class ConnectorConfigCustomReportArgs:
     @segmentation.setter
     def segmentation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "segmentation", value)
+
+    @property
+    @pulumi.getter(name="skAdMetricsFields")
+    def sk_ad_metrics_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "sk_ad_metrics_fields")
+
+    @sk_ad_metrics_fields.setter
+    def sk_ad_metrics_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "sk_ad_metrics_fields", value)
 
     @property
     @pulumi.getter(name="tableName")
@@ -6075,10 +6483,12 @@ class ConnectorConfigReportArgs:
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  filter_field_name: Optional[pulumi.Input[str]] = None,
+                 filter_type: Optional[pulumi.Input[str]] = None,
                  filter_value: Optional[pulumi.Input[str]] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prebuilt_report: Optional[pulumi.Input[str]] = None,
                  report_type: Optional[pulumi.Input[str]] = None,
+                 rollback_window: Optional[pulumi.Input[str]] = None,
                  search_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  segment_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  segments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -6097,6 +6507,8 @@ class ConnectorConfigReportArgs:
             pulumi.set(__self__, "filter", filter)
         if filter_field_name is not None:
             pulumi.set(__self__, "filter_field_name", filter_field_name)
+        if filter_type is not None:
+            pulumi.set(__self__, "filter_type", filter_type)
         if filter_value is not None:
             pulumi.set(__self__, "filter_value", filter_value)
         if metrics is not None:
@@ -6105,6 +6517,8 @@ class ConnectorConfigReportArgs:
             pulumi.set(__self__, "prebuilt_report", prebuilt_report)
         if report_type is not None:
             pulumi.set(__self__, "report_type", report_type)
+        if rollback_window is not None:
+            pulumi.set(__self__, "rollback_window", rollback_window)
         if search_types is not None:
             pulumi.set(__self__, "search_types", search_types)
         if segment_ids is not None:
@@ -6178,6 +6592,15 @@ class ConnectorConfigReportArgs:
         pulumi.set(self, "filter_field_name", value)
 
     @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
     @pulumi.getter(name="filterValue")
     def filter_value(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "filter_value")
@@ -6212,6 +6635,15 @@ class ConnectorConfigReportArgs:
     @report_type.setter
     def report_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "report_type", value)
+
+    @property
+    @pulumi.getter(name="rollbackWindow")
+    def rollback_window(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "rollback_window")
+
+    @rollback_window.setter
+    def rollback_window(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rollback_window", value)
 
     @property
     @pulumi.getter(name="searchTypes")
@@ -6895,9 +7327,11 @@ class DestinationConfigArgs:
                  auth_type: Optional[pulumi.Input[str]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_region: Optional[pulumi.Input[str]] = None,
                  connection_type: Optional[pulumi.Input[str]] = None,
+                 container_name: Optional[pulumi.Input[str]] = None,
                  create_external_tables: Optional[pulumi.Input[str]] = None,
                  data_set_location: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -6906,6 +7340,7 @@ class DestinationConfigArgs:
                  host: Optional[pulumi.Input[str]] = None,
                  http_path: Optional[pulumi.Input[str]] = None,
                  is_private_key_encrypted: Optional[pulumi.Input[str]] = None,
+                 lakehouse_name: Optional[pulumi.Input[str]] = None,
                  passphrase: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  personal_access_token: Optional[pulumi.Input[str]] = None,
@@ -6918,19 +7353,25 @@ class DestinationConfigArgs:
                  role: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 secret_value: Optional[pulumi.Input[str]] = None,
                  server_host_name: Optional[pulumi.Input[str]] = None,
+                 storage_account_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  tunnel_host: Optional[pulumi.Input[str]] = None,
                  tunnel_port: Optional[pulumi.Input[str]] = None,
                  tunnel_user: Optional[pulumi.Input[str]] = None,
-                 user: Optional[pulumi.Input[str]] = None):
+                 user: Optional[pulumi.Input[str]] = None,
+                 workspace_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] auth: The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
         :param pulumi.Input[str] auth_type: Authentication type. Default value: `PASSWORD`.
         :param pulumi.Input[str] bucket: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
         :param pulumi.Input[str] catalog: Catalog name
+        :param pulumi.Input[str] client_id: ClientId of your Azure Data Lake Storage
         :param pulumi.Input[str] cluster_id: Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         :param pulumi.Input[str] cluster_region: Cluster region. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         :param pulumi.Input[str] connection_type: Connection method. Default value: `Directly`.
+        :param pulumi.Input[str] container_name: Container Name of your Azure Data Lake Storage
         :param pulumi.Input[str] create_external_tables: Whether to create external tables
         :param pulumi.Input[str] data_set_location: Data location. Datasets will reside in this location.
         :param pulumi.Input[str] database: Database name
@@ -6939,6 +7380,7 @@ class DestinationConfigArgs:
         :param pulumi.Input[str] host: Server name
         :param pulumi.Input[str] http_path: HTTP path
         :param pulumi.Input[str] is_private_key_encrypted: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
+        :param pulumi.Input[str] lakehouse_name: OneLake lakehouse name
         :param pulumi.Input[str] passphrase: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
         :param pulumi.Input[str] password: Database user password
         :param pulumi.Input[str] personal_access_token: Personal access token
@@ -6951,11 +7393,15 @@ class DestinationConfigArgs:
         :param pulumi.Input[str] role: The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
         :param pulumi.Input[str] role_arn: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         :param pulumi.Input[str] secret_key: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        :param pulumi.Input[str] secret_value: Secret Value of your Azure Data Lake Storage
         :param pulumi.Input[str] server_host_name: Server name
+        :param pulumi.Input[str] storage_account_name: Storage Account Name of your Azure Data Lake Storage
+        :param pulumi.Input[str] tenant_id: TenantId of your Azure Data Lake Storage
         :param pulumi.Input[str] tunnel_host: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param pulumi.Input[str] tunnel_port: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param pulumi.Input[str] tunnel_user: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param pulumi.Input[str] user: Database user name
+        :param pulumi.Input[str] workspace_name: OneLake workspace name
         """
         if auth is not None:
             pulumi.set(__self__, "auth", auth)
@@ -6965,12 +7411,16 @@ class DestinationConfigArgs:
             pulumi.set(__self__, "bucket", bucket)
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_region is not None:
             pulumi.set(__self__, "cluster_region", cluster_region)
         if connection_type is not None:
             pulumi.set(__self__, "connection_type", connection_type)
+        if container_name is not None:
+            pulumi.set(__self__, "container_name", container_name)
         if create_external_tables is not None:
             pulumi.set(__self__, "create_external_tables", create_external_tables)
         if data_set_location is not None:
@@ -6987,6 +7437,8 @@ class DestinationConfigArgs:
             pulumi.set(__self__, "http_path", http_path)
         if is_private_key_encrypted is not None:
             pulumi.set(__self__, "is_private_key_encrypted", is_private_key_encrypted)
+        if lakehouse_name is not None:
+            pulumi.set(__self__, "lakehouse_name", lakehouse_name)
         if passphrase is not None:
             pulumi.set(__self__, "passphrase", passphrase)
         if password is not None:
@@ -7011,8 +7463,14 @@ class DestinationConfigArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if secret_value is not None:
+            pulumi.set(__self__, "secret_value", secret_value)
         if server_host_name is not None:
             pulumi.set(__self__, "server_host_name", server_host_name)
+        if storage_account_name is not None:
+            pulumi.set(__self__, "storage_account_name", storage_account_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if tunnel_host is not None:
             pulumi.set(__self__, "tunnel_host", tunnel_host)
         if tunnel_port is not None:
@@ -7021,6 +7479,8 @@ class DestinationConfigArgs:
             pulumi.set(__self__, "tunnel_user", tunnel_user)
         if user is not None:
             pulumi.set(__self__, "user", user)
+        if workspace_name is not None:
+            pulumi.set(__self__, "workspace_name", workspace_name)
 
     @property
     @pulumi.getter
@@ -7071,6 +7531,18 @@ class DestinationConfigArgs:
         pulumi.set(self, "catalog", value)
 
     @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ClientId of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -7105,6 +7577,18 @@ class DestinationConfigArgs:
     @connection_type.setter
     def connection_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_type", value)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container Name of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "container_name")
+
+    @container_name.setter
+    def container_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_name", value)
 
     @property
     @pulumi.getter(name="createExternalTables")
@@ -7201,6 +7685,18 @@ class DestinationConfigArgs:
     @is_private_key_encrypted.setter
     def is_private_key_encrypted(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "is_private_key_encrypted", value)
+
+    @property
+    @pulumi.getter(name="lakehouseName")
+    def lakehouse_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OneLake lakehouse name
+        """
+        return pulumi.get(self, "lakehouse_name")
+
+    @lakehouse_name.setter
+    def lakehouse_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lakehouse_name", value)
 
     @property
     @pulumi.getter
@@ -7347,6 +7843,18 @@ class DestinationConfigArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="secretValue")
+    def secret_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret Value of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "secret_value")
+
+    @secret_value.setter
+    def secret_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_value", value)
+
+    @property
     @pulumi.getter(name="serverHostName")
     def server_host_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -7357,6 +7865,30 @@ class DestinationConfigArgs:
     @server_host_name.setter
     def server_host_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server_host_name", value)
+
+    @property
+    @pulumi.getter(name="storageAccountName")
+    def storage_account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Storage Account Name of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "storage_account_name")
+
+    @storage_account_name.setter
+    def storage_account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_account_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        TenantId of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tunnelHost")
@@ -7405,6 +7937,18 @@ class DestinationConfigArgs:
     @user.setter
     def user(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user", value)
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OneLake workspace name
+        """
+        return pulumi.get(self, "workspace_name")
+
+    @workspace_name.setter
+    def workspace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workspace_name", value)
 
 
 @pulumi.input_type
@@ -8076,6 +8620,7 @@ class GetConnectorConfigArgs:
                  api_access_token: str,
                  api_id: str,
                  api_key: str,
+                 api_key_api_secret: str,
                  api_keys: Sequence[str],
                  api_quota: str,
                  api_requests_per_minute: str,
@@ -8085,10 +8630,12 @@ class GetConnectorConfigArgs:
                  api_type: str,
                  api_url: str,
                  api_usage: str,
+                 api_utilization_percentage: str,
                  api_version: str,
                  app_id: str,
                  app_ids: Sequence[str],
                  app_ids_appsflyers: Sequence['GetConnectorConfigAppIdsAppsflyerArgs'],
+                 app_key: str,
                  app_specific_password: str,
                  app_sync_mode: str,
                  append_file_option: str,
@@ -8179,6 +8726,7 @@ class GetConnectorConfigArgs:
                  delimiter: str,
                  dimension_attributes: Sequence[str],
                  dimensions: Sequence[str],
+                 distributed_connector_cluster_size: str,
                  domain: str,
                  domain_host_name: str,
                  domain_name: str,
@@ -8188,6 +8736,8 @@ class GetConnectorConfigArgs:
                  empty_header: str,
                  enable_all_dimension_combinations: str,
                  enable_archive_log_only: str,
+                 enable_data_extensions_syncing: str,
+                 enable_distributed_connector_mode: str,
                  enable_enrichments: str,
                  enable_exports: str,
                  enable_tde: str,
@@ -8231,6 +8781,7 @@ class GetConnectorConfigArgs:
                  host_user: str,
                  hosts: Sequence[str],
                  identity: str,
+                 include_ocapi_endpoints: str,
                  instance: str,
                  instance_number: str,
                  instance_url: str,
@@ -8238,6 +8789,7 @@ class GetConnectorConfigArgs:
                  is_account_level_connector: str,
                  is_auth2_enabled: str,
                  is_custom_api_credentials: str,
+                 is_external_activities_endpoint_selected: str,
                  is_ftps: str,
                  is_keypair: str,
                  is_multi_entity_feature_enabled: str,
@@ -8257,6 +8809,7 @@ class GetConnectorConfigArgs:
                  keystore_password: str,
                  last_synced_changes_utc_: str,
                  latest_version: str,
+                 limit_for_api_calls_to_external_activities_endpoint: str,
                  line_separator: str,
                  list_strategy: str,
                  list_sync_mode: str,
@@ -8274,6 +8827,10 @@ class GetConnectorConfigArgs:
                  null_sequence: str,
                  oauth_token: str,
                  oauth_token_secret: str,
+                 ocapi_client_id: str,
+                 ocapi_client_secret: str,
+                 ocapi_custom_object_types: str,
+                 ocapi_hostname: str,
                  on_error: str,
                  on_premise: str,
                  organization: str,
@@ -8282,6 +8839,7 @@ class GetConnectorConfigArgs:
                  packed_mode_tables: Sequence[str],
                  packing_mode: str,
                  pages: Sequence[str],
+                 partner_code: str,
                  partners: Sequence[str],
                  passphrase: str,
                  password: str,
@@ -8426,6 +8984,7 @@ class GetConnectorConfigArgs:
                  team_id: str,
                  technical_account_id: str,
                  template_labels: Sequence[str],
+                 tenant: str,
                  tenant_id: str,
                  test_table_name: str,
                  time_zone: str,
@@ -8515,6 +9074,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "api_access_token", api_access_token)
         pulumi.set(__self__, "api_id", api_id)
         pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "api_key_api_secret", api_key_api_secret)
         pulumi.set(__self__, "api_keys", api_keys)
         pulumi.set(__self__, "api_quota", api_quota)
         pulumi.set(__self__, "api_requests_per_minute", api_requests_per_minute)
@@ -8524,10 +9084,12 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "api_type", api_type)
         pulumi.set(__self__, "api_url", api_url)
         pulumi.set(__self__, "api_usage", api_usage)
+        pulumi.set(__self__, "api_utilization_percentage", api_utilization_percentage)
         pulumi.set(__self__, "api_version", api_version)
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "app_ids", app_ids)
         pulumi.set(__self__, "app_ids_appsflyers", app_ids_appsflyers)
+        pulumi.set(__self__, "app_key", app_key)
         pulumi.set(__self__, "app_specific_password", app_specific_password)
         pulumi.set(__self__, "app_sync_mode", app_sync_mode)
         pulumi.set(__self__, "append_file_option", append_file_option)
@@ -8618,6 +9180,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "delimiter", delimiter)
         pulumi.set(__self__, "dimension_attributes", dimension_attributes)
         pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "distributed_connector_cluster_size", distributed_connector_cluster_size)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domain_host_name", domain_host_name)
         pulumi.set(__self__, "domain_name", domain_name)
@@ -8627,6 +9190,8 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "empty_header", empty_header)
         pulumi.set(__self__, "enable_all_dimension_combinations", enable_all_dimension_combinations)
         pulumi.set(__self__, "enable_archive_log_only", enable_archive_log_only)
+        pulumi.set(__self__, "enable_data_extensions_syncing", enable_data_extensions_syncing)
+        pulumi.set(__self__, "enable_distributed_connector_mode", enable_distributed_connector_mode)
         pulumi.set(__self__, "enable_enrichments", enable_enrichments)
         pulumi.set(__self__, "enable_exports", enable_exports)
         pulumi.set(__self__, "enable_tde", enable_tde)
@@ -8670,6 +9235,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "host_user", host_user)
         pulumi.set(__self__, "hosts", hosts)
         pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "include_ocapi_endpoints", include_ocapi_endpoints)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "instance_number", instance_number)
         pulumi.set(__self__, "instance_url", instance_url)
@@ -8677,6 +9243,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "is_account_level_connector", is_account_level_connector)
         pulumi.set(__self__, "is_auth2_enabled", is_auth2_enabled)
         pulumi.set(__self__, "is_custom_api_credentials", is_custom_api_credentials)
+        pulumi.set(__self__, "is_external_activities_endpoint_selected", is_external_activities_endpoint_selected)
         pulumi.set(__self__, "is_ftps", is_ftps)
         pulumi.set(__self__, "is_keypair", is_keypair)
         pulumi.set(__self__, "is_multi_entity_feature_enabled", is_multi_entity_feature_enabled)
@@ -8696,6 +9263,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "keystore_password", keystore_password)
         pulumi.set(__self__, "last_synced_changes_utc_", last_synced_changes_utc_)
         pulumi.set(__self__, "latest_version", latest_version)
+        pulumi.set(__self__, "limit_for_api_calls_to_external_activities_endpoint", limit_for_api_calls_to_external_activities_endpoint)
         pulumi.set(__self__, "line_separator", line_separator)
         pulumi.set(__self__, "list_strategy", list_strategy)
         pulumi.set(__self__, "list_sync_mode", list_sync_mode)
@@ -8713,6 +9281,10 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "null_sequence", null_sequence)
         pulumi.set(__self__, "oauth_token", oauth_token)
         pulumi.set(__self__, "oauth_token_secret", oauth_token_secret)
+        pulumi.set(__self__, "ocapi_client_id", ocapi_client_id)
+        pulumi.set(__self__, "ocapi_client_secret", ocapi_client_secret)
+        pulumi.set(__self__, "ocapi_custom_object_types", ocapi_custom_object_types)
+        pulumi.set(__self__, "ocapi_hostname", ocapi_hostname)
         pulumi.set(__self__, "on_error", on_error)
         pulumi.set(__self__, "on_premise", on_premise)
         pulumi.set(__self__, "organization", organization)
@@ -8721,6 +9293,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "packed_mode_tables", packed_mode_tables)
         pulumi.set(__self__, "packing_mode", packing_mode)
         pulumi.set(__self__, "pages", pages)
+        pulumi.set(__self__, "partner_code", partner_code)
         pulumi.set(__self__, "partners", partners)
         pulumi.set(__self__, "passphrase", passphrase)
         pulumi.set(__self__, "password", password)
@@ -8865,6 +9438,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "team_id", team_id)
         pulumi.set(__self__, "technical_account_id", technical_account_id)
         pulumi.set(__self__, "template_labels", template_labels)
+        pulumi.set(__self__, "tenant", tenant)
         pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "test_table_name", test_table_name)
         pulumi.set(__self__, "time_zone", time_zone)
@@ -9300,6 +9874,15 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "api_key", value)
 
     @property
+    @pulumi.getter(name="apiKeyApiSecret")
+    def api_key_api_secret(self) -> str:
+        return pulumi.get(self, "api_key_api_secret")
+
+    @api_key_api_secret.setter
+    def api_key_api_secret(self, value: str):
+        pulumi.set(self, "api_key_api_secret", value)
+
+    @property
     @pulumi.getter(name="apiKeys")
     def api_keys(self) -> Sequence[str]:
         return pulumi.get(self, "api_keys")
@@ -9381,6 +9964,15 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "api_usage", value)
 
     @property
+    @pulumi.getter(name="apiUtilizationPercentage")
+    def api_utilization_percentage(self) -> str:
+        return pulumi.get(self, "api_utilization_percentage")
+
+    @api_utilization_percentage.setter
+    def api_utilization_percentage(self, value: str):
+        pulumi.set(self, "api_utilization_percentage", value)
+
+    @property
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> str:
         return pulumi.get(self, "api_version")
@@ -9415,6 +10007,15 @@ class GetConnectorConfigArgs:
     @app_ids_appsflyers.setter
     def app_ids_appsflyers(self, value: Sequence['GetConnectorConfigAppIdsAppsflyerArgs']):
         pulumi.set(self, "app_ids_appsflyers", value)
+
+    @property
+    @pulumi.getter(name="appKey")
+    def app_key(self) -> str:
+        return pulumi.get(self, "app_key")
+
+    @app_key.setter
+    def app_key(self, value: str):
+        pulumi.set(self, "app_key", value)
 
     @property
     @pulumi.getter(name="appSpecificPassword")
@@ -10227,6 +10828,15 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "dimensions", value)
 
     @property
+    @pulumi.getter(name="distributedConnectorClusterSize")
+    def distributed_connector_cluster_size(self) -> str:
+        return pulumi.get(self, "distributed_connector_cluster_size")
+
+    @distributed_connector_cluster_size.setter
+    def distributed_connector_cluster_size(self, value: str):
+        pulumi.set(self, "distributed_connector_cluster_size", value)
+
+    @property
     @pulumi.getter
     def domain(self) -> str:
         return pulumi.get(self, "domain")
@@ -10306,6 +10916,24 @@ class GetConnectorConfigArgs:
     @enable_archive_log_only.setter
     def enable_archive_log_only(self, value: str):
         pulumi.set(self, "enable_archive_log_only", value)
+
+    @property
+    @pulumi.getter(name="enableDataExtensionsSyncing")
+    def enable_data_extensions_syncing(self) -> str:
+        return pulumi.get(self, "enable_data_extensions_syncing")
+
+    @enable_data_extensions_syncing.setter
+    def enable_data_extensions_syncing(self, value: str):
+        pulumi.set(self, "enable_data_extensions_syncing", value)
+
+    @property
+    @pulumi.getter(name="enableDistributedConnectorMode")
+    def enable_distributed_connector_mode(self) -> str:
+        return pulumi.get(self, "enable_distributed_connector_mode")
+
+    @enable_distributed_connector_mode.setter
+    def enable_distributed_connector_mode(self, value: str):
+        pulumi.set(self, "enable_distributed_connector_mode", value)
 
     @property
     @pulumi.getter(name="enableEnrichments")
@@ -10695,6 +11323,15 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "identity", value)
 
     @property
+    @pulumi.getter(name="includeOcapiEndpoints")
+    def include_ocapi_endpoints(self) -> str:
+        return pulumi.get(self, "include_ocapi_endpoints")
+
+    @include_ocapi_endpoints.setter
+    def include_ocapi_endpoints(self, value: str):
+        pulumi.set(self, "include_ocapi_endpoints", value)
+
+    @property
     @pulumi.getter
     def instance(self) -> str:
         return pulumi.get(self, "instance")
@@ -10756,6 +11393,15 @@ class GetConnectorConfigArgs:
     @is_custom_api_credentials.setter
     def is_custom_api_credentials(self, value: str):
         pulumi.set(self, "is_custom_api_credentials", value)
+
+    @property
+    @pulumi.getter(name="isExternalActivitiesEndpointSelected")
+    def is_external_activities_endpoint_selected(self) -> str:
+        return pulumi.get(self, "is_external_activities_endpoint_selected")
+
+    @is_external_activities_endpoint_selected.setter
+    def is_external_activities_endpoint_selected(self, value: str):
+        pulumi.set(self, "is_external_activities_endpoint_selected", value)
 
     @property
     @pulumi.getter(name="isFtps")
@@ -10929,6 +11575,15 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "latest_version", value)
 
     @property
+    @pulumi.getter(name="limitForApiCallsToExternalActivitiesEndpoint")
+    def limit_for_api_calls_to_external_activities_endpoint(self) -> str:
+        return pulumi.get(self, "limit_for_api_calls_to_external_activities_endpoint")
+
+    @limit_for_api_calls_to_external_activities_endpoint.setter
+    def limit_for_api_calls_to_external_activities_endpoint(self, value: str):
+        pulumi.set(self, "limit_for_api_calls_to_external_activities_endpoint", value)
+
+    @property
     @pulumi.getter(name="lineSeparator")
     def line_separator(self) -> str:
         return pulumi.get(self, "line_separator")
@@ -11082,6 +11737,42 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "oauth_token_secret", value)
 
     @property
+    @pulumi.getter(name="ocapiClientId")
+    def ocapi_client_id(self) -> str:
+        return pulumi.get(self, "ocapi_client_id")
+
+    @ocapi_client_id.setter
+    def ocapi_client_id(self, value: str):
+        pulumi.set(self, "ocapi_client_id", value)
+
+    @property
+    @pulumi.getter(name="ocapiClientSecret")
+    def ocapi_client_secret(self) -> str:
+        return pulumi.get(self, "ocapi_client_secret")
+
+    @ocapi_client_secret.setter
+    def ocapi_client_secret(self, value: str):
+        pulumi.set(self, "ocapi_client_secret", value)
+
+    @property
+    @pulumi.getter(name="ocapiCustomObjectTypes")
+    def ocapi_custom_object_types(self) -> str:
+        return pulumi.get(self, "ocapi_custom_object_types")
+
+    @ocapi_custom_object_types.setter
+    def ocapi_custom_object_types(self, value: str):
+        pulumi.set(self, "ocapi_custom_object_types", value)
+
+    @property
+    @pulumi.getter(name="ocapiHostname")
+    def ocapi_hostname(self) -> str:
+        return pulumi.get(self, "ocapi_hostname")
+
+    @ocapi_hostname.setter
+    def ocapi_hostname(self, value: str):
+        pulumi.set(self, "ocapi_hostname", value)
+
+    @property
     @pulumi.getter(name="onError")
     def on_error(self) -> str:
         return pulumi.get(self, "on_error")
@@ -11152,6 +11843,15 @@ class GetConnectorConfigArgs:
     @pages.setter
     def pages(self, value: Sequence[str]):
         pulumi.set(self, "pages", value)
+
+    @property
+    @pulumi.getter(name="partnerCode")
+    def partner_code(self) -> str:
+        return pulumi.get(self, "partner_code")
+
+    @partner_code.setter
+    def partner_code(self, value: str):
+        pulumi.set(self, "partner_code", value)
 
     @property
     @pulumi.getter
@@ -12450,6 +13150,15 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "template_labels", value)
 
     @property
+    @pulumi.getter
+    def tenant(self) -> str:
+        return pulumi.get(self, "tenant")
+
+    @tenant.setter
+    def tenant(self, value: str):
+        pulumi.set(self, "tenant", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
         return pulumi.get(self, "tenant_id")
@@ -12982,28 +13691,40 @@ class GetConnectorConfigAppIdsAppsflyerArgs:
 class GetConnectorConfigCustomReportArgs:
     def __init__(__self__, *,
                  aggregate: str,
+                 base_metrics_fields: Sequence[str],
+                 breakdown: str,
+                 breakout: str,
                  conversions_report_included: str,
                  custom_events_included: str,
+                 dimension: str,
                  dimensions: Sequence[str],
                  event_names: Sequence[str],
+                 granularity: str,
                  level: str,
                  metrics: Sequence[str],
                  report_fields: Sequence[str],
                  report_name: str,
                  report_type: str,
                  segmentation: str,
+                 sk_ad_metrics_fields: Sequence[str],
                  table_name: str):
         pulumi.set(__self__, "aggregate", aggregate)
+        pulumi.set(__self__, "base_metrics_fields", base_metrics_fields)
+        pulumi.set(__self__, "breakdown", breakdown)
+        pulumi.set(__self__, "breakout", breakout)
         pulumi.set(__self__, "conversions_report_included", conversions_report_included)
         pulumi.set(__self__, "custom_events_included", custom_events_included)
+        pulumi.set(__self__, "dimension", dimension)
         pulumi.set(__self__, "dimensions", dimensions)
         pulumi.set(__self__, "event_names", event_names)
+        pulumi.set(__self__, "granularity", granularity)
         pulumi.set(__self__, "level", level)
         pulumi.set(__self__, "metrics", metrics)
         pulumi.set(__self__, "report_fields", report_fields)
         pulumi.set(__self__, "report_name", report_name)
         pulumi.set(__self__, "report_type", report_type)
         pulumi.set(__self__, "segmentation", segmentation)
+        pulumi.set(__self__, "sk_ad_metrics_fields", sk_ad_metrics_fields)
         pulumi.set(__self__, "table_name", table_name)
 
     @property
@@ -13014,6 +13735,33 @@ class GetConnectorConfigCustomReportArgs:
     @aggregate.setter
     def aggregate(self, value: str):
         pulumi.set(self, "aggregate", value)
+
+    @property
+    @pulumi.getter(name="baseMetricsFields")
+    def base_metrics_fields(self) -> Sequence[str]:
+        return pulumi.get(self, "base_metrics_fields")
+
+    @base_metrics_fields.setter
+    def base_metrics_fields(self, value: Sequence[str]):
+        pulumi.set(self, "base_metrics_fields", value)
+
+    @property
+    @pulumi.getter
+    def breakdown(self) -> str:
+        return pulumi.get(self, "breakdown")
+
+    @breakdown.setter
+    def breakdown(self, value: str):
+        pulumi.set(self, "breakdown", value)
+
+    @property
+    @pulumi.getter
+    def breakout(self) -> str:
+        return pulumi.get(self, "breakout")
+
+    @breakout.setter
+    def breakout(self, value: str):
+        pulumi.set(self, "breakout", value)
 
     @property
     @pulumi.getter(name="conversionsReportIncluded")
@@ -13035,6 +13783,15 @@ class GetConnectorConfigCustomReportArgs:
 
     @property
     @pulumi.getter
+    def dimension(self) -> str:
+        return pulumi.get(self, "dimension")
+
+    @dimension.setter
+    def dimension(self, value: str):
+        pulumi.set(self, "dimension", value)
+
+    @property
+    @pulumi.getter
     def dimensions(self) -> Sequence[str]:
         return pulumi.get(self, "dimensions")
 
@@ -13050,6 +13807,15 @@ class GetConnectorConfigCustomReportArgs:
     @event_names.setter
     def event_names(self, value: Sequence[str]):
         pulumi.set(self, "event_names", value)
+
+    @property
+    @pulumi.getter
+    def granularity(self) -> str:
+        return pulumi.get(self, "granularity")
+
+    @granularity.setter
+    def granularity(self, value: str):
+        pulumi.set(self, "granularity", value)
 
     @property
     @pulumi.getter
@@ -13104,6 +13870,15 @@ class GetConnectorConfigCustomReportArgs:
     @segmentation.setter
     def segmentation(self, value: str):
         pulumi.set(self, "segmentation", value)
+
+    @property
+    @pulumi.getter(name="skAdMetricsFields")
+    def sk_ad_metrics_fields(self) -> Sequence[str]:
+        return pulumi.get(self, "sk_ad_metrics_fields")
+
+    @sk_ad_metrics_fields.setter
+    def sk_ad_metrics_fields(self, value: Sequence[str]):
+        pulumi.set(self, "sk_ad_metrics_fields", value)
 
     @property
     @pulumi.getter(name="tableName")
@@ -13300,10 +14075,12 @@ class GetConnectorConfigReportArgs:
                  fields: Sequence[str],
                  filter: str,
                  filter_field_name: str,
+                 filter_type: str,
                  filter_value: str,
                  metrics: Sequence[str],
                  prebuilt_report: str,
                  report_type: str,
+                 rollback_window: str,
                  search_types: Sequence[str],
                  segment_ids: Sequence[str],
                  segments: Sequence[str],
@@ -13315,10 +14092,12 @@ class GetConnectorConfigReportArgs:
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "filter_field_name", filter_field_name)
+        pulumi.set(__self__, "filter_type", filter_type)
         pulumi.set(__self__, "filter_value", filter_value)
         pulumi.set(__self__, "metrics", metrics)
         pulumi.set(__self__, "prebuilt_report", prebuilt_report)
         pulumi.set(__self__, "report_type", report_type)
+        pulumi.set(__self__, "rollback_window", rollback_window)
         pulumi.set(__self__, "search_types", search_types)
         pulumi.set(__self__, "segment_ids", segment_ids)
         pulumi.set(__self__, "segments", segments)
@@ -13388,6 +14167,15 @@ class GetConnectorConfigReportArgs:
         pulumi.set(self, "filter_field_name", value)
 
     @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> str:
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: str):
+        pulumi.set(self, "filter_type", value)
+
+    @property
     @pulumi.getter(name="filterValue")
     def filter_value(self) -> str:
         return pulumi.get(self, "filter_value")
@@ -13422,6 +14210,15 @@ class GetConnectorConfigReportArgs:
     @report_type.setter
     def report_type(self, value: str):
         pulumi.set(self, "report_type", value)
+
+    @property
+    @pulumi.getter(name="rollbackWindow")
+    def rollback_window(self) -> str:
+        return pulumi.get(self, "rollback_window")
+
+    @rollback_window.setter
+    def rollback_window(self, value: str):
+        pulumi.set(self, "rollback_window", value)
 
     @property
     @pulumi.getter(name="searchTypes")
@@ -13973,9 +14770,11 @@ class GetDestinationConfigArgs:
                  auth_type: Optional[str] = None,
                  bucket: Optional[str] = None,
                  catalog: Optional[str] = None,
+                 client_id: Optional[str] = None,
                  cluster_id: Optional[str] = None,
                  cluster_region: Optional[str] = None,
                  connection_type: Optional[str] = None,
+                 container_name: Optional[str] = None,
                  create_external_tables: Optional[str] = None,
                  data_set_location: Optional[str] = None,
                  database: Optional[str] = None,
@@ -13983,6 +14782,7 @@ class GetDestinationConfigArgs:
                  fivetran_role_arn: Optional[str] = None,
                  host: Optional[str] = None,
                  http_path: Optional[str] = None,
+                 lakehouse_name: Optional[str] = None,
                  passphrase: Optional[str] = None,
                  password: Optional[str] = None,
                  personal_access_token: Optional[str] = None,
@@ -13994,11 +14794,15 @@ class GetDestinationConfigArgs:
                  role: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None,
+                 secret_value: Optional[str] = None,
                  server_host_name: Optional[str] = None,
+                 storage_account_name: Optional[str] = None,
+                 tenant_id: Optional[str] = None,
                  tunnel_host: Optional[str] = None,
                  tunnel_port: Optional[str] = None,
                  tunnel_user: Optional[str] = None,
-                 user: Optional[str] = None):
+                 user: Optional[str] = None,
+                 workspace_name: Optional[str] = None):
         """
         :param str is_private_key_encrypted: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
         :param str public_key: Public key to grant Fivetran SSH access to git repository.
@@ -14006,9 +14810,11 @@ class GetDestinationConfigArgs:
         :param str auth_type: Authentication type. Default value: `PASSWORD`.
         :param str bucket: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
         :param str catalog: Catalog name
+        :param str client_id: ClientId of your Azure Data Lake Storage
         :param str cluster_id: Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         :param str cluster_region: Cluster region. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         :param str connection_type: Connection method. Default value: `Directly`.
+        :param str container_name: Container Name of your Azure Data Lake Storage
         :param str create_external_tables: Whether to create external tables
         :param str data_set_location: Data location. Datasets will reside in this location.
         :param str database: Database name
@@ -14016,6 +14822,7 @@ class GetDestinationConfigArgs:
         :param str fivetran_role_arn: ARN of the role which you created with different required policy mentioned in our setup guide
         :param str host: Server name
         :param str http_path: HTTP path
+        :param str lakehouse_name: OneLake lakehouse name
         :param str passphrase: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
         :param str password: Database user password
         :param str personal_access_token: Personal access token
@@ -14027,11 +14834,15 @@ class GetDestinationConfigArgs:
         :param str role: The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
         :param str role_arn: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         :param str secret_key: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        :param str secret_value: Secret Value of your Azure Data Lake Storage
         :param str server_host_name: Server name
+        :param str storage_account_name: Storage Account Name of your Azure Data Lake Storage
+        :param str tenant_id: TenantId of your Azure Data Lake Storage
         :param str tunnel_host: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param str tunnel_port: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param str tunnel_user: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param str user: Database user name
+        :param str workspace_name: OneLake workspace name
         """
         pulumi.set(__self__, "is_private_key_encrypted", is_private_key_encrypted)
         pulumi.set(__self__, "public_key", public_key)
@@ -14043,12 +14854,16 @@ class GetDestinationConfigArgs:
             pulumi.set(__self__, "bucket", bucket)
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_region is not None:
             pulumi.set(__self__, "cluster_region", cluster_region)
         if connection_type is not None:
             pulumi.set(__self__, "connection_type", connection_type)
+        if container_name is not None:
+            pulumi.set(__self__, "container_name", container_name)
         if create_external_tables is not None:
             pulumi.set(__self__, "create_external_tables", create_external_tables)
         if data_set_location is not None:
@@ -14063,6 +14878,8 @@ class GetDestinationConfigArgs:
             pulumi.set(__self__, "host", host)
         if http_path is not None:
             pulumi.set(__self__, "http_path", http_path)
+        if lakehouse_name is not None:
+            pulumi.set(__self__, "lakehouse_name", lakehouse_name)
         if passphrase is not None:
             pulumi.set(__self__, "passphrase", passphrase)
         if password is not None:
@@ -14085,8 +14902,14 @@ class GetDestinationConfigArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if secret_value is not None:
+            pulumi.set(__self__, "secret_value", secret_value)
         if server_host_name is not None:
             pulumi.set(__self__, "server_host_name", server_host_name)
+        if storage_account_name is not None:
+            pulumi.set(__self__, "storage_account_name", storage_account_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if tunnel_host is not None:
             pulumi.set(__self__, "tunnel_host", tunnel_host)
         if tunnel_port is not None:
@@ -14095,6 +14918,8 @@ class GetDestinationConfigArgs:
             pulumi.set(__self__, "tunnel_user", tunnel_user)
         if user is not None:
             pulumi.set(__self__, "user", user)
+        if workspace_name is not None:
+            pulumi.set(__self__, "workspace_name", workspace_name)
 
     @property
     @pulumi.getter(name="isPrivateKeyEncrypted")
@@ -14169,6 +14994,18 @@ class GetDestinationConfigArgs:
         pulumi.set(self, "catalog", value)
 
     @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        ClientId of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
         """
@@ -14203,6 +15040,18 @@ class GetDestinationConfigArgs:
     @connection_type.setter
     def connection_type(self, value: Optional[str]):
         pulumi.set(self, "connection_type", value)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> Optional[str]:
+        """
+        Container Name of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "container_name")
+
+    @container_name.setter
+    def container_name(self, value: Optional[str]):
+        pulumi.set(self, "container_name", value)
 
     @property
     @pulumi.getter(name="createExternalTables")
@@ -14287,6 +15136,18 @@ class GetDestinationConfigArgs:
     @http_path.setter
     def http_path(self, value: Optional[str]):
         pulumi.set(self, "http_path", value)
+
+    @property
+    @pulumi.getter(name="lakehouseName")
+    def lakehouse_name(self) -> Optional[str]:
+        """
+        OneLake lakehouse name
+        """
+        return pulumi.get(self, "lakehouse_name")
+
+    @lakehouse_name.setter
+    def lakehouse_name(self, value: Optional[str]):
+        pulumi.set(self, "lakehouse_name", value)
 
     @property
     @pulumi.getter
@@ -14421,6 +15282,18 @@ class GetDestinationConfigArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="secretValue")
+    def secret_value(self) -> Optional[str]:
+        """
+        Secret Value of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "secret_value")
+
+    @secret_value.setter
+    def secret_value(self, value: Optional[str]):
+        pulumi.set(self, "secret_value", value)
+
+    @property
     @pulumi.getter(name="serverHostName")
     def server_host_name(self) -> Optional[str]:
         """
@@ -14431,6 +15304,30 @@ class GetDestinationConfigArgs:
     @server_host_name.setter
     def server_host_name(self, value: Optional[str]):
         pulumi.set(self, "server_host_name", value)
+
+    @property
+    @pulumi.getter(name="storageAccountName")
+    def storage_account_name(self) -> Optional[str]:
+        """
+        Storage Account Name of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "storage_account_name")
+
+    @storage_account_name.setter
+    def storage_account_name(self, value: Optional[str]):
+        pulumi.set(self, "storage_account_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        """
+        TenantId of your Azure Data Lake Storage
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[str]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tunnelHost")
@@ -14479,6 +15376,18 @@ class GetDestinationConfigArgs:
     @user.setter
     def user(self, value: Optional[str]):
         pulumi.set(self, "user", value)
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> Optional[str]:
+        """
+        OneLake workspace name
+        """
+        return pulumi.get(self, "workspace_name")
+
+    @workspace_name.setter
+    def workspace_name(self, value: Optional[str]):
+        pulumi.set(self, "workspace_name", value)
 
 
 @pulumi.input_type

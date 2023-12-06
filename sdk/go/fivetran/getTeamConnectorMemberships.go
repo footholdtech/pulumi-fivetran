@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a connector membership within team object.
@@ -76,12 +75,6 @@ func (o GetTeamConnectorMembershipsResultOutput) ToGetTeamConnectorMembershipsRe
 
 func (o GetTeamConnectorMembershipsResultOutput) ToGetTeamConnectorMembershipsResultOutputWithContext(ctx context.Context) GetTeamConnectorMembershipsResultOutput {
 	return o
-}
-
-func (o GetTeamConnectorMembershipsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamConnectorMembershipsResult] {
-	return pulumix.Output[GetTeamConnectorMembershipsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTeamConnectorMembershipsResultOutput) Connectors() GetTeamConnectorMembershipsConnectorArrayOutput {

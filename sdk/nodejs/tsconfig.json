@@ -40,6 +40,8 @@
         "getExternalLogging.ts",
         "getGroup.ts",
         "getGroupConnectors.ts",
+        "getGroupServiceAccount.ts",
+        "getGroupSshKey.ts",
         "getGroupUsers.ts",
         "getGroups.ts",
         "getMetadataColumns.ts",

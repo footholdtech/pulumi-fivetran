@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a connector object.
@@ -112,12 +111,6 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutput() LookupConne
 
 func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ctx context.Context) LookupConnectorResultOutput {
 	return o
-}
-
-func (o LookupConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectorResult] {
-	return pulumix.Output[LookupConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupConnectorResultOutput) Configs() GetConnectorConfigArrayOutput {

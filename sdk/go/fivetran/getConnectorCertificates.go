@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupConnectorCertificates(ctx *pulumi.Context, args *LookupConnectorCertificatesArgs, opts ...pulumi.InvokeOption) (*LookupConnectorCertificatesResult, error) {
@@ -75,12 +74,6 @@ func (o LookupConnectorCertificatesResultOutput) ToLookupConnectorCertificatesRe
 
 func (o LookupConnectorCertificatesResultOutput) ToLookupConnectorCertificatesResultOutputWithContext(ctx context.Context) LookupConnectorCertificatesResultOutput {
 	return o
-}
-
-func (o LookupConnectorCertificatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectorCertificatesResult] {
-	return pulumix.Output[LookupConnectorCertificatesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupConnectorCertificatesResultOutput) Certificates() GetConnectorCertificatesCertificateArrayOutput {

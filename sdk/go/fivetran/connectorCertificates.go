@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ConnectorCertificates struct {
@@ -105,12 +104,6 @@ func (i *ConnectorCertificates) ToConnectorCertificatesOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorCertificatesOutput)
 }
 
-func (i *ConnectorCertificates) ToOutput(ctx context.Context) pulumix.Output[*ConnectorCertificates] {
-	return pulumix.Output[*ConnectorCertificates]{
-		OutputState: i.ToConnectorCertificatesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorCertificatesArrayInput is an input type that accepts ConnectorCertificatesArray and ConnectorCertificatesArrayOutput values.
 // You can construct a concrete instance of `ConnectorCertificatesArrayInput` via:
 //
@@ -134,12 +127,6 @@ func (i ConnectorCertificatesArray) ToConnectorCertificatesArrayOutput() Connect
 
 func (i ConnectorCertificatesArray) ToConnectorCertificatesArrayOutputWithContext(ctx context.Context) ConnectorCertificatesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorCertificatesArrayOutput)
-}
-
-func (i ConnectorCertificatesArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectorCertificates] {
-	return pulumix.Output[[]*ConnectorCertificates]{
-		OutputState: i.ToConnectorCertificatesArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectorCertificatesMapInput is an input type that accepts ConnectorCertificatesMap and ConnectorCertificatesMapOutput values.
@@ -167,12 +154,6 @@ func (i ConnectorCertificatesMap) ToConnectorCertificatesMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorCertificatesMapOutput)
 }
 
-func (i ConnectorCertificatesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectorCertificates] {
-	return pulumix.Output[map[string]*ConnectorCertificates]{
-		OutputState: i.ToConnectorCertificatesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorCertificatesOutput struct{ *pulumi.OutputState }
 
 func (ConnectorCertificatesOutput) ElementType() reflect.Type {
@@ -185,12 +166,6 @@ func (o ConnectorCertificatesOutput) ToConnectorCertificatesOutput() ConnectorCe
 
 func (o ConnectorCertificatesOutput) ToConnectorCertificatesOutputWithContext(ctx context.Context) ConnectorCertificatesOutput {
 	return o
-}
-
-func (o ConnectorCertificatesOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorCertificates] {
-	return pulumix.Output[*ConnectorCertificates]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorCertificatesOutput) Certificates() ConnectorCertificatesCertificateArrayOutput {
@@ -216,12 +191,6 @@ func (o ConnectorCertificatesArrayOutput) ToConnectorCertificatesArrayOutputWith
 	return o
 }
 
-func (o ConnectorCertificatesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectorCertificates] {
-	return pulumix.Output[[]*ConnectorCertificates]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorCertificatesArrayOutput) Index(i pulumi.IntInput) ConnectorCertificatesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectorCertificates {
 		return vs[0].([]*ConnectorCertificates)[vs[1].(int)]
@@ -240,12 +209,6 @@ func (o ConnectorCertificatesMapOutput) ToConnectorCertificatesMapOutput() Conne
 
 func (o ConnectorCertificatesMapOutput) ToConnectorCertificatesMapOutputWithContext(ctx context.Context) ConnectorCertificatesMapOutput {
 	return o
-}
-
-func (o ConnectorCertificatesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectorCertificates] {
-	return pulumix.Output[map[string]*ConnectorCertificates]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorCertificatesMapOutput) MapIndex(k pulumi.StringInput) ConnectorCertificatesOutput {

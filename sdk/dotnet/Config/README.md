@@ -1,1 +1,1 @@
-A Pulumi package for creating and managing Fivetran cloud resources.
+A Pulumi package for creating and managing Fivetran resources.

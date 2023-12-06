@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to create, update, and delete connector membership for teams
@@ -163,12 +162,6 @@ func (i *TeamConnectorMembership) ToTeamConnectorMembershipOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TeamConnectorMembershipOutput)
 }
 
-func (i *TeamConnectorMembership) ToOutput(ctx context.Context) pulumix.Output[*TeamConnectorMembership] {
-	return pulumix.Output[*TeamConnectorMembership]{
-		OutputState: i.ToTeamConnectorMembershipOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TeamConnectorMembershipArrayInput is an input type that accepts TeamConnectorMembershipArray and TeamConnectorMembershipArrayOutput values.
 // You can construct a concrete instance of `TeamConnectorMembershipArrayInput` via:
 //
@@ -192,12 +185,6 @@ func (i TeamConnectorMembershipArray) ToTeamConnectorMembershipArrayOutput() Tea
 
 func (i TeamConnectorMembershipArray) ToTeamConnectorMembershipArrayOutputWithContext(ctx context.Context) TeamConnectorMembershipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TeamConnectorMembershipArrayOutput)
-}
-
-func (i TeamConnectorMembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]*TeamConnectorMembership] {
-	return pulumix.Output[[]*TeamConnectorMembership]{
-		OutputState: i.ToTeamConnectorMembershipArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TeamConnectorMembershipMapInput is an input type that accepts TeamConnectorMembershipMap and TeamConnectorMembershipMapOutput values.
@@ -225,12 +212,6 @@ func (i TeamConnectorMembershipMap) ToTeamConnectorMembershipMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TeamConnectorMembershipMapOutput)
 }
 
-func (i TeamConnectorMembershipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamConnectorMembership] {
-	return pulumix.Output[map[string]*TeamConnectorMembership]{
-		OutputState: i.ToTeamConnectorMembershipMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TeamConnectorMembershipOutput struct{ *pulumi.OutputState }
 
 func (TeamConnectorMembershipOutput) ElementType() reflect.Type {
@@ -243,12 +224,6 @@ func (o TeamConnectorMembershipOutput) ToTeamConnectorMembershipOutput() TeamCon
 
 func (o TeamConnectorMembershipOutput) ToTeamConnectorMembershipOutputWithContext(ctx context.Context) TeamConnectorMembershipOutput {
 	return o
-}
-
-func (o TeamConnectorMembershipOutput) ToOutput(ctx context.Context) pulumix.Output[*TeamConnectorMembership] {
-	return pulumix.Output[*TeamConnectorMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamConnectorMembershipOutput) Connectors() TeamConnectorMembershipConnectorArrayOutput {
@@ -274,12 +249,6 @@ func (o TeamConnectorMembershipArrayOutput) ToTeamConnectorMembershipArrayOutput
 	return o
 }
 
-func (o TeamConnectorMembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TeamConnectorMembership] {
-	return pulumix.Output[[]*TeamConnectorMembership]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TeamConnectorMembershipArrayOutput) Index(i pulumi.IntInput) TeamConnectorMembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TeamConnectorMembership {
 		return vs[0].([]*TeamConnectorMembership)[vs[1].(int)]
@@ -298,12 +267,6 @@ func (o TeamConnectorMembershipMapOutput) ToTeamConnectorMembershipMapOutput() T
 
 func (o TeamConnectorMembershipMapOutput) ToTeamConnectorMembershipMapOutputWithContext(ctx context.Context) TeamConnectorMembershipMapOutput {
 	return o
-}
-
-func (o TeamConnectorMembershipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamConnectorMembership] {
-	return pulumix.Output[map[string]*TeamConnectorMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamConnectorMembershipMapOutput) MapIndex(k pulumi.StringInput) TeamConnectorMembershipOutput {

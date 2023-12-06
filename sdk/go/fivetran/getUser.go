@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a user object.
@@ -57,7 +56,7 @@ type LookupUserArgs struct {
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
-	// The timestamp that the user created their Fivetran account
+	// The timestamp that the user created their Fivetran account.
 	CreatedAt string `pulumi:"createdAt"`
 	// The email address that the user has associated with their user profile.
 	Email string `pulumi:"email"`
@@ -75,7 +74,7 @@ type LookupUserResult struct {
 	Phone string `pulumi:"phone"`
 	// The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
 	Picture string `pulumi:"picture"`
-	// The role that you would like to assign to the user
+	// The role that you would like to assign to the user.
 	Role string `pulumi:"role"`
 	// The field indicates whether the user has verified their email address in the account creation process.
 	Verified bool `pulumi:"verified"`
@@ -119,13 +118,7 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
-func (o LookupUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUserResult] {
-	return pulumix.Output[LookupUserResult]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The timestamp that the user created their Fivetran account
+// The timestamp that the user created their Fivetran account.
 func (o LookupUserResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -170,7 +163,7 @@ func (o LookupUserResultOutput) Picture() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Picture }).(pulumi.StringOutput)
 }
 
-// The role that you would like to assign to the user
+// The role that you would like to assign to the user.
 func (o LookupUserResultOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Role }).(pulumi.StringOutput)
 }

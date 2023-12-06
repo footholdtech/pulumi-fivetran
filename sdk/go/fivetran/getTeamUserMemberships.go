@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a list of user memberships within team object.
@@ -102,12 +101,6 @@ func (o GetTeamUserMembershipsResultOutput) ToGetTeamUserMembershipsResultOutput
 
 func (o GetTeamUserMembershipsResultOutput) ToGetTeamUserMembershipsResultOutputWithContext(ctx context.Context) GetTeamUserMembershipsResultOutput {
 	return o
-}
-
-func (o GetTeamUserMembershipsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamUserMembershipsResult] {
-	return pulumix.Output[GetTeamUserMembershipsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for resource.

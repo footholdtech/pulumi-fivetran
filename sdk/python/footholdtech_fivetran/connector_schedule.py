@@ -27,7 +27,7 @@ class ConnectorScheduleArgs:
         :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended
         :param pulumi.Input[str] paused: Specifies whether the connector is paused
         :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual
-        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         pulumi.set(__self__, "connector_id", connector_id)
         if daily_sync_time is not None:
@@ -105,7 +105,7 @@ class ConnectorScheduleArgs:
     @pulumi.getter(name="syncFrequency")
     def sync_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         return pulumi.get(self, "sync_frequency")
 
@@ -130,7 +130,7 @@ class _ConnectorScheduleState:
         :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended
         :param pulumi.Input[str] paused: Specifies whether the connector is paused
         :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual
-        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         if connector_id is not None:
             pulumi.set(__self__, "connector_id", connector_id)
@@ -209,7 +209,7 @@ class _ConnectorScheduleState:
     @pulumi.getter(name="syncFrequency")
     def sync_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         return pulumi.get(self, "sync_frequency")
 
@@ -285,7 +285,7 @@ class ConnectorSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended
         :param pulumi.Input[str] paused: Specifies whether the connector is paused
         :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual
-        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         ...
     @overload
@@ -407,7 +407,7 @@ class ConnectorSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended
         :param pulumi.Input[str] paused: Specifies whether the connector is paused
         :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual
-        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -465,7 +465,7 @@ class ConnectorSchedule(pulumi.CustomResource):
     @pulumi.getter(name="syncFrequency")
     def sync_frequency(self) -> pulumi.Output[str]:
         """
-        The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         return pulumi.get(self, "sync_frequency")
 

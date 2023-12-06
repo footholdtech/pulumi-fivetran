@@ -38,6 +38,12 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string>? Catalog { get; set; }
 
         /// <summary>
+        /// ClientId of your Azure Data Lake Storage
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        /// <summary>
         /// Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         /// </summary>
         [Input("clusterId")]
@@ -54,6 +60,12 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }
+
+        /// <summary>
+        /// Container Name of your Azure Data Lake Storage
+        /// </summary>
+        [Input("containerName")]
+        public Input<string>? ContainerName { get; set; }
 
         /// <summary>
         /// Whether to create external tables
@@ -102,6 +114,22 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("isPrivateKeyEncrypted")]
         public Input<string>? IsPrivateKeyEncrypted { get; set; }
+
+        [Input("lakehouseName")]
+        private Input<string>? _lakehouseName;
+
+        /// <summary>
+        /// OneLake lakehouse name
+        /// </summary>
+        public Input<string>? LakehouseName
+        {
+            get => _lakehouseName;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _lakehouseName = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("passphrase")]
         private Input<string>? _passphrase;
@@ -235,11 +263,39 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        [Input("secretValue")]
+        private Input<string>? _secretValue;
+
+        /// <summary>
+        /// Secret Value of your Azure Data Lake Storage
+        /// </summary>
+        public Input<string>? SecretValue
+        {
+            get => _secretValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// Server name
         /// </summary>
         [Input("serverHostName")]
         public Input<string>? ServerHostName { get; set; }
+
+        /// <summary>
+        /// Storage Account Name of your Azure Data Lake Storage
+        /// </summary>
+        [Input("storageAccountName")]
+        public Input<string>? StorageAccountName { get; set; }
+
+        /// <summary>
+        /// TenantId of your Azure Data Lake Storage
+        /// </summary>
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
 
         /// <summary>
         /// SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -264,6 +320,22 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
+
+        [Input("workspaceName")]
+        private Input<string>? _workspaceName;
+
+        /// <summary>
+        /// OneLake workspace name
+        /// </summary>
+        public Input<string>? WorkspaceName
+        {
+            get => _workspaceName;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _workspaceName = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public DestinationConfigGetArgs()
         {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a destination object.
@@ -110,12 +109,6 @@ func (o LookupDestinationResultOutput) ToLookupDestinationResultOutput() LookupD
 
 func (o LookupDestinationResultOutput) ToLookupDestinationResultOutputWithContext(ctx context.Context) LookupDestinationResultOutput {
 	return o
-}
-
-func (o LookupDestinationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDestinationResult] {
-	return pulumix.Output[LookupDestinationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupDestinationResultOutput) Configs() GetDestinationConfigArrayOutput {

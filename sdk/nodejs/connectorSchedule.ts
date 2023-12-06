@@ -102,7 +102,7 @@ export class ConnectorSchedule extends pulumi.CustomResource {
      */
     public readonly scheduleType!: pulumi.Output<string>;
     /**
-     * The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+     * The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
      */
     public readonly syncFrequency!: pulumi.Output<string>;
 
@@ -167,7 +167,7 @@ export interface ConnectorScheduleState {
      */
     scheduleType?: pulumi.Input<string>;
     /**
-     * The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+     * The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
      */
     syncFrequency?: pulumi.Input<string>;
 }
@@ -197,7 +197,7 @@ export interface ConnectorScheduleArgs {
      */
     scheduleType?: pulumi.Input<string>;
     /**
-     * The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+     * The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
      */
     syncFrequency?: pulumi.Input<string>;
 }

@@ -15,29 +15,45 @@ namespace Footholdtech.Fivetran.Outputs
     public sealed class ConnectorConfigCustomReport
     {
         public readonly string? Aggregate;
+        public readonly ImmutableArray<string> BaseMetricsFields;
+        public readonly string? Breakdown;
+        public readonly string? Breakout;
         public readonly string? ConversionsReportIncluded;
         public readonly string? CustomEventsIncluded;
+        public readonly string? Dimension;
         public readonly ImmutableArray<string> Dimensions;
         public readonly ImmutableArray<string> EventNames;
+        public readonly string? Granularity;
         public readonly string? Level;
         public readonly ImmutableArray<string> Metrics;
         public readonly ImmutableArray<string> ReportFields;
         public readonly string? ReportName;
         public readonly string? ReportType;
         public readonly string? Segmentation;
+        public readonly ImmutableArray<string> SkAdMetricsFields;
         public readonly string? TableName;
 
         [OutputConstructor]
         private ConnectorConfigCustomReport(
             string? aggregate,
 
+            ImmutableArray<string> baseMetricsFields,
+
+            string? breakdown,
+
+            string? breakout,
+
             string? conversionsReportIncluded,
 
             string? customEventsIncluded,
 
+            string? dimension,
+
             ImmutableArray<string> dimensions,
 
             ImmutableArray<string> eventNames,
+
+            string? granularity,
 
             string? level,
 
@@ -51,19 +67,27 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? segmentation,
 
+            ImmutableArray<string> skAdMetricsFields,
+
             string? tableName)
         {
             Aggregate = aggregate;
+            BaseMetricsFields = baseMetricsFields;
+            Breakdown = breakdown;
+            Breakout = breakout;
             ConversionsReportIncluded = conversionsReportIncluded;
             CustomEventsIncluded = customEventsIncluded;
+            Dimension = dimension;
             Dimensions = dimensions;
             EventNames = eventNames;
+            Granularity = granularity;
             Level = level;
             Metrics = metrics;
             ReportFields = reportFields;
             ReportName = reportName;
             ReportType = reportType;
             Segmentation = segmentation;
+            SkAdMetricsFields = skAdMetricsFields;
             TableName = tableName;
         }
     }

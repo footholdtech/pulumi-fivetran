@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a list of all predefined and custom roles within your Fivetran account.
@@ -94,12 +93,6 @@ func (o GetRolesResultOutput) ToGetRolesResultOutput() GetRolesResultOutput {
 
 func (o GetRolesResultOutput) ToGetRolesResultOutputWithContext(ctx context.Context) GetRolesResultOutput {
 	return o
-}
-
-func (o GetRolesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRolesResult] {
-	return pulumix.Output[GetRolesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

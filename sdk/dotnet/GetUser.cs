@@ -103,7 +103,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetUserResult
     {
         /// <summary>
-        /// The timestamp that the user created their Fivetran account
+        /// The timestamp that the user created their Fivetran account.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
@@ -139,7 +139,7 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public readonly string Picture;
         /// <summary>
-        /// The role that you would like to assign to the user
+        /// The role that you would like to assign to the user.
         /// </summary>
         public readonly string Role;
         /// <summary>

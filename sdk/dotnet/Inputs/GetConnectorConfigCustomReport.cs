@@ -16,11 +16,28 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("aggregate", required: true)]
         public string Aggregate { get; set; } = null!;
 
+        [Input("baseMetricsFields", required: true)]
+        private List<string>? _baseMetricsFields;
+        public List<string> BaseMetricsFields
+        {
+            get => _baseMetricsFields ?? (_baseMetricsFields = new List<string>());
+            set => _baseMetricsFields = value;
+        }
+
+        [Input("breakdown", required: true)]
+        public string Breakdown { get; set; } = null!;
+
+        [Input("breakout", required: true)]
+        public string Breakout { get; set; } = null!;
+
         [Input("conversionsReportIncluded", required: true)]
         public string ConversionsReportIncluded { get; set; } = null!;
 
         [Input("customEventsIncluded", required: true)]
         public string CustomEventsIncluded { get; set; } = null!;
+
+        [Input("dimension", required: true)]
+        public string Dimension { get; set; } = null!;
 
         [Input("dimensions", required: true)]
         private List<string>? _dimensions;
@@ -37,6 +54,9 @@ namespace Footholdtech.Fivetran.Inputs
             get => _eventNames ?? (_eventNames = new List<string>());
             set => _eventNames = value;
         }
+
+        [Input("granularity", required: true)]
+        public string Granularity { get; set; } = null!;
 
         [Input("level", required: true)]
         public string Level { get; set; } = null!;
@@ -65,6 +85,14 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("segmentation", required: true)]
         public string Segmentation { get; set; } = null!;
+
+        [Input("skAdMetricsFields", required: true)]
+        private List<string>? _skAdMetricsFields;
+        public List<string> SkAdMetricsFields
+        {
+            get => _skAdMetricsFields ?? (_skAdMetricsFields = new List<string>());
+            set => _skAdMetricsFields = value;
+        }
 
         [Input("tableName", required: true)]
         public string TableName { get; set; } = null!;

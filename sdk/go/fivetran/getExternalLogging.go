@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a logging service object.
@@ -112,12 +111,6 @@ func (o LookupExternalLoggingResultOutput) ToLookupExternalLoggingResultOutput()
 
 func (o LookupExternalLoggingResultOutput) ToLookupExternalLoggingResultOutputWithContext(ctx context.Context) LookupExternalLoggingResultOutput {
 	return o
-}
-
-func (o LookupExternalLoggingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExternalLoggingResult] {
-	return pulumix.Output[LookupExternalLoggingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupExternalLoggingResultOutput) Configs() GetExternalLoggingConfigArrayOutput {

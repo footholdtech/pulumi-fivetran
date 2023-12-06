@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -204,12 +203,6 @@ func (i *Destination) ToDestinationOutputWithContext(ctx context.Context) Destin
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationOutput)
 }
 
-func (i *Destination) ToOutput(ctx context.Context) pulumix.Output[*Destination] {
-	return pulumix.Output[*Destination]{
-		OutputState: i.ToDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DestinationArrayInput is an input type that accepts DestinationArray and DestinationArrayOutput values.
 // You can construct a concrete instance of `DestinationArrayInput` via:
 //
@@ -233,12 +226,6 @@ func (i DestinationArray) ToDestinationArrayOutput() DestinationArrayOutput {
 
 func (i DestinationArray) ToDestinationArrayOutputWithContext(ctx context.Context) DestinationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationArrayOutput)
-}
-
-func (i DestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Destination] {
-	return pulumix.Output[[]*Destination]{
-		OutputState: i.ToDestinationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DestinationMapInput is an input type that accepts DestinationMap and DestinationMapOutput values.
@@ -266,12 +253,6 @@ func (i DestinationMap) ToDestinationMapOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationMapOutput)
 }
 
-func (i DestinationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Destination] {
-	return pulumix.Output[map[string]*Destination]{
-		OutputState: i.ToDestinationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DestinationOutput struct{ *pulumi.OutputState }
 
 func (DestinationOutput) ElementType() reflect.Type {
@@ -284,12 +265,6 @@ func (o DestinationOutput) ToDestinationOutput() DestinationOutput {
 
 func (o DestinationOutput) ToDestinationOutputWithContext(ctx context.Context) DestinationOutput {
 	return o
-}
-
-func (o DestinationOutput) ToOutput(ctx context.Context) pulumix.Output[*Destination] {
-	return pulumix.Output[*Destination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DestinationOutput) Config() DestinationConfigOutput {
@@ -354,12 +329,6 @@ func (o DestinationArrayOutput) ToDestinationArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o DestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Destination] {
-	return pulumix.Output[[]*Destination]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DestinationArrayOutput) Index(i pulumi.IntInput) DestinationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Destination {
 		return vs[0].([]*Destination)[vs[1].(int)]
@@ -378,12 +347,6 @@ func (o DestinationMapOutput) ToDestinationMapOutput() DestinationMapOutput {
 
 func (o DestinationMapOutput) ToDestinationMapOutputWithContext(ctx context.Context) DestinationMapOutput {
 	return o
-}
-
-func (o DestinationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Destination] {
-	return pulumix.Output[map[string]*Destination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DestinationMapOutput) MapIndex(k pulumi.StringInput) DestinationOutput {

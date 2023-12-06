@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // -This resource allows you to create, update, and delete users.
@@ -67,7 +66,7 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
-	// The timestamp that the user created their Fivetran account
+	// The timestamp that the user created their Fivetran account.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The email address that the user has associated with their user profile.
 	Email pulumi.StringOutput `pulumi:"email"`
@@ -76,15 +75,14 @@ type User struct {
 	// The first name of the user.
 	GivenName pulumi.StringOutput `pulumi:"givenName"`
 	// The field indicates whether the user has been invited to your account.
-	Invited     pulumi.BoolOutput   `pulumi:"invited"`
-	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
+	Invited pulumi.BoolOutput `pulumi:"invited"`
 	// The last time that the user has logged into their Fivetran account.
 	LoggedInAt pulumi.StringOutput `pulumi:"loggedInAt"`
 	// The phone number of the user.
 	Phone pulumi.StringPtrOutput `pulumi:"phone"`
 	// The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
 	Picture pulumi.StringPtrOutput `pulumi:"picture"`
-	// The role that you would like to assign to the user
+	// The role that you would like to assign to the user.
 	Role pulumi.StringPtrOutput `pulumi:"role"`
 	// The field indicates whether the user has verified their email address in the account creation process.
 	Verified pulumi.BoolOutput `pulumi:"verified"`
@@ -129,7 +127,7 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// The timestamp that the user created their Fivetran account
+	// The timestamp that the user created their Fivetran account.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The email address that the user has associated with their user profile.
 	Email *string `pulumi:"email"`
@@ -138,22 +136,21 @@ type userState struct {
 	// The first name of the user.
 	GivenName *string `pulumi:"givenName"`
 	// The field indicates whether the user has been invited to your account.
-	Invited     *bool   `pulumi:"invited"`
-	LastUpdated *string `pulumi:"lastUpdated"`
+	Invited *bool `pulumi:"invited"`
 	// The last time that the user has logged into their Fivetran account.
 	LoggedInAt *string `pulumi:"loggedInAt"`
 	// The phone number of the user.
 	Phone *string `pulumi:"phone"`
 	// The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
 	Picture *string `pulumi:"picture"`
-	// The role that you would like to assign to the user
+	// The role that you would like to assign to the user.
 	Role *string `pulumi:"role"`
 	// The field indicates whether the user has verified their email address in the account creation process.
 	Verified *bool `pulumi:"verified"`
 }
 
 type UserState struct {
-	// The timestamp that the user created their Fivetran account
+	// The timestamp that the user created their Fivetran account.
 	CreatedAt pulumi.StringPtrInput
 	// The email address that the user has associated with their user profile.
 	Email pulumi.StringPtrInput
@@ -162,15 +159,14 @@ type UserState struct {
 	// The first name of the user.
 	GivenName pulumi.StringPtrInput
 	// The field indicates whether the user has been invited to your account.
-	Invited     pulumi.BoolPtrInput
-	LastUpdated pulumi.StringPtrInput
+	Invited pulumi.BoolPtrInput
 	// The last time that the user has logged into their Fivetran account.
 	LoggedInAt pulumi.StringPtrInput
 	// The phone number of the user.
 	Phone pulumi.StringPtrInput
 	// The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
 	Picture pulumi.StringPtrInput
-	// The role that you would like to assign to the user
+	// The role that you would like to assign to the user.
 	Role pulumi.StringPtrInput
 	// The field indicates whether the user has verified their email address in the account creation process.
 	Verified pulumi.BoolPtrInput
@@ -187,12 +183,16 @@ type userArgs struct {
 	FamilyName string `pulumi:"familyName"`
 	// The first name of the user.
 	GivenName string `pulumi:"givenName"`
+	// The field indicates whether the user has been invited to your account.
+	Invited *bool `pulumi:"invited"`
 	// The phone number of the user.
 	Phone *string `pulumi:"phone"`
 	// The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
 	Picture *string `pulumi:"picture"`
-	// The role that you would like to assign to the user
+	// The role that you would like to assign to the user.
 	Role *string `pulumi:"role"`
+	// The field indicates whether the user has verified their email address in the account creation process.
+	Verified *bool `pulumi:"verified"`
 }
 
 // The set of arguments for constructing a User resource.
@@ -203,12 +203,16 @@ type UserArgs struct {
 	FamilyName pulumi.StringInput
 	// The first name of the user.
 	GivenName pulumi.StringInput
+	// The field indicates whether the user has been invited to your account.
+	Invited pulumi.BoolPtrInput
 	// The phone number of the user.
 	Phone pulumi.StringPtrInput
 	// The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
 	Picture pulumi.StringPtrInput
-	// The role that you would like to assign to the user
+	// The role that you would like to assign to the user.
 	Role pulumi.StringPtrInput
+	// The field indicates whether the user has verified their email address in the account creation process.
+	Verified pulumi.BoolPtrInput
 }
 
 func (UserArgs) ElementType() reflect.Type {
@@ -232,12 +236,6 @@ func (i *User) ToUserOutput() UserOutput {
 
 func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserOutput)
-}
-
-func (i *User) ToOutput(ctx context.Context) pulumix.Output[*User] {
-	return pulumix.Output[*User]{
-		OutputState: i.ToUserOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
@@ -265,12 +263,6 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(UserArrayOutput)
 }
 
-func (i UserArray) ToOutput(ctx context.Context) pulumix.Output[[]*User] {
-	return pulumix.Output[[]*User]{
-		OutputState: i.ToUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
@@ -296,12 +288,6 @@ func (i UserMap) ToUserMapOutputWithContext(ctx context.Context) UserMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserMapOutput)
 }
 
-func (i UserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*User] {
-	return pulumix.Output[map[string]*User]{
-		OutputState: i.ToUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserOutput struct{ *pulumi.OutputState }
 
 func (UserOutput) ElementType() reflect.Type {
@@ -316,13 +302,7 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
-func (o UserOutput) ToOutput(ctx context.Context) pulumix.Output[*User] {
-	return pulumix.Output[*User]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The timestamp that the user created their Fivetran account
+// The timestamp that the user created their Fivetran account.
 func (o UserOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -347,10 +327,6 @@ func (o UserOutput) Invited() pulumi.BoolOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.Invited }).(pulumi.BoolOutput)
 }
 
-func (o UserOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
-}
-
 // The last time that the user has logged into their Fivetran account.
 func (o UserOutput) LoggedInAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.LoggedInAt }).(pulumi.StringOutput)
@@ -366,7 +342,7 @@ func (o UserOutput) Picture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Picture }).(pulumi.StringPtrOutput)
 }
 
-// The role that you would like to assign to the user
+// The role that you would like to assign to the user.
 func (o UserOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -390,12 +366,6 @@ func (o UserArrayOutput) ToUserArrayOutputWithContext(ctx context.Context) UserA
 	return o
 }
 
-func (o UserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*User] {
-	return pulumix.Output[[]*User]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserArrayOutput) Index(i pulumi.IntInput) UserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *User {
 		return vs[0].([]*User)[vs[1].(int)]
@@ -414,12 +384,6 @@ func (o UserMapOutput) ToUserMapOutput() UserMapOutput {
 
 func (o UserMapOutput) ToUserMapOutputWithContext(ctx context.Context) UserMapOutput {
 	return o
-}
-
-func (o UserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*User] {
-	return pulumix.Output[map[string]*User]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserMapOutput) MapIndex(k pulumi.StringInput) UserOutput {

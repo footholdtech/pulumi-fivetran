@@ -20,11 +20,11 @@ def readme():
 setup(name='footholdtech_fivetran',
       python_requires='>=3.7',
       version=VERSION,
-      description="A Pulumi package for creating and managing Fivetran cloud resources.",
+      description="A Pulumi package for creating and managing Fivetran resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='pulumi fivetran category/utility',
-      url='https://www.pulumi.com',
+      keywords='pulumi fivetran',
+      url='https://pulumi.io',
       project_urls={
           'Repository': 'https://github.com/footholdtech/pulumi-fivetran'
       },
