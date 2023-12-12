@@ -130,6 +130,16 @@ export const getGroupConnectors: typeof import("./getGroupConnectors").getGroupC
 export const getGroupConnectorsOutput: typeof import("./getGroupConnectors").getGroupConnectorsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupConnectors","getGroupConnectorsOutput"], () => require("./getGroupConnectors"));
 
+export { GetGroupServiceAccountArgs, GetGroupServiceAccountResult, GetGroupServiceAccountOutputArgs } from "./getGroupServiceAccount";
+export const getGroupServiceAccount: typeof import("./getGroupServiceAccount").getGroupServiceAccount = null as any;
+export const getGroupServiceAccountOutput: typeof import("./getGroupServiceAccount").getGroupServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupServiceAccount","getGroupServiceAccountOutput"], () => require("./getGroupServiceAccount"));
+
+export { GetGroupSshKeyArgs, GetGroupSshKeyResult, GetGroupSshKeyOutputArgs } from "./getGroupSshKey";
+export const getGroupSshKey: typeof import("./getGroupSshKey").getGroupSshKey = null as any;
+export const getGroupSshKeyOutput: typeof import("./getGroupSshKey").getGroupSshKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupSshKey","getGroupSshKeyOutput"], () => require("./getGroupSshKey"));
+
 export { GetGroupUsersArgs, GetGroupUsersResult, GetGroupUsersOutputArgs } from "./getGroupUsers";
 export const getGroupUsers: typeof import("./getGroupUsers").getGroupUsers = null as any;
 export const getGroupUsersOutput: typeof import("./getGroupUsers").getGroupUsersOutput = null as any;

@@ -1,13 +1,12 @@
 {
     "name": "@footholdtech/fivetran",
     "version": "${VERSION}",
-    "description": "A Pulumi package for creating and managing Fivetran cloud resources.",
+    "description": "A Pulumi package for creating and managing Fivetran resources.",
     "keywords": [
         "pulumi",
-        "fivetran",
-        "category/utility"
+        "fivetran"
     ],
-    "homepage": "https://www.pulumi.com",
+    "homepage": "https://pulumi.io",
     "repository": "https://github.com/footholdtech/pulumi-fivetran",
     "license": "Apache-2.0",
     "scripts": {

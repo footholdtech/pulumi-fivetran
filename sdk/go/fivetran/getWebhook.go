@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a webhook object.
@@ -119,12 +118,6 @@ func (o LookupWebhookResultOutput) ToLookupWebhookResultOutput() LookupWebhookRe
 
 func (o LookupWebhookResultOutput) ToLookupWebhookResultOutputWithContext(ctx context.Context) LookupWebhookResultOutput {
 	return o
-}
-
-func (o LookupWebhookResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebhookResult] {
-	return pulumix.Output[LookupWebhookResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Boolean, if set to true, webhooks are immediately sent in response to events

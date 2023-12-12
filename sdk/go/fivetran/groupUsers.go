@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to create, update, and delete user memberships in groups.
@@ -145,12 +144,6 @@ func (i *GroupUsers) ToGroupUsersOutputWithContext(ctx context.Context) GroupUse
 	return pulumi.ToOutputWithContext(ctx, i).(GroupUsersOutput)
 }
 
-func (i *GroupUsers) ToOutput(ctx context.Context) pulumix.Output[*GroupUsers] {
-	return pulumix.Output[*GroupUsers]{
-		OutputState: i.ToGroupUsersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupUsersArrayInput is an input type that accepts GroupUsersArray and GroupUsersArrayOutput values.
 // You can construct a concrete instance of `GroupUsersArrayInput` via:
 //
@@ -174,12 +167,6 @@ func (i GroupUsersArray) ToGroupUsersArrayOutput() GroupUsersArrayOutput {
 
 func (i GroupUsersArray) ToGroupUsersArrayOutputWithContext(ctx context.Context) GroupUsersArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupUsersArrayOutput)
-}
-
-func (i GroupUsersArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupUsers] {
-	return pulumix.Output[[]*GroupUsers]{
-		OutputState: i.ToGroupUsersArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupUsersMapInput is an input type that accepts GroupUsersMap and GroupUsersMapOutput values.
@@ -207,12 +194,6 @@ func (i GroupUsersMap) ToGroupUsersMapOutputWithContext(ctx context.Context) Gro
 	return pulumi.ToOutputWithContext(ctx, i).(GroupUsersMapOutput)
 }
 
-func (i GroupUsersMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupUsers] {
-	return pulumix.Output[map[string]*GroupUsers]{
-		OutputState: i.ToGroupUsersMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupUsersOutput struct{ *pulumi.OutputState }
 
 func (GroupUsersOutput) ElementType() reflect.Type {
@@ -225,12 +206,6 @@ func (o GroupUsersOutput) ToGroupUsersOutput() GroupUsersOutput {
 
 func (o GroupUsersOutput) ToGroupUsersOutputWithContext(ctx context.Context) GroupUsersOutput {
 	return o
-}
-
-func (o GroupUsersOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupUsers] {
-	return pulumix.Output[*GroupUsers]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the Group within the Fivetran system.
@@ -260,12 +235,6 @@ func (o GroupUsersArrayOutput) ToGroupUsersArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o GroupUsersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupUsers] {
-	return pulumix.Output[[]*GroupUsers]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupUsersArrayOutput) Index(i pulumi.IntInput) GroupUsersOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupUsers {
 		return vs[0].([]*GroupUsers)[vs[1].(int)]
@@ -284,12 +253,6 @@ func (o GroupUsersMapOutput) ToGroupUsersMapOutput() GroupUsersMapOutput {
 
 func (o GroupUsersMapOutput) ToGroupUsersMapOutputWithContext(ctx context.Context) GroupUsersMapOutput {
 	return o
-}
-
-func (o GroupUsersMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupUsers] {
-	return pulumix.Output[map[string]*GroupUsers]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupUsersMapOutput) MapIndex(k pulumi.StringInput) GroupUsersOutput {

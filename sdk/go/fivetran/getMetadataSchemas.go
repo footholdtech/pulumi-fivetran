@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns schema-level metadata for an existing connector within your Fivetran account.
@@ -98,12 +97,6 @@ func (o GetMetadataSchemasResultOutput) ToGetMetadataSchemasResultOutput() GetMe
 
 func (o GetMetadataSchemasResultOutput) ToGetMetadataSchemasResultOutputWithContext(ctx context.Context) GetMetadataSchemasResultOutput {
 	return o
-}
-
-func (o GetMetadataSchemasResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetadataSchemasResult] {
-	return pulumix.Output[GetMetadataSchemasResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the connector within the Fivetran system. Data-source will represent a set of schemas of connector.

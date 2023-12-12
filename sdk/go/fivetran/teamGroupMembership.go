@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to create, update, and delete group membership for teams
@@ -125,12 +124,6 @@ func (i *TeamGroupMembership) ToTeamGroupMembershipOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(TeamGroupMembershipOutput)
 }
 
-func (i *TeamGroupMembership) ToOutput(ctx context.Context) pulumix.Output[*TeamGroupMembership] {
-	return pulumix.Output[*TeamGroupMembership]{
-		OutputState: i.ToTeamGroupMembershipOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TeamGroupMembershipArrayInput is an input type that accepts TeamGroupMembershipArray and TeamGroupMembershipArrayOutput values.
 // You can construct a concrete instance of `TeamGroupMembershipArrayInput` via:
 //
@@ -154,12 +147,6 @@ func (i TeamGroupMembershipArray) ToTeamGroupMembershipArrayOutput() TeamGroupMe
 
 func (i TeamGroupMembershipArray) ToTeamGroupMembershipArrayOutputWithContext(ctx context.Context) TeamGroupMembershipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TeamGroupMembershipArrayOutput)
-}
-
-func (i TeamGroupMembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]*TeamGroupMembership] {
-	return pulumix.Output[[]*TeamGroupMembership]{
-		OutputState: i.ToTeamGroupMembershipArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TeamGroupMembershipMapInput is an input type that accepts TeamGroupMembershipMap and TeamGroupMembershipMapOutput values.
@@ -187,12 +174,6 @@ func (i TeamGroupMembershipMap) ToTeamGroupMembershipMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TeamGroupMembershipMapOutput)
 }
 
-func (i TeamGroupMembershipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamGroupMembership] {
-	return pulumix.Output[map[string]*TeamGroupMembership]{
-		OutputState: i.ToTeamGroupMembershipMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TeamGroupMembershipOutput struct{ *pulumi.OutputState }
 
 func (TeamGroupMembershipOutput) ElementType() reflect.Type {
@@ -205,12 +186,6 @@ func (o TeamGroupMembershipOutput) ToTeamGroupMembershipOutput() TeamGroupMember
 
 func (o TeamGroupMembershipOutput) ToTeamGroupMembershipOutputWithContext(ctx context.Context) TeamGroupMembershipOutput {
 	return o
-}
-
-func (o TeamGroupMembershipOutput) ToOutput(ctx context.Context) pulumix.Output[*TeamGroupMembership] {
-	return pulumix.Output[*TeamGroupMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamGroupMembershipOutput) Groups() TeamGroupMembershipGroupArrayOutput {
@@ -236,12 +211,6 @@ func (o TeamGroupMembershipArrayOutput) ToTeamGroupMembershipArrayOutputWithCont
 	return o
 }
 
-func (o TeamGroupMembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TeamGroupMembership] {
-	return pulumix.Output[[]*TeamGroupMembership]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TeamGroupMembershipArrayOutput) Index(i pulumi.IntInput) TeamGroupMembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TeamGroupMembership {
 		return vs[0].([]*TeamGroupMembership)[vs[1].(int)]
@@ -260,12 +229,6 @@ func (o TeamGroupMembershipMapOutput) ToTeamGroupMembershipMapOutput() TeamGroup
 
 func (o TeamGroupMembershipMapOutput) ToTeamGroupMembershipMapOutputWithContext(ctx context.Context) TeamGroupMembershipMapOutput {
 	return o
-}
-
-func (o TeamGroupMembershipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamGroupMembership] {
-	return pulumix.Output[map[string]*TeamGroupMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamGroupMembershipMapOutput) MapIndex(k pulumi.StringInput) TeamGroupMembershipOutput {

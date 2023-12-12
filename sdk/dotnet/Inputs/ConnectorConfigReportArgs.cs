@@ -49,6 +49,9 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("filterFieldName")]
         public Input<string>? FilterFieldName { get; set; }
 
+        [Input("filterType")]
+        public Input<string>? FilterType { get; set; }
+
         [Input("filterValue")]
         public Input<string>? FilterValue { get; set; }
 
@@ -65,6 +68,9 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("reportType")]
         public Input<string>? ReportType { get; set; }
+
+        [Input("rollbackWindow")]
+        public Input<string>? RollbackWindow { get; set; }
 
         [Input("searchTypes")]
         private InputList<string>? _searchTypes;

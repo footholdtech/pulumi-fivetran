@@ -31,6 +31,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string? Catalog;
         /// <summary>
+        /// ClientId of your Azure Data Lake Storage
+        /// </summary>
+        public readonly string? ClientId;
+        /// <summary>
         /// Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
         /// </summary>
         public readonly string? ClusterId;
@@ -42,6 +46,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// Connection method. Default value: `Directly`.
         /// </summary>
         public readonly string? ConnectionType;
+        /// <summary>
+        /// Container Name of your Azure Data Lake Storage
+        /// </summary>
+        public readonly string? ContainerName;
         /// <summary>
         /// Whether to create external tables
         /// </summary>
@@ -74,6 +82,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
         /// </summary>
         public readonly string? IsPrivateKeyEncrypted;
+        /// <summary>
+        /// OneLake lakehouse name
+        /// </summary>
+        public readonly string? LakehouseName;
         /// <summary>
         /// In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
         /// </summary>
@@ -123,9 +135,21 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string? SecretKey;
         /// <summary>
+        /// Secret Value of your Azure Data Lake Storage
+        /// </summary>
+        public readonly string? SecretValue;
+        /// <summary>
         /// Server name
         /// </summary>
         public readonly string? ServerHostName;
+        /// <summary>
+        /// Storage Account Name of your Azure Data Lake Storage
+        /// </summary>
+        public readonly string? StorageAccountName;
+        /// <summary>
+        /// TenantId of your Azure Data Lake Storage
+        /// </summary>
+        public readonly string? TenantId;
         /// <summary>
         /// SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// </summary>
@@ -142,6 +166,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// Database user name
         /// </summary>
         public readonly string? User;
+        /// <summary>
+        /// OneLake workspace name
+        /// </summary>
+        public readonly string? WorkspaceName;
 
         [OutputConstructor]
         private DestinationConfig(
@@ -153,11 +181,15 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? catalog,
 
+            string? clientId,
+
             string? clusterId,
 
             string? clusterRegion,
 
             string? connectionType,
+
+            string? containerName,
 
             string? createExternalTables,
 
@@ -174,6 +206,8 @@ namespace Footholdtech.Fivetran.Outputs
             string? httpPath,
 
             string? isPrivateKeyEncrypted,
+
+            string? lakehouseName,
 
             string? passphrase,
 
@@ -199,7 +233,13 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? secretKey,
 
+            string? secretValue,
+
             string? serverHostName,
+
+            string? storageAccountName,
+
+            string? tenantId,
 
             string? tunnelHost,
 
@@ -207,15 +247,19 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? tunnelUser,
 
-            string? user)
+            string? user,
+
+            string? workspaceName)
         {
             Auth = auth;
             AuthType = authType;
             Bucket = bucket;
             Catalog = catalog;
+            ClientId = clientId;
             ClusterId = clusterId;
             ClusterRegion = clusterRegion;
             ConnectionType = connectionType;
+            ContainerName = containerName;
             CreateExternalTables = createExternalTables;
             DataSetLocation = dataSetLocation;
             Database = database;
@@ -224,6 +268,7 @@ namespace Footholdtech.Fivetran.Outputs
             Host = host;
             HttpPath = httpPath;
             IsPrivateKeyEncrypted = isPrivateKeyEncrypted;
+            LakehouseName = lakehouseName;
             Passphrase = passphrase;
             Password = password;
             PersonalAccessToken = personalAccessToken;
@@ -236,11 +281,15 @@ namespace Footholdtech.Fivetran.Outputs
             Role = role;
             RoleArn = roleArn;
             SecretKey = secretKey;
+            SecretValue = secretValue;
             ServerHostName = serverHostName;
+            StorageAccountName = storageAccountName;
+            TenantId = tenantId;
             TunnelHost = tunnelHost;
             TunnelPort = tunnelPort;
             TunnelUser = tunnelUser;
             User = user;
+            WorkspaceName = workspaceName;
         }
     }
 }

@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a list of information about all users within a group in your Fivetran account.
@@ -100,12 +99,6 @@ func (o LookupGroupUsersResultOutput) ToLookupGroupUsersResultOutput() LookupGro
 
 func (o LookupGroupUsersResultOutput) ToLookupGroupUsersResultOutputWithContext(ctx context.Context) LookupGroupUsersResultOutput {
 	return o
-}
-
-func (o LookupGroupUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupUsersResult] {
-	return pulumix.Output[LookupGroupUsersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.

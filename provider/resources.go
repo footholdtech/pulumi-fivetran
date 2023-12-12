@@ -15,15 +15,20 @@
 package fivetran
 
 import (
+	// Allow embedding files
+	"context"
+	_ "embed"
 	"fmt"
 	"path/filepath"
+	"unicode"
 
 	"github.com/fivetran/terraform-provider-fivetran/fivetran"
+	"github.com/fivetran/terraform-provider-fivetran/fivetran/framework"
 	"github.com/footholdtech/pulumi-fivetran/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
 // all of the token components used below.
@@ -35,53 +40,62 @@ const (
 	mainMod = "index" // the fivetran module
 )
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
+// makeMember manufactures a type token for the package and the given module and type.
+func makeMember(mod string, mem string) tokens.ModuleMember {
+	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
 }
+
+// makeType manufactures a type token for the package and the given module and type.
+func makeType(mod string, typ string) tokens.Type {
+	return tokens.Type(makeMember(mod, typ))
+}
+
+// makeResource manufactures a standard resource token given a module and resource name.  It
+// automatically uses the main package and names the file by simply lower casing the resource's
+// first character.
+func makeResource(mod string, res string) tokens.Type {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return makeType(mod+"/"+fn, res)
+}
+
+func makeDataSource(mod string, res string) tokens.ModuleMember {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return makeMember(mod+"/"+fn, res)
+}
+
+//go:embed cmd/pulumi-resource-fivetran/bridge-metadata.json
+var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(fivetran.Provider())
+	// p := shimv2.NewProvider(fivetran.Provider())
+	p := pfbridge.MuxShimWithPF(context.Background(),
+		shimv2.NewProvider(fivetran.Provider()),
+		framework.FivetranProvider(),
+	)
 
-	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:    p,
-		Name: "fivetran",
-		// DisplayName is a way to be able to change the casing of the provider
-		// name when being displayed on the Pulumi registry
-		DisplayName: "Fivetran",
-		// The default publisher for all packages is Pulumi.
-		// Change this to your personal name (or a company name) that you
-		// would like to be shown in the Pulumi Registry if this package is published
-		// there.
-		Publisher: "Footholdtech",
-		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
-		// if this package is published there.
-		//
-		// You may host a logo on a domain you control or add an SVG logo for your package
-		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "",
-		// PluginDownloadURL is an optional URL used to download the Provider
-		// for use in Pulumi programs
-		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "github://api.github.com/footholdtech/pulumi-fivetran",
-		Description:       "A Pulumi package for creating and managing Fivetran cloud resources.",
-		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
-		// For all available categories, see `Keywords` in
-		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "fivetran", "category/utility"},
-		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/footholdtech/pulumi-fivetran",
+        P:              p,
+        Name:           "fivetran",
+        Description:    "A Pulumi package for creating and managing Fivetran resources.",
+        Keywords:       []string{"pulumi", "fivetran"},
+        License:        "Apache-2.0",
+        Homepage:       "https://pulumi.io",
+        Repository:     "https://github.com/footholdtech/pulumi-fivetran",
+        Publisher:      "Foothold Technology",
+
+        // PluginDownloadURL is an optional URL used to download the Provider
+        // for use in Pulumi programs
+        // e.g https://github.com/org/pulumi-provider-name/releases/
+        PluginDownloadURL: "github://api.github.com/footholdtech/pulumi-fivetran",
+
+        MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+        Version:          version.Version,
+
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "fivetran",
-		Config: map[string]*tfbridge.SchemaInfo{
+		Config: map[string]*tfbridge.SchemaInfo {
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -106,73 +120,59 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: tfbridge.MakeResource(mainPkg, mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
-			// 	},
-			// },
-			"fivetran_user":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
-			"fivetran_group":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
-			"fivetran_group_users":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupUsers")},
-			"fivetran_destination":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Destination")},
-			"fivetran_destination_certificates":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DestinationCertificates")},
-			"fivetran_destination_fingerprints":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DestinationFingerprints")},
-			"fivetran_connector":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Connector")},
-			"fivetran_connector_certificates":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorCertificates")},
-			"fivetran_connector_fingerprints":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorFingerprints")},
-			"fivetran_connector_schedule":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorSchedule")},
-			"fivetran_connector_schema_config":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorSchemaConfig")},
-			"fivetran_dbt_transformation":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbtTransformation")},
-			"fivetran_dbt_project":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbtProject")},
-			"fivetran_webhook":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Webhook")},
-			"fivetran_external_logging":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ExternalLogging")},
-			"fivetran_team":       				    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Team")},
-			"fivetran_team_connector_membership":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamConnectorMembership")},
-		    "fivetran_team_group_membership":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamGroupMembership")},
-			"fivetran_team_user_membership":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamUserMembership")},
+			"fivetran_connector":                   {Tok: makeResource(mainMod, "Connector")},
+			"fivetran_connector_certificates":      {Tok: makeResource(mainMod, "ConnectorCertificates")},
+			"fivetran_connector_fingerprints":      {Tok: makeResource(mainMod, "ConnectorFingerprints")},
+			"fivetran_connector_schedule":          {Tok: makeResource(mainMod, "ConnectorSchedule")},
+			"fivetran_connector_schema_config":     {Tok: makeResource(mainMod, "ConnectorSchemaConfig")},
+			"fivetran_dbt_project":                 {Tok: makeResource(mainMod, "DbtProject")},
+			"fivetran_dbt_transformation":          {Tok: makeResource(mainMod, "DbtTransformation")},
+			"fivetran_destination":                 {Tok: makeResource(mainMod, "Destination")},
+			"fivetran_destination_certificates":    {Tok: makeResource(mainMod, "DestinationCertificates")},
+			"fivetran_destination_fingerprints":    {Tok: makeResource(mainMod, "DestinationFingerprints")},
+			"fivetran_external_logging":            {Tok: makeResource(mainMod, "ExternalLogging")},
+			"fivetran_group":                       {Tok: makeResource(mainMod, "Group")},
+			"fivetran_group_users":                 {Tok: makeResource(mainMod, "GroupUsers")},
+			"fivetran_team":       				    {Tok: makeResource(mainMod, "Team")},
+			"fivetran_team_connector_membership":   {Tok: makeResource(mainMod, "TeamConnectorMembership")},
+			"fivetran_team_user_membership":        {Tok: makeResource(mainMod, "TeamUserMembership")},
+			"fivetran_user":                        {Tok: makeResource(mainMod, "User")},
+			"fivetran_webhook":                     {Tok: makeResource(mainMod, "Webhook")},
+		    "fivetran_team_group_membership":       {Tok: makeResource(mainMod, "TeamGroupMembership")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
-			"fivetran_user":                            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
-			"fivetran_users":                           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUsers")},
-			"fivetran_group":                           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroup")},
-			"fivetran_groups":                          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroups")},
-			"fivetran_group_connectors":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupConnectors")},
-        "fivetran_group_users":                         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupUsers")},
-			"fivetran_destination":                     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDestination")},
-			"fivetran_destination_certificates":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDestinationCertificates")},
-			"fivetran_destination_fingerprints":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDestinationFingerprints")},
-			"fivetran_connectors_metadata":             {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnectorsMetadata")},
-			"fivetran_connector":                       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnector")},
-			"fivetran_connector_certificates":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnectorCertificates")},
-			"fivetran_connector_fingerprints":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnectorFingerprints")},
-			"fivetran_dbt_transformation":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDbtTransformation")},
-			"fivetran_dbt_project":                     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDbtProject")},
-			"fivetran_dbt_projects":                    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDbtProjects")},
-			"fivetran_dbt_models":                      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDbtModels")},
-			"fivetran_webhook":                         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWebhook")},
-			"fivetran_webhooks":                        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWebhooks")},
-			"fivetran_external_logging":    		    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getExternalLogging")},
-			"fivetran_roles":              			    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRoles")},
-			"fivetran_metadata_schemas":    		    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getMetadataSchemas")},
-			"fivetran_metadata_tables":    		    	{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getMetadataTables")},
-			"fivetran_metadata_columns":    	    	{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getMetadataColumns")},
-			"fivetran_team":         	                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTeam")},
-			"fivetran_teams":                           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTeams")},
-			"fivetran_team_connector_memberships":      { Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTeamConnectorMemberships") },
-            "fivetran_team_group_memberships":          { Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTeamGroupMemberships") },
-            "fivetran_team_user_memberships":           { Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTeamUserMemberships") },
+			"fivetran_connector":                       {Tok: makeDataSource(mainMod, "getConnector")},
+			"fivetran_connector_certificates":          {Tok: makeDataSource(mainMod, "getConnectorCertificates")},
+			"fivetran_connector_fingerprints":          {Tok: makeDataSource(mainMod, "getConnectorFingerprints")},
+			"fivetran_connectors_metadata":             {Tok: makeDataSource(mainMod, "getConnectorsMetadata")},
+			"fivetran_dbt_models":                      {Tok: makeDataSource(mainMod, "getDbtModels")},
+			"fivetran_dbt_project":                     {Tok: makeDataSource(mainMod, "getDbtProject")},
+			"fivetran_dbt_projects":                    {Tok: makeDataSource(mainMod, "getDbtProjects")},
+			"fivetran_dbt_transformation":              {Tok: makeDataSource(mainMod, "getDbtTransformation")},
+			"fivetran_destination":                     {Tok: makeDataSource(mainMod, "getDestination")},
+			"fivetran_destination_certificates":        {Tok: makeDataSource(mainMod, "getDestinationCertificates")},
+			"fivetran_destination_fingerprints":        {Tok: makeDataSource(mainMod, "getDestinationFingerprints")},
+			"fivetran_external_logging":    		    {Tok: makeDataSource(mainMod, "getExternalLogging")},
+			"fivetran_group":                           {Tok: makeDataSource(mainMod, "getGroup")},
+			"fivetran_group_connectors":                {Tok: makeDataSource(mainMod, "getGroupConnectors")},
+			"fivetran_group_service_account":           {Tok: makeDataSource(mainMod, "getGroupServiceAccount")},
+			"fivetran_group_ssh_key":                   {Tok: makeDataSource(mainMod, "getGroupSshKey")},
+			"fivetran_groups":                          {Tok: makeDataSource(mainMod, "getGroups")},
+			"fivetran_metadata_columns":    	    	{Tok: makeDataSource(mainMod, "getMetadataColumns")},
+			"fivetran_metadata_schemas":    		    {Tok: makeDataSource(mainMod, "getMetadataSchemas")},
+			"fivetran_metadata_tables":    		    	{Tok: makeDataSource(mainMod, "getMetadataTables")},
+			"fivetran_roles":              			    {Tok: makeDataSource(mainMod, "getRoles")},
+			"fivetran_team":         	                {Tok: makeDataSource(mainMod, "getTeam")},
+			"fivetran_team_connector_memberships":      { Tok: makeDataSource(mainMod, "getTeamConnectorMemberships") },
+			"fivetran_teams":                           {Tok: makeDataSource(mainMod, "getTeams")},
+			"fivetran_user":                            {Tok: makeDataSource(mainMod, "getUser")},
+			"fivetran_users":                           {Tok: makeDataSource(mainMod, "getUsers")},
+			"fivetran_webhook":                         {Tok: makeDataSource(mainMod, "getWebhook")},
+			"fivetran_webhooks":                        {Tok: makeDataSource(mainMod, "getWebhooks")},
+            "fivetran_group_users":                     {Tok: makeDataSource(mainMod, "getGroupUsers")},
+            "fivetran_team_group_memberships":          { Tok: makeDataSource(mainMod, "getTeamGroupMemberships") },
+            "fivetran_team_user_memberships":           { Tok: makeDataSource(mainMod, "getTeamUserMemberships") },
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@footholdtech/fivetran",

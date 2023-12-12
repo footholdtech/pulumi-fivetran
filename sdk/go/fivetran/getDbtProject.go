@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a dbt Project object.
@@ -126,12 +125,6 @@ func (o LookupDbtProjectResultOutput) ToLookupDbtProjectResultOutput() LookupDbt
 
 func (o LookupDbtProjectResultOutput) ToLookupDbtProjectResultOutputWithContext(ctx context.Context) LookupDbtProjectResultOutput {
 	return o
-}
-
-func (o LookupDbtProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDbtProjectResult] {
-	return pulumix.Output[LookupDbtProjectResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of the dbt Project creation.

@@ -41,7 +41,7 @@ export interface GetUserArgs {
  */
 export interface GetUserResult {
     /**
-     * The timestamp that the user created their Fivetran account
+     * The timestamp that the user created their Fivetran account.
      */
     readonly createdAt: string;
     /**
@@ -77,7 +77,7 @@ export interface GetUserResult {
      */
     readonly picture: string;
     /**
-     * The role that you would like to assign to the user
+     * The role that you would like to assign to the user.
      */
     readonly role: string;
     /**

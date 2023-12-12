@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a list of group memberships within team object.
@@ -102,12 +101,6 @@ func (o GetTeamGroupMembershipsResultOutput) ToGetTeamGroupMembershipsResultOutp
 
 func (o GetTeamGroupMembershipsResultOutput) ToGetTeamGroupMembershipsResultOutputWithContext(ctx context.Context) GetTeamGroupMembershipsResultOutput {
 	return o
-}
-
-func (o GetTeamGroupMembershipsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamGroupMembershipsResult] {
-	return pulumix.Output[GetTeamGroupMembershipsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTeamGroupMembershipsResultOutput) Groups() GetTeamGroupMembershipsGroupArrayOutput {

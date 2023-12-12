@@ -1,18 +1,16 @@
 {
     "name": "fivetran",
-    "displayName": "Fivetran",
-    "description": "A Pulumi package for creating and managing Fivetran cloud resources.",
+    "description": "A Pulumi package for creating and managing Fivetran resources.",
     "keywords": [
         "pulumi",
-        "fivetran",
-        "category/utility"
+        "fivetran"
     ],
-    "homepage": "https://www.pulumi.com",
+    "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`fivetran` Terraform Provider](https://github.com/fivetran/terraform-provider-fivetran).",
     "repository": "https://github.com/footholdtech/pulumi-fivetran",
     "pluginDownloadURL": "github://api.github.com/footholdtech/pulumi-fivetran",
-    "publisher": "Footholdtech",
+    "publisher": "Foothold Technology",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
@@ -37,7 +35,7 @@
         },
         "nodejs": {
             "packageName": "@footholdtech/fivetran",
-            "packageDescription": "A Pulumi package for creating and managing Fivetran cloud resources.",
+            "packageDescription": "A Pulumi package for creating and managing Fivetran resources.",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/fivetran/terraform-provider-fivetran)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-fivetran` repo](https://github.com/footholdtech/pulumi-fivetran/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-fivetran` repo](https://github.com/fivetran/terraform-provider-fivetran/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
@@ -86,11 +84,7 @@
                     ]
                 }
             }
-        },
-        "defaults": [
-            "apiKey",
-            "apiSecret"
-        ]
+        }
     },
     "types": {
         "fivetran:index/ConnectorAuth:ConnectorAuth": {
@@ -99,14 +93,66 @@
                     "type": "string",
                     "secret": true
                 },
+                "awsAccessKey": {
+                    "type": "string",
+                    "secret": true
+                },
+                "awsSecretKey": {
+                    "type": "string",
+                    "secret": true
+                },
                 "clientAccess": {
                     "$ref": "#/types/fivetran:index/ConnectorAuthClientAccess:ConnectorAuthClientAccess"
+                },
+                "clientId": {
+                    "type": "string",
+                    "secret": true
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "consumerKey": {
+                    "type": "string",
+                    "secret": true
+                },
+                "consumerSecret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "keyId": {
+                    "type": "string",
+                    "secret": true
+                },
+                "oauthToken": {
+                    "type": "string",
+                    "secret": true
+                },
+                "oauthTokenSecret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "previousRefreshToken": {
+                    "type": "string",
+                    "secret": true
                 },
                 "realmId": {
                     "type": "string",
                     "secret": true
                 },
                 "refreshToken": {
+                    "type": "string",
+                    "secret": true
+                },
+                "roleArn": {
+                    "type": "string",
+                    "secret": true
+                },
+                "teamId": {
+                    "type": "string",
+                    "secret": true
+                },
+                "userAccessToken": {
                     "type": "string",
                     "secret": true
                 }
@@ -355,6 +401,10 @@
                     "type": "string",
                     "secret": true
                 },
+                "apiKeyApiSecret": {
+                    "type": "string",
+                    "secret": true
+                },
                 "apiKeys": {
                     "type": "array",
                     "items": {
@@ -389,6 +439,9 @@
                 "apiUsage": {
                     "type": "string"
                 },
+                "apiUtilizationPercentage": {
+                    "type": "string"
+                },
                 "apiVersion": {
                     "type": "string"
                 },
@@ -407,6 +460,9 @@
                     "items": {
                         "$ref": "#/types/fivetran:index/ConnectorConfigAppIdsAppsflyer:ConnectorConfigAppIdsAppsflyer"
                     }
+                },
+                "appKey": {
+                    "type": "string"
                 },
                 "appSpecificPassword": {
                     "type": "string",
@@ -725,6 +781,9 @@
                         "type": "string"
                     }
                 },
+                "distributedConnectorClusterSize": {
+                    "type": "string"
+                },
                 "domain": {
                     "type": "string"
                 },
@@ -753,6 +812,12 @@
                     "type": "string"
                 },
                 "enableArchiveLogOnly": {
+                    "type": "string"
+                },
+                "enableDataExtensionsSyncing": {
+                    "type": "string"
+                },
+                "enableDistributedConnectorMode": {
                     "type": "string"
                 },
                 "enableEnrichments": {
@@ -899,6 +964,9 @@
                 "identity": {
                     "type": "string"
                 },
+                "includeOcapiEndpoints": {
+                    "type": "string"
+                },
                 "instance": {
                     "type": "string"
                 },
@@ -918,6 +986,9 @@
                     "type": "string"
                 },
                 "isCustomApiCredentials": {
+                    "type": "string"
+                },
+                "isExternalActivitiesEndpointSelected": {
                     "type": "string"
                 },
                 "isFtps": {
@@ -980,6 +1051,9 @@
                 "latestVersion": {
                     "type": "string"
                 },
+                "limitForApiCallsToExternalActivitiesEndpoint": {
+                    "type": "string"
+                },
                 "lineSeparator": {
                     "type": "string"
                 },
@@ -1040,6 +1114,19 @@
                     "type": "string",
                     "secret": true
                 },
+                "ocapiClientId": {
+                    "type": "string"
+                },
+                "ocapiClientSecret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "ocapiCustomObjectTypes": {
+                    "type": "string"
+                },
+                "ocapiHostname": {
+                    "type": "string"
+                },
                 "onError": {
                     "type": "string"
                 },
@@ -1072,6 +1159,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "partnerCode": {
+                    "type": "string"
                 },
                 "partners": {
                     "type": "array",
@@ -1600,6 +1690,9 @@
                         "type": "string"
                     }
                 },
+                "tenant": {
+                    "type": "string"
+                },
                 "tenantId": {
                     "type": "string",
                     "secret": true
@@ -1831,6 +1924,7 @@
                         "datasource",
                         "dateGranularity",
                         "delimiter",
+                        "distributedConnectorClusterSize",
                         "domain",
                         "domainHostName",
                         "domainName",
@@ -1839,6 +1933,8 @@
                         "emptyHeader",
                         "enableAllDimensionCombinations",
                         "enableArchiveLogOnly",
+                        "enableDataExtensionsSyncing",
+                        "enableDistributedConnectorMode",
                         "enableEnrichments",
                         "enableExports",
                         "enableTde",
@@ -1870,11 +1966,13 @@
                         "homeFolder",
                         "host",
                         "identity",
+                        "includeOcapiEndpoints",
                         "instance",
                         "integrationKey",
                         "isAccountLevelConnector",
                         "isAuth2Enabled",
                         "isCustomApiCredentials",
+                        "isExternalActivitiesEndpointSelected",
                         "isFtps",
                         "isKeypair",
                         "isMultiEntityFeatureEnabled",
@@ -1889,6 +1987,7 @@
                         "key",
                         "lastSyncedChangesUtc_",
                         "latestVersion",
+                        "limitForApiCallsToExternalActivitiesEndpoint",
                         "listStrategy",
                         "loginPassword",
                         "merchantId",
@@ -2074,10 +2173,25 @@
                 "aggregate": {
                     "type": "string"
                 },
+                "baseMetricsFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "breakdown": {
+                    "type": "string"
+                },
+                "breakout": {
+                    "type": "string"
+                },
                 "conversionsReportIncluded": {
                     "type": "string"
                 },
                 "customEventsIncluded": {
+                    "type": "string"
+                },
+                "dimension": {
                     "type": "string"
                 },
                 "dimensions": {
@@ -2091,6 +2205,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "granularity": {
+                    "type": "string"
                 },
                 "level": {
                     "type": "string"
@@ -2115,6 +2232,12 @@
                 },
                 "segmentation": {
                     "type": "string"
+                },
+                "skAdMetricsFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "tableName": {
                     "type": "string"
@@ -2251,6 +2374,9 @@
                 "filterFieldName": {
                     "type": "string"
                 },
+                "filterType": {
+                    "type": "string"
+                },
                 "filterValue": {
                     "type": "string"
                 },
@@ -2264,6 +2390,9 @@
                     "type": "string"
                 },
                 "reportType": {
+                    "type": "string"
+                },
+                "rollbackWindow": {
                     "type": "string"
                 },
                 "searchTypes": {
@@ -2296,6 +2425,7 @@
                         "filter",
                         "prebuiltReport",
                         "reportType",
+                        "rollbackWindow",
                         "table"
                     ]
                 }
@@ -2610,6 +2740,10 @@
                     "type": "string",
                     "description": "Catalog name\n"
                 },
+                "clientId": {
+                    "type": "string",
+                    "description": "ClientId of your Azure Data Lake Storage\n"
+                },
                 "clusterId": {
                     "type": "string",
                     "description": "Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.\n"
@@ -2621,6 +2755,10 @@
                 "connectionType": {
                     "type": "string",
                     "description": "Connection method. Default value: `Directly`.\n"
+                },
+                "containerName": {
+                    "type": "string",
+                    "description": "Container Name of your Azure Data Lake Storage\n"
                 },
                 "createExternalTables": {
                     "type": "string",
@@ -2653,6 +2791,11 @@
                 "isPrivateKeyEncrypted": {
                     "type": "string",
                     "description": "Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.\n"
+                },
+                "lakehouseName": {
+                    "type": "string",
+                    "description": "OneLake lakehouse name\n",
+                    "secret": true
                 },
                 "passphrase": {
                     "type": "string",
@@ -2708,9 +2851,22 @@
                     "description": "Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.\n",
                     "secret": true
                 },
+                "secretValue": {
+                    "type": "string",
+                    "description": "Secret Value of your Azure Data Lake Storage\n",
+                    "secret": true
+                },
                 "serverHostName": {
                     "type": "string",
                     "description": "Server name\n"
+                },
+                "storageAccountName": {
+                    "type": "string",
+                    "description": "Storage Account Name of your Azure Data Lake Storage\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "TenantId of your Azure Data Lake Storage\n"
                 },
                 "tunnelHost": {
                     "type": "string",
@@ -2727,6 +2883,11 @@
                 "user": {
                     "type": "string",
                     "description": "Database user name\n"
+                },
+                "workspaceName": {
+                    "type": "string",
+                    "description": "OneLake workspace name\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -3162,6 +3323,10 @@
                     "type": "string",
                     "secret": true
                 },
+                "apiKeyApiSecret": {
+                    "type": "string",
+                    "secret": true
+                },
                 "apiKeys": {
                     "type": "array",
                     "items": {
@@ -3196,6 +3361,9 @@
                 "apiUsage": {
                     "type": "string"
                 },
+                "apiUtilizationPercentage": {
+                    "type": "string"
+                },
                 "apiVersion": {
                     "type": "string"
                 },
@@ -3214,6 +3382,9 @@
                     "items": {
                         "$ref": "#/types/fivetran:index/getConnectorConfigAppIdsAppsflyer:getConnectorConfigAppIdsAppsflyer"
                     }
+                },
+                "appKey": {
+                    "type": "string"
                 },
                 "appSpecificPassword": {
                     "type": "string",
@@ -3532,6 +3703,9 @@
                         "type": "string"
                     }
                 },
+                "distributedConnectorClusterSize": {
+                    "type": "string"
+                },
                 "domain": {
                     "type": "string"
                 },
@@ -3560,6 +3734,12 @@
                     "type": "string"
                 },
                 "enableArchiveLogOnly": {
+                    "type": "string"
+                },
+                "enableDataExtensionsSyncing": {
+                    "type": "string"
+                },
+                "enableDistributedConnectorMode": {
                     "type": "string"
                 },
                 "enableEnrichments": {
@@ -3706,6 +3886,9 @@
                 "identity": {
                     "type": "string"
                 },
+                "includeOcapiEndpoints": {
+                    "type": "string"
+                },
                 "instance": {
                     "type": "string"
                 },
@@ -3725,6 +3908,9 @@
                     "type": "string"
                 },
                 "isCustomApiCredentials": {
+                    "type": "string"
+                },
+                "isExternalActivitiesEndpointSelected": {
                     "type": "string"
                 },
                 "isFtps": {
@@ -3787,6 +3973,9 @@
                 "latestVersion": {
                     "type": "string"
                 },
+                "limitForApiCallsToExternalActivitiesEndpoint": {
+                    "type": "string"
+                },
                 "lineSeparator": {
                     "type": "string"
                 },
@@ -3847,6 +4036,19 @@
                     "type": "string",
                     "secret": true
                 },
+                "ocapiClientId": {
+                    "type": "string"
+                },
+                "ocapiClientSecret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "ocapiCustomObjectTypes": {
+                    "type": "string"
+                },
+                "ocapiHostname": {
+                    "type": "string"
+                },
                 "onError": {
                     "type": "string"
                 },
@@ -3879,6 +4081,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "partnerCode": {
+                    "type": "string"
                 },
                 "partners": {
                     "type": "array",
@@ -4407,6 +4612,9 @@
                         "type": "string"
                     }
                 },
+                "tenant": {
+                    "type": "string"
+                },
                 "tenantId": {
                     "type": "string",
                     "secret": true
@@ -4605,6 +4813,7 @@
                 "apiAccessToken",
                 "apiId",
                 "apiKey",
+                "apiKeyApiSecret",
                 "apiKeys",
                 "apiQuota",
                 "apiRequestsPerMinute",
@@ -4614,10 +4823,12 @@
                 "apiType",
                 "apiUrl",
                 "apiUsage",
+                "apiUtilizationPercentage",
                 "apiVersion",
                 "appId",
                 "appIds",
                 "appIdsAppsflyers",
+                "appKey",
                 "appSpecificPassword",
                 "appSyncMode",
                 "appendFileOption",
@@ -4708,6 +4919,7 @@
                 "delimiter",
                 "dimensionAttributes",
                 "dimensions",
+                "distributedConnectorClusterSize",
                 "domain",
                 "domainHostName",
                 "domainName",
@@ -4717,6 +4929,8 @@
                 "emptyHeader",
                 "enableAllDimensionCombinations",
                 "enableArchiveLogOnly",
+                "enableDataExtensionsSyncing",
+                "enableDistributedConnectorMode",
                 "enableEnrichments",
                 "enableExports",
                 "enableTde",
@@ -4760,6 +4974,7 @@
                 "hostUser",
                 "hosts",
                 "identity",
+                "includeOcapiEndpoints",
                 "instance",
                 "instanceNumber",
                 "instanceUrl",
@@ -4767,6 +4982,7 @@
                 "isAccountLevelConnector",
                 "isAuth2Enabled",
                 "isCustomApiCredentials",
+                "isExternalActivitiesEndpointSelected",
                 "isFtps",
                 "isKeypair",
                 "isMultiEntityFeatureEnabled",
@@ -4786,6 +5002,7 @@
                 "keystorePassword",
                 "lastSyncedChangesUtc_",
                 "latestVersion",
+                "limitForApiCallsToExternalActivitiesEndpoint",
                 "lineSeparator",
                 "listStrategy",
                 "listSyncMode",
@@ -4803,6 +5020,10 @@
                 "nullSequence",
                 "oauthToken",
                 "oauthTokenSecret",
+                "ocapiClientId",
+                "ocapiClientSecret",
+                "ocapiCustomObjectTypes",
+                "ocapiHostname",
                 "onError",
                 "onPremise",
                 "organization",
@@ -4811,6 +5032,7 @@
                 "packedModeTables",
                 "packingMode",
                 "pages",
+                "partnerCode",
                 "partners",
                 "passphrase",
                 "password",
@@ -4955,6 +5177,7 @@
                 "teamId",
                 "technicalAccountId",
                 "templateLabels",
+                "tenant",
                 "tenantId",
                 "testTableName",
                 "timeZone",
@@ -5100,10 +5323,25 @@
                 "aggregate": {
                     "type": "string"
                 },
+                "baseMetricsFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "breakdown": {
+                    "type": "string"
+                },
+                "breakout": {
+                    "type": "string"
+                },
                 "conversionsReportIncluded": {
                     "type": "string"
                 },
                 "customEventsIncluded": {
+                    "type": "string"
+                },
+                "dimension": {
                     "type": "string"
                 },
                 "dimensions": {
@@ -5117,6 +5355,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "granularity": {
+                    "type": "string"
                 },
                 "level": {
                     "type": "string"
@@ -5142,6 +5383,12 @@
                 "segmentation": {
                     "type": "string"
                 },
+                "skAdMetricsFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "tableName": {
                     "type": "string"
                 }
@@ -5149,16 +5396,22 @@
             "type": "object",
             "required": [
                 "aggregate",
+                "baseMetricsFields",
+                "breakdown",
+                "breakout",
                 "conversionsReportIncluded",
                 "customEventsIncluded",
+                "dimension",
                 "dimensions",
                 "eventNames",
+                "granularity",
                 "level",
                 "metrics",
                 "reportFields",
                 "reportName",
                 "reportType",
                 "segmentation",
+                "skAdMetricsFields",
                 "tableName"
             ],
             "language": {
@@ -5294,6 +5547,9 @@
                 "filterFieldName": {
                     "type": "string"
                 },
+                "filterType": {
+                    "type": "string"
+                },
                 "filterValue": {
                     "type": "string"
                 },
@@ -5307,6 +5563,9 @@
                     "type": "string"
                 },
                 "reportType": {
+                    "type": "string"
+                },
+                "rollbackWindow": {
                     "type": "string"
                 },
                 "searchTypes": {
@@ -5340,10 +5599,12 @@
                 "fields",
                 "filter",
                 "filterFieldName",
+                "filterType",
                 "filterValue",
                 "metrics",
                 "prebuiltReport",
                 "reportType",
+                "rollbackWindow",
                 "searchTypes",
                 "segmentIds",
                 "segments",
@@ -5772,6 +6033,10 @@
                     "type": "string",
                     "description": "Catalog name\n"
                 },
+                "clientId": {
+                    "type": "string",
+                    "description": "ClientId of your Azure Data Lake Storage\n"
+                },
                 "clusterId": {
                     "type": "string",
                     "description": "Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.\n"
@@ -5783,6 +6048,10 @@
                 "connectionType": {
                     "type": "string",
                     "description": "Connection method. Default value: `Directly`.\n"
+                },
+                "containerName": {
+                    "type": "string",
+                    "description": "Container Name of your Azure Data Lake Storage\n"
                 },
                 "createExternalTables": {
                     "type": "string",
@@ -5815,6 +6084,11 @@
                 "isPrivateKeyEncrypted": {
                     "type": "string",
                     "description": "Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.\n"
+                },
+                "lakehouseName": {
+                    "type": "string",
+                    "description": "OneLake lakehouse name\n",
+                    "secret": true
                 },
                 "passphrase": {
                     "type": "string",
@@ -5870,9 +6144,22 @@
                     "description": "Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.\n",
                     "secret": true
                 },
+                "secretValue": {
+                    "type": "string",
+                    "description": "Secret Value of your Azure Data Lake Storage\n",
+                    "secret": true
+                },
                 "serverHostName": {
                     "type": "string",
                     "description": "Server name\n"
+                },
+                "storageAccountName": {
+                    "type": "string",
+                    "description": "Storage Account Name of your Azure Data Lake Storage\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "TenantId of your Azure Data Lake Storage\n"
                 },
                 "tunnelHost": {
                     "type": "string",
@@ -5889,6 +6176,11 @@
                 "user": {
                     "type": "string",
                     "description": "Database user name\n"
+                },
+                "workspaceName": {
+                    "type": "string",
+                    "description": "OneLake workspace name\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -6974,7 +7266,7 @@
                 },
                 "syncFrequency": {
                     "type": "string",
-                    "description": "The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.\n"
+                    "description": "The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.\n"
                 }
             },
             "required": [
@@ -7008,7 +7300,7 @@
                 },
                 "syncFrequency": {
                     "type": "string",
-                    "description": "The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.\n"
+                    "description": "The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.\n"
                 }
             },
             "requiredInputs": [
@@ -7040,7 +7332,7 @@
                     },
                     "syncFrequency": {
                         "type": "string",
-                        "description": "The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.\n"
+                        "description": "The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.\n"
                     }
                 },
                 "type": "object"
@@ -8093,7 +8385,7 @@
             "properties": {
                 "createdAt": {
                     "type": "string",
-                    "description": "The timestamp that the user created their Fivetran account\n"
+                    "description": "The timestamp that the user created their Fivetran account.\n"
                 },
                 "email": {
                     "type": "string",
@@ -8111,9 +8403,6 @@
                     "type": "boolean",
                     "description": "The field indicates whether the user has been invited to your account.\n"
                 },
-                "lastUpdated": {
-                    "type": "string"
-                },
                 "loggedInAt": {
                     "type": "string",
                     "description": "The last time that the user has logged into their Fivetran account.\n"
@@ -8128,7 +8417,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "The role that you would like to assign to the user\n"
+                    "description": "The role that you would like to assign to the user.\n"
                 },
                 "verified": {
                     "type": "boolean",
@@ -8141,15 +8430,13 @@
                 "familyName",
                 "givenName",
                 "invited",
-                "lastUpdated",
                 "loggedInAt",
                 "verified"
             ],
             "inputProperties": {
                 "email": {
                     "type": "string",
-                    "description": "The email address that the user has associated with their user profile.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The email address that the user has associated with their user profile.\n"
                 },
                 "familyName": {
                     "type": "string",
@@ -8158,6 +8445,10 @@
                 "givenName": {
                     "type": "string",
                     "description": "The first name of the user.\n"
+                },
+                "invited": {
+                    "type": "boolean",
+                    "description": "The field indicates whether the user has been invited to your account.\n"
                 },
                 "phone": {
                     "type": "string",
@@ -8169,7 +8460,11 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "The role that you would like to assign to the user\n"
+                    "description": "The role that you would like to assign to the user.\n"
+                },
+                "verified": {
+                    "type": "boolean",
+                    "description": "The field indicates whether the user has verified their email address in the account creation process.\n"
                 }
             },
             "requiredInputs": [
@@ -8182,12 +8477,11 @@
                 "properties": {
                     "createdAt": {
                         "type": "string",
-                        "description": "The timestamp that the user created their Fivetran account\n"
+                        "description": "The timestamp that the user created their Fivetran account.\n"
                     },
                     "email": {
                         "type": "string",
-                        "description": "The email address that the user has associated with their user profile.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The email address that the user has associated with their user profile.\n"
                     },
                     "familyName": {
                         "type": "string",
@@ -8200,9 +8494,6 @@
                     "invited": {
                         "type": "boolean",
                         "description": "The field indicates whether the user has been invited to your account.\n"
-                    },
-                    "lastUpdated": {
-                        "type": "string"
                     },
                     "loggedInAt": {
                         "type": "string",
@@ -8218,7 +8509,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "The role that you would like to assign to the user\n"
+                        "description": "The role that you would like to assign to the user.\n"
                     },
                     "verified": {
                         "type": "boolean",
@@ -9200,6 +9491,74 @@
                 ]
             }
         },
+        "fivetran:index/getGroupServiceAccount:getGroupServiceAccount": {
+            "description": "This data source returns Fivetran service account associated with the group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myGroupServiceAccount = fivetran.getGroupServiceAccount({\n    id: \"group_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_group_service_account = fivetran.get_group_service_account(id=\"group_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroupServiceAccount = Fivetran.GetGroupServiceAccount.Invoke(new()\n    {\n        Id = \"group_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetGroupServiceAccount(ctx, \u0026fivetran.GetGroupServiceAccountArgs{\n\t\t\tId: \"group_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupServiceAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myGroupServiceAccount = FivetranFunctions.getGroupServiceAccount(GetGroupServiceAccountArgs.builder()\n            .id(\"group_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myGroupServiceAccount:\n    fn::invoke:\n      Function: fivetran:getGroupServiceAccount\n      Arguments:\n        id: group_id\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroupServiceAccount.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the group within the Fivetran system.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroupServiceAccount.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the group within the Fivetran system.\n"
+                    },
+                    "serviceAccount": {
+                        "type": "string",
+                        "description": "Fivetran service account associated with the group.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "serviceAccount"
+                ]
+            }
+        },
+        "fivetran:index/getGroupSshKey:getGroupSshKey": {
+            "description": "This data source returns public key from SSH key pair associated with the group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myGroupPublicKey = fivetran.getGroupSshKey({\n    id: \"group_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_group_public_key = fivetran.get_group_ssh_key(id=\"group_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroupPublicKey = Fivetran.GetGroupSshKey.Invoke(new()\n    {\n        Id = \"group_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetGroupSshKey(ctx, \u0026fivetran.GetGroupSshKeyArgs{\n\t\t\tId: \"group_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupSshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myGroupPublicKey = FivetranFunctions.getGroupSshKey(GetGroupSshKeyArgs.builder()\n            .id(\"group_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myGroupPublicKey:\n    fn::invoke:\n      Function: fivetran:getGroupSshKey\n      Arguments:\n        id: group_id\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroupSshKey.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the group within the Fivetran system.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroupSshKey.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the group within the Fivetran system.\n"
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "Public key from SSH key pair associated with the group.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "publicKey"
+                ]
+            }
+        },
         "fivetran:index/getGroupUsers:getGroupUsers": {
             "description": "This data source returns a list of information about all users within a group in your Fivetran account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst groupUsers = fivetran.getGroupUsers({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ngroup_users = fivetran.get_group_users(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var groupUsers = Fivetran.GetGroupUsers.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupGroupUsers(ctx, \u0026fivetran.LookupGroupUsersArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupUsersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var groupUsers = FivetranFunctions.getGroupUsers(GetGroupUsersArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  groupUsers:\n    fn::invoke:\n      Function: fivetran:getGroupUsers\n      Arguments:\n        id: anonymous_mystery\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -9675,7 +10034,7 @@
                 "properties": {
                     "createdAt": {
                         "type": "string",
-                        "description": "The timestamp that the user created their Fivetran account\n"
+                        "description": "The timestamp that the user created their Fivetran account.\n"
                     },
                     "email": {
                         "type": "string",
@@ -9711,7 +10070,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "The role that you would like to assign to the user\n"
+                        "description": "The role that you would like to assign to the user.\n"
                     },
                     "verified": {
                         "type": "boolean",

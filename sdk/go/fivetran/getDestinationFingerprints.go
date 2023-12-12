@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a list of SSH fingerprints approved for specified destination.
@@ -102,12 +101,6 @@ func (o LookupDestinationFingerprintsResultOutput) ToLookupDestinationFingerprin
 
 func (o LookupDestinationFingerprintsResultOutput) ToLookupDestinationFingerprintsResultOutputWithContext(ctx context.Context) LookupDestinationFingerprintsResultOutput {
 	return o
-}
-
-func (o LookupDestinationFingerprintsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDestinationFingerprintsResult] {
-	return pulumix.Output[LookupDestinationFingerprintsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the target destination within the Fivetran system.

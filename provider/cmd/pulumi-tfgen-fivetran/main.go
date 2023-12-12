@@ -16,11 +16,9 @@ package main
 
 import (
 	fivetran "github.com/footholdtech/pulumi-fivetran/provider"
-	"github.com/footholdtech/pulumi-fivetran/provider/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+    "github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
 func main() {
-	// Modify the path to point to the new provider
-	tfgen.Main("fivetran", version.Version, fivetran.Provider())
+	tfgen.MainWithMuxer("fivetran", fivetran.Provider())
 }

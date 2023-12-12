@@ -56,7 +56,7 @@ namespace Footholdtech.Fivetran
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The timestamp that the user created their Fivetran account
+        /// The timestamp that the user created their Fivetran account.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -85,9 +85,6 @@ namespace Footholdtech.Fivetran
         [Output("invited")]
         public Output<bool> Invited { get; private set; } = null!;
 
-        [Output("lastUpdated")]
-        public Output<string> LastUpdated { get; private set; } = null!;
-
         /// <summary>
         /// The last time that the user has logged into their Fivetran account.
         /// </summary>
@@ -107,7 +104,7 @@ namespace Footholdtech.Fivetran
         public Output<string?> Picture { get; private set; } = null!;
 
         /// <summary>
-        /// The role that you would like to assign to the user
+        /// The role that you would like to assign to the user.
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
@@ -184,6 +181,12 @@ namespace Footholdtech.Fivetran
         public Input<string> GivenName { get; set; } = null!;
 
         /// <summary>
+        /// The field indicates whether the user has been invited to your account.
+        /// </summary>
+        [Input("invited")]
+        public Input<bool>? Invited { get; set; }
+
+        /// <summary>
         /// The phone number of the user.
         /// </summary>
         [Input("phone")]
@@ -196,10 +199,16 @@ namespace Footholdtech.Fivetran
         public Input<string>? Picture { get; set; }
 
         /// <summary>
-        /// The role that you would like to assign to the user
+        /// The role that you would like to assign to the user.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
+
+        /// <summary>
+        /// The field indicates whether the user has verified their email address in the account creation process.
+        /// </summary>
+        [Input("verified")]
+        public Input<bool>? Verified { get; set; }
 
         public UserArgs()
         {
@@ -210,7 +219,7 @@ namespace Footholdtech.Fivetran
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The timestamp that the user created their Fivetran account
+        /// The timestamp that the user created their Fivetran account.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -239,9 +248,6 @@ namespace Footholdtech.Fivetran
         [Input("invited")]
         public Input<bool>? Invited { get; set; }
 
-        [Input("lastUpdated")]
-        public Input<string>? LastUpdated { get; set; }
-
         /// <summary>
         /// The last time that the user has logged into their Fivetran account.
         /// </summary>
@@ -261,7 +267,7 @@ namespace Footholdtech.Fivetran
         public Input<string>? Picture { get; set; }
 
         /// <summary>
-        /// The role that you would like to assign to the user
+        /// The role that you would like to assign to the user.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## ---
@@ -162,12 +161,6 @@ func (i *ConnectorSchemaConfig) ToConnectorSchemaConfigOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigOutput)
 }
 
-func (i *ConnectorSchemaConfig) ToOutput(ctx context.Context) pulumix.Output[*ConnectorSchemaConfig] {
-	return pulumix.Output[*ConnectorSchemaConfig]{
-		OutputState: i.ToConnectorSchemaConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorSchemaConfigArrayInput is an input type that accepts ConnectorSchemaConfigArray and ConnectorSchemaConfigArrayOutput values.
 // You can construct a concrete instance of `ConnectorSchemaConfigArrayInput` via:
 //
@@ -191,12 +184,6 @@ func (i ConnectorSchemaConfigArray) ToConnectorSchemaConfigArrayOutput() Connect
 
 func (i ConnectorSchemaConfigArray) ToConnectorSchemaConfigArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigArrayOutput)
-}
-
-func (i ConnectorSchemaConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectorSchemaConfig] {
-	return pulumix.Output[[]*ConnectorSchemaConfig]{
-		OutputState: i.ToConnectorSchemaConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectorSchemaConfigMapInput is an input type that accepts ConnectorSchemaConfigMap and ConnectorSchemaConfigMapOutput values.
@@ -224,12 +211,6 @@ func (i ConnectorSchemaConfigMap) ToConnectorSchemaConfigMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigMapOutput)
 }
 
-func (i ConnectorSchemaConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectorSchemaConfig] {
-	return pulumix.Output[map[string]*ConnectorSchemaConfig]{
-		OutputState: i.ToConnectorSchemaConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorSchemaConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectorSchemaConfigOutput) ElementType() reflect.Type {
@@ -242,12 +223,6 @@ func (o ConnectorSchemaConfigOutput) ToConnectorSchemaConfigOutput() ConnectorSc
 
 func (o ConnectorSchemaConfigOutput) ToConnectorSchemaConfigOutputWithContext(ctx context.Context) ConnectorSchemaConfigOutput {
 	return o
-}
-
-func (o ConnectorSchemaConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorSchemaConfig] {
-	return pulumix.Output[*ConnectorSchemaConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the connector within the Fivetran system.
@@ -277,12 +252,6 @@ func (o ConnectorSchemaConfigArrayOutput) ToConnectorSchemaConfigArrayOutputWith
 	return o
 }
 
-func (o ConnectorSchemaConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectorSchemaConfig] {
-	return pulumix.Output[[]*ConnectorSchemaConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorSchemaConfigArrayOutput) Index(i pulumi.IntInput) ConnectorSchemaConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectorSchemaConfig {
 		return vs[0].([]*ConnectorSchemaConfig)[vs[1].(int)]
@@ -301,12 +270,6 @@ func (o ConnectorSchemaConfigMapOutput) ToConnectorSchemaConfigMapOutput() Conne
 
 func (o ConnectorSchemaConfigMapOutput) ToConnectorSchemaConfigMapOutputWithContext(ctx context.Context) ConnectorSchemaConfigMapOutput {
 	return o
-}
-
-func (o ConnectorSchemaConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectorSchemaConfig] {
-	return pulumix.Output[map[string]*ConnectorSchemaConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorSchemaConfigMapOutput) MapIndex(k pulumi.StringInput) ConnectorSchemaConfigOutput {

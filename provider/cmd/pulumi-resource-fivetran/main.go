@@ -17,16 +17,16 @@
 package main
 
 import (
+	"context"
 	_ "embed"
+
 	fivetran "github.com/footholdtech/pulumi-fivetran/provider"
-	"github.com/footholdtech/pulumi-fivetran/provider/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 )
 
 //go:embed schema-embed.json
 var pulumiSchema []byte
 
 func main() {
-	// Modify the path to point to the new provider
-	tfbridge.Main("fivetran", version.Version, fivetran.Provider(), pulumiSchema)
+	tfbridge.MainWithMuxer(context.Background(), "fivetran", fivetran.Provider(), pulumiSchema)
 }

@@ -57,6 +57,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string ApiAccessToken;
         public readonly string ApiId;
         public readonly string ApiKey;
+        public readonly string ApiKeyApiSecret;
         public readonly ImmutableArray<string> ApiKeys;
         public readonly string ApiQuota;
         public readonly string ApiRequestsPerMinute;
@@ -66,10 +67,12 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string ApiType;
         public readonly string ApiUrl;
         public readonly string ApiUsage;
+        public readonly string ApiUtilizationPercentage;
         public readonly string ApiVersion;
         public readonly string AppId;
         public readonly ImmutableArray<string> AppIds;
         public readonly ImmutableArray<Outputs.GetConnectorConfigAppIdsAppsflyerResult> AppIdsAppsflyers;
+        public readonly string AppKey;
         public readonly string AppSpecificPassword;
         public readonly string AppSyncMode;
         public readonly string AppendFileOption;
@@ -160,6 +163,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string Delimiter;
         public readonly ImmutableArray<string> DimensionAttributes;
         public readonly ImmutableArray<string> Dimensions;
+        public readonly string DistributedConnectorClusterSize;
         public readonly string Domain;
         public readonly string DomainHostName;
         public readonly string DomainName;
@@ -169,6 +173,8 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string EmptyHeader;
         public readonly string EnableAllDimensionCombinations;
         public readonly string EnableArchiveLogOnly;
+        public readonly string EnableDataExtensionsSyncing;
+        public readonly string EnableDistributedConnectorMode;
         public readonly string EnableEnrichments;
         public readonly string EnableExports;
         public readonly string EnableTde;
@@ -212,6 +218,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string HostUser;
         public readonly ImmutableArray<string> Hosts;
         public readonly string Identity;
+        public readonly string IncludeOcapiEndpoints;
         public readonly string Instance;
         public readonly string InstanceNumber;
         public readonly string InstanceUrl;
@@ -219,6 +226,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string IsAccountLevelConnector;
         public readonly string IsAuth2Enabled;
         public readonly string IsCustomApiCredentials;
+        public readonly string IsExternalActivitiesEndpointSelected;
         public readonly string IsFtps;
         public readonly string IsKeypair;
         public readonly string IsMultiEntityFeatureEnabled;
@@ -238,6 +246,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string KeystorePassword;
         public readonly string LastSyncedChangesUtc_;
         public readonly string LatestVersion;
+        public readonly string LimitForApiCallsToExternalActivitiesEndpoint;
         public readonly string LineSeparator;
         public readonly string ListStrategy;
         public readonly string ListSyncMode;
@@ -255,6 +264,10 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string NullSequence;
         public readonly string OauthToken;
         public readonly string OauthTokenSecret;
+        public readonly string OcapiClientId;
+        public readonly string OcapiClientSecret;
+        public readonly string OcapiCustomObjectTypes;
+        public readonly string OcapiHostname;
         public readonly string OnError;
         public readonly string OnPremise;
         public readonly string Organization;
@@ -263,6 +276,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> PackedModeTables;
         public readonly string PackingMode;
         public readonly ImmutableArray<string> Pages;
+        public readonly string PartnerCode;
         public readonly ImmutableArray<string> Partners;
         public readonly string Passphrase;
         public readonly string Password;
@@ -407,6 +421,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string TeamId;
         public readonly string TechnicalAccountId;
         public readonly ImmutableArray<string> TemplateLabels;
+        public readonly string Tenant;
         public readonly string TenantId;
         public readonly string TestTableName;
         public readonly string TimeZone;
@@ -542,6 +557,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string apiKey,
 
+            string apiKeyApiSecret,
+
             ImmutableArray<string> apiKeys,
 
             string apiQuota,
@@ -560,6 +577,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string apiUsage,
 
+            string apiUtilizationPercentage,
+
             string apiVersion,
 
             string appId,
@@ -567,6 +586,8 @@ namespace Footholdtech.Fivetran.Outputs
             ImmutableArray<string> appIds,
 
             ImmutableArray<Outputs.GetConnectorConfigAppIdsAppsflyerResult> appIdsAppsflyers,
+
+            string appKey,
 
             string appSpecificPassword,
 
@@ -748,6 +769,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             ImmutableArray<string> dimensions,
 
+            string distributedConnectorClusterSize,
+
             string domain,
 
             string domainHostName,
@@ -765,6 +788,10 @@ namespace Footholdtech.Fivetran.Outputs
             string enableAllDimensionCombinations,
 
             string enableArchiveLogOnly,
+
+            string enableDataExtensionsSyncing,
+
+            string enableDistributedConnectorMode,
 
             string enableEnrichments,
 
@@ -852,6 +879,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string identity,
 
+            string includeOcapiEndpoints,
+
             string instance,
 
             string instanceNumber,
@@ -865,6 +894,8 @@ namespace Footholdtech.Fivetran.Outputs
             string isAuth2Enabled,
 
             string isCustomApiCredentials,
+
+            string isExternalActivitiesEndpointSelected,
 
             string isFtps,
 
@@ -904,6 +935,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string latestVersion,
 
+            string limitForApiCallsToExternalActivitiesEndpoint,
+
             string lineSeparator,
 
             string listStrategy,
@@ -938,6 +971,14 @@ namespace Footholdtech.Fivetran.Outputs
 
             string oauthTokenSecret,
 
+            string ocapiClientId,
+
+            string ocapiClientSecret,
+
+            string ocapiCustomObjectTypes,
+
+            string ocapiHostname,
+
             string onError,
 
             string onPremise,
@@ -953,6 +994,8 @@ namespace Footholdtech.Fivetran.Outputs
             string packingMode,
 
             ImmutableArray<string> pages,
+
+            string partnerCode,
 
             ImmutableArray<string> partners,
 
@@ -1242,6 +1285,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             ImmutableArray<string> templateLabels,
 
+            string tenant,
+
             string tenantId,
 
             string testTableName,
@@ -1377,6 +1422,7 @@ namespace Footholdtech.Fivetran.Outputs
             ApiAccessToken = apiAccessToken;
             ApiId = apiId;
             ApiKey = apiKey;
+            ApiKeyApiSecret = apiKeyApiSecret;
             ApiKeys = apiKeys;
             ApiQuota = apiQuota;
             ApiRequestsPerMinute = apiRequestsPerMinute;
@@ -1386,10 +1432,12 @@ namespace Footholdtech.Fivetran.Outputs
             ApiType = apiType;
             ApiUrl = apiUrl;
             ApiUsage = apiUsage;
+            ApiUtilizationPercentage = apiUtilizationPercentage;
             ApiVersion = apiVersion;
             AppId = appId;
             AppIds = appIds;
             AppIdsAppsflyers = appIdsAppsflyers;
+            AppKey = appKey;
             AppSpecificPassword = appSpecificPassword;
             AppSyncMode = appSyncMode;
             AppendFileOption = appendFileOption;
@@ -1480,6 +1528,7 @@ namespace Footholdtech.Fivetran.Outputs
             Delimiter = delimiter;
             DimensionAttributes = dimensionAttributes;
             Dimensions = dimensions;
+            DistributedConnectorClusterSize = distributedConnectorClusterSize;
             Domain = domain;
             DomainHostName = domainHostName;
             DomainName = domainName;
@@ -1489,6 +1538,8 @@ namespace Footholdtech.Fivetran.Outputs
             EmptyHeader = emptyHeader;
             EnableAllDimensionCombinations = enableAllDimensionCombinations;
             EnableArchiveLogOnly = enableArchiveLogOnly;
+            EnableDataExtensionsSyncing = enableDataExtensionsSyncing;
+            EnableDistributedConnectorMode = enableDistributedConnectorMode;
             EnableEnrichments = enableEnrichments;
             EnableExports = enableExports;
             EnableTde = enableTde;
@@ -1532,6 +1583,7 @@ namespace Footholdtech.Fivetran.Outputs
             HostUser = hostUser;
             Hosts = hosts;
             Identity = identity;
+            IncludeOcapiEndpoints = includeOcapiEndpoints;
             Instance = instance;
             InstanceNumber = instanceNumber;
             InstanceUrl = instanceUrl;
@@ -1539,6 +1591,7 @@ namespace Footholdtech.Fivetran.Outputs
             IsAccountLevelConnector = isAccountLevelConnector;
             IsAuth2Enabled = isAuth2Enabled;
             IsCustomApiCredentials = isCustomApiCredentials;
+            IsExternalActivitiesEndpointSelected = isExternalActivitiesEndpointSelected;
             IsFtps = isFtps;
             IsKeypair = isKeypair;
             IsMultiEntityFeatureEnabled = isMultiEntityFeatureEnabled;
@@ -1558,6 +1611,7 @@ namespace Footholdtech.Fivetran.Outputs
             KeystorePassword = keystorePassword;
             LastSyncedChangesUtc_ = lastSyncedChangesUtc_;
             LatestVersion = latestVersion;
+            LimitForApiCallsToExternalActivitiesEndpoint = limitForApiCallsToExternalActivitiesEndpoint;
             LineSeparator = lineSeparator;
             ListStrategy = listStrategy;
             ListSyncMode = listSyncMode;
@@ -1575,6 +1629,10 @@ namespace Footholdtech.Fivetran.Outputs
             NullSequence = nullSequence;
             OauthToken = oauthToken;
             OauthTokenSecret = oauthTokenSecret;
+            OcapiClientId = ocapiClientId;
+            OcapiClientSecret = ocapiClientSecret;
+            OcapiCustomObjectTypes = ocapiCustomObjectTypes;
+            OcapiHostname = ocapiHostname;
             OnError = onError;
             OnPremise = onPremise;
             Organization = organization;
@@ -1583,6 +1641,7 @@ namespace Footholdtech.Fivetran.Outputs
             PackedModeTables = packedModeTables;
             PackingMode = packingMode;
             Pages = pages;
+            PartnerCode = partnerCode;
             Partners = partners;
             Passphrase = passphrase;
             Password = password;
@@ -1727,6 +1786,7 @@ namespace Footholdtech.Fivetran.Outputs
             TeamId = teamId;
             TechnicalAccountId = technicalAccountId;
             TemplateLabels = templateLabels;
+            Tenant = tenant;
             TenantId = tenantId;
             TestTableName = testTableName;
             TimeZone = timeZone;

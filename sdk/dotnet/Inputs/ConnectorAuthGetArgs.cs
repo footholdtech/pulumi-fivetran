@@ -25,8 +25,128 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        [Input("awsAccessKey")]
+        private Input<string>? _awsAccessKey;
+        public Input<string>? AwsAccessKey
+        {
+            get => _awsAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _awsAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("awsSecretKey")]
+        private Input<string>? _awsSecretKey;
+        public Input<string>? AwsSecretKey
+        {
+            get => _awsSecretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _awsSecretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("clientAccess")]
         public Input<Inputs.ConnectorAuthClientAccessGetArgs>? ClientAccess { get; set; }
+
+        [Input("clientId")]
+        private Input<string>? _clientId;
+        public Input<string>? ClientId
+        {
+            get => _clientId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("consumerKey")]
+        private Input<string>? _consumerKey;
+        public Input<string>? ConsumerKey
+        {
+            get => _consumerKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _consumerKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("consumerSecret")]
+        private Input<string>? _consumerSecret;
+        public Input<string>? ConsumerSecret
+        {
+            get => _consumerSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _consumerSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("keyId")]
+        private Input<string>? _keyId;
+        public Input<string>? KeyId
+        {
+            get => _keyId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("oauthToken")]
+        private Input<string>? _oauthToken;
+        public Input<string>? OauthToken
+        {
+            get => _oauthToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("oauthTokenSecret")]
+        private Input<string>? _oauthTokenSecret;
+        public Input<string>? OauthTokenSecret
+        {
+            get => _oauthTokenSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthTokenSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("previousRefreshToken")]
+        private Input<string>? _previousRefreshToken;
+        public Input<string>? PreviousRefreshToken
+        {
+            get => _previousRefreshToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _previousRefreshToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("realmId")]
         private Input<string>? _realmId;
@@ -49,6 +169,42 @@ namespace Footholdtech.Fivetran.Inputs
             {
                 var emptySecret = Output.CreateSecret(0);
                 _refreshToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("roleArn")]
+        private Input<string>? _roleArn;
+        public Input<string>? RoleArn
+        {
+            get => _roleArn;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _roleArn = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("teamId")]
+        private Input<string>? _teamId;
+        public Input<string>? TeamId
+        {
+            get => _teamId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _teamId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("userAccessToken")]
+        private Input<string>? _userAccessToken;
+        public Input<string>? UserAccessToken
+        {
+            get => _userAccessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _userAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 

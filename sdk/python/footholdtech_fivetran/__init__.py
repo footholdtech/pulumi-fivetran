@@ -30,6 +30,8 @@ from .get_destination_fingerprints import *
 from .get_external_logging import *
 from .get_group import *
 from .get_group_connectors import *
+from .get_group_service_account import *
+from .get_group_ssh_key import *
 from .get_group_users import *
 from .get_groups import *
 from .get_metadata_columns import *

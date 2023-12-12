@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Footholdtech</Authors>
-    <Company>Footholdtech</Company>
-    <Description>A Pulumi package for creating and managing Fivetran cloud resources.</Description>
+    <Authors>Foothold Technology</Authors>
+    <Company>Foothold Technology</Company>
+    <Description>A Pulumi package for creating and managing Fivetran resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://www.pulumi.com</PackageProjectUrl>
+    <PackageProjectUrl>https://pulumi.io</PackageProjectUrl>
     <RepositoryUrl>https://github.com/footholdtech/pulumi-fivetran</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
 

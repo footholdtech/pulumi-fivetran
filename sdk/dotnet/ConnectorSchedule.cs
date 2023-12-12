@@ -100,7 +100,7 @@ namespace Footholdtech.Fivetran
         public Output<string> ScheduleType { get; private set; } = null!;
 
         /// <summary>
-        /// The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         /// </summary>
         [Output("syncFrequency")]
         public Output<string> SyncFrequency { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Footholdtech.Fivetran
         public Input<string>? ScheduleType { get; set; }
 
         /// <summary>
-        /// The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         /// </summary>
         [Input("syncFrequency")]
         public Input<string>? SyncFrequency { get; set; }
@@ -227,7 +227,7 @@ namespace Footholdtech.Fivetran
         public Input<string>? ScheduleType { get; set; }
 
         /// <summary>
-        /// The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         /// </summary>
         [Input("syncFrequency")]
         public Input<string>? SyncFrequency { get; set; }

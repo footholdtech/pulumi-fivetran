@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a group object.
@@ -101,12 +100,6 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOu
 
 func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
 	return o
-}
-
-func (o LookupGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupResult] {
-	return pulumix.Output[LookupGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of when the group was created in your account.

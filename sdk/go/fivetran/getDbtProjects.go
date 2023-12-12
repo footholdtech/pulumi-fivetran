@@ -9,7 +9,6 @@ import (
 
 	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source returns a list of all dbt Projects within your Fivetran account.
@@ -94,12 +93,6 @@ func (o GetDbtProjectsResultOutput) ToGetDbtProjectsResultOutput() GetDbtProject
 
 func (o GetDbtProjectsResultOutput) ToGetDbtProjectsResultOutputWithContext(ctx context.Context) GetDbtProjectsResultOutput {
 	return o
-}
-
-func (o GetDbtProjectsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbtProjectsResult] {
-	return pulumix.Output[GetDbtProjectsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.
