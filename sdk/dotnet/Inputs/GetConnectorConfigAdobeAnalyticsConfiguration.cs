@@ -15,6 +15,11 @@ namespace Footholdtech.Fivetran.Inputs
     {
         [Input("calculatedMetrics", required: true)]
         private List<string>? _calculatedMetrics;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: The calculated_metrics that you want to sync.
+        /// </summary>
         public List<string> CalculatedMetrics
         {
             get => _calculatedMetrics ?? (_calculatedMetrics = new List<string>());
@@ -23,6 +28,11 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("elements", required: true)]
         private List<string>? _elements;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: The elements that you want to sync.
+        /// </summary>
         public List<string> Elements
         {
             get => _elements ?? (_elements = new List<string>());
@@ -31,6 +41,11 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("metrics", required: true)]
         private List<string>? _metrics;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: The metrics that you want to sync.
+        /// </summary>
         public List<string> Metrics
         {
             get => _metrics ?? (_metrics = new List<string>());
@@ -39,6 +54,11 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("reportSuites", required: true)]
         private List<string>? _reportSuites;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: Specific report suites to sync. Must be populated if `sync_mode` is set to `SpecificReportSuites`.
+        /// </summary>
         public List<string> ReportSuites
         {
             get => _reportSuites ?? (_reportSuites = new List<string>());
@@ -47,15 +67,28 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("segments", required: true)]
         private List<string>? _segments;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: The segments that you want to sync.
+        /// </summary>
         public List<string> Segments
         {
             get => _segments ?? (_segments = new List<string>());
             set => _segments = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: Whether to sync all report suites or specific report suites. Default value: `AllReportSuites` .
+        /// </summary>
         [Input("syncMode", required: true)]
         public string SyncMode { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: The table name unique within the schema to which connector will sync the data. Required for connector creation.
+        /// </summary>
         [Input("table", required: true)]
         public string Table { get; set; } = null!;
 

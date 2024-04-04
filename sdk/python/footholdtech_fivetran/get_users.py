@@ -62,12 +62,14 @@ def get_users(users: Optional[Sequence[pulumi.InputType['GetUsersUserArgs']]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     users = fivetran.get_users()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['users'] = users
@@ -87,11 +89,13 @@ def get_users_output(users: Optional[pulumi.Input[Optional[Sequence[pulumi.Input
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     users = fivetran.get_users()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

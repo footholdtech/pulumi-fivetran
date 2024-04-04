@@ -15,6 +15,11 @@ namespace Footholdtech.Fivetran.Inputs
     {
         [Input("apiKey")]
         private Input<string>? _apiKey;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amplitude`: The API key of the project.
+        /// </summary>
         public Input<string>? ApiKey
         {
             get => _apiKey;
@@ -25,11 +30,20 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amplitude`: The project name you wish to use with Fivetran.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         [Input("secretKey")]
         private Input<string>? _secretKey;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amplitude`: The secret key of the project.
+        /// </summary>
         public Input<string>? SecretKey
         {
             get => _secretKey;

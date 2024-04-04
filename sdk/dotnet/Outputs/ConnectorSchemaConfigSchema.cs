@@ -17,7 +17,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// The boolean value specifying whether the sync for the schema into the destination is enabled.
         /// </summary>
-        public readonly string? Enabled;
+        public readonly bool? Enabled;
         /// <summary>
         /// The schema name within your destination in accordance with Fivetran conventional rules.
         /// </summary>
@@ -26,7 +26,7 @@ namespace Footholdtech.Fivetran.Outputs
 
         [OutputConstructor]
         private ConnectorSchemaConfigSchema(
-            string? enabled,
+            bool? enabled,
 
             string name,
 

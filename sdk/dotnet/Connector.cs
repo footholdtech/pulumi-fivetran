@@ -22,31 +22,28 @@ namespace Footholdtech.Fivetran
         public Output<Outputs.ConnectorAuth?> Auth { get; private set; } = null!;
 
         [Output("config")]
-        public Output<Outputs.ConnectorConfig> Config { get; private set; } = null!;
+        public Output<Outputs.ConnectorConfig?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the user who has created the connector in your account
+        /// The unique identifier of the user who has created the connector in your account.
         /// </summary>
         [Output("connectedBy")]
         public Output<string> ConnectedBy { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp of the time the connector was created in your account
+        /// The timestamp of the time the connector was created in your account.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         [Output("destinationSchema")]
-        public Output<Outputs.ConnectorDestinationSchema> DestinationSchema { get; private set; } = null!;
+        public Output<Outputs.ConnectorDestinationSchema?> DestinationSchema { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier for the Group (Destination) within the Fivetran system.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
-
-        [Output("lastUpdated")]
-        public Output<string> LastUpdated { get; private set; } = null!;
 
         /// <summary>
         /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
@@ -59,13 +56,16 @@ namespace Footholdtech.Fivetran
         /// Specifies whether the setup tests should be run automatically. The default value is TRUE.
         /// </summary>
         [Output("runSetupTests")]
-        public Output<string?> RunSetupTests { get; private set; } = null!;
+        public Output<bool> RunSetupTests { get; private set; } = null!;
 
         /// <summary>
-        /// The connector type name within the Fivetran system.
+        /// The connector type id within the Fivetran system.
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.ConnectorTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
@@ -73,7 +73,7 @@ namespace Footholdtech.Fivetran
         /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Output("trustCertificates")]
-        public Output<string?> TrustCertificates { get; private set; } = null!;
+        public Output<bool> TrustCertificates { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
@@ -81,7 +81,7 @@ namespace Footholdtech.Fivetran
         /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Output("trustFingerprints")]
-        public Output<string?> TrustFingerprints { get; private set; } = null!;
+        public Output<bool> TrustFingerprints { get; private set; } = null!;
 
 
         /// <summary>
@@ -136,8 +136,8 @@ namespace Footholdtech.Fivetran
         [Input("config")]
         public Input<Inputs.ConnectorConfigArgs>? Config { get; set; }
 
-        [Input("destinationSchema", required: true)]
-        public Input<Inputs.ConnectorDestinationSchemaArgs> DestinationSchema { get; set; } = null!;
+        [Input("destinationSchema")]
+        public Input<Inputs.ConnectorDestinationSchemaArgs>? DestinationSchema { get; set; }
 
         /// <summary>
         /// The unique identifier for the Group (Destination) within the Fivetran system.
@@ -149,13 +149,16 @@ namespace Footholdtech.Fivetran
         /// Specifies whether the setup tests should be run automatically. The default value is TRUE.
         /// </summary>
         [Input("runSetupTests")]
-        public Input<string>? RunSetupTests { get; set; }
+        public Input<bool>? RunSetupTests { get; set; }
 
         /// <summary>
-        /// The connector type name within the Fivetran system.
+        /// The connector type id within the Fivetran system.
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.ConnectorTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
@@ -163,7 +166,7 @@ namespace Footholdtech.Fivetran
         /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Input("trustCertificates")]
-        public Input<string>? TrustCertificates { get; set; }
+        public Input<bool>? TrustCertificates { get; set; }
 
         /// <summary>
         /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
@@ -171,7 +174,7 @@ namespace Footholdtech.Fivetran
         /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Input("trustFingerprints")]
-        public Input<string>? TrustFingerprints { get; set; }
+        public Input<bool>? TrustFingerprints { get; set; }
 
         public ConnectorArgs()
         {
@@ -188,13 +191,13 @@ namespace Footholdtech.Fivetran
         public Input<Inputs.ConnectorConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// The unique identifier of the user who has created the connector in your account
+        /// The unique identifier of the user who has created the connector in your account.
         /// </summary>
         [Input("connectedBy")]
         public Input<string>? ConnectedBy { get; set; }
 
         /// <summary>
-        /// The timestamp of the time the connector was created in your account
+        /// The timestamp of the time the connector was created in your account.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -208,9 +211,6 @@ namespace Footholdtech.Fivetran
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
-        [Input("lastUpdated")]
-        public Input<string>? LastUpdated { get; set; }
-
         /// <summary>
         /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
         /// destination.
@@ -222,13 +222,16 @@ namespace Footholdtech.Fivetran
         /// Specifies whether the setup tests should be run automatically. The default value is TRUE.
         /// </summary>
         [Input("runSetupTests")]
-        public Input<string>? RunSetupTests { get; set; }
+        public Input<bool>? RunSetupTests { get; set; }
 
         /// <summary>
-        /// The connector type name within the Fivetran system.
+        /// The connector type id within the Fivetran system.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.ConnectorTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
@@ -236,7 +239,7 @@ namespace Footholdtech.Fivetran
         /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Input("trustCertificates")]
-        public Input<string>? TrustCertificates { get; set; }
+        public Input<bool>? TrustCertificates { get; set; }
 
         /// <summary>
         /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
@@ -244,7 +247,7 @@ namespace Footholdtech.Fivetran
         /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Input("trustFingerprints")]
-        public Input<string>? TrustFingerprints { get; set; }
+        public Input<bool>? TrustFingerprints { get; set; }
 
         public ConnectorState()
         {

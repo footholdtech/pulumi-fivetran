@@ -31,7 +31,7 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("syncState", required: true)]
         public Input<string> SyncState { get; set; } = null!;
 
-        [Input("tasks", required: true)]
+        [Input("tasks")]
         private InputList<Inputs.GetGroupConnectorsConnectorStatusTaskInputArgs>? _tasks;
 
         /// <summary>
@@ -49,8 +49,12 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("updateState", required: true)]
         public Input<string> UpdateState { get; set; } = null!;
 
-        [Input("warnings", required: true)]
+        [Input("warnings")]
         private InputList<Inputs.GetGroupConnectorsConnectorStatusWarningInputArgs>? _warnings;
+
+        /// <summary>
+        /// The collection of warnings for the connector.
+        /// </summary>
         public InputList<Inputs.GetGroupConnectorsConnectorStatusWarningInputArgs> Warnings
         {
             get => _warnings ?? (_warnings = new InputList<Inputs.GetGroupConnectorsConnectorStatusWarningInputArgs>());

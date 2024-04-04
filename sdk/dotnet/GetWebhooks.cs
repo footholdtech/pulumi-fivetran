@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a list of all webhooks within your Fivetran account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,19 +30,17 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
-        public static Task<GetWebhooksResult> InvokeAsync(GetWebhooksArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebhooksResult>("fivetran:index/getWebhooks:getWebhooks", args ?? new GetWebhooksArgs(), options.WithDefaults());
+        public static Task<GetWebhooksResult> InvokeAsync(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebhooksResult>("fivetran:index/getWebhooks:getWebhooks", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// This data source returns a list of all webhooks within your Fivetran account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,44 +53,10 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
-        public static Output<GetWebhooksResult> Invoke(GetWebhooksInvokeArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("fivetran:index/getWebhooks:getWebhooks", args ?? new GetWebhooksInvokeArgs(), options.WithDefaults());
-    }
-
-
-    public sealed class GetWebhooksArgs : global::Pulumi.InvokeArgs
-    {
-        [Input("webhooks")]
-        private List<Inputs.GetWebhooksWebhookArgs>? _webhooks;
-        public List<Inputs.GetWebhooksWebhookArgs> Webhooks
-        {
-            get => _webhooks ?? (_webhooks = new List<Inputs.GetWebhooksWebhookArgs>());
-            set => _webhooks = value;
-        }
-
-        public GetWebhooksArgs()
-        {
-        }
-        public static new GetWebhooksArgs Empty => new GetWebhooksArgs();
-    }
-
-    public sealed class GetWebhooksInvokeArgs : global::Pulumi.InvokeArgs
-    {
-        [Input("webhooks")]
-        private InputList<Inputs.GetWebhooksWebhookInputArgs>? _webhooks;
-        public InputList<Inputs.GetWebhooksWebhookInputArgs> Webhooks
-        {
-            get => _webhooks ?? (_webhooks = new InputList<Inputs.GetWebhooksWebhookInputArgs>());
-            set => _webhooks = value;
-        }
-
-        public GetWebhooksInvokeArgs()
-        {
-        }
-        public static new GetWebhooksInvokeArgs Empty => new GetWebhooksInvokeArgs();
+        public static Output<GetWebhooksResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("fivetran:index/getWebhooks:getWebhooks", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

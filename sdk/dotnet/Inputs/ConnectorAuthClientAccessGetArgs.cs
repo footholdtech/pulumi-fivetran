@@ -17,28 +17,10 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string>? ClientId { get; set; }
 
         [Input("clientSecret")]
-        private Input<string>? _clientSecret;
-        public Input<string>? ClientSecret
-        {
-            get => _clientSecret;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? ClientSecret { get; set; }
 
         [Input("developerToken")]
-        private Input<string>? _developerToken;
-        public Input<string>? DeveloperToken
-        {
-            get => _developerToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _developerToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? DeveloperToken { get; set; }
 
         [Input("userAgent")]
         public Input<string>? UserAgent { get; set; }

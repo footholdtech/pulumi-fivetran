@@ -33,15 +33,15 @@ class GetTeamsResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def teams(self) -> Sequence['outputs.GetTeamsTeamResult']:
+    def teams(self) -> Optional[Sequence['outputs.GetTeamsTeamResult']]:
         return pulumi.get(self, "teams")
 
 
@@ -55,21 +55,28 @@ class AwaitableGetTeamsResult(GetTeamsResult):
             teams=self.teams)
 
 
-def get_teams(teams: Optional[Sequence[pulumi.InputType['GetTeamsTeamArgs']]] = None,
+def get_teams(id: Optional[str] = None,
+              teams: Optional[Sequence[pulumi.InputType['GetTeamsTeamArgs']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTeamsResult:
     """
     This data source returns a list of all teams within your Fivetran account.
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     teams = fivetran.get_teams()
     ```
+    <!--End PulumiCodeChooser -->
+
+
+    :param str id: The unique identifier for the team within your account.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['teams'] = teams
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('fivetran:index/getTeams:getTeams', __args__, opts=opts, typ=GetTeamsResult).value
@@ -80,18 +87,24 @@ def get_teams(teams: Optional[Sequence[pulumi.InputType['GetTeamsTeamArgs']]] = 
 
 
 @_utilities.lift_output_func(get_teams)
-def get_teams_output(teams: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTeamsTeamArgs']]]]] = None,
+def get_teams_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                     teams: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTeamsTeamArgs']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamsResult]:
     """
     This data source returns a list of all teams within your Fivetran account.
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     teams = fivetran.get_teams()
     ```
+    <!--End PulumiCodeChooser -->
+
+
+    :param str id: The unique identifier for the team within your account.
     """
     ...

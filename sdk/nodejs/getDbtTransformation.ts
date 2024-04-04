@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     id: "transformation_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDbtTransformation(args: GetDbtTransformationArgs, opts?: pulumi.InvokeOptions): Promise<GetDbtTransformationResult> {
 
@@ -92,6 +94,7 @@ export interface GetDbtTransformationResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -100,6 +103,7 @@ export interface GetDbtTransformationResult {
  *     id: "transformation_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDbtTransformationOutput(args: GetDbtTransformationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtTransformationResult> {
     return pulumi.output(args).apply((a: any) => getDbtTransformation(a, opts))

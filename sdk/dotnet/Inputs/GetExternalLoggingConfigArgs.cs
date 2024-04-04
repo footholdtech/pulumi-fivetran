@@ -88,6 +88,12 @@ namespace Footholdtech.Fivetran.Inputs
         }
 
         /// <summary>
+        /// Project Id for Google Cloud Logging
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// Region
         /// </summary>
         [Input("region")]

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupConnectorFingerprints(ctx *pulumi.Context, args *LookupConnectorFingerprintsArgs, opts ...pulumi.InvokeOption) (*LookupConnectorFingerprintsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorFingerprintsResult

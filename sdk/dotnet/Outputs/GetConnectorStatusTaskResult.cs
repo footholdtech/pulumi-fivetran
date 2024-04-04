@@ -14,7 +14,13 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class GetConnectorStatusTaskResult
     {
+        /// <summary>
+        /// Task code.
+        /// </summary>
         public readonly string Code;
+        /// <summary>
+        /// Task message.
+        /// </summary>
         public readonly string Message;
 
         [OutputConstructor]

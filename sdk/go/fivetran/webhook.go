@@ -18,22 +18,27 @@ import (
 //
 // 1. To import an existing `fivetran_webhook` resource into your Terraform state, you need to get `webhook_id`.
 //
-// You can retrieve all webhooks using the [fivetran_webhooks data source](/docs/data-sources/webhooks). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_webhook" "my_imported_fivetran_webhook" { }
+// You can retrieve all webhooks using the [fivetran_webhooks data source](/docs/data-sources/webhooks).
+//
+// 2. Define an empty resource in your `.tf` configuration:
+//
+// hcl
+//
+// resource "fivetran_webhook" "my_imported_fivetran_webhook" {
+//
+// }
+//
+// 3. Run the `pulumi import` command:
 //
 // ```sh
-//
-//	$ pulumi import fivetran:index/webhook:Webhook
-//
-// Run the `terraform import` command
+// $ pulumi import fivetran:index/webhook:Webhook my_imported_fivetran_webhook {webhook_id}
 // ```
 //
-// ```sh
+// 4. Use the `terraform state show` command to get the values from the state:
 //
-//	$ pulumi import fivetran:index/webhook:Webhook my_imported_fivetran_webhook {webhook_id}
+// terraform state show 'fivetran_webhook.my_imported_fivetran_webhook'
 //
-// ```
-//
-//  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_webhook.my_imported_fivetran_webhook' 5. Copy the values and paste them to your `.tf` configuration.
+// 5. Copy the values and paste them to your `.tf` configuration.
 type Webhook struct {
 	pulumi.CustomResourceState
 

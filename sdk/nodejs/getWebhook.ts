@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -17,13 +18,13 @@ import * as utilities from "./utilities";
  *     id: "webhook_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWebhook(args: GetWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhookResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getWebhook:getWebhook", {
         "id": args.id,
-        "runTests": args.runTests,
     }, opts);
 }
 
@@ -35,10 +36,6 @@ export interface GetWebhookArgs {
      * The webhook ID
      */
     id: string;
-    /**
-     * Specifies whether the setup tests should be run
-     */
-    runTests?: boolean;
 }
 
 /**
@@ -72,7 +69,7 @@ export interface GetWebhookResult {
     /**
      * Specifies whether the setup tests should be run
      */
-    readonly runTests?: boolean;
+    readonly runTests: boolean;
     /**
      * The secret string used for payload signing and masked in the response.
      */
@@ -91,6 +88,7 @@ export interface GetWebhookResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -99,6 +97,7 @@ export interface GetWebhookResult {
  *     id: "webhook_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWebhookOutput(args: GetWebhookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhookResult> {
     return pulumi.output(args).apply((a: any) => getWebhook(a, opts))
@@ -112,8 +111,4 @@ export interface GetWebhookOutputArgs {
      * The webhook ID
      */
     id: pulumi.Input<string>;
-    /**
-     * Specifies whether the setup tests should be run
-     */
-    runTests?: pulumi.Input<boolean>;
 }

@@ -36,7 +36,7 @@ class GetGroupConnectorsResult:
 
     @property
     @pulumi.getter
-    def connectors(self) -> Sequence['outputs.GetGroupConnectorsConnectorResult']:
+    def connectors(self) -> Optional[Sequence['outputs.GetGroupConnectorsConnectorResult']]:
         return pulumi.get(self, "connectors")
 
     @property
@@ -76,6 +76,7 @@ def get_group_connectors(connectors: Optional[Sequence[pulumi.InputType['GetGrou
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
@@ -83,6 +84,7 @@ def get_group_connectors(connectors: Optional[Sequence[pulumi.InputType['GetGrou
     group_connectors = fivetran.get_group_connectors(id="anonymous_mystery",
         schema="connector_schema_name")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the Connector within the Fivetran system.
@@ -111,6 +113,7 @@ def get_group_connectors_output(connectors: Optional[pulumi.Input[Optional[Seque
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
@@ -118,6 +121,7 @@ def get_group_connectors_output(connectors: Optional[pulumi.Input[Optional[Seque
     group_connectors = fivetran.get_group_connectors(id="anonymous_mystery",
         schema="connector_schema_name")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the Connector within the Fivetran system.

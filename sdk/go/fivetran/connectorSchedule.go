@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,48 +45,61 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // You don't need to import this resource as it is synthetic.
 //
-// To fetch schedule values from existing connector use `fivetran_connector` data sourcehcl data "fivetran_connector" "my_connector" {
+// To fetch schedule values from existing connector use `fivetran_connector` data source:
 //
-//	id = "my_connector_id" } now you can use schedule values from this data_source:
+// hcl
+//
+// data "fivetran_connector" "my_connector" {
+//
+//	id = "my_connector_id"
+//
+// }
+//
+// now you can use schedule values from this data_source:
 //
 //	sync_frequency = data.fivetran_connector.my_connector.sync_frequency
 //
-//	paused = data.fivetran_connector.my_connector.paused This resource manages settings for already existing connector instance and doesn't create a new one. If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resourcehcl resource "fivetran_connector_schedule" "my_connector_schedule" {
+//	paused = data.fivetran_connector.my_connector.paused
+//
+// This resource manages settings for already existing connector instance and doesn't create a new one.
+//
+// If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:
+//
+// hcl
+//
+// resource "fivetran_connector_schedule" "my_connector_schedule" {
 //
 //	connector_id = "my_connector_id"
 //
-//	sync_frequency
+//	sync_frequency     = "360"
 //
-//	= "360"
+//	paused             = false
 //
-//	paused
+//	pause_after_trial  = true
 //
-//	= false
+//	schedule_type      = "auto"
 //
-//	pause_after_trial
+// }
 //
-// = true
-//
-//	schedule_type
-//
-// = "auto" } -> NOTEYou can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
+// -> NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
 type ConnectorSchedule struct {
 	pulumi.CustomResourceState
 
-	// The unique identifier for the connector
+	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId pulumi.StringOutput `pulumi:"connectorId"`
-	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
-	DailySyncTime pulumi.StringPtrOutput `pulumi:"dailySyncTime"`
-	// Specifies whether the connector should be paused after the free trial period has ended
+	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+	DailySyncTime pulumi.StringOutput `pulumi:"dailySyncTime"`
+	// Specifies whether the connector should be paused after the free trial period has ended.
 	PauseAfterTrial pulumi.StringOutput `pulumi:"pauseAfterTrial"`
-	// Specifies whether the connector is paused
+	// Specifies whether the connector is paused.
 	Paused pulumi.StringOutput `pulumi:"paused"`
-	// The connector schedule configuration type. Supported values: auto, manual
+	// The connector schedule configuration type. Supported values: auto, manual.
 	ScheduleType pulumi.StringOutput `pulumi:"scheduleType"`
 	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency pulumi.StringOutput `pulumi:"syncFrequency"`
@@ -124,30 +138,30 @@ func GetConnectorSchedule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectorSchedule resources.
 type connectorScheduleState struct {
-	// The unique identifier for the connector
+	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId *string `pulumi:"connectorId"`
-	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
+	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 	DailySyncTime *string `pulumi:"dailySyncTime"`
-	// Specifies whether the connector should be paused after the free trial period has ended
+	// Specifies whether the connector should be paused after the free trial period has ended.
 	PauseAfterTrial *string `pulumi:"pauseAfterTrial"`
-	// Specifies whether the connector is paused
+	// Specifies whether the connector is paused.
 	Paused *string `pulumi:"paused"`
-	// The connector schedule configuration type. Supported values: auto, manual
+	// The connector schedule configuration type. Supported values: auto, manual.
 	ScheduleType *string `pulumi:"scheduleType"`
 	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency *string `pulumi:"syncFrequency"`
 }
 
 type ConnectorScheduleState struct {
-	// The unique identifier for the connector
+	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId pulumi.StringPtrInput
-	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
+	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 	DailySyncTime pulumi.StringPtrInput
-	// Specifies whether the connector should be paused after the free trial period has ended
+	// Specifies whether the connector should be paused after the free trial period has ended.
 	PauseAfterTrial pulumi.StringPtrInput
-	// Specifies whether the connector is paused
+	// Specifies whether the connector is paused.
 	Paused pulumi.StringPtrInput
-	// The connector schedule configuration type. Supported values: auto, manual
+	// The connector schedule configuration type. Supported values: auto, manual.
 	ScheduleType pulumi.StringPtrInput
 	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency pulumi.StringPtrInput
@@ -158,15 +172,15 @@ func (ConnectorScheduleState) ElementType() reflect.Type {
 }
 
 type connectorScheduleArgs struct {
-	// The unique identifier for the connector
+	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId string `pulumi:"connectorId"`
-	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
+	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 	DailySyncTime *string `pulumi:"dailySyncTime"`
-	// Specifies whether the connector should be paused after the free trial period has ended
+	// Specifies whether the connector should be paused after the free trial period has ended.
 	PauseAfterTrial *string `pulumi:"pauseAfterTrial"`
-	// Specifies whether the connector is paused
+	// Specifies whether the connector is paused.
 	Paused *string `pulumi:"paused"`
-	// The connector schedule configuration type. Supported values: auto, manual
+	// The connector schedule configuration type. Supported values: auto, manual.
 	ScheduleType *string `pulumi:"scheduleType"`
 	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency *string `pulumi:"syncFrequency"`
@@ -174,15 +188,15 @@ type connectorScheduleArgs struct {
 
 // The set of arguments for constructing a ConnectorSchedule resource.
 type ConnectorScheduleArgs struct {
-	// The unique identifier for the connector
+	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId pulumi.StringInput
-	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
+	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 	DailySyncTime pulumi.StringPtrInput
-	// Specifies whether the connector should be paused after the free trial period has ended
+	// Specifies whether the connector should be paused after the free trial period has ended.
 	PauseAfterTrial pulumi.StringPtrInput
-	// Specifies whether the connector is paused
+	// Specifies whether the connector is paused.
 	Paused pulumi.StringPtrInput
-	// The connector schedule configuration type. Supported values: auto, manual
+	// The connector schedule configuration type. Supported values: auto, manual.
 	ScheduleType pulumi.StringPtrInput
 	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency pulumi.StringPtrInput
@@ -275,27 +289,27 @@ func (o ConnectorScheduleOutput) ToConnectorScheduleOutputWithContext(ctx contex
 	return o
 }
 
-// The unique identifier for the connector
+// The unique identifier for the connector within the Fivetran system.
 func (o ConnectorScheduleOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
 }
 
-// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
-func (o ConnectorScheduleOutput) DailySyncTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringPtrOutput { return v.DailySyncTime }).(pulumi.StringPtrOutput)
+// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+func (o ConnectorScheduleOutput) DailySyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringOutput { return v.DailySyncTime }).(pulumi.StringOutput)
 }
 
-// Specifies whether the connector should be paused after the free trial period has ended
+// Specifies whether the connector should be paused after the free trial period has ended.
 func (o ConnectorScheduleOutput) PauseAfterTrial() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringOutput { return v.PauseAfterTrial }).(pulumi.StringOutput)
 }
 
-// Specifies whether the connector is paused
+// Specifies whether the connector is paused.
 func (o ConnectorScheduleOutput) Paused() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringOutput { return v.Paused }).(pulumi.StringOutput)
 }
 
-// The connector schedule configuration type. Supported values: auto, manual
+// The connector schedule configuration type. Supported values: auto, manual.
 func (o ConnectorScheduleOutput) ScheduleType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringOutput { return v.ScheduleType }).(pulumi.StringOutput)
 }

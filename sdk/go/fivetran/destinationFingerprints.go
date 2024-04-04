@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,27 +50,33 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. 2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination_fingerprints" "my_imported_destination_fingerprints" { }
+// 1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+//
+// 2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+//
+// 3. Define an empty resource in your `.tf` configuration:
+//
+// hcl
+//
+// resource "fivetran_destination_fingerprints" "my_imported_destination_fingerprints" {
+//
+// }
+//
+// 4. Run the `pulumi import` command:
 //
 // ```sh
-//
-//	$ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints
-//
-// Run the `terraform import` command
+// $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}
 // ```
 //
-// ```sh
+// 5.  Use the `terraform state show` command to get the values from the state:
 //
-//	$ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}
+// terraform state show 'fivetran_destination_fingerprints.my_imported_destination_fingerprints'
 //
-// ```
-//
-// 5.
-//
-// Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_destination_fingerprints.my_imported_destination_fingerprints' 6. Copy the values and paste them to your `.tf` configuration.
+// 6. Copy the values and paste them to your `.tf` configuration.
 type DestinationFingerprints struct {
 	pulumi.CustomResourceState
 

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupResult
@@ -60,6 +62,8 @@ type LookupGroupResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The unique identifier for the group within the Fivetran system.
 	Id string `pulumi:"id"`
+	// The timestamp of when the group was updated in your account.
+	LastUpdated string `pulumi:"lastUpdated"`
 	// The name of the group within your account.
 	Name string `pulumi:"name"`
 }
@@ -110,6 +114,11 @@ func (o LookupGroupResultOutput) CreatedAt() pulumi.StringOutput {
 // The unique identifier for the group within the Fivetran system.
 func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the group was updated in your account.
+func (o LookupGroupResultOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.LastUpdated }).(pulumi.StringOutput)
 }
 
 // The name of the group within your account.

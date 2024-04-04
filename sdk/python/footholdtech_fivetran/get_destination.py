@@ -23,10 +23,13 @@ class GetDestinationResult:
     """
     A collection of values returned by getDestination.
     """
-    def __init__(__self__, configs=None, group_id=None, id=None, region=None, service=None, setup_status=None, time_zone_offset=None):
-        if configs and not isinstance(configs, list):
-            raise TypeError("Expected argument 'configs' to be a list")
-        pulumi.set(__self__, "configs", configs)
+    def __init__(__self__, config=None, daylight_saving_time_enabled=None, group_id=None, id=None, region=None, service=None, setup_status=None, time_zone_offset=None):
+        if config and not isinstance(config, dict):
+            raise TypeError("Expected argument 'config' to be a dict")
+        pulumi.set(__self__, "config", config)
+        if daylight_saving_time_enabled and not isinstance(daylight_saving_time_enabled, bool):
+            raise TypeError("Expected argument 'daylight_saving_time_enabled' to be a bool")
+        pulumi.set(__self__, "daylight_saving_time_enabled", daylight_saving_time_enabled)
         if group_id and not isinstance(group_id, str):
             raise TypeError("Expected argument 'group_id' to be a str")
         pulumi.set(__self__, "group_id", group_id)
@@ -48,55 +51,42 @@ class GetDestinationResult:
 
     @property
     @pulumi.getter
-    def configs(self) -> Sequence['outputs.GetDestinationConfigResult']:
-        return pulumi.get(self, "configs")
+    def config(self) -> Optional['outputs.GetDestinationConfigResult']:
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="daylightSavingTimeEnabled")
+    def daylight_saving_time_enabled(self) -> bool:
+        return pulumi.get(self, "daylight_saving_time_enabled")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> str:
-        """
-        The unique identifier for the Group within the Fivetran system.
-        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The unique identifier for the destination within the Fivetran system
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        Data processing location. This is where Fivetran will operate and run computation on data.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def service(self) -> str:
-        """
-        The destination type name within the Fivetran system
-        """
         return pulumi.get(self, "service")
 
     @property
     @pulumi.getter(name="setupStatus")
     def setup_status(self) -> str:
-        """
-        Destination setup status
-        """
         return pulumi.get(self, "setup_status")
 
     @property
     @pulumi.getter(name="timeZoneOffset")
     def time_zone_offset(self) -> str:
-        """
-        Determines the time zone for the Fivetran sync schedule.
-        """
         return pulumi.get(self, "time_zone_offset")
 
 
@@ -106,7 +96,8 @@ class AwaitableGetDestinationResult(GetDestinationResult):
         if False:
             yield self
         return GetDestinationResult(
-            configs=self.configs,
+            config=self.config,
+            daylight_saving_time_enabled=self.daylight_saving_time_enabled,
             group_id=self.group_id,
             id=self.id,
             region=self.region,
@@ -115,7 +106,7 @@ class AwaitableGetDestinationResult(GetDestinationResult):
             time_zone_offset=self.time_zone_offset)
 
 
-def get_destination(configs: Optional[Sequence[pulumi.InputType['GetDestinationConfigArgs']]] = None,
+def get_destination(config: Optional[pulumi.InputType['GetDestinationConfigArgs']] = None,
                     id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDestinationResult:
     """
@@ -123,24 +114,24 @@ def get_destination(configs: Optional[Sequence[pulumi.InputType['GetDestinationC
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     dest = fivetran.get_destination(id="anonymous_mystery")
     ```
-
-
-    :param str id: The unique identifier for the destination within the Fivetran system
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
-    __args__['configs'] = configs
+    __args__['config'] = config
     __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('fivetran:index/getDestination:getDestination', __args__, opts=opts, typ=GetDestinationResult).value
 
     return AwaitableGetDestinationResult(
-        configs=pulumi.get(__ret__, 'configs'),
+        config=pulumi.get(__ret__, 'config'),
+        daylight_saving_time_enabled=pulumi.get(__ret__, 'daylight_saving_time_enabled'),
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
         region=pulumi.get(__ret__, 'region'),
@@ -150,7 +141,7 @@ def get_destination(configs: Optional[Sequence[pulumi.InputType['GetDestinationC
 
 
 @_utilities.lift_output_func(get_destination)
-def get_destination_output(configs: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDestinationConfigArgs']]]]] = None,
+def get_destination_output(config: Optional[pulumi.Input[Optional[pulumi.InputType['GetDestinationConfigArgs']]]] = None,
                            id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDestinationResult]:
     """
@@ -158,14 +149,13 @@ def get_destination_output(configs: Optional[pulumi.Input[Optional[Sequence[pulu
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     dest = fivetran.get_destination(id="anonymous_mystery")
     ```
-
-
-    :param str id: The unique identifier for the destination within the Fivetran system
+    <!--End PulumiCodeChooser -->
     """
     ...

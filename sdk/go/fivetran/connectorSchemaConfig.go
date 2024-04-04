@@ -12,62 +12,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## ---
-//
-// page_title: "Resource: ConnectorSchemaConfig"
-// ---
-//
-// # Resource: ConnectorSchemaConfig
-//
-// This resource allows you to manage the Standard Configuration settings of a connector:
-//   - Define the schema change handling settings
-//   - Enable and disable schemas, tables, and columns
-//
-// The resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.
-//
-// Known issues:
-//   - Definition of `syncMode` for table causes infinite drifting changes in plan
-//
-// ## Usage guide
-//
-// Note that all configuration settings are aligned to the `schemaChangeHandling` settings,  except the settings explicitly specified in `schema`.
-// In `schema`, you only override the default settings defined by the chosen `schemaChangeHandling` option. The default value for the `enabled` attribute is `true` so it can be omitted when you want to enable schemas, tables, or columns.
-// The allowed `schemaChangeHandling` options are as follows:
-// - `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables
-// - `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items
-// - `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns
-//
-// Note that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `schemaChangeHandling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = "false"`), the provider just ignores these statements.
-//
-// ## Usage examples
-//
 // ## Import
 //
-// 1. To import an existing `fivetran_connector_schema_config` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_schema_config" "my_imported_connector_schema_config" { }
-//
-// ```sh
-//
-//	$ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig
-//
-// Run the `terraform import` command
-// ```
-//
-// ```sh
-//
-//	$ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
-//
-// ```
-//
-// 5.
-//
-// Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_schema_config.my_imported_connector_schema_config' 6. Copy the values and paste them to your `.tf` configuration.
+// You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
 type ConnectorSchemaConfig struct {
 	pulumi.CustomResourceState
 
 	// The unique identifier for the connector within the Fivetran system.
-	ConnectorId          pulumi.StringOutput                    `pulumi:"connectorId"`
+	ConnectorId pulumi.StringOutput `pulumi:"connectorId"`
+	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
+	Schema               ConnectorSchemaConfigSchemaArrayOutput `pulumi:"schema"`
 	SchemaChangeHandling pulumi.StringOutput                    `pulumi:"schemaChangeHandling"`
-	Schemas              ConnectorSchemaConfigSchemaArrayOutput `pulumi:"schemas"`
+	// Map of schema configurations.
+	Schemas ConnectorSchemaConfigSchemasMapOutput `pulumi:"schemas"`
+	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+	SchemasJson pulumi.StringPtrOutput                 `pulumi:"schemasJson"`
+	Timeouts    ConnectorSchemaConfigTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewConnectorSchemaConfig registers a new resource with the given unique name, arguments, and options.
@@ -107,16 +67,28 @@ func GetConnectorSchemaConfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ConnectorSchemaConfig resources.
 type connectorSchemaConfigState struct {
 	// The unique identifier for the connector within the Fivetran system.
-	ConnectorId          *string                       `pulumi:"connectorId"`
+	ConnectorId *string `pulumi:"connectorId"`
+	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
+	Schema               []ConnectorSchemaConfigSchema `pulumi:"schema"`
 	SchemaChangeHandling *string                       `pulumi:"schemaChangeHandling"`
-	Schemas              []ConnectorSchemaConfigSchema `pulumi:"schemas"`
+	// Map of schema configurations.
+	Schemas map[string]ConnectorSchemaConfigSchemas `pulumi:"schemas"`
+	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+	SchemasJson *string                        `pulumi:"schemasJson"`
+	Timeouts    *ConnectorSchemaConfigTimeouts `pulumi:"timeouts"`
 }
 
 type ConnectorSchemaConfigState struct {
 	// The unique identifier for the connector within the Fivetran system.
-	ConnectorId          pulumi.StringPtrInput
+	ConnectorId pulumi.StringPtrInput
+	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
+	Schema               ConnectorSchemaConfigSchemaArrayInput
 	SchemaChangeHandling pulumi.StringPtrInput
-	Schemas              ConnectorSchemaConfigSchemaArrayInput
+	// Map of schema configurations.
+	Schemas ConnectorSchemaConfigSchemasMapInput
+	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+	SchemasJson pulumi.StringPtrInput
+	Timeouts    ConnectorSchemaConfigTimeoutsPtrInput
 }
 
 func (ConnectorSchemaConfigState) ElementType() reflect.Type {
@@ -125,17 +97,29 @@ func (ConnectorSchemaConfigState) ElementType() reflect.Type {
 
 type connectorSchemaConfigArgs struct {
 	// The unique identifier for the connector within the Fivetran system.
-	ConnectorId          string                        `pulumi:"connectorId"`
+	ConnectorId string `pulumi:"connectorId"`
+	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
+	Schema               []ConnectorSchemaConfigSchema `pulumi:"schema"`
 	SchemaChangeHandling string                        `pulumi:"schemaChangeHandling"`
-	Schemas              []ConnectorSchemaConfigSchema `pulumi:"schemas"`
+	// Map of schema configurations.
+	Schemas map[string]ConnectorSchemaConfigSchemas `pulumi:"schemas"`
+	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+	SchemasJson *string                        `pulumi:"schemasJson"`
+	Timeouts    *ConnectorSchemaConfigTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a ConnectorSchemaConfig resource.
 type ConnectorSchemaConfigArgs struct {
 	// The unique identifier for the connector within the Fivetran system.
-	ConnectorId          pulumi.StringInput
+	ConnectorId pulumi.StringInput
+	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
+	Schema               ConnectorSchemaConfigSchemaArrayInput
 	SchemaChangeHandling pulumi.StringInput
-	Schemas              ConnectorSchemaConfigSchemaArrayInput
+	// Map of schema configurations.
+	Schemas ConnectorSchemaConfigSchemasMapInput
+	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+	SchemasJson pulumi.StringPtrInput
+	Timeouts    ConnectorSchemaConfigTimeoutsPtrInput
 }
 
 func (ConnectorSchemaConfigArgs) ElementType() reflect.Type {
@@ -230,12 +214,27 @@ func (o ConnectorSchemaConfigOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
 }
 
+// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
+func (o ConnectorSchemaConfigOutput) Schema() ConnectorSchemaConfigSchemaArrayOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfig) ConnectorSchemaConfigSchemaArrayOutput { return v.Schema }).(ConnectorSchemaConfigSchemaArrayOutput)
+}
+
 func (o ConnectorSchemaConfigOutput) SchemaChangeHandling() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringOutput { return v.SchemaChangeHandling }).(pulumi.StringOutput)
 }
 
-func (o ConnectorSchemaConfigOutput) Schemas() ConnectorSchemaConfigSchemaArrayOutput {
-	return o.ApplyT(func(v *ConnectorSchemaConfig) ConnectorSchemaConfigSchemaArrayOutput { return v.Schemas }).(ConnectorSchemaConfigSchemaArrayOutput)
+// Map of schema configurations.
+func (o ConnectorSchemaConfigOutput) Schemas() ConnectorSchemaConfigSchemasMapOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfig) ConnectorSchemaConfigSchemasMapOutput { return v.Schemas }).(ConnectorSchemaConfigSchemasMapOutput)
+}
+
+// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+func (o ConnectorSchemaConfigOutput) SchemasJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringPtrOutput { return v.SchemasJson }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorSchemaConfigOutput) Timeouts() ConnectorSchemaConfigTimeoutsPtrOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfig) ConnectorSchemaConfigTimeoutsPtrOutput { return v.Timeouts }).(ConnectorSchemaConfigTimeoutsPtrOutput)
 }
 
 type ConnectorSchemaConfigArrayOutput struct{ *pulumi.OutputState }

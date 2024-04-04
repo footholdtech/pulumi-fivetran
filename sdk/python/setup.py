@@ -18,7 +18,7 @@ def readme():
 
 
 setup(name='footholdtech_fivetran',
-      python_requires='>=3.7',
+      python_requires='>=3.8',
       version=VERSION,
       description="A Pulumi package for creating and managing Fivetran resources.",
       long_description=readme(),

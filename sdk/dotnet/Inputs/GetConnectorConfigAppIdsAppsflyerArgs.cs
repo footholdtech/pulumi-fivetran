@@ -13,6 +13,10 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class GetConnectorConfigAppIdsAppsflyerInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `appsflyer`: Your App ID
+        /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
 

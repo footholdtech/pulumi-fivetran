@@ -13,131 +13,129 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class ConnectorAuthGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `autodesk_bim_360`: Your Autodesk BIM 360 Access Token.
+        /// 	- Service `azure_sql_db`: The long-lived Access token carries the information necessary to access API resources.
+        /// 	- Service `azure_sql_managed_db`: The long-lived Access token carries the information necessary to access API resources.
+        /// 	- Service `billing_platform`: Your BillingPlatform access token.
+        /// 	- Service `calendly`: Your Calendly access token.
+        /// 	- Service `docebo`: Your Docebo Access Token.
+        /// 	- Service `drift`: Your Drift access token.
+        /// 	- Service `employment_hero`: Your Employment Hero access token.
+        /// 	- Service `facebook_ads`: The long-lived `Access token` along with the `client_id` and `client_secret` parameters carry the information necessary to query the Facebook Ads API
+        /// 	- Service `facebook_pages`: The `Access Token` carries the information necessary for API resources to fetch data
+        /// 	- Service `freshbooks`: Your FreshBooks Access Token.
+        /// 	- Service `gitlab`: Your GitLab access token.
+        /// 	- Service `google_business_profile`: Your Google Business Profile Access token.
+        /// 	- Service `google_calendar`: Your Google Calendar access token.
+        /// 	- Service `google_tasks`: The access token that carries the information necessary for API resources to your Google Tasks fetch data.
+        /// 	- Service `medallia`: Your Medallia access token that contains all the information necessary for the API resources to fetch your data.
+        /// 	- Service `pinterest_organic`: Your Pinterest access token.
+        /// 	- Service `ramp`: Your Ramp access token.
+        /// 	- Service `ringcentral`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `shopify`: The Shopify access token.
+        /// 	- Service `slack`: Your Slack access token.
+        /// 	- Service `stripe`: The Stripe API Restricted Key
+        /// 	- Service `stripe_test`: The Stripe API Restricted Key
+        /// 	- Service `survey_monkey`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `tiktok_ads`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `typeform`: The Typeform API access token.
+        /// 	- Service `yahoo_search_ads_yahoo_japan`: Your Yahoo Search Ads Access Token.
+        /// 	- Service `zendesk`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `zendesk_chat`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `zendesk_sell`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `zoom`: Your Zoom Access token.
+        /// </summary>
         [Input("accessToken")]
-        private Input<string>? _accessToken;
-        public Input<string>? AccessToken
-        {
-            get => _accessToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? AccessToken { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amazon_selling_partner`: `AWS Access Key` of your AWS Account User.
+        /// </summary>
         [Input("awsAccessKey")]
-        private Input<string>? _awsAccessKey;
-        public Input<string>? AwsAccessKey
-        {
-            get => _awsAccessKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _awsAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? AwsAccessKey { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amazon_selling_partner`: `AWS Secret Key` of your AWS Account User.
+        /// </summary>
         [Input("awsSecretKey")]
-        private Input<string>? _awsSecretKey;
-        public Input<string>? AwsSecretKey
-        {
-            get => _awsSecretKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _awsSecretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? AwsSecretKey { get; set; }
 
         [Input("clientAccess")]
         public Input<Inputs.ConnectorAuthClientAccessGetArgs>? ClientAccess { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amazon_selling_partner`: `Client ID` of your Amazon Seller/Vendor Central client application.
+        /// 	- Service `apple_search_ads`: Apple Search Ads REST API Client ID. Must be populated if `is_auth2_enabled` is set to `true`.
+        /// 	- Service `yahoo_dsp`: Your Yahoo DSP Client ID.
+        /// </summary>
         [Input("clientId")]
-        private Input<string>? _clientId;
-        public Input<string>? ClientId
-        {
-            get => _clientId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _clientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? ClientId { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amazon_selling_partner`: `Client Secret` of your Amazon Seller/Vendor Central client application.
+        /// 	- Service `yahoo_dsp`: Your Yahoo DSP Client Secret.
+        /// </summary>
         [Input("clientSecret")]
-        private Input<string>? _clientSecret;
-        public Input<string>? ClientSecret
-        {
-            get => _clientSecret;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? ClientSecret { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `twitter`: API Key of your app
+        /// 	- Service `twitter_ads`: The Twitter App consumer key.
+        /// </summary>
         [Input("consumerKey")]
-        private Input<string>? _consumerKey;
-        public Input<string>? ConsumerKey
-        {
-            get => _consumerKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _consumerKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? ConsumerKey { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `twitter`: API Secret of your app
+        /// 	- Service `twitter_ads`: The Twitter App consumer secret.
+        /// </summary>
         [Input("consumerSecret")]
-        private Input<string>? _consumerSecret;
-        public Input<string>? ConsumerSecret
-        {
-            get => _consumerSecret;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _consumerSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? ConsumerSecret { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `apple_search_ads`: Apple Search Ads REST API Key ID. Must be populated if `is_auth2_enabled` is set to `true`.
+        /// </summary>
         [Input("keyId")]
-        private Input<string>? _keyId;
-        public Input<string>? KeyId
-        {
-            get => _keyId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _keyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? KeyId { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `twitter`: The Twitter App access token.
+        /// 	- Service `twitter_ads`: The Twitter App access token.
+        /// </summary>
         [Input("oauthToken")]
-        private Input<string>? _oauthToken;
-        public Input<string>? OauthToken
-        {
-            get => _oauthToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _oauthToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? OauthToken { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `twitter`: The Twitter App access token secret.
+        /// 	- Service `twitter_ads`: The Twitter App access token secret.
+        /// </summary>
         [Input("oauthTokenSecret")]
-        private Input<string>? _oauthTokenSecret;
-        public Input<string>? OauthTokenSecret
-        {
-            get => _oauthTokenSecret;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _oauthTokenSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? OauthTokenSecret { get; set; }
+
+        [Input("ocapiAccessToken")]
+        public Input<string>? OcapiAccessToken { get; set; }
+
+        [Input("ocapiRefreshToken")]
+        public Input<string>? OcapiRefreshToken { get; set; }
 
         [Input("previousRefreshToken")]
         private Input<string>? _previousRefreshToken;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `dynamics_365`: Previous `Refresh token` of your application.
+        /// </summary>
         public Input<string>? PreviousRefreshToken
         {
             get => _previousRefreshToken;
@@ -148,65 +146,94 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `quickbooks`: `Realm ID` of your QuickBooks application.
+        /// </summary>
         [Input("realmId")]
-        private Input<string>? _realmId;
-        public Input<string>? RealmId
-        {
-            get => _realmId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _realmId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? RealmId { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adroll`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `amazon_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `amazon_selling_partner`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `asana`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `autodesk_bim_360`: Your Autodesk BIM 360 Refresh Token.
+        /// 	- Service `azure_service_bus`: The refresh token. Required if the authentication type is `AzureActiveDirectory`
+        /// 	- Service `azure_sql_db`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
+        /// 	- Service `azure_sql_managed_db`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
+        /// 	- Service `billing_platform`: Your BillingPlatform refresh token.
+        /// 	- Service `bingads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `calendly`: Your Calendly refresh token.
+        /// 	- Service `docebo`: Your Docebo Refresh Token.
+        /// 	- Service `double_click_campaign_manager`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `double_click_publishers`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `drift`: Your Drift refresh token.
+        /// 	- Service `dropbox`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `dynamics_365`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `employment_hero`: Your Employment Hero refresh token.
+        /// 	- Service `financial_force`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `freshbooks`: Your FreshBooks Refresh Token.
+        /// 	- Service `front`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `gitlab`: Your GitLab refresh token.
+        /// 	- Service `google_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `google_analytics`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `google_analytics_4`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `google_analytics_mcf`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `google_business_profile`: Your Google Business Profile Refresh token.
+        /// 	- Service `google_calendar`: Your Google Calendar refresh token.
+        /// 	- Service `google_display_and_video_360`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `google_search_ads_360`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `google_sheets`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `google_tasks`: The long-lived refresh token of your Google Tasks client application.
+        /// 	- Service `helpscout`: The long-lived `refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `hubspot`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `linkedin_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `linkedin_company_pages`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `one_drive`: The long-lived `Refresh token` carries the information necessary to get a new access token for API resources.
+        /// 	- Service `optimizely`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `outreach`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `pinterest_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `pinterest_organic`: Your Pinterest refresh token.
+        /// 	- Service `pipedrive`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `quickbooks`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `ramp`: Your Ramp refresh token.
+        /// 	- Service `reddit_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `salesforce`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `salesforce_sandbox`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `salesloft`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `share_point`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
+        /// 	- Service `slack`: Your Slack refresh token.
+        /// 	- Service `snapchat_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `spotify_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `typeform`: The Typeform API refresh token.
+        /// 	- Service `yahoo_search_ads_yahoo_japan`: Your Yahoo Search Ads Refresh Token.
+        /// 	- Service `zoom`: Your Zoom Refresh token.
+        /// </summary>
         [Input("refreshToken")]
-        private Input<string>? _refreshToken;
-        public Input<string>? RefreshToken
-        {
-            get => _refreshToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _refreshToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? RefreshToken { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amazon_selling_partner`: `IAM Role ARN` of your AWS Account.
+        /// </summary>
         [Input("roleArn")]
-        private Input<string>? _roleArn;
-        public Input<string>? RoleArn
-        {
-            get => _roleArn;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _roleArn = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? RoleArn { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `apple_search_ads`: Apple Search Ads REST API Team ID. Must be populated if `is_auth2_enabled` is set to `true`.
+        /// </summary>
         [Input("teamId")]
-        private Input<string>? _teamId;
-        public Input<string>? TeamId
-        {
-            get => _teamId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _teamId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? TeamId { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Access Token
+        /// </summary>
         [Input("userAccessToken")]
-        private Input<string>? _userAccessToken;
-        public Input<string>? UserAccessToken
-        {
-            get => _userAccessToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _userAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? UserAccessToken { get; set; }
 
         public ConnectorAuthGetArgs()
         {

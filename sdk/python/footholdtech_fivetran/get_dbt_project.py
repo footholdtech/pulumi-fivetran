@@ -207,12 +207,14 @@ def get_dbt_project(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     project = fivetran.get_dbt_project(id="project_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the dbt Model within the Fivetran system.
@@ -250,12 +252,14 @@ def get_dbt_project_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     project = fivetran.get_dbt_project(id="project_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the dbt Model within the Fivetran system.

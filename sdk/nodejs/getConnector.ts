@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -19,13 +20,16 @@ import * as utilities from "./utilities";
  *     id: "anonymous_mystery",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getConnector:getConnector", {
-        "configs": args.configs,
+        "config": args.config,
+        "destinationSchema": args.destinationSchema,
         "id": args.id,
+        "status": args.status,
     }, opts);
 }
 
@@ -33,37 +37,40 @@ export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getConnector.
  */
 export interface GetConnectorArgs {
-    configs?: inputs.GetConnectorConfig[];
+    config?: inputs.GetConnectorConfig;
+    destinationSchema?: inputs.GetConnectorDestinationSchema;
     id: string;
+    status?: inputs.GetConnectorStatus;
 }
 
 /**
  * A collection of values returned by getConnector.
  */
 export interface GetConnectorResult {
-    readonly configs: outputs.GetConnectorConfig[];
+    readonly config?: outputs.GetConnectorConfig;
     readonly connectedBy: string;
     readonly createdAt: string;
     readonly dailySyncTime: string;
-    readonly destinationSchemas: outputs.GetConnectorDestinationSchema[];
+    readonly destinationSchema?: outputs.GetConnectorDestinationSchema;
     readonly failedAt: string;
     readonly groupId: string;
     readonly id: string;
     readonly name: string;
-    readonly pauseAfterTrial: string;
-    readonly paused: string;
+    readonly pauseAfterTrial: boolean;
+    readonly paused: boolean;
     readonly scheduleType: string;
     readonly service: string;
     readonly serviceVersion: string;
-    readonly statuses: outputs.GetConnectorStatus[];
+    readonly status?: outputs.GetConnectorStatus;
     readonly succeededAt: string;
-    readonly syncFrequency: string;
+    readonly syncFrequency: number;
 }
 /**
  * This data source returns a connector object.
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -72,6 +79,7 @@ export interface GetConnectorResult {
  *     id: "anonymous_mystery",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorResult> {
     return pulumi.output(args).apply((a: any) => getConnector(a, opts))
@@ -81,6 +89,8 @@ export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getConnector.
  */
 export interface GetConnectorOutputArgs {
-    configs?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigArgs>[]>;
+    config?: pulumi.Input<inputs.GetConnectorConfigArgs>;
+    destinationSchema?: pulumi.Input<inputs.GetConnectorDestinationSchemaArgs>;
     id: pulumi.Input<string>;
+    status?: pulumi.Input<inputs.GetConnectorStatusArgs>;
 }

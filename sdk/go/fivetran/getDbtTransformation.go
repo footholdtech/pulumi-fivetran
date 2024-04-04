@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupDbtTransformation(ctx *pulumi.Context, args *LookupDbtTransformationArgs, opts ...pulumi.InvokeOption) (*LookupDbtTransformationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDbtTransformationResult

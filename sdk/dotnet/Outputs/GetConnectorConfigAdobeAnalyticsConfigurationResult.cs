@@ -14,12 +14,40 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class GetConnectorConfigAdobeAnalyticsConfigurationResult
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: The calculated_metrics that you want to sync.
+        /// </summary>
         public readonly ImmutableArray<string> CalculatedMetrics;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: The elements that you want to sync.
+        /// </summary>
         public readonly ImmutableArray<string> Elements;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: The metrics that you want to sync.
+        /// </summary>
         public readonly ImmutableArray<string> Metrics;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: Specific report suites to sync. Must be populated if `sync_mode` is set to `SpecificReportSuites`.
+        /// </summary>
         public readonly ImmutableArray<string> ReportSuites;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: The segments that you want to sync.
+        /// </summary>
         public readonly ImmutableArray<string> Segments;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: Whether to sync all report suites or specific report suites. Default value: `AllReportSuites` .
+        /// </summary>
         public readonly string SyncMode;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adobe_analytics`: The table name unique within the schema to which connector will sync the data. Required for connector creation.
+        /// </summary>
         public readonly string Table;
 
         [OutputConstructor]

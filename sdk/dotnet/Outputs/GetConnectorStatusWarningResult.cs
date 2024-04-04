@@ -14,7 +14,13 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class GetConnectorStatusWarningResult
     {
+        /// <summary>
+        /// Warning code.
+        /// </summary>
         public readonly string Code;
+        /// <summary>
+        /// Warning message.
+        /// </summary>
         public readonly string Message;
 
         [OutputConstructor]

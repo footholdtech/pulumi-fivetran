@@ -14,27 +14,107 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class GetConnectorConfigCustomReportResult
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
+        /// </summary>
+        public readonly bool AddMetricVariants;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_ads`: Time aggregation of report
+        /// </summary>
         public readonly string Aggregate;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#basemetricsfields).
+        /// </summary>
         public readonly ImmutableArray<string> BaseMetricsFields;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakdown).
+        /// </summary>
         public readonly string Breakdown;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakout).
+        /// </summary>
         public readonly string Breakout;
-        public readonly string ConversionsReportIncluded;
-        public readonly string CustomEventsIncluded;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `false`
+        /// </summary>
+        public readonly bool ConversionsReportIncluded;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The boolean value specifying whether the custom events are included in event conversions report. Default value: `false`
+        /// </summary>
+        public readonly bool CustomEventsIncluded;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#dimension).
+        /// </summary>
         public readonly string Dimension;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_ads`: Dimensions to synced
+        /// </summary>
         public readonly ImmutableArray<string> Dimensions;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The list of events the conversion data will be synchronised for
+        /// </summary>
         public readonly ImmutableArray<string> EventNames;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/applications/snapchat-ads/customr-reports#granularity).
+        /// </summary>
         public readonly string Granularity;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: Level of custom report.
+        /// </summary>
         public readonly string Level;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_ads`: Metrics to be synced
+        /// </summary>
         public readonly ImmutableArray<string> Metrics;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The list of fields included in custom report
+        /// </summary>
         public readonly ImmutableArray<string> ReportFields;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The table name within the schema to which connector syncs the data of the specific report.
+        /// 	- Service `snapchat_ads`: Custom report name (must be unique)
+        /// </summary>
         public readonly string ReportName;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_ads`: Type of report to be generated
+        /// </summary>
         public readonly string ReportType;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: Level of custom report.
+        /// </summary>
         public readonly string Segmentation;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#skadmetricsfields).
+        /// </summary>
         public readonly ImmutableArray<string> SkAdMetricsFields;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_ads`: Destination Table name of report
+        /// </summary>
         public readonly string TableName;
 
         [OutputConstructor]
         private GetConnectorConfigCustomReportResult(
+            bool addMetricVariants,
+
             string aggregate,
 
             ImmutableArray<string> baseMetricsFields,
@@ -43,9 +123,9 @@ namespace Footholdtech.Fivetran.Outputs
 
             string breakout,
 
-            string conversionsReportIncluded,
+            bool conversionsReportIncluded,
 
-            string customEventsIncluded,
+            bool customEventsIncluded,
 
             string dimension,
 
@@ -71,6 +151,7 @@ namespace Footholdtech.Fivetran.Outputs
 
             string tableName)
         {
+            AddMetricVariants = addMetricVariants;
             Aggregate = aggregate;
             BaseMetricsFields = baseMetricsFields;
             Breakdown = breakdown;

@@ -17,13 +17,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// The boolean value specifying whether the sync for the schema into the destination is enabled.
         /// </summary>
         [Input("enabled")]
-        public Input<string>? Enabled { get; set; }
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The boolean value specifying whether a column should be hashed
+        /// The boolean value specifying whether a column should be hashed.
         /// </summary>
         [Input("hashed")]
-        public Input<string>? Hashed { get; set; }
+        public Input<bool>? Hashed { get; set; }
 
         /// <summary>
         /// The schema name within your destination in accordance with Fivetran conventional rules.

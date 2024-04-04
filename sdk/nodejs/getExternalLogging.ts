@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -19,12 +20,13 @@ import * as utilities from "./utilities";
  *     id: "anonymous_mystery",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getExternalLogging(args: GetExternalLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalLoggingResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getExternalLogging:getExternalLogging", {
-        "configs": args.configs,
+        "config": args.config,
         "id": args.id,
         "runSetupTests": args.runSetupTests,
     }, opts);
@@ -34,7 +36,7 @@ export function getExternalLogging(args: GetExternalLoggingArgs, opts?: pulumi.I
  * A collection of arguments for invoking getExternalLogging.
  */
 export interface GetExternalLoggingArgs {
-    configs?: inputs.GetExternalLoggingConfig[];
+    config?: inputs.GetExternalLoggingConfig;
     /**
      * The unique identifier for the log service within the Fivetran system.
      */
@@ -49,7 +51,7 @@ export interface GetExternalLoggingArgs {
  * A collection of values returned by getExternalLogging.
  */
 export interface GetExternalLoggingResult {
-    readonly configs: outputs.GetExternalLoggingConfig[];
+    readonly config?: outputs.GetExternalLoggingConfig;
     /**
      * The boolean value specifying whether the log service is enabled.
      */
@@ -76,6 +78,7 @@ export interface GetExternalLoggingResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -84,6 +87,7 @@ export interface GetExternalLoggingResult {
  *     id: "anonymous_mystery",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getExternalLoggingOutput(args: GetExternalLoggingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalLoggingResult> {
     return pulumi.output(args).apply((a: any) => getExternalLogging(a, opts))
@@ -93,7 +97,7 @@ export function getExternalLoggingOutput(args: GetExternalLoggingOutputArgs, opt
  * A collection of arguments for invoking getExternalLogging.
  */
 export interface GetExternalLoggingOutputArgs {
-    configs?: pulumi.Input<pulumi.Input<inputs.GetExternalLoggingConfigArgs>[]>;
+    config?: pulumi.Input<inputs.GetExternalLoggingConfigArgs>;
     /**
      * The unique identifier for the log service within the Fivetran system.
      */

@@ -13,22 +13,43 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class GetConnectorConfigReportArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_search_console`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
+        /// </summary>
         [Input("aggregation", required: true)]
         public string Aggregation { get; set; } = null!;
 
         [Input("attributes", required: true)]
         private List<string>? _attributes;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_search_ads_360`: The report dimensions included to sync.
+        /// </summary>
         public List<string> Attributes
         {
             get => _attributes ?? (_attributes = new List<string>());
             set => _attributes = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+        /// 	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
+        /// </summary>
         [Input("configType", required: true)]
         public string ConfigType { get; set; } = null!;
 
         [Input("dimensions", required: true)]
         private List<string>? _dimensions;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
+        /// 	- Service `google_analytics_4`: The report dimensions to include into a sync.
+        /// 	- Service `google_search_console`: The report dimensions included to sync.
+        /// </summary>
         public List<string> Dimensions
         {
             get => _dimensions ?? (_dimensions = new List<string>());
@@ -37,18 +58,35 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("fields", required: true)]
         private List<string>? _fields;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_ads`: A list of the fields to sync. Must be populated if `config_type` is set to `Custom`.
+        /// </summary>
         public List<string> Fields
         {
             get => _fields ?? (_fields = new List<string>());
             set => _fields = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: String parameter restricts the data returned for your report. To use the filter parameter, specify a dimension or metric on which to filter, followed by the filter expression
+        /// </summary>
         [Input("filter", required: true)]
         public string Filter { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics_4`: The dimension name to filter on.
+        /// </summary>
         [Input("filterFieldName", required: true)]
         public string FilterFieldName { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics_4`: Filter type for reports request. Possible values are INCLUDE and EXCLUDE
+        /// </summary>
         [Input("filterType", required: true)]
         public string FilterType { get; set; } = null!;
 
@@ -57,23 +95,50 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("metrics", required: true)]
         private List<string>? _metrics;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: The report metrics to include into a sync.
+        /// 	- Service `google_analytics_4`: The report metrics to include into a sync.
+        /// 	- Service `google_search_ads_360`: The report dimensions included to sync.
+        /// </summary>
         public List<string> Metrics
         {
             get => _metrics ?? (_metrics = new List<string>());
             set => _metrics = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: The name of the Prebuilt Report from which the connector will sync the data.
+        /// 	- Service `google_analytics_4`: The name of the Prebuilt Report from which the connector will sync the data.
+        /// </summary>
         [Input("prebuiltReport", required: true)]
         public string PrebuiltReport { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_ads`: The name of the Google Ads report from which the connector will sync the data. [Possible report_type values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
+        /// 	- Service `google_search_ads_360`: The type of report
+        /// 	- Service `google_search_console`: The type of report
+        /// </summary>
         [Input("reportType", required: true)]
         public string ReportType { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics_4`: The custom window size for rollback syncs.
+        /// </summary>
         [Input("rollbackWindow", required: true)]
-        public string RollbackWindow { get; set; } = null!;
+        public int RollbackWindow { get; set; }
 
         [Input("searchTypes", required: true)]
         private List<string>? _searchTypes;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_search_console`: Search types included to sync. Supported only for the `SEARCH_RESULTS` report type
+        /// </summary>
         public List<string> SearchTypes
         {
             get => _searchTypes ?? (_searchTypes = new List<string>());
@@ -90,14 +155,34 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("segments", required: true)]
         private List<string>? _segments;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: A segment is a subset of your Analytics data that is made up of one or more non-destructive filters (filters that do not alter the underlying data). Those filters isolate subsets of users, sessions, and hits.
+        /// </summary>
         public List<string> Segments
         {
             get => _segments ?? (_segments = new List<string>());
             set => _segments = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_ads`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `google_analytics`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `google_analytics_4`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `google_search_ads_360`: The name of a table within the schema to which connector syncs the data of a given report.
+        /// 	- Service `google_search_console`: The name of a table within the schema to which connector syncs the data of a given report.
+        /// </summary>
         [Input("table", required: true)]
         public string Table { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics_4`: The report data aggregation time granularity.
+        /// </summary>
+        [Input("timeAggregationGranularity", required: true)]
+        public string TimeAggregationGranularity { get; set; } = null!;
 
         public GetConnectorConfigReportArgs()
         {

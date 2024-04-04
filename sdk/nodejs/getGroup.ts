@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     id: "anonymous_mystery",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
 
@@ -49,6 +51,10 @@ export interface GetGroupResult {
      */
     readonly id: string;
     /**
+     * The timestamp of when the group was updated in your account.
+     */
+    readonly lastUpdated: string;
+    /**
      * The name of the group within your account.
      */
     readonly name: string;
@@ -58,6 +64,7 @@ export interface GetGroupResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -66,6 +73,7 @@ export interface GetGroupResult {
  *     id: "anonymous_mystery",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
     return pulumi.output(args).apply((a: any) => getGroup(a, opts))

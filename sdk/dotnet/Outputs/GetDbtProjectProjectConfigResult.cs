@@ -14,8 +14,17 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class GetDbtProjectProjectConfigResult
     {
+        /// <summary>
+        /// Folder in Git repo with your dbt project.
+        /// </summary>
         public readonly string FolderPath;
+        /// <summary>
+        /// Git branch.
+        /// </summary>
         public readonly string GitBranch;
+        /// <summary>
+        /// Git remote URL with your dbt project.
+        /// </summary>
         public readonly string GitRemoteUrl;
 
         [OutputConstructor]

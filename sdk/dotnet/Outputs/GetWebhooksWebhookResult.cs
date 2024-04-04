@@ -41,7 +41,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Specifies whether the setup tests should be run
         /// </summary>
-        public readonly bool? RunTests;
+        public readonly bool RunTests;
         /// <summary>
         /// The secret string used for payload signing and masked in the response.
         /// </summary>
@@ -69,7 +69,7 @@ namespace Footholdtech.Fivetran.Outputs
 
             string id,
 
-            bool? runTests,
+            bool runTests,
 
             string secret,
 

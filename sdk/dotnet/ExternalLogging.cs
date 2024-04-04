@@ -13,25 +13,37 @@ namespace Footholdtech.Fivetran
     /// <summary>
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { }
+    /// 1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
+    /// 
+    /// To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+    /// 
+    /// 2. Define an empty resource in your `.tf` configuration:
+    /// 
+    /// hcl
+    /// 
+    /// resource "fivetran_external_logging" "my_imported_external_logging" {
+    /// 
+    /// }
+    /// 
+    /// 3. Run the `pulumi import` command with the following parameters:
     /// 
     /// ```sh
-    ///  $ pulumi import fivetran:index/externalLogging:ExternalLogging
-    /// 
-    /// Run the `terraform import` command with the following parameters
+    /// $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
     /// ```
     /// 
-    /// ```sh
-    ///  $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
-    /// ```
+    /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
-    ///  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_external_logging.my_imported_external_logging' 5. Copy the values and paste them to your `.tf` configuration. -&gt; The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
+    /// terraform state show 'fivetran_external_logging.my_imported_external_logging'
+    /// 
+    /// 5. Copy the values and paste them to your `.tf` configuration.
+    /// 
+    /// -&gt; The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
     /// </summary>
     [FivetranResourceType("fivetran:index/externalLogging:ExternalLogging")]
     public partial class ExternalLogging : global::Pulumi.CustomResource
     {
         [Output("config")]
-        public Output<Outputs.ExternalLoggingConfig> Config { get; private set; } = null!;
+        public Output<Outputs.ExternalLoggingConfig?> Config { get; private set; } = null!;
 
         /// <summary>
         /// The boolean value specifying whether the log service is enabled.
@@ -104,8 +116,8 @@ namespace Footholdtech.Fivetran
 
     public sealed class ExternalLoggingArgs : global::Pulumi.ResourceArgs
     {
-        [Input("config", required: true)]
-        public Input<Inputs.ExternalLoggingConfigArgs> Config { get; set; } = null!;
+        [Input("config")]
+        public Input<Inputs.ExternalLoggingConfigArgs>? Config { get; set; }
 
         /// <summary>
         /// The boolean value specifying whether the log service is enabled.

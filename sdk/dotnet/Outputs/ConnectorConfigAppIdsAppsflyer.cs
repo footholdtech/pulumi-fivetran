@@ -14,6 +14,10 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class ConnectorConfigAppIdsAppsflyer
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `appsflyer`: Your App ID
+        /// </summary>
         public readonly string? AppId;
 
         [OutputConstructor]

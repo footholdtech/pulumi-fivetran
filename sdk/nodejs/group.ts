@@ -9,28 +9,40 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
  *
  * const group = new fivetran.Group("group", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
+ * 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+ *
+ * To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+ *
+ * 2. Define an empty resource in your `.tf` configuration:
+ *
+ * hcl
+ *
+ * resource "fivetran_group" "my_imported_fivetran_group" {
+ *
+ * }
+ *
+ * 3. Run the `pulumi import` command:
  *
  * ```sh
- *  $ pulumi import fivetran:index/group:Group
- *
- * Run the `terraform import` command
+ * $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
  * ```
  *
- * ```sh
- *  $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
- * ```
+ * 4. Use the `terraform state show` command to get the values from the state:
  *
- *  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_group.my_imported_fivetran_group' 5. Copy the values and paste them to your `.tf` configuration.
+ * terraform state show 'fivetran_group.my_imported_fivetran_group'
+ *
+ * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class Group extends pulumi.CustomResource {
     /**
@@ -64,6 +76,9 @@ export class Group extends pulumi.CustomResource {
      * The timestamp of when the group was created in your account.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The timestamp of when the group was updated in your account.
+     */
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
      * The name of the group within your account.
@@ -105,6 +120,9 @@ export interface GroupState {
      * The timestamp of when the group was created in your account.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The timestamp of when the group was updated in your account.
+     */
     lastUpdated?: pulumi.Input<string>;
     /**
      * The name of the group within your account.

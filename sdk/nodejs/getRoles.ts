@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const roles = fivetran.getRoles({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
     args = args || {};
@@ -39,22 +41,24 @@ export interface GetRolesArgs {
  */
 export interface GetRolesResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
-    readonly roles: outputs.GetRolesRole[];
+    readonly roles?: outputs.GetRolesRole[];
 }
 /**
  * This data source returns a list of all predefined and custom roles within your Fivetran account.
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const roles = fivetran.getRoles({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
     return pulumi.output(args).apply((a: any) => getRoles(a, opts))

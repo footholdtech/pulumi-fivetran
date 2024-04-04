@@ -7,52 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## ---
- *
- * page_title: "Resource: fivetran.ConnectorSchemaConfig"
- * ---
- *
- * # Resource: fivetran.ConnectorSchemaConfig
- *
- * This resource allows you to manage the Standard Configuration settings of a connector:
- *  - Define the schema change handling settings
- *  - Enable and disable schemas, tables, and columns
- *
- * The resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.
- *
- * Known issues:
- *  - Definition of `syncMode` for table causes infinite drifting changes in plan
- *
- * ## Usage guide
- *
- * Note that all configuration settings are aligned to the `schemaChangeHandling` settings,  except the settings explicitly specified in `schema`.
- * In `schema`, you only override the default settings defined by the chosen `schemaChangeHandling` option. The default value for the `enabled` attribute is `true` so it can be omitted when you want to enable schemas, tables, or columns.
- * The allowed `schemaChangeHandling` options are as follows:
- * - `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables
- * - `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items
- * - `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns
- *
- * Note that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `schemaChangeHandling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = "false"`), the provider just ignores these statements.
- *
- * ## Usage examples
- *
  * ## Import
  *
- * 1. To import an existing `fivetran_connector_schema_config` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_schema_config" "my_imported_connector_schema_config" { }
- *
- * ```sh
- *  $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig
- *
- * Run the `terraform import` command
- * ```
- *
- * ```sh
- *  $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
- * ```
- *
- * 5.  
- *
- * Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_schema_config.my_imported_connector_schema_config' 6. Copy the values and paste them to your `.tf` configuration.
+ * You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
  */
 export class ConnectorSchemaConfig extends pulumi.CustomResource {
     /**
@@ -86,8 +43,20 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
      * The unique identifier for the connector within the Fivetran system.
      */
     public readonly connectorId!: pulumi.Output<string>;
+    /**
+     * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
+     */
+    public readonly schema!: pulumi.Output<outputs.ConnectorSchemaConfigSchema[] | undefined>;
     public readonly schemaChangeHandling!: pulumi.Output<string>;
-    public readonly schemas!: pulumi.Output<outputs.ConnectorSchemaConfigSchema[] | undefined>;
+    /**
+     * Map of schema configurations.
+     */
+    public readonly schemas!: pulumi.Output<{[key: string]: outputs.ConnectorSchemaConfigSchemas} | undefined>;
+    /**
+     * Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+     */
+    public readonly schemasJson!: pulumi.Output<string | undefined>;
+    public readonly timeouts!: pulumi.Output<outputs.ConnectorSchemaConfigTimeouts | undefined>;
 
     /**
      * Create a ConnectorSchemaConfig resource with the given unique name, arguments, and options.
@@ -103,8 +72,11 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConnectorSchemaConfigState | undefined;
             resourceInputs["connectorId"] = state ? state.connectorId : undefined;
+            resourceInputs["schema"] = state ? state.schema : undefined;
             resourceInputs["schemaChangeHandling"] = state ? state.schemaChangeHandling : undefined;
             resourceInputs["schemas"] = state ? state.schemas : undefined;
+            resourceInputs["schemasJson"] = state ? state.schemasJson : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
         } else {
             const args = argsOrState as ConnectorSchemaConfigArgs | undefined;
             if ((!args || args.connectorId === undefined) && !opts.urn) {
@@ -114,8 +86,11 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'schemaChangeHandling'");
             }
             resourceInputs["connectorId"] = args ? args.connectorId : undefined;
+            resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["schemaChangeHandling"] = args ? args.schemaChangeHandling : undefined;
             resourceInputs["schemas"] = args ? args.schemas : undefined;
+            resourceInputs["schemasJson"] = args ? args.schemasJson : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectorSchemaConfig.__pulumiType, name, resourceInputs, opts);
@@ -130,8 +105,20 @@ export interface ConnectorSchemaConfigState {
      * The unique identifier for the connector within the Fivetran system.
      */
     connectorId?: pulumi.Input<string>;
+    /**
+     * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
+     */
+    schema?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[]>;
     schemaChangeHandling?: pulumi.Input<string>;
-    schemas?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[]>;
+    /**
+     * Map of schema configurations.
+     */
+    schemas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ConnectorSchemaConfigSchemas>}>;
+    /**
+     * Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+     */
+    schemasJson?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ConnectorSchemaConfigTimeouts>;
 }
 
 /**
@@ -142,6 +129,18 @@ export interface ConnectorSchemaConfigArgs {
      * The unique identifier for the connector within the Fivetran system.
      */
     connectorId: pulumi.Input<string>;
+    /**
+     * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
+     */
+    schema?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[]>;
     schemaChangeHandling: pulumi.Input<string>;
-    schemas?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[]>;
+    /**
+     * Map of schema configurations.
+     */
+    schemas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ConnectorSchemaConfigSchemas>}>;
+    /**
+     * Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+     */
+    schemasJson?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ConnectorSchemaConfigTimeouts>;
 }

@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a destination object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDestinationResult> InvokeAsync(GetDestinationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDestinationResult>("fivetran:index/getDestination:getDestination", args ?? new GetDestinationArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a destination object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,8 +59,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDestinationResult> Invoke(GetDestinationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDestinationResult>("fivetran:index/getDestination:getDestination", args ?? new GetDestinationInvokeArgs(), options.WithDefaults());
@@ -72,17 +68,9 @@ namespace Footholdtech.Fivetran
 
     public sealed class GetDestinationArgs : global::Pulumi.InvokeArgs
     {
-        [Input("configs")]
-        private List<Inputs.GetDestinationConfigArgs>? _configs;
-        public List<Inputs.GetDestinationConfigArgs> Configs
-        {
-            get => _configs ?? (_configs = new List<Inputs.GetDestinationConfigArgs>());
-            set => _configs = value;
-        }
+        [Input("config")]
+        public Inputs.GetDestinationConfigArgs? Config { get; set; }
 
-        /// <summary>
-        /// The unique identifier for the destination within the Fivetran system
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
@@ -94,17 +82,9 @@ namespace Footholdtech.Fivetran
 
     public sealed class GetDestinationInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("configs")]
-        private InputList<Inputs.GetDestinationConfigInputArgs>? _configs;
-        public InputList<Inputs.GetDestinationConfigInputArgs> Configs
-        {
-            get => _configs ?? (_configs = new InputList<Inputs.GetDestinationConfigInputArgs>());
-            set => _configs = value;
-        }
+        [Input("config")]
+        public Input<Inputs.GetDestinationConfigInputArgs>? Config { get; set; }
 
-        /// <summary>
-        /// The unique identifier for the destination within the Fivetran system
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
@@ -118,35 +98,20 @@ namespace Footholdtech.Fivetran
     [OutputType]
     public sealed class GetDestinationResult
     {
-        public readonly ImmutableArray<Outputs.GetDestinationConfigResult> Configs;
-        /// <summary>
-        /// The unique identifier for the Group within the Fivetran system.
-        /// </summary>
+        public readonly Outputs.GetDestinationConfigResult? Config;
+        public readonly bool DaylightSavingTimeEnabled;
         public readonly string GroupId;
-        /// <summary>
-        /// The unique identifier for the destination within the Fivetran system
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Data processing location. This is where Fivetran will operate and run computation on data.
-        /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// The destination type name within the Fivetran system
-        /// </summary>
         public readonly string Service;
-        /// <summary>
-        /// Destination setup status
-        /// </summary>
         public readonly string SetupStatus;
-        /// <summary>
-        /// Determines the time zone for the Fivetran sync schedule.
-        /// </summary>
         public readonly string TimeZoneOffset;
 
         [OutputConstructor]
         private GetDestinationResult(
-            ImmutableArray<Outputs.GetDestinationConfigResult> configs,
+            Outputs.GetDestinationConfigResult? config,
+
+            bool daylightSavingTimeEnabled,
 
             string groupId,
 
@@ -160,7 +125,8 @@ namespace Footholdtech.Fivetran
 
             string timeZoneOffset)
         {
-            Configs = configs;
+            Config = config;
+            DaylightSavingTimeEnabled = daylightSavingTimeEnabled;
             GroupId = groupId;
             Id = id;
             Region = region;

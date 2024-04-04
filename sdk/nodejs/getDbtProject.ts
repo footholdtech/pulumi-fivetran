@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     id: "project_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDbtProject(args: GetDbtProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetDbtProjectResult> {
 
@@ -106,6 +108,7 @@ export interface GetDbtProjectResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -114,6 +117,7 @@ export interface GetDbtProjectResult {
  *     id: "project_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDbtProjectOutput(args: GetDbtProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtProjectResult> {
     return pulumi.output(args).apply((a: any) => getDbtProject(a, opts))

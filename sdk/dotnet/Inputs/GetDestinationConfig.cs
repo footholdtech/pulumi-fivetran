@@ -14,124 +14,291 @@ namespace Footholdtech.Fivetran.Inputs
     public sealed class GetDestinationConfigArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `aurora_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_data_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_database`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_managed_db_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `maria_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `maria_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `mysql_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `mysql_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `panoply`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `periscope_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_gcp_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `redshift`: Require TLS through Tunnel
+        /// 	- Service `sql_server_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `sql_server_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         /// </summary>
-        [Input("auth")]
-        public string? Auth { get; set; }
+        [Input("alwaysEncrypted", required: true)]
+        public bool AlwaysEncrypted { get; set; }
 
         /// <summary>
-        /// Authentication type. Default value: `PASSWORD`.
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snowflake`: Password-based or key-based authentication type
         /// </summary>
-        [Input("authType")]
-        public string? AuthType { get; set; }
+        [Input("auth", required: true)]
+        public string Auth { get; set; } = null!;
 
         /// <summary>
-        /// Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+        /// Field usage depends on `service` value: 
+        /// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
         /// </summary>
-        [Input("bucket")]
-        public string? Bucket { get; set; }
+        [Input("authType", required: true)]
+        public string AuthType { get; set; } = null!;
 
-        /// <summary>
-        /// Catalog name
-        /// </summary>
-        [Input("catalog")]
-        public string? Catalog { get; set; }
-
-        /// <summary>
-        /// ClientId of your Azure Data Lake Storage
-        /// </summary>
-        [Input("clientId")]
-        public string? ClientId { get; set; }
-
-        /// <summary>
-        /// Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
-        /// </summary>
-        [Input("clusterId")]
-        public string? ClusterId { get; set; }
-
-        /// <summary>
-        /// Cluster region. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
-        /// </summary>
-        [Input("clusterRegion")]
-        public string? ClusterRegion { get; set; }
-
-        /// <summary>
-        /// Connection method. Default value: `Directly`.
-        /// </summary>
-        [Input("connectionType")]
-        public string? ConnectionType { get; set; }
-
-        /// <summary>
-        /// Container Name of your Azure Data Lake Storage
-        /// </summary>
-        [Input("containerName")]
-        public string? ContainerName { get; set; }
-
-        /// <summary>
-        /// Whether to create external tables
-        /// </summary>
-        [Input("createExternalTables")]
-        public string? CreateExternalTables { get; set; }
-
-        /// <summary>
-        /// Data location. Datasets will reside in this location.
-        /// </summary>
-        [Input("dataSetLocation")]
-        public string? DataSetLocation { get; set; }
-
-        /// <summary>
-        /// Database name
-        /// </summary>
-        [Input("database")]
-        public string? Database { get; set; }
-
-        /// <summary>
-        /// External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
-        /// </summary>
-        [Input("externalLocation")]
-        public string? ExternalLocation { get; set; }
-
-        /// <summary>
-        /// ARN of the role which you created with different required policy mentioned in our setup guide
-        /// </summary>
-        [Input("fivetranRoleArn")]
-        public string? FivetranRoleArn { get; set; }
-
-        /// <summary>
-        /// Server name
-        /// </summary>
-        [Input("host")]
-        public string? Host { get; set; }
-
-        /// <summary>
-        /// HTTP path
-        /// </summary>
-        [Input("httpPath")]
-        public string? HttpPath { get; set; }
-
-        /// <summary>
-        /// Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
-        /// </summary>
-        [Input("isPrivateKeyEncrypted", required: true)]
-        public string IsPrivateKeyEncrypted { get; set; } = null!;
-
-        [Input("lakehouseName")]
-        private string? _lakehouseName;
-
-        /// <summary>
-        /// OneLake lakehouse name
-        /// </summary>
-        public string? LakehouseName
+        [Input("bootstrapServers", required: true)]
+        private List<string>? _bootstrapServers;
+        public List<string> BootstrapServers
         {
-            get => _lakehouseName;
-            set => _lakehouseName = value;
+            get => _bootstrapServers ?? (_bootstrapServers = new List<string>());
+            set => _bootstrapServers = value;
         }
 
-        [Input("passphrase")]
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `big_query`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+        /// 	- Service `big_query_dts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+        /// 	- Service `managed_big_query`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+        /// 	- Service `new_s3_datalake`: The name of the bucket to be used as destination
+        /// </summary>
+        [Input("bucket", required: true)]
+        public string Bucket { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Catalog name
+        /// </summary>
+        [Input("catalog", required: true)]
+        public string Catalog { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Client id of service principal
+        /// 	- Service `onelake`: Client ID of service principal
+        /// </summary>
+        [Input("clientId", required: true)]
+        public string ClientId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Databricks deployment cloud
+        /// </summary>
+        [Input("cloudProvider", required: true)]
+        public string CloudProvider { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `panoply`: Cluster ID.
+        /// 	- Service `periscope_warehouse`: Cluster ID.
+        /// 	- Service `redshift`: Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public string ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `panoply`: Cluster region.
+        /// 	- Service `periscope_warehouse`: Cluster region.
+        /// 	- Service `redshift`: Cluster region. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
+        /// </summary>
+        [Input("clusterRegion", required: true)]
+        public string ClusterRegion { get; set; } = null!;
+
+        [Input("connectionMethod", required: true)]
+        public string ConnectionMethod { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Connection method. Default value: `Directly`.
+        /// 	- Service `aurora_postgres_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `aurora_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `azure_postgres_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `azure_sql_data_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `azure_sql_database`: Connection method. Default value: `Directly`.
+        /// 	- Service `azure_sql_managed_db_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `databricks`: Connection method. Default value: `Directly`.
+        /// 	- Service `maria_rds_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `maria_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `mysql_rds_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `mysql_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `panoply`: Connection method. Default value: `Directly`.
+        /// 	- Service `periscope_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `postgres_gcp_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `postgres_rds_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `postgres_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `redshift`: Connection method. Default value: `Directly`.
+        /// 	- Service `snowflake`: Connection method. Default value: `Directly`.
+        /// 	- Service `sql_server_rds_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `sql_server_warehouse`: Connection method. Default value: `Directly`.
+        /// </summary>
+        [Input("connectionType", required: true)]
+        public string ConnectionType { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Container to store delta table files
+        /// 	- Service `onelake`: Workspace name to store delta table files
+        /// </summary>
+        [Input("containerName", required: true)]
+        public string ContainerName { get; set; } = null!;
+
+        [Input("controllerId", required: true)]
+        public string ControllerId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Whether to create external tables
+        /// </summary>
+        [Input("createExternalTables", required: true)]
+        public bool CreateExternalTables { get; set; }
+
+        [Input("dataFormat", required: true)]
+        public string DataFormat { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `big_query`: Data location. Datasets will reside in this location.
+        /// 	- Service `big_query_dts`: Data location. Datasets will reside in this location.
+        /// 	- Service `managed_big_query`: Data location. Datasets will reside in this location.
+        /// </summary>
+        [Input("dataSetLocation", required: true)]
+        public string DataSetLocation { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: Database name
+        /// 	- Service `aurora_warehouse`: Database name
+        /// 	- Service `azure_postgres_warehouse`: Database name
+        /// 	- Service `azure_sql_data_warehouse`: Database name
+        /// 	- Service `azure_sql_database`: Database name
+        /// 	- Service `azure_sql_managed_db_warehouse`: Database name
+        /// 	- Service `maria_rds_warehouse`: Database name
+        /// 	- Service `maria_warehouse`: Database name
+        /// 	- Service `mysql_rds_warehouse`: Database name
+        /// 	- Service `mysql_warehouse`: Database name
+        /// 	- Service `panoply`: Database name
+        /// 	- Service `periscope_warehouse`: Database name
+        /// 	- Service `postgres_gcp_warehouse`: Database name
+        /// 	- Service `postgres_rds_warehouse`: Database name
+        /// 	- Service `postgres_warehouse`: Database name
+        /// 	- Service `redshift`: Database name
+        /// 	- Service `snowflake`: Database name
+        /// 	- Service `sql_server_rds_warehouse`: Database name
+        /// 	- Service `sql_server_warehouse`: Database name
+        /// </summary>
+        [Input("database", required: true)]
+        public string Database { get; set; } = null!;
+
+        [Input("enableRemoteExecution", required: true)]
+        public bool EnableRemoteExecution { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aws_msk_wh`: Fivetran generated External ID
+        /// 	- Service `panoply`: Fivetran generated External ID
+        /// 	- Service `periscope_warehouse`: Fivetran generated External ID
+        /// 	- Service `redshift`: Fivetran generated External ID
+        /// </summary>
+        [Input("externalId", required: true)]
+        public string ExternalId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
+        /// </summary>
+        [Input("externalLocation", required: true)]
+        public string ExternalLocation { get; set; } = null!;
+
+        [Input("fivetranGlueRoleArn", required: true)]
+        public string FivetranGlueRoleArn { get; set; } = null!;
+
+        [Input("fivetranMskRoleArn", required: true)]
+        public string FivetranMskRoleArn { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `new_s3_datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
+        /// </summary>
+        [Input("fivetranRoleArn", required: true)]
+        public string FivetranRoleArn { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: Server name
+        /// 	- Service `aurora_warehouse`: Server name
+        /// 	- Service `azure_postgres_warehouse`: Server name
+        /// 	- Service `azure_sql_data_warehouse`: Server name
+        /// 	- Service `azure_sql_database`: Server name
+        /// 	- Service `azure_sql_managed_db_warehouse`: Server name
+        /// 	- Service `maria_rds_warehouse`: Server name
+        /// 	- Service `maria_warehouse`: Server name
+        /// 	- Service `mysql_rds_warehouse`: Server name
+        /// 	- Service `mysql_warehouse`: Server name
+        /// 	- Service `panoply`: Server name
+        /// 	- Service `periscope_warehouse`: Server name
+        /// 	- Service `postgres_gcp_warehouse`: Server name
+        /// 	- Service `postgres_rds_warehouse`: Server name
+        /// 	- Service `postgres_warehouse`: Server name
+        /// 	- Service `redshift`: Server name
+        /// 	- Service `snowflake`: Server name
+        /// 	- Service `sql_server_rds_warehouse`: Server name
+        /// 	- Service `sql_server_warehouse`: Server name
+        /// </summary>
+        [Input("host", required: true)]
+        public string Host { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: HTTP path
+        /// </summary>
+        [Input("httpPath", required: true)]
+        public string HttpPath { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snowflake`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
+        /// </summary>
+        [Input("isPrivateKeyEncrypted", required: true)]
+        public bool IsPrivateKeyEncrypted { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelinkbeta).
+        /// </summary>
+        [Input("isPrivateLinkRequired", required: true)]
+        public bool IsPrivateLinkRequired { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `redshift`: Is your destination Redshift Serverless
+        /// </summary>
+        [Input("isRedshiftServerless", required: true)]
+        public bool IsRedshiftServerless { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `onelake`: Name of your lakehouse
+        /// </summary>
+        [Input("lakehouseName", required: true)]
+        public string LakehouseName { get; set; } = null!;
+
+        [Input("mskStsRegion", required: true)]
+        public string MskStsRegion { get; set; } = null!;
+
+        [Input("numOfPartitions", required: true)]
+        public int NumOfPartitions { get; set; }
+
+        [Input("passphrase", required: true)]
         private string? _passphrase;
 
         /// <summary>
-        /// In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snowflake`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
         /// </summary>
         public string? Passphrase
         {
@@ -139,11 +306,30 @@ namespace Footholdtech.Fivetran.Inputs
             set => _passphrase = value;
         }
 
-        [Input("password")]
+        [Input("password", required: true)]
         private string? _password;
 
         /// <summary>
-        /// Database user password
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: Database user password
+        /// 	- Service `aurora_warehouse`: Database user password
+        /// 	- Service `azure_postgres_warehouse`: Database user password
+        /// 	- Service `azure_sql_data_warehouse`: Database user password
+        /// 	- Service `azure_sql_database`: Database user password
+        /// 	- Service `azure_sql_managed_db_warehouse`: Database user password
+        /// 	- Service `maria_rds_warehouse`: Database user password
+        /// 	- Service `maria_warehouse`: Database user password
+        /// 	- Service `mysql_rds_warehouse`: Database user password
+        /// 	- Service `mysql_warehouse`: Database user password
+        /// 	- Service `panoply`: Database user password
+        /// 	- Service `periscope_warehouse`: Database user password
+        /// 	- Service `postgres_gcp_warehouse`: Database user password
+        /// 	- Service `postgres_rds_warehouse`: Database user password
+        /// 	- Service `postgres_warehouse`: Database user password
+        /// 	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
+        /// 	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
+        /// 	- Service `sql_server_rds_warehouse`: Database user password
+        /// 	- Service `sql_server_warehouse`: Database user password
         /// </summary>
         public string? Password
         {
@@ -151,11 +337,12 @@ namespace Footholdtech.Fivetran.Inputs
             set => _password = value;
         }
 
-        [Input("personalAccessToken")]
+        [Input("personalAccessToken", required: true)]
         private string? _personalAccessToken;
 
         /// <summary>
-        /// Personal access token
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Personal access token
         /// </summary>
         public string? PersonalAccessToken
         {
@@ -164,22 +351,46 @@ namespace Footholdtech.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Server port number
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: Server port number
+        /// 	- Service `aurora_warehouse`: Server port number
+        /// 	- Service `azure_postgres_warehouse`: Server port number
+        /// 	- Service `azure_sql_data_warehouse`: Server port number
+        /// 	- Service `azure_sql_database`: Server port number
+        /// 	- Service `azure_sql_managed_db_warehouse`: Server port number
+        /// 	- Service `databricks`: Server port number
+        /// 	- Service `maria_rds_warehouse`: Server port number
+        /// 	- Service `maria_warehouse`: Server port number
+        /// 	- Service `mysql_rds_warehouse`: Server port number
+        /// 	- Service `mysql_warehouse`: Server port number
+        /// 	- Service `panoply`: Server port number
+        /// 	- Service `periscope_warehouse`: Server port number
+        /// 	- Service `postgres_gcp_warehouse`: Server port number
+        /// 	- Service `postgres_rds_warehouse`: Server port number
+        /// 	- Service `postgres_warehouse`: Server port number
+        /// 	- Service `redshift`: Server port number
+        /// 	- Service `snowflake`: Server port number
+        /// 	- Service `sql_server_rds_warehouse`: Server port number
+        /// 	- Service `sql_server_warehouse`: Server port number
         /// </summary>
-        [Input("port")]
-        public int? Port { get; set; }
+        [Input("port", required: true)]
+        public int Port { get; set; }
 
         /// <summary>
-        /// Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: path/to/data within the container
+        /// 	- Service `new_s3_datalake`: Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+        /// 	- Service `onelake`: path/to/data within your lakehouse inside the Files directory
         /// </summary>
-        [Input("prefixPath")]
-        public string? PrefixPath { get; set; }
+        [Input("prefixPath", required: true)]
+        public string PrefixPath { get; set; } = null!;
 
-        [Input("privateKey")]
+        [Input("privateKey", required: true)]
         private string? _privateKey;
 
         /// <summary>
-        /// Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snowflake`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
         /// </summary>
         public string? PrivateKey
         {
@@ -188,34 +399,91 @@ namespace Footholdtech.Fivetran.Inputs
         }
 
         /// <summary>
-        /// BigQuery project ID
+        /// Field usage depends on `service` value: 
+        /// 	- Service `big_query`: BigQuery project ID
         /// </summary>
-        [Input("projectId")]
-        public string? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public string ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Public key to grant Fivetran SSH access to git repository.
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: Public Key
+        /// 	- Service `aurora_warehouse`: Public Key
+        /// 	- Service `azure_postgres_warehouse`: Public Key
+        /// 	- Service `azure_sql_data_warehouse`: Public Key
+        /// 	- Service `azure_sql_database`: Public Key
+        /// 	- Service `azure_sql_managed_db_warehouse`: Public Key
+        /// 	- Service `maria_rds_warehouse`: Public Key
+        /// 	- Service `maria_warehouse`: Public Key
+        /// 	- Service `mysql_rds_warehouse`: Public Key
+        /// 	- Service `mysql_warehouse`: Public Key
+        /// 	- Service `panoply`: Public Key
+        /// 	- Service `periscope_warehouse`: Public Key
+        /// 	- Service `postgres_gcp_warehouse`: Public Key
+        /// 	- Service `postgres_rds_warehouse`: Public Key
+        /// 	- Service `postgres_warehouse`: Public Key
+        /// 	- Service `redshift`: Public Key
+        /// 	- Service `sql_server_rds_warehouse`: Public Key
+        /// 	- Service `sql_server_warehouse`: Public Key
         /// </summary>
         [Input("publicKey", required: true)]
         public string PublicKey { get; set; } = null!;
 
         /// <summary>
-        /// Region of your AWS S3 bucket
+        /// Field usage depends on `service` value: 
+        /// 	- Service `new_s3_datalake`: Region of your AWS S3 bucket
         /// </summary>
-        [Input("region")]
-        public string? Region { get; set; }
+        [Input("region", required: true)]
+        public string Region { get; set; } = null!;
+
+        [Input("registryName", required: true)]
+        public string RegistryName { get; set; } = null!;
+
+        [Input("registryStsRegion", required: true)]
+        public string RegistryStsRegion { get; set; } = null!;
+
+        [Input("replicationFactor", required: true)]
+        public int ReplicationFactor { get; set; }
 
         /// <summary>
-        /// The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `aurora_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `azure_postgres_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `azure_sql_data_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `azure_sql_database`: Field to test Self serve Private Link
+        /// 	- Service `azure_sql_managed_db_warehouse`: Field to test Self serve Private Link
+        /// 	- Service `databricks`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `maria_rds_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `maria_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `mysql_rds_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `mysql_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `panoply`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `periscope_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `postgres_gcp_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `postgres_rds_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `postgres_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `redshift`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `snowflake`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `sql_server_rds_warehouse`: Field to test Self serve Private Link
+        /// 	- Service `sql_server_warehouse`: Field to test Self serve Private Link
         /// </summary>
-        [Input("role")]
-        public string? Role { get; set; }
+        [Input("resourceId", required: true)]
+        public string ResourceId { get; set; } = null!;
 
-        [Input("roleArn")]
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snowflake`: If not specified, Fivetran will use the user's default role
+        /// </summary>
+        [Input("role", required: true)]
+        public string Role { get; set; } = null!;
+
+        [Input("roleArn", required: true)]
         private string? _roleArn;
 
         /// <summary>
-        /// Role ARN with Redshift permissions. Required if authentication type is `IAM`.
+        /// Field usage depends on `service` value: 
+        /// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         /// </summary>
         public string? RoleArn
         {
@@ -223,11 +491,58 @@ namespace Footholdtech.Fivetran.Inputs
             set => _roleArn = value;
         }
 
-        [Input("secretKey")]
+        [Input("saslMechanism", required: true)]
+        public string SaslMechanism { get; set; } = null!;
+
+        [Input("saslPlainKey", required: true)]
+        private string? _saslPlainKey;
+        public string? SaslPlainKey
+        {
+            get => _saslPlainKey;
+            set => _saslPlainKey = value;
+        }
+
+        [Input("saslPlainSecret", required: true)]
+        private string? _saslPlainSecret;
+        public string? SaslPlainSecret
+        {
+            get => _saslPlainSecret;
+            set => _saslPlainSecret = value;
+        }
+
+        [Input("schemaCompatibility", required: true)]
+        public string SchemaCompatibility { get; set; } = null!;
+
+        [Input("schemaRegistry", required: true)]
+        public string SchemaRegistry { get; set; } = null!;
+
+        [Input("schemaRegistryApiKey", required: true)]
+        private string? _schemaRegistryApiKey;
+        public string? SchemaRegistryApiKey
+        {
+            get => _schemaRegistryApiKey;
+            set => _schemaRegistryApiKey = value;
+        }
+
+        [Input("schemaRegistryApiSecret", required: true)]
+        private string? _schemaRegistryApiSecret;
+        public string? SchemaRegistryApiSecret
+        {
+            get => _schemaRegistryApiSecret;
+            set => _schemaRegistryApiSecret = value;
+        }
+
+        [Input("schemaRegistryUrl", required: true)]
+        public string SchemaRegistryUrl { get; set; } = null!;
+
+        [Input("secretKey", required: true)]
         private string? _secretKey;
 
         /// <summary>
-        /// Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        /// Field usage depends on `service` value: 
+        /// 	- Service `big_query`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        /// 	- Service `big_query_dts`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        /// 	- Service `managed_big_query`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
         /// </summary>
         public string? SecretKey
         {
@@ -235,11 +550,13 @@ namespace Footholdtech.Fivetran.Inputs
             set => _secretKey = value;
         }
 
-        [Input("secretValue")]
+        [Input("secretValue", required: true)]
         private string? _secretValue;
 
         /// <summary>
-        /// Secret Value of your Azure Data Lake Storage
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Secret value for service principal
+        /// 	- Service `onelake`: Secret value for service principal
         /// </summary>
         public string? SecretValue
         {
@@ -247,59 +564,141 @@ namespace Footholdtech.Fivetran.Inputs
             set => _secretValue = value;
         }
 
-        /// <summary>
-        /// Server name
-        /// </summary>
-        [Input("serverHostName")]
-        public string? ServerHostName { get; set; }
+        [Input("securityProtocol", required: true)]
+        public string SecurityProtocol { get; set; } = null!;
 
         /// <summary>
-        /// Storage Account Name of your Azure Data Lake Storage
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Server name
         /// </summary>
-        [Input("storageAccountName")]
-        public string? StorageAccountName { get; set; }
+        [Input("serverHostName", required: true)]
+        public string ServerHostName { get; set; } = null!;
+
+        [Input("snowflakeCloud", required: true)]
+        public string SnowflakeCloud { get; set; } = null!;
+
+        [Input("snowflakeRegion", required: true)]
+        public string SnowflakeRegion { get; set; } = null!;
 
         /// <summary>
-        /// TenantId of your Azure Data Lake Storage
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Storage account for Azure Data Lake Storage Gen2 name
+        /// 	- Service `onelake`: Storage account for Azure Data Lake Storage Gen2 name
         /// </summary>
-        [Input("tenantId")]
-        public string? TenantId { get; set; }
+        [Input("storageAccountName", required: true)]
+        public string StorageAccountName { get; set; } = null!;
 
         /// <summary>
-        /// SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Tenant id of service principal
+        /// 	- Service `onelake`: Tenant ID of service principal
         /// </summary>
-        [Input("tunnelHost")]
-        public string? TunnelHost { get; set; }
+        [Input("tenantId", required: true)]
+        public string TenantId { get; set; } = null!;
 
         /// <summary>
-        /// SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `aurora_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_data_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_database`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_managed_db_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `maria_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `maria_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `mysql_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `mysql_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `panoply`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `periscope_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_gcp_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `redshift`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `sql_server_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `sql_server_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// </summary>
-        [Input("tunnelPort")]
-        public string? TunnelPort { get; set; }
+        [Input("tunnelHost", required: true)]
+        public string TunnelHost { get; set; } = null!;
 
         /// <summary>
-        /// SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `aurora_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_data_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_database`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_managed_db_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `maria_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `maria_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `mysql_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `mysql_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `panoply`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `periscope_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_gcp_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `redshift`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `sql_server_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `sql_server_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// </summary>
-        [Input("tunnelUser")]
-        public string? TunnelUser { get; set; }
+        [Input("tunnelPort", required: true)]
+        public int TunnelPort { get; set; }
 
         /// <summary>
-        /// Database user name
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `aurora_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_data_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_database`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `azure_sql_managed_db_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `maria_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `maria_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `mysql_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `mysql_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `panoply`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `periscope_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_gcp_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `redshift`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `sql_server_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `sql_server_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// </summary>
-        [Input("user")]
-        public string? User { get; set; }
-
-        [Input("workspaceName")]
-        private string? _workspaceName;
+        [Input("tunnelUser", required: true)]
+        public string TunnelUser { get; set; } = null!;
 
         /// <summary>
-        /// OneLake workspace name
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres_warehouse`: Database user name
+        /// 	- Service `aurora_warehouse`: Database user name
+        /// 	- Service `azure_postgres_warehouse`: Database user name
+        /// 	- Service `azure_sql_data_warehouse`: Database user name
+        /// 	- Service `azure_sql_database`: Database user name
+        /// 	- Service `azure_sql_managed_db_warehouse`: Database user name
+        /// 	- Service `maria_rds_warehouse`: Database user name
+        /// 	- Service `maria_warehouse`: Database user name
+        /// 	- Service `mysql_rds_warehouse`: Database user name
+        /// 	- Service `mysql_warehouse`: Database user name
+        /// 	- Service `panoply`: Database user name
+        /// 	- Service `periscope_warehouse`: Database user name
+        /// 	- Service `postgres_gcp_warehouse`: Database user name
+        /// 	- Service `postgres_rds_warehouse`: Database user name
+        /// 	- Service `postgres_warehouse`: Database user name
+        /// 	- Service `redshift`: Database user name
+        /// 	- Service `snowflake`: Database user name
+        /// 	- Service `sql_server_rds_warehouse`: Database user name
+        /// 	- Service `sql_server_warehouse`: Database user name
         /// </summary>
-        public string? WorkspaceName
-        {
-            get => _workspaceName;
-            set => _workspaceName = value;
-        }
+        [Input("user", required: true)]
+        public string User { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `onelake`: OneLake workspace name
+        /// </summary>
+        [Input("workspaceName", required: true)]
+        public string WorkspaceName { get; set; } = null!;
 
         public GetDestinationConfigArgs()
         {

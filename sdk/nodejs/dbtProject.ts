@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
@@ -32,22 +33,33 @@ import * as utilities from "./utilities";
  *     type: "GIT",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" { }
+ * 1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.
+ *
+ * 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import.
+ *
+ * 3. Define an empty resource in your `.tf` configuration:
+ *
+ * hcl
+ *
+ * resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" {
+ *
+ * }
+ *
+ * 4. Run the `pulumi import` command:
  *
  * ```sh
- *  $ pulumi import fivetran:index/dbtProject:DbtProject
- *
- * Run the `terraform import` command
+ * $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
  * ```
  *
- * ```sh
- *  $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
- * ```
+ * 4. Use the `terraform state show` command to get the values from the state:
  *
- *  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project' 5. Copy the values and paste them to your `.tf` configuration.
+ * terraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project'
+ *
+ * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class DbtProject extends pulumi.CustomResource {
     /**

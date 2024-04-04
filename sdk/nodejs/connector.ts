@@ -40,21 +40,20 @@ export class Connector extends pulumi.CustomResource {
     }
 
     public readonly auth!: pulumi.Output<outputs.ConnectorAuth | undefined>;
-    public readonly config!: pulumi.Output<outputs.ConnectorConfig>;
+    public readonly config!: pulumi.Output<outputs.ConnectorConfig | undefined>;
     /**
-     * The unique identifier of the user who has created the connector in your account
+     * The unique identifier of the user who has created the connector in your account.
      */
     public /*out*/ readonly connectedBy!: pulumi.Output<string>;
     /**
-     * The timestamp of the time the connector was created in your account
+     * The timestamp of the time the connector was created in your account.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public readonly destinationSchema!: pulumi.Output<outputs.ConnectorDestinationSchema>;
+    public readonly destinationSchema!: pulumi.Output<outputs.ConnectorDestinationSchema | undefined>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
     public readonly groupId!: pulumi.Output<string>;
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
      * The name used both as the connector's name within the Fivetran system and as the source schema's name within your
      * destination.
@@ -63,23 +62,24 @@ export class Connector extends pulumi.CustomResource {
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    public readonly runSetupTests!: pulumi.Output<string | undefined>;
+    public readonly runSetupTests!: pulumi.Output<boolean>;
     /**
-     * The connector type name within the Fivetran system.
+     * The connector type id within the Fivetran system.
      */
     public readonly service!: pulumi.Output<string>;
+    public readonly timeouts!: pulumi.Output<outputs.ConnectorTimeouts | undefined>;
     /**
      * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
      * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
      * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
-    public readonly trustCertificates!: pulumi.Output<string | undefined>;
+    public readonly trustCertificates!: pulumi.Output<boolean>;
     /**
      * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
      * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
      * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
-    public readonly trustFingerprints!: pulumi.Output<string | undefined>;
+    public readonly trustFingerprints!: pulumi.Output<boolean>;
 
     /**
      * Create a Connector resource with the given unique name, arguments, and options.
@@ -100,17 +100,14 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["destinationSchema"] = state ? state.destinationSchema : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["runSetupTests"] = state ? state.runSetupTests : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["trustCertificates"] = state ? state.trustCertificates : undefined;
             resourceInputs["trustFingerprints"] = state ? state.trustFingerprints : undefined;
         } else {
             const args = argsOrState as ConnectorArgs | undefined;
-            if ((!args || args.destinationSchema === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'destinationSchema'");
-            }
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
@@ -123,11 +120,11 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["runSetupTests"] = args ? args.runSetupTests : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["trustCertificates"] = args ? args.trustCertificates : undefined;
             resourceInputs["trustFingerprints"] = args ? args.trustFingerprints : undefined;
             resourceInputs["connectedBy"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["lastUpdated"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -142,11 +139,11 @@ export interface ConnectorState {
     auth?: pulumi.Input<inputs.ConnectorAuth>;
     config?: pulumi.Input<inputs.ConnectorConfig>;
     /**
-     * The unique identifier of the user who has created the connector in your account
+     * The unique identifier of the user who has created the connector in your account.
      */
     connectedBy?: pulumi.Input<string>;
     /**
-     * The timestamp of the time the connector was created in your account
+     * The timestamp of the time the connector was created in your account.
      */
     createdAt?: pulumi.Input<string>;
     destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema>;
@@ -154,7 +151,6 @@ export interface ConnectorState {
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
     groupId?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
     /**
      * The name used both as the connector's name within the Fivetran system and as the source schema's name within your
      * destination.
@@ -163,23 +159,24 @@ export interface ConnectorState {
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    runSetupTests?: pulumi.Input<string>;
+    runSetupTests?: pulumi.Input<boolean>;
     /**
-     * The connector type name within the Fivetran system.
+     * The connector type id within the Fivetran system.
      */
     service?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ConnectorTimeouts>;
     /**
      * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
      * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
      * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
-    trustCertificates?: pulumi.Input<string>;
+    trustCertificates?: pulumi.Input<boolean>;
     /**
      * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
      * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
      * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
-    trustFingerprints?: pulumi.Input<string>;
+    trustFingerprints?: pulumi.Input<boolean>;
 }
 
 /**
@@ -188,7 +185,7 @@ export interface ConnectorState {
 export interface ConnectorArgs {
     auth?: pulumi.Input<inputs.ConnectorAuth>;
     config?: pulumi.Input<inputs.ConnectorConfig>;
-    destinationSchema: pulumi.Input<inputs.ConnectorDestinationSchema>;
+    destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
@@ -196,21 +193,22 @@ export interface ConnectorArgs {
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    runSetupTests?: pulumi.Input<string>;
+    runSetupTests?: pulumi.Input<boolean>;
     /**
-     * The connector type name within the Fivetran system.
+     * The connector type id within the Fivetran system.
      */
     service: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ConnectorTimeouts>;
     /**
      * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
      * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
      * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
-    trustCertificates?: pulumi.Input<string>;
+    trustCertificates?: pulumi.Input<boolean>;
     /**
      * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
      * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
      * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
-    trustFingerprints?: pulumi.Input<string>;
+    trustFingerprints?: pulumi.Input<boolean>;
 }

@@ -75,12 +75,14 @@ def get_team_group_memberships(groups: Optional[Sequence[pulumi.InputType['GetTe
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     team_group_memberships = fivetran.get_team_group_memberships(team_id="team_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str team_id: The unique identifier for the team within your account.
@@ -106,12 +108,14 @@ def get_team_group_memberships_output(groups: Optional[pulumi.Input[Optional[Seq
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     team_group_memberships = fivetran.get_team_group_memberships(team_id="team_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str team_id: The unique identifier for the team within your account.

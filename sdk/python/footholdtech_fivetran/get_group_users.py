@@ -41,7 +41,7 @@ class GetGroupUsersResult:
 
     @property
     @pulumi.getter
-    def users(self) -> Sequence['outputs.GetGroupUsersUserResult']:
+    def users(self) -> Optional[Sequence['outputs.GetGroupUsersUserResult']]:
         return pulumi.get(self, "users")
 
 
@@ -63,12 +63,14 @@ def get_group_users(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     group_users = fivetran.get_group_users(id="anonymous_mystery")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the user within the account.
@@ -93,12 +95,14 @@ def get_group_users_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     group_users = fivetran.get_group_users(id="anonymous_mystery")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the user within the account.

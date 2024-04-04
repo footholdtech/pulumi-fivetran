@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,25 +52,33 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_team_connector_membership` resource into your Terraform state, you need to get `team_id` and `connector_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_connector_membership" "my_imported_fivetran_team_connector_membership" { }
+// 1. To import an existing `fivetran_team_connector_membership` resource into your Terraform state, you need to get `team_id` and `connector_id`
+//
+// You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+//
+// 2. Define an empty resource in your `.tf` configuration:
+//
+// hcl
+//
+// resource "fivetran_team_connector_membership" "my_imported_fivetran_team_connector_membership" {
+//
+// }
+//
+// 3. Run the `pulumi import` command:
 //
 // ```sh
-//
-//	$ pulumi import fivetran:index/teamConnectorMembership:TeamConnectorMembership
-//
-// Run the `terraform import` command
+// $ pulumi import fivetran:index/teamConnectorMembership:TeamConnectorMembership my_imported_fivetran_team_connector_membership {team_id}
 // ```
 //
-// ```sh
+// 4. Use the `terraform state show` command to get the values from the state:
 //
-//	$ pulumi import fivetran:index/teamConnectorMembership:TeamConnectorMembership my_imported_fivetran_team_connector_membership {team_id}
+// terraform state show 'fivetran_team_connector_membership.my_imported_fivetran_team_connector_membership'
 //
-// ```
-//
-//  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team_connector_membership.my_imported_fivetran_team_connector_membership' 5. Copy the values and paste them to your `.tf` configuration.
+// 5. Copy the values and paste them to your `.tf` configuration.
 type TeamConnectorMembership struct {
 	pulumi.CustomResourceState
 

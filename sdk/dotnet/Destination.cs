@@ -13,25 +13,43 @@ namespace Footholdtech.Fivetran
     /// <summary>
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination" "my_imported_destination" { }
+    /// 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+    /// 
+    /// To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+    /// 
+    /// 2. Define an empty resource in your `.tf` configuration:
+    /// 
+    /// hcl
+    /// 
+    /// resource "fivetran_destination" "my_imported_destination" {
+    /// 
+    /// }
+    /// 
+    /// 3. Run the `pulumi import` command with the following parameters:
     /// 
     /// ```sh
-    ///  $ pulumi import fivetran:index/destination:Destination
-    /// 
-    /// Run the `terraform import` command with the following parameters
+    /// $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
     /// ```
     /// 
-    /// ```sh
-    ///  $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
-    /// ```
+    /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
-    ///  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_destination.my_imported_destination' 5. Copy the values and paste them to your `.tf` configuration. -&gt; The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+    /// terraform state show 'fivetran_destination.my_imported_destination'
+    /// 
+    /// 5. Copy the values and paste them to your `.tf` configuration.
+    /// 
+    /// -&gt; The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
     /// </summary>
     [FivetranResourceType("fivetran:index/destination:Destination")]
     public partial class Destination : global::Pulumi.CustomResource
     {
         [Output("config")]
-        public Output<Outputs.DestinationConfig> Config { get; private set; } = null!;
+        public Output<Outputs.DestinationConfig?> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// Shift my UTC offset with daylight savings time (US Only)
+        /// </summary>
+        [Output("daylightSavingTimeEnabled")]
+        public Output<bool> DaylightSavingTimeEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier for the Group within the Fivetran system.
@@ -39,11 +57,8 @@ namespace Footholdtech.Fivetran
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
-        [Output("lastUpdated")]
-        public Output<string> LastUpdated { get; private set; } = null!;
-
         /// <summary>
-        /// Region of your AWS S3 bucket
+        /// Data processing location. This is where Fivetran will operate and run computation on data.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -52,16 +67,16 @@ namespace Footholdtech.Fivetran
         /// Specifies whether the setup tests should be run automatically. The default value is TRUE.
         /// </summary>
         [Output("runSetupTests")]
-        public Output<bool?> RunSetupTests { get; private set; } = null!;
+        public Output<bool> RunSetupTests { get; private set; } = null!;
 
         /// <summary>
-        /// The destination type name within the Fivetran system.
+        /// The destination type id within the Fivetran system.
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
 
         /// <summary>
-        /// Destination setup status
+        /// Destination setup status.
         /// </summary>
         [Output("setupStatus")]
         public Output<string> SetupStatus { get; private set; } = null!;
@@ -72,17 +87,24 @@ namespace Footholdtech.Fivetran
         [Output("timeZoneOffset")]
         public Output<string> TimeZoneOffset { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        /// </summary>
-        [Output("trustCertificates")]
-        public Output<bool?> TrustCertificates { get; private set; } = null!;
+        [Output("timeouts")]
+        public Output<Outputs.DestinationTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        /// </summary>
+        [Output("trustCertificates")]
+        public Output<bool> TrustCertificates { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Output("trustFingerprints")]
-        public Output<bool?> TrustFingerprints { get; private set; } = null!;
+        public Output<bool> TrustFingerprints { get; private set; } = null!;
 
 
         /// <summary>
@@ -131,8 +153,14 @@ namespace Footholdtech.Fivetran
 
     public sealed class DestinationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("config", required: true)]
-        public Input<Inputs.DestinationConfigArgs> Config { get; set; } = null!;
+        [Input("config")]
+        public Input<Inputs.DestinationConfigArgs>? Config { get; set; }
+
+        /// <summary>
+        /// Shift my UTC offset with daylight savings time (US Only)
+        /// </summary>
+        [Input("daylightSavingTimeEnabled")]
+        public Input<bool>? DaylightSavingTimeEnabled { get; set; }
 
         /// <summary>
         /// The unique identifier for the Group within the Fivetran system.
@@ -141,7 +169,7 @@ namespace Footholdtech.Fivetran
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// Region of your AWS S3 bucket
+        /// Data processing location. This is where Fivetran will operate and run computation on data.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -153,7 +181,7 @@ namespace Footholdtech.Fivetran
         public Input<bool>? RunSetupTests { get; set; }
 
         /// <summary>
-        /// The destination type name within the Fivetran system.
+        /// The destination type id within the Fivetran system.
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
@@ -164,14 +192,21 @@ namespace Footholdtech.Fivetran
         [Input("timeZoneOffset", required: true)]
         public Input<string> TimeZoneOffset { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.DestinationTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Input("trustCertificates")]
         public Input<bool>? TrustCertificates { get; set; }
 
         /// <summary>
-        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Input("trustFingerprints")]
         public Input<bool>? TrustFingerprints { get; set; }
@@ -188,16 +223,19 @@ namespace Footholdtech.Fivetran
         public Input<Inputs.DestinationConfigGetArgs>? Config { get; set; }
 
         /// <summary>
+        /// Shift my UTC offset with daylight savings time (US Only)
+        /// </summary>
+        [Input("daylightSavingTimeEnabled")]
+        public Input<bool>? DaylightSavingTimeEnabled { get; set; }
+
+        /// <summary>
         /// The unique identifier for the Group within the Fivetran system.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
-        [Input("lastUpdated")]
-        public Input<string>? LastUpdated { get; set; }
-
         /// <summary>
-        /// Region of your AWS S3 bucket
+        /// Data processing location. This is where Fivetran will operate and run computation on data.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -209,13 +247,13 @@ namespace Footholdtech.Fivetran
         public Input<bool>? RunSetupTests { get; set; }
 
         /// <summary>
-        /// The destination type name within the Fivetran system.
+        /// The destination type id within the Fivetran system.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Destination setup status
+        /// Destination setup status.
         /// </summary>
         [Input("setupStatus")]
         public Input<string>? SetupStatus { get; set; }
@@ -226,14 +264,21 @@ namespace Footholdtech.Fivetran
         [Input("timeZoneOffset")]
         public Input<string>? TimeZoneOffset { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.DestinationTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Input("trustCertificates")]
         public Input<bool>? TrustCertificates { get; set; }
 
         /// <summary>
-        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Input("trustFingerprints")]
         public Input<bool>? TrustFingerprints { get; set; }

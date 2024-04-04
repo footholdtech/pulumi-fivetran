@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebhookResult
@@ -52,8 +54,6 @@ func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.
 type LookupWebhookArgs struct {
 	// The webhook ID
 	Id string `pulumi:"id"`
-	// Specifies whether the setup tests should be run
-	RunTests *bool `pulumi:"runTests"`
 }
 
 // A collection of values returned by getWebhook.
@@ -71,7 +71,7 @@ type LookupWebhookResult struct {
 	// The webhook ID
 	Id string `pulumi:"id"`
 	// Specifies whether the setup tests should be run
-	RunTests *bool `pulumi:"runTests"`
+	RunTests bool `pulumi:"runTests"`
 	// The secret string used for payload signing and masked in the response.
 	Secret string `pulumi:"secret"`
 	// The webhook type (group, account)
@@ -97,8 +97,6 @@ func LookupWebhookOutput(ctx *pulumi.Context, args LookupWebhookOutputArgs, opts
 type LookupWebhookOutputArgs struct {
 	// The webhook ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies whether the setup tests should be run
-	RunTests pulumi.BoolPtrInput `pulumi:"runTests"`
 }
 
 func (LookupWebhookOutputArgs) ElementType() reflect.Type {
@@ -151,8 +149,8 @@ func (o LookupWebhookResultOutput) Id() pulumi.StringOutput {
 }
 
 // Specifies whether the setup tests should be run
-func (o LookupWebhookResultOutput) RunTests() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupWebhookResult) *bool { return v.RunTests }).(pulumi.BoolPtrOutput)
+func (o LookupWebhookResultOutput) RunTests() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWebhookResult) bool { return v.RunTests }).(pulumi.BoolOutput)
 }
 
 // The secret string used for payload signing and masked in the response.

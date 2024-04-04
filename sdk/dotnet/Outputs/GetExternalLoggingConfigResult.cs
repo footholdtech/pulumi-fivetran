@@ -51,6 +51,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string? PrimaryKey;
         /// <summary>
+        /// Project Id for Google Cloud Logging
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
         /// Region
         /// </summary>
         public readonly string? Region;
@@ -91,6 +95,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? primaryKey,
 
+            string? projectId,
+
             string? region,
 
             string? roleArn,
@@ -110,6 +116,7 @@ namespace Footholdtech.Fivetran.Outputs
             LogGroupName = logGroupName;
             Port = port;
             PrimaryKey = primaryKey;
+            ProjectId = projectId;
             Region = region;
             RoleArn = roleArn;
             SubDomain = subDomain;

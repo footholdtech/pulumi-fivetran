@@ -15,34 +15,65 @@ namespace Footholdtech.Fivetran.Inputs
     {
         [Input("actionBreakdowns")]
         private InputList<string>? _actionBreakdowns;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionbreakdowns).
+        /// </summary>
         public InputList<string> ActionBreakdowns
         {
             get => _actionBreakdowns ?? (_actionBreakdowns = new InputList<string>());
             set => _actionBreakdowns = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionreporttime).
+        /// </summary>
         [Input("actionReportTime")]
         public Input<string>? ActionReportTime { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#aggregation).
+        /// </summary>
         [Input("aggregation")]
         public Input<string>? Aggregation { get; set; }
 
         [Input("breakdowns")]
         private InputList<string>? _breakdowns;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#breakdowns).
+        /// </summary>
         public InputList<string> Breakdowns
         {
             get => _breakdowns ?? (_breakdowns = new InputList<string>());
             set => _breakdowns = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#clickattributionwindow).
+        /// </summary>
         [Input("clickAttributionWindow")]
         public Input<string>? ClickAttributionWindow { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#configtype).
+        /// </summary>
         [Input("configType")]
         public Input<string>? ConfigType { get; set; }
 
         [Input("fields")]
         private InputList<string>? _fields;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#fields).
+        /// </summary>
         public InputList<string> Fields
         {
             get => _fields ?? (_fields = new InputList<string>());
@@ -52,15 +83,27 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("level")]
         public Input<string>? Level { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#prebuiltreport).
+        /// </summary>
         [Input("prebuiltReportName")]
         public Input<string>? PrebuiltReportName { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: The table name within the schema to which the connector will sync the data. It must be unique within the connector and must comply with [Fivetran's naming conventions](https://fivetran.com/docs/getting-started/core-concepts#namingconventions).
+        /// </summary>
         [Input("tableName")]
         public Input<string>? TableName { get; set; }
 
         [Input("useUnifiedAttributionSetting")]
-        public Input<string>? UseUnifiedAttributionSetting { get; set; }
+        public Input<bool>? UseUnifiedAttributionSetting { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#viewattributionwindow).
+        /// </summary>
         [Input("viewAttributionWindow")]
         public Input<string>? ViewAttributionWindow { get; set; }
 

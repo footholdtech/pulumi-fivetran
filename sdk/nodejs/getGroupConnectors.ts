@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     schema: "connector_schema_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupConnectors(args: GetGroupConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupConnectorsResult> {
 
@@ -50,7 +52,7 @@ export interface GetGroupConnectorsArgs {
  * A collection of values returned by getGroupConnectors.
  */
 export interface GetGroupConnectorsResult {
-    readonly connectors: outputs.GetGroupConnectorsConnector[];
+    readonly connectors?: outputs.GetGroupConnectorsConnector[];
     /**
      * The ID of this resource.
      */
@@ -65,6 +67,7 @@ export interface GetGroupConnectorsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -74,6 +77,7 @@ export interface GetGroupConnectorsResult {
  *     schema: "connector_schema_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupConnectorsOutput(args: GetGroupConnectorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupConnectorsResult> {
     return pulumi.output(args).apply((a: any) => getGroupConnectors(a, opts))

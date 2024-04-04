@@ -35,13 +35,13 @@ class GetRolesResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def roles(self) -> Sequence['outputs.GetRolesRoleResult']:
+    def roles(self) -> Optional[Sequence['outputs.GetRolesRoleResult']]:
         return pulumi.get(self, "roles")
 
 
@@ -62,12 +62,14 @@ def get_roles(roles: Optional[Sequence[pulumi.InputType['GetRolesRoleArgs']]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     roles = fivetran.get_roles()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['roles'] = roles
@@ -87,11 +89,13 @@ def get_roles_output(roles: Optional[pulumi.Input[Optional[Sequence[pulumi.Input
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     roles = fivetran.get_roles()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     id: "group_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupServiceAccount(args: GetGroupServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupServiceAccountResult> {
 
@@ -54,6 +56,7 @@ export interface GetGroupServiceAccountResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -62,6 +65,7 @@ export interface GetGroupServiceAccountResult {
  *     id: "group_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupServiceAccountOutput(args: GetGroupServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupServiceAccountResult> {
     return pulumi.output(args).apply((a: any) => getGroupServiceAccount(a, opts))

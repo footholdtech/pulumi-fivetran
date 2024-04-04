@@ -44,6 +44,7 @@ class _GroupState:
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[str] created_at: The timestamp of when the group was created in your account.
+        :param pulumi.Input[str] last_updated: The timestamp of when the group was updated in your account.
         :param pulumi.Input[str] name: The name of the group within your account.
         """
         if created_at is not None:
@@ -68,6 +69,9 @@ class _GroupState:
     @property
     @pulumi.getter(name="lastUpdated")
     def last_updated(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp of when the group was updated in your account.
+        """
         return pulumi.get(self, "last_updated")
 
     @last_updated.setter
@@ -99,28 +103,40 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
 
         group = fivetran.Group("group")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
+        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+
+        To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_group" "my_imported_fivetran_group" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/group:Group
-
-        Run the `terraform import` command
+        $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_group.my_imported_fivetran_group' 5. Copy the values and paste them to your `.tf` configuration.
+        terraform state show 'fivetran_group.my_imported_fivetran_group'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -137,28 +153,40 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
 
         group = fivetran.Group("group")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
+        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+
+        To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_group" "my_imported_fivetran_group" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/group:Group
-
-        Run the `terraform import` command
+        $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_group.my_imported_fivetran_group' 5. Copy the values and paste them to your `.tf` configuration.
+        terraform state show 'fivetran_group.my_imported_fivetran_group'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.
@@ -209,6 +237,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The timestamp of when the group was created in your account.
+        :param pulumi.Input[str] last_updated: The timestamp of when the group was updated in your account.
         :param pulumi.Input[str] name: The name of the group within your account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -231,6 +260,9 @@ class Group(pulumi.CustomResource):
     @property
     @pulumi.getter(name="lastUpdated")
     def last_updated(self) -> pulumi.Output[str]:
+        """
+        The timestamp of when the group was updated in your account.
+        """
         return pulumi.get(self, "last_updated")
 
     @property

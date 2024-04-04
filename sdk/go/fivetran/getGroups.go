@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,6 +37,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupsResult
@@ -54,7 +56,7 @@ type GetGroupsArgs struct {
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
 	Groups []GetGroupsGroup `pulumi:"groups"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 }
 
@@ -99,7 +101,7 @@ func (o GetGroupsResultOutput) Groups() GetGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetGroupsResult) []GetGroupsGroup { return v.Groups }).(GetGroupsGroupArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o GetGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }

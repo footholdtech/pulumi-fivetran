@@ -73,13 +73,8 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("serviceVersion", required: true)]
         public int ServiceVersion { get; set; }
 
-        [Input("statuses", required: true)]
-        private List<Inputs.GetGroupConnectorsConnectorStatusArgs>? _statuses;
-        public List<Inputs.GetGroupConnectorsConnectorStatusArgs> Statuses
-        {
-            get => _statuses ?? (_statuses = new List<Inputs.GetGroupConnectorsConnectorStatusArgs>());
-            set => _statuses = value;
-        }
+        [Input("status")]
+        public Inputs.GetGroupConnectorsConnectorStatusArgs? Status { get; set; }
 
         /// <summary>
         /// The timestamp of the time the connector sync succeeded last time

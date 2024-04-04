@@ -136,6 +136,7 @@ class Team(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -145,24 +146,33 @@ class Team(pulumi.CustomResource):
             role="Account Reviewer",
             opts=pulumi.ResourceOptions(provider=fivetran_provider))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         1. To import an existing `fivetran_team` resource into your Terraform state, you need to get `team_id`.
 
-        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team" "my_imported_fivetran_team" { }
+        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_team" "my_imported_fivetran_team" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/team:Team
-
-        Run the `terraform import` command
+        $ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team.my_imported_fivetran_team' 5. Copy the values and paste them to your `.tf` configuration.
+        terraform state show 'fivetran_team.my_imported_fivetran_team'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -181,6 +191,7 @@ class Team(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -190,24 +201,33 @@ class Team(pulumi.CustomResource):
             role="Account Reviewer",
             opts=pulumi.ResourceOptions(provider=fivetran_provider))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         1. To import an existing `fivetran_team` resource into your Terraform state, you need to get `team_id`.
 
-        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team" "my_imported_fivetran_team" { }
+        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_team" "my_imported_fivetran_team" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/team:Team
-
-        Run the `terraform import` command
+        $ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team.my_imported_fivetran_team' 5. Copy the values and paste them to your `.tf` configuration.
+        terraform state show 'fivetran_team.my_imported_fivetran_team'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param TeamArgs args: The arguments to use to populate this resource's properties.

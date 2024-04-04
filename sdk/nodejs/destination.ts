@@ -9,19 +9,31 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination" "my_imported_destination" { }
+ * 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+ *
+ * To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+ *
+ * 2. Define an empty resource in your `.tf` configuration:
+ *
+ * hcl
+ *
+ * resource "fivetran_destination" "my_imported_destination" {
+ *
+ * }
+ *
+ * 3. Run the `pulumi import` command with the following parameters:
  *
  * ```sh
- *  $ pulumi import fivetran:index/destination:Destination
- *
- * Run the `terraform import` command with the following parameters
+ * $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
  * ```
  *
- * ```sh
- *  $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
- * ```
+ * 4. Use the `terraform state show` command to get the values from the state:
  *
- *  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_destination.my_imported_destination' 5. Copy the values and paste them to your `.tf` configuration. -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+ * terraform state show 'fivetran_destination.my_imported_destination'
+ *
+ * 5. Copy the values and paste them to your `.tf` configuration.
+ *
+ * -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
  */
 export class Destination extends pulumi.CustomResource {
     /**
@@ -51,40 +63,48 @@ export class Destination extends pulumi.CustomResource {
         return obj['__pulumiType'] === Destination.__pulumiType;
     }
 
-    public readonly config!: pulumi.Output<outputs.DestinationConfig>;
+    public readonly config!: pulumi.Output<outputs.DestinationConfig | undefined>;
+    /**
+     * Shift my UTC offset with daylight savings time (US Only)
+     */
+    public readonly daylightSavingTimeEnabled!: pulumi.Output<boolean>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
     public readonly groupId!: pulumi.Output<string>;
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
-     * Region of your AWS S3 bucket
+     * Data processing location. This is where Fivetran will operate and run computation on data.
      */
     public readonly region!: pulumi.Output<string>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    public readonly runSetupTests!: pulumi.Output<boolean | undefined>;
+    public readonly runSetupTests!: pulumi.Output<boolean>;
     /**
-     * The destination type name within the Fivetran system.
+     * The destination type id within the Fivetran system.
      */
     public readonly service!: pulumi.Output<string>;
     /**
-     * Destination setup status
+     * Destination setup status.
      */
     public /*out*/ readonly setupStatus!: pulumi.Output<string>;
     /**
      * Determines the time zone for the Fivetran sync schedule.
      */
     public readonly timeZoneOffset!: pulumi.Output<string>;
+    public readonly timeouts!: pulumi.Output<outputs.DestinationTimeouts | undefined>;
     /**
-     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+     * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
-    public readonly trustCertificates!: pulumi.Output<boolean | undefined>;
+    public readonly trustCertificates!: pulumi.Output<boolean>;
     /**
-     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+     * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
-    public readonly trustFingerprints!: pulumi.Output<boolean | undefined>;
+    public readonly trustFingerprints!: pulumi.Output<boolean>;
 
     /**
      * Create a Destination resource with the given unique name, arguments, and options.
@@ -100,20 +120,18 @@ export class Destination extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DestinationState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["daylightSavingTimeEnabled"] = state ? state.daylightSavingTimeEnabled : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["runSetupTests"] = state ? state.runSetupTests : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
             resourceInputs["setupStatus"] = state ? state.setupStatus : undefined;
             resourceInputs["timeZoneOffset"] = state ? state.timeZoneOffset : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["trustCertificates"] = state ? state.trustCertificates : undefined;
             resourceInputs["trustFingerprints"] = state ? state.trustFingerprints : undefined;
         } else {
             const args = argsOrState as DestinationArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'config'");
-            }
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
@@ -127,14 +145,15 @@ export class Destination extends pulumi.CustomResource {
                 throw new Error("Missing required property 'timeZoneOffset'");
             }
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["daylightSavingTimeEnabled"] = args ? args.daylightSavingTimeEnabled : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["runSetupTests"] = args ? args.runSetupTests : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["timeZoneOffset"] = args ? args.timeZoneOffset : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["trustCertificates"] = args ? args.trustCertificates : undefined;
             resourceInputs["trustFingerprints"] = args ? args.trustFingerprints : undefined;
-            resourceInputs["lastUpdated"] = undefined /*out*/;
             resourceInputs["setupStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -148,12 +167,15 @@ export class Destination extends pulumi.CustomResource {
 export interface DestinationState {
     config?: pulumi.Input<inputs.DestinationConfig>;
     /**
+     * Shift my UTC offset with daylight savings time (US Only)
+     */
+    daylightSavingTimeEnabled?: pulumi.Input<boolean>;
+    /**
      * The unique identifier for the Group within the Fivetran system.
      */
     groupId?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
     /**
-     * Region of your AWS S3 bucket
+     * Data processing location. This is where Fivetran will operate and run computation on data.
      */
     region?: pulumi.Input<string>;
     /**
@@ -161,23 +183,28 @@ export interface DestinationState {
      */
     runSetupTests?: pulumi.Input<boolean>;
     /**
-     * The destination type name within the Fivetran system.
+     * The destination type id within the Fivetran system.
      */
     service?: pulumi.Input<string>;
     /**
-     * Destination setup status
+     * Destination setup status.
      */
     setupStatus?: pulumi.Input<string>;
     /**
      * Determines the time zone for the Fivetran sync schedule.
      */
     timeZoneOffset?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.DestinationTimeouts>;
     /**
-     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+     * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
     trustCertificates?: pulumi.Input<boolean>;
     /**
-     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+     * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
     trustFingerprints?: pulumi.Input<boolean>;
 }
@@ -186,13 +213,17 @@ export interface DestinationState {
  * The set of arguments for constructing a Destination resource.
  */
 export interface DestinationArgs {
-    config: pulumi.Input<inputs.DestinationConfig>;
+    config?: pulumi.Input<inputs.DestinationConfig>;
+    /**
+     * Shift my UTC offset with daylight savings time (US Only)
+     */
+    daylightSavingTimeEnabled?: pulumi.Input<boolean>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
     groupId: pulumi.Input<string>;
     /**
-     * Region of your AWS S3 bucket
+     * Data processing location. This is where Fivetran will operate and run computation on data.
      */
     region: pulumi.Input<string>;
     /**
@@ -200,19 +231,24 @@ export interface DestinationArgs {
      */
     runSetupTests?: pulumi.Input<boolean>;
     /**
-     * The destination type name within the Fivetran system.
+     * The destination type id within the Fivetran system.
      */
     service: pulumi.Input<string>;
     /**
      * Determines the time zone for the Fivetran sync schedule.
      */
     timeZoneOffset: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.DestinationTimeouts>;
     /**
-     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+     * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
     trustCertificates?: pulumi.Input<boolean>;
     /**
-     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+     * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
     trustFingerprints?: pulumi.Input<boolean>;
 }
