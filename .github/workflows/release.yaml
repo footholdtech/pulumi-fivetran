@@ -13,23 +13,17 @@ env:
   DOTNETVERSION: |
     6.0.x
     3.1.301
-  GOVERSION: 1.21.x
-  GRADLEVERSION: "7.6"
-  JAVAVERSION: "11"
-  NODEVERSION: 20.x
-  PYTHONVERSION: "3.9"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GOVERSION: 1.21.x
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NODEVERSION: 20.x
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
-  NUGET_FEED_URL: https://api.nuget.org/v3/index.json
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-  PYPI_USERNAME: "__token__"
-  PUBLISH_PYPI: true
-  PUBLISH_NPM: true
-  PUBLISH_NUGET: true
+  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+  PYPI_USERNAME: __token__
+  PYTHONVERSION: "3.11"
 jobs:
   prerequisites:
     name: prerequisites
@@ -103,33 +97,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Checkout Scripts Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: ci-scripts
           repository: pulumi/scripts
+          ref: deca2c5c6015ad7aaea6f572a1c2b198ca323592
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           cache-dependency-path: |
             sdk/go.sum
           go-version: 1.21.x
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        uses: jaxxstorm/action-install-gh-release@v1.11.0
         with:
+          tag: v0.0.46
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v2
+        uses: pulumi/actions@v5
+        with:
+          pulumi-version: ^3
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODEVERSION }}
           registry-url: https://registry.npmjs.org
       - name: Download provider + tfgen binaries
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.PROVIDER }}-provider.tar.gz
           path: ${{ github.workspace }}/bin
@@ -153,7 +151,7 @@ jobs:
       - name: Compress SDK folder
         run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.language  }}-sdk.tar.gz
           path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
@@ -169,25 +167,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           cache-dependency-path: |
             sdk/go.sum
           go-version: 1.21.x
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        uses: jaxxstorm/action-install-gh-release@v1.11.0
         with:
+          tag: v0.0.46
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v2
+        uses: pulumi/actions@v5
+        with:
+          pulumi-version: ^3
       - name: Set PreRelease Version
         run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> "$GITHUB_ENV"
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@v5
         with:
           args: -p 3 release --rm-dist --timeout 60m0s
           version: latest
@@ -197,10 +198,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        uses: jaxxstorm/action-install-gh-release@v1.11.0
         with:
+          tag: v0.0.46
           repo: pulumi/pulumictl
       - name: Add SDK version tag
         run: git tag "sdk/v$(pulumictl get version --language generic)" && git push origin
