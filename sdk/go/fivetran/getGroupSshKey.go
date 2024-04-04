@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetGroupSshKey(ctx *pulumi.Context, args *GetGroupSshKeyArgs, opts ...pulumi.InvokeOption) (*GetGroupSshKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupSshKeyResult

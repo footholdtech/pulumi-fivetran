@@ -16,9 +16,9 @@ __all__ = ['ExternalLoggingArgs', 'ExternalLogging']
 @pulumi.input_type
 class ExternalLoggingArgs:
     def __init__(__self__, *,
-                 config: pulumi.Input['ExternalLoggingConfigArgs'],
                  group_id: pulumi.Input[str],
                  service: pulumi.Input[str],
+                 config: Optional[pulumi.Input['ExternalLoggingConfigArgs']] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None):
         """
@@ -28,22 +28,14 @@ class ExternalLoggingArgs:
         :param pulumi.Input[bool] enabled: The boolean value specifying whether the log service is enabled.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
-        pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "service", service)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if run_setup_tests is not None:
             pulumi.set(__self__, "run_setup_tests", run_setup_tests)
-
-    @property
-    @pulumi.getter
-    def config(self) -> pulumi.Input['ExternalLoggingConfigArgs']:
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: pulumi.Input['ExternalLoggingConfigArgs']):
-        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter(name="groupId")
@@ -68,6 +60,15 @@ class ExternalLoggingArgs:
     @service.setter
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['ExternalLoggingConfigArgs']]:
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['ExternalLoggingConfigArgs']]):
+        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
@@ -192,19 +193,31 @@ class ExternalLogging(pulumi.CustomResource):
         """
         ## Import
 
-        1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { }
+        1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
+
+        To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_external_logging" "my_imported_external_logging" {
+
+        }
+
+        3. Run the `pulumi import` command with the following parameters:
 
         ```sh
-         $ pulumi import fivetran:index/externalLogging:ExternalLogging
-
-        Run the `terraform import` command with the following parameters
+        $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_external_logging.my_imported_external_logging' 5. Copy the values and paste them to your `.tf` configuration. -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
+        terraform state show 'fivetran_external_logging.my_imported_external_logging'
+
+        5. Copy the values and paste them to your `.tf` configuration.
+
+        -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -222,19 +235,31 @@ class ExternalLogging(pulumi.CustomResource):
         """
         ## Import
 
-        1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { }
+        1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
+
+        To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_external_logging" "my_imported_external_logging" {
+
+        }
+
+        3. Run the `pulumi import` command with the following parameters:
 
         ```sh
-         $ pulumi import fivetran:index/externalLogging:ExternalLogging
-
-        Run the `terraform import` command with the following parameters
+        $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_external_logging.my_imported_external_logging' 5. Copy the values and paste them to your `.tf` configuration. -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
+        terraform state show 'fivetran_external_logging.my_imported_external_logging'
+
+        5. Copy the values and paste them to your `.tf` configuration.
+
+        -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
 
         :param str resource_name: The name of the resource.
         :param ExternalLoggingArgs args: The arguments to use to populate this resource's properties.
@@ -265,8 +290,6 @@ class ExternalLogging(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ExternalLoggingArgs.__new__(ExternalLoggingArgs)
 
-            if config is None and not opts.urn:
-                raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             __props__.__dict__["enabled"] = enabled
             if group_id is None and not opts.urn:
@@ -316,7 +339,7 @@ class ExternalLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output['outputs.ExternalLoggingConfig']:
+    def config(self) -> pulumi.Output[Optional['outputs.ExternalLoggingConfig']]:
         return pulumi.get(self, "config")
 
     @property

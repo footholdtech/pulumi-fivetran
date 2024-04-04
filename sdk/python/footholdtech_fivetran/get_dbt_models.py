@@ -78,12 +78,14 @@ def get_dbt_models(models: Optional[Sequence[pulumi.InputType['GetDbtModelsModel
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_models = fivetran.get_dbt_models(project_id="project_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetDbtModelsModelArgs']] models: The collection of dbt Models.
@@ -110,12 +112,14 @@ def get_dbt_models_output(models: Optional[pulumi.Input[Optional[Sequence[pulumi
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_models = fivetran.get_dbt_models(project_id="project_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetDbtModelsModelArgs']] models: The collection of dbt Models.

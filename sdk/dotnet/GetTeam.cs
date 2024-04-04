@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a team object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTeamResult> InvokeAsync(GetTeamArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTeamResult>("fivetran:index/getTeam:getTeam", args ?? new GetTeamArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a team object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,8 +59,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTeamResult> Invoke(GetTeamInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTeamResult>("fivetran:index/getTeam:getTeam", args ?? new GetTeamInvokeArgs(), options.WithDefaults());

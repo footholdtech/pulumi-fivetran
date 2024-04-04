@@ -14,17 +14,57 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class ConnectorConfigCustomTable
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionbreakdowns).
+        /// </summary>
         public readonly ImmutableArray<string> ActionBreakdowns;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionreporttime).
+        /// </summary>
         public readonly string? ActionReportTime;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#aggregation).
+        /// </summary>
         public readonly string? Aggregation;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#breakdowns).
+        /// </summary>
         public readonly ImmutableArray<string> Breakdowns;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#clickattributionwindow).
+        /// </summary>
         public readonly string? ClickAttributionWindow;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#configtype).
+        /// </summary>
         public readonly string? ConfigType;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#fields).
+        /// </summary>
         public readonly ImmutableArray<string> Fields;
         public readonly string? Level;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#prebuiltreport).
+        /// </summary>
         public readonly string? PrebuiltReportName;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: The table name within the schema to which the connector will sync the data. It must be unique within the connector and must comply with [Fivetran's naming conventions](https://fivetran.com/docs/getting-started/core-concepts#namingconventions).
+        /// </summary>
         public readonly string? TableName;
-        public readonly string? UseUnifiedAttributionSetting;
+        public readonly bool? UseUnifiedAttributionSetting;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#viewattributionwindow).
+        /// </summary>
         public readonly string? ViewAttributionWindow;
 
         [OutputConstructor]
@@ -49,7 +89,7 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? tableName,
 
-            string? useUnifiedAttributionSetting,
+            bool? useUnifiedAttributionSetting,
 
             string? viewAttributionWindow)
         {

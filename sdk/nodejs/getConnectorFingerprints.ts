@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     id: "connector_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnectorFingerprints(args: GetConnectorFingerprintsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorFingerprintsResult> {
 
@@ -59,6 +61,7 @@ export interface GetConnectorFingerprintsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -67,6 +70,7 @@ export interface GetConnectorFingerprintsResult {
  *     id: "connector_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnectorFingerprintsOutput(args: GetConnectorFingerprintsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorFingerprintsResult> {
     return pulumi.output(args).apply((a: any) => getConnectorFingerprints(a, opts))

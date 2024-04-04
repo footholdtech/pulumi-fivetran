@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,6 +37,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetConnectorsMetadata(ctx *pulumi.Context, args *GetConnectorsMetadataArgs, opts ...pulumi.InvokeOption) (*GetConnectorsMetadataResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConnectorsMetadataResult
@@ -53,7 +55,7 @@ type GetConnectorsMetadataArgs struct {
 
 // A collection of values returned by getConnectorsMetadata.
 type GetConnectorsMetadataResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id      string                        `pulumi:"id"`
 	Sources []GetConnectorsMetadataSource `pulumi:"sources"`
 }
@@ -95,7 +97,7 @@ func (o GetConnectorsMetadataResultOutput) ToGetConnectorsMetadataResultOutputWi
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o GetConnectorsMetadataResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorsMetadataResult) string { return v.Id }).(pulumi.StringOutput)
 }

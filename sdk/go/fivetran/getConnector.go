@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorResult
@@ -50,29 +52,31 @@ func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pul
 
 // A collection of arguments for invoking getConnector.
 type LookupConnectorArgs struct {
-	Configs []GetConnectorConfig `pulumi:"configs"`
-	Id      string               `pulumi:"id"`
+	Config            *GetConnectorConfig            `pulumi:"config"`
+	DestinationSchema *GetConnectorDestinationSchema `pulumi:"destinationSchema"`
+	Id                string                         `pulumi:"id"`
+	Status            *GetConnectorStatus            `pulumi:"status"`
 }
 
 // A collection of values returned by getConnector.
 type LookupConnectorResult struct {
-	Configs            []GetConnectorConfig            `pulumi:"configs"`
-	ConnectedBy        string                          `pulumi:"connectedBy"`
-	CreatedAt          string                          `pulumi:"createdAt"`
-	DailySyncTime      string                          `pulumi:"dailySyncTime"`
-	DestinationSchemas []GetConnectorDestinationSchema `pulumi:"destinationSchemas"`
-	FailedAt           string                          `pulumi:"failedAt"`
-	GroupId            string                          `pulumi:"groupId"`
-	Id                 string                          `pulumi:"id"`
-	Name               string                          `pulumi:"name"`
-	PauseAfterTrial    string                          `pulumi:"pauseAfterTrial"`
-	Paused             string                          `pulumi:"paused"`
-	ScheduleType       string                          `pulumi:"scheduleType"`
-	Service            string                          `pulumi:"service"`
-	ServiceVersion     string                          `pulumi:"serviceVersion"`
-	Statuses           []GetConnectorStatus            `pulumi:"statuses"`
-	SucceededAt        string                          `pulumi:"succeededAt"`
-	SyncFrequency      string                          `pulumi:"syncFrequency"`
+	Config            *GetConnectorConfig            `pulumi:"config"`
+	ConnectedBy       string                         `pulumi:"connectedBy"`
+	CreatedAt         string                         `pulumi:"createdAt"`
+	DailySyncTime     string                         `pulumi:"dailySyncTime"`
+	DestinationSchema *GetConnectorDestinationSchema `pulumi:"destinationSchema"`
+	FailedAt          string                         `pulumi:"failedAt"`
+	GroupId           string                         `pulumi:"groupId"`
+	Id                string                         `pulumi:"id"`
+	Name              string                         `pulumi:"name"`
+	PauseAfterTrial   bool                           `pulumi:"pauseAfterTrial"`
+	Paused            bool                           `pulumi:"paused"`
+	ScheduleType      string                         `pulumi:"scheduleType"`
+	Service           string                         `pulumi:"service"`
+	ServiceVersion    string                         `pulumi:"serviceVersion"`
+	Status            *GetConnectorStatus            `pulumi:"status"`
+	SucceededAt       string                         `pulumi:"succeededAt"`
+	SyncFrequency     int                            `pulumi:"syncFrequency"`
 }
 
 func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorResultOutput {
@@ -90,8 +94,10 @@ func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, 
 
 // A collection of arguments for invoking getConnector.
 type LookupConnectorOutputArgs struct {
-	Configs GetConnectorConfigArrayInput `pulumi:"configs"`
-	Id      pulumi.StringInput           `pulumi:"id"`
+	Config            GetConnectorConfigPtrInput            `pulumi:"config"`
+	DestinationSchema GetConnectorDestinationSchemaPtrInput `pulumi:"destinationSchema"`
+	Id                pulumi.StringInput                    `pulumi:"id"`
+	Status            GetConnectorStatusPtrInput            `pulumi:"status"`
 }
 
 func (LookupConnectorOutputArgs) ElementType() reflect.Type {
@@ -113,8 +119,8 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ct
 	return o
 }
 
-func (o LookupConnectorResultOutput) Configs() GetConnectorConfigArrayOutput {
-	return o.ApplyT(func(v LookupConnectorResult) []GetConnectorConfig { return v.Configs }).(GetConnectorConfigArrayOutput)
+func (o LookupConnectorResultOutput) Config() GetConnectorConfigPtrOutput {
+	return o.ApplyT(func(v LookupConnectorResult) *GetConnectorConfig { return v.Config }).(GetConnectorConfigPtrOutput)
 }
 
 func (o LookupConnectorResultOutput) ConnectedBy() pulumi.StringOutput {
@@ -129,8 +135,8 @@ func (o LookupConnectorResultOutput) DailySyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.DailySyncTime }).(pulumi.StringOutput)
 }
 
-func (o LookupConnectorResultOutput) DestinationSchemas() GetConnectorDestinationSchemaArrayOutput {
-	return o.ApplyT(func(v LookupConnectorResult) []GetConnectorDestinationSchema { return v.DestinationSchemas }).(GetConnectorDestinationSchemaArrayOutput)
+func (o LookupConnectorResultOutput) DestinationSchema() GetConnectorDestinationSchemaPtrOutput {
+	return o.ApplyT(func(v LookupConnectorResult) *GetConnectorDestinationSchema { return v.DestinationSchema }).(GetConnectorDestinationSchemaPtrOutput)
 }
 
 func (o LookupConnectorResultOutput) FailedAt() pulumi.StringOutput {
@@ -149,12 +155,12 @@ func (o LookupConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupConnectorResultOutput) PauseAfterTrial() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectorResult) string { return v.PauseAfterTrial }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) PauseAfterTrial() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupConnectorResult) bool { return v.PauseAfterTrial }).(pulumi.BoolOutput)
 }
 
-func (o LookupConnectorResultOutput) Paused() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectorResult) string { return v.Paused }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupConnectorResult) bool { return v.Paused }).(pulumi.BoolOutput)
 }
 
 func (o LookupConnectorResultOutput) ScheduleType() pulumi.StringOutput {
@@ -169,16 +175,16 @@ func (o LookupConnectorResultOutput) ServiceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.ServiceVersion }).(pulumi.StringOutput)
 }
 
-func (o LookupConnectorResultOutput) Statuses() GetConnectorStatusArrayOutput {
-	return o.ApplyT(func(v LookupConnectorResult) []GetConnectorStatus { return v.Statuses }).(GetConnectorStatusArrayOutput)
+func (o LookupConnectorResultOutput) Status() GetConnectorStatusPtrOutput {
+	return o.ApplyT(func(v LookupConnectorResult) *GetConnectorStatus { return v.Status }).(GetConnectorStatusPtrOutput)
 }
 
 func (o LookupConnectorResultOutput) SucceededAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.SucceededAt }).(pulumi.StringOutput)
 }
 
-func (o LookupConnectorResultOutput) SyncFrequency() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectorResult) string { return v.SyncFrequency }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) SyncFrequency() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupConnectorResult) int { return v.SyncFrequency }).(pulumi.IntOutput)
 }
 
 func init() {

@@ -15,6 +15,7 @@ namespace Footholdtech.Fivetran
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,24 +44,33 @@ namespace Footholdtech.Fivetran
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" { }
+    /// 1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+    /// 
+    /// 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+    /// 
+    /// 3. Define an empty resource in your `.tf` configuration:
+    /// 
+    /// hcl
+    /// 
+    /// resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" {
+    /// 
+    /// }
+    /// 
+    /// 4. Run the `pulumi import` command:
     /// 
     /// ```sh
-    ///  $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints
-    /// 
-    /// Run the `terraform import` command
+    /// $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints my_imported_connector_fingerprints {your Fivetran Connector ID}
     /// ```
     /// 
-    /// ```sh
-    ///  $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints my_imported_connector_fingerprints {your Fivetran Connector ID}
-    /// ```
+    /// 5.  Use the `terraform state show` command to get the values from the state:
     /// 
-    /// 5.  
+    /// terraform state show 'fivetran_connector_fingerprints.my_imported_connector_fingerprints'
     /// 
-    /// Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_fingerprints.my_imported_connector_fingerprints' 6. Copy the values and paste them to your `.tf` configuration.
+    /// 6. Copy the values and paste them to your `.tf` configuration.
     /// </summary>
     [FivetranResourceType("fivetran:index/connectorFingerprints:ConnectorFingerprints")]
     public partial class ConnectorFingerprints : global::Pulumi.CustomResource

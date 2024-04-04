@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const myProjects = fivetran.getDbtProjects({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDbtProjects(args?: GetDbtProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetDbtProjectsResult> {
     args = args || {};
@@ -49,12 +51,14 @@ export interface GetDbtProjectsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const myProjects = fivetran.getDbtProjects({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDbtProjectsOutput(args?: GetDbtProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtProjectsResult> {
     return pulumi.output(args).apply((a: any) => getDbtProjects(a, opts))

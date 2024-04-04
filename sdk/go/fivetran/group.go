@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,30 +37,39 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
+// 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+//
+// To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+//
+// 2. Define an empty resource in your `.tf` configuration:
+//
+// hcl
+//
+// resource "fivetran_group" "my_imported_fivetran_group" {
+//
+// }
+//
+// 3. Run the `pulumi import` command:
 //
 // ```sh
-//
-//	$ pulumi import fivetran:index/group:Group
-//
-// Run the `terraform import` command
+// $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
 // ```
 //
-// ```sh
+// 4. Use the `terraform state show` command to get the values from the state:
 //
-//	$ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
+// terraform state show 'fivetran_group.my_imported_fivetran_group'
 //
-// ```
-//
-//  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_group.my_imported_fivetran_group' 5. Copy the values and paste them to your `.tf` configuration.
+// 5. Copy the values and paste them to your `.tf` configuration.
 type Group struct {
 	pulumi.CustomResourceState
 
 	// The timestamp of when the group was created in your account.
-	CreatedAt   pulumi.StringOutput `pulumi:"createdAt"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The timestamp of when the group was updated in your account.
 	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
 	// The name of the group within your account.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -96,7 +106,8 @@ func GetGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
 	// The timestamp of when the group was created in your account.
-	CreatedAt   *string `pulumi:"createdAt"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// The timestamp of when the group was updated in your account.
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// The name of the group within your account.
 	Name *string `pulumi:"name"`
@@ -104,7 +115,8 @@ type groupState struct {
 
 type GroupState struct {
 	// The timestamp of when the group was created in your account.
-	CreatedAt   pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// The timestamp of when the group was updated in your account.
 	LastUpdated pulumi.StringPtrInput
 	// The name of the group within your account.
 	Name pulumi.StringPtrInput
@@ -217,6 +229,7 @@ func (o GroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The timestamp of when the group was updated in your account.
 func (o GroupOutput) LastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
 }

@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a list of user memberships within team object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTeamUserMembershipsResult> InvokeAsync(GetTeamUserMembershipsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTeamUserMembershipsResult>("fivetran:index/getTeamUserMemberships:getTeamUserMemberships", args ?? new GetTeamUserMembershipsArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a list of user memberships within team object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,8 +59,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTeamUserMembershipsResult> Invoke(GetTeamUserMembershipsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTeamUserMembershipsResult>("fivetran:index/getTeamUserMemberships:getTeamUserMemberships", args ?? new GetTeamUserMembershipsInvokeArgs(), options.WithDefaults());

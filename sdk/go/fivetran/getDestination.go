@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupDestination(ctx *pulumi.Context, args *LookupDestinationArgs, opts ...pulumi.InvokeOption) (*LookupDestinationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDestinationResult
@@ -50,26 +52,20 @@ func LookupDestination(ctx *pulumi.Context, args *LookupDestinationArgs, opts ..
 
 // A collection of arguments for invoking getDestination.
 type LookupDestinationArgs struct {
-	Configs []GetDestinationConfig `pulumi:"configs"`
-	// The unique identifier for the destination within the Fivetran system
-	Id string `pulumi:"id"`
+	Config *GetDestinationConfig `pulumi:"config"`
+	Id     string                `pulumi:"id"`
 }
 
 // A collection of values returned by getDestination.
 type LookupDestinationResult struct {
-	Configs []GetDestinationConfig `pulumi:"configs"`
-	// The unique identifier for the Group within the Fivetran system.
-	GroupId string `pulumi:"groupId"`
-	// The unique identifier for the destination within the Fivetran system
-	Id string `pulumi:"id"`
-	// Data processing location. This is where Fivetran will operate and run computation on data.
-	Region string `pulumi:"region"`
-	// The destination type name within the Fivetran system
-	Service string `pulumi:"service"`
-	// Destination setup status
-	SetupStatus string `pulumi:"setupStatus"`
-	// Determines the time zone for the Fivetran sync schedule.
-	TimeZoneOffset string `pulumi:"timeZoneOffset"`
+	Config                    *GetDestinationConfig `pulumi:"config"`
+	DaylightSavingTimeEnabled bool                  `pulumi:"daylightSavingTimeEnabled"`
+	GroupId                   string                `pulumi:"groupId"`
+	Id                        string                `pulumi:"id"`
+	Region                    string                `pulumi:"region"`
+	Service                   string                `pulumi:"service"`
+	SetupStatus               string                `pulumi:"setupStatus"`
+	TimeZoneOffset            string                `pulumi:"timeZoneOffset"`
 }
 
 func LookupDestinationOutput(ctx *pulumi.Context, args LookupDestinationOutputArgs, opts ...pulumi.InvokeOption) LookupDestinationResultOutput {
@@ -87,9 +83,8 @@ func LookupDestinationOutput(ctx *pulumi.Context, args LookupDestinationOutputAr
 
 // A collection of arguments for invoking getDestination.
 type LookupDestinationOutputArgs struct {
-	Configs GetDestinationConfigArrayInput `pulumi:"configs"`
-	// The unique identifier for the destination within the Fivetran system
-	Id pulumi.StringInput `pulumi:"id"`
+	Config GetDestinationConfigPtrInput `pulumi:"config"`
+	Id     pulumi.StringInput           `pulumi:"id"`
 }
 
 func (LookupDestinationOutputArgs) ElementType() reflect.Type {
@@ -111,36 +106,34 @@ func (o LookupDestinationResultOutput) ToLookupDestinationResultOutputWithContex
 	return o
 }
 
-func (o LookupDestinationResultOutput) Configs() GetDestinationConfigArrayOutput {
-	return o.ApplyT(func(v LookupDestinationResult) []GetDestinationConfig { return v.Configs }).(GetDestinationConfigArrayOutput)
+func (o LookupDestinationResultOutput) Config() GetDestinationConfigPtrOutput {
+	return o.ApplyT(func(v LookupDestinationResult) *GetDestinationConfig { return v.Config }).(GetDestinationConfigPtrOutput)
 }
 
-// The unique identifier for the Group within the Fivetran system.
+func (o LookupDestinationResultOutput) DaylightSavingTimeEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDestinationResult) bool { return v.DaylightSavingTimeEnabled }).(pulumi.BoolOutput)
+}
+
 func (o LookupDestinationResultOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The unique identifier for the destination within the Fivetran system
 func (o LookupDestinationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Data processing location. This is where Fivetran will operate and run computation on data.
 func (o LookupDestinationResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The destination type name within the Fivetran system
 func (o LookupDestinationResultOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.Service }).(pulumi.StringOutput)
 }
 
-// Destination setup status
 func (o LookupDestinationResultOutput) SetupStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.SetupStatus }).(pulumi.StringOutput)
 }
 
-// Determines the time zone for the Fivetran sync schedule.
 func (o LookupDestinationResultOutput) TimeZoneOffset() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.TimeZoneOffset }).(pulumi.StringOutput)
 }

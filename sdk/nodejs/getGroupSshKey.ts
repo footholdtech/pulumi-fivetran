@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     id: "group_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupSshKey(args: GetGroupSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupSshKeyResult> {
 
@@ -54,6 +56,7 @@ export interface GetGroupSshKeyResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -62,6 +65,7 @@ export interface GetGroupSshKeyResult {
  *     id: "group_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupSshKeyOutput(args: GetGroupSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupSshKeyResult> {
     return pulumi.output(args).apply((a: any) => getGroupSshKey(a, opts))

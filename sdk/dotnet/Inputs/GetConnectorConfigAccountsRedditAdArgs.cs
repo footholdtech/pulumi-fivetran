@@ -13,6 +13,10 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class GetConnectorConfigAccountsRedditAdInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: Reddit username of the additional linked account.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

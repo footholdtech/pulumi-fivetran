@@ -87,12 +87,14 @@ def get_team(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     team = fivetran.get_team(id="team_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the team within your account.
@@ -117,12 +119,14 @@ def get_team_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     team = fivetran.get_team(id="team_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the team within your account.

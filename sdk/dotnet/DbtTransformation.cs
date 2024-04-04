@@ -18,6 +18,7 @@ namespace Footholdtech.Fivetran
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,22 +47,31 @@ namespace Footholdtech.Fivetran
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard. 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" { }
+    /// 1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard.
+    /// 
+    /// 2. Define an empty resource in your `.tf` configuration:
+    /// 
+    /// hcl
+    /// 
+    /// resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" {
+    /// 
+    /// }
+    /// 
+    /// 3. Run the `pulumi import` command:
     /// 
     /// ```sh
-    ///  $ pulumi import fivetran:index/dbtTransformation:DbtTransformation
-    /// 
-    /// Run the `terraform import` command
+    /// $ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
     /// ```
     /// 
-    /// ```sh
-    ///  $ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
-    /// ```
+    /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
-    ///  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation' 5. Copy the values and paste them to your `.tf` configuration.
+    /// terraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation'
+    /// 
+    /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>
     [FivetranResourceType("fivetran:index/dbtTransformation:DbtTransformation")]
     public partial class DbtTransformation : global::Pulumi.CustomResource

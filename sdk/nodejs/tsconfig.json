@@ -44,9 +44,6 @@
         "getGroupSshKey.ts",
         "getGroupUsers.ts",
         "getGroups.ts",
-        "getMetadataColumns.ts",
-        "getMetadataSchemas.ts",
-        "getMetadataTables.ts",
         "getRoles.ts",
         "getTeam.ts",
         "getTeamConnectorMemberships.ts",
@@ -54,6 +51,8 @@
         "getTeamUserMemberships.ts",
         "getTeams.ts",
         "getUser.ts",
+        "getUserConnectorMemberships.ts",
+        "getUserGroupMemberships.ts",
         "getUsers.ts",
         "getWebhook.ts",
         "getWebhooks.ts",
@@ -69,6 +68,8 @@
         "types/input.ts",
         "types/output.ts",
         "user.ts",
+        "userConnectorMembership.ts",
+        "userGroupMembership.ts",
         "utilities.ts",
         "webhook.ts"
     ]

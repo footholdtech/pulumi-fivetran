@@ -18,31 +18,31 @@ import (
 type Connector struct {
 	pulumi.CustomResourceState
 
-	Auth   ConnectorAuthPtrOutput `pulumi:"auth"`
-	Config ConnectorConfigOutput  `pulumi:"config"`
-	// The unique identifier of the user who has created the connector in your account
+	Auth   ConnectorAuthPtrOutput   `pulumi:"auth"`
+	Config ConnectorConfigPtrOutput `pulumi:"config"`
+	// The unique identifier of the user who has created the connector in your account.
 	ConnectedBy pulumi.StringOutput `pulumi:"connectedBy"`
-	// The timestamp of the time the connector was created in your account
-	CreatedAt         pulumi.StringOutput              `pulumi:"createdAt"`
-	DestinationSchema ConnectorDestinationSchemaOutput `pulumi:"destinationSchema"`
+	// The timestamp of the time the connector was created in your account.
+	CreatedAt         pulumi.StringOutput                 `pulumi:"createdAt"`
+	DestinationSchema ConnectorDestinationSchemaPtrOutput `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
-	GroupId     pulumi.StringOutput `pulumi:"groupId"`
-	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
+	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
-	RunSetupTests pulumi.StringPtrOutput `pulumi:"runSetupTests"`
-	// The connector type name within the Fivetran system.
-	Service pulumi.StringOutput `pulumi:"service"`
+	RunSetupTests pulumi.BoolOutput `pulumi:"runSetupTests"`
+	// The connector type id within the Fivetran system.
+	Service  pulumi.StringOutput        `pulumi:"service"`
+	Timeouts ConnectorTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
 	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-	TrustCertificates pulumi.StringPtrOutput `pulumi:"trustCertificates"`
+	TrustCertificates pulumi.BoolOutput `pulumi:"trustCertificates"`
 	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
 	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
-	TrustFingerprints pulumi.StringPtrOutput `pulumi:"trustFingerprints"`
+	TrustFingerprints pulumi.BoolOutput `pulumi:"trustFingerprints"`
 }
 
 // NewConnector registers a new resource with the given unique name, arguments, and options.
@@ -52,9 +52,6 @@ func NewConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DestinationSchema == nil {
-		return nil, errors.New("invalid value for required argument 'DestinationSchema'")
-	}
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
@@ -86,57 +83,57 @@ func GetConnector(ctx *pulumi.Context,
 type connectorState struct {
 	Auth   *ConnectorAuth   `pulumi:"auth"`
 	Config *ConnectorConfig `pulumi:"config"`
-	// The unique identifier of the user who has created the connector in your account
+	// The unique identifier of the user who has created the connector in your account.
 	ConnectedBy *string `pulumi:"connectedBy"`
-	// The timestamp of the time the connector was created in your account
+	// The timestamp of the time the connector was created in your account.
 	CreatedAt         *string                     `pulumi:"createdAt"`
 	DestinationSchema *ConnectorDestinationSchema `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
-	GroupId     *string `pulumi:"groupId"`
-	LastUpdated *string `pulumi:"lastUpdated"`
+	GroupId *string `pulumi:"groupId"`
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name *string `pulumi:"name"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
-	RunSetupTests *string `pulumi:"runSetupTests"`
-	// The connector type name within the Fivetran system.
-	Service *string `pulumi:"service"`
+	RunSetupTests *bool `pulumi:"runSetupTests"`
+	// The connector type id within the Fivetran system.
+	Service  *string            `pulumi:"service"`
+	Timeouts *ConnectorTimeouts `pulumi:"timeouts"`
 	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
 	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-	TrustCertificates *string `pulumi:"trustCertificates"`
+	TrustCertificates *bool `pulumi:"trustCertificates"`
 	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
 	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
-	TrustFingerprints *string `pulumi:"trustFingerprints"`
+	TrustFingerprints *bool `pulumi:"trustFingerprints"`
 }
 
 type ConnectorState struct {
 	Auth   ConnectorAuthPtrInput
 	Config ConnectorConfigPtrInput
-	// The unique identifier of the user who has created the connector in your account
+	// The unique identifier of the user who has created the connector in your account.
 	ConnectedBy pulumi.StringPtrInput
-	// The timestamp of the time the connector was created in your account
+	// The timestamp of the time the connector was created in your account.
 	CreatedAt         pulumi.StringPtrInput
 	DestinationSchema ConnectorDestinationSchemaPtrInput
 	// The unique identifier for the Group (Destination) within the Fivetran system.
-	GroupId     pulumi.StringPtrInput
-	LastUpdated pulumi.StringPtrInput
+	GroupId pulumi.StringPtrInput
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name pulumi.StringPtrInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
-	RunSetupTests pulumi.StringPtrInput
-	// The connector type name within the Fivetran system.
-	Service pulumi.StringPtrInput
+	RunSetupTests pulumi.BoolPtrInput
+	// The connector type id within the Fivetran system.
+	Service  pulumi.StringPtrInput
+	Timeouts ConnectorTimeoutsPtrInput
 	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
 	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-	TrustCertificates pulumi.StringPtrInput
+	TrustCertificates pulumi.BoolPtrInput
 	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
 	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
-	TrustFingerprints pulumi.StringPtrInput
+	TrustFingerprints pulumi.BoolPtrInput
 }
 
 func (ConnectorState) ElementType() reflect.Type {
@@ -144,44 +141,46 @@ func (ConnectorState) ElementType() reflect.Type {
 }
 
 type connectorArgs struct {
-	Auth              *ConnectorAuth             `pulumi:"auth"`
-	Config            *ConnectorConfig           `pulumi:"config"`
-	DestinationSchema ConnectorDestinationSchema `pulumi:"destinationSchema"`
+	Auth              *ConnectorAuth              `pulumi:"auth"`
+	Config            *ConnectorConfig            `pulumi:"config"`
+	DestinationSchema *ConnectorDestinationSchema `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
-	RunSetupTests *string `pulumi:"runSetupTests"`
-	// The connector type name within the Fivetran system.
-	Service string `pulumi:"service"`
+	RunSetupTests *bool `pulumi:"runSetupTests"`
+	// The connector type id within the Fivetran system.
+	Service  string             `pulumi:"service"`
+	Timeouts *ConnectorTimeouts `pulumi:"timeouts"`
 	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
 	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-	TrustCertificates *string `pulumi:"trustCertificates"`
+	TrustCertificates *bool `pulumi:"trustCertificates"`
 	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
 	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
-	TrustFingerprints *string `pulumi:"trustFingerprints"`
+	TrustFingerprints *bool `pulumi:"trustFingerprints"`
 }
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
 	Auth              ConnectorAuthPtrInput
 	Config            ConnectorConfigPtrInput
-	DestinationSchema ConnectorDestinationSchemaInput
+	DestinationSchema ConnectorDestinationSchemaPtrInput
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId pulumi.StringInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
-	RunSetupTests pulumi.StringPtrInput
-	// The connector type name within the Fivetran system.
-	Service pulumi.StringInput
+	RunSetupTests pulumi.BoolPtrInput
+	// The connector type id within the Fivetran system.
+	Service  pulumi.StringInput
+	Timeouts ConnectorTimeoutsPtrInput
 	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
 	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-	TrustCertificates pulumi.StringPtrInput
+	TrustCertificates pulumi.BoolPtrInput
 	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
 	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
-	TrustFingerprints pulumi.StringPtrInput
+	TrustFingerprints pulumi.BoolPtrInput
 }
 
 func (ConnectorArgs) ElementType() reflect.Type {
@@ -275,31 +274,27 @@ func (o ConnectorOutput) Auth() ConnectorAuthPtrOutput {
 	return o.ApplyT(func(v *Connector) ConnectorAuthPtrOutput { return v.Auth }).(ConnectorAuthPtrOutput)
 }
 
-func (o ConnectorOutput) Config() ConnectorConfigOutput {
-	return o.ApplyT(func(v *Connector) ConnectorConfigOutput { return v.Config }).(ConnectorConfigOutput)
+func (o ConnectorOutput) Config() ConnectorConfigPtrOutput {
+	return o.ApplyT(func(v *Connector) ConnectorConfigPtrOutput { return v.Config }).(ConnectorConfigPtrOutput)
 }
 
-// The unique identifier of the user who has created the connector in your account
+// The unique identifier of the user who has created the connector in your account.
 func (o ConnectorOutput) ConnectedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.ConnectedBy }).(pulumi.StringOutput)
 }
 
-// The timestamp of the time the connector was created in your account
+// The timestamp of the time the connector was created in your account.
 func (o ConnectorOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-func (o ConnectorOutput) DestinationSchema() ConnectorDestinationSchemaOutput {
-	return o.ApplyT(func(v *Connector) ConnectorDestinationSchemaOutput { return v.DestinationSchema }).(ConnectorDestinationSchemaOutput)
+func (o ConnectorOutput) DestinationSchema() ConnectorDestinationSchemaPtrOutput {
+	return o.ApplyT(func(v *Connector) ConnectorDestinationSchemaPtrOutput { return v.DestinationSchema }).(ConnectorDestinationSchemaPtrOutput)
 }
 
 // The unique identifier for the Group (Destination) within the Fivetran system.
 func (o ConnectorOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
-}
-
-func (o ConnectorOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
 }
 
 // The name used both as the connector's name within the Fivetran system and as the source schema's name within your
@@ -309,27 +304,31 @@ func (o ConnectorOutput) Name() pulumi.StringOutput {
 }
 
 // Specifies whether the setup tests should be run automatically. The default value is TRUE.
-func (o ConnectorOutput) RunSetupTests() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.RunSetupTests }).(pulumi.StringPtrOutput)
+func (o ConnectorOutput) RunSetupTests() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connector) pulumi.BoolOutput { return v.RunSetupTests }).(pulumi.BoolOutput)
 }
 
-// The connector type name within the Fivetran system.
+// The connector type id within the Fivetran system.
 func (o ConnectorOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+func (o ConnectorOutput) Timeouts() ConnectorTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Connector) ConnectorTimeoutsPtrOutput { return v.Timeouts }).(ConnectorTimeoutsPtrOutput)
 }
 
 // Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
 // trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 // certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-func (o ConnectorOutput) TrustCertificates() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.TrustCertificates }).(pulumi.StringPtrOutput)
+func (o ConnectorOutput) TrustCertificates() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connector) pulumi.BoolOutput { return v.TrustCertificates }).(pulumi.BoolOutput)
 }
 
 // Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
 // trusted automatically, it has to be approved with [Certificates Management API Approve a destination
 // fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
-func (o ConnectorOutput) TrustFingerprints() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.TrustFingerprints }).(pulumi.StringPtrOutput)
+func (o ConnectorOutput) TrustFingerprints() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connector) pulumi.BoolOutput { return v.TrustFingerprints }).(pulumi.BoolOutput)
 }
 
 type ConnectorArrayOutput struct{ *pulumi.OutputState }

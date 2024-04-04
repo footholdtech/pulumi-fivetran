@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDbtModels(ctx *pulumi.Context, args *GetDbtModelsArgs, opts ...pulumi.InvokeOption) (*GetDbtModelsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDbtModelsResult

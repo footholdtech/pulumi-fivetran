@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const all = fivetran.getGroups({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
@@ -38,9 +40,9 @@ export interface GetGroupsArgs {
  * A collection of values returned by getGroups.
  */
 export interface GetGroupsResult {
-    readonly groups: outputs.GetGroupsGroup[];
+    readonly groups?: outputs.GetGroupsGroup[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
 }
@@ -49,12 +51,14 @@ export interface GetGroupsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const all = fivetran.getGroups({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroups(a, opts))

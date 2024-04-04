@@ -16,44 +16,47 @@ __all__ = ['DestinationArgs', 'Destination']
 @pulumi.input_type
 class DestinationArgs:
     def __init__(__self__, *,
-                 config: pulumi.Input['DestinationConfigArgs'],
                  group_id: pulumi.Input[str],
                  region: pulumi.Input[str],
                  service: pulumi.Input[str],
                  time_zone_offset: pulumi.Input[str],
+                 config: Optional[pulumi.Input['DestinationConfigArgs']] = None,
+                 daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
+                 timeouts: Optional[pulumi.Input['DestinationTimeoutsArgs']] = None,
                  trust_certificates: Optional[pulumi.Input[bool]] = None,
                  trust_fingerprints: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Destination resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Region of your AWS S3 bucket
-        :param pulumi.Input[str] service: The destination type name within the Fivetran system.
+        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[str] service: The destination type id within the Fivetran system.
         :param pulumi.Input[str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
+        :param pulumi.Input[bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
-        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
-        pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "time_zone_offset", time_zone_offset)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if daylight_saving_time_enabled is not None:
+            pulumi.set(__self__, "daylight_saving_time_enabled", daylight_saving_time_enabled)
         if run_setup_tests is not None:
             pulumi.set(__self__, "run_setup_tests", run_setup_tests)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if trust_certificates is not None:
             pulumi.set(__self__, "trust_certificates", trust_certificates)
         if trust_fingerprints is not None:
             pulumi.set(__self__, "trust_fingerprints", trust_fingerprints)
-
-    @property
-    @pulumi.getter
-    def config(self) -> pulumi.Input['DestinationConfigArgs']:
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: pulumi.Input['DestinationConfigArgs']):
-        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter(name="groupId")
@@ -71,7 +74,7 @@ class DestinationArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        Region of your AWS S3 bucket
+        Data processing location. This is where Fivetran will operate and run computation on data.
         """
         return pulumi.get(self, "region")
 
@@ -83,7 +86,7 @@ class DestinationArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
         """
-        The destination type name within the Fivetran system.
+        The destination type id within the Fivetran system.
         """
         return pulumi.get(self, "service")
 
@@ -104,6 +107,27 @@ class DestinationArgs:
         pulumi.set(self, "time_zone_offset", value)
 
     @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['DestinationConfigArgs']]:
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['DestinationConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="daylightSavingTimeEnabled")
+    def daylight_saving_time_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shift my UTC offset with daylight savings time (US Only)
+        """
+        return pulumi.get(self, "daylight_saving_time_enabled")
+
+    @daylight_saving_time_enabled.setter
+    def daylight_saving_time_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "daylight_saving_time_enabled", value)
+
+    @property
     @pulumi.getter(name="runSetupTests")
     def run_setup_tests(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -116,10 +140,21 @@ class DestinationArgs:
         pulumi.set(self, "run_setup_tests", value)
 
     @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DestinationTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DestinationTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
     @pulumi.getter(name="trustCertificates")
     def trust_certificates(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
@@ -131,7 +166,9 @@ class DestinationArgs:
     @pulumi.getter(name="trustFingerprints")
     def trust_fingerprints(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 
@@ -144,32 +181,38 @@ class DestinationArgs:
 class _DestinationState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input['DestinationConfigArgs']] = None,
+                 daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 last_updated: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  setup_status: Optional[pulumi.Input[str]] = None,
                  time_zone_offset: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input['DestinationTimeoutsArgs']] = None,
                  trust_certificates: Optional[pulumi.Input[bool]] = None,
                  trust_fingerprints: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Destination resources.
+        :param pulumi.Input[bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Region of your AWS S3 bucket
+        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
-        :param pulumi.Input[str] service: The destination type name within the Fivetran system.
-        :param pulumi.Input[str] setup_status: Destination setup status
+        :param pulumi.Input[str] service: The destination type id within the Fivetran system.
+        :param pulumi.Input[str] setup_status: Destination setup status.
         :param pulumi.Input[str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
-        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if daylight_saving_time_enabled is not None:
+            pulumi.set(__self__, "daylight_saving_time_enabled", daylight_saving_time_enabled)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
-        if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if run_setup_tests is not None:
@@ -180,6 +223,8 @@ class _DestinationState:
             pulumi.set(__self__, "setup_status", setup_status)
         if time_zone_offset is not None:
             pulumi.set(__self__, "time_zone_offset", time_zone_offset)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if trust_certificates is not None:
             pulumi.set(__self__, "trust_certificates", trust_certificates)
         if trust_fingerprints is not None:
@@ -195,6 +240,18 @@ class _DestinationState:
         pulumi.set(self, "config", value)
 
     @property
+    @pulumi.getter(name="daylightSavingTimeEnabled")
+    def daylight_saving_time_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shift my UTC offset with daylight savings time (US Only)
+        """
+        return pulumi.get(self, "daylight_saving_time_enabled")
+
+    @daylight_saving_time_enabled.setter
+    def daylight_saving_time_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "daylight_saving_time_enabled", value)
+
+    @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -207,19 +264,10 @@ class _DestinationState:
         pulumi.set(self, "group_id", value)
 
     @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "last_updated")
-
-    @last_updated.setter
-    def last_updated(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_updated", value)
-
-    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Region of your AWS S3 bucket
+        Data processing location. This is where Fivetran will operate and run computation on data.
         """
         return pulumi.get(self, "region")
 
@@ -243,7 +291,7 @@ class _DestinationState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination type name within the Fivetran system.
+        The destination type id within the Fivetran system.
         """
         return pulumi.get(self, "service")
 
@@ -255,7 +303,7 @@ class _DestinationState:
     @pulumi.getter(name="setupStatus")
     def setup_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Destination setup status
+        Destination setup status.
         """
         return pulumi.get(self, "setup_status")
 
@@ -276,10 +324,21 @@ class _DestinationState:
         pulumi.set(self, "time_zone_offset", value)
 
     @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DestinationTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DestinationTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
     @pulumi.getter(name="trustCertificates")
     def trust_certificates(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
@@ -291,7 +350,9 @@ class _DestinationState:
     @pulumi.getter(name="trustFingerprints")
     def trust_fingerprints(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 
@@ -306,40 +367,59 @@ class Destination(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
+                 daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  time_zone_offset: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['DestinationTimeoutsArgs']]] = None,
                  trust_certificates: Optional[pulumi.Input[bool]] = None,
                  trust_fingerprints: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         ## Import
 
-        1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination" "my_imported_destination" { }
+        1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+
+        To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_destination" "my_imported_destination" {
+
+        }
+
+        3. Run the `pulumi import` command with the following parameters:
 
         ```sh
-         $ pulumi import fivetran:index/destination:Destination
-
-        Run the `terraform import` command with the following parameters
+        $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_destination.my_imported_destination' 5. Copy the values and paste them to your `.tf` configuration. -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+        terraform state show 'fivetran_destination.my_imported_destination'
+
+        5. Copy the values and paste them to your `.tf` configuration.
+
+        -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Region of your AWS S3 bucket
+        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
-        :param pulumi.Input[str] service: The destination type name within the Fivetran system.
+        :param pulumi.Input[str] service: The destination type id within the Fivetran system.
         :param pulumi.Input[str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
-        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         ...
     @overload
@@ -350,19 +430,31 @@ class Destination(pulumi.CustomResource):
         """
         ## Import
 
-        1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination" "my_imported_destination" { }
+        1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+
+        To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_destination" "my_imported_destination" {
+
+        }
+
+        3. Run the `pulumi import` command with the following parameters:
 
         ```sh
-         $ pulumi import fivetran:index/destination:Destination
-
-        Run the `terraform import` command with the following parameters
+        $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_destination.my_imported_destination' 5. Copy the values and paste them to your `.tf` configuration. -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+        terraform state show 'fivetran_destination.my_imported_destination'
+
+        5. Copy the values and paste them to your `.tf` configuration.
+
+        -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
 
         :param str resource_name: The name of the resource.
         :param DestinationArgs args: The arguments to use to populate this resource's properties.
@@ -380,11 +472,13 @@ class Destination(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
+                 daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  time_zone_offset: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['DestinationTimeoutsArgs']]] = None,
                  trust_certificates: Optional[pulumi.Input[bool]] = None,
                  trust_fingerprints: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -396,9 +490,8 @@ class Destination(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DestinationArgs.__new__(DestinationArgs)
 
-            if config is None and not opts.urn:
-                raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["daylight_saving_time_enabled"] = daylight_saving_time_enabled
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
@@ -412,9 +505,9 @@ class Destination(pulumi.CustomResource):
             if time_zone_offset is None and not opts.urn:
                 raise TypeError("Missing required property 'time_zone_offset'")
             __props__.__dict__["time_zone_offset"] = time_zone_offset
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["trust_certificates"] = trust_certificates
             __props__.__dict__["trust_fingerprints"] = trust_fingerprints
-            __props__.__dict__["last_updated"] = None
             __props__.__dict__["setup_status"] = None
         super(Destination, __self__).__init__(
             'fivetran:index/destination:Destination',
@@ -427,13 +520,14 @@ class Destination(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
+            daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
-            last_updated: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             run_setup_tests: Optional[pulumi.Input[bool]] = None,
             service: Optional[pulumi.Input[str]] = None,
             setup_status: Optional[pulumi.Input[str]] = None,
             time_zone_offset: Optional[pulumi.Input[str]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['DestinationTimeoutsArgs']]] = None,
             trust_certificates: Optional[pulumi.Input[bool]] = None,
             trust_fingerprints: Optional[pulumi.Input[bool]] = None) -> 'Destination':
         """
@@ -443,35 +537,49 @@ class Destination(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Region of your AWS S3 bucket
+        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
-        :param pulumi.Input[str] service: The destination type name within the Fivetran system.
-        :param pulumi.Input[str] setup_status: Destination setup status
+        :param pulumi.Input[str] service: The destination type id within the Fivetran system.
+        :param pulumi.Input[str] setup_status: Destination setup status.
         :param pulumi.Input[str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
-        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DestinationState.__new__(_DestinationState)
 
         __props__.__dict__["config"] = config
+        __props__.__dict__["daylight_saving_time_enabled"] = daylight_saving_time_enabled
         __props__.__dict__["group_id"] = group_id
-        __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["region"] = region
         __props__.__dict__["run_setup_tests"] = run_setup_tests
         __props__.__dict__["service"] = service
         __props__.__dict__["setup_status"] = setup_status
         __props__.__dict__["time_zone_offset"] = time_zone_offset
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["trust_certificates"] = trust_certificates
         __props__.__dict__["trust_fingerprints"] = trust_fingerprints
         return Destination(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output['outputs.DestinationConfig']:
+    def config(self) -> pulumi.Output[Optional['outputs.DestinationConfig']]:
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="daylightSavingTimeEnabled")
+    def daylight_saving_time_enabled(self) -> pulumi.Output[bool]:
+        """
+        Shift my UTC offset with daylight savings time (US Only)
+        """
+        return pulumi.get(self, "daylight_saving_time_enabled")
 
     @property
     @pulumi.getter(name="groupId")
@@ -482,21 +590,16 @@ class Destination(pulumi.CustomResource):
         return pulumi.get(self, "group_id")
 
     @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "last_updated")
-
-    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        Region of your AWS S3 bucket
+        Data processing location. This is where Fivetran will operate and run computation on data.
         """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="runSetupTests")
-    def run_setup_tests(self) -> pulumi.Output[Optional[bool]]:
+    def run_setup_tests(self) -> pulumi.Output[bool]:
         """
         Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
@@ -506,7 +609,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[str]:
         """
-        The destination type name within the Fivetran system.
+        The destination type id within the Fivetran system.
         """
         return pulumi.get(self, "service")
 
@@ -514,7 +617,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter(name="setupStatus")
     def setup_status(self) -> pulumi.Output[str]:
         """
-        Destination setup status
+        Destination setup status.
         """
         return pulumi.get(self, "setup_status")
 
@@ -527,18 +630,27 @@ class Destination(pulumi.CustomResource):
         return pulumi.get(self, "time_zone_offset")
 
     @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.DestinationTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @property
     @pulumi.getter(name="trustCertificates")
-    def trust_certificates(self) -> pulumi.Output[Optional[bool]]:
+    def trust_certificates(self) -> pulumi.Output[bool]:
         """
-        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
     @property
     @pulumi.getter(name="trustFingerprints")
-    def trust_fingerprints(self) -> pulumi.Output[Optional[bool]]:
+    def trust_fingerprints(self) -> pulumi.Output[bool]:
         """
-        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+        fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 

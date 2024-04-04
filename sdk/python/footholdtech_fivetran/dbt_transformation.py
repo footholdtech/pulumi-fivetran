@@ -283,6 +283,7 @@ class DbtTransformation(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -301,22 +302,31 @@ class DbtTransformation(pulumi.CustomResource):
                 time_of_day="12:00",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard. 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" { }
+        1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard.
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/dbtTransformation:DbtTransformation
-
-        Run the `terraform import` command
+        $ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation' 5. Copy the values and paste them to your `.tf` configuration.
+        terraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -340,6 +350,7 @@ class DbtTransformation(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -358,22 +369,31 @@ class DbtTransformation(pulumi.CustomResource):
                 time_of_day="12:00",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard. 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" { }
+        1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard.
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/dbtTransformation:DbtTransformation
-
-        Run the `terraform import` command
+        $ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation' 5. Copy the values and paste them to your `.tf` configuration.
+        terraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param DbtTransformationArgs args: The arguments to use to populate this resource's properties.

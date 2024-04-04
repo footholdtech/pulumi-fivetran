@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a dbt Transformation object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDbtTransformationResult> InvokeAsync(GetDbtTransformationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbtTransformationResult>("fivetran:index/getDbtTransformation:getDbtTransformation", args ?? new GetDbtTransformationArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a dbt Transformation object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,8 +59,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDbtTransformationResult> Invoke(GetDbtTransformationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbtTransformationResult>("fivetran:index/getDbtTransformation:getDbtTransformation", args ?? new GetDbtTransformationInvokeArgs(), options.WithDefaults());

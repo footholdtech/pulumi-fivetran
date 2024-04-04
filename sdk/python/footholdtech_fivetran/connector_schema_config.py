@@ -18,15 +18,29 @@ class ConnectorSchemaConfigArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[str],
                  schema_change_handling: pulumi.Input[str],
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None):
+                 schema: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
+                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
+                 schemas_json: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ConnectorSchemaConfig resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]] schemas: Map of schema configurations.
+        :param pulumi.Input[str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
         """
         pulumi.set(__self__, "connector_id", connector_id)
         pulumi.set(__self__, "schema_change_handling", schema_change_handling)
+        if schema is not None:
+            warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
         if schemas is not None:
             pulumi.set(__self__, "schemas", schemas)
+        if schemas_json is not None:
+            pulumi.set(__self__, "schemas_json", schemas_json)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="connectorId")
@@ -51,30 +65,80 @@ class ConnectorSchemaConfigArgs:
 
     @property
     @pulumi.getter
-    def schemas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
+    def schema(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
+        warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+        pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
+
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def schemas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]:
+        """
+        Map of schema configurations.
+        """
         return pulumi.get(self, "schemas")
 
     @schemas.setter
-    def schemas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]):
+    def schemas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]):
         pulumi.set(self, "schemas", value)
+
+    @property
+    @pulumi.getter(name="schemasJson")
+    def schemas_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        """
+        return pulumi.get(self, "schemas_json")
+
+    @schemas_json.setter
+    def schemas_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schemas_json", value)
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _ConnectorSchemaConfigState:
     def __init__(__self__, *,
                  connector_id: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
                  schema_change_handling: Optional[pulumi.Input[str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None):
+                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
+                 schemas_json: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering ConnectorSchemaConfig resources.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]] schemas: Map of schema configurations.
+        :param pulumi.Input[str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
         """
         if connector_id is not None:
             pulumi.set(__self__, "connector_id", connector_id)
+        if schema is not None:
+            warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
         if schema_change_handling is not None:
             pulumi.set(__self__, "schema_change_handling", schema_change_handling)
         if schemas is not None:
             pulumi.set(__self__, "schemas", schemas)
+        if schemas_json is not None:
+            pulumi.set(__self__, "schemas_json", schemas_json)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="connectorId")
@@ -89,6 +153,18 @@ class _ConnectorSchemaConfigState:
         pulumi.set(self, "connector_id", value)
 
     @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
+        warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+        pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
+
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]):
+        pulumi.set(self, "schema", value)
+
+    @property
     @pulumi.getter(name="schemaChangeHandling")
     def schema_change_handling(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "schema_change_handling")
@@ -99,12 +175,36 @@ class _ConnectorSchemaConfigState:
 
     @property
     @pulumi.getter
-    def schemas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
+    def schemas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]:
+        """
+        Map of schema configurations.
+        """
         return pulumi.get(self, "schemas")
 
     @schemas.setter
-    def schemas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]):
+    def schemas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]):
         pulumi.set(self, "schemas", value)
+
+    @property
+    @pulumi.getter(name="schemasJson")
+    def schemas_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        """
+        return pulumi.get(self, "schemas_json")
+
+    @schemas_json.setter
+    def schemas_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schemas_json", value)
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 class ConnectorSchemaConfig(pulumi.CustomResource):
@@ -113,60 +213,22 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemaArgs']]]]] = None,
                  schema_change_handling: Optional[pulumi.Input[str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemaArgs']]]]] = None,
+                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]]] = None,
+                 schemas_json: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigTimeoutsArgs']]] = None,
                  __props__=None):
         """
-        ## ---
-
-        page_title: "Resource: ConnectorSchemaConfig"
-        ---
-
-        # Resource: ConnectorSchemaConfig
-
-        This resource allows you to manage the Standard Configuration settings of a connector:
-         - Define the schema change handling settings
-         - Enable and disable schemas, tables, and columns
-
-        The resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.
-
-        Known issues:
-         - Definition of `sync_mode` for table causes infinite drifting changes in plan
-
-        ## Usage guide
-
-        Note that all configuration settings are aligned to the `schema_change_handling` settings,  except the settings explicitly specified in `schema`.
-        In `schema`, you only override the default settings defined by the chosen `schema_change_handling` option. The default value for the `enabled` attribute is `true` so it can be omitted when you want to enable schemas, tables, or columns.
-        The allowed `schema_change_handling` options are as follows:
-        - `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables
-        - `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items
-        - `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns
-
-        Note that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `schema_change_handling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = "false"`), the provider just ignores these statements.
-
-        ## Usage examples
-
         ## Import
 
-        1. To import an existing `fivetran_connector_schema_config` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_schema_config" "my_imported_connector_schema_config" { }
-
-        ```sh
-         $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig
-
-        Run the `terraform import` command
-        ```
-
-        ```sh
-         $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
-        ```
-
-        5.  
-
-        Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_schema_config.my_imported_connector_schema_config' 6. Copy the values and paste them to your `.tf` configuration.
+        You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]] schemas: Map of schema configurations.
+        :param pulumi.Input[str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
         """
         ...
     @overload
@@ -175,52 +237,9 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  args: ConnectorSchemaConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## ---
-
-        page_title: "Resource: ConnectorSchemaConfig"
-        ---
-
-        # Resource: ConnectorSchemaConfig
-
-        This resource allows you to manage the Standard Configuration settings of a connector:
-         - Define the schema change handling settings
-         - Enable and disable schemas, tables, and columns
-
-        The resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.
-
-        Known issues:
-         - Definition of `sync_mode` for table causes infinite drifting changes in plan
-
-        ## Usage guide
-
-        Note that all configuration settings are aligned to the `schema_change_handling` settings,  except the settings explicitly specified in `schema`.
-        In `schema`, you only override the default settings defined by the chosen `schema_change_handling` option. The default value for the `enabled` attribute is `true` so it can be omitted when you want to enable schemas, tables, or columns.
-        The allowed `schema_change_handling` options are as follows:
-        - `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables
-        - `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items
-        - `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns
-
-        Note that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `schema_change_handling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = "false"`), the provider just ignores these statements.
-
-        ## Usage examples
-
         ## Import
 
-        1. To import an existing `fivetran_connector_schema_config` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_schema_config" "my_imported_connector_schema_config" { }
-
-        ```sh
-         $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig
-
-        Run the `terraform import` command
-        ```
-
-        ```sh
-         $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
-        ```
-
-        5.  
-
-        Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_schema_config.my_imported_connector_schema_config' 6. Copy the values and paste them to your `.tf` configuration.
+        You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
 
         :param str resource_name: The name of the resource.
         :param ConnectorSchemaConfigArgs args: The arguments to use to populate this resource's properties.
@@ -238,8 +257,11 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemaArgs']]]]] = None,
                  schema_change_handling: Optional[pulumi.Input[str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemaArgs']]]]] = None,
+                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]]] = None,
+                 schemas_json: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigTimeoutsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,10 +274,13 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
             if connector_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_id'")
             __props__.__dict__["connector_id"] = connector_id
+            __props__.__dict__["schema"] = schema
             if schema_change_handling is None and not opts.urn:
                 raise TypeError("Missing required property 'schema_change_handling'")
             __props__.__dict__["schema_change_handling"] = schema_change_handling
             __props__.__dict__["schemas"] = schemas
+            __props__.__dict__["schemas_json"] = schemas_json
+            __props__.__dict__["timeouts"] = timeouts
         super(ConnectorSchemaConfig, __self__).__init__(
             'fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig',
             resource_name,
@@ -267,8 +292,11 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connector_id: Optional[pulumi.Input[str]] = None,
+            schema: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemaArgs']]]]] = None,
             schema_change_handling: Optional[pulumi.Input[str]] = None,
-            schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemaArgs']]]]] = None) -> 'ConnectorSchemaConfig':
+            schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]]] = None,
+            schemas_json: Optional[pulumi.Input[str]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigTimeoutsArgs']]] = None) -> 'ConnectorSchemaConfig':
         """
         Get an existing ConnectorSchemaConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -277,14 +305,19 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]] schemas: Map of schema configurations.
+        :param pulumi.Input[str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ConnectorSchemaConfigState.__new__(_ConnectorSchemaConfigState)
 
         __props__.__dict__["connector_id"] = connector_id
+        __props__.__dict__["schema"] = schema
         __props__.__dict__["schema_change_handling"] = schema_change_handling
         __props__.__dict__["schemas"] = schemas
+        __props__.__dict__["schemas_json"] = schemas_json
+        __props__.__dict__["timeouts"] = timeouts
         return ConnectorSchemaConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -296,12 +329,36 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         return pulumi.get(self, "connector_id")
 
     @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Output[Optional[Sequence['outputs.ConnectorSchemaConfigSchema']]]:
+        warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+        pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
+
+        return pulumi.get(self, "schema")
+
+    @property
     @pulumi.getter(name="schemaChangeHandling")
     def schema_change_handling(self) -> pulumi.Output[str]:
         return pulumi.get(self, "schema_change_handling")
 
     @property
     @pulumi.getter
-    def schemas(self) -> pulumi.Output[Optional[Sequence['outputs.ConnectorSchemaConfigSchema']]]:
+    def schemas(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.ConnectorSchemaConfigSchemas']]]:
+        """
+        Map of schema configurations.
+        """
         return pulumi.get(self, "schemas")
+
+    @property
+    @pulumi.getter(name="schemasJson")
+    def schemas_json(self) -> pulumi.Output[Optional[str]]:
+        """
+        Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        """
+        return pulumi.get(self, "schemas_json")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.ConnectorSchemaConfigTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a connector object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConnectorResult> InvokeAsync(GetConnectorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectorResult>("fivetran:index/getConnector:getConnector", args ?? new GetConnectorArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a connector object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,8 +59,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConnectorResult> Invoke(GetConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("fivetran:index/getConnector:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithDefaults());
@@ -72,16 +68,17 @@ namespace Footholdtech.Fivetran
 
     public sealed class GetConnectorArgs : global::Pulumi.InvokeArgs
     {
-        [Input("configs")]
-        private List<Inputs.GetConnectorConfigArgs>? _configs;
-        public List<Inputs.GetConnectorConfigArgs> Configs
-        {
-            get => _configs ?? (_configs = new List<Inputs.GetConnectorConfigArgs>());
-            set => _configs = value;
-        }
+        [Input("config")]
+        public Inputs.GetConnectorConfigArgs? Config { get; set; }
+
+        [Input("destinationSchema")]
+        public Inputs.GetConnectorDestinationSchemaArgs? DestinationSchema { get; set; }
 
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
+
+        [Input("status")]
+        public Inputs.GetConnectorStatusArgs? Status { get; set; }
 
         public GetConnectorArgs()
         {
@@ -91,16 +88,17 @@ namespace Footholdtech.Fivetran
 
     public sealed class GetConnectorInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("configs")]
-        private InputList<Inputs.GetConnectorConfigInputArgs>? _configs;
-        public InputList<Inputs.GetConnectorConfigInputArgs> Configs
-        {
-            get => _configs ?? (_configs = new InputList<Inputs.GetConnectorConfigInputArgs>());
-            set => _configs = value;
-        }
+        [Input("config")]
+        public Input<Inputs.GetConnectorConfigInputArgs>? Config { get; set; }
+
+        [Input("destinationSchema")]
+        public Input<Inputs.GetConnectorDestinationSchemaInputArgs>? DestinationSchema { get; set; }
 
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
+
+        [Input("status")]
+        public Input<Inputs.GetConnectorStatusInputArgs>? Status { get; set; }
 
         public GetConnectorInvokeArgs()
         {
@@ -112,27 +110,27 @@ namespace Footholdtech.Fivetran
     [OutputType]
     public sealed class GetConnectorResult
     {
-        public readonly ImmutableArray<Outputs.GetConnectorConfigResult> Configs;
+        public readonly Outputs.GetConnectorConfigResult? Config;
         public readonly string ConnectedBy;
         public readonly string CreatedAt;
         public readonly string DailySyncTime;
-        public readonly ImmutableArray<Outputs.GetConnectorDestinationSchemaResult> DestinationSchemas;
+        public readonly Outputs.GetConnectorDestinationSchemaResult? DestinationSchema;
         public readonly string FailedAt;
         public readonly string GroupId;
         public readonly string Id;
         public readonly string Name;
-        public readonly string PauseAfterTrial;
-        public readonly string Paused;
+        public readonly bool PauseAfterTrial;
+        public readonly bool Paused;
         public readonly string ScheduleType;
         public readonly string Service;
         public readonly string ServiceVersion;
-        public readonly ImmutableArray<Outputs.GetConnectorStatusResult> Statuses;
+        public readonly Outputs.GetConnectorStatusResult? Status;
         public readonly string SucceededAt;
-        public readonly string SyncFrequency;
+        public readonly int SyncFrequency;
 
         [OutputConstructor]
         private GetConnectorResult(
-            ImmutableArray<Outputs.GetConnectorConfigResult> configs,
+            Outputs.GetConnectorConfigResult? config,
 
             string connectedBy,
 
@@ -140,7 +138,7 @@ namespace Footholdtech.Fivetran
 
             string dailySyncTime,
 
-            ImmutableArray<Outputs.GetConnectorDestinationSchemaResult> destinationSchemas,
+            Outputs.GetConnectorDestinationSchemaResult? destinationSchema,
 
             string failedAt,
 
@@ -150,9 +148,9 @@ namespace Footholdtech.Fivetran
 
             string name,
 
-            string pauseAfterTrial,
+            bool pauseAfterTrial,
 
-            string paused,
+            bool paused,
 
             string scheduleType,
 
@@ -160,17 +158,17 @@ namespace Footholdtech.Fivetran
 
             string serviceVersion,
 
-            ImmutableArray<Outputs.GetConnectorStatusResult> statuses,
+            Outputs.GetConnectorStatusResult? status,
 
             string succeededAt,
 
-            string syncFrequency)
+            int syncFrequency)
         {
-            Configs = configs;
+            Config = config;
             ConnectedBy = connectedBy;
             CreatedAt = createdAt;
             DailySyncTime = dailySyncTime;
-            DestinationSchemas = destinationSchemas;
+            DestinationSchema = destinationSchema;
             FailedAt = failedAt;
             GroupId = groupId;
             Id = id;
@@ -180,7 +178,7 @@ namespace Footholdtech.Fivetran
             ScheduleType = scheduleType;
             Service = service;
             ServiceVersion = serviceVersion;
-            Statuses = statuses;
+            Status = status;
             SucceededAt = succeededAt;
             SyncFrequency = syncFrequency;
         }

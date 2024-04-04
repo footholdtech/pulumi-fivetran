@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a logging service object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetExternalLoggingResult> InvokeAsync(GetExternalLoggingArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalLoggingResult>("fivetran:index/getExternalLogging:getExternalLogging", args ?? new GetExternalLoggingArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a logging service object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,8 +59,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetExternalLoggingResult> Invoke(GetExternalLoggingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalLoggingResult>("fivetran:index/getExternalLogging:getExternalLogging", args ?? new GetExternalLoggingInvokeArgs(), options.WithDefaults());
@@ -72,13 +68,8 @@ namespace Footholdtech.Fivetran
 
     public sealed class GetExternalLoggingArgs : global::Pulumi.InvokeArgs
     {
-        [Input("configs")]
-        private List<Inputs.GetExternalLoggingConfigArgs>? _configs;
-        public List<Inputs.GetExternalLoggingConfigArgs> Configs
-        {
-            get => _configs ?? (_configs = new List<Inputs.GetExternalLoggingConfigArgs>());
-            set => _configs = value;
-        }
+        [Input("config")]
+        public Inputs.GetExternalLoggingConfigArgs? Config { get; set; }
 
         /// <summary>
         /// The unique identifier for the log service within the Fivetran system.
@@ -100,13 +91,8 @@ namespace Footholdtech.Fivetran
 
     public sealed class GetExternalLoggingInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("configs")]
-        private InputList<Inputs.GetExternalLoggingConfigInputArgs>? _configs;
-        public InputList<Inputs.GetExternalLoggingConfigInputArgs> Configs
-        {
-            get => _configs ?? (_configs = new InputList<Inputs.GetExternalLoggingConfigInputArgs>());
-            set => _configs = value;
-        }
+        [Input("config")]
+        public Input<Inputs.GetExternalLoggingConfigInputArgs>? Config { get; set; }
 
         /// <summary>
         /// The unique identifier for the log service within the Fivetran system.
@@ -130,7 +116,7 @@ namespace Footholdtech.Fivetran
     [OutputType]
     public sealed class GetExternalLoggingResult
     {
-        public readonly ImmutableArray<Outputs.GetExternalLoggingConfigResult> Configs;
+        public readonly Outputs.GetExternalLoggingConfigResult? Config;
         /// <summary>
         /// The boolean value specifying whether the log service is enabled.
         /// </summary>
@@ -154,7 +140,7 @@ namespace Footholdtech.Fivetran
 
         [OutputConstructor]
         private GetExternalLoggingResult(
-            ImmutableArray<Outputs.GetExternalLoggingConfigResult> configs,
+            Outputs.GetExternalLoggingConfigResult? config,
 
             bool enabled,
 
@@ -166,7 +152,7 @@ namespace Footholdtech.Fivetran
 
             string service)
         {
-            Configs = configs;
+            Config = config;
             Enabled = enabled;
             GroupId = groupId;
             Id = id;

@@ -13,34 +13,75 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class GetConnectorConfigCustomReportArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
+        /// </summary>
+        [Input("addMetricVariants", required: true)]
+        public bool AddMetricVariants { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_ads`: Time aggregation of report
+        /// </summary>
         [Input("aggregate", required: true)]
         public string Aggregate { get; set; } = null!;
 
         [Input("baseMetricsFields", required: true)]
         private List<string>? _baseMetricsFields;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#basemetricsfields).
+        /// </summary>
         public List<string> BaseMetricsFields
         {
             get => _baseMetricsFields ?? (_baseMetricsFields = new List<string>());
             set => _baseMetricsFields = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakdown).
+        /// </summary>
         [Input("breakdown", required: true)]
         public string Breakdown { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakout).
+        /// </summary>
         [Input("breakout", required: true)]
         public string Breakout { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `false`
+        /// </summary>
         [Input("conversionsReportIncluded", required: true)]
-        public string ConversionsReportIncluded { get; set; } = null!;
+        public bool ConversionsReportIncluded { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The boolean value specifying whether the custom events are included in event conversions report. Default value: `false`
+        /// </summary>
         [Input("customEventsIncluded", required: true)]
-        public string CustomEventsIncluded { get; set; } = null!;
+        public bool CustomEventsIncluded { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#dimension).
+        /// </summary>
         [Input("dimension", required: true)]
         public string Dimension { get; set; } = null!;
 
         [Input("dimensions", required: true)]
         private List<string>? _dimensions;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_ads`: Dimensions to synced
+        /// </summary>
         public List<string> Dimensions
         {
             get => _dimensions ?? (_dimensions = new List<string>());
@@ -49,20 +90,38 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("eventNames", required: true)]
         private List<string>? _eventNames;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The list of events the conversion data will be synchronised for
+        /// </summary>
         public List<string> EventNames
         {
             get => _eventNames ?? (_eventNames = new List<string>());
             set => _eventNames = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/applications/snapchat-ads/customr-reports#granularity).
+        /// </summary>
         [Input("granularity", required: true)]
         public string Granularity { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: Level of custom report.
+        /// </summary>
         [Input("level", required: true)]
         public string Level { get; set; } = null!;
 
         [Input("metrics", required: true)]
         private List<string>? _metrics;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_ads`: Metrics to be synced
+        /// </summary>
         public List<string> Metrics
         {
             get => _metrics ?? (_metrics = new List<string>());
@@ -71,29 +130,56 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("reportFields", required: true)]
         private List<string>? _reportFields;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The list of fields included in custom report
+        /// </summary>
         public List<string> ReportFields
         {
             get => _reportFields ?? (_reportFields = new List<string>());
             set => _reportFields = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The table name within the schema to which connector syncs the data of the specific report.
+        /// 	- Service `snapchat_ads`: Custom report name (must be unique)
+        /// </summary>
         [Input("reportName", required: true)]
         public string ReportName { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_ads`: Type of report to be generated
+        /// </summary>
         [Input("reportType", required: true)]
         public string ReportType { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: Level of custom report.
+        /// </summary>
         [Input("segmentation", required: true)]
         public string Segmentation { get; set; } = null!;
 
         [Input("skAdMetricsFields", required: true)]
         private List<string>? _skAdMetricsFields;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#skadmetricsfields).
+        /// </summary>
         public List<string> SkAdMetricsFields
         {
             get => _skAdMetricsFields ?? (_skAdMetricsFields = new List<string>());
             set => _skAdMetricsFields = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_ads`: Destination Table name of report
+        /// </summary>
         [Input("tableName", required: true)]
         public string TableName { get; set; } = null!;
 

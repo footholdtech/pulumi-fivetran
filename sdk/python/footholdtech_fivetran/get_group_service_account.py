@@ -63,12 +63,14 @@ def get_group_service_account(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_group_service_account = fivetran.get_group_service_account(id="group_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the group within the Fivetran system.
@@ -91,12 +93,14 @@ def get_group_service_account_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_group_service_account = fivetran.get_group_service_account(id="group_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the group within the Fivetran system.

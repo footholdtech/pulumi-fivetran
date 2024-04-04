@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,6 +37,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetRoles(ctx *pulumi.Context, args *GetRolesArgs, opts ...pulumi.InvokeOption) (*GetRolesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRolesResult
@@ -53,7 +55,7 @@ type GetRolesArgs struct {
 
 // A collection of values returned by getRoles.
 type GetRolesResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id    string         `pulumi:"id"`
 	Roles []GetRolesRole `pulumi:"roles"`
 }
@@ -95,7 +97,7 @@ func (o GetRolesResultOutput) ToGetRolesResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o GetRolesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesResult) string { return v.Id }).(pulumi.StringOutput)
 }

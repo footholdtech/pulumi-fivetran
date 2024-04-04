@@ -14,7 +14,19 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class GetConnectorConfigSecretsListResult
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aws_lambda`: Secret Key.
+        /// 	- Service `azure_function`: Key
+        /// 	- Service `google_cloud_function`: Key
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aws_lambda`: Secret Value.
+        /// 	- Service `azure_function`: Value
+        /// 	- Service `google_cloud_function`: Value
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

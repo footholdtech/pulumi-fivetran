@@ -14,8 +14,20 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class GetConnectorConfigProjectCredentialResult
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amplitude`: The API key of the project.
+        /// </summary>
         public readonly string ApiKey;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amplitude`: The project name you wish to use with Fivetran.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amplitude`: The secret key of the project.
+        /// </summary>
         public readonly string SecretKey;
 
         [OutputConstructor]

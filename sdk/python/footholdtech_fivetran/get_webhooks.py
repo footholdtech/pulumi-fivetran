@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetWebhooksResult',
@@ -55,22 +54,22 @@ class AwaitableGetWebhooksResult(GetWebhooksResult):
             webhooks=self.webhooks)
 
 
-def get_webhooks(webhooks: Optional[Sequence[pulumi.InputType['GetWebhooksWebhookArgs']]] = None,
-                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebhooksResult:
+def get_webhooks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebhooksResult:
     """
     This data source returns a list of all webhooks within your Fivetran account.
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     webhooks = fivetran.get_webhooks()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
-    __args__['webhooks'] = webhooks
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('fivetran:index/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult).value
 
@@ -80,18 +79,19 @@ def get_webhooks(webhooks: Optional[Sequence[pulumi.InputType['GetWebhooksWebhoo
 
 
 @_utilities.lift_output_func(get_webhooks)
-def get_webhooks_output(webhooks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetWebhooksWebhookArgs']]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebhooksResult]:
+def get_webhooks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebhooksResult]:
     """
     This data source returns a list of all webhooks within your Fivetran account.
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     webhooks = fivetran.get_webhooks()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

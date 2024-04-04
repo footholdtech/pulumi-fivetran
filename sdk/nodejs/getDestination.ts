@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -19,12 +20,13 @@ import * as utilities from "./utilities";
  *     id: "anonymous_mystery",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDestination(args: GetDestinationArgs, opts?: pulumi.InvokeOptions): Promise<GetDestinationResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDestination:getDestination", {
-        "configs": args.configs,
+        "config": args.config,
         "id": args.id,
     }, opts);
 }
@@ -33,10 +35,7 @@ export function getDestination(args: GetDestinationArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getDestination.
  */
 export interface GetDestinationArgs {
-    configs?: inputs.GetDestinationConfig[];
-    /**
-     * The unique identifier for the destination within the Fivetran system
-     */
+    config?: inputs.GetDestinationConfig;
     id: string;
 }
 
@@ -44,30 +43,13 @@ export interface GetDestinationArgs {
  * A collection of values returned by getDestination.
  */
 export interface GetDestinationResult {
-    readonly configs: outputs.GetDestinationConfig[];
-    /**
-     * The unique identifier for the Group within the Fivetran system.
-     */
+    readonly config?: outputs.GetDestinationConfig;
+    readonly daylightSavingTimeEnabled: boolean;
     readonly groupId: string;
-    /**
-     * The unique identifier for the destination within the Fivetran system
-     */
     readonly id: string;
-    /**
-     * Data processing location. This is where Fivetran will operate and run computation on data.
-     */
     readonly region: string;
-    /**
-     * The destination type name within the Fivetran system
-     */
     readonly service: string;
-    /**
-     * Destination setup status
-     */
     readonly setupStatus: string;
-    /**
-     * Determines the time zone for the Fivetran sync schedule.
-     */
     readonly timeZoneOffset: string;
 }
 /**
@@ -75,6 +57,7 @@ export interface GetDestinationResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -83,6 +66,7 @@ export interface GetDestinationResult {
  *     id: "anonymous_mystery",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDestinationOutput(args: GetDestinationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestinationResult> {
     return pulumi.output(args).apply((a: any) => getDestination(a, opts))
@@ -92,9 +76,6 @@ export function getDestinationOutput(args: GetDestinationOutputArgs, opts?: pulu
  * A collection of arguments for invoking getDestination.
  */
 export interface GetDestinationOutputArgs {
-    configs?: pulumi.Input<pulumi.Input<inputs.GetDestinationConfigArgs>[]>;
-    /**
-     * The unique identifier for the destination within the Fivetran system
-     */
+    config?: pulumi.Input<inputs.GetDestinationConfigArgs>;
     id: pulumi.Input<string>;
 }

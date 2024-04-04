@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,19 +37,15 @@ import (
 //	}
 //
 // ```
-func GetWebhooks(ctx *pulumi.Context, args *GetWebhooksArgs, opts ...pulumi.InvokeOption) (*GetWebhooksResult, error) {
+// <!--End PulumiCodeChooser -->
+func GetWebhooks(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetWebhooksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWebhooksResult
-	err := ctx.Invoke("fivetran:index/getWebhooks:getWebhooks", args, &rv, opts...)
+	err := ctx.Invoke("fivetran:index/getWebhooks:getWebhooks", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
-}
-
-// A collection of arguments for invoking getWebhooks.
-type GetWebhooksArgs struct {
-	Webhooks []GetWebhooksWebhook `pulumi:"webhooks"`
 }
 
 // A collection of values returned by getWebhooks.
@@ -58,26 +55,15 @@ type GetWebhooksResult struct {
 	Webhooks []GetWebhooksWebhook `pulumi:"webhooks"`
 }
 
-func GetWebhooksOutput(ctx *pulumi.Context, args GetWebhooksOutputArgs, opts ...pulumi.InvokeOption) GetWebhooksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetWebhooksResult, error) {
-			args := v.(GetWebhooksArgs)
-			r, err := GetWebhooks(ctx, &args, opts...)
-			var s GetWebhooksResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
-		}).(GetWebhooksResultOutput)
-}
-
-// A collection of arguments for invoking getWebhooks.
-type GetWebhooksOutputArgs struct {
-	Webhooks GetWebhooksWebhookArrayInput `pulumi:"webhooks"`
-}
-
-func (GetWebhooksOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWebhooksArgs)(nil)).Elem()
+func GetWebhooksOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetWebhooksResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetWebhooksResult, error) {
+		r, err := GetWebhooks(ctx, opts...)
+		var s GetWebhooksResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetWebhooksResultOutput)
 }
 
 // A collection of values returned by getWebhooks.

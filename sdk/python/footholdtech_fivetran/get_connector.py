@@ -23,10 +23,10 @@ class GetConnectorResult:
     """
     A collection of values returned by getConnector.
     """
-    def __init__(__self__, configs=None, connected_by=None, created_at=None, daily_sync_time=None, destination_schemas=None, failed_at=None, group_id=None, id=None, name=None, pause_after_trial=None, paused=None, schedule_type=None, service=None, service_version=None, statuses=None, succeeded_at=None, sync_frequency=None):
-        if configs and not isinstance(configs, list):
-            raise TypeError("Expected argument 'configs' to be a list")
-        pulumi.set(__self__, "configs", configs)
+    def __init__(__self__, config=None, connected_by=None, created_at=None, daily_sync_time=None, destination_schema=None, failed_at=None, group_id=None, id=None, name=None, pause_after_trial=None, paused=None, schedule_type=None, service=None, service_version=None, status=None, succeeded_at=None, sync_frequency=None):
+        if config and not isinstance(config, dict):
+            raise TypeError("Expected argument 'config' to be a dict")
+        pulumi.set(__self__, "config", config)
         if connected_by and not isinstance(connected_by, str):
             raise TypeError("Expected argument 'connected_by' to be a str")
         pulumi.set(__self__, "connected_by", connected_by)
@@ -36,9 +36,9 @@ class GetConnectorResult:
         if daily_sync_time and not isinstance(daily_sync_time, str):
             raise TypeError("Expected argument 'daily_sync_time' to be a str")
         pulumi.set(__self__, "daily_sync_time", daily_sync_time)
-        if destination_schemas and not isinstance(destination_schemas, list):
-            raise TypeError("Expected argument 'destination_schemas' to be a list")
-        pulumi.set(__self__, "destination_schemas", destination_schemas)
+        if destination_schema and not isinstance(destination_schema, dict):
+            raise TypeError("Expected argument 'destination_schema' to be a dict")
+        pulumi.set(__self__, "destination_schema", destination_schema)
         if failed_at and not isinstance(failed_at, str):
             raise TypeError("Expected argument 'failed_at' to be a str")
         pulumi.set(__self__, "failed_at", failed_at)
@@ -51,11 +51,11 @@ class GetConnectorResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if pause_after_trial and not isinstance(pause_after_trial, str):
-            raise TypeError("Expected argument 'pause_after_trial' to be a str")
+        if pause_after_trial and not isinstance(pause_after_trial, bool):
+            raise TypeError("Expected argument 'pause_after_trial' to be a bool")
         pulumi.set(__self__, "pause_after_trial", pause_after_trial)
-        if paused and not isinstance(paused, str):
-            raise TypeError("Expected argument 'paused' to be a str")
+        if paused and not isinstance(paused, bool):
+            raise TypeError("Expected argument 'paused' to be a bool")
         pulumi.set(__self__, "paused", paused)
         if schedule_type and not isinstance(schedule_type, str):
             raise TypeError("Expected argument 'schedule_type' to be a str")
@@ -66,20 +66,20 @@ class GetConnectorResult:
         if service_version and not isinstance(service_version, str):
             raise TypeError("Expected argument 'service_version' to be a str")
         pulumi.set(__self__, "service_version", service_version)
-        if statuses and not isinstance(statuses, list):
-            raise TypeError("Expected argument 'statuses' to be a list")
-        pulumi.set(__self__, "statuses", statuses)
+        if status and not isinstance(status, dict):
+            raise TypeError("Expected argument 'status' to be a dict")
+        pulumi.set(__self__, "status", status)
         if succeeded_at and not isinstance(succeeded_at, str):
             raise TypeError("Expected argument 'succeeded_at' to be a str")
         pulumi.set(__self__, "succeeded_at", succeeded_at)
-        if sync_frequency and not isinstance(sync_frequency, str):
-            raise TypeError("Expected argument 'sync_frequency' to be a str")
+        if sync_frequency and not isinstance(sync_frequency, int):
+            raise TypeError("Expected argument 'sync_frequency' to be a int")
         pulumi.set(__self__, "sync_frequency", sync_frequency)
 
     @property
     @pulumi.getter
-    def configs(self) -> Sequence['outputs.GetConnectorConfigResult']:
-        return pulumi.get(self, "configs")
+    def config(self) -> Optional['outputs.GetConnectorConfigResult']:
+        return pulumi.get(self, "config")
 
     @property
     @pulumi.getter(name="connectedBy")
@@ -97,9 +97,9 @@ class GetConnectorResult:
         return pulumi.get(self, "daily_sync_time")
 
     @property
-    @pulumi.getter(name="destinationSchemas")
-    def destination_schemas(self) -> Sequence['outputs.GetConnectorDestinationSchemaResult']:
-        return pulumi.get(self, "destination_schemas")
+    @pulumi.getter(name="destinationSchema")
+    def destination_schema(self) -> Optional['outputs.GetConnectorDestinationSchemaResult']:
+        return pulumi.get(self, "destination_schema")
 
     @property
     @pulumi.getter(name="failedAt")
@@ -123,12 +123,12 @@ class GetConnectorResult:
 
     @property
     @pulumi.getter(name="pauseAfterTrial")
-    def pause_after_trial(self) -> str:
+    def pause_after_trial(self) -> bool:
         return pulumi.get(self, "pause_after_trial")
 
     @property
     @pulumi.getter
-    def paused(self) -> str:
+    def paused(self) -> bool:
         return pulumi.get(self, "paused")
 
     @property
@@ -148,8 +148,8 @@ class GetConnectorResult:
 
     @property
     @pulumi.getter
-    def statuses(self) -> Sequence['outputs.GetConnectorStatusResult']:
-        return pulumi.get(self, "statuses")
+    def status(self) -> Optional['outputs.GetConnectorStatusResult']:
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="succeededAt")
@@ -158,7 +158,7 @@ class GetConnectorResult:
 
     @property
     @pulumi.getter(name="syncFrequency")
-    def sync_frequency(self) -> str:
+    def sync_frequency(self) -> int:
         return pulumi.get(self, "sync_frequency")
 
 
@@ -168,11 +168,11 @@ class AwaitableGetConnectorResult(GetConnectorResult):
         if False:
             yield self
         return GetConnectorResult(
-            configs=self.configs,
+            config=self.config,
             connected_by=self.connected_by,
             created_at=self.created_at,
             daily_sync_time=self.daily_sync_time,
-            destination_schemas=self.destination_schemas,
+            destination_schema=self.destination_schema,
             failed_at=self.failed_at,
             group_id=self.group_id,
             id=self.id,
@@ -182,38 +182,44 @@ class AwaitableGetConnectorResult(GetConnectorResult):
             schedule_type=self.schedule_type,
             service=self.service,
             service_version=self.service_version,
-            statuses=self.statuses,
+            status=self.status,
             succeeded_at=self.succeeded_at,
             sync_frequency=self.sync_frequency)
 
 
-def get_connector(configs: Optional[Sequence[pulumi.InputType['GetConnectorConfigArgs']]] = None,
+def get_connector(config: Optional[pulumi.InputType['GetConnectorConfigArgs']] = None,
+                  destination_schema: Optional[pulumi.InputType['GetConnectorDestinationSchemaArgs']] = None,
                   id: Optional[str] = None,
+                  status: Optional[pulumi.InputType['GetConnectorStatusArgs']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorResult:
     """
     This data source returns a connector object.
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     connector = fivetran.get_connector(id="anonymous_mystery")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
-    __args__['configs'] = configs
+    __args__['config'] = config
+    __args__['destinationSchema'] = destination_schema
     __args__['id'] = id
+    __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('fivetran:index/getConnector:getConnector', __args__, opts=opts, typ=GetConnectorResult).value
 
     return AwaitableGetConnectorResult(
-        configs=pulumi.get(__ret__, 'configs'),
+        config=pulumi.get(__ret__, 'config'),
         connected_by=pulumi.get(__ret__, 'connected_by'),
         created_at=pulumi.get(__ret__, 'created_at'),
         daily_sync_time=pulumi.get(__ret__, 'daily_sync_time'),
-        destination_schemas=pulumi.get(__ret__, 'destination_schemas'),
+        destination_schema=pulumi.get(__ret__, 'destination_schema'),
         failed_at=pulumi.get(__ret__, 'failed_at'),
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
@@ -223,25 +229,29 @@ def get_connector(configs: Optional[Sequence[pulumi.InputType['GetConnectorConfi
         schedule_type=pulumi.get(__ret__, 'schedule_type'),
         service=pulumi.get(__ret__, 'service'),
         service_version=pulumi.get(__ret__, 'service_version'),
-        statuses=pulumi.get(__ret__, 'statuses'),
+        status=pulumi.get(__ret__, 'status'),
         succeeded_at=pulumi.get(__ret__, 'succeeded_at'),
         sync_frequency=pulumi.get(__ret__, 'sync_frequency'))
 
 
 @_utilities.lift_output_func(get_connector)
-def get_connector_output(configs: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetConnectorConfigArgs']]]]] = None,
+def get_connector_output(config: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectorConfigArgs']]]] = None,
+                         destination_schema: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectorDestinationSchemaArgs']]]] = None,
                          id: Optional[pulumi.Input[str]] = None,
+                         status: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectorStatusArgs']]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorResult]:
     """
     This data source returns a connector object.
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     connector = fivetran.get_connector(id="anonymous_mystery")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

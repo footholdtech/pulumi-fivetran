@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const sources = fivetran.getConnectorsMetadata({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnectorsMetadata(args?: GetConnectorsMetadataArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorsMetadataResult> {
     args = args || {};
@@ -39,22 +41,24 @@ export interface GetConnectorsMetadataArgs {
  */
 export interface GetConnectorsMetadataResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
-    readonly sources: outputs.GetConnectorsMetadataSource[];
+    readonly sources?: outputs.GetConnectorsMetadataSource[];
 }
 /**
  * This data source returns all available source types within your Fivetran account. This data source makes it easier to display Fivetran connectors within your application because it provides metadata including the proper source name (‘Facebook Ad Account’ instead of facebook_ad_account), the source icon, and links to Fivetran resources. As we update source names and icons, that metadata will automatically update within this endpoint.
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const sources = fivetran.getConnectorsMetadata({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnectorsMetadataOutput(args?: GetConnectorsMetadataOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorsMetadataResult> {
     return pulumi.output(args).apply((a: any) => getConnectorsMetadata(a, opts))

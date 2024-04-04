@@ -14,23 +14,100 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class GetConnectorConfigReportResult
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_search_console`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
+        /// </summary>
         public readonly string Aggregation;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_search_ads_360`: The report dimensions included to sync.
+        /// </summary>
         public readonly ImmutableArray<string> Attributes;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+        /// 	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
+        /// </summary>
         public readonly string ConfigType;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
+        /// 	- Service `google_analytics_4`: The report dimensions to include into a sync.
+        /// 	- Service `google_search_console`: The report dimensions included to sync.
+        /// </summary>
         public readonly ImmutableArray<string> Dimensions;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_ads`: A list of the fields to sync. Must be populated if `config_type` is set to `Custom`.
+        /// </summary>
         public readonly ImmutableArray<string> Fields;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: String parameter restricts the data returned for your report. To use the filter parameter, specify a dimension or metric on which to filter, followed by the filter expression
+        /// </summary>
         public readonly string Filter;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics_4`: The dimension name to filter on.
+        /// </summary>
         public readonly string FilterFieldName;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics_4`: Filter type for reports request. Possible values are INCLUDE and EXCLUDE
+        /// </summary>
         public readonly string FilterType;
         public readonly string FilterValue;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: The report metrics to include into a sync.
+        /// 	- Service `google_analytics_4`: The report metrics to include into a sync.
+        /// 	- Service `google_search_ads_360`: The report dimensions included to sync.
+        /// </summary>
         public readonly ImmutableArray<string> Metrics;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: The name of the Prebuilt Report from which the connector will sync the data.
+        /// 	- Service `google_analytics_4`: The name of the Prebuilt Report from which the connector will sync the data.
+        /// </summary>
         public readonly string PrebuiltReport;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_ads`: The name of the Google Ads report from which the connector will sync the data. [Possible report_type values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
+        /// 	- Service `google_search_ads_360`: The type of report
+        /// 	- Service `google_search_console`: The type of report
+        /// </summary>
         public readonly string ReportType;
-        public readonly string RollbackWindow;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics_4`: The custom window size for rollback syncs.
+        /// </summary>
+        public readonly int RollbackWindow;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_search_console`: Search types included to sync. Supported only for the `SEARCH_RESULTS` report type
+        /// </summary>
         public readonly ImmutableArray<string> SearchTypes;
         public readonly ImmutableArray<string> SegmentIds;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics`: A segment is a subset of your Analytics data that is made up of one or more non-destructive filters (filters that do not alter the underlying data). Those filters isolate subsets of users, sessions, and hits.
+        /// </summary>
         public readonly ImmutableArray<string> Segments;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_ads`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `google_analytics`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `google_analytics_4`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `google_search_ads_360`: The name of a table within the schema to which connector syncs the data of a given report.
+        /// 	- Service `google_search_console`: The name of a table within the schema to which connector syncs the data of a given report.
+        /// </summary>
         public readonly string Table;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_analytics_4`: The report data aggregation time granularity.
+        /// </summary>
+        public readonly string TimeAggregationGranularity;
 
         [OutputConstructor]
         private GetConnectorConfigReportResult(
@@ -58,7 +135,7 @@ namespace Footholdtech.Fivetran.Outputs
 
             string reportType,
 
-            string rollbackWindow,
+            int rollbackWindow,
 
             ImmutableArray<string> searchTypes,
 
@@ -66,7 +143,9 @@ namespace Footholdtech.Fivetran.Outputs
 
             ImmutableArray<string> segments,
 
-            string table)
+            string table,
+
+            string timeAggregationGranularity)
         {
             Aggregation = aggregation;
             Attributes = attributes;
@@ -85,6 +164,7 @@ namespace Footholdtech.Fivetran.Outputs
             SegmentIds = segmentIds;
             Segments = segments;
             Table = table;
+            TimeAggregationGranularity = timeAggregationGranularity;
         }
     }
 }

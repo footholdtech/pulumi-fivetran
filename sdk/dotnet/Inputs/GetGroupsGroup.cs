@@ -26,6 +26,12 @@ namespace Footholdtech.Fivetran.Inputs
         public string Id { get; set; } = null!;
 
         /// <summary>
+        /// The timestamp of when the group was updated in your account.
+        /// </summary>
+        [Input("lastUpdated")]
+        public string? LastUpdated { get; set; }
+
+        /// <summary>
         /// The name of the group within your account.
         /// </summary>
         [Input("name", required: true)]

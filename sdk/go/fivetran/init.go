@@ -57,6 +57,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamUserMembership{}
 	case "fivetran:index/user:User":
 		r = &User{}
+	case "fivetran:index/userConnectorMembership:UserConnectorMembership":
+		r = &UserConnectorMembership{}
+	case "fivetran:index/userGroupMembership:UserGroupMembership":
+		r = &UserGroupMembership{}
 	case "fivetran:index/webhook:Webhook":
 		r = &Webhook{}
 	default:
@@ -178,6 +182,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"fivetran",
 		"index/user",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/userConnectorMembership",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/userGroupMembership",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

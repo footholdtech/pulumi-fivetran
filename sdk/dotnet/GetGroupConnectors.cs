@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a list of information about all connectors within a group in your Fivetran account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGroupConnectorsResult> InvokeAsync(GetGroupConnectorsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupConnectorsResult>("fivetran:index/getGroupConnectors:getGroupConnectors", args ?? new GetGroupConnectorsArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a list of information about all connectors within a group in your Fivetran account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,8 +61,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupConnectorsResult> Invoke(GetGroupConnectorsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupConnectorsResult>("fivetran:index/getGroupConnectors:getGroupConnectors", args ?? new GetGroupConnectorsInvokeArgs(), options.WithDefaults());

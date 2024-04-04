@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
@@ -20,24 +21,33 @@ import * as utilities from "./utilities";
  *     provider: fivetran_provider,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * 1. To import an existing `fivetran_team` resource into your Terraform state, you need to get `team_id`.
  *
- * You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team" "my_imported_fivetran_team" { }
+ * You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+ *
+ * 2. Define an empty resource in your `.tf` configuration:
+ *
+ * hcl
+ *
+ * resource "fivetran_team" "my_imported_fivetran_team" {
+ *
+ * }
+ *
+ * 3. Run the `pulumi import` command:
  *
  * ```sh
- *  $ pulumi import fivetran:index/team:Team
- *
- * Run the `terraform import` command
+ * $ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}
  * ```
  *
- * ```sh
- *  $ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}
- * ```
+ * 4. Use the `terraform state show` command to get the values from the state:
  *
- *  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team.my_imported_fivetran_team' 5. Copy the values and paste them to your `.tf` configuration.
+ * terraform state show 'fivetran_team.my_imported_fivetran_team'
+ *
+ * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class Team extends pulumi.CustomResource {
     /**

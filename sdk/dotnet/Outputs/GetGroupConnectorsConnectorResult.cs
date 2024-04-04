@@ -54,7 +54,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// The connector type version within the Fivetran system
         /// </summary>
         public readonly int ServiceVersion;
-        public readonly ImmutableArray<Outputs.GetGroupConnectorsConnectorStatusResult> Statuses;
+        public readonly Outputs.GetGroupConnectorsConnectorStatusResult? Status;
         /// <summary>
         /// The timestamp of the time the connector sync succeeded last time
         /// </summary>
@@ -86,7 +86,7 @@ namespace Footholdtech.Fivetran.Outputs
 
             int serviceVersion,
 
-            ImmutableArray<Outputs.GetGroupConnectorsConnectorStatusResult> statuses,
+            Outputs.GetGroupConnectorsConnectorStatusResult? status,
 
             string succeededAt,
 
@@ -102,7 +102,7 @@ namespace Footholdtech.Fivetran.Outputs
             Schema = schema;
             Service = service;
             ServiceVersion = serviceVersion;
-            Statuses = statuses;
+            Status = status;
             SucceededAt = succeededAt;
             SyncFrequency = syncFrequency;
         }

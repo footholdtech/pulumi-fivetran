@@ -172,12 +172,14 @@ def get_dbt_transformation(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     transformation = fivetran.get_dbt_transformation(id="transformation_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of this resource.
@@ -209,12 +211,14 @@ def get_dbt_transformation_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     transformation = fivetran.get_dbt_transformation(id="transformation_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of this resource.

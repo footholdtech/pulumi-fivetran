@@ -62,12 +62,14 @@ def get_dbt_projects(projects: Optional[Sequence[pulumi.InputType['GetDbtProject
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_projects = fivetran.get_dbt_projects()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['projects'] = projects
@@ -87,11 +89,13 @@ def get_dbt_projects_output(projects: Optional[pulumi.Input[Optional[Sequence[pu
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_projects = fivetran.get_dbt_projects()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

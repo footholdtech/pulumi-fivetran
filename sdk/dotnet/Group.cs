@@ -15,6 +15,7 @@ namespace Footholdtech.Fivetran
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -27,22 +28,33 @@ namespace Footholdtech.Fivetran
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
+    /// 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+    /// 
+    /// To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+    /// 
+    /// 2. Define an empty resource in your `.tf` configuration:
+    /// 
+    /// hcl
+    /// 
+    /// resource "fivetran_group" "my_imported_fivetran_group" {
+    /// 
+    /// }
+    /// 
+    /// 3. Run the `pulumi import` command:
     /// 
     /// ```sh
-    ///  $ pulumi import fivetran:index/group:Group
-    /// 
-    /// Run the `terraform import` command
+    /// $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
     /// ```
     /// 
-    /// ```sh
-    ///  $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
-    /// ```
+    /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
-    ///  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_group.my_imported_fivetran_group' 5. Copy the values and paste them to your `.tf` configuration.
+    /// terraform state show 'fivetran_group.my_imported_fivetran_group'
+    /// 
+    /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>
     [FivetranResourceType("fivetran:index/group:Group")]
     public partial class Group : global::Pulumi.CustomResource
@@ -53,6 +65,9 @@ namespace Footholdtech.Fivetran
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// The timestamp of when the group was updated in your account.
+        /// </summary>
         [Output("lastUpdated")]
         public Output<string> LastUpdated { get; private set; } = null!;
 
@@ -129,6 +144,9 @@ namespace Footholdtech.Fivetran
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// The timestamp of when the group was updated in your account.
+        /// </summary>
         [Input("lastUpdated")]
         public Input<string>? LastUpdated { get; set; }
 

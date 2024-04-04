@@ -11,52 +11,9 @@ using Pulumi;
 namespace Footholdtech.Fivetran
 {
     /// <summary>
-    /// ## ---
-    /// 
-    /// page_title: "Resource: fivetran.ConnectorSchemaConfig"
-    /// ---
-    /// 
-    /// # Resource: fivetran.ConnectorSchemaConfig
-    /// 
-    /// This resource allows you to manage the Standard Configuration settings of a connector:
-    ///  - Define the schema change handling settings
-    ///  - Enable and disable schemas, tables, and columns
-    /// 
-    /// The resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.
-    /// 
-    /// Known issues:
-    ///  - Definition of `sync_mode` for table causes infinite drifting changes in plan
-    /// 
-    /// ## Usage guide
-    /// 
-    /// Note that all configuration settings are aligned to the `schema_change_handling` settings,  except the settings explicitly specified in `schema`.
-    /// In `schema`, you only override the default settings defined by the chosen `schema_change_handling` option. The default value for the `enabled` attribute is `true` so it can be omitted when you want to enable schemas, tables, or columns.
-    /// The allowed `schema_change_handling` options are as follows:
-    /// - `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables
-    /// - `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items
-    /// - `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns
-    /// 
-    /// Note that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `schema_change_handling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = "false"`), the provider just ignores these statements.
-    /// 
-    /// ## Usage examples
-    /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_connector_schema_config` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_schema_config" "my_imported_connector_schema_config" { }
-    /// 
-    /// ```sh
-    ///  $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig
-    /// 
-    /// Run the `terraform import` command
-    /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
-    /// ```
-    /// 
-    /// 5.  
-    /// 
-    /// Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_schema_config.my_imported_connector_schema_config' 6. Copy the values and paste them to your `.tf` configuration.
+    /// You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
     /// </summary>
     [FivetranResourceType("fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig")]
     public partial class ConnectorSchemaConfig : global::Pulumi.CustomResource
@@ -67,11 +24,26 @@ namespace Footholdtech.Fivetran
         [Output("connectorId")]
         public Output<string> ConnectorId { get; private set; } = null!;
 
+        [Output("schema")]
+        public Output<ImmutableArray<Outputs.ConnectorSchemaConfigSchema>> Schema { get; private set; } = null!;
+
         [Output("schemaChangeHandling")]
         public Output<string> SchemaChangeHandling { get; private set; } = null!;
 
+        /// <summary>
+        /// Map of schema configurations.
+        /// </summary>
         [Output("schemas")]
-        public Output<ImmutableArray<Outputs.ConnectorSchemaConfigSchema>> Schemas { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.ConnectorSchemaConfigSchemas>?> Schemas { get; private set; } = null!;
+
+        /// <summary>
+        /// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        /// </summary>
+        [Output("schemasJson")]
+        public Output<string?> SchemasJson { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.ConnectorSchemaConfigTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -126,16 +98,38 @@ namespace Footholdtech.Fivetran
         [Input("connectorId", required: true)]
         public Input<string> ConnectorId { get; set; } = null!;
 
+        [Input("schema")]
+        private InputList<Inputs.ConnectorSchemaConfigSchemaArgs>? _schema;
+        [Obsolete(@"Configure `schemas` instead. This attribute will be removed in the next major version of the provider.")]
+        public InputList<Inputs.ConnectorSchemaConfigSchemaArgs> Schema
+        {
+            get => _schema ?? (_schema = new InputList<Inputs.ConnectorSchemaConfigSchemaArgs>());
+            set => _schema = value;
+        }
+
         [Input("schemaChangeHandling", required: true)]
         public Input<string> SchemaChangeHandling { get; set; } = null!;
 
         [Input("schemas")]
-        private InputList<Inputs.ConnectorSchemaConfigSchemaArgs>? _schemas;
-        public InputList<Inputs.ConnectorSchemaConfigSchemaArgs> Schemas
+        private InputMap<Inputs.ConnectorSchemaConfigSchemasArgs>? _schemas;
+
+        /// <summary>
+        /// Map of schema configurations.
+        /// </summary>
+        public InputMap<Inputs.ConnectorSchemaConfigSchemasArgs> Schemas
         {
-            get => _schemas ?? (_schemas = new InputList<Inputs.ConnectorSchemaConfigSchemaArgs>());
+            get => _schemas ?? (_schemas = new InputMap<Inputs.ConnectorSchemaConfigSchemasArgs>());
             set => _schemas = value;
         }
+
+        /// <summary>
+        /// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        /// </summary>
+        [Input("schemasJson")]
+        public Input<string>? SchemasJson { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.ConnectorSchemaConfigTimeoutsArgs>? Timeouts { get; set; }
 
         public ConnectorSchemaConfigArgs()
         {
@@ -151,16 +145,38 @@ namespace Footholdtech.Fivetran
         [Input("connectorId")]
         public Input<string>? ConnectorId { get; set; }
 
+        [Input("schema")]
+        private InputList<Inputs.ConnectorSchemaConfigSchemaGetArgs>? _schema;
+        [Obsolete(@"Configure `schemas` instead. This attribute will be removed in the next major version of the provider.")]
+        public InputList<Inputs.ConnectorSchemaConfigSchemaGetArgs> Schema
+        {
+            get => _schema ?? (_schema = new InputList<Inputs.ConnectorSchemaConfigSchemaGetArgs>());
+            set => _schema = value;
+        }
+
         [Input("schemaChangeHandling")]
         public Input<string>? SchemaChangeHandling { get; set; }
 
         [Input("schemas")]
-        private InputList<Inputs.ConnectorSchemaConfigSchemaGetArgs>? _schemas;
-        public InputList<Inputs.ConnectorSchemaConfigSchemaGetArgs> Schemas
+        private InputMap<Inputs.ConnectorSchemaConfigSchemasGetArgs>? _schemas;
+
+        /// <summary>
+        /// Map of schema configurations.
+        /// </summary>
+        public InputMap<Inputs.ConnectorSchemaConfigSchemasGetArgs> Schemas
         {
-            get => _schemas ?? (_schemas = new InputList<Inputs.ConnectorSchemaConfigSchemaGetArgs>());
+            get => _schemas ?? (_schemas = new InputMap<Inputs.ConnectorSchemaConfigSchemasGetArgs>());
             set => _schemas = value;
         }
+
+        /// <summary>
+        /// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        /// </summary>
+        [Input("schemasJson")]
+        public Input<string>? SchemasJson { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.ConnectorSchemaConfigTimeoutsGetArgs>? Timeouts { get; set; }
 
         public ConnectorSchemaConfigState()
         {

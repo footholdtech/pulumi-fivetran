@@ -15,6 +15,7 @@ namespace Footholdtech.Fivetran
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,22 +47,33 @@ namespace Footholdtech.Fivetran
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" { }
+    /// 1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id`
+    /// 
+    /// You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+    /// 
+    /// 2. Define an empty resource in your `.tf` configuration:
+    /// 
+    /// hcl
+    /// 
+    /// resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" {
+    /// 
+    /// }
+    /// 
+    /// 3. Run the `pulumi import` command:
     /// 
     /// ```sh
-    ///  $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership
-    /// 
-    /// Run the `terraform import` command
+    /// $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership my_imported_fivetran_team_user_membership {team_id}
     /// ```
     /// 
-    /// ```sh
-    ///  $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership my_imported_fivetran_team_user_membership {team_id}
-    /// ```
+    /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
-    ///  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership' 5. Copy the values and paste them to your `.tf` configuration.
+    /// terraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership'
+    /// 
+    /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>
     [FivetranResourceType("fivetran:index/teamUserMembership:TeamUserMembership")]
     public partial class TeamUserMembership : global::Pulumi.CustomResource

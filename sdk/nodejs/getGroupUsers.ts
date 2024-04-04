@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     id: "anonymous_mystery",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupUsers(args: GetGroupUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupUsersResult> {
 
@@ -48,13 +50,14 @@ export interface GetGroupUsersResult {
      * The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
      */
     readonly id: string;
-    readonly users: outputs.GetGroupUsersUser[];
+    readonly users?: outputs.GetGroupUsersUser[];
 }
 /**
  * This data source returns a list of information about all users within a group in your Fivetran account.
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -63,6 +66,7 @@ export interface GetGroupUsersResult {
  *     id: "anonymous_mystery",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupUsersOutput(args: GetGroupUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupUsersResult> {
     return pulumi.output(args).apply((a: any) => getGroupUsers(a, opts))

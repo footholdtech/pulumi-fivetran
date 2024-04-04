@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a webhook object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWebhookResult> InvokeAsync(GetWebhookArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebhookResult>("fivetran:index/getWebhook:getWebhook", args ?? new GetWebhookArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a webhook object.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,8 +59,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWebhookResult> Invoke(GetWebhookInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebhookResult>("fivetran:index/getWebhook:getWebhook", args ?? new GetWebhookInvokeArgs(), options.WithDefaults());
@@ -78,12 +74,6 @@ namespace Footholdtech.Fivetran
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies whether the setup tests should be run
-        /// </summary>
-        [Input("runTests")]
-        public bool? RunTests { get; set; }
-
         public GetWebhookArgs()
         {
         }
@@ -97,12 +87,6 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
-
-        /// <summary>
-        /// Specifies whether the setup tests should be run
-        /// </summary>
-        [Input("runTests")]
-        public Input<bool>? RunTests { get; set; }
 
         public GetWebhookInvokeArgs()
         {
@@ -141,7 +125,7 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// Specifies whether the setup tests should be run
         /// </summary>
-        public readonly bool? RunTests;
+        public readonly bool RunTests;
         /// <summary>
         /// The secret string used for payload signing and masked in the response.
         /// </summary>
@@ -169,7 +153,7 @@ namespace Footholdtech.Fivetran
 
             string id,
 
-            bool? runTests,
+            bool runTests,
 
             string secret,
 

@@ -23,6 +23,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The timestamp of when the group was updated in your account.
+        /// </summary>
+        public readonly string? LastUpdated;
+        /// <summary>
         /// The name of the group within your account.
         /// </summary>
         public readonly string Name;
@@ -33,10 +37,13 @@ namespace Footholdtech.Fivetran.Outputs
 
             string id,
 
+            string? lastUpdated,
+
             string name)
         {
             CreatedAt = createdAt;
             Id = id;
+            LastUpdated = lastUpdated;
             Name = name;
         }
     }

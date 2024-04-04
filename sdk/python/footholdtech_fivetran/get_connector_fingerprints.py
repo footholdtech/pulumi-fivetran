@@ -75,12 +75,14 @@ def get_connector_fingerprints(fingerprints: Optional[Sequence[pulumi.InputType[
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     connector_fingerprints = fivetran.get_connector_fingerprints(id="connector_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the resource. Equal to target connector id.
@@ -106,12 +108,14 @@ def get_connector_fingerprints_output(fingerprints: Optional[pulumi.Input[Option
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     connector_fingerprints = fivetran.get_connector_fingerprints(id="connector_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the resource. Equal to target connector id.

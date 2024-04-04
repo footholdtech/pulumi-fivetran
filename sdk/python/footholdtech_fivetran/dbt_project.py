@@ -424,6 +424,7 @@ class DbtProject(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -442,22 +443,33 @@ class DbtProject(pulumi.CustomResource):
             threads=8,
             type="GIT")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" { }
+        1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.
+
+        2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import.
+
+        3. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" {
+
+        }
+
+        4. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/dbtProject:DbtProject
-
-        Run the `terraform import` command
+        $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project' 5. Copy the values and paste them to your `.tf` configuration.
+        terraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -484,6 +496,7 @@ class DbtProject(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -502,22 +515,33 @@ class DbtProject(pulumi.CustomResource):
             threads=8,
             type="GIT")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" { }
+        1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.
+
+        2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import.
+
+        3. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" {
+
+        }
+
+        4. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/dbtProject:DbtProject
-
-        Run the `terraform import` command
+        $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
         ```
 
-        ```sh
-         $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
-        ```
+        4. Use the `terraform state show` command to get the values from the state:
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project' 5. Copy the values and paste them to your `.tf` configuration.
+        terraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param DbtProjectArgs args: The arguments to use to populate this resource's properties.

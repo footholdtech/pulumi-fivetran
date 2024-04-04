@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     teamId: "team_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTeamUserMemberships(args: GetTeamUserMembershipsArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamUserMembershipsResult> {
 
@@ -59,6 +61,7 @@ export interface GetTeamUserMembershipsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -67,6 +70,7 @@ export interface GetTeamUserMembershipsResult {
  *     teamId: "team_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTeamUserMembershipsOutput(args: GetTeamUserMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamUserMembershipsResult> {
     return pulumi.output(args).apply((a: any) => getTeamUserMemberships(a, opts))

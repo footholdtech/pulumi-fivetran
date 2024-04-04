@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns all available source types within your Fivetran account. This data source makes it easier to display Fivetran connectors within your application because it provides metadata including the proper source name (‘Facebook Ad Account’ instead of facebook_ad_account), the source icon, and links to Fivetran resources. As we update source names and icons, that metadata will automatically update within this endpoint.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,8 +30,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConnectorsMetadataResult> InvokeAsync(GetConnectorsMetadataArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectorsMetadataResult>("fivetran:index/getConnectorsMetadata:getConnectorsMetadata", args ?? new GetConnectorsMetadataArgs(), options.WithDefaults());
@@ -40,10 +38,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns all available source types within your Fivetran account. This data source makes it easier to display Fivetran connectors within your application because it provides metadata including the proper source name (‘Facebook Ad Account’ instead of facebook_ad_account), the source icon, and links to Fivetran resources. As we update source names and icons, that metadata will automatically update within this endpoint.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,8 +53,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConnectorsMetadataResult> Invoke(GetConnectorsMetadataInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorsMetadataResult>("fivetran:index/getConnectorsMetadata:getConnectorsMetadata", args ?? new GetConnectorsMetadataInvokeArgs(), options.WithDefaults());
@@ -101,7 +97,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetConnectorsMetadataResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetConnectorsMetadataSourceResult> Sources;

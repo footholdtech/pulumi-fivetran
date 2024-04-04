@@ -15,10 +15,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a list of all dbt Projects within your Fivetran account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,8 +30,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDbtProjectsResult> InvokeAsync(GetDbtProjectsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbtProjectsResult>("fivetran:index/getDbtProjects:getDbtProjects", args ?? new GetDbtProjectsArgs(), options.WithDefaults());
@@ -40,10 +38,9 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// This data source returns a list of all dbt Projects within your Fivetran account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,8 +53,7 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDbtProjectsResult> Invoke(GetDbtProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbtProjectsResult>("fivetran:index/getDbtProjects:getDbtProjects", args ?? new GetDbtProjectsInvokeArgs(), options.WithDefaults());

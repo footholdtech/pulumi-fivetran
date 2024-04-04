@@ -14,6 +14,10 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class ConnectorConfigAccountsRedditAd
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: Reddit username of the additional linked account.
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

@@ -14,8 +14,17 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class GetConnectorDestinationSchemaResult
     {
+        /// <summary>
+        /// The connector schema name in destination. Has to be unique within the group (destination). Required for connector creation.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The connector schema prefix has to be unique within the group (destination). Each replicated schema is prefixed with the provided value. Required for connector creation.
+        /// </summary>
         public readonly string Prefix;
+        /// <summary>
+        /// The table name unique within the schema to which connector will sync the data. Required for connector creation.
+        /// </summary>
         public readonly string Table;
 
         [OutputConstructor]

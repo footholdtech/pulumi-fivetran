@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetGroupConnectors(ctx *pulumi.Context, args *GetGroupConnectorsArgs, opts ...pulumi.InvokeOption) (*GetGroupConnectorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupConnectorsResult

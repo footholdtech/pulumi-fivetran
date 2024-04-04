@@ -13,11 +13,24 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class ConnectorConfigSecretsListGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aws_lambda`: Secret Key.
+        /// 	- Service `azure_function`: Key
+        /// 	- Service `google_cloud_function`: Key
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         [Input("value")]
         private Input<string>? _value;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aws_lambda`: Secret Value.
+        /// 	- Service `azure_function`: Value
+        /// 	- Service `google_cloud_function`: Value
+        /// </summary>
         public Input<string>? Value
         {
             get => _value;

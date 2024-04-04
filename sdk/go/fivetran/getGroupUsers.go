@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupGroupUsers(ctx *pulumi.Context, args *LookupGroupUsersArgs, opts ...pulumi.InvokeOption) (*LookupGroupUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupUsersResult

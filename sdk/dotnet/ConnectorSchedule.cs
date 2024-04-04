@@ -15,6 +15,7 @@ namespace Footholdtech.Fivetran
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,66 +36,79 @@ namespace Footholdtech.Fivetran
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// You don't need to import this resource as it is synthetic.
     /// 
-    /// To fetch schedule values from existing connector use `fivetran_connector` data sourcehcl data "fivetran_connector" "my_connector" {
+    /// To fetch schedule values from existing connector use `fivetran_connector` data source:
     /// 
-    ///  id = "my_connector_id" } now you can use schedule values from this data_source:
+    /// hcl
     /// 
-    ///  sync_frequency = data.fivetran_connector.my_connector.sync_frequency
+    /// data "fivetran_connector" "my_connector" {
     /// 
-    ///  paused = data.fivetran_connector.my_connector.paused This resource manages settings for already existing connector instance and doesn't create a new one. If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resourcehcl resource "fivetran_connector_schedule" "my_connector_schedule" {
+    ///     id = "my_connector_id"
     /// 
-    ///  connector_id = "my_connector_id"
+    /// }
     /// 
-    ///  sync_frequency
+    /// now you can use schedule values from this data_source:
     /// 
-    ///  = "360"
+    ///   sync_frequency = data.fivetran_connector.my_connector.sync_frequency
     /// 
-    ///  paused
+    ///   paused = data.fivetran_connector.my_connector.paused
     /// 
-    ///  = false
+    /// This resource manages settings for already existing connector instance and doesn't create a new one.
     /// 
-    ///  pause_after_trial
+    /// If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:
     /// 
-    /// = true
+    /// hcl
     /// 
-    ///  schedule_type
+    /// resource "fivetran_connector_schedule" "my_connector_schedule" {
     /// 
-    /// = "auto" } -&gt; NOTEYou can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
+    ///     connector_id = "my_connector_id"
+    ///     
+    ///     sync_frequency     = "360"
+    ///     
+    ///     paused             = false
+    ///     
+    ///     pause_after_trial  = true
+    ///     
+    ///     schedule_type      = "auto"
+    /// 
+    /// }
+    /// 
+    /// -&gt; NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
     /// </summary>
     [FivetranResourceType("fivetran:index/connectorSchedule:ConnectorSchedule")]
     public partial class ConnectorSchedule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The unique identifier for the connector
+        /// The unique identifier for the connector within the Fivetran system.
         /// </summary>
         [Output("connectorId")]
         public Output<string> ConnectorId { get; private set; } = null!;
 
         /// <summary>
-        /// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
+        /// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         /// </summary>
         [Output("dailySyncTime")]
-        public Output<string?> DailySyncTime { get; private set; } = null!;
+        public Output<string> DailySyncTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the connector should be paused after the free trial period has ended
+        /// Specifies whether the connector should be paused after the free trial period has ended.
         /// </summary>
         [Output("pauseAfterTrial")]
         public Output<string> PauseAfterTrial { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the connector is paused
+        /// Specifies whether the connector is paused.
         /// </summary>
         [Output("paused")]
         public Output<string> Paused { get; private set; } = null!;
 
         /// <summary>
-        /// The connector schedule configuration type. Supported values: auto, manual
+        /// The connector schedule configuration type. Supported values: auto, manual.
         /// </summary>
         [Output("scheduleType")]
         public Output<string> ScheduleType { get; private set; } = null!;
@@ -153,31 +167,31 @@ namespace Footholdtech.Fivetran
     public sealed class ConnectorScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique identifier for the connector
+        /// The unique identifier for the connector within the Fivetran system.
         /// </summary>
         [Input("connectorId", required: true)]
         public Input<string> ConnectorId { get; set; } = null!;
 
         /// <summary>
-        /// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
+        /// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         /// </summary>
         [Input("dailySyncTime")]
         public Input<string>? DailySyncTime { get; set; }
 
         /// <summary>
-        /// Specifies whether the connector should be paused after the free trial period has ended
+        /// Specifies whether the connector should be paused after the free trial period has ended.
         /// </summary>
         [Input("pauseAfterTrial")]
         public Input<string>? PauseAfterTrial { get; set; }
 
         /// <summary>
-        /// Specifies whether the connector is paused
+        /// Specifies whether the connector is paused.
         /// </summary>
         [Input("paused")]
         public Input<string>? Paused { get; set; }
 
         /// <summary>
-        /// The connector schedule configuration type. Supported values: auto, manual
+        /// The connector schedule configuration type. Supported values: auto, manual.
         /// </summary>
         [Input("scheduleType")]
         public Input<string>? ScheduleType { get; set; }
@@ -197,31 +211,31 @@ namespace Footholdtech.Fivetran
     public sealed class ConnectorScheduleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique identifier for the connector
+        /// The unique identifier for the connector within the Fivetran system.
         /// </summary>
         [Input("connectorId")]
         public Input<string>? ConnectorId { get; set; }
 
         /// <summary>
-        /// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
+        /// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         /// </summary>
         [Input("dailySyncTime")]
         public Input<string>? DailySyncTime { get; set; }
 
         /// <summary>
-        /// Specifies whether the connector should be paused after the free trial period has ended
+        /// Specifies whether the connector should be paused after the free trial period has ended.
         /// </summary>
         [Input("pauseAfterTrial")]
         public Input<string>? PauseAfterTrial { get; set; }
 
         /// <summary>
-        /// Specifies whether the connector is paused
+        /// Specifies whether the connector is paused.
         /// </summary>
         [Input("paused")]
         public Input<string>? Paused { get; set; }
 
         /// <summary>
-        /// The connector schedule configuration type. Supported values: auto, manual
+        /// The connector schedule configuration type. Supported values: auto, manual.
         /// </summary>
         [Input("scheduleType")]
         public Input<string>? ScheduleType { get; set; }
