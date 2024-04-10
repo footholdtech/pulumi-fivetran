@@ -13,6 +13,9 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class ConnectorAuthGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessToken")]
+        private Input<string>? _accessToken;
+
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `autodesk_bim_360`: Your Autodesk BIM 360 Access Token.
@@ -47,8 +50,15 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `zendesk_sell`: The long-lived `Access token` carries the information necessary to access API resources.
         /// 	- Service `zoom`: Your Zoom Access token.
         /// </summary>
-        [Input("accessToken")]
-        public Input<string>? AccessToken { get; set; }
+        public Input<string>? AccessToken
+        {
+            get => _accessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -153,6 +163,9 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("realmId")]
         public Input<string>? RealmId { get; set; }
 
+        [Input("refreshToken")]
+        private Input<string>? _refreshToken;
+
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adroll`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
@@ -211,8 +224,15 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `yahoo_search_ads_yahoo_japan`: Your Yahoo Search Ads Refresh Token.
         /// 	- Service `zoom`: Your Zoom Refresh token.
         /// </summary>
-        [Input("refreshToken")]
-        public Input<string>? RefreshToken { get; set; }
+        public Input<string>? RefreshToken
+        {
+            get => _refreshToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _refreshToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Field usage depends on `service` value: 

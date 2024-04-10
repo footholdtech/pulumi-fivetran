@@ -25,7 +25,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `google_search_ads_360`: The report dimensions included to sync.
+        /// 	- Service `google_search_ads_360`: The report attributes included to sync.
         /// </summary>
         public InputList<string> Attributes
         {
@@ -100,7 +100,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics`: The report metrics to include into a sync.
         /// 	- Service `google_analytics_4`: The report metrics to include into a sync.
-        /// 	- Service `google_search_ads_360`: The report dimensions included to sync.
+        /// 	- Service `google_search_ads_360`: The report metrics included to sync.
         /// </summary>
         public InputList<string> Metrics
         {

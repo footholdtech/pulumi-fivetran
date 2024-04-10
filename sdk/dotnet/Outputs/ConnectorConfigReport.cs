@@ -21,7 +21,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? Aggregation;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `google_search_ads_360`: The report dimensions included to sync.
+        /// 	- Service `google_search_ads_360`: The report attributes included to sync.
         /// </summary>
         public readonly ImmutableArray<string> Attributes;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics`: The report metrics to include into a sync.
         /// 	- Service `google_analytics_4`: The report metrics to include into a sync.
-        /// 	- Service `google_search_ads_360`: The report dimensions included to sync.
+        /// 	- Service `google_search_ads_360`: The report metrics included to sync.
         /// </summary>
         public readonly ImmutableArray<string> Metrics;
         /// <summary>
