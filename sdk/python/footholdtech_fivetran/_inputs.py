@@ -1160,6 +1160,7 @@ class ConnectorConfigArgs:
                  project_access_token: Optional[pulumi.Input[str]] = None,
                  project_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigProjectCredentialArgs']]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 project_key: Optional[pulumi.Input[str]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
@@ -1399,6 +1400,7 @@ class ConnectorConfigArgs:
                	- Service `s3`: Access Key Secret
                	- Service `wasabi_cloud_storage`: Access Key Secret
         :param pulumi.Input[str] access_token: Field usage depends on `service` value: 
+               	- Service `7shifts`: Your 7shifts access token.
                	- Service `attio`: Your Attio bearer token
                	- Service `big_commerce`: API access token of your store.
                	- Service `bitly`: Your Bitly access token.
@@ -1676,6 +1678,7 @@ class ConnectorConfigArgs:
                	- Service `freshteam`: Your Freshteam API key.
                	- Service `friendbuy`: Your Friendbuy API key.
                	- Service `fullstory`: Your Fullstory API key.
+               	- Service `gainsight_product_experience`: Your Gainsight Product Experience API Key.
                	- Service `gem`: Your Gem API key.
                	- Service `gorgias`: Your Gorgias API key.
                	- Service `greenhouse`: Your Greenhouse API key.
@@ -1753,6 +1756,7 @@ class ConnectorConfigArgs:
                	- Service `stripe_test`: Restricted API key
                	- Service `subscript`: Your Subscript API key.
                	- Service `teads`: Your Teads API key.
+               	- Service `testrail`: Your TestRail API key.
                	- Service `transcend`: Your Transcend API Key.
                	- Service `trello`: Your TRELLO api key.
                	- Service `uppromote`: Your UpPromote API key.
@@ -1869,7 +1873,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] application_id: Field usage depends on `service` value: 
                	- Service `algolia`: Your Algolia application ID.
         :param pulumi.Input[str] application_key: Field usage depends on `service` value: 
-               	- Service `datadog`: Your Datadog Application key.
+               	- Service `datadog`: Your Datadog application key.
                	- Service `dear`: Your Dear Application key.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] apps: Field usage depends on `service` value: 
                	- Service `itunes_connect`: Specific apps to sync. Must be populated if `app_sync_mode` is set to `SpecificApps`.
@@ -2032,6 +2036,7 @@ class ConnectorConfigArgs:
                	- Service `billing_platform`: Your BillingPlatform client ID.
                	- Service `brightcove`: Your Brightcove client ID.
                	- Service `castor_edc`: Your Castor EDC client Id.
+               	- Service `commercetools`: Your commercetools client ID.
                	- Service `concur`: The SAP Concur Client ID.
                	- Service `coupa`: Your Coupa client_id
                	- Service `criteo`: Your Criteo Client ID.
@@ -2114,6 +2119,7 @@ class ConnectorConfigArgs:
                	- Service `billing_platform`: Your BillingPlatform client secret.
                	- Service `brightcove`: Your Brightcove client secret.
                	- Service `castor_edc`: Your Castor EDC Client Secret.
+               	- Service `commercetools`: Your commercetools client secret.
                	- Service `concur`: The SAP Concur Client secret.
                	- Service `coupa`: Your Coupa client_id
                	- Service `criteo`: Your Criteo client secret key.
@@ -2412,7 +2418,7 @@ class ConnectorConfigArgs:
                	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
                	- Service `okta`: Your Okta domain.
                	- Service `pipedrive`: Your Pipedrive domain.
-               	- Service `shopware`: Your Shopware Domain.
+               	- Service `shopware`: Your Shopware domain.
                	- Service `sistrix`: Your domain for which you want to fetch data.
                	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
                	- Service `zendesk`: Zendesk domain.
@@ -2607,6 +2613,7 @@ class ConnectorConfigArgs:
                	- Service `azure_postgres`: DB instance host or IP address.
                	- Service `azure_sql_db`: DB instance host or IP address.
                	- Service `azure_sql_managed_db`: DB instance host or IP address.
+               	- Service `commercetools`: Your commercetools host.
                	- Service `db2i_hva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
                	- Service `db2i_sap_hva`: DB instance host or IP address.
                	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -2656,7 +2663,7 @@ class ConnectorConfigArgs:
                	- Service `azure_service_bus`: The IP address of the host machine which we use to connect to ASB via ssh
         :param pulumi.Input[str] host_name: Field usage depends on `service` value: 
                	- Service `coassemble`: Your Coassemble Hostname.
-               	- Service `datadog`: Your Datadog Host name.
+               	- Service `datadog`: Your Datadog host name.
         :param pulumi.Input[str] host_url: Field usage depends on `service` value: 
                	- Service `adobe_commerce`: Your Adobe Commerce host url.
                	- Service `sparkpost`: Your SparkPost host URL.
@@ -2923,7 +2930,6 @@ class ConnectorConfigArgs:
                	- Service `dynamics_365_fo`: The user's password.
                	- Service `ftp`: FTP password.
                	- Service `globalmeet`: Your GlobalMeet Password.
-               	- Service `gongio`: Your Gongio Access Key Secret.
                	- Service `google_cloud_mysql`: The user's password.
                	- Service `google_cloud_postgresql`: The user's password.
                	- Service `google_cloud_sqlserver`: The user's password.
@@ -3046,16 +3052,19 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] personal_access_token: Field usage depends on `service` value: 
                	- Service `cj_commission_detail`: Your CJ Commission Detail personal access token.
                	- Service `harvest`: Your Harvest Personal Access Token.
+               	- Service `totango`: Your Totango Personal Access token.
         :param pulumi.Input[str] personal_api_token: Field usage depends on `service` value: 
                	- Service `circleci`: Your CircleCI Personal API token.
                	- Service `monday`: Your Monday.com Personal API Token.
         :param pulumi.Input[str] pgp_pass_phrase: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
+               	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `wasabi_cloud_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         :param pulumi.Input[str] pgp_secret_key: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
+               	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `s3`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `wasabi_cloud_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -3156,6 +3165,8 @@ class ConnectorConfigArgs:
                	- Service `bigquery_db`: BigQuery project ID
                	- Service `google_analytics_360`: The project ID.
                	- Service `google_analytics_4_export`: The Project ID.
+        :param pulumi.Input[str] project_key: Field usage depends on `service` value: 
+               	- Service `commercetools`: Your commercetools project key.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: Field usage depends on `service` value: 
                	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] properties: Field usage depends on `service` value: 
@@ -3501,6 +3512,7 @@ class ConnectorConfigArgs:
                	- Service `twilio`: The Twilio API key SID
         :param pulumi.Input[str] signer_public_key: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
+               	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `s3`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `sftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `wasabi_cloud_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
@@ -3586,6 +3598,7 @@ class ConnectorConfigArgs:
                	- Service `fountain`: Your Fountain subdomain.
                	- Service `freshchat`: Your Freshchat Sub Domain
                	- Service `gainsight_customer_success`: The subdomain of your Gainsight account.
+               	- Service `gainsight_product_experience`: Your Gainsight Product Experience subdomain.
                	- Service `genesys`: Your Genesys subdomain.
                	- Service `green_power_monitor`: Your GreenPowerMonitor subdomain.
                	- Service `infobip`: Your Infobip sub_domain.
@@ -3614,6 +3627,7 @@ class ConnectorConfigArgs:
                	- Service `starrez`: Your StarRez subdomain
                	- Service `tempo`: Your Tempo subdomain.
                	- Service `thinkific`: Your Thinkific subdomain.
+               	- Service `totango`: Your Totango Subdomain.
                	- Service `upland`: Your Upland Software subDomain.
                	- Service `wordpress`: Your WordPress subdomain.
                	- Service `workable`: Your Workable Subdomain.
@@ -4011,6 +4025,7 @@ class ConnectorConfigArgs:
                	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using a RAC instance.
         :param pulumi.Input[bool] use_pgp_encryption_options: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+               	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
                	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
                	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
                	- Service `wasabi_cloud_storage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -4106,7 +4121,6 @@ class ConnectorConfigArgs:
                	- Service `github`: `Login` of your GitHub profile.
                	- Service `gladly`: Your Gladly Username.
                	- Service `globalmeet`: Your GlobalMeet Username.
-               	- Service `gongio`: Your Gongio Access key.
                	- Service `gorgias`: Your Gorgias username.
                	- Service `green_power_monitor`: Your GreenPowerMonitor username.
                	- Service `guru`: Your Guru username.
@@ -4137,6 +4151,7 @@ class ConnectorConfigArgs:
                	- Service `starrez`: Your StarRez API username
                	- Service `stylight`: Your Stylight Username.
                	- Service `teamwork`: Your Teamwork username.
+               	- Service `testrail`: Your TestRail API username.
                	- Service `ukg_pro`: Your UKG Pro username.
                	- Service `unicommerce`: Your uniware login username.
                	- Service `upland`: Your Upland Software Username.
@@ -4884,6 +4899,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "project_credentials", project_credentials)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if project_key is not None:
+            pulumi.set(__self__, "project_key", project_key)
         if projects is not None:
             pulumi.set(__self__, "projects", projects)
         if properties is not None:
@@ -5460,6 +5477,7 @@ class ConnectorConfigArgs:
     def access_token(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
+        	- Service `7shifts`: Your 7shifts access token.
         	- Service `attio`: Your Attio bearer token
         	- Service `big_commerce`: API access token of your store.
         	- Service `bitly`: Your Bitly access token.
@@ -6171,6 +6189,7 @@ class ConnectorConfigArgs:
         	- Service `freshteam`: Your Freshteam API key.
         	- Service `friendbuy`: Your Friendbuy API key.
         	- Service `fullstory`: Your Fullstory API key.
+        	- Service `gainsight_product_experience`: Your Gainsight Product Experience API Key.
         	- Service `gem`: Your Gem API key.
         	- Service `gorgias`: Your Gorgias API key.
         	- Service `greenhouse`: Your Greenhouse API key.
@@ -6248,6 +6267,7 @@ class ConnectorConfigArgs:
         	- Service `stripe_test`: Restricted API key
         	- Service `subscript`: Your Subscript API key.
         	- Service `teads`: Your Teads API key.
+        	- Service `testrail`: Your TestRail API key.
         	- Service `transcend`: Your Transcend API Key.
         	- Service `trello`: Your TRELLO api key.
         	- Service `uppromote`: Your UpPromote API key.
@@ -6611,7 +6631,7 @@ class ConnectorConfigArgs:
     def application_key(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `datadog`: Your Datadog Application key.
+        	- Service `datadog`: Your Datadog application key.
         	- Service `dear`: Your Dear Application key.
         """
         return pulumi.get(self, "application_key")
@@ -7283,6 +7303,7 @@ class ConnectorConfigArgs:
         	- Service `billing_platform`: Your BillingPlatform client ID.
         	- Service `brightcove`: Your Brightcove client ID.
         	- Service `castor_edc`: Your Castor EDC client Id.
+        	- Service `commercetools`: Your commercetools client ID.
         	- Service `concur`: The SAP Concur Client ID.
         	- Service `coupa`: Your Coupa client_id
         	- Service `criteo`: Your Criteo Client ID.
@@ -7431,6 +7452,7 @@ class ConnectorConfigArgs:
         	- Service `billing_platform`: Your BillingPlatform client secret.
         	- Service `brightcove`: Your Brightcove client secret.
         	- Service `castor_edc`: Your Castor EDC Client Secret.
+        	- Service `commercetools`: Your commercetools client secret.
         	- Service `concur`: The SAP Concur Client secret.
         	- Service `coupa`: Your Coupa client_id
         	- Service `criteo`: Your Criteo client secret key.
@@ -8353,7 +8375,7 @@ class ConnectorConfigArgs:
         	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
         	- Service `okta`: Your Okta domain.
         	- Service `pipedrive`: Your Pipedrive domain.
-        	- Service `shopware`: Your Shopware Domain.
+        	- Service `shopware`: Your Shopware domain.
         	- Service `sistrix`: Your domain for which you want to fetch data.
         	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
         	- Service `zendesk`: Zendesk domain.
@@ -9174,6 +9196,7 @@ class ConnectorConfigArgs:
         	- Service `azure_postgres`: DB instance host or IP address.
         	- Service `azure_sql_db`: DB instance host or IP address.
         	- Service `azure_sql_managed_db`: DB instance host or IP address.
+        	- Service `commercetools`: Your commercetools host.
         	- Service `db2i_hva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
         	- Service `db2i_sap_hva`: DB instance host or IP address.
         	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -9245,7 +9268,7 @@ class ConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `coassemble`: Your Coassemble Hostname.
-        	- Service `datadog`: Your Datadog Host name.
+        	- Service `datadog`: Your Datadog host name.
         """
         return pulumi.get(self, "host_name")
 
@@ -10356,7 +10379,6 @@ class ConnectorConfigArgs:
         	- Service `dynamics_365_fo`: The user's password.
         	- Service `ftp`: FTP password.
         	- Service `globalmeet`: Your GlobalMeet Password.
-        	- Service `gongio`: Your Gongio Access Key Secret.
         	- Service `google_cloud_mysql`: The user's password.
         	- Service `google_cloud_postgresql`: The user's password.
         	- Service `google_cloud_sqlserver`: The user's password.
@@ -10600,6 +10622,7 @@ class ConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `cj_commission_detail`: Your CJ Commission Detail personal access token.
         	- Service `harvest`: Your Harvest Personal Access Token.
+        	- Service `totango`: Your Totango Personal Access token.
         """
         return pulumi.get(self, "personal_access_token")
 
@@ -10627,6 +10650,7 @@ class ConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `wasabi_cloud_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -10643,6 +10667,7 @@ class ConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `s3`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `wasabi_cloud_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -10879,6 +10904,19 @@ class ConnectorConfigArgs:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="projectKey")
+    def project_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field usage depends on `service` value: 
+        	- Service `commercetools`: Your commercetools project key.
+        """
+        return pulumi.get(self, "project_key")
+
+    @project_key.setter
+    def project_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_key", value)
 
     @property
     @pulumi.getter
@@ -12273,6 +12311,7 @@ class ConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
+        	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `s3`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `sftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `wasabi_cloud_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
@@ -12523,6 +12562,7 @@ class ConnectorConfigArgs:
         	- Service `fountain`: Your Fountain subdomain.
         	- Service `freshchat`: Your Freshchat Sub Domain
         	- Service `gainsight_customer_success`: The subdomain of your Gainsight account.
+        	- Service `gainsight_product_experience`: Your Gainsight Product Experience subdomain.
         	- Service `genesys`: Your Genesys subdomain.
         	- Service `green_power_monitor`: Your GreenPowerMonitor subdomain.
         	- Service `infobip`: Your Infobip sub_domain.
@@ -12551,6 +12591,7 @@ class ConnectorConfigArgs:
         	- Service `starrez`: Your StarRez subdomain
         	- Service `tempo`: Your Tempo subdomain.
         	- Service `thinkific`: Your Thinkific subdomain.
+        	- Service `totango`: Your Totango Subdomain.
         	- Service `upland`: Your Upland Software subDomain.
         	- Service `wordpress`: Your WordPress subdomain.
         	- Service `workable`: Your Workable Subdomain.
@@ -13637,6 +13678,7 @@ class ConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+        	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
         	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
         	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
         	- Service `wasabi_cloud_storage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -13851,7 +13893,6 @@ class ConnectorConfigArgs:
         	- Service `github`: `Login` of your GitHub profile.
         	- Service `gladly`: Your Gladly Username.
         	- Service `globalmeet`: Your GlobalMeet Username.
-        	- Service `gongio`: Your Gongio Access key.
         	- Service `gorgias`: Your Gorgias username.
         	- Service `green_power_monitor`: Your GreenPowerMonitor username.
         	- Service `guru`: Your Guru username.
@@ -13882,6 +13923,7 @@ class ConnectorConfigArgs:
         	- Service `starrez`: Your StarRez API username
         	- Service `stylight`: Your Stylight Username.
         	- Service `teamwork`: Your Teamwork username.
+        	- Service `testrail`: Your TestRail API username.
         	- Service `ukg_pro`: Your UKG Pro username.
         	- Service `unicommerce`: Your uniware login username.
         	- Service `upland`: Your Upland Software Username.
@@ -14981,7 +15023,7 @@ class ConnectorConfigReportArgs:
         :param pulumi.Input[str] aggregation: Field usage depends on `service` value: 
                	- Service `google_search_console`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Field usage depends on `service` value: 
-               	- Service `google_search_ads_360`: The report dimensions included to sync.
+               	- Service `google_search_ads_360`: The report attributes included to sync.
         :param pulumi.Input[str] config_type: Field usage depends on `service` value: 
                	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
                	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
@@ -15000,7 +15042,7 @@ class ConnectorConfigReportArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] metrics: Field usage depends on `service` value: 
                	- Service `google_analytics`: The report metrics to include into a sync.
                	- Service `google_analytics_4`: The report metrics to include into a sync.
-               	- Service `google_search_ads_360`: The report dimensions included to sync.
+               	- Service `google_search_ads_360`: The report metrics included to sync.
         :param pulumi.Input[str] prebuilt_report: Field usage depends on `service` value: 
                	- Service `google_analytics`: The name of the Prebuilt Report from which the connector will sync the data.
                	- Service `google_analytics_4`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -15078,7 +15120,7 @@ class ConnectorConfigReportArgs:
     def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field usage depends on `service` value: 
-        	- Service `google_search_ads_360`: The report dimensions included to sync.
+        	- Service `google_search_ads_360`: The report attributes included to sync.
         """
         return pulumi.get(self, "attributes")
 
@@ -15183,7 +15225,7 @@ class ConnectorConfigReportArgs:
         Field usage depends on `service` value: 
         	- Service `google_analytics`: The report metrics to include into a sync.
         	- Service `google_analytics_4`: The report metrics to include into a sync.
-        	- Service `google_search_ads_360`: The report dimensions included to sync.
+        	- Service `google_search_ads_360`: The report metrics included to sync.
         """
         return pulumi.get(self, "metrics")
 
@@ -19151,6 +19193,7 @@ class GetConnectorConfigArgs:
                  project_access_token: str,
                  project_credentials: Sequence['GetConnectorConfigProjectCredentialArgs'],
                  project_id: str,
+                 project_key: str,
                  projects: Sequence[str],
                  properties: Sequence[str],
                  public_key: str,
@@ -19390,6 +19433,7 @@ class GetConnectorConfigArgs:
                	- Service `s3`: Access Key Secret
                	- Service `wasabi_cloud_storage`: Access Key Secret
         :param str access_token: Field usage depends on `service` value: 
+               	- Service `7shifts`: Your 7shifts access token.
                	- Service `attio`: Your Attio bearer token
                	- Service `big_commerce`: API access token of your store.
                	- Service `bitly`: Your Bitly access token.
@@ -19671,6 +19715,7 @@ class GetConnectorConfigArgs:
                	- Service `freshteam`: Your Freshteam API key.
                	- Service `friendbuy`: Your Friendbuy API key.
                	- Service `fullstory`: Your Fullstory API key.
+               	- Service `gainsight_product_experience`: Your Gainsight Product Experience API Key.
                	- Service `gem`: Your Gem API key.
                	- Service `gorgias`: Your Gorgias API key.
                	- Service `greenhouse`: Your Greenhouse API key.
@@ -19748,6 +19793,7 @@ class GetConnectorConfigArgs:
                	- Service `stripe_test`: Restricted API key
                	- Service `subscript`: Your Subscript API key.
                	- Service `teads`: Your Teads API key.
+               	- Service `testrail`: Your TestRail API key.
                	- Service `transcend`: Your Transcend API Key.
                	- Service `trello`: Your TRELLO api key.
                	- Service `uppromote`: Your UpPromote API key.
@@ -19866,7 +19912,7 @@ class GetConnectorConfigArgs:
         :param str application_id: Field usage depends on `service` value: 
                	- Service `algolia`: Your Algolia application ID.
         :param str application_key: Field usage depends on `service` value: 
-               	- Service `datadog`: Your Datadog Application key.
+               	- Service `datadog`: Your Datadog application key.
                	- Service `dear`: Your Dear Application key.
         :param Sequence[str] apps: Field usage depends on `service` value: 
                	- Service `itunes_connect`: Specific apps to sync. Must be populated if `app_sync_mode` is set to `SpecificApps`.
@@ -20029,6 +20075,7 @@ class GetConnectorConfigArgs:
                	- Service `billing_platform`: Your BillingPlatform client ID.
                	- Service `brightcove`: Your Brightcove client ID.
                	- Service `castor_edc`: Your Castor EDC client Id.
+               	- Service `commercetools`: Your commercetools client ID.
                	- Service `concur`: The SAP Concur Client ID.
                	- Service `coupa`: Your Coupa client_id
                	- Service `criteo`: Your Criteo Client ID.
@@ -20111,6 +20158,7 @@ class GetConnectorConfigArgs:
                	- Service `billing_platform`: Your BillingPlatform client secret.
                	- Service `brightcove`: Your Brightcove client secret.
                	- Service `castor_edc`: Your Castor EDC Client Secret.
+               	- Service `commercetools`: Your commercetools client secret.
                	- Service `concur`: The SAP Concur Client secret.
                	- Service `coupa`: Your Coupa client_id
                	- Service `criteo`: Your Criteo client secret key.
@@ -20419,7 +20467,7 @@ class GetConnectorConfigArgs:
                	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
                	- Service `okta`: Your Okta domain.
                	- Service `pipedrive`: Your Pipedrive domain.
-               	- Service `shopware`: Your Shopware Domain.
+               	- Service `shopware`: Your Shopware domain.
                	- Service `sistrix`: Your domain for which you want to fetch data.
                	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
                	- Service `zendesk`: Zendesk domain.
@@ -20614,6 +20662,7 @@ class GetConnectorConfigArgs:
                	- Service `azure_postgres`: DB instance host or IP address.
                	- Service `azure_sql_db`: DB instance host or IP address.
                	- Service `azure_sql_managed_db`: DB instance host or IP address.
+               	- Service `commercetools`: Your commercetools host.
                	- Service `db2i_hva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
                	- Service `db2i_sap_hva`: DB instance host or IP address.
                	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -20663,7 +20712,7 @@ class GetConnectorConfigArgs:
                	- Service `azure_service_bus`: The IP address of the host machine which we use to connect to ASB via ssh
         :param str host_name: Field usage depends on `service` value: 
                	- Service `coassemble`: Your Coassemble Hostname.
-               	- Service `datadog`: Your Datadog Host name.
+               	- Service `datadog`: Your Datadog host name.
         :param str host_url: Field usage depends on `service` value: 
                	- Service `adobe_commerce`: Your Adobe Commerce host url.
                	- Service `sparkpost`: Your SparkPost host URL.
@@ -20930,7 +20979,6 @@ class GetConnectorConfigArgs:
                	- Service `dynamics_365_fo`: The user's password.
                	- Service `ftp`: FTP password.
                	- Service `globalmeet`: Your GlobalMeet Password.
-               	- Service `gongio`: Your Gongio Access Key Secret.
                	- Service `google_cloud_mysql`: The user's password.
                	- Service `google_cloud_postgresql`: The user's password.
                	- Service `google_cloud_sqlserver`: The user's password.
@@ -21053,16 +21101,19 @@ class GetConnectorConfigArgs:
         :param str personal_access_token: Field usage depends on `service` value: 
                	- Service `cj_commission_detail`: Your CJ Commission Detail personal access token.
                	- Service `harvest`: Your Harvest Personal Access Token.
+               	- Service `totango`: Your Totango Personal Access token.
         :param str personal_api_token: Field usage depends on `service` value: 
                	- Service `circleci`: Your CircleCI Personal API token.
                	- Service `monday`: Your Monday.com Personal API Token.
         :param str pgp_pass_phrase: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
+               	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `wasabi_cloud_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         :param str pgp_secret_key: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
+               	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `s3`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `wasabi_cloud_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -21165,6 +21216,8 @@ class GetConnectorConfigArgs:
                	- Service `bigquery_db`: BigQuery project ID
                	- Service `google_analytics_360`: The project ID.
                	- Service `google_analytics_4_export`: The Project ID.
+        :param str project_key: Field usage depends on `service` value: 
+               	- Service `commercetools`: Your commercetools project key.
         :param Sequence[str] projects: Field usage depends on `service` value: 
                	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
         :param Sequence[str] properties: Field usage depends on `service` value: 
@@ -21524,6 +21577,7 @@ class GetConnectorConfigArgs:
                	- Service `twilio`: The Twilio API key SID
         :param str signer_public_key: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
+               	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `s3`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `sftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `wasabi_cloud_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
@@ -21609,6 +21663,7 @@ class GetConnectorConfigArgs:
                	- Service `fountain`: Your Fountain subdomain.
                	- Service `freshchat`: Your Freshchat Sub Domain
                	- Service `gainsight_customer_success`: The subdomain of your Gainsight account.
+               	- Service `gainsight_product_experience`: Your Gainsight Product Experience subdomain.
                	- Service `genesys`: Your Genesys subdomain.
                	- Service `green_power_monitor`: Your GreenPowerMonitor subdomain.
                	- Service `infobip`: Your Infobip sub_domain.
@@ -21637,6 +21692,7 @@ class GetConnectorConfigArgs:
                	- Service `starrez`: Your StarRez subdomain
                	- Service `tempo`: Your Tempo subdomain.
                	- Service `thinkific`: Your Thinkific subdomain.
+               	- Service `totango`: Your Totango Subdomain.
                	- Service `upland`: Your Upland Software subDomain.
                	- Service `wordpress`: Your WordPress subdomain.
                	- Service `workable`: Your Workable Subdomain.
@@ -22034,6 +22090,7 @@ class GetConnectorConfigArgs:
                	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using a RAC instance.
         :param bool use_pgp_encryption_options: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+               	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
                	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
                	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
                	- Service `wasabi_cloud_storage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -22129,7 +22186,6 @@ class GetConnectorConfigArgs:
                	- Service `github`: `Login` of your GitHub profile.
                	- Service `gladly`: Your Gladly Username.
                	- Service `globalmeet`: Your GlobalMeet Username.
-               	- Service `gongio`: Your Gongio Access key.
                	- Service `gorgias`: Your Gorgias username.
                	- Service `green_power_monitor`: Your GreenPowerMonitor username.
                	- Service `guru`: Your Guru username.
@@ -22160,6 +22216,7 @@ class GetConnectorConfigArgs:
                	- Service `starrez`: Your StarRez API username
                	- Service `stylight`: Your Stylight Username.
                	- Service `teamwork`: Your Teamwork username.
+               	- Service `testrail`: Your TestRail API username.
                	- Service `ukg_pro`: Your UKG Pro username.
                	- Service `unicommerce`: Your uniware login username.
                	- Service `upland`: Your Upland Software Username.
@@ -22556,6 +22613,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "project_access_token", project_access_token)
         pulumi.set(__self__, "project_credentials", project_credentials)
         pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project_key", project_key)
         pulumi.set(__self__, "projects", projects)
         pulumi.set(__self__, "properties", properties)
         pulumi.set(__self__, "public_key", public_key)
@@ -22931,6 +22989,7 @@ class GetConnectorConfigArgs:
     def access_token(self) -> str:
         """
         Field usage depends on `service` value: 
+        	- Service `7shifts`: Your 7shifts access token.
         	- Service `attio`: Your Attio bearer token
         	- Service `big_commerce`: API access token of your store.
         	- Service `bitly`: Your Bitly access token.
@@ -23650,6 +23709,7 @@ class GetConnectorConfigArgs:
         	- Service `freshteam`: Your Freshteam API key.
         	- Service `friendbuy`: Your Friendbuy API key.
         	- Service `fullstory`: Your Fullstory API key.
+        	- Service `gainsight_product_experience`: Your Gainsight Product Experience API Key.
         	- Service `gem`: Your Gem API key.
         	- Service `gorgias`: Your Gorgias API key.
         	- Service `greenhouse`: Your Greenhouse API key.
@@ -23727,6 +23787,7 @@ class GetConnectorConfigArgs:
         	- Service `stripe_test`: Restricted API key
         	- Service `subscript`: Your Subscript API key.
         	- Service `teads`: Your Teads API key.
+        	- Service `testrail`: Your TestRail API key.
         	- Service `transcend`: Your Transcend API Key.
         	- Service `trello`: Your TRELLO api key.
         	- Service `uppromote`: Your UpPromote API key.
@@ -24094,7 +24155,7 @@ class GetConnectorConfigArgs:
     def application_key(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `datadog`: Your Datadog Application key.
+        	- Service `datadog`: Your Datadog application key.
         	- Service `dear`: Your Dear Application key.
         """
         return pulumi.get(self, "application_key")
@@ -24766,6 +24827,7 @@ class GetConnectorConfigArgs:
         	- Service `billing_platform`: Your BillingPlatform client ID.
         	- Service `brightcove`: Your Brightcove client ID.
         	- Service `castor_edc`: Your Castor EDC client Id.
+        	- Service `commercetools`: Your commercetools client ID.
         	- Service `concur`: The SAP Concur Client ID.
         	- Service `coupa`: Your Coupa client_id
         	- Service `criteo`: Your Criteo Client ID.
@@ -24914,6 +24976,7 @@ class GetConnectorConfigArgs:
         	- Service `billing_platform`: Your BillingPlatform client secret.
         	- Service `brightcove`: Your Brightcove client secret.
         	- Service `castor_edc`: Your Castor EDC Client Secret.
+        	- Service `commercetools`: Your commercetools client secret.
         	- Service `concur`: The SAP Concur Client secret.
         	- Service `coupa`: Your Coupa client_id
         	- Service `criteo`: Your Criteo client secret key.
@@ -25852,7 +25915,7 @@ class GetConnectorConfigArgs:
         	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
         	- Service `okta`: Your Okta domain.
         	- Service `pipedrive`: Your Pipedrive domain.
-        	- Service `shopware`: Your Shopware Domain.
+        	- Service `shopware`: Your Shopware domain.
         	- Service `sistrix`: Your domain for which you want to fetch data.
         	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
         	- Service `zendesk`: Zendesk domain.
@@ -26673,6 +26736,7 @@ class GetConnectorConfigArgs:
         	- Service `azure_postgres`: DB instance host or IP address.
         	- Service `azure_sql_db`: DB instance host or IP address.
         	- Service `azure_sql_managed_db`: DB instance host or IP address.
+        	- Service `commercetools`: Your commercetools host.
         	- Service `db2i_hva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
         	- Service `db2i_sap_hva`: DB instance host or IP address.
         	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -26744,7 +26808,7 @@ class GetConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `coassemble`: Your Coassemble Hostname.
-        	- Service `datadog`: Your Datadog Host name.
+        	- Service `datadog`: Your Datadog host name.
         """
         return pulumi.get(self, "host_name")
 
@@ -27855,7 +27919,6 @@ class GetConnectorConfigArgs:
         	- Service `dynamics_365_fo`: The user's password.
         	- Service `ftp`: FTP password.
         	- Service `globalmeet`: Your GlobalMeet Password.
-        	- Service `gongio`: Your Gongio Access Key Secret.
         	- Service `google_cloud_mysql`: The user's password.
         	- Service `google_cloud_postgresql`: The user's password.
         	- Service `google_cloud_sqlserver`: The user's password.
@@ -28099,6 +28162,7 @@ class GetConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `cj_commission_detail`: Your CJ Commission Detail personal access token.
         	- Service `harvest`: Your Harvest Personal Access Token.
+        	- Service `totango`: Your Totango Personal Access token.
         """
         return pulumi.get(self, "personal_access_token")
 
@@ -28126,6 +28190,7 @@ class GetConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `wasabi_cloud_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -28142,6 +28207,7 @@ class GetConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `s3`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `wasabi_cloud_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -28382,6 +28448,19 @@ class GetConnectorConfigArgs:
     @project_id.setter
     def project_id(self, value: str):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="projectKey")
+    def project_key(self) -> str:
+        """
+        Field usage depends on `service` value: 
+        	- Service `commercetools`: Your commercetools project key.
+        """
+        return pulumi.get(self, "project_key")
+
+    @project_key.setter
+    def project_key(self, value: str):
+        pulumi.set(self, "project_key", value)
 
     @property
     @pulumi.getter
@@ -29798,6 +29877,7 @@ class GetConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
+        	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `s3`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `sftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `wasabi_cloud_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
@@ -30048,6 +30128,7 @@ class GetConnectorConfigArgs:
         	- Service `fountain`: Your Fountain subdomain.
         	- Service `freshchat`: Your Freshchat Sub Domain
         	- Service `gainsight_customer_success`: The subdomain of your Gainsight account.
+        	- Service `gainsight_product_experience`: Your Gainsight Product Experience subdomain.
         	- Service `genesys`: Your Genesys subdomain.
         	- Service `green_power_monitor`: Your GreenPowerMonitor subdomain.
         	- Service `infobip`: Your Infobip sub_domain.
@@ -30076,6 +30157,7 @@ class GetConnectorConfigArgs:
         	- Service `starrez`: Your StarRez subdomain
         	- Service `tempo`: Your Tempo subdomain.
         	- Service `thinkific`: Your Thinkific subdomain.
+        	- Service `totango`: Your Totango Subdomain.
         	- Service `upland`: Your Upland Software subDomain.
         	- Service `wordpress`: Your WordPress subdomain.
         	- Service `workable`: Your Workable Subdomain.
@@ -31162,6 +31244,7 @@ class GetConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+        	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
         	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
         	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
         	- Service `wasabi_cloud_storage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -31376,7 +31459,6 @@ class GetConnectorConfigArgs:
         	- Service `github`: `Login` of your GitHub profile.
         	- Service `gladly`: Your Gladly Username.
         	- Service `globalmeet`: Your GlobalMeet Username.
-        	- Service `gongio`: Your Gongio Access key.
         	- Service `gorgias`: Your Gorgias username.
         	- Service `green_power_monitor`: Your GreenPowerMonitor username.
         	- Service `guru`: Your Guru username.
@@ -31407,6 +31489,7 @@ class GetConnectorConfigArgs:
         	- Service `starrez`: Your StarRez API username
         	- Service `stylight`: Your Stylight Username.
         	- Service `teamwork`: Your Teamwork username.
+        	- Service `testrail`: Your TestRail API username.
         	- Service `ukg_pro`: Your UKG Pro username.
         	- Service `unicommerce`: Your uniware login username.
         	- Service `upland`: Your Upland Software Username.
@@ -32461,7 +32544,7 @@ class GetConnectorConfigReportArgs:
         :param str aggregation: Field usage depends on `service` value: 
                	- Service `google_search_console`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
         :param Sequence[str] attributes: Field usage depends on `service` value: 
-               	- Service `google_search_ads_360`: The report dimensions included to sync.
+               	- Service `google_search_ads_360`: The report attributes included to sync.
         :param str config_type: Field usage depends on `service` value: 
                	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
                	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
@@ -32480,7 +32563,7 @@ class GetConnectorConfigReportArgs:
         :param Sequence[str] metrics: Field usage depends on `service` value: 
                	- Service `google_analytics`: The report metrics to include into a sync.
                	- Service `google_analytics_4`: The report metrics to include into a sync.
-               	- Service `google_search_ads_360`: The report dimensions included to sync.
+               	- Service `google_search_ads_360`: The report metrics included to sync.
         :param str prebuilt_report: Field usage depends on `service` value: 
                	- Service `google_analytics`: The name of the Prebuilt Report from which the connector will sync the data.
                	- Service `google_analytics_4`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -32540,7 +32623,7 @@ class GetConnectorConfigReportArgs:
     def attributes(self) -> Sequence[str]:
         """
         Field usage depends on `service` value: 
-        	- Service `google_search_ads_360`: The report dimensions included to sync.
+        	- Service `google_search_ads_360`: The report attributes included to sync.
         """
         return pulumi.get(self, "attributes")
 
@@ -32645,7 +32728,7 @@ class GetConnectorConfigReportArgs:
         Field usage depends on `service` value: 
         	- Service `google_analytics`: The report metrics to include into a sync.
         	- Service `google_analytics_4`: The report metrics to include into a sync.
-        	- Service `google_search_ads_360`: The report dimensions included to sync.
+        	- Service `google_search_ads_360`: The report metrics included to sync.
         """
         return pulumi.get(self, "metrics")
 

@@ -303,6 +303,7 @@ export interface ConnectorConfig {
     accessKeySecret?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `7shifts`: Your 7shifts access token.
      * 	- Service `attio`: Your Attio bearer token
      * 	- Service `bigCommerce`: API access token of your store.
      * 	- Service `bitly`: Your Bitly access token.
@@ -694,6 +695,7 @@ export interface ConnectorConfig {
      * 	- Service `freshteam`: Your Freshteam API key.
      * 	- Service `friendbuy`: Your Friendbuy API key.
      * 	- Service `fullstory`: Your Fullstory API key.
+     * 	- Service `gainsightProductExperience`: Your Gainsight Product Experience API Key.
      * 	- Service `gem`: Your Gem API key.
      * 	- Service `gorgias`: Your Gorgias API key.
      * 	- Service `greenhouse`: Your Greenhouse API key.
@@ -771,6 +773,7 @@ export interface ConnectorConfig {
      * 	- Service `stripeTest`: Restricted API key
      * 	- Service `subscript`: Your Subscript API key.
      * 	- Service `teads`: Your Teads API key.
+     * 	- Service `testrail`: Your TestRail API key.
      * 	- Service `transcend`: Your Transcend API Key.
      * 	- Service `trello`: Your TRELLO api key.
      * 	- Service `uppromote`: Your UpPromote API key.
@@ -950,7 +953,7 @@ export interface ConnectorConfig {
     applicationId?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `datadog`: Your Datadog Application key.
+     * 	- Service `datadog`: Your Datadog application key.
      * 	- Service `dear`: Your Dear Application key.
      */
     applicationKey?: string;
@@ -1246,6 +1249,7 @@ export interface ConnectorConfig {
      * 	- Service `billingPlatform`: Your BillingPlatform client ID.
      * 	- Service `brightcove`: Your Brightcove client ID.
      * 	- Service `castorEdc`: Your Castor EDC client Id.
+     * 	- Service `commercetools`: Your commercetools client ID.
      * 	- Service `concur`: The SAP Concur Client ID.
      * 	- Service `coupa`: Your Coupa clientId
      * 	- Service `criteo`: Your Criteo Client ID.
@@ -1346,6 +1350,7 @@ export interface ConnectorConfig {
      * 	- Service `billingPlatform`: Your BillingPlatform client secret.
      * 	- Service `brightcove`: Your Brightcove client secret.
      * 	- Service `castorEdc`: Your Castor EDC Client Secret.
+     * 	- Service `commercetools`: Your commercetools client secret.
      * 	- Service `concur`: The SAP Concur Client secret.
      * 	- Service `coupa`: Your Coupa clientId
      * 	- Service `criteo`: Your Criteo client secret key.
@@ -1804,7 +1809,7 @@ export interface ConnectorConfig {
      * 	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
      * 	- Service `okta`: Your Okta domain.
      * 	- Service `pipedrive`: Your Pipedrive domain.
-     * 	- Service `shopware`: Your Shopware Domain.
+     * 	- Service `shopware`: Your Shopware domain.
      * 	- Service `sistrix`: Your domain for which you want to fetch data.
      * 	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
      * 	- Service `zendesk`: Zendesk domain.
@@ -2161,6 +2166,7 @@ export interface ConnectorConfig {
      * 	- Service `azurePostgres`: DB instance host or IP address.
      * 	- Service `azureSqlDb`: DB instance host or IP address.
      * 	- Service `azureSqlManagedDb`: DB instance host or IP address.
+     * 	- Service `commercetools`: Your commercetools host.
      * 	- Service `db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
      * 	- Service `db2iSapHva`: DB instance host or IP address.
      * 	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -2216,7 +2222,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `coassemble`: Your Coassemble Hostname.
-     * 	- Service `datadog`: Your Datadog Host name.
+     * 	- Service `datadog`: Your Datadog host name.
      */
     hostName?: string;
     /**
@@ -2703,7 +2709,6 @@ export interface ConnectorConfig {
      * 	- Service `dynamics365Fo`: The user's password.
      * 	- Service `ftp`: FTP password.
      * 	- Service `globalmeet`: Your GlobalMeet Password.
-     * 	- Service `gongio`: Your Gongio Access Key Secret.
      * 	- Service `googleCloudMysql`: The user's password.
      * 	- Service `googleCloudPostgresql`: The user's password.
      * 	- Service `googleCloudSqlserver`: The user's password.
@@ -2859,6 +2864,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
      * 	- Service `harvest`: Your Harvest Personal Access Token.
+     * 	- Service `totango`: Your Totango Personal Access token.
      */
     personalAccessToken?: string;
     /**
@@ -2870,6 +2876,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -2878,6 +2885,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -3014,6 +3022,11 @@ export interface ConnectorConfig {
      * 	- Service `googleAnalytics4Export`: The Project ID.
      */
     projectId: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `commercetools`: Your commercetools project key.
+     */
+    projectKey?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
@@ -3636,6 +3649,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+     * 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -3766,6 +3780,7 @@ export interface ConnectorConfig {
      * 	- Service `fountain`: Your Fountain subdomain.
      * 	- Service `freshchat`: Your Freshchat Sub Domain
      * 	- Service `gainsightCustomerSuccess`: The subdomain of your Gainsight account.
+     * 	- Service `gainsightProductExperience`: Your Gainsight Product Experience subdomain.
      * 	- Service `genesys`: Your Genesys subdomain.
      * 	- Service `greenPowerMonitor`: Your GreenPowerMonitor subdomain.
      * 	- Service `infobip`: Your Infobip sub_domain.
@@ -3794,6 +3809,7 @@ export interface ConnectorConfig {
      * 	- Service `starrez`: Your StarRez subdomain
      * 	- Service `tempo`: Your Tempo subdomain.
      * 	- Service `thinkific`: Your Thinkific subdomain.
+     * 	- Service `totango`: Your Totango Subdomain.
      * 	- Service `upland`: Your Upland Software subDomain.
      * 	- Service `wordpress`: Your WordPress subdomain.
      * 	- Service `workable`: Your Workable Subdomain.
@@ -4376,6 +4392,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+     * 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
      * 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
      * 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
      * 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -4502,7 +4519,6 @@ export interface ConnectorConfig {
      * 	- Service `github`: `Login` of your GitHub profile.
      * 	- Service `gladly`: Your Gladly Username.
      * 	- Service `globalmeet`: Your GlobalMeet Username.
-     * 	- Service `gongio`: Your Gongio Access key.
      * 	- Service `gorgias`: Your Gorgias username.
      * 	- Service `greenPowerMonitor`: Your GreenPowerMonitor username.
      * 	- Service `guru`: Your Guru username.
@@ -4533,6 +4549,7 @@ export interface ConnectorConfig {
      * 	- Service `starrez`: Your StarRez API username
      * 	- Service `stylight`: Your Stylight Username.
      * 	- Service `teamwork`: Your Teamwork username.
+     * 	- Service `testrail`: Your TestRail API username.
      * 	- Service `ukgPro`: Your UKG Pro username.
      * 	- Service `unicommerce`: Your uniware login username.
      * 	- Service `upland`: Your Upland Software Username.
@@ -4877,7 +4894,7 @@ export interface ConnectorConfigReport {
     aggregation?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `googleSearchAds360`: The report dimensions included to sync.
+     * 	- Service `googleSearchAds360`: The report attributes included to sync.
      */
     attributes?: string[];
     /**
@@ -4918,7 +4935,7 @@ export interface ConnectorConfigReport {
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report metrics to include into a sync.
      * 	- Service `googleAnalytics4`: The report metrics to include into a sync.
-     * 	- Service `googleSearchAds360`: The report dimensions included to sync.
+     * 	- Service `googleSearchAds360`: The report metrics included to sync.
      */
     metrics?: string[];
     /**
@@ -5972,6 +5989,7 @@ export interface GetConnectorConfig {
     accessKeySecret: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `7shifts`: Your 7shifts access token.
      * 	- Service `attio`: Your Attio bearer token
      * 	- Service `bigCommerce`: API access token of your store.
      * 	- Service `bitly`: Your Bitly access token.
@@ -6371,6 +6389,7 @@ export interface GetConnectorConfig {
      * 	- Service `freshteam`: Your Freshteam API key.
      * 	- Service `friendbuy`: Your Friendbuy API key.
      * 	- Service `fullstory`: Your Fullstory API key.
+     * 	- Service `gainsightProductExperience`: Your Gainsight Product Experience API Key.
      * 	- Service `gem`: Your Gem API key.
      * 	- Service `gorgias`: Your Gorgias API key.
      * 	- Service `greenhouse`: Your Greenhouse API key.
@@ -6448,6 +6467,7 @@ export interface GetConnectorConfig {
      * 	- Service `stripeTest`: Restricted API key
      * 	- Service `subscript`: Your Subscript API key.
      * 	- Service `teads`: Your Teads API key.
+     * 	- Service `testrail`: Your TestRail API key.
      * 	- Service `transcend`: Your Transcend API Key.
      * 	- Service `trello`: Your TRELLO api key.
      * 	- Service `uppromote`: Your UpPromote API key.
@@ -6631,7 +6651,7 @@ export interface GetConnectorConfig {
     applicationId: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `datadog`: Your Datadog Application key.
+     * 	- Service `datadog`: Your Datadog application key.
      * 	- Service `dear`: Your Dear Application key.
      */
     applicationKey: string;
@@ -6927,6 +6947,7 @@ export interface GetConnectorConfig {
      * 	- Service `billingPlatform`: Your BillingPlatform client ID.
      * 	- Service `brightcove`: Your Brightcove client ID.
      * 	- Service `castorEdc`: Your Castor EDC client Id.
+     * 	- Service `commercetools`: Your commercetools client ID.
      * 	- Service `concur`: The SAP Concur Client ID.
      * 	- Service `coupa`: Your Coupa clientId
      * 	- Service `criteo`: Your Criteo Client ID.
@@ -7027,6 +7048,7 @@ export interface GetConnectorConfig {
      * 	- Service `billingPlatform`: Your BillingPlatform client secret.
      * 	- Service `brightcove`: Your Brightcove client secret.
      * 	- Service `castorEdc`: Your Castor EDC Client Secret.
+     * 	- Service `commercetools`: Your commercetools client secret.
      * 	- Service `concur`: The SAP Concur Client secret.
      * 	- Service `coupa`: Your Coupa clientId
      * 	- Service `criteo`: Your Criteo client secret key.
@@ -7501,7 +7523,7 @@ export interface GetConnectorConfig {
      * 	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
      * 	- Service `okta`: Your Okta domain.
      * 	- Service `pipedrive`: Your Pipedrive domain.
-     * 	- Service `shopware`: Your Shopware Domain.
+     * 	- Service `shopware`: Your Shopware domain.
      * 	- Service `sistrix`: Your domain for which you want to fetch data.
      * 	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
      * 	- Service `zendesk`: Zendesk domain.
@@ -7858,6 +7880,7 @@ export interface GetConnectorConfig {
      * 	- Service `azurePostgres`: DB instance host or IP address.
      * 	- Service `azureSqlDb`: DB instance host or IP address.
      * 	- Service `azureSqlManagedDb`: DB instance host or IP address.
+     * 	- Service `commercetools`: Your commercetools host.
      * 	- Service `db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
      * 	- Service `db2iSapHva`: DB instance host or IP address.
      * 	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -7913,7 +7936,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `coassemble`: Your Coassemble Hostname.
-     * 	- Service `datadog`: Your Datadog Host name.
+     * 	- Service `datadog`: Your Datadog host name.
      */
     hostName: string;
     /**
@@ -8400,7 +8423,6 @@ export interface GetConnectorConfig {
      * 	- Service `dynamics365Fo`: The user's password.
      * 	- Service `ftp`: FTP password.
      * 	- Service `globalmeet`: Your GlobalMeet Password.
-     * 	- Service `gongio`: Your Gongio Access Key Secret.
      * 	- Service `googleCloudMysql`: The user's password.
      * 	- Service `googleCloudPostgresql`: The user's password.
      * 	- Service `googleCloudSqlserver`: The user's password.
@@ -8556,6 +8578,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
      * 	- Service `harvest`: Your Harvest Personal Access Token.
+     * 	- Service `totango`: Your Totango Personal Access token.
      */
     personalAccessToken: string;
     /**
@@ -8567,6 +8590,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -8575,6 +8599,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -8715,6 +8740,11 @@ export interface GetConnectorConfig {
      * 	- Service `googleAnalytics4Export`: The Project ID.
      */
     projectId: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `commercetools`: Your commercetools project key.
+     */
+    projectKey: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
@@ -9359,6 +9389,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+     * 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -9489,6 +9520,7 @@ export interface GetConnectorConfig {
      * 	- Service `fountain`: Your Fountain subdomain.
      * 	- Service `freshchat`: Your Freshchat Sub Domain
      * 	- Service `gainsightCustomerSuccess`: The subdomain of your Gainsight account.
+     * 	- Service `gainsightProductExperience`: Your Gainsight Product Experience subdomain.
      * 	- Service `genesys`: Your Genesys subdomain.
      * 	- Service `greenPowerMonitor`: Your GreenPowerMonitor subdomain.
      * 	- Service `infobip`: Your Infobip sub_domain.
@@ -9517,6 +9549,7 @@ export interface GetConnectorConfig {
      * 	- Service `starrez`: Your StarRez subdomain
      * 	- Service `tempo`: Your Tempo subdomain.
      * 	- Service `thinkific`: Your Thinkific subdomain.
+     * 	- Service `totango`: Your Totango Subdomain.
      * 	- Service `upland`: Your Upland Software subDomain.
      * 	- Service `wordpress`: Your WordPress subdomain.
      * 	- Service `workable`: Your Workable Subdomain.
@@ -10099,6 +10132,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+     * 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
      * 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
      * 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
      * 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -10225,7 +10259,6 @@ export interface GetConnectorConfig {
      * 	- Service `github`: `Login` of your GitHub profile.
      * 	- Service `gladly`: Your Gladly Username.
      * 	- Service `globalmeet`: Your GlobalMeet Username.
-     * 	- Service `gongio`: Your Gongio Access key.
      * 	- Service `gorgias`: Your Gorgias username.
      * 	- Service `greenPowerMonitor`: Your GreenPowerMonitor username.
      * 	- Service `guru`: Your Guru username.
@@ -10256,6 +10289,7 @@ export interface GetConnectorConfig {
      * 	- Service `starrez`: Your StarRez API username
      * 	- Service `stylight`: Your Stylight Username.
      * 	- Service `teamwork`: Your Teamwork username.
+     * 	- Service `testrail`: Your TestRail API username.
      * 	- Service `ukgPro`: Your UKG Pro username.
      * 	- Service `unicommerce`: Your uniware login username.
      * 	- Service `upland`: Your Upland Software Username.
@@ -10600,7 +10634,7 @@ export interface GetConnectorConfigReport {
     aggregation: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `googleSearchAds360`: The report dimensions included to sync.
+     * 	- Service `googleSearchAds360`: The report attributes included to sync.
      */
     attributes: string[];
     /**
@@ -10641,7 +10675,7 @@ export interface GetConnectorConfigReport {
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report metrics to include into a sync.
      * 	- Service `googleAnalytics4`: The report metrics to include into a sync.
-     * 	- Service `googleSearchAds360`: The report dimensions included to sync.
+     * 	- Service `googleSearchAds360`: The report metrics included to sync.
      */
     metrics: string[];
     /**

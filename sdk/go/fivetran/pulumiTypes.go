@@ -1305,6 +1305,7 @@ type ConnectorConfig struct {
 	// 	- Service `wasabiCloudStorage`: Access Key Secret
 	AccessKeySecret *string `pulumi:"accessKeySecret"`
 	// Field usage depends on `service` value:
+	// 	- Service `7shifts`: Your 7shifts access token.
 	// 	- Service `attio`: Your Attio bearer token
 	// 	- Service `bigCommerce`: API access token of your store.
 	// 	- Service `bitly`: Your Bitly access token.
@@ -1622,6 +1623,7 @@ type ConnectorConfig struct {
 	// 	- Service `freshteam`: Your Freshteam API key.
 	// 	- Service `friendbuy`: Your Friendbuy API key.
 	// 	- Service `fullstory`: Your Fullstory API key.
+	// 	- Service `gainsightProductExperience`: Your Gainsight Product Experience API Key.
 	// 	- Service `gem`: Your Gem API key.
 	// 	- Service `gorgias`: Your Gorgias API key.
 	// 	- Service `greenhouse`: Your Greenhouse API key.
@@ -1699,6 +1701,7 @@ type ConnectorConfig struct {
 	// 	- Service `stripeTest`: Restricted API key
 	// 	- Service `subscript`: Your Subscript API key.
 	// 	- Service `teads`: Your Teads API key.
+	// 	- Service `testrail`: Your TestRail API key.
 	// 	- Service `transcend`: Your Transcend API Key.
 	// 	- Service `trello`: Your TRELLO api key.
 	// 	- Service `uppromote`: Your UpPromote API key.
@@ -1838,7 +1841,7 @@ type ConnectorConfig struct {
 	// 	- Service `algolia`: Your Algolia application ID.
 	ApplicationId *string `pulumi:"applicationId"`
 	// Field usage depends on `service` value:
-	// 	- Service `datadog`: Your Datadog Application key.
+	// 	- Service `datadog`: Your Datadog application key.
 	// 	- Service `dear`: Your Dear Application key.
 	ApplicationKey *string `pulumi:"applicationKey"`
 	// Field usage depends on `service` value:
@@ -2048,6 +2051,7 @@ type ConnectorConfig struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client ID.
 	// 	- Service `brightcove`: Your Brightcove client ID.
 	// 	- Service `castorEdc`: Your Castor EDC client Id.
+	// 	- Service `commercetools`: Your commercetools client ID.
 	// 	- Service `concur`: The SAP Concur Client ID.
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo Client ID.
@@ -2136,6 +2140,7 @@ type ConnectorConfig struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client secret.
 	// 	- Service `brightcove`: Your Brightcove client secret.
 	// 	- Service `castorEdc`: Your Castor EDC Client Secret.
+	// 	- Service `commercetools`: Your commercetools client secret.
 	// 	- Service `concur`: The SAP Concur Client secret.
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo client secret key.
@@ -2492,7 +2497,7 @@ type ConnectorConfig struct {
 	// 	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
 	// 	- Service `okta`: Your Okta domain.
 	// 	- Service `pipedrive`: Your Pipedrive domain.
-	// 	- Service `shopware`: Your Shopware Domain.
+	// 	- Service `shopware`: Your Shopware domain.
 	// 	- Service `sistrix`: Your domain for which you want to fetch data.
 	// 	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
 	// 	- Service `zendesk`: Zendesk domain.
@@ -2745,6 +2750,7 @@ type ConnectorConfig struct {
 	// 	- Service `azurePostgres`: DB instance host or IP address.
 	// 	- Service `azureSqlDb`: DB instance host or IP address.
 	// 	- Service `azureSqlManagedDb`: DB instance host or IP address.
+	// 	- Service `commercetools`: Your commercetools host.
 	// 	- Service `db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
 	// 	- Service `db2iSapHva`: DB instance host or IP address.
 	// 	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -2796,7 +2802,7 @@ type ConnectorConfig struct {
 	HostIp *string `pulumi:"hostIp"`
 	// Field usage depends on `service` value:
 	// 	- Service `coassemble`: Your Coassemble Hostname.
-	// 	- Service `datadog`: Your Datadog Host name.
+	// 	- Service `datadog`: Your Datadog host name.
 	HostName *string `pulumi:"hostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adobeCommerce`: Your Adobe Commerce host url.
@@ -3141,7 +3147,6 @@ type ConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: The user's password.
 	// 	- Service `ftp`: FTP password.
 	// 	- Service `globalmeet`: Your GlobalMeet Password.
-	// 	- Service `gongio`: Your Gongio Access Key Secret.
 	// 	- Service `googleCloudMysql`: The user's password.
 	// 	- Service `googleCloudPostgresql`: The user's password.
 	// 	- Service `googleCloudSqlserver`: The user's password.
@@ -3275,6 +3280,7 @@ type ConnectorConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
 	// 	- Service `harvest`: Your Harvest Personal Access Token.
+	// 	- Service `totango`: Your Totango Personal Access token.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
 	// Field usage depends on `service` value:
 	// 	- Service `circleci`: Your CircleCI Personal API token.
@@ -3282,12 +3288,14 @@ type ConnectorConfig struct {
 	PersonalApiToken *string `pulumi:"personalApiToken"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+	// 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	PgpPassPhrase *string `pulumi:"pgpPassPhrase"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+	// 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -3401,6 +3409,9 @@ type ConnectorConfig struct {
 	// 	- Service `googleAnalytics360`: The project ID.
 	// 	- Service `googleAnalytics4Export`: The Project ID.
 	ProjectId *string `pulumi:"projectId"`
+	// Field usage depends on `service` value:
+	// 	- Service `commercetools`: Your commercetools project key.
+	ProjectKey *string `pulumi:"projectKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
 	Projects []string `pulumi:"projects"`
@@ -3842,6 +3853,7 @@ type ConnectorConfig struct {
 	Sid *string `pulumi:"sid"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+	// 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -3942,6 +3954,7 @@ type ConnectorConfig struct {
 	// 	- Service `fountain`: Your Fountain subdomain.
 	// 	- Service `freshchat`: Your Freshchat Sub Domain
 	// 	- Service `gainsightCustomerSuccess`: The subdomain of your Gainsight account.
+	// 	- Service `gainsightProductExperience`: Your Gainsight Product Experience subdomain.
 	// 	- Service `genesys`: Your Genesys subdomain.
 	// 	- Service `greenPowerMonitor`: Your GreenPowerMonitor subdomain.
 	// 	- Service `infobip`: Your Infobip sub_domain.
@@ -3970,6 +3983,7 @@ type ConnectorConfig struct {
 	// 	- Service `starrez`: Your StarRez subdomain
 	// 	- Service `tempo`: Your Tempo subdomain.
 	// 	- Service `thinkific`: Your Thinkific subdomain.
+	// 	- Service `totango`: Your Totango Subdomain.
 	// 	- Service `upland`: Your Upland Software subDomain.
 	// 	- Service `wordpress`: Your WordPress subdomain.
 	// 	- Service `workable`: Your Workable Subdomain.
@@ -4430,6 +4444,7 @@ type ConnectorConfig struct {
 	UseOracleRac *bool `pulumi:"useOracleRac"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+	// 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 	// 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 	// 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
 	// 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -4536,7 +4551,6 @@ type ConnectorConfig struct {
 	// 	- Service `github`: `Login` of your GitHub profile.
 	// 	- Service `gladly`: Your Gladly Username.
 	// 	- Service `globalmeet`: Your GlobalMeet Username.
-	// 	- Service `gongio`: Your Gongio Access key.
 	// 	- Service `gorgias`: Your Gorgias username.
 	// 	- Service `greenPowerMonitor`: Your GreenPowerMonitor username.
 	// 	- Service `guru`: Your Guru username.
@@ -4567,6 +4581,7 @@ type ConnectorConfig struct {
 	// 	- Service `starrez`: Your StarRez API username
 	// 	- Service `stylight`: Your Stylight Username.
 	// 	- Service `teamwork`: Your Teamwork username.
+	// 	- Service `testrail`: Your TestRail API username.
 	// 	- Service `ukgPro`: Your UKG Pro username.
 	// 	- Service `unicommerce`: Your uniware login username.
 	// 	- Service `upland`: Your Upland Software Username.
@@ -4690,6 +4705,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `wasabiCloudStorage`: Access Key Secret
 	AccessKeySecret pulumi.StringPtrInput `pulumi:"accessKeySecret"`
 	// Field usage depends on `service` value:
+	// 	- Service `7shifts`: Your 7shifts access token.
 	// 	- Service `attio`: Your Attio bearer token
 	// 	- Service `bigCommerce`: API access token of your store.
 	// 	- Service `bitly`: Your Bitly access token.
@@ -5007,6 +5023,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `freshteam`: Your Freshteam API key.
 	// 	- Service `friendbuy`: Your Friendbuy API key.
 	// 	- Service `fullstory`: Your Fullstory API key.
+	// 	- Service `gainsightProductExperience`: Your Gainsight Product Experience API Key.
 	// 	- Service `gem`: Your Gem API key.
 	// 	- Service `gorgias`: Your Gorgias API key.
 	// 	- Service `greenhouse`: Your Greenhouse API key.
@@ -5084,6 +5101,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `stripeTest`: Restricted API key
 	// 	- Service `subscript`: Your Subscript API key.
 	// 	- Service `teads`: Your Teads API key.
+	// 	- Service `testrail`: Your TestRail API key.
 	// 	- Service `transcend`: Your Transcend API Key.
 	// 	- Service `trello`: Your TRELLO api key.
 	// 	- Service `uppromote`: Your UpPromote API key.
@@ -5223,7 +5241,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `algolia`: Your Algolia application ID.
 	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
 	// Field usage depends on `service` value:
-	// 	- Service `datadog`: Your Datadog Application key.
+	// 	- Service `datadog`: Your Datadog application key.
 	// 	- Service `dear`: Your Dear Application key.
 	ApplicationKey pulumi.StringPtrInput `pulumi:"applicationKey"`
 	// Field usage depends on `service` value:
@@ -5433,6 +5451,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client ID.
 	// 	- Service `brightcove`: Your Brightcove client ID.
 	// 	- Service `castorEdc`: Your Castor EDC client Id.
+	// 	- Service `commercetools`: Your commercetools client ID.
 	// 	- Service `concur`: The SAP Concur Client ID.
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo Client ID.
@@ -5521,6 +5540,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client secret.
 	// 	- Service `brightcove`: Your Brightcove client secret.
 	// 	- Service `castorEdc`: Your Castor EDC Client Secret.
+	// 	- Service `commercetools`: Your commercetools client secret.
 	// 	- Service `concur`: The SAP Concur Client secret.
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo client secret key.
@@ -5877,7 +5897,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
 	// 	- Service `okta`: Your Okta domain.
 	// 	- Service `pipedrive`: Your Pipedrive domain.
-	// 	- Service `shopware`: Your Shopware Domain.
+	// 	- Service `shopware`: Your Shopware domain.
 	// 	- Service `sistrix`: Your domain for which you want to fetch data.
 	// 	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
 	// 	- Service `zendesk`: Zendesk domain.
@@ -6130,6 +6150,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `azurePostgres`: DB instance host or IP address.
 	// 	- Service `azureSqlDb`: DB instance host or IP address.
 	// 	- Service `azureSqlManagedDb`: DB instance host or IP address.
+	// 	- Service `commercetools`: Your commercetools host.
 	// 	- Service `db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
 	// 	- Service `db2iSapHva`: DB instance host or IP address.
 	// 	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -6181,7 +6202,7 @@ type ConnectorConfigArgs struct {
 	HostIp pulumi.StringPtrInput `pulumi:"hostIp"`
 	// Field usage depends on `service` value:
 	// 	- Service `coassemble`: Your Coassemble Hostname.
-	// 	- Service `datadog`: Your Datadog Host name.
+	// 	- Service `datadog`: Your Datadog host name.
 	HostName pulumi.StringPtrInput `pulumi:"hostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adobeCommerce`: Your Adobe Commerce host url.
@@ -6526,7 +6547,6 @@ type ConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: The user's password.
 	// 	- Service `ftp`: FTP password.
 	// 	- Service `globalmeet`: Your GlobalMeet Password.
-	// 	- Service `gongio`: Your Gongio Access Key Secret.
 	// 	- Service `googleCloudMysql`: The user's password.
 	// 	- Service `googleCloudPostgresql`: The user's password.
 	// 	- Service `googleCloudSqlserver`: The user's password.
@@ -6660,6 +6680,7 @@ type ConnectorConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
 	// 	- Service `harvest`: Your Harvest Personal Access Token.
+	// 	- Service `totango`: Your Totango Personal Access token.
 	PersonalAccessToken pulumi.StringPtrInput `pulumi:"personalAccessToken"`
 	// Field usage depends on `service` value:
 	// 	- Service `circleci`: Your CircleCI Personal API token.
@@ -6667,12 +6688,14 @@ type ConnectorConfigArgs struct {
 	PersonalApiToken pulumi.StringPtrInput `pulumi:"personalApiToken"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+	// 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	PgpPassPhrase pulumi.StringPtrInput `pulumi:"pgpPassPhrase"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+	// 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -6786,6 +6809,9 @@ type ConnectorConfigArgs struct {
 	// 	- Service `googleAnalytics360`: The project ID.
 	// 	- Service `googleAnalytics4Export`: The Project ID.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Field usage depends on `service` value:
+	// 	- Service `commercetools`: Your commercetools project key.
+	ProjectKey pulumi.StringPtrInput `pulumi:"projectKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
 	Projects pulumi.StringArrayInput `pulumi:"projects"`
@@ -7227,6 +7253,7 @@ type ConnectorConfigArgs struct {
 	Sid pulumi.StringPtrInput `pulumi:"sid"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+	// 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -7327,6 +7354,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `fountain`: Your Fountain subdomain.
 	// 	- Service `freshchat`: Your Freshchat Sub Domain
 	// 	- Service `gainsightCustomerSuccess`: The subdomain of your Gainsight account.
+	// 	- Service `gainsightProductExperience`: Your Gainsight Product Experience subdomain.
 	// 	- Service `genesys`: Your Genesys subdomain.
 	// 	- Service `greenPowerMonitor`: Your GreenPowerMonitor subdomain.
 	// 	- Service `infobip`: Your Infobip sub_domain.
@@ -7355,6 +7383,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `starrez`: Your StarRez subdomain
 	// 	- Service `tempo`: Your Tempo subdomain.
 	// 	- Service `thinkific`: Your Thinkific subdomain.
+	// 	- Service `totango`: Your Totango Subdomain.
 	// 	- Service `upland`: Your Upland Software subDomain.
 	// 	- Service `wordpress`: Your WordPress subdomain.
 	// 	- Service `workable`: Your Workable Subdomain.
@@ -7815,6 +7844,7 @@ type ConnectorConfigArgs struct {
 	UseOracleRac pulumi.BoolPtrInput `pulumi:"useOracleRac"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+	// 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 	// 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 	// 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
 	// 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -7921,7 +7951,6 @@ type ConnectorConfigArgs struct {
 	// 	- Service `github`: `Login` of your GitHub profile.
 	// 	- Service `gladly`: Your Gladly Username.
 	// 	- Service `globalmeet`: Your GlobalMeet Username.
-	// 	- Service `gongio`: Your Gongio Access key.
 	// 	- Service `gorgias`: Your Gorgias username.
 	// 	- Service `greenPowerMonitor`: Your GreenPowerMonitor username.
 	// 	- Service `guru`: Your Guru username.
@@ -7952,6 +7981,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `starrez`: Your StarRez API username
 	// 	- Service `stylight`: Your Stylight Username.
 	// 	- Service `teamwork`: Your Teamwork username.
+	// 	- Service `testrail`: Your TestRail API username.
 	// 	- Service `ukgPro`: Your UKG Pro username.
 	// 	- Service `unicommerce`: Your uniware login username.
 	// 	- Service `upland`: Your Upland Software Username.
@@ -8176,6 +8206,7 @@ func (o ConnectorConfigOutput) AccessKeySecret() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `7shifts`: Your 7shifts access token.
 //   - Service `attio`: Your Attio bearer token
 //   - Service `bigCommerce`: API access token of your store.
 //   - Service `bitly`: Your Bitly access token.
@@ -8615,6 +8646,7 @@ func (o ConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `freshteam`: Your Freshteam API key.
 //   - Service `friendbuy`: Your Friendbuy API key.
 //   - Service `fullstory`: Your Fullstory API key.
+//   - Service `gainsightProductExperience`: Your Gainsight Product Experience API Key.
 //   - Service `gem`: Your Gem API key.
 //   - Service `gorgias`: Your Gorgias API key.
 //   - Service `greenhouse`: Your Greenhouse API key.
@@ -8692,6 +8724,7 @@ func (o ConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `stripeTest`: Restricted API key
 //   - Service `subscript`: Your Subscript API key.
 //   - Service `teads`: Your Teads API key.
+//   - Service `testrail`: Your TestRail API key.
 //   - Service `transcend`: Your Transcend API Key.
 //   - Service `trello`: Your TRELLO api key.
 //   - Service `uppromote`: Your UpPromote API key.
@@ -8900,7 +8933,7 @@ func (o ConnectorConfigOutput) ApplicationId() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `datadog`: Your Datadog Application key.
+//   - Service `datadog`: Your Datadog application key.
 //   - Service `dear`: Your Dear Application key.
 func (o ConnectorConfigOutput) ApplicationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApplicationKey }).(pulumi.StringPtrOutput)
@@ -9251,6 +9284,7 @@ func (o ConnectorConfigOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `billingPlatform`: Your BillingPlatform client ID.
 //   - Service `brightcove`: Your Brightcove client ID.
 //   - Service `castorEdc`: Your Castor EDC client Id.
+//   - Service `commercetools`: Your commercetools client ID.
 //   - Service `concur`: The SAP Concur Client ID.
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo Client ID.
@@ -9357,6 +9391,7 @@ func (o ConnectorConfigOutput) ClientPublicCertificate() pulumi.StringPtrOutput 
 //   - Service `billingPlatform`: Your BillingPlatform client secret.
 //   - Service `brightcove`: Your Brightcove client secret.
 //   - Service `castorEdc`: Your Castor EDC Client Secret.
+//   - Service `commercetools`: Your commercetools client secret.
 //   - Service `concur`: The SAP Concur Client secret.
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo client secret key.
@@ -9887,7 +9922,7 @@ func (o ConnectorConfigOutput) DistributedConnectorClusterSize() pulumi.IntPtrOu
 //   - Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
 //   - Service `okta`: Your Okta domain.
 //   - Service `pipedrive`: Your Pipedrive domain.
-//   - Service `shopware`: Your Shopware Domain.
+//   - Service `shopware`: Your Shopware domain.
 //   - Service `sistrix`: Your domain for which you want to fetch data.
 //   - Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
 //   - Service `zendesk`: Zendesk domain.
@@ -10314,6 +10349,7 @@ func (o ConnectorConfigOutput) HomeFolder() pulumi.StringPtrOutput {
 //   - Service `azurePostgres`: DB instance host or IP address.
 //   - Service `azureSqlDb`: DB instance host or IP address.
 //   - Service `azureSqlManagedDb`: DB instance host or IP address.
+//   - Service `commercetools`: Your commercetools host.
 //   - Service `db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
 //   - Service `db2iSapHva`: DB instance host or IP address.
 //   - Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -10371,7 +10407,7 @@ func (o ConnectorConfigOutput) HostIp() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `coassemble`: Your Coassemble Hostname.
-//   - Service `datadog`: Your Datadog Host name.
+//   - Service `datadog`: Your Datadog host name.
 func (o ConnectorConfigOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.HostName }).(pulumi.StringPtrOutput)
 }
@@ -10950,7 +10986,6 @@ func (o ConnectorConfigOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: The user's password.
 //   - Service `ftp`: FTP password.
 //   - Service `globalmeet`: Your GlobalMeet Password.
-//   - Service `gongio`: Your Gongio Access Key Secret.
 //   - Service `googleCloudMysql`: The user's password.
 //   - Service `googleCloudPostgresql`: The user's password.
 //   - Service `googleCloudSqlserver`: The user's password.
@@ -11117,6 +11152,7 @@ func (o ConnectorConfigOutput) PerInteractionDimensions() pulumi.StringArrayOutp
 // Field usage depends on `service` value:
 //   - Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
 //   - Service `harvest`: Your Harvest Personal Access Token.
+//   - Service `totango`: Your Totango Personal Access token.
 func (o ConnectorConfigOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
 }
@@ -11130,6 +11166,7 @@ func (o ConnectorConfigOutput) PersonalApiToken() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+//   - Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -11139,6 +11176,7 @@ func (o ConnectorConfigOutput) PgpPassPhrase() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+//   - Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -11289,6 +11327,12 @@ func (o ConnectorConfigOutput) ProjectCredentials() ConnectorConfigProjectCreden
 //   - Service `googleAnalytics4Export`: The Project ID.
 func (o ConnectorConfigOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `commercetools`: Your commercetools project key.
+func (o ConnectorConfigOutput) ProjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ProjectKey }).(pulumi.StringPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -12020,6 +12064,7 @@ func (o ConnectorConfigOutput) Sid() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+//   - Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -12165,6 +12210,7 @@ func (o ConnectorConfigOutput) StoreId() pulumi.StringPtrOutput {
 //   - Service `fountain`: Your Fountain subdomain.
 //   - Service `freshchat`: Your Freshchat Sub Domain
 //   - Service `gainsightCustomerSuccess`: The subdomain of your Gainsight account.
+//   - Service `gainsightProductExperience`: Your Gainsight Product Experience subdomain.
 //   - Service `genesys`: Your Genesys subdomain.
 //   - Service `greenPowerMonitor`: Your GreenPowerMonitor subdomain.
 //   - Service `infobip`: Your Infobip sub_domain.
@@ -12193,6 +12239,7 @@ func (o ConnectorConfigOutput) StoreId() pulumi.StringPtrOutput {
 //   - Service `starrez`: Your StarRez subdomain
 //   - Service `tempo`: Your Tempo subdomain.
 //   - Service `thinkific`: Your Thinkific subdomain.
+//   - Service `totango`: Your Totango Subdomain.
 //   - Service `upland`: Your Upland Software subDomain.
 //   - Service `wordpress`: Your WordPress subdomain.
 //   - Service `workable`: Your Workable Subdomain.
@@ -12842,6 +12889,7 @@ func (o ConnectorConfigOutput) UseOracleRac() pulumi.BoolPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+//   - Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 //   - Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 //   - Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
 //   - Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -12981,7 +13029,6 @@ func (o ConnectorConfigOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `github`: `Login` of your GitHub profile.
 //   - Service `gladly`: Your Gladly Username.
 //   - Service `globalmeet`: Your GlobalMeet Username.
-//   - Service `gongio`: Your Gongio Access key.
 //   - Service `gorgias`: Your Gorgias username.
 //   - Service `greenPowerMonitor`: Your GreenPowerMonitor username.
 //   - Service `guru`: Your Guru username.
@@ -13012,6 +13059,7 @@ func (o ConnectorConfigOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `starrez`: Your StarRez API username
 //   - Service `stylight`: Your Stylight Username.
 //   - Service `teamwork`: Your Teamwork username.
+//   - Service `testrail`: Your TestRail API username.
 //   - Service `ukgPro`: Your UKG Pro username.
 //   - Service `unicommerce`: Your uniware login username.
 //   - Service `upland`: Your Upland Software Username.
@@ -13289,6 +13337,7 @@ func (o ConnectorConfigPtrOutput) AccessKeySecret() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `7shifts`: Your 7shifts access token.
 //   - Service `attio`: Your Attio bearer token
 //   - Service `bigCommerce`: API access token of your store.
 //   - Service `bitly`: Your Bitly access token.
@@ -13926,6 +13975,7 @@ func (o ConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `freshteam`: Your Freshteam API key.
 //   - Service `friendbuy`: Your Friendbuy API key.
 //   - Service `fullstory`: Your Fullstory API key.
+//   - Service `gainsightProductExperience`: Your Gainsight Product Experience API Key.
 //   - Service `gem`: Your Gem API key.
 //   - Service `gorgias`: Your Gorgias API key.
 //   - Service `greenhouse`: Your Greenhouse API key.
@@ -14003,6 +14053,7 @@ func (o ConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `stripeTest`: Restricted API key
 //   - Service `subscript`: Your Subscript API key.
 //   - Service `teads`: Your Teads API key.
+//   - Service `testrail`: Your TestRail API key.
 //   - Service `transcend`: Your Transcend API Key.
 //   - Service `trello`: Your TRELLO api key.
 //   - Service `uppromote`: Your UpPromote API key.
@@ -14326,7 +14377,7 @@ func (o ConnectorConfigPtrOutput) ApplicationId() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `datadog`: Your Datadog Application key.
+//   - Service `datadog`: Your Datadog application key.
 //   - Service `dear`: Your Dear Application key.
 func (o ConnectorConfigPtrOutput) ApplicationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
@@ -14912,6 +14963,7 @@ func (o ConnectorConfigPtrOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `billingPlatform`: Your BillingPlatform client ID.
 //   - Service `brightcove`: Your Brightcove client ID.
 //   - Service `castorEdc`: Your Castor EDC client Id.
+//   - Service `commercetools`: Your commercetools client ID.
 //   - Service `concur`: The SAP Concur Client ID.
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo Client ID.
@@ -15048,6 +15100,7 @@ func (o ConnectorConfigPtrOutput) ClientPublicCertificate() pulumi.StringPtrOutp
 //   - Service `billingPlatform`: Your BillingPlatform client secret.
 //   - Service `brightcove`: Your Brightcove client secret.
 //   - Service `castorEdc`: Your Castor EDC Client Secret.
+//   - Service `commercetools`: Your commercetools client secret.
 //   - Service `concur`: The SAP Concur Client secret.
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo client secret key.
@@ -15868,7 +15921,7 @@ func (o ConnectorConfigPtrOutput) DistributedConnectorClusterSize() pulumi.IntPt
 //   - Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
 //   - Service `okta`: Your Okta domain.
 //   - Service `pipedrive`: Your Pipedrive domain.
-//   - Service `shopware`: Your Shopware Domain.
+//   - Service `shopware`: Your Shopware domain.
 //   - Service `sistrix`: Your domain for which you want to fetch data.
 //   - Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
 //   - Service `zendesk`: Zendesk domain.
@@ -16585,6 +16638,7 @@ func (o ConnectorConfigPtrOutput) HomeFolder() pulumi.StringPtrOutput {
 //   - Service `azurePostgres`: DB instance host or IP address.
 //   - Service `azureSqlDb`: DB instance host or IP address.
 //   - Service `azureSqlManagedDb`: DB instance host or IP address.
+//   - Service `commercetools`: Your commercetools host.
 //   - Service `db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
 //   - Service `db2iSapHva`: DB instance host or IP address.
 //   - Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -16652,7 +16706,7 @@ func (o ConnectorConfigPtrOutput) HostIp() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `coassemble`: Your Coassemble Hostname.
-//   - Service `datadog`: Your Datadog Host name.
+//   - Service `datadog`: Your Datadog host name.
 func (o ConnectorConfigPtrOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -17621,7 +17675,6 @@ func (o ConnectorConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: The user's password.
 //   - Service `ftp`: FTP password.
 //   - Service `globalmeet`: Your GlobalMeet Password.
-//   - Service `gongio`: Your Gongio Access Key Secret.
 //   - Service `googleCloudMysql`: The user's password.
 //   - Service `googleCloudPostgresql`: The user's password.
 //   - Service `googleCloudSqlserver`: The user's password.
@@ -17843,6 +17896,7 @@ func (o ConnectorConfigPtrOutput) PerInteractionDimensions() pulumi.StringArrayO
 // Field usage depends on `service` value:
 //   - Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
 //   - Service `harvest`: Your Harvest Personal Access Token.
+//   - Service `totango`: Your Totango Personal Access token.
 func (o ConnectorConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -17866,6 +17920,7 @@ func (o ConnectorConfigPtrOutput) PersonalApiToken() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+//   - Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -17880,6 +17935,7 @@ func (o ConnectorConfigPtrOutput) PgpPassPhrase() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+//   - Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -18094,6 +18150,17 @@ func (o ConnectorConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `commercetools`: Your commercetools project key.
+func (o ConnectorConfigPtrOutput) ProjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19306,6 +19373,7 @@ func (o ConnectorConfigPtrOutput) Sid() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+//   - Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -19526,6 +19594,7 @@ func (o ConnectorConfigPtrOutput) StoreId() pulumi.StringPtrOutput {
 //   - Service `fountain`: Your Fountain subdomain.
 //   - Service `freshchat`: Your Freshchat Sub Domain
 //   - Service `gainsightCustomerSuccess`: The subdomain of your Gainsight account.
+//   - Service `gainsightProductExperience`: Your Gainsight Product Experience subdomain.
 //   - Service `genesys`: Your Genesys subdomain.
 //   - Service `greenPowerMonitor`: Your GreenPowerMonitor subdomain.
 //   - Service `infobip`: Your Infobip sub_domain.
@@ -19554,6 +19623,7 @@ func (o ConnectorConfigPtrOutput) StoreId() pulumi.StringPtrOutput {
 //   - Service `starrez`: Your StarRez subdomain
 //   - Service `tempo`: Your Tempo subdomain.
 //   - Service `thinkific`: Your Thinkific subdomain.
+//   - Service `totango`: Your Totango Subdomain.
 //   - Service `upland`: Your Upland Software subDomain.
 //   - Service `wordpress`: Your WordPress subdomain.
 //   - Service `workable`: Your Workable Subdomain.
@@ -20518,6 +20588,7 @@ func (o ConnectorConfigPtrOutput) UseOracleRac() pulumi.BoolPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+//   - Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 //   - Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 //   - Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
 //   - Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -20712,7 +20783,6 @@ func (o ConnectorConfigPtrOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `github`: `Login` of your GitHub profile.
 //   - Service `gladly`: Your Gladly Username.
 //   - Service `globalmeet`: Your GlobalMeet Username.
-//   - Service `gongio`: Your Gongio Access key.
 //   - Service `gorgias`: Your Gorgias username.
 //   - Service `greenPowerMonitor`: Your GreenPowerMonitor username.
 //   - Service `guru`: Your Guru username.
@@ -20743,6 +20813,7 @@ func (o ConnectorConfigPtrOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `starrez`: Your StarRez API username
 //   - Service `stylight`: Your Stylight Username.
 //   - Service `teamwork`: Your Teamwork username.
+//   - Service `testrail`: Your TestRail API username.
 //   - Service `ukgPro`: Your UKG Pro username.
 //   - Service `unicommerce`: Your uniware login username.
 //   - Service `upland`: Your Upland Software Username.
@@ -22095,7 +22166,7 @@ type ConnectorConfigReport struct {
 	// 	- Service `googleSearchConsole`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
 	Aggregation *string `pulumi:"aggregation"`
 	// Field usage depends on `service` value:
-	// 	- Service `googleSearchAds360`: The report dimensions included to sync.
+	// 	- Service `googleSearchAds360`: The report attributes included to sync.
 	Attributes []string `pulumi:"attributes"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
@@ -22122,7 +22193,7 @@ type ConnectorConfigReport struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The report metrics to include into a sync.
 	// 	- Service `googleAnalytics4`: The report metrics to include into a sync.
-	// 	- Service `googleSearchAds360`: The report dimensions included to sync.
+	// 	- Service `googleSearchAds360`: The report metrics included to sync.
 	Metrics []string `pulumi:"metrics"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -22171,7 +22242,7 @@ type ConnectorConfigReportArgs struct {
 	// 	- Service `googleSearchConsole`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
 	Aggregation pulumi.StringPtrInput `pulumi:"aggregation"`
 	// Field usage depends on `service` value:
-	// 	- Service `googleSearchAds360`: The report dimensions included to sync.
+	// 	- Service `googleSearchAds360`: The report attributes included to sync.
 	Attributes pulumi.StringArrayInput `pulumi:"attributes"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
@@ -22198,7 +22269,7 @@ type ConnectorConfigReportArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The report metrics to include into a sync.
 	// 	- Service `googleAnalytics4`: The report metrics to include into a sync.
-	// 	- Service `googleSearchAds360`: The report dimensions included to sync.
+	// 	- Service `googleSearchAds360`: The report metrics included to sync.
 	Metrics pulumi.StringArrayInput `pulumi:"metrics"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -22289,7 +22360,7 @@ func (o ConnectorConfigReportOutput) Aggregation() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `googleSearchAds360`: The report dimensions included to sync.
+//   - Service `googleSearchAds360`: The report attributes included to sync.
 func (o ConnectorConfigReportOutput) Attributes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Attributes }).(pulumi.StringArrayOutput)
 }
@@ -22340,7 +22411,7 @@ func (o ConnectorConfigReportOutput) FilterValue() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `googleAnalytics`: The report metrics to include into a sync.
 //   - Service `googleAnalytics4`: The report metrics to include into a sync.
-//   - Service `googleSearchAds360`: The report dimensions included to sync.
+//   - Service `googleSearchAds360`: The report metrics included to sync.
 func (o ConnectorConfigReportOutput) Metrics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Metrics }).(pulumi.StringArrayOutput)
 }
@@ -28850,6 +28921,7 @@ type GetConnectorConfig struct {
 	// 	- Service `wasabiCloudStorage`: Access Key Secret
 	AccessKeySecret string `pulumi:"accessKeySecret"`
 	// Field usage depends on `service` value:
+	// 	- Service `7shifts`: Your 7shifts access token.
 	// 	- Service `attio`: Your Attio bearer token
 	// 	- Service `bigCommerce`: API access token of your store.
 	// 	- Service `bitly`: Your Bitly access token.
@@ -29171,6 +29243,7 @@ type GetConnectorConfig struct {
 	// 	- Service `freshteam`: Your Freshteam API key.
 	// 	- Service `friendbuy`: Your Friendbuy API key.
 	// 	- Service `fullstory`: Your Fullstory API key.
+	// 	- Service `gainsightProductExperience`: Your Gainsight Product Experience API Key.
 	// 	- Service `gem`: Your Gem API key.
 	// 	- Service `gorgias`: Your Gorgias API key.
 	// 	- Service `greenhouse`: Your Greenhouse API key.
@@ -29248,6 +29321,7 @@ type GetConnectorConfig struct {
 	// 	- Service `stripeTest`: Restricted API key
 	// 	- Service `subscript`: Your Subscript API key.
 	// 	- Service `teads`: Your Teads API key.
+	// 	- Service `testrail`: Your TestRail API key.
 	// 	- Service `transcend`: Your Transcend API Key.
 	// 	- Service `trello`: Your TRELLO api key.
 	// 	- Service `uppromote`: Your UpPromote API key.
@@ -29389,7 +29463,7 @@ type GetConnectorConfig struct {
 	// 	- Service `algolia`: Your Algolia application ID.
 	ApplicationId string `pulumi:"applicationId"`
 	// Field usage depends on `service` value:
-	// 	- Service `datadog`: Your Datadog Application key.
+	// 	- Service `datadog`: Your Datadog application key.
 	// 	- Service `dear`: Your Dear Application key.
 	ApplicationKey string `pulumi:"applicationKey"`
 	// Field usage depends on `service` value:
@@ -29599,6 +29673,7 @@ type GetConnectorConfig struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client ID.
 	// 	- Service `brightcove`: Your Brightcove client ID.
 	// 	- Service `castorEdc`: Your Castor EDC client Id.
+	// 	- Service `commercetools`: Your commercetools client ID.
 	// 	- Service `concur`: The SAP Concur Client ID.
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo Client ID.
@@ -29687,6 +29762,7 @@ type GetConnectorConfig struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client secret.
 	// 	- Service `brightcove`: Your Brightcove client secret.
 	// 	- Service `castorEdc`: Your Castor EDC Client Secret.
+	// 	- Service `commercetools`: Your commercetools client secret.
 	// 	- Service `concur`: The SAP Concur Client secret.
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo client secret key.
@@ -30053,7 +30129,7 @@ type GetConnectorConfig struct {
 	// 	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
 	// 	- Service `okta`: Your Okta domain.
 	// 	- Service `pipedrive`: Your Pipedrive domain.
-	// 	- Service `shopware`: Your Shopware Domain.
+	// 	- Service `shopware`: Your Shopware domain.
 	// 	- Service `sistrix`: Your domain for which you want to fetch data.
 	// 	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
 	// 	- Service `zendesk`: Zendesk domain.
@@ -30306,6 +30382,7 @@ type GetConnectorConfig struct {
 	// 	- Service `azurePostgres`: DB instance host or IP address.
 	// 	- Service `azureSqlDb`: DB instance host or IP address.
 	// 	- Service `azureSqlManagedDb`: DB instance host or IP address.
+	// 	- Service `commercetools`: Your commercetools host.
 	// 	- Service `db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
 	// 	- Service `db2iSapHva`: DB instance host or IP address.
 	// 	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -30357,7 +30434,7 @@ type GetConnectorConfig struct {
 	HostIp string `pulumi:"hostIp"`
 	// Field usage depends on `service` value:
 	// 	- Service `coassemble`: Your Coassemble Hostname.
-	// 	- Service `datadog`: Your Datadog Host name.
+	// 	- Service `datadog`: Your Datadog host name.
 	HostName string `pulumi:"hostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adobeCommerce`: Your Adobe Commerce host url.
@@ -30702,7 +30779,6 @@ type GetConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: The user's password.
 	// 	- Service `ftp`: FTP password.
 	// 	- Service `globalmeet`: Your GlobalMeet Password.
-	// 	- Service `gongio`: Your Gongio Access Key Secret.
 	// 	- Service `googleCloudMysql`: The user's password.
 	// 	- Service `googleCloudPostgresql`: The user's password.
 	// 	- Service `googleCloudSqlserver`: The user's password.
@@ -30836,6 +30912,7 @@ type GetConnectorConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
 	// 	- Service `harvest`: Your Harvest Personal Access Token.
+	// 	- Service `totango`: Your Totango Personal Access token.
 	PersonalAccessToken string `pulumi:"personalAccessToken"`
 	// Field usage depends on `service` value:
 	// 	- Service `circleci`: Your CircleCI Personal API token.
@@ -30843,12 +30920,14 @@ type GetConnectorConfig struct {
 	PersonalApiToken string `pulumi:"personalApiToken"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+	// 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	PgpPassPhrase string `pulumi:"pgpPassPhrase"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+	// 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -30964,6 +31043,9 @@ type GetConnectorConfig struct {
 	// 	- Service `googleAnalytics360`: The project ID.
 	// 	- Service `googleAnalytics4Export`: The Project ID.
 	ProjectId string `pulumi:"projectId"`
+	// Field usage depends on `service` value:
+	// 	- Service `commercetools`: Your commercetools project key.
+	ProjectKey string `pulumi:"projectKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
 	Projects []string `pulumi:"projects"`
@@ -31419,6 +31501,7 @@ type GetConnectorConfig struct {
 	Sid string `pulumi:"sid"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+	// 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -31519,6 +31602,7 @@ type GetConnectorConfig struct {
 	// 	- Service `fountain`: Your Fountain subdomain.
 	// 	- Service `freshchat`: Your Freshchat Sub Domain
 	// 	- Service `gainsightCustomerSuccess`: The subdomain of your Gainsight account.
+	// 	- Service `gainsightProductExperience`: Your Gainsight Product Experience subdomain.
 	// 	- Service `genesys`: Your Genesys subdomain.
 	// 	- Service `greenPowerMonitor`: Your GreenPowerMonitor subdomain.
 	// 	- Service `infobip`: Your Infobip sub_domain.
@@ -31547,6 +31631,7 @@ type GetConnectorConfig struct {
 	// 	- Service `starrez`: Your StarRez subdomain
 	// 	- Service `tempo`: Your Tempo subdomain.
 	// 	- Service `thinkific`: Your Thinkific subdomain.
+	// 	- Service `totango`: Your Totango Subdomain.
 	// 	- Service `upland`: Your Upland Software subDomain.
 	// 	- Service `wordpress`: Your WordPress subdomain.
 	// 	- Service `workable`: Your Workable Subdomain.
@@ -32007,6 +32092,7 @@ type GetConnectorConfig struct {
 	UseOracleRac bool `pulumi:"useOracleRac"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+	// 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 	// 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 	// 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
 	// 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -32113,7 +32199,6 @@ type GetConnectorConfig struct {
 	// 	- Service `github`: `Login` of your GitHub profile.
 	// 	- Service `gladly`: Your Gladly Username.
 	// 	- Service `globalmeet`: Your GlobalMeet Username.
-	// 	- Service `gongio`: Your Gongio Access key.
 	// 	- Service `gorgias`: Your Gorgias username.
 	// 	- Service `greenPowerMonitor`: Your GreenPowerMonitor username.
 	// 	- Service `guru`: Your Guru username.
@@ -32144,6 +32229,7 @@ type GetConnectorConfig struct {
 	// 	- Service `starrez`: Your StarRez API username
 	// 	- Service `stylight`: Your Stylight Username.
 	// 	- Service `teamwork`: Your Teamwork username.
+	// 	- Service `testrail`: Your TestRail API username.
 	// 	- Service `ukgPro`: Your UKG Pro username.
 	// 	- Service `unicommerce`: Your uniware login username.
 	// 	- Service `upland`: Your Upland Software Username.
@@ -32267,6 +32353,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `wasabiCloudStorage`: Access Key Secret
 	AccessKeySecret pulumi.StringInput `pulumi:"accessKeySecret"`
 	// Field usage depends on `service` value:
+	// 	- Service `7shifts`: Your 7shifts access token.
 	// 	- Service `attio`: Your Attio bearer token
 	// 	- Service `bigCommerce`: API access token of your store.
 	// 	- Service `bitly`: Your Bitly access token.
@@ -32588,6 +32675,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `freshteam`: Your Freshteam API key.
 	// 	- Service `friendbuy`: Your Friendbuy API key.
 	// 	- Service `fullstory`: Your Fullstory API key.
+	// 	- Service `gainsightProductExperience`: Your Gainsight Product Experience API Key.
 	// 	- Service `gem`: Your Gem API key.
 	// 	- Service `gorgias`: Your Gorgias API key.
 	// 	- Service `greenhouse`: Your Greenhouse API key.
@@ -32665,6 +32753,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `stripeTest`: Restricted API key
 	// 	- Service `subscript`: Your Subscript API key.
 	// 	- Service `teads`: Your Teads API key.
+	// 	- Service `testrail`: Your TestRail API key.
 	// 	- Service `transcend`: Your Transcend API Key.
 	// 	- Service `trello`: Your TRELLO api key.
 	// 	- Service `uppromote`: Your UpPromote API key.
@@ -32806,7 +32895,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `algolia`: Your Algolia application ID.
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	// Field usage depends on `service` value:
-	// 	- Service `datadog`: Your Datadog Application key.
+	// 	- Service `datadog`: Your Datadog application key.
 	// 	- Service `dear`: Your Dear Application key.
 	ApplicationKey pulumi.StringInput `pulumi:"applicationKey"`
 	// Field usage depends on `service` value:
@@ -33016,6 +33105,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client ID.
 	// 	- Service `brightcove`: Your Brightcove client ID.
 	// 	- Service `castorEdc`: Your Castor EDC client Id.
+	// 	- Service `commercetools`: Your commercetools client ID.
 	// 	- Service `concur`: The SAP Concur Client ID.
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo Client ID.
@@ -33104,6 +33194,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client secret.
 	// 	- Service `brightcove`: Your Brightcove client secret.
 	// 	- Service `castorEdc`: Your Castor EDC Client Secret.
+	// 	- Service `commercetools`: Your commercetools client secret.
 	// 	- Service `concur`: The SAP Concur Client secret.
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo client secret key.
@@ -33470,7 +33561,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
 	// 	- Service `okta`: Your Okta domain.
 	// 	- Service `pipedrive`: Your Pipedrive domain.
-	// 	- Service `shopware`: Your Shopware Domain.
+	// 	- Service `shopware`: Your Shopware domain.
 	// 	- Service `sistrix`: Your domain for which you want to fetch data.
 	// 	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
 	// 	- Service `zendesk`: Zendesk domain.
@@ -33723,6 +33814,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `azurePostgres`: DB instance host or IP address.
 	// 	- Service `azureSqlDb`: DB instance host or IP address.
 	// 	- Service `azureSqlManagedDb`: DB instance host or IP address.
+	// 	- Service `commercetools`: Your commercetools host.
 	// 	- Service `db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
 	// 	- Service `db2iSapHva`: DB instance host or IP address.
 	// 	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -33774,7 +33866,7 @@ type GetConnectorConfigArgs struct {
 	HostIp pulumi.StringInput `pulumi:"hostIp"`
 	// Field usage depends on `service` value:
 	// 	- Service `coassemble`: Your Coassemble Hostname.
-	// 	- Service `datadog`: Your Datadog Host name.
+	// 	- Service `datadog`: Your Datadog host name.
 	HostName pulumi.StringInput `pulumi:"hostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adobeCommerce`: Your Adobe Commerce host url.
@@ -34119,7 +34211,6 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: The user's password.
 	// 	- Service `ftp`: FTP password.
 	// 	- Service `globalmeet`: Your GlobalMeet Password.
-	// 	- Service `gongio`: Your Gongio Access Key Secret.
 	// 	- Service `googleCloudMysql`: The user's password.
 	// 	- Service `googleCloudPostgresql`: The user's password.
 	// 	- Service `googleCloudSqlserver`: The user's password.
@@ -34253,6 +34344,7 @@ type GetConnectorConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
 	// 	- Service `harvest`: Your Harvest Personal Access Token.
+	// 	- Service `totango`: Your Totango Personal Access token.
 	PersonalAccessToken pulumi.StringInput `pulumi:"personalAccessToken"`
 	// Field usage depends on `service` value:
 	// 	- Service `circleci`: Your CircleCI Personal API token.
@@ -34260,12 +34352,14 @@ type GetConnectorConfigArgs struct {
 	PersonalApiToken pulumi.StringInput `pulumi:"personalApiToken"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+	// 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	PgpPassPhrase pulumi.StringInput `pulumi:"pgpPassPhrase"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+	// 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 	// 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -34381,6 +34475,9 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `googleAnalytics360`: The project ID.
 	// 	- Service `googleAnalytics4Export`: The Project ID.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Field usage depends on `service` value:
+	// 	- Service `commercetools`: Your commercetools project key.
+	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
 	Projects pulumi.StringArrayInput `pulumi:"projects"`
@@ -34836,6 +34933,7 @@ type GetConnectorConfigArgs struct {
 	Sid pulumi.StringInput `pulumi:"sid"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+	// 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 	// 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -34936,6 +35034,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `fountain`: Your Fountain subdomain.
 	// 	- Service `freshchat`: Your Freshchat Sub Domain
 	// 	- Service `gainsightCustomerSuccess`: The subdomain of your Gainsight account.
+	// 	- Service `gainsightProductExperience`: Your Gainsight Product Experience subdomain.
 	// 	- Service `genesys`: Your Genesys subdomain.
 	// 	- Service `greenPowerMonitor`: Your GreenPowerMonitor subdomain.
 	// 	- Service `infobip`: Your Infobip sub_domain.
@@ -34964,6 +35063,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `starrez`: Your StarRez subdomain
 	// 	- Service `tempo`: Your Tempo subdomain.
 	// 	- Service `thinkific`: Your Thinkific subdomain.
+	// 	- Service `totango`: Your Totango Subdomain.
 	// 	- Service `upland`: Your Upland Software subDomain.
 	// 	- Service `wordpress`: Your WordPress subdomain.
 	// 	- Service `workable`: Your Workable Subdomain.
@@ -35424,6 +35524,7 @@ type GetConnectorConfigArgs struct {
 	UseOracleRac pulumi.BoolInput `pulumi:"useOracleRac"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+	// 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 	// 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 	// 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
 	// 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -35530,7 +35631,6 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `github`: `Login` of your GitHub profile.
 	// 	- Service `gladly`: Your Gladly Username.
 	// 	- Service `globalmeet`: Your GlobalMeet Username.
-	// 	- Service `gongio`: Your Gongio Access key.
 	// 	- Service `gorgias`: Your Gorgias username.
 	// 	- Service `greenPowerMonitor`: Your GreenPowerMonitor username.
 	// 	- Service `guru`: Your Guru username.
@@ -35561,6 +35661,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `starrez`: Your StarRez API username
 	// 	- Service `stylight`: Your Stylight Username.
 	// 	- Service `teamwork`: Your Teamwork username.
+	// 	- Service `testrail`: Your TestRail API username.
 	// 	- Service `ukgPro`: Your UKG Pro username.
 	// 	- Service `unicommerce`: Your uniware login username.
 	// 	- Service `upland`: Your Upland Software Username.
@@ -35785,6 +35886,7 @@ func (o GetConnectorConfigOutput) AccessKeySecret() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `7shifts`: Your 7shifts access token.
 //   - Service `attio`: Your Attio bearer token
 //   - Service `bigCommerce`: API access token of your store.
 //   - Service `bitly`: Your Bitly access token.
@@ -36228,6 +36330,7 @@ func (o GetConnectorConfigOutput) ApiId() pulumi.StringOutput {
 //   - Service `freshteam`: Your Freshteam API key.
 //   - Service `friendbuy`: Your Friendbuy API key.
 //   - Service `fullstory`: Your Fullstory API key.
+//   - Service `gainsightProductExperience`: Your Gainsight Product Experience API Key.
 //   - Service `gem`: Your Gem API key.
 //   - Service `gorgias`: Your Gorgias API key.
 //   - Service `greenhouse`: Your Greenhouse API key.
@@ -36305,6 +36408,7 @@ func (o GetConnectorConfigOutput) ApiId() pulumi.StringOutput {
 //   - Service `stripeTest`: Restricted API key
 //   - Service `subscript`: Your Subscript API key.
 //   - Service `teads`: Your Teads API key.
+//   - Service `testrail`: Your TestRail API key.
 //   - Service `transcend`: Your Transcend API Key.
 //   - Service `trello`: Your TRELLO api key.
 //   - Service `uppromote`: Your UpPromote API key.
@@ -36515,7 +36619,7 @@ func (o GetConnectorConfigOutput) ApplicationId() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `datadog`: Your Datadog Application key.
+//   - Service `datadog`: Your Datadog application key.
 //   - Service `dear`: Your Dear Application key.
 func (o GetConnectorConfigOutput) ApplicationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ApplicationKey }).(pulumi.StringOutput)
@@ -36866,6 +36970,7 @@ func (o GetConnectorConfigOutput) ClientHost() pulumi.StringOutput {
 //   - Service `billingPlatform`: Your BillingPlatform client ID.
 //   - Service `brightcove`: Your Brightcove client ID.
 //   - Service `castorEdc`: Your Castor EDC client Id.
+//   - Service `commercetools`: Your commercetools client ID.
 //   - Service `concur`: The SAP Concur Client ID.
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo Client ID.
@@ -36972,6 +37077,7 @@ func (o GetConnectorConfigOutput) ClientPublicCertificate() pulumi.StringOutput 
 //   - Service `billingPlatform`: Your BillingPlatform client secret.
 //   - Service `brightcove`: Your Brightcove client secret.
 //   - Service `castorEdc`: Your Castor EDC Client Secret.
+//   - Service `commercetools`: Your commercetools client secret.
 //   - Service `concur`: The SAP Concur Client secret.
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo client secret key.
@@ -37512,7 +37618,7 @@ func (o GetConnectorConfigOutput) DistributedConnectorClusterSize() pulumi.IntOu
 //   - Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
 //   - Service `okta`: Your Okta domain.
 //   - Service `pipedrive`: Your Pipedrive domain.
-//   - Service `shopware`: Your Shopware Domain.
+//   - Service `shopware`: Your Shopware domain.
 //   - Service `sistrix`: Your domain for which you want to fetch data.
 //   - Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
 //   - Service `zendesk`: Zendesk domain.
@@ -37939,6 +38045,7 @@ func (o GetConnectorConfigOutput) HomeFolder() pulumi.StringOutput {
 //   - Service `azurePostgres`: DB instance host or IP address.
 //   - Service `azureSqlDb`: DB instance host or IP address.
 //   - Service `azureSqlManagedDb`: DB instance host or IP address.
+//   - Service `commercetools`: Your commercetools host.
 //   - Service `db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
 //   - Service `db2iSapHva`: DB instance host or IP address.
 //   - Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -37996,7 +38103,7 @@ func (o GetConnectorConfigOutput) HostIp() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `coassemble`: Your Coassemble Hostname.
-//   - Service `datadog`: Your Datadog Host name.
+//   - Service `datadog`: Your Datadog host name.
 func (o GetConnectorConfigOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.HostName }).(pulumi.StringOutput)
 }
@@ -38575,7 +38682,6 @@ func (o GetConnectorConfigOutput) Passphrase() pulumi.StringOutput {
 //   - Service `dynamics365Fo`: The user's password.
 //   - Service `ftp`: FTP password.
 //   - Service `globalmeet`: Your GlobalMeet Password.
-//   - Service `gongio`: Your Gongio Access Key Secret.
 //   - Service `googleCloudMysql`: The user's password.
 //   - Service `googleCloudPostgresql`: The user's password.
 //   - Service `googleCloudSqlserver`: The user's password.
@@ -38742,6 +38848,7 @@ func (o GetConnectorConfigOutput) PerInteractionDimensions() pulumi.StringArrayO
 // Field usage depends on `service` value:
 //   - Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
 //   - Service `harvest`: Your Harvest Personal Access Token.
+//   - Service `totango`: Your Totango Personal Access token.
 func (o GetConnectorConfigOutput) PersonalAccessToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.PersonalAccessToken }).(pulumi.StringOutput)
 }
@@ -38755,6 +38862,7 @@ func (o GetConnectorConfigOutput) PersonalApiToken() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+//   - Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -38764,6 +38872,7 @@ func (o GetConnectorConfigOutput) PgpPassPhrase() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+//   - Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -38916,6 +39025,12 @@ func (o GetConnectorConfigOutput) ProjectCredentials() GetConnectorConfigProject
 //   - Service `googleAnalytics4Export`: The Project ID.
 func (o GetConnectorConfigOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `commercetools`: Your commercetools project key.
+func (o GetConnectorConfigOutput) ProjectKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
 // Field usage depends on `service` value:
@@ -39661,6 +39776,7 @@ func (o GetConnectorConfigOutput) Sid() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+//   - Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -39806,6 +39922,7 @@ func (o GetConnectorConfigOutput) StoreId() pulumi.StringOutput {
 //   - Service `fountain`: Your Fountain subdomain.
 //   - Service `freshchat`: Your Freshchat Sub Domain
 //   - Service `gainsightCustomerSuccess`: The subdomain of your Gainsight account.
+//   - Service `gainsightProductExperience`: Your Gainsight Product Experience subdomain.
 //   - Service `genesys`: Your Genesys subdomain.
 //   - Service `greenPowerMonitor`: Your GreenPowerMonitor subdomain.
 //   - Service `infobip`: Your Infobip sub_domain.
@@ -39834,6 +39951,7 @@ func (o GetConnectorConfigOutput) StoreId() pulumi.StringOutput {
 //   - Service `starrez`: Your StarRez subdomain
 //   - Service `tempo`: Your Tempo subdomain.
 //   - Service `thinkific`: Your Thinkific subdomain.
+//   - Service `totango`: Your Totango Subdomain.
 //   - Service `upland`: Your Upland Software subDomain.
 //   - Service `wordpress`: Your WordPress subdomain.
 //   - Service `workable`: Your Workable Subdomain.
@@ -40483,6 +40601,7 @@ func (o GetConnectorConfigOutput) UseOracleRac() pulumi.BoolOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+//   - Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 //   - Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 //   - Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
 //   - Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -40622,7 +40741,6 @@ func (o GetConnectorConfigOutput) UserToken() pulumi.StringOutput {
 //   - Service `github`: `Login` of your GitHub profile.
 //   - Service `gladly`: Your Gladly Username.
 //   - Service `globalmeet`: Your GlobalMeet Username.
-//   - Service `gongio`: Your Gongio Access key.
 //   - Service `gorgias`: Your Gorgias username.
 //   - Service `greenPowerMonitor`: Your GreenPowerMonitor username.
 //   - Service `guru`: Your Guru username.
@@ -40653,6 +40771,7 @@ func (o GetConnectorConfigOutput) UserToken() pulumi.StringOutput {
 //   - Service `starrez`: Your StarRez API username
 //   - Service `stylight`: Your Stylight Username.
 //   - Service `teamwork`: Your Teamwork username.
+//   - Service `testrail`: Your TestRail API username.
 //   - Service `ukgPro`: Your UKG Pro username.
 //   - Service `unicommerce`: Your uniware login username.
 //   - Service `upland`: Your Upland Software Username.
@@ -40930,6 +41049,7 @@ func (o GetConnectorConfigPtrOutput) AccessKeySecret() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `7shifts`: Your 7shifts access token.
 //   - Service `attio`: Your Attio bearer token
 //   - Service `bigCommerce`: API access token of your store.
 //   - Service `bitly`: Your Bitly access token.
@@ -41571,6 +41691,7 @@ func (o GetConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `freshteam`: Your Freshteam API key.
 //   - Service `friendbuy`: Your Friendbuy API key.
 //   - Service `fullstory`: Your Fullstory API key.
+//   - Service `gainsightProductExperience`: Your Gainsight Product Experience API Key.
 //   - Service `gem`: Your Gem API key.
 //   - Service `gorgias`: Your Gorgias API key.
 //   - Service `greenhouse`: Your Greenhouse API key.
@@ -41648,6 +41769,7 @@ func (o GetConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `stripeTest`: Restricted API key
 //   - Service `subscript`: Your Subscript API key.
 //   - Service `teads`: Your Teads API key.
+//   - Service `testrail`: Your TestRail API key.
 //   - Service `transcend`: Your Transcend API Key.
 //   - Service `trello`: Your TRELLO api key.
 //   - Service `uppromote`: Your UpPromote API key.
@@ -41973,7 +42095,7 @@ func (o GetConnectorConfigPtrOutput) ApplicationId() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `datadog`: Your Datadog Application key.
+//   - Service `datadog`: Your Datadog application key.
 //   - Service `dear`: Your Dear Application key.
 func (o GetConnectorConfigPtrOutput) ApplicationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
@@ -42559,6 +42681,7 @@ func (o GetConnectorConfigPtrOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `billingPlatform`: Your BillingPlatform client ID.
 //   - Service `brightcove`: Your Brightcove client ID.
 //   - Service `castorEdc`: Your Castor EDC client Id.
+//   - Service `commercetools`: Your commercetools client ID.
 //   - Service `concur`: The SAP Concur Client ID.
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo Client ID.
@@ -42695,6 +42818,7 @@ func (o GetConnectorConfigPtrOutput) ClientPublicCertificate() pulumi.StringPtrO
 //   - Service `billingPlatform`: Your BillingPlatform client secret.
 //   - Service `brightcove`: Your Brightcove client secret.
 //   - Service `castorEdc`: Your Castor EDC Client Secret.
+//   - Service `commercetools`: Your commercetools client secret.
 //   - Service `concur`: The SAP Concur Client secret.
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo client secret key.
@@ -43525,7 +43649,7 @@ func (o GetConnectorConfigPtrOutput) DistributedConnectorClusterSize() pulumi.In
 //   - Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
 //   - Service `okta`: Your Okta domain.
 //   - Service `pipedrive`: Your Pipedrive domain.
-//   - Service `shopware`: Your Shopware Domain.
+//   - Service `shopware`: Your Shopware domain.
 //   - Service `sistrix`: Your domain for which you want to fetch data.
 //   - Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
 //   - Service `zendesk`: Zendesk domain.
@@ -44242,6 +44366,7 @@ func (o GetConnectorConfigPtrOutput) HomeFolder() pulumi.StringPtrOutput {
 //   - Service `azurePostgres`: DB instance host or IP address.
 //   - Service `azureSqlDb`: DB instance host or IP address.
 //   - Service `azureSqlManagedDb`: DB instance host or IP address.
+//   - Service `commercetools`: Your commercetools host.
 //   - Service `db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
 //   - Service `db2iSapHva`: DB instance host or IP address.
 //   - Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
@@ -44309,7 +44434,7 @@ func (o GetConnectorConfigPtrOutput) HostIp() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `coassemble`: Your Coassemble Hostname.
-//   - Service `datadog`: Your Datadog Host name.
+//   - Service `datadog`: Your Datadog host name.
 func (o GetConnectorConfigPtrOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -45278,7 +45403,6 @@ func (o GetConnectorConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: The user's password.
 //   - Service `ftp`: FTP password.
 //   - Service `globalmeet`: Your GlobalMeet Password.
-//   - Service `gongio`: Your Gongio Access Key Secret.
 //   - Service `googleCloudMysql`: The user's password.
 //   - Service `googleCloudPostgresql`: The user's password.
 //   - Service `googleCloudSqlserver`: The user's password.
@@ -45500,6 +45624,7 @@ func (o GetConnectorConfigPtrOutput) PerInteractionDimensions() pulumi.StringArr
 // Field usage depends on `service` value:
 //   - Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
 //   - Service `harvest`: Your Harvest Personal Access Token.
+//   - Service `totango`: Your Totango Personal Access token.
 func (o GetConnectorConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -45523,6 +45648,7 @@ func (o GetConnectorConfigPtrOutput) PersonalApiToken() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+//   - Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -45537,6 +45663,7 @@ func (o GetConnectorConfigPtrOutput) PgpPassPhrase() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+//   - Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
 //   - Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -45753,6 +45880,17 @@ func (o GetConnectorConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `commercetools`: Your commercetools project key.
+func (o GetConnectorConfigPtrOutput) ProjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -46979,6 +47117,7 @@ func (o GetConnectorConfigPtrOutput) Sid() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+//   - Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
 //   - Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -47199,6 +47338,7 @@ func (o GetConnectorConfigPtrOutput) StoreId() pulumi.StringPtrOutput {
 //   - Service `fountain`: Your Fountain subdomain.
 //   - Service `freshchat`: Your Freshchat Sub Domain
 //   - Service `gainsightCustomerSuccess`: The subdomain of your Gainsight account.
+//   - Service `gainsightProductExperience`: Your Gainsight Product Experience subdomain.
 //   - Service `genesys`: Your Genesys subdomain.
 //   - Service `greenPowerMonitor`: Your GreenPowerMonitor subdomain.
 //   - Service `infobip`: Your Infobip sub_domain.
@@ -47227,6 +47367,7 @@ func (o GetConnectorConfigPtrOutput) StoreId() pulumi.StringPtrOutput {
 //   - Service `starrez`: Your StarRez subdomain
 //   - Service `tempo`: Your Tempo subdomain.
 //   - Service `thinkific`: Your Thinkific subdomain.
+//   - Service `totango`: Your Totango Subdomain.
 //   - Service `upland`: Your Upland Software subDomain.
 //   - Service `wordpress`: Your WordPress subdomain.
 //   - Service `workable`: Your Workable Subdomain.
@@ -48191,6 +48332,7 @@ func (o GetConnectorConfigPtrOutput) UseOracleRac() pulumi.BoolPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
+//   - Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 //   - Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
 //   - Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
 //   - Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -48385,7 +48527,6 @@ func (o GetConnectorConfigPtrOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `github`: `Login` of your GitHub profile.
 //   - Service `gladly`: Your Gladly Username.
 //   - Service `globalmeet`: Your GlobalMeet Username.
-//   - Service `gongio`: Your Gongio Access key.
 //   - Service `gorgias`: Your Gorgias username.
 //   - Service `greenPowerMonitor`: Your GreenPowerMonitor username.
 //   - Service `guru`: Your Guru username.
@@ -48416,6 +48557,7 @@ func (o GetConnectorConfigPtrOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `starrez`: Your StarRez API username
 //   - Service `stylight`: Your Stylight Username.
 //   - Service `teamwork`: Your Teamwork username.
+//   - Service `testrail`: Your TestRail API username.
 //   - Service `ukgPro`: Your UKG Pro username.
 //   - Service `unicommerce`: Your uniware login username.
 //   - Service `upland`: Your Upland Software Username.
@@ -49768,7 +49910,7 @@ type GetConnectorConfigReport struct {
 	// 	- Service `googleSearchConsole`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
 	Aggregation string `pulumi:"aggregation"`
 	// Field usage depends on `service` value:
-	// 	- Service `googleSearchAds360`: The report dimensions included to sync.
+	// 	- Service `googleSearchAds360`: The report attributes included to sync.
 	Attributes []string `pulumi:"attributes"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
@@ -49795,7 +49937,7 @@ type GetConnectorConfigReport struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The report metrics to include into a sync.
 	// 	- Service `googleAnalytics4`: The report metrics to include into a sync.
-	// 	- Service `googleSearchAds360`: The report dimensions included to sync.
+	// 	- Service `googleSearchAds360`: The report metrics included to sync.
 	Metrics []string `pulumi:"metrics"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -49844,7 +49986,7 @@ type GetConnectorConfigReportArgs struct {
 	// 	- Service `googleSearchConsole`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
 	Aggregation pulumi.StringInput `pulumi:"aggregation"`
 	// Field usage depends on `service` value:
-	// 	- Service `googleSearchAds360`: The report dimensions included to sync.
+	// 	- Service `googleSearchAds360`: The report attributes included to sync.
 	Attributes pulumi.StringArrayInput `pulumi:"attributes"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
@@ -49871,7 +50013,7 @@ type GetConnectorConfigReportArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The report metrics to include into a sync.
 	// 	- Service `googleAnalytics4`: The report metrics to include into a sync.
-	// 	- Service `googleSearchAds360`: The report dimensions included to sync.
+	// 	- Service `googleSearchAds360`: The report metrics included to sync.
 	Metrics pulumi.StringArrayInput `pulumi:"metrics"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -49962,7 +50104,7 @@ func (o GetConnectorConfigReportOutput) Aggregation() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `googleSearchAds360`: The report dimensions included to sync.
+//   - Service `googleSearchAds360`: The report attributes included to sync.
 func (o GetConnectorConfigReportOutput) Attributes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.Attributes }).(pulumi.StringArrayOutput)
 }
@@ -50013,7 +50155,7 @@ func (o GetConnectorConfigReportOutput) FilterValue() pulumi.StringOutput {
 // Field usage depends on `service` value:
 //   - Service `googleAnalytics`: The report metrics to include into a sync.
 //   - Service `googleAnalytics4`: The report metrics to include into a sync.
-//   - Service `googleSearchAds360`: The report dimensions included to sync.
+//   - Service `googleSearchAds360`: The report metrics included to sync.
 func (o GetConnectorConfigReportOutput) Metrics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.Metrics }).(pulumi.StringArrayOutput)
 }
