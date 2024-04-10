@@ -1756,8 +1756,8 @@ github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2
 github.com/felixge/httpsnoop v1.0.4/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
 github.com/fivetran/go-fivetran v0.8.4 h1:Jas3wrw5J/RZpqOqwIWUrgKaTrniD8o7B6/RQXa2huc=
 github.com/fivetran/go-fivetran v0.8.4/go.mod h1:EIy5Uwn1zylQCr/7O+8rrwvmjvhW3PPpzHkQj26ON7Y=
-github.com/fivetran/terraform-provider-fivetran v1.1.20 h1:26SSV+AWzqo1kCcibVkHI8v1oOYJvZecxZkHGJzXfQ4=
-github.com/fivetran/terraform-provider-fivetran v1.1.20/go.mod h1:1pO1qnaEarNPfn+nEiKGjTrmKKmU3U/hicd9K/k2UQY=
+github.com/fivetran/terraform-provider-fivetran v1.1.21 h1:oaduYFTFp0DL1U8wCRdG2fBh2SLanyoWgHCafFuz54k=
+github.com/fivetran/terraform-provider-fivetran v1.1.21/go.mod h1:1pO1qnaEarNPfn+nEiKGjTrmKKmU3U/hicd9K/k2UQY=
 github.com/fogleman/gg v1.2.1-0.20190220221249-0403632d5b90/go.mod h1:R/bRT+9gY/C5z7JzPU0zXsXHKM4/ayA+zqcVNZzPa1k=
 github.com/fogleman/gg v1.3.0/go.mod h1:R/bRT+9gY/C5z7JzPU0zXsXHKM4/ayA+zqcVNZzPa1k=
 github.com/form3tech-oss/jwt-go v3.2.2+incompatible/go.mod h1:pbq4aXjuKjdthFRnoDwaVPLA+WlJuPGy+QneDUgJi2k=
@@ -1979,8 +1979,9 @@ github.com/golang/protobuf v1.4.3/go.mod h1:oDoupMAO8OvCJWAcko0GGGIgR6R6ocIYbsSw
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
 github.com/golang/protobuf v1.5.1/go.mod h1:DopwsBzvsk0Fs44TXzsVbJyPhcCPeIwnvohx4u74HPM=
 github.com/golang/protobuf v1.5.2/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY=
-github.com/golang/protobuf v1.5.3 h1:KhyjKVUg7Usr/dYsdSqoFveMYd5ko72D+zANwlG1mmg=
 github.com/golang/protobuf v1.5.3/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY=
+github.com/golang/protobuf v1.5.4 h1:i7eJL8qZTpSEXOPTxNKhASYpMn+8e5Q6AdndVa1dWek=
+github.com/golang/protobuf v1.5.4/go.mod h1:lnTiLA8Wa4RWRcIUkrtSVa5nRhsEGBg48fD6rSs7xps=
 github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db/go.mod h1:/XxbfmMg8lxefKM7IXC3fBNl/7bRcc72aCRzEWrmP2Q=
 github.com/golang/snappy v0.0.1/go.mod h1:/XxbfmMg8lxefKM7IXC3fBNl/7bRcc72aCRzEWrmP2Q=
 github.com/golang/snappy v0.0.3/go.mod h1:/XxbfmMg8lxefKM7IXC3fBNl/7bRcc72aCRzEWrmP2Q=
@@ -2815,10 +2816,10 @@ github.com/pulumi/providertest v0.0.11 h1:mg8MQ7Cq7+9XlHIkBD+aCqQO4mwAJEISngZgVd
 github.com/pulumi/providertest v0.0.11/go.mod h1:HsxjVsytcMIuNj19w1lT2W0QXY0oReXl1+h6eD2JXP8=
 github.com/pulumi/pulumi-java/pkg v0.10.0 h1:D1i5MiiNrxYr2uJ1szcj1aQwF9DYv7TTsPmajB9dKSw=
 github.com/pulumi/pulumi-java/pkg v0.10.0/go.mod h1:xu6UgYtQm+xXOo1/DZNa2CWVPytu+RMkZVTtI7w7ffY=
-github.com/pulumi/pulumi-terraform-bridge/pf v0.32.0 h1:+yOxg6ulqRrRBNyBU1q28F6KDNjOgFV9EkhZU9ZLR/s=
-github.com/pulumi/pulumi-terraform-bridge/pf v0.32.0/go.mod h1:pWkGrl4GPwWcMevCZMxSzkYw36s0tN0/a/W1oK4SwPU=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.79.0 h1:h0HlgUsqaQAe57/+AP9kbhHo5SLI0uwl8lstjVG+I9U=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.79.0/go.mod h1:U5CqG4BJmdzCd4ALO2cx/dEP0yTHfIS2sk2ah1ngZq4=
+github.com/pulumi/pulumi-terraform-bridge/pf v0.33.0 h1:uVZamPDL9vlZAXXg3OTl2P6KV4e31QSgX2UVOgJlTnU=
+github.com/pulumi/pulumi-terraform-bridge/pf v0.33.0/go.mod h1:TKmiJUAmU6beGzYG5DC5EtHf0SSpVtqt+YyVDlGwFWA=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.0 h1:A+LvNkIIPYokCyGJG6eO+rlZge1my/Bj7ouZbiwC7AM=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.0/go.mod h1:VzIl/lDqPfHpYq2UQQvY6YHeSXwt0+riqc8eNpK+ElA=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 h1:mav2tSitA9BPJPLLahKgepHyYsMzwaTm4cvp0dcTMYw=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8/go.mod h1:qUYk2c9i/yqMGNj9/bQyXpS39BxNDSXYjVN1njnq0zY=
 github.com/pulumi/pulumi-yaml v1.6.0 h1:mb/QkebWXTa1fR+P3ZkCCHGXOYC6iTN8X8By9eNz8xM=
