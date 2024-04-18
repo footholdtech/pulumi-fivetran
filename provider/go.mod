@@ -3,7 +3,7 @@ module github.com/footholdtech/pulumi-fivetran/provider
 go 1.21
 
 require (
-	github.com/fivetran/terraform-provider-fivetran v1.1.21
+	github.com/fivetran/terraform-provider-fivetran v1.1.22
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.33.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.0
 	github.com/pulumi/pulumi/sdk/v3 v3.112.0

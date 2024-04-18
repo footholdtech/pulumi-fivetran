@@ -4562,7 +4562,9 @@
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "hash"
+                    ]
                 }
             }
         },
@@ -8265,7 +8267,9 @@
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "hash"
+                    ]
                 }
             }
         },
@@ -8604,7 +8608,9 @@
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "hash"
+                    ]
                 }
             }
         },
@@ -8979,7 +8985,9 @@
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "hash"
+                    ]
                 }
             }
         },
@@ -9865,8 +9873,7 @@
                 },
                 "connectorId": {
                     "type": "string",
-                    "description": "The unique identifier for the target connector within the Fivetran system.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The unique identifier for the target connector within the Fivetran system.\n"
                 }
             },
             "requiredInputs": [
@@ -9883,8 +9890,7 @@
                     },
                     "connectorId": {
                         "type": "string",
-                        "description": "The unique identifier for the target connector within the Fivetran system.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The unique identifier for the target connector within the Fivetran system.\n"
                     }
                 },
                 "type": "object"
@@ -9910,8 +9916,7 @@
             "inputProperties": {
                 "connectorId": {
                     "type": "string",
-                    "description": "The unique identifier for the target connector within the Fivetran system.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The unique identifier for the target connector within the Fivetran system.\n"
                 },
                 "fingerprints": {
                     "type": "array",
@@ -9928,8 +9933,7 @@
                 "properties": {
                     "connectorId": {
                         "type": "string",
-                        "description": "The unique identifier for the target connector within the Fivetran system.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The unique identifier for the target connector within the Fivetran system.\n"
                     },
                     "fingerprints": {
                         "type": "array",
@@ -10671,8 +10675,7 @@
                 },
                 "destinationId": {
                     "type": "string",
-                    "description": "The unique identifier for the target destination within the Fivetran system.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The unique identifier for the target destination within the Fivetran system.\n"
                 }
             },
             "requiredInputs": [
@@ -10689,8 +10692,7 @@
                     },
                     "destinationId": {
                         "type": "string",
-                        "description": "The unique identifier for the target destination within the Fivetran system.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The unique identifier for the target destination within the Fivetran system.\n"
                     }
                 },
                 "type": "object"
@@ -10716,8 +10718,7 @@
             "inputProperties": {
                 "destinationId": {
                     "type": "string",
-                    "description": "The unique identifier for the target destination within the Fivetran system.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The unique identifier for the target destination within the Fivetran system.\n"
                 },
                 "fingerprints": {
                     "type": "array",
@@ -10734,8 +10735,7 @@
                 "properties": {
                     "destinationId": {
                         "type": "string",
-                        "description": "The unique identifier for the target destination within the Fivetran system.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The unique identifier for the target destination within the Fivetran system.\n"
                     },
                     "fingerprints": {
                         "type": "array",
@@ -12882,6 +12882,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getUsers.\n",
                 "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the user within the Fivetran system.\n"
+                    },
                     "users": {
                         "type": "array",
                         "items": {
@@ -12896,7 +12900,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID of this resource.\n"
                     },
                     "users": {
                         "type": "array",
@@ -12905,11 +12909,7 @@
                         }
                     }
                 },
-                "type": "object",
-                "required": [
-                    "users",
-                    "id"
-                ]
+                "type": "object"
             }
         },
         "fivetran:index/getWebhook:getWebhook": {

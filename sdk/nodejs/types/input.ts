@@ -5883,7 +5883,7 @@ export interface GetConnectorCertificatesCertificate {
     /**
      * Hash of the fingerprint.
      */
-    hash?: string;
+    hash: string;
     /**
      * Certificate name.
      */
@@ -5918,7 +5918,7 @@ export interface GetConnectorCertificatesCertificateArgs {
     /**
      * Hash of the fingerprint.
      */
-    hash?: pulumi.Input<string>;
+    hash: pulumi.Input<string>;
     /**
      * Certificate name.
      */
@@ -15777,7 +15777,7 @@ export interface GetConnectorFingerprintsFingerprint {
     /**
      * Hash of the fingerprint.
      */
-    hash?: string;
+    hash: string;
     /**
      * The SSH public key.
      */
@@ -15796,7 +15796,7 @@ export interface GetConnectorFingerprintsFingerprintArgs {
     /**
      * Hash of the fingerprint.
      */
-    hash?: pulumi.Input<string>;
+    hash: pulumi.Input<string>;
     /**
      * The SSH public key.
      */
@@ -16073,7 +16073,7 @@ export interface GetDestinationCertificatesCertificate {
     /**
      * Hash of the fingerprint.
      */
-    hash?: string;
+    hash: string;
     /**
      * Certificate name.
      */
@@ -16108,7 +16108,7 @@ export interface GetDestinationCertificatesCertificateArgs {
     /**
      * Hash of the fingerprint.
      */
-    hash?: pulumi.Input<string>;
+    hash: pulumi.Input<string>;
     /**
      * Certificate name.
      */
@@ -17117,7 +17117,7 @@ export interface GetDestinationFingerprintsFingerprint {
     /**
      * Hash of the fingerprint.
      */
-    hash?: string;
+    hash: string;
     /**
      * The SSH public key.
      */
@@ -17136,7 +17136,7 @@ export interface GetDestinationFingerprintsFingerprintArgs {
     /**
      * Hash of the fingerprint.
      */
-    hash?: pulumi.Input<string>;
+    hash: pulumi.Input<string>;
     /**
      * The SSH public key.
      */

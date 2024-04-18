@@ -1756,8 +1756,8 @@ github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2
 github.com/felixge/httpsnoop v1.0.4/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
 github.com/fivetran/go-fivetran v0.8.4 h1:Jas3wrw5J/RZpqOqwIWUrgKaTrniD8o7B6/RQXa2huc=
 github.com/fivetran/go-fivetran v0.8.4/go.mod h1:EIy5Uwn1zylQCr/7O+8rrwvmjvhW3PPpzHkQj26ON7Y=
-github.com/fivetran/terraform-provider-fivetran v1.1.21 h1:oaduYFTFp0DL1U8wCRdG2fBh2SLanyoWgHCafFuz54k=
-github.com/fivetran/terraform-provider-fivetran v1.1.21/go.mod h1:1pO1qnaEarNPfn+nEiKGjTrmKKmU3U/hicd9K/k2UQY=
+github.com/fivetran/terraform-provider-fivetran v1.1.22 h1:yLKLnFT3LbCgEUShj+M9iidzVs/XBvldsI0y9942dcg=
+github.com/fivetran/terraform-provider-fivetran v1.1.22/go.mod h1:1pO1qnaEarNPfn+nEiKGjTrmKKmU3U/hicd9K/k2UQY=
 github.com/fogleman/gg v1.2.1-0.20190220221249-0403632d5b90/go.mod h1:R/bRT+9gY/C5z7JzPU0zXsXHKM4/ayA+zqcVNZzPa1k=
 github.com/fogleman/gg v1.3.0/go.mod h1:R/bRT+9gY/C5z7JzPU0zXsXHKM4/ayA+zqcVNZzPa1k=
 github.com/form3tech-oss/jwt-go v3.2.2+incompatible/go.mod h1:pbq4aXjuKjdthFRnoDwaVPLA+WlJuPGy+QneDUgJi2k=
