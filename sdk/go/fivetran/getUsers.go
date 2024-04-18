@@ -50,13 +50,15 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
+	// The unique identifier for the user within the Fivetran system.
+	Id    *string        `pulumi:"id"`
 	Users []GetUsersUser `pulumi:"users"`
 }
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id    string         `pulumi:"id"`
+	// The ID of this resource.
+	Id    *string        `pulumi:"id"`
 	Users []GetUsersUser `pulumi:"users"`
 }
 
@@ -75,6 +77,8 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getUsers.
 type GetUsersOutputArgs struct {
+	// The unique identifier for the user within the Fivetran system.
+	Id    pulumi.StringPtrInput  `pulumi:"id"`
 	Users GetUsersUserArrayInput `pulumi:"users"`
 }
 
@@ -97,9 +101,9 @@ func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o GetUsersResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
+// The ID of this resource.
+func (o GetUsersResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {

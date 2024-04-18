@@ -33,15 +33,15 @@ class GetUsersResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def users(self) -> Sequence['outputs.GetUsersUserResult']:
+    def users(self) -> Optional[Sequence['outputs.GetUsersUserResult']]:
         return pulumi.get(self, "users")
 
 
@@ -55,7 +55,8 @@ class AwaitableGetUsersResult(GetUsersResult):
             users=self.users)
 
 
-def get_users(users: Optional[Sequence[pulumi.InputType['GetUsersUserArgs']]] = None,
+def get_users(id: Optional[str] = None,
+              users: Optional[Sequence[pulumi.InputType['GetUsersUserArgs']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
     This data source returns a list of all users within your Fivetran account.
@@ -70,8 +71,12 @@ def get_users(users: Optional[Sequence[pulumi.InputType['GetUsersUserArgs']]] = 
     users = fivetran.get_users()
     ```
     <!--End PulumiCodeChooser -->
+
+
+    :param str id: The unique identifier for the user within the Fivetran system.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['users'] = users
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('fivetran:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
@@ -82,7 +87,8 @@ def get_users(users: Optional[Sequence[pulumi.InputType['GetUsersUserArgs']]] = 
 
 
 @_utilities.lift_output_func(get_users)
-def get_users_output(users: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUsersUserArgs']]]]] = None,
+def get_users_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                     users: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUsersUserArgs']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
     """
     This data source returns a list of all users within your Fivetran account.
@@ -97,5 +103,8 @@ def get_users_output(users: Optional[pulumi.Input[Optional[Sequence[pulumi.Input
     users = fivetran.get_users()
     ```
     <!--End PulumiCodeChooser -->
+
+
+    :param str id: The unique identifier for the user within the Fivetran system.
     """
     ...

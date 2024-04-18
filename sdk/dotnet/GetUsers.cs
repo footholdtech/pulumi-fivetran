@@ -62,6 +62,12 @@ namespace Footholdtech.Fivetran
 
     public sealed class GetUsersArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The unique identifier for the user within the Fivetran system.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
         [Input("users")]
         private List<Inputs.GetUsersUserArgs>? _users;
         public List<Inputs.GetUsersUserArgs> Users
@@ -78,6 +84,12 @@ namespace Footholdtech.Fivetran
 
     public sealed class GetUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The unique identifier for the user within the Fivetran system.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         [Input("users")]
         private InputList<Inputs.GetUsersUserInputArgs>? _users;
         public InputList<Inputs.GetUsersUserInputArgs> Users
@@ -97,14 +109,14 @@ namespace Footholdtech.Fivetran
     public sealed class GetUsersResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource.
         /// </summary>
-        public readonly string Id;
+        public readonly string? Id;
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 
         [OutputConstructor]
         private GetUsersResult(
-            string id,
+            string? id,
 
             ImmutableArray<Outputs.GetUsersUserResult> users)
         {
