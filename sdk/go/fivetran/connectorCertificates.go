@@ -16,7 +16,7 @@ type ConnectorCertificates struct {
 	pulumi.CustomResourceState
 
 	Certificates ConnectorCertificatesCertificateArrayOutput `pulumi:"certificates"`
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId pulumi.StringOutput `pulumi:"connectorId"`
 }
 
@@ -54,13 +54,13 @@ func GetConnectorCertificates(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ConnectorCertificates resources.
 type connectorCertificatesState struct {
 	Certificates []ConnectorCertificatesCertificate `pulumi:"certificates"`
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId *string `pulumi:"connectorId"`
 }
 
 type ConnectorCertificatesState struct {
 	Certificates ConnectorCertificatesCertificateArrayInput
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId pulumi.StringPtrInput
 }
 
@@ -70,14 +70,14 @@ func (ConnectorCertificatesState) ElementType() reflect.Type {
 
 type connectorCertificatesArgs struct {
 	Certificates []ConnectorCertificatesCertificate `pulumi:"certificates"`
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId string `pulumi:"connectorId"`
 }
 
 // The set of arguments for constructing a ConnectorCertificates resource.
 type ConnectorCertificatesArgs struct {
 	Certificates ConnectorCertificatesCertificateArrayInput
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId pulumi.StringInput
 }
 
@@ -172,7 +172,7 @@ func (o ConnectorCertificatesOutput) Certificates() ConnectorCertificatesCertifi
 	return o.ApplyT(func(v *ConnectorCertificates) ConnectorCertificatesCertificateArrayOutput { return v.Certificates }).(ConnectorCertificatesCertificateArrayOutput)
 }
 
-// The unique identifier for the target connector within the Fivetran system.
+// The unique identifier for the target connection within the Fivetran system.
 func (o ConnectorCertificatesOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorCertificates) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
 }

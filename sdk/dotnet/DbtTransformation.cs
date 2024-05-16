@@ -16,39 +16,6 @@ namespace Footholdtech.Fivetran
     /// This resource allows you to add, manage and delete dbt Transformations for existing dbt Model.
     /// To retrieve available dbt Models use this [Retrieve dbt Project models](https://fivetran.com/docs/rest-api/dbt-transformation-management#retrievedbtprojectmodels) endpoint.
     /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Fivetran = Footholdtech.Fivetran;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var transformation = new Fivetran.DbtTransformation("transformation", new()
-    ///     {
-    ///         DbtModelName = "dbt_model_name",
-    ///         DbtProjectId = "dbt_project_id",
-    ///         Paused = false,
-    ///         RunTests = false,
-    ///         Schedule = new Fivetran.Inputs.DbtTransformationScheduleArgs
-    ///         {
-    ///             DaysOfWeeks = new[]
-    ///             {
-    ///                 "MONDAY",
-    ///                 "SATURDAY",
-    ///             },
-    ///             ScheduleType = "TIME_OF_DAY",
-    ///             TimeOfDay = "12:00",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// 1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard.
@@ -119,7 +86,7 @@ namespace Footholdtech.Fivetran
         public Output<string> OutputModelName { get; private set; } = null!;
 
         /// <summary>
-        /// The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        /// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         /// </summary>
         [Output("paused")]
         public Output<bool> Paused { get; private set; } = null!;
@@ -130,11 +97,11 @@ namespace Footholdtech.Fivetran
         [Output("runTests")]
         public Output<bool> RunTests { get; private set; } = null!;
 
-        /// <summary>
-        /// dbt Transformation schedule parameters.
-        /// </summary>
         [Output("schedule")]
-        public Output<Outputs.DbtTransformationSchedule> Schedule { get; private set; } = null!;
+        public Output<Outputs.DbtTransformationSchedule?> Schedule { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.DbtTransformationTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -196,22 +163,22 @@ namespace Footholdtech.Fivetran
         public Input<string> DbtProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        /// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         /// </summary>
-        [Input("paused", required: true)]
-        public Input<bool> Paused { get; set; } = null!;
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
 
         /// <summary>
         /// The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
         /// </summary>
-        [Input("runTests", required: true)]
-        public Input<bool> RunTests { get; set; } = null!;
+        [Input("runTests")]
+        public Input<bool>? RunTests { get; set; }
 
-        /// <summary>
-        /// dbt Transformation schedule parameters.
-        /// </summary>
-        [Input("schedule", required: true)]
-        public Input<Inputs.DbtTransformationScheduleArgs> Schedule { get; set; } = null!;
+        [Input("schedule")]
+        public Input<Inputs.DbtTransformationScheduleArgs>? Schedule { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.DbtTransformationTimeoutsArgs>? Timeouts { get; set; }
 
         public DbtTransformationArgs()
         {
@@ -276,7 +243,7 @@ namespace Footholdtech.Fivetran
         public Input<string>? OutputModelName { get; set; }
 
         /// <summary>
-        /// The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        /// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
@@ -287,11 +254,11 @@ namespace Footholdtech.Fivetran
         [Input("runTests")]
         public Input<bool>? RunTests { get; set; }
 
-        /// <summary>
-        /// dbt Transformation schedule parameters.
-        /// </summary>
         [Input("schedule")]
         public Input<Inputs.DbtTransformationScheduleGetArgs>? Schedule { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.DbtTransformationTimeoutsGetArgs>? Timeouts { get; set; }
 
         public DbtTransformationState()
         {

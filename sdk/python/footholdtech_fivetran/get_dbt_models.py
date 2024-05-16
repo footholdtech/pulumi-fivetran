@@ -38,23 +38,20 @@ class GetDbtModelsResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource (equals to `project_id`).
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def models(self) -> Sequence['outputs.GetDbtModelsModelResult']:
-        """
-        The collection of dbt Models.
-        """
+    def models(self) -> Optional[Sequence['outputs.GetDbtModelsModelResult']]:
         return pulumi.get(self, "models")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        The unique identifier for the dbt project within the Fivetran system.
+        The unique identifier for the dbt Project within the Fivetran system.
         """
         return pulumi.get(self, "project_id")
 
@@ -78,18 +75,15 @@ def get_dbt_models(models: Optional[Sequence[pulumi.InputType['GetDbtModelsModel
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_models = fivetran.get_dbt_models(project_id="project_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param Sequence[pulumi.InputType['GetDbtModelsModelArgs']] models: The collection of dbt Models.
-    :param str project_id: The unique identifier for the dbt project within the Fivetran system.
+    :param str project_id: The unique identifier for the dbt Project within the Fivetran system.
     """
     __args__ = dict()
     __args__['models'] = models
@@ -112,17 +106,14 @@ def get_dbt_models_output(models: Optional[pulumi.Input[Optional[Sequence[pulumi
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_models = fivetran.get_dbt_models(project_id="project_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param Sequence[pulumi.InputType['GetDbtModelsModelArgs']] models: The collection of dbt Models.
-    :param str project_id: The unique identifier for the dbt project within the Fivetran system.
+    :param str project_id: The unique identifier for the dbt Project within the Fivetran system.
     """
     ...

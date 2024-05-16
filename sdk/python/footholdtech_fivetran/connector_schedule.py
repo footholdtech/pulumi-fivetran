@@ -235,7 +235,6 @@ class ConnectorSchedule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -248,7 +247,6 @@ class ConnectorSchedule(pulumi.CustomResource):
             pause_after_trial="true",
             schedule_type="auto")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -312,7 +310,6 @@ class ConnectorSchedule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -325,7 +322,6 @@ class ConnectorSchedule(pulumi.CustomResource):
             pause_after_trial="true",
             schedule_type="auto")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

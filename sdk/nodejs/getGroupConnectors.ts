@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     schema: "connector_schema_name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupConnectors(args: GetGroupConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupConnectorsResult> {
 
@@ -39,11 +37,11 @@ export function getGroupConnectors(args: GetGroupConnectorsArgs, opts?: pulumi.I
 export interface GetGroupConnectorsArgs {
     connectors?: inputs.GetGroupConnectorsConnector[];
     /**
-     * The unique identifier for the Connector within the Fivetran system.
+     * The ID of this resource.
      */
     id: string;
     /**
-     * The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
+     * Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
      */
     schema?: string;
 }
@@ -67,7 +65,6 @@ export interface GetGroupConnectorsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -77,7 +74,6 @@ export interface GetGroupConnectorsResult {
  *     schema: "connector_schema_name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupConnectorsOutput(args: GetGroupConnectorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupConnectorsResult> {
     return pulumi.output(args).apply((a: any) => getGroupConnectors(a, opts))
@@ -89,11 +85,11 @@ export function getGroupConnectorsOutput(args: GetGroupConnectorsOutputArgs, opt
 export interface GetGroupConnectorsOutputArgs {
     connectors?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectorsConnectorArgs>[]>;
     /**
-     * The unique identifier for the Connector within the Fivetran system.
+     * The ID of this resource.
      */
     id: pulumi.Input<string>;
     /**
-     * The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
+     * Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
      */
     schema?: pulumi.Input<string>;
 }

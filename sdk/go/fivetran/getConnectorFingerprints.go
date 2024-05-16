@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupConnectorFingerprints(ctx *pulumi.Context, args *LookupConnectorFingerprintsArgs, opts ...pulumi.InvokeOption) (*LookupConnectorFingerprintsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorFingerprintsResult
@@ -53,16 +51,16 @@ func LookupConnectorFingerprints(ctx *pulumi.Context, args *LookupConnectorFinge
 // A collection of arguments for invoking getConnectorFingerprints.
 type LookupConnectorFingerprintsArgs struct {
 	Fingerprints []GetConnectorFingerprintsFingerprint `pulumi:"fingerprints"`
-	// The unique identifier for the resource. Equal to target connector id.
+	// The unique identifier for the resource. Equal to target connection id.
 	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getConnectorFingerprints.
 type LookupConnectorFingerprintsResult struct {
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  string                                `pulumi:"connectorId"`
 	Fingerprints []GetConnectorFingerprintsFingerprint `pulumi:"fingerprints"`
-	// The unique identifier for the resource. Equal to target connector id.
+	// The unique identifier for the resource. Equal to target connection id.
 	Id string `pulumi:"id"`
 }
 
@@ -82,7 +80,7 @@ func LookupConnectorFingerprintsOutput(ctx *pulumi.Context, args LookupConnector
 // A collection of arguments for invoking getConnectorFingerprints.
 type LookupConnectorFingerprintsOutputArgs struct {
 	Fingerprints GetConnectorFingerprintsFingerprintArrayInput `pulumi:"fingerprints"`
-	// The unique identifier for the resource. Equal to target connector id.
+	// The unique identifier for the resource. Equal to target connection id.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -105,7 +103,7 @@ func (o LookupConnectorFingerprintsResultOutput) ToLookupConnectorFingerprintsRe
 	return o
 }
 
-// The unique identifier for the target connector within the Fivetran system.
+// The unique identifier for the target connection within the Fivetran system.
 func (o LookupConnectorFingerprintsResultOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorFingerprintsResult) string { return v.ConnectorId }).(pulumi.StringOutput)
 }
@@ -114,7 +112,7 @@ func (o LookupConnectorFingerprintsResultOutput) Fingerprints() GetConnectorFing
 	return o.ApplyT(func(v LookupConnectorFingerprintsResult) []GetConnectorFingerprintsFingerprint { return v.Fingerprints }).(GetConnectorFingerprintsFingerprintArrayOutput)
 }
 
-// The unique identifier for the resource. Equal to target connector id.
+// The unique identifier for the resource. Equal to target connection id.
 func (o LookupConnectorFingerprintsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorFingerprintsResult) string { return v.Id }).(pulumi.StringOutput)
 }

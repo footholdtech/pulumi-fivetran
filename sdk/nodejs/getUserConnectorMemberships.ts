@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     userId: "user_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUserConnectorMemberships(args: GetUserConnectorMembershipsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserConnectorMembershipsResult> {
 
@@ -61,7 +59,6 @@ export interface GetUserConnectorMembershipsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -70,7 +67,6 @@ export interface GetUserConnectorMembershipsResult {
  *     userId: "user_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUserConnectorMembershipsOutput(args: GetUserConnectorMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserConnectorMembershipsResult> {
     return pulumi.output(args).apply((a: any) => getUserConnectorMemberships(a, opts))

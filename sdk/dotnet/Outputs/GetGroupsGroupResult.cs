@@ -23,9 +23,9 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The timestamp of when the group was updated in your account.
+        /// The timestamp of when the resource/datasource was updated last time.
         /// </summary>
-        public readonly string? LastUpdated;
+        public readonly string LastUpdated;
         /// <summary>
         /// The name of the group within your account.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Footholdtech.Fivetran.Outputs
 
             string id,
 
-            string? lastUpdated,
+            string lastUpdated,
 
             string name)
         {

@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,7 +49,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -80,7 +78,7 @@ import (
 type ConnectorFingerprints struct {
 	pulumi.CustomResourceState
 
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  pulumi.StringOutput                         `pulumi:"connectorId"`
 	Fingerprints ConnectorFingerprintsFingerprintArrayOutput `pulumi:"fingerprints"`
 }
@@ -118,13 +116,13 @@ func GetConnectorFingerprints(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectorFingerprints resources.
 type connectorFingerprintsState struct {
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  *string                            `pulumi:"connectorId"`
 	Fingerprints []ConnectorFingerprintsFingerprint `pulumi:"fingerprints"`
 }
 
 type ConnectorFingerprintsState struct {
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  pulumi.StringPtrInput
 	Fingerprints ConnectorFingerprintsFingerprintArrayInput
 }
@@ -134,14 +132,14 @@ func (ConnectorFingerprintsState) ElementType() reflect.Type {
 }
 
 type connectorFingerprintsArgs struct {
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  string                             `pulumi:"connectorId"`
 	Fingerprints []ConnectorFingerprintsFingerprint `pulumi:"fingerprints"`
 }
 
 // The set of arguments for constructing a ConnectorFingerprints resource.
 type ConnectorFingerprintsArgs struct {
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  pulumi.StringInput
 	Fingerprints ConnectorFingerprintsFingerprintArrayInput
 }
@@ -233,7 +231,7 @@ func (o ConnectorFingerprintsOutput) ToConnectorFingerprintsOutputWithContext(ct
 	return o
 }
 
-// The unique identifier for the target connector within the Fivetran system.
+// The unique identifier for the target connection within the Fivetran system.
 func (o ConnectorFingerprintsOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorFingerprints) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
 }

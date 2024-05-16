@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDbtTransformationResult',
@@ -22,7 +23,7 @@ class GetDbtTransformationResult:
     """
     A collection of values returned by getDbtTransformation.
     """
-    def __init__(__self__, connector_ids=None, created_at=None, dbt_model_id=None, dbt_model_name=None, dbt_project_id=None, id=None, model_ids=None, output_model_name=None, paused=None, run_tests=None, schedules=None):
+    def __init__(__self__, connector_ids=None, created_at=None, dbt_model_id=None, dbt_model_name=None, dbt_project_id=None, id=None, model_ids=None, output_model_name=None, paused=None, run_tests=None, schedule=None):
         if connector_ids and not isinstance(connector_ids, list):
             raise TypeError("Expected argument 'connector_ids' to be a list")
         pulumi.set(__self__, "connector_ids", connector_ids)
@@ -53,9 +54,9 @@ class GetDbtTransformationResult:
         if run_tests and not isinstance(run_tests, bool):
             raise TypeError("Expected argument 'run_tests' to be a bool")
         pulumi.set(__self__, "run_tests", run_tests)
-        if schedules and not isinstance(schedules, list):
-            raise TypeError("Expected argument 'schedules' to be a list")
-        pulumi.set(__self__, "schedules", schedules)
+        if schedule and not isinstance(schedule, dict):
+            raise TypeError("Expected argument 'schedule' to be a dict")
+        pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="connectorIds")
@@ -101,7 +102,7 @@ class GetDbtTransformationResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of this resource.
+        The unique identifier for the dbt Transformation within the Fivetran system.
         """
         return pulumi.get(self, "id")
 
@@ -125,7 +126,7 @@ class GetDbtTransformationResult:
     @pulumi.getter
     def paused(self) -> bool:
         """
-        The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         """
         return pulumi.get(self, "paused")
 
@@ -139,11 +140,8 @@ class GetDbtTransformationResult:
 
     @property
     @pulumi.getter
-    def schedules(self) -> Sequence['outputs.GetDbtTransformationScheduleResult']:
-        """
-        dbt Transformation schedule parameters.
-        """
-        return pulumi.get(self, "schedules")
+    def schedule(self) -> Optional['outputs.GetDbtTransformationScheduleResult']:
+        return pulumi.get(self, "schedule")
 
 
 class AwaitableGetDbtTransformationResult(GetDbtTransformationResult):
@@ -162,30 +160,30 @@ class AwaitableGetDbtTransformationResult(GetDbtTransformationResult):
             output_model_name=self.output_model_name,
             paused=self.paused,
             run_tests=self.run_tests,
-            schedules=self.schedules)
+            schedule=self.schedule)
 
 
 def get_dbt_transformation(id: Optional[str] = None,
+                           schedule: Optional[pulumi.InputType['GetDbtTransformationScheduleArgs']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbtTransformationResult:
     """
     This data source returns a dbt Transformation object.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     transformation = fivetran.get_dbt_transformation(id="transformation_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The ID of this resource.
+    :param str id: The unique identifier for the dbt Transformation within the Fivetran system.
     """
     __args__ = dict()
     __args__['id'] = id
+    __args__['schedule'] = schedule
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('fivetran:index/getDbtTransformation:getDbtTransformation', __args__, opts=opts, typ=GetDbtTransformationResult).value
 
@@ -200,27 +198,26 @@ def get_dbt_transformation(id: Optional[str] = None,
         output_model_name=pulumi.get(__ret__, 'output_model_name'),
         paused=pulumi.get(__ret__, 'paused'),
         run_tests=pulumi.get(__ret__, 'run_tests'),
-        schedules=pulumi.get(__ret__, 'schedules'))
+        schedule=pulumi.get(__ret__, 'schedule'))
 
 
 @_utilities.lift_output_func(get_dbt_transformation)
 def get_dbt_transformation_output(id: Optional[pulumi.Input[str]] = None,
+                                  schedule: Optional[pulumi.Input[Optional[pulumi.InputType['GetDbtTransformationScheduleArgs']]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtTransformationResult]:
     """
     This data source returns a dbt Transformation object.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     transformation = fivetran.get_dbt_transformation(id="transformation_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The ID of this resource.
+    :param str id: The unique identifier for the dbt Transformation within the Fivetran system.
     """
     ...

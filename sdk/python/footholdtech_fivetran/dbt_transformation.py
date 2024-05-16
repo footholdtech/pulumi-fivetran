@@ -18,22 +18,27 @@ class DbtTransformationArgs:
     def __init__(__self__, *,
                  dbt_model_name: pulumi.Input[str],
                  dbt_project_id: pulumi.Input[str],
-                 paused: pulumi.Input[bool],
-                 run_tests: pulumi.Input[bool],
-                 schedule: pulumi.Input['DbtTransformationScheduleArgs']):
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 run_tests: Optional[pulumi.Input[bool]] = None,
+                 schedule: Optional[pulumi.Input['DbtTransformationScheduleArgs']] = None,
+                 timeouts: Optional[pulumi.Input['DbtTransformationTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a DbtTransformation resource.
         :param pulumi.Input[str] dbt_model_name: Target dbt Model name.
         :param pulumi.Input[str] dbt_project_id: The unique identifier for the dbt Project within the Fivetran system.
-        :param pulumi.Input[bool] paused: The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        :param pulumi.Input[bool] paused: The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         :param pulumi.Input[bool] run_tests: The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-        :param pulumi.Input['DbtTransformationScheduleArgs'] schedule: dbt Transformation schedule parameters.
         """
         pulumi.set(__self__, "dbt_model_name", dbt_model_name)
         pulumi.set(__self__, "dbt_project_id", dbt_project_id)
-        pulumi.set(__self__, "paused", paused)
-        pulumi.set(__self__, "run_tests", run_tests)
-        pulumi.set(__self__, "schedule", schedule)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if run_tests is not None:
+            pulumi.set(__self__, "run_tests", run_tests)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="dbtModelName")
@@ -61,39 +66,45 @@ class DbtTransformationArgs:
 
     @property
     @pulumi.getter
-    def paused(self) -> pulumi.Input[bool]:
+    def paused(self) -> Optional[pulumi.Input[bool]]:
         """
-        The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         """
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: pulumi.Input[bool]):
+    def paused(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "paused", value)
 
     @property
     @pulumi.getter(name="runTests")
-    def run_tests(self) -> pulumi.Input[bool]:
+    def run_tests(self) -> Optional[pulumi.Input[bool]]:
         """
         The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
         """
         return pulumi.get(self, "run_tests")
 
     @run_tests.setter
-    def run_tests(self, value: pulumi.Input[bool]):
+    def run_tests(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "run_tests", value)
 
     @property
     @pulumi.getter
-    def schedule(self) -> pulumi.Input['DbtTransformationScheduleArgs']:
-        """
-        dbt Transformation schedule parameters.
-        """
+    def schedule(self) -> Optional[pulumi.Input['DbtTransformationScheduleArgs']]:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: pulumi.Input['DbtTransformationScheduleArgs']):
+    def schedule(self, value: Optional[pulumi.Input['DbtTransformationScheduleArgs']]):
         pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DbtTransformationTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DbtTransformationTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -108,7 +119,8 @@ class _DbtTransformationState:
                  output_model_name: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input['DbtTransformationScheduleArgs']] = None):
+                 schedule: Optional[pulumi.Input['DbtTransformationScheduleArgs']] = None,
+                 timeouts: Optional[pulumi.Input['DbtTransformationTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering DbtTransformation resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connector_ids: Identifiers of related connectors.
@@ -118,9 +130,8 @@ class _DbtTransformationState:
         :param pulumi.Input[str] dbt_project_id: The unique identifier for the dbt Project within the Fivetran system.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] model_ids: Identifiers of related models.
         :param pulumi.Input[str] output_model_name: The dbt Model name.
-        :param pulumi.Input[bool] paused: The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        :param pulumi.Input[bool] paused: The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         :param pulumi.Input[bool] run_tests: The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-        :param pulumi.Input['DbtTransformationScheduleArgs'] schedule: dbt Transformation schedule parameters.
         """
         if connector_ids is not None:
             pulumi.set(__self__, "connector_ids", connector_ids)
@@ -142,6 +153,8 @@ class _DbtTransformationState:
             pulumi.set(__self__, "run_tests", run_tests)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="connectorIds")
@@ -231,7 +244,7 @@ class _DbtTransformationState:
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
         """
-        The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         """
         return pulumi.get(self, "paused")
 
@@ -254,14 +267,20 @@ class _DbtTransformationState:
     @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['DbtTransformationScheduleArgs']]:
-        """
-        dbt Transformation schedule parameters.
-        """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
     def schedule(self, value: Optional[pulumi.Input['DbtTransformationScheduleArgs']]):
         pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DbtTransformationTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DbtTransformationTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 class DbtTransformation(pulumi.CustomResource):
@@ -274,35 +293,13 @@ class DbtTransformation(pulumi.CustomResource):
                  paused: Optional[pulumi.Input[bool]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['DbtTransformationTimeoutsArgs']]] = None,
                  __props__=None):
         """
         Resource is in ALPHA state.
 
         This resource allows you to add, manage and delete dbt Transformations for existing dbt Model.
         To retrieve available dbt Models use this [Retrieve dbt Project models](https://fivetran.com/docs/rest-api/dbt-transformation-management#retrievedbtprojectmodels) endpoint.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import footholdtech_fivetran as fivetran
-
-        transformation = fivetran.DbtTransformation("transformation",
-            dbt_model_name="dbt_model_name",
-            dbt_project_id="dbt_project_id",
-            paused=False,
-            run_tests=False,
-            schedule=fivetran.DbtTransformationScheduleArgs(
-                days_of_weeks=[
-                    "MONDAY",
-                    "SATURDAY",
-                ],
-                schedule_type="TIME_OF_DAY",
-                time_of_day="12:00",
-            ))
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -332,9 +329,8 @@ class DbtTransformation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dbt_model_name: Target dbt Model name.
         :param pulumi.Input[str] dbt_project_id: The unique identifier for the dbt Project within the Fivetran system.
-        :param pulumi.Input[bool] paused: The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        :param pulumi.Input[bool] paused: The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         :param pulumi.Input[bool] run_tests: The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-        :param pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']] schedule: dbt Transformation schedule parameters.
         """
         ...
     @overload
@@ -347,29 +343,6 @@ class DbtTransformation(pulumi.CustomResource):
 
         This resource allows you to add, manage and delete dbt Transformations for existing dbt Model.
         To retrieve available dbt Models use this [Retrieve dbt Project models](https://fivetran.com/docs/rest-api/dbt-transformation-management#retrievedbtprojectmodels) endpoint.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import footholdtech_fivetran as fivetran
-
-        transformation = fivetran.DbtTransformation("transformation",
-            dbt_model_name="dbt_model_name",
-            dbt_project_id="dbt_project_id",
-            paused=False,
-            run_tests=False,
-            schedule=fivetran.DbtTransformationScheduleArgs(
-                days_of_weeks=[
-                    "MONDAY",
-                    "SATURDAY",
-                ],
-                schedule_type="TIME_OF_DAY",
-                time_of_day="12:00",
-            ))
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -415,6 +388,7 @@ class DbtTransformation(pulumi.CustomResource):
                  paused: Optional[pulumi.Input[bool]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['DbtTransformationTimeoutsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -430,15 +404,10 @@ class DbtTransformation(pulumi.CustomResource):
             if dbt_project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dbt_project_id'")
             __props__.__dict__["dbt_project_id"] = dbt_project_id
-            if paused is None and not opts.urn:
-                raise TypeError("Missing required property 'paused'")
             __props__.__dict__["paused"] = paused
-            if run_tests is None and not opts.urn:
-                raise TypeError("Missing required property 'run_tests'")
             __props__.__dict__["run_tests"] = run_tests
-            if schedule is None and not opts.urn:
-                raise TypeError("Missing required property 'schedule'")
             __props__.__dict__["schedule"] = schedule
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["connector_ids"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["dbt_model_id"] = None
@@ -463,7 +432,8 @@ class DbtTransformation(pulumi.CustomResource):
             output_model_name: Optional[pulumi.Input[str]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             run_tests: Optional[pulumi.Input[bool]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None) -> 'DbtTransformation':
+            schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['DbtTransformationTimeoutsArgs']]] = None) -> 'DbtTransformation':
         """
         Get an existing DbtTransformation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -478,9 +448,8 @@ class DbtTransformation(pulumi.CustomResource):
         :param pulumi.Input[str] dbt_project_id: The unique identifier for the dbt Project within the Fivetran system.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] model_ids: Identifiers of related models.
         :param pulumi.Input[str] output_model_name: The dbt Model name.
-        :param pulumi.Input[bool] paused: The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        :param pulumi.Input[bool] paused: The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         :param pulumi.Input[bool] run_tests: The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-        :param pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']] schedule: dbt Transformation schedule parameters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -496,6 +465,7 @@ class DbtTransformation(pulumi.CustomResource):
         __props__.__dict__["paused"] = paused
         __props__.__dict__["run_tests"] = run_tests
         __props__.__dict__["schedule"] = schedule
+        __props__.__dict__["timeouts"] = timeouts
         return DbtTransformation(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -558,7 +528,7 @@ class DbtTransformation(pulumi.CustomResource):
     @pulumi.getter
     def paused(self) -> pulumi.Output[bool]:
         """
-        The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         """
         return pulumi.get(self, "paused")
 
@@ -572,9 +542,11 @@ class DbtTransformation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schedule(self) -> pulumi.Output['outputs.DbtTransformationSchedule']:
-        """
-        dbt Transformation schedule parameters.
-        """
+    def schedule(self) -> pulumi.Output[Optional['outputs.DbtTransformationSchedule']]:
         return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.DbtTransformationTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

@@ -159,14 +159,12 @@ def get_webhook(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     webhook = fivetran.get_webhook(id="webhook_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The webhook ID
@@ -197,14 +195,12 @@ def get_webhook_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     webhook = fivetran.get_webhook(id="webhook_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The webhook ID

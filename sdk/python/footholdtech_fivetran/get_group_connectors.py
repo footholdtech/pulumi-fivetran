@@ -76,7 +76,6 @@ def get_group_connectors(connectors: Optional[Sequence[pulumi.InputType['GetGrou
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
@@ -84,11 +83,10 @@ def get_group_connectors(connectors: Optional[Sequence[pulumi.InputType['GetGrou
     group_connectors = fivetran.get_group_connectors(id="anonymous_mystery",
         schema="connector_schema_name")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the Connector within the Fivetran system.
-    :param str schema: The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
+    :param str id: The ID of this resource.
+    :param str schema: Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
     """
     __args__ = dict()
     __args__['connectors'] = connectors
@@ -113,7 +111,6 @@ def get_group_connectors_output(connectors: Optional[pulumi.Input[Optional[Seque
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
@@ -121,10 +118,9 @@ def get_group_connectors_output(connectors: Optional[pulumi.Input[Optional[Seque
     group_connectors = fivetran.get_group_connectors(id="anonymous_mystery",
         schema="connector_schema_name")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the Connector within the Fivetran system.
-    :param str schema: The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
+    :param str id: The ID of this resource.
+    :param str schema: Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
     """
     ...

@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,17 +29,15 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
-        public static Task<GetDbtProjectsResult> InvokeAsync(GetDbtProjectsArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbtProjectsResult>("fivetran:index/getDbtProjects:getDbtProjects", args ?? new GetDbtProjectsArgs(), options.WithDefaults());
+        public static Task<GetDbtProjectsResult> InvokeAsync(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbtProjectsResult>("fivetran:index/getDbtProjects:getDbtProjects", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// This data source returns a list of all dbt Projects within your Fivetran account.
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,43 +50,9 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
-        public static Output<GetDbtProjectsResult> Invoke(GetDbtProjectsInvokeArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetDbtProjectsResult>("fivetran:index/getDbtProjects:getDbtProjects", args ?? new GetDbtProjectsInvokeArgs(), options.WithDefaults());
-    }
-
-
-    public sealed class GetDbtProjectsArgs : global::Pulumi.InvokeArgs
-    {
-        [Input("projects")]
-        private List<Inputs.GetDbtProjectsProjectArgs>? _projects;
-        public List<Inputs.GetDbtProjectsProjectArgs> Projects
-        {
-            get => _projects ?? (_projects = new List<Inputs.GetDbtProjectsProjectArgs>());
-            set => _projects = value;
-        }
-
-        public GetDbtProjectsArgs()
-        {
-        }
-        public static new GetDbtProjectsArgs Empty => new GetDbtProjectsArgs();
-    }
-
-    public sealed class GetDbtProjectsInvokeArgs : global::Pulumi.InvokeArgs
-    {
-        [Input("projects")]
-        private InputList<Inputs.GetDbtProjectsProjectInputArgs>? _projects;
-        public InputList<Inputs.GetDbtProjectsProjectInputArgs> Projects
-        {
-            get => _projects ?? (_projects = new InputList<Inputs.GetDbtProjectsProjectInputArgs>());
-            set => _projects = value;
-        }
-
-        public GetDbtProjectsInvokeArgs()
-        {
-        }
-        public static new GetDbtProjectsInvokeArgs Empty => new GetDbtProjectsInvokeArgs();
+        public static Output<GetDbtProjectsResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbtProjectsResult>("fivetran:index/getDbtProjects:getDbtProjects", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

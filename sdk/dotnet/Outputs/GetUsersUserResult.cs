@@ -31,7 +31,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string GivenName;
         /// <summary>
-        /// The unique identifier for the user within the Fivetran system.
+        /// The unique identifier for the user within your account.
         /// </summary>
         public readonly string Id;
         /// <summary>

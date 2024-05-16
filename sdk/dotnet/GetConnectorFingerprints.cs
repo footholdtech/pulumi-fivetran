@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConnectorFingerprintsResult> InvokeAsync(GetConnectorFingerprintsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectorFingerprintsResult>("fivetran:index/getConnectorFingerprints:getConnectorFingerprints", args ?? new GetConnectorFingerprintsArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConnectorFingerprintsResult> Invoke(GetConnectorFingerprintsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorFingerprintsResult>("fivetran:index/getConnectorFingerprints:getConnectorFingerprints", args ?? new GetConnectorFingerprintsInvokeArgs(), options.WithDefaults());
@@ -77,7 +73,7 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The unique identifier for the resource. Equal to target connector id.
+        /// The unique identifier for the resource. Equal to target connection id.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -99,7 +95,7 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The unique identifier for the resource. Equal to target connector id.
+        /// The unique identifier for the resource. Equal to target connection id.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -115,12 +111,12 @@ namespace Footholdtech.Fivetran
     public sealed class GetConnectorFingerprintsResult
     {
         /// <summary>
-        /// The unique identifier for the target connector within the Fivetran system.
+        /// The unique identifier for the target connection within the Fivetran system.
         /// </summary>
         public readonly string ConnectorId;
         public readonly ImmutableArray<Outputs.GetConnectorFingerprintsFingerprintResult> Fingerprints;
         /// <summary>
-        /// The unique identifier for the resource. Equal to target connector id.
+        /// The unique identifier for the resource. Equal to target connection id.
         /// </summary>
         public readonly string Id;
 

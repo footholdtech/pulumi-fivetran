@@ -14,7 +14,7 @@ namespace Footholdtech.Fivetran.Inputs
     public sealed class GetConnectorCertificatesCertificateInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Hash of the fingerprint.
+        /// Hash of the certificate.
         /// </summary>
         [Input("hash", required: true)]
         public Input<string> Hash { get; set; } = null!;
@@ -26,7 +26,7 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Certificate public key.
+        /// The SSH public key.
         /// </summary>
         [Input("publicKey", required: true)]
         public Input<string> PublicKey { get; set; } = null!;
@@ -44,7 +44,7 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string> Sha256 { get; set; } = null!;
 
         /// <summary>
-        /// Certificate type.
+        /// Type of the certificate.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -56,7 +56,7 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string> ValidatedBy { get; set; } = null!;
 
         /// <summary>
-        /// The date when the certificate was approved.
+        /// The date when certificate was approved.
         /// </summary>
         [Input("validatedDate", required: true)]
         public Input<string> ValidatedDate { get; set; } = null!;

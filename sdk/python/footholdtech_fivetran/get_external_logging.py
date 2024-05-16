@@ -112,14 +112,12 @@ def get_external_logging(config: Optional[pulumi.InputType['GetExternalLoggingCo
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     extlog = fivetran.get_external_logging(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the log service within the Fivetran system.
@@ -151,14 +149,12 @@ def get_external_logging_output(config: Optional[pulumi.Input[Optional[pulumi.In
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     extlog = fivetran.get_external_logging(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the log service within the Fivetran system.

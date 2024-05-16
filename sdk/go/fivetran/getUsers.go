@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,7 +36,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
@@ -50,7 +48,7 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
-	// The unique identifier for the user within the Fivetran system.
+	// The ID of this resource.
 	Id    *string        `pulumi:"id"`
 	Users []GetUsersUser `pulumi:"users"`
 }
@@ -77,7 +75,7 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getUsers.
 type GetUsersOutputArgs struct {
-	// The unique identifier for the user within the Fivetran system.
+	// The ID of this resource.
 	Id    pulumi.StringPtrInput  `pulumi:"id"`
 	Users GetUsersUserArrayInput `pulumi:"users"`
 }

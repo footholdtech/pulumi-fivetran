@@ -331,7 +331,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -342,7 +341,6 @@ class User(pulumi.CustomResource):
             given_name="John",
             phone="+353 00 0000 0000")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -392,7 +390,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -403,7 +400,6 @@ class User(pulumi.CustomResource):
             given_name="John",
             phone="+353 00 0000 0000")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

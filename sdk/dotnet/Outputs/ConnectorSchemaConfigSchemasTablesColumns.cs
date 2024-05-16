@@ -15,7 +15,7 @@ namespace Footholdtech.Fivetran.Outputs
     public sealed class ConnectorSchemaConfigSchemasTablesColumns
     {
         /// <summary>
-        /// The boolean value specifying whether the sync for the schema into the destination is enabled.
+        /// The boolean value specifying whether the sync of the column into the destination is enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

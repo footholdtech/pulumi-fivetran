@@ -32,7 +32,7 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string> ValidatedBy { get; set; } = null!;
 
         /// <summary>
-        /// The date when SSH fingerprint was approved.
+        /// The date when fingerprint was approved.
         /// </summary>
         [Input("validatedDate", required: true)]
         public Input<string> ValidatedDate { get; set; } = null!;

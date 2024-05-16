@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDbtTransformationResult> InvokeAsync(GetDbtTransformationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbtTransformationResult>("fivetran:index/getDbtTransformation:getDbtTransformation", args ?? new GetDbtTransformationArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDbtTransformationResult> Invoke(GetDbtTransformationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbtTransformationResult>("fivetran:index/getDbtTransformation:getDbtTransformation", args ?? new GetDbtTransformationInvokeArgs(), options.WithDefaults());
@@ -69,10 +65,13 @@ namespace Footholdtech.Fivetran
     public sealed class GetDbtTransformationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of this resource.
+        /// The unique identifier for the dbt Transformation within the Fivetran system.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
+
+        [Input("schedule")]
+        public Inputs.GetDbtTransformationScheduleArgs? Schedule { get; set; }
 
         public GetDbtTransformationArgs()
         {
@@ -83,10 +82,13 @@ namespace Footholdtech.Fivetran
     public sealed class GetDbtTransformationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of this resource.
+        /// The unique identifier for the dbt Transformation within the Fivetran system.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
+
+        [Input("schedule")]
+        public Input<Inputs.GetDbtTransformationScheduleInputArgs>? Schedule { get; set; }
 
         public GetDbtTransformationInvokeArgs()
         {
@@ -119,7 +121,7 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public readonly string DbtProjectId;
         /// <summary>
-        /// The ID of this resource.
+        /// The unique identifier for the dbt Transformation within the Fivetran system.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -131,17 +133,14 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public readonly string OutputModelName;
         /// <summary>
-        /// The field indicating whether the transformation will be created in paused state. By default, the value is false.
+        /// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         /// </summary>
         public readonly bool Paused;
         /// <summary>
         /// The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
         /// </summary>
         public readonly bool RunTests;
-        /// <summary>
-        /// dbt Transformation schedule parameters.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetDbtTransformationScheduleResult> Schedules;
+        public readonly Outputs.GetDbtTransformationScheduleResult? Schedule;
 
         [OutputConstructor]
         private GetDbtTransformationResult(
@@ -165,7 +164,7 @@ namespace Footholdtech.Fivetran
 
             bool runTests,
 
-            ImmutableArray<Outputs.GetDbtTransformationScheduleResult> schedules)
+            Outputs.GetDbtTransformationScheduleResult? schedule)
         {
             ConnectorIds = connectorIds;
             CreatedAt = createdAt;
@@ -177,7 +176,7 @@ namespace Footholdtech.Fivetran
             OutputModelName = outputModelName;
             Paused = paused;
             RunTests = runTests;
-            Schedules = schedules;
+            Schedule = schedule;
         }
     }
 }

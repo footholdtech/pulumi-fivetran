@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDbtProjectResult> InvokeAsync(GetDbtProjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbtProjectResult>("fivetran:index/getDbtProject:getDbtProject", args ?? new GetDbtProjectArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDbtProjectResult> Invoke(GetDbtProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbtProjectResult>("fivetran:index/getDbtProject:getDbtProject", args ?? new GetDbtProjectInvokeArgs(), options.WithDefaults());
@@ -69,22 +65,13 @@ namespace Footholdtech.Fivetran
     public sealed class GetDbtProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the dbt Model within the Fivetran system.
+        /// The unique identifier for the dbt Project within the Fivetran system.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        [Input("models")]
-        private List<Inputs.GetDbtProjectModelArgs>? _models;
-
-        /// <summary>
-        /// The collection of dbt Models.
-        /// </summary>
-        public List<Inputs.GetDbtProjectModelArgs> Models
-        {
-            get => _models ?? (_models = new List<Inputs.GetDbtProjectModelArgs>());
-            set => _models = value;
-        }
+        [Input("projectConfig")]
+        public Inputs.GetDbtProjectProjectConfigArgs? ProjectConfig { get; set; }
 
         public GetDbtProjectArgs()
         {
@@ -95,22 +82,13 @@ namespace Footholdtech.Fivetran
     public sealed class GetDbtProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the dbt Model within the Fivetran system.
+        /// The unique identifier for the dbt Project within the Fivetran system.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        [Input("models")]
-        private InputList<Inputs.GetDbtProjectModelInputArgs>? _models;
-
-        /// <summary>
-        /// The collection of dbt Models.
-        /// </summary>
-        public InputList<Inputs.GetDbtProjectModelInputArgs> Models
-        {
-            get => _models ?? (_models = new InputList<Inputs.GetDbtProjectModelInputArgs>());
-            set => _models = value;
-        }
+        [Input("projectConfig")]
+        public Input<Inputs.GetDbtProjectProjectConfigInputArgs>? ProjectConfig { get; set; }
 
         public GetDbtProjectInvokeArgs()
         {
@@ -138,6 +116,13 @@ namespace Footholdtech.Fivetran
         /// Default schema in destination. This production schema will contain your transformed data.
         /// </summary>
         public readonly string DefaultSchema;
+        /// <summary>
+        /// Should resource wait for project to finish initialization. Default value: true.
+        /// </summary>
+        public readonly bool EnsureReadiness;
+        /// <summary>
+        /// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+        /// </summary>
         public readonly ImmutableArray<string> EnvironmentVars;
         /// <summary>
         /// The unique identifier for the group within the Fivetran system.
@@ -147,14 +132,8 @@ namespace Footholdtech.Fivetran
         /// The unique identifier for the dbt Project within the Fivetran system.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The collection of dbt Models.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetDbtProjectModelResult> Models;
-        /// <summary>
-        /// Type specific dbt Project configuration parameters.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetDbtProjectProjectConfigResult> ProjectConfigs;
+        public readonly Outputs.GetDbtProjectProjectConfigResult? ProjectConfig;
         /// <summary>
         /// Public key to grant Fivetran SSH access to git repository.
         /// </summary>
@@ -186,6 +165,8 @@ namespace Footholdtech.Fivetran
 
             string defaultSchema,
 
+            bool ensureReadiness,
+
             ImmutableArray<string> environmentVars,
 
             string groupId,
@@ -194,7 +175,7 @@ namespace Footholdtech.Fivetran
 
             ImmutableArray<Outputs.GetDbtProjectModelResult> models,
 
-            ImmutableArray<Outputs.GetDbtProjectProjectConfigResult> projectConfigs,
+            Outputs.GetDbtProjectProjectConfigResult? projectConfig,
 
             string publicKey,
 
@@ -210,11 +191,12 @@ namespace Footholdtech.Fivetran
             CreatedById = createdById;
             DbtVersion = dbtVersion;
             DefaultSchema = defaultSchema;
+            EnsureReadiness = ensureReadiness;
             EnvironmentVars = environmentVars;
             GroupId = groupId;
             Id = id;
             Models = models;
-            ProjectConfigs = projectConfigs;
+            ProjectConfig = projectConfig;
             PublicKey = publicKey;
             Status = status;
             TargetName = targetName;

@@ -97,7 +97,6 @@ class TeamConnectorMembership(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -118,7 +117,6 @@ class TeamConnectorMembership(pulumi.CustomResource):
             ],
             opts=pulumi.ResourceOptions(provider=fivetran_provider))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -161,7 +159,6 @@ class TeamConnectorMembership(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -182,7 +179,6 @@ class TeamConnectorMembership(pulumi.CustomResource):
             ],
             opts=pulumi.ResourceOptions(provider=fivetran_provider))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

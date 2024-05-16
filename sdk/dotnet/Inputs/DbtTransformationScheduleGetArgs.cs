@@ -34,8 +34,8 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
         /// </summary>
-        [Input("scheduleType", required: true)]
-        public Input<string> ScheduleType { get; set; } = null!;
+        [Input("scheduleType")]
+        public Input<string>? ScheduleType { get; set; }
 
         /// <summary>
         /// The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"

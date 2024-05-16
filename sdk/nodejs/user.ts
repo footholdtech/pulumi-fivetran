@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     phone: "+353 00 0000 0000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

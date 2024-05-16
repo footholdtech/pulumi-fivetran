@@ -23,7 +23,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string ModelName;
         /// <summary>
-        /// Boolean specifying whether the model is selected for execution.
+        /// Boolean specifying whether the model is selected for execution in the dashboard.
         /// </summary>
         public readonly bool Scheduled;
 

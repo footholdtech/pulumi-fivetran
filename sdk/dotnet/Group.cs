@@ -15,7 +15,6 @@ namespace Footholdtech.Fivetran
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,7 +27,6 @@ namespace Footholdtech.Fivetran
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -66,7 +64,7 @@ namespace Footholdtech.Fivetran
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp of when the group was updated in your account.
+        /// The timestamp of when the resource/datasource was updated last time.
         /// </summary>
         [Output("lastUpdated")]
         public Output<string> LastUpdated { get; private set; } = null!;
@@ -145,7 +143,7 @@ namespace Footholdtech.Fivetran
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The timestamp of when the group was updated in your account.
+        /// The timestamp of when the resource/datasource was updated last time.
         /// </summary>
         [Input("lastUpdated")]
         public Input<string>? LastUpdated { get; set; }

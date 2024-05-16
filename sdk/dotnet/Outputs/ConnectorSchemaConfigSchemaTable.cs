@@ -16,11 +16,11 @@ namespace Footholdtech.Fivetran.Outputs
     {
         public readonly ImmutableArray<Outputs.ConnectorSchemaConfigSchemaTableColumn> Columns;
         /// <summary>
-        /// The boolean value specifying whether the sync for the schema into the destination is enabled.
+        /// The boolean value specifying whether the sync of table into the destination is enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The schema name within your destination in accordance with Fivetran conventional rules.
+        /// The table name within your destination in accordance with Fivetran conventional rules.
         /// </summary>
         public readonly string Name;
         /// <summary>

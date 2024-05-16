@@ -210,7 +210,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly bool IsPrivateKeyEncrypted;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelinkbeta).
+        /// 	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
         /// </summary>
         public readonly bool IsPrivateLinkRequired;
         /// <summary>
@@ -225,6 +225,16 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string LakehouseName;
         public readonly string MskStsRegion;
         public readonly int NumOfPartitions;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: OAuth 2.0 client ID. Required if auth_type is set to OAUTH2.
+        /// </summary>
+        public readonly string Oauth2ClientId;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: OAuth 2.0 secret. Required if auth_type is set to OAUTH2.
+        /// </summary>
+        public readonly string Oauth2Secret;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `snowflake`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
@@ -565,6 +575,10 @@ namespace Footholdtech.Fivetran.Outputs
 
             int numOfPartitions,
 
+            string oauth2ClientId,
+
+            string oauth2Secret,
+
             string passphrase,
 
             string password,
@@ -669,6 +683,8 @@ namespace Footholdtech.Fivetran.Outputs
             LakehouseName = lakehouseName;
             MskStsRegion = mskStsRegion;
             NumOfPartitions = numOfPartitions;
+            Oauth2ClientId = oauth2ClientId;
+            Oauth2Secret = oauth2Secret;
             Passphrase = passphrase;
             Password = password;
             PersonalAccessToken = personalAccessToken;

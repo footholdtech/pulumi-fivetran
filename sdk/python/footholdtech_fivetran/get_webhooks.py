@@ -60,14 +60,12 @@ def get_webhooks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWeb
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     webhooks = fivetran.get_webhooks()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -85,13 +83,11 @@ def get_webhooks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     webhooks = fivetran.get_webhooks()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

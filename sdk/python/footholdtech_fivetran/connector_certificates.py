@@ -20,7 +20,7 @@ class ConnectorCertificatesArgs:
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]] = None):
         """
         The set of arguments for constructing a ConnectorCertificates resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         pulumi.set(__self__, "connector_id", connector_id)
         if certificates is not None:
@@ -30,7 +30,7 @@ class ConnectorCertificatesArgs:
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Input[str]:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -55,7 +55,7 @@ class _ConnectorCertificatesState:
                  connector_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConnectorCertificates resources.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         if certificates is not None:
             pulumi.set(__self__, "certificates", certificates)
@@ -75,7 +75,7 @@ class _ConnectorCertificatesState:
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -96,7 +96,7 @@ class ConnectorCertificates(pulumi.CustomResource):
         Create a ConnectorCertificates resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         ...
     @overload
@@ -155,7 +155,7 @@ class ConnectorCertificates(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -174,7 +174,7 @@ class ConnectorCertificates(pulumi.CustomResource):
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Output[str]:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 

@@ -20,7 +20,7 @@ class ConnectorFingerprintsArgs:
                  fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]] = None):
         """
         The set of arguments for constructing a ConnectorFingerprints resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         pulumi.set(__self__, "connector_id", connector_id)
         if fingerprints is not None:
@@ -30,7 +30,7 @@ class ConnectorFingerprintsArgs:
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Input[str]:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -55,7 +55,7 @@ class _ConnectorFingerprintsState:
                  fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConnectorFingerprints resources.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         if connector_id is not None:
             pulumi.set(__self__, "connector_id", connector_id)
@@ -66,7 +66,7 @@ class _ConnectorFingerprintsState:
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -97,7 +97,6 @@ class ConnectorFingerprints(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -115,7 +114,6 @@ class ConnectorFingerprints(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -145,7 +143,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         ...
     @overload
@@ -158,7 +156,6 @@ class ConnectorFingerprints(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
@@ -176,7 +173,6 @@ class ConnectorFingerprints(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -253,7 +249,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -267,7 +263,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Output[str]:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 

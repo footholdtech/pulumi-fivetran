@@ -15,7 +15,6 @@ namespace Footholdtech.Fivetran
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Footholdtech.Fivetran
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -76,7 +74,7 @@ namespace Footholdtech.Fivetran
     public partial class ConnectorFingerprints : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The unique identifier for the target connector within the Fivetran system.
+        /// The unique identifier for the target connection within the Fivetran system.
         /// </summary>
         [Output("connectorId")]
         public Output<string> ConnectorId { get; private set; } = null!;
@@ -132,7 +130,7 @@ namespace Footholdtech.Fivetran
     public sealed class ConnectorFingerprintsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique identifier for the target connector within the Fivetran system.
+        /// The unique identifier for the target connection within the Fivetran system.
         /// </summary>
         [Input("connectorId", required: true)]
         public Input<string> ConnectorId { get; set; } = null!;
@@ -154,7 +152,7 @@ namespace Footholdtech.Fivetran
     public sealed class ConnectorFingerprintsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique identifier for the target connector within the Fivetran system.
+        /// The unique identifier for the target connection within the Fivetran system.
         /// </summary>
         [Input("connectorId")]
         public Input<string>? ConnectorId { get; set; }

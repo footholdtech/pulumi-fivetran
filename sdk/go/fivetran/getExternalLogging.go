@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupExternalLogging(ctx *pulumi.Context, args *LookupExternalLoggingArgs, opts ...pulumi.InvokeOption) (*LookupExternalLoggingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupExternalLoggingResult

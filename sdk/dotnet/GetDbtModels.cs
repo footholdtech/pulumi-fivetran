@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDbtModelsResult> InvokeAsync(GetDbtModelsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbtModelsResult>("fivetran:index/getDbtModels:getDbtModels", args ?? new GetDbtModelsArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDbtModelsResult> Invoke(GetDbtModelsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbtModelsResult>("fivetran:index/getDbtModels:getDbtModels", args ?? new GetDbtModelsInvokeArgs(), options.WithDefaults());
@@ -70,10 +66,6 @@ namespace Footholdtech.Fivetran
     {
         [Input("models")]
         private List<Inputs.GetDbtModelsModelArgs>? _models;
-
-        /// <summary>
-        /// The collection of dbt Models.
-        /// </summary>
         public List<Inputs.GetDbtModelsModelArgs> Models
         {
             get => _models ?? (_models = new List<Inputs.GetDbtModelsModelArgs>());
@@ -81,7 +73,7 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The unique identifier for the dbt project within the Fivetran system.
+        /// The unique identifier for the dbt Project within the Fivetran system.
         /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
@@ -96,10 +88,6 @@ namespace Footholdtech.Fivetran
     {
         [Input("models")]
         private InputList<Inputs.GetDbtModelsModelInputArgs>? _models;
-
-        /// <summary>
-        /// The collection of dbt Models.
-        /// </summary>
         public InputList<Inputs.GetDbtModelsModelInputArgs> Models
         {
             get => _models ?? (_models = new InputList<Inputs.GetDbtModelsModelInputArgs>());
@@ -107,7 +95,7 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The unique identifier for the dbt project within the Fivetran system.
+        /// The unique identifier for the dbt Project within the Fivetran system.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -123,15 +111,12 @@ namespace Footholdtech.Fivetran
     public sealed class GetDbtModelsResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource (equals to `project_id`).
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The collection of dbt Models.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetDbtModelsModelResult> Models;
         /// <summary>
-        /// The unique identifier for the dbt project within the Fivetran system.
+        /// The unique identifier for the dbt Project within the Fivetran system.
         /// </summary>
         public readonly string ProjectId;
 

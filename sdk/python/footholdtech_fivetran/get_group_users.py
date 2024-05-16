@@ -63,17 +63,15 @@ def get_group_users(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     group_users = fivetran.get_group_users(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the user within the account.
+    :param str id: The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -95,16 +93,14 @@ def get_group_users_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     group_users = fivetran.get_group_users(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the user within the account.
+    :param str id: The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
     """
     ...

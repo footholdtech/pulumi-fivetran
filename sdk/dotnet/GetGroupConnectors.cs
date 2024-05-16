@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGroupConnectorsResult> InvokeAsync(GetGroupConnectorsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupConnectorsResult>("fivetran:index/getGroupConnectors:getGroupConnectors", args ?? new GetGroupConnectorsArgs(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,7 +58,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupConnectorsResult> Invoke(GetGroupConnectorsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupConnectorsResult>("fivetran:index/getGroupConnectors:getGroupConnectors", args ?? new GetGroupConnectorsInvokeArgs(), options.WithDefaults());
@@ -79,13 +75,13 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The unique identifier for the Connector within the Fivetran system.
+        /// The ID of this resource.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
+        /// Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
         /// </summary>
         [Input("schema")]
         public string? Schema { get; set; }
@@ -107,13 +103,13 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The unique identifier for the Connector within the Fivetran system.
+        /// The ID of this resource.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
+        /// Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }

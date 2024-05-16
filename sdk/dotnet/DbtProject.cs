@@ -15,41 +15,6 @@ namespace Footholdtech.Fivetran
     /// 
     /// This resource allows you to add, manage and delete dbt Projects in your account.
     /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Fivetran = Footholdtech.Fivetran;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = new Fivetran.DbtProject("project", new()
-    ///     {
-    ///         DbtVersion = "1.4.1",
-    ///         DefaultSchema = "default_schema",
-    ///         EnvironmentVars = new[]
-    ///         {
-    ///             "environment_var=value",
-    ///         },
-    ///         GroupId = "group_id",
-    ///         ProjectConfig = new Fivetran.Inputs.DbtProjectProjectConfigArgs
-    ///         {
-    ///             FolderPath = "/dbt/project/folder/path",
-    ///             GitBranch = "main",
-    ///             GitRemoteUrl = "your_git_remote_url",
-    ///         },
-    ///         TargetName = "target_name",
-    ///         Threads = 8,
-    ///         Type = "GIT",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// 1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.
@@ -107,8 +72,11 @@ namespace Footholdtech.Fivetran
         /// Should resource wait for project to finish initialization. Default value: true.
         /// </summary>
         [Output("ensureReadiness")]
-        public Output<bool?> EnsureReadiness { get; private set; } = null!;
+        public Output<bool> EnsureReadiness { get; private set; } = null!;
 
+        /// <summary>
+        /// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+        /// </summary>
         [Output("environmentVars")]
         public Output<ImmutableArray<string>> EnvironmentVars { get; private set; } = null!;
 
@@ -118,17 +86,11 @@ namespace Footholdtech.Fivetran
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
-        /// <summary>
-        /// The collection of dbt Models.
-        /// </summary>
         [Output("models")]
         public Output<ImmutableArray<Outputs.DbtProjectModel>> Models { get; private set; } = null!;
 
-        /// <summary>
-        /// Type specific dbt Project configuration parameters.
-        /// </summary>
         [Output("projectConfig")]
-        public Output<Outputs.DbtProjectProjectConfig> ProjectConfig { get; private set; } = null!;
+        public Output<Outputs.DbtProjectProjectConfig?> ProjectConfig { get; private set; } = null!;
 
         /// <summary>
         /// Public key to grant Fivetran SSH access to git repository.
@@ -152,13 +114,16 @@ namespace Footholdtech.Fivetran
         /// The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         /// </summary>
         [Output("threads")]
-        public Output<int?> Threads { get; private set; } = null!;
+        public Output<int> Threads { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.DbtProjectTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
         /// </summary>
         [Output("type")]
-        public Output<string> Type { get; private set; } = null!;
+        public Output<string?> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -227,6 +192,10 @@ namespace Footholdtech.Fivetran
 
         [Input("environmentVars")]
         private InputList<string>? _environmentVars;
+
+        /// <summary>
+        /// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+        /// </summary>
         public InputList<string> EnvironmentVars
         {
             get => _environmentVars ?? (_environmentVars = new InputList<string>());
@@ -239,23 +208,8 @@ namespace Footholdtech.Fivetran
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
-        [Input("models")]
-        private InputList<Inputs.DbtProjectModelArgs>? _models;
-
-        /// <summary>
-        /// The collection of dbt Models.
-        /// </summary>
-        public InputList<Inputs.DbtProjectModelArgs> Models
-        {
-            get => _models ?? (_models = new InputList<Inputs.DbtProjectModelArgs>());
-            set => _models = value;
-        }
-
-        /// <summary>
-        /// Type specific dbt Project configuration parameters.
-        /// </summary>
-        [Input("projectConfig", required: true)]
-        public Input<Inputs.DbtProjectProjectConfigArgs> ProjectConfig { get; set; } = null!;
+        [Input("projectConfig")]
+        public Input<Inputs.DbtProjectProjectConfigArgs>? ProjectConfig { get; set; }
 
         /// <summary>
         /// Target name to set or override the value from the deployment.yaml
@@ -268,6 +222,9 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Input("threads")]
         public Input<int>? Threads { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.DbtProjectTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
@@ -315,6 +272,10 @@ namespace Footholdtech.Fivetran
 
         [Input("environmentVars")]
         private InputList<string>? _environmentVars;
+
+        /// <summary>
+        /// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+        /// </summary>
         public InputList<string> EnvironmentVars
         {
             get => _environmentVars ?? (_environmentVars = new InputList<string>());
@@ -329,19 +290,12 @@ namespace Footholdtech.Fivetran
 
         [Input("models")]
         private InputList<Inputs.DbtProjectModelGetArgs>? _models;
-
-        /// <summary>
-        /// The collection of dbt Models.
-        /// </summary>
         public InputList<Inputs.DbtProjectModelGetArgs> Models
         {
             get => _models ?? (_models = new InputList<Inputs.DbtProjectModelGetArgs>());
             set => _models = value;
         }
 
-        /// <summary>
-        /// Type specific dbt Project configuration parameters.
-        /// </summary>
         [Input("projectConfig")]
         public Input<Inputs.DbtProjectProjectConfigGetArgs>? ProjectConfig { get; set; }
 
@@ -368,6 +322,9 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Input("threads")]
         public Input<int>? Threads { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.DbtProjectTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).

@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,7 +29,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("fivetran:index/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
@@ -40,7 +38,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +50,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("fivetran:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
@@ -63,7 +59,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetUsersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the user within the Fivetran system.
+        /// The ID of this resource.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -85,7 +81,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the user within the Fivetran system.
+        /// The ID of this resource.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

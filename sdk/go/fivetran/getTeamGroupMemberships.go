@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTeamGroupMemberships(ctx *pulumi.Context, args *GetTeamGroupMembershipsArgs, opts ...pulumi.InvokeOption) (*GetTeamGroupMembershipsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTeamGroupMembershipsResult

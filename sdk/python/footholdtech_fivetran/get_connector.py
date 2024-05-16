@@ -197,14 +197,12 @@ def get_connector(config: Optional[pulumi.InputType['GetConnectorConfigArgs']] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     connector = fivetran.get_connector(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['config'] = config
@@ -245,13 +243,11 @@ def get_connector_output(config: Optional[pulumi.Input[Optional[pulumi.InputType
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     connector = fivetran.get_connector(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

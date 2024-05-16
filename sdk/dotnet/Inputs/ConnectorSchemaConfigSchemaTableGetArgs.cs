@@ -22,13 +22,13 @@ namespace Footholdtech.Fivetran.Inputs
         }
 
         /// <summary>
-        /// The boolean value specifying whether the sync for the schema into the destination is enabled.
+        /// The boolean value specifying whether the sync of table into the destination is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The schema name within your destination in accordance with Fivetran conventional rules.
+        /// The table name within your destination in accordance with Fivetran conventional rules.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

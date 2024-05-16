@@ -75,14 +75,12 @@ def get_destination_fingerprints(fingerprints: Optional[Sequence[pulumi.InputTyp
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     destination_fingerprints = fivetran.get_destination_fingerprints(id="destination_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the resource. Equal to target destination id.
@@ -108,14 +106,12 @@ def get_destination_fingerprints_output(fingerprints: Optional[pulumi.Input[Opti
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     destination_fingerprints = fivetran.get_destination_fingerprints(id="destination_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the resource. Equal to target destination id.
