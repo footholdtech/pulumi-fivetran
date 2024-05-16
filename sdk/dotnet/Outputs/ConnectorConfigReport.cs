@@ -26,7 +26,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> Attributes;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+        /// 	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
         /// 	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
         /// </summary>
         public readonly string? ConfigType;

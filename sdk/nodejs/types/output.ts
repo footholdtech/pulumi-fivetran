@@ -195,7 +195,7 @@ export interface ConnectorCertificatesCertificate {
      */
     encodedCert: string;
     /**
-     * Hash of the fingerprint.
+     * Hash of the certificate.
      */
     hash: string;
     /**
@@ -203,7 +203,7 @@ export interface ConnectorCertificatesCertificate {
      */
     name: string;
     /**
-     * Certificate public key.
+     * The SSH public key.
      */
     publicKey: string;
     /**
@@ -215,7 +215,7 @@ export interface ConnectorCertificatesCertificate {
      */
     sha256: string;
     /**
-     * Certificate type.
+     * Type of the certificate.
      */
     type: string;
     /**
@@ -223,7 +223,7 @@ export interface ConnectorCertificatesCertificate {
      */
     validatedBy: string;
     /**
-     * The date when the certificate was approved.
+     * The date when certificate was approved.
      */
     validatedDate: string;
 }
@@ -364,6 +364,7 @@ export interface ConnectorConfig {
     accountKey: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `eventsforce`: Your Eventsforce account name.
      * 	- Service `freshdeskContactCenter`: Your Freshdesk Contact Center account name.
      * 	- Service `happyfox`: Your HappyFox account name.
      * 	- Service `maxioSaasoptics`: Your Maxio SaaSOptics account name.
@@ -371,6 +372,11 @@ export interface ConnectorConfig {
      * 	- Service `udemyBusiness`: Your Udemy Business account name.
      */
     accountName?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `tymeshift`: Your Tymeshift account plan.
+     */
+    accountPlan?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `iterable`: If your Iterable account URL starts with `https://app.eu.iterable.com` then provide `EU` else `US`
@@ -616,6 +622,11 @@ export interface ConnectorConfig {
     alwaysEncrypted: boolean;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `freshsuccess`: Set this parameter to `api`.
+     */
+    api?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `shopify`: API access token of your custom app.
      * 	- Service `square`: The Square API access token of your application.
      */
@@ -647,6 +658,7 @@ export interface ConnectorConfig {
      * 	- Service `avantlink`: Your AvantLink API key.
      * 	- Service `ballotready`: Your BallotReady API token.
      * 	- Service `bamboohr`: Your API Key.
+     * 	- Service `bizzabo`: Your Bizzabo API key.
      * 	- Service `braze`: Your Braze API Key.
      * 	- Service `brevo`: Your Brevo API key.
      * 	- Service `callrail`: Your CallRail API key.
@@ -692,6 +704,7 @@ export interface ConnectorConfig {
      * 	- Service `freshdesk`: Your Freshdesk API Key.
      * 	- Service `freshdeskContactCenter`: Your Freshdesk Contact Center API key.
      * 	- Service `freshservice`: Your Freshservice API Key.
+     * 	- Service `freshsuccess`: Your Freshsuccess API key.
      * 	- Service `freshteam`: Your Freshteam API key.
      * 	- Service `friendbuy`: Your Friendbuy API key.
      * 	- Service `fullstory`: Your Fullstory API key.
@@ -717,6 +730,7 @@ export interface ConnectorConfig {
      * 	- Service `kisi`: Your Kisi API key.
      * 	- Service `klaviyo`: Your Klaviyo API key.
      * 	- Service `learnupon`: Your Learnupon API key.
+     * 	- Service `lemlist`: Your Lemlist API key.
      * 	- Service `lever`: Your Lever API key.
      * 	- Service `liftoff`: Your Liftoff API key.
      * 	- Service `linksquares`: Your LinkSquares API key.
@@ -729,12 +743,15 @@ export interface ConnectorConfig {
      * 	- Service `maxioChargify`: Enter Your API Key.
      * 	- Service `messagebird`: Your MessageBird API key.
      * 	- Service `mountain`: Your MNTN API key.
+     * 	- Service `myosh`: Your Myosh API Key.
      * 	- Service `ometria`: Your Ometria API Key.
      * 	- Service `ordway`: Your Ordway API key.
      * 	- Service `ortto`: Your Ortto API key.
      * 	- Service `pagerduty`: Your PagerDuty API key.
      * 	- Service `papershift`: Your Papershift API Key
+     * 	- Service `partnerize`: Your Partnerize user API key.
      * 	- Service `persona`: Your Persona API key.
+     * 	- Service `picqer`: Your Picqer API key.
      * 	- Service `pinpoint`: Your Pinpoint API key.
      * 	- Service `pipe17`: The Pipe17 API key.
      * 	- Service `playvox`: Your Playvox API Key.
@@ -761,7 +778,7 @@ export interface ConnectorConfig {
      * 	- Service `shortcut`: Your Shortcut API token.
      * 	- Service `shortio`: Your Short.io API key.
      * 	- Service `simplesat`: Your Simplesat API key.
-     * 	- Service `sistrix`: Your Sistrix api key.
+     * 	- Service `sistrix`: Your SISTRIX API key.
      * 	- Service `smartwaiver`: Your Smartwaiver API key.
      * 	- Service `snyk`: Your Snyk API key.
      * 	- Service `sonarqube`: Your Sonarqube API key.
@@ -777,12 +794,14 @@ export interface ConnectorConfig {
      * 	- Service `transcend`: Your Transcend API Key.
      * 	- Service `trello`: Your TRELLO api key.
      * 	- Service `uppromote`: Your UpPromote API key.
+     * 	- Service `veeqo`: Your Veeqo API key.
      * 	- Service `visitByGes`: Your Visit by GES API key.
      * 	- Service `vitally`: Your Vitally API key.
      * 	- Service `vonage`: Your Vonage API Key.
      * 	- Service `vts`: Your VTS API key.
      * 	- Service `webconnex`: Your Webconnex API key.
      * 	- Service `xsolla`: Your Xsolla API key.
+     * 	- Service `yougovSport`: Your Yougov Sport API key.
      * 	- Service `zingtree`: Your Zingtree API key.
      */
     apiKey: string;
@@ -863,7 +882,7 @@ export interface ConnectorConfig {
      * 	- Service `qualtrics`: API token of the Qualtrics account.
      * 	- Service `rakutenadvertising`: Your Rakuten Advertising API token.
      * 	- Service `recharge`: The Recharge API token.
-     * 	- Service `referralhero`: Your Referralhero API Token.
+     * 	- Service `referralhero`: Your Referralhero API token.
      * 	- Service `resourceManagementBySmartsheet`: Your Resource Management by Smartsheet API token.
      * 	- Service `retently`: Your Retently API token.
      * 	- Service `safetyculture`: Your SafetyCulture API token.
@@ -955,6 +974,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `datadog`: Your Datadog application key.
      * 	- Service `dear`: Your Dear Application key.
+     * 	- Service `partnerize`: Your Partnerize user application key.
      */
     applicationKey?: string;
     /**
@@ -1131,6 +1151,7 @@ export interface ConnectorConfig {
      * 	- Service `ortto`: Your Ortto base URL. Possible values: `api`, `api.au`, `api.eu`.
      * 	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `salesforceSandbox`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
+     * 	- Service `veevavault`: Your Veeva Vault base URL.
      */
     baseUrl: string;
     /**
@@ -1256,6 +1277,7 @@ export interface ConnectorConfig {
      * 	- Service `cultureAmp`: Your Culture Amp client ID.
      * 	- Service `cvent`: Your Cvent client ID.
      * 	- Service `d2lBrightspace`: Your D2L Brightspace client ID.
+     * 	- Service `ebay`: Your eBay client ID.
      * 	- Service `flexport`: The Flexport API Key.
      * 	- Service `genesys`: Your Genesys client ID.
      * 	- Service `hanaSapHvaEccNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
@@ -1290,11 +1312,15 @@ export interface ConnectorConfig {
      * 	- Service `swoogo`: Your Swoogo client Id.
      * 	- Service `taboola`: The Taboola client ID.
      * 	- Service `talkdesk`: The Client ID of your OAuth Client
+     * 	- Service `toast`: Your Toast client ID.
      * 	- Service `trelica`: Your Trelica client ID.
+     * 	- Service `tymeshift`: Your Tymeshift client ID.
      * 	- Service `udemyBusiness`: Your Udemy Business client ID.
+     * 	- Service `vonageContactCenter`: Your Vonage Contact Center client ID.
      * 	- Service `walmartMarketplace`: Your Walmart Marketplace client ID.
      * 	- Service `xero`: your clientId
      * 	- Service `xray`: Your Xray Client ID.
+     * 	- Service `yougovSport`: Your Yougov Sport client ID.
      * 	- Service `zendeskChat`: Your Zendesk client ID.
      * 	- Service `zohoBooks`: Your Zoho Books Client ID.
      * 	- Service `zohoCampaigns`: Your Zoho Campaigns Client ID.
@@ -1307,6 +1333,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `appfigures`: Your Appfigures Client Key.
      * 	- Service `thinkific`: Your Thinkific client key.
+     * 	- Service `yougovSport`: Your Yougov Sport client key.
      */
     clientKey?: string;
     /**
@@ -1357,6 +1384,7 @@ export interface ConnectorConfig {
      * 	- Service `cultureAmp`: Your Culture Amp client secret.
      * 	- Service `cvent`: Your Cvent client secret.
      * 	- Service `d2lBrightspace`: Your D2L Brightspace client secret.
+     * 	- Service `ebay`: Your eBay client secret.
      * 	- Service `flexport`: The Flexport API Secret.
      * 	- Service `genesys`: Your Genesys client secret.
      * 	- Service `instructure`: Your Instructure client secret.
@@ -1386,8 +1414,11 @@ export interface ConnectorConfig {
      * 	- Service `taboola`: The Taboola client secret.
      * 	- Service `talkdesk`: The Client Secret of your OAuth Client
      * 	- Service `thinkific`: Your Thinkific client secret.
+     * 	- Service `toast`: Your Toast client secret.
      * 	- Service `trelica`: Your Trelica client secret.
+     * 	- Service `tymeshift`: Your Tymeshift client secret.
      * 	- Service `udemyBusiness`: Your Udemy Business client secret.
+     * 	- Service `vonageContactCenter`: Your Vonage Contact Center client secret.
      * 	- Service `walmartMarketplace`: Your Walmart Marketplace client secret.
      * 	- Service `xero`: your clientSecret
      * 	- Service `xray`: Your Xray Client Secret.
@@ -1478,7 +1509,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#configtype).
-     * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+     * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      */
     configType: string;
     connectingUser?: string;
@@ -1502,6 +1533,7 @@ export interface ConnectorConfig {
      * 	- Service `azureBlobStorage`: The blob storage container connection string.
      * 	- Service `azureEventHub`: Connection string of the Event Hub Namespace you want to sync.
      * 	- Service `azureServiceBus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
+     * 	- Service `microsoftDynamics365Fno`: The blob storage container's connection string.
      * 	- Service `microsoftDynamics365Fo`: The blob storage container connection string.
      */
     connectionString: string;
@@ -1595,6 +1627,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The name of the blob container.
+     * 	- Service `microsoftDynamics365Fno`: The name of the blob container.
      * 	- Service `microsoftDynamics365Fo`: The name of the blob container.
      */
     containerName: string;
@@ -1623,6 +1656,7 @@ export interface ConnectorConfig {
      * 	- Service `googleAds`: A period of time in days during which a conversion is recorded.
      */
     conversionWindowSize: number;
+    convertDatsTypeToDate: boolean;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adjust`: CSV definition for the CSV export (https://help.adjust.com/en/article/csv-uploads#how-do-i-format-my-csv-definition).
@@ -1680,7 +1714,7 @@ export interface ConnectorConfig {
     dailyApiCallLimit: number;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/databases/cosmos#dataaccessmethods).
+     * 	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/connectors/databases/cosmos#dataaccessmethods).
      */
     dataAccessMethod: string;
     /**
@@ -1762,6 +1796,11 @@ export interface ConnectorConfig {
     dateGranularity: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `myosh`: Your Myosh Server variables/db .
+     */
+    db?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
      * 	- Service `azureBlobStorage`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `box`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
@@ -1810,7 +1849,8 @@ export interface ConnectorConfig {
      * 	- Service `okta`: Your Okta domain.
      * 	- Service `pipedrive`: Your Pipedrive domain.
      * 	- Service `shopware`: Your Shopware domain.
-     * 	- Service `sistrix`: Your domain for which you want to fetch data.
+     * 	- Service `sistrix`: Your SISTRIX domain.
+     * 	- Service `solarwindsServiceDesk`: Your SolarWinds Service Desk domain.
      * 	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
      * 	- Service `zendesk`: Zendesk domain.
      * 	- Service `zendeskSunshine`: Zendesk domain.
@@ -2331,7 +2371,7 @@ export interface ConnectorConfig {
     isPrivateKeyEncrypted: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `awsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelink).
+     * 	- Service `awsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
      */
     isPrivateLinkRequired: boolean;
     /**
@@ -2629,7 +2669,7 @@ export interface ConnectorConfig {
     organizationId: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `confluence`: Your Confluence Organization name.
+     * 	- Service `confluence`: Your Confluence organization name.
      */
     organizationName?: string;
     /**
@@ -2737,6 +2777,7 @@ export interface ConnectorConfig {
      * 	- Service `moloco`: Your Moloco account password.
      * 	- Service `mongo`: The user's password.
      * 	- Service `mongoSharded`: The user's password.
+     * 	- Service `myosh`: Your Myosh Password .
      * 	- Service `mysql`: The user's password.
      * 	- Service `mysqlAzure`: The user's password.
      * 	- Service `mysqlRds`: The user's password.
@@ -2785,6 +2826,7 @@ export interface ConnectorConfig {
      * 	- Service `ukgPro`: Your UKG Pro password.
      * 	- Service `unicommerce`: Your uniware login password.
      * 	- Service `upland`: Your Upland Software Password.
+     * 	- Service `veevavault`: Your Veeva Vault password.
      * 	- Service `whenIWork`: Your When I Work password.
      * 	- Service `wherefour`: Your Wherefour password.
      * 	- Service `workday`: Workday password.
@@ -2877,6 +2919,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -2886,6 +2929,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -2980,6 +3024,7 @@ export interface ConnectorConfig {
      * 	- Service `wasabiCloudStorage`: All files and folders under this folder path will be searched for files to sync.
      */
     prefix: string;
+    primaryKey?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Primary Keys
@@ -2987,7 +3032,7 @@ export interface ConnectorConfig {
     primaryKeys?: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `absorbLms`: Your Absorb LMS Private Key.
+     * 	- Service `absorbLms`: Your Absorb LMS REST API private key.
      * 	- Service `adobeAnalytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
      * 	- Service `adpWorkforceNow`: Private Key.
      * 	- Service `anaplan`: The contents of your private key file. Must be populated if `authMode` is set to `Certificate`.
@@ -3145,10 +3190,12 @@ export interface ConnectorConfig {
      * 	- Service `navan`: Your Navan region.
      * 	- Service `on24`: Your ON24 region.
      * 	- Service `pendo`: The Pendo account region.
+     * 	- Service `proofpointSecurityAwareness`: Your Proofpoint Security Awareness Region.
      * 	- Service `ringover`: Your Ringover region.
      * 	- Service `samsara`: The region of your Samsara account. For instance, if your region is `EUROPE`, provide `eu.samsara` in the `Region` field. If your region is not in Europe, provide `samsara`.
      * 	- Service `snyk`: Your Snyk region.
      * 	- Service `talkdesk`: Your Talkdesk region (".com",".eu","ca.com")
+     * 	- Service `vonageContactCenter`: Your Vonage Contact Center region.
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage bucket region. Required for connector creation. Default value: `US_EAST_1`.
      * 	- Service `zohoBooks`: Your Zoho Books application host region.
      * 	- Service `zohoCampaigns`: Your Zoho Campaigns application host region.
@@ -3456,6 +3503,11 @@ export interface ConnectorConfig {
     schemaRegistryUrls?: string[];
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `ebay`: Your eBay Scopes.
+     */
+    scope?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specific Seats to sync. Must be populated if `syncModeSeat` is set to `SPECIFIC_SEATS`.
      */
     seats?: string[];
@@ -3613,7 +3665,7 @@ export interface ConnectorConfig {
     sftpUser: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `sharePoint`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/files/share-point/setup-guide).
+     * 	- Service `sharePoint`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/connectors/files/share-point/setup-guide).
      */
     shareUrl: string;
     /**
@@ -3650,6 +3702,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+     * 	- Service `gcs`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -3711,12 +3764,15 @@ export interface ConnectorConfig {
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified before syncing data.
      */
     skipBefore: number;
+    sncCertificate?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Path to the external security product's library.
      * 	- Service `hanaSapHvaS4Netweaver`: Path to the external security product's library.
      */
     sncLibraryPath?: string;
+    sncMode: string;
+    sncMyName?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Client SNC name.
@@ -3791,9 +3847,11 @@ export interface ConnectorConfig {
      * 	- Service `lookerSource`: Your looker SubDomain name.
      * 	- Service `mailgun`: Your Mailgun subdomain.
      * 	- Service `maxioChargify`: Enter Your Subdomain.
+     * 	- Service `myosh`: Your Myosh Subdomain .
      * 	- Service `namely`: Your Namely subdomain.
      * 	- Service `nylas`: Your Nylas subdomain.
      * 	- Service `okta`: Your Okta subdomain.
+     * 	- Service `picqer`: Your Picqer sub domain name.
      * 	- Service `pinpoint`: Your Pinpoint sub domain name.
      * 	- Service `piwikPro`: Your Piwik PRO subdomain.
      * 	- Service `playvox`: Your Playvox Subdomain.
@@ -3807,9 +3865,11 @@ export interface ConnectorConfig {
      * 	- Service `sapSuccessFactors`: Your SAP SuccessFactors Subdomain.
      * 	- Service `sonarqube`: Your Sonarqube subdomain.
      * 	- Service `starrez`: Your StarRez subdomain
+     * 	- Service `tableauSource`: Your Tableau Source subdomain.
      * 	- Service `tempo`: Your Tempo subdomain.
      * 	- Service `thinkific`: Your Thinkific subdomain.
      * 	- Service `totango`: Your Totango Subdomain.
+     * 	- Service `tymeshift`: Your Tymeshift subdomain.
      * 	- Service `upland`: Your Upland Software subDomain.
      * 	- Service `wordpress`: Your WordPress subdomain.
      * 	- Service `workable`: Your Workable Subdomain.
@@ -3819,14 +3879,17 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
+     * 	- Service `ebay`: Your eBay Environment.
      * 	- Service `freshdesk`: Your company's freshdesk subdomain (usually **company**.freshdesk.com).
      * 	- Service `freshservice`: Your company's freshservice subdomain (usually **company**.freshservice.com).
+     * 	- Service `freshsuccess`: Your Freshsuccess subdomain.
      * 	- Service `gorgias`: Your Gorgias subdomain.
      * 	- Service `klarna`: Your Klarna subdomain.
      * 	- Service `learnupon`: Your Learnupon subdomain.
      * 	- Service `maxioSaasoptics`: Your Maxio SaaSOptics subdomain.
      * 	- Service `medallia`: Medallia subdomain
      * 	- Service `sonarqube`: Your Sonarqube subdomain.
+     * 	- Service `toast`: Your Toast Domain.
      * 	- Service `vts`: Your VTS Subdomain.
      * 	- Service `zendeskChat`: Your Zendesk domain.
      */
@@ -3905,7 +3968,7 @@ export interface ConnectorConfig {
      * 	- Service `dynamodb`: Whether to sync all tables in unpacked mode only or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
      * 	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
      * 	- Service `facebookAdAccount`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-     * 	- Service `facebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#syncmode).
+     * 	- Service `facebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#syncmode).
      * 	- Service `facebookPages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
      * 	- Service `github`: Whether to sync all repositories or specific repositories.
      * 	- Service `googleAds`: Whether to sync all accounts or specific accounts.
@@ -3930,6 +3993,8 @@ export interface ConnectorConfig {
      * 	- Service `twitter`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
      * 	- Service `twitterAds`: Whether to sync all accounts or specific accounts.
      * 	- Service `yahooGemini`: Whether to sync all accounts or specific accounts. Default value: `SpecificAccounts`.
+     * 	- Service `zuora`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
+     * 	- Service `zuoraSandbox`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
      */
     syncMode: string;
     /**
@@ -3949,7 +4014,7 @@ export interface ConnectorConfig {
     syncMultipleAccounts: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/databases/cosmos#packmodeoptions).
+     * 	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
      * 	- Service `documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
      */
     syncPackMode: string;
@@ -4113,8 +4178,14 @@ export interface ConnectorConfig {
     tns: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `toast`: Your Toast Restaurant External ID.
+     */
+    toastId?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `mode`: Your Mode Token.
      * 	- Service `oracleMoatAnalytics`: Your Oracle Moat Analytics Token.
+     * 	- Service `solarwindsServiceDesk`: Your SolarWinds Service Desk token.
      */
     token?: string;
     /**
@@ -4137,6 +4208,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Token ID
      * 	- Service `on24`: Your ON24 token key.
+     * 	- Service `proofpointSecurityAwareness`: Your Proofpoint Security Awareness Token Key.
      */
     tokenKey: string;
     /**
@@ -4393,6 +4465,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
      * 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
+     * 	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
      * 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
      * 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
      * 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -4480,6 +4553,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `coassemble`: Your Coassemble user ID.
      * 	- Service `gmail`: Your Gmail user ID.
+     * 	- Service `hibob`: Your HiBob Service User Token.
      * 	- Service `marketo`: Marketo SOAP API User Id.
      * 	- Service `playvox`: Your Playvox User ID.
      * 	- Service `sageIntacct`: User ID
@@ -4498,6 +4572,7 @@ export interface ConnectorConfig {
     userProfiles?: string[];
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `hibob`: Your HiBob Service User ID.
      * 	- Service `konnectInsights`: Your Konnect Insights User Token.
      * 	- Service `sonarqube`: Your Sonarqube user token.
      */
@@ -4513,7 +4588,7 @@ export interface ConnectorConfig {
      * 	- Service `cin7`: Your Cin7 API Username.
      * 	- Service `collibra`: Your collibra username.
      * 	- Service `concur`: The SAP Concur username.
-     * 	- Service `confluence`: Your Confluence email address.
+     * 	- Service `confluence`: Your Confluence username.
      * 	- Service `contrastSecurity`: Your Contrast Security API Username.
      * 	- Service `dclLogistics`: Your DCL Logistics username.
      * 	- Service `github`: `Login` of your GitHub profile.
@@ -4531,6 +4606,7 @@ export interface ConnectorConfig {
      * 	- Service `learnupon`: Your Learnupon username.
      * 	- Service `lessonly`: Your Lessonly username.
      * 	- Service `mailgun`: Your Mailgun API username.
+     * 	- Service `myosh`: Your Myosh  Username.
      * 	- Service `oracleBusinessIntelligencePublisher`: The Oracle Business Intelligence username.
      * 	- Service `oracleFusionCloudAppsCrm`: The Oracle Fusion Cloud username.
      * 	- Service `oracleFusionCloudAppsFscm`: The Oracle Fusion Cloud username.
@@ -4549,10 +4625,11 @@ export interface ConnectorConfig {
      * 	- Service `starrez`: Your StarRez API username
      * 	- Service `stylight`: Your Stylight Username.
      * 	- Service `teamwork`: Your Teamwork username.
-     * 	- Service `testrail`: Your TestRail API username.
+     * 	- Service `testrail`: Your TestRail username.
      * 	- Service `ukgPro`: Your UKG Pro username.
      * 	- Service `unicommerce`: Your uniware login username.
      * 	- Service `upland`: Your Upland Software Username.
+     * 	- Service `veevavault`: Your Veeva Vault username.
      * 	- Service `whenIWork`: Your When I Work username.
      * 	- Service `wherefour`: Your Wherefour username.
      * 	- Service `workdayFinancialManagement`: Workday username.
@@ -4727,17 +4804,17 @@ export interface ConnectorConfigCustomReport {
     aggregate?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#basemetricsfields).
+     * 	- Service `snapchatAds`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#basemetricsfields).
      */
     baseMetricsFields?: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Breakdown on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakdown).
+     * 	- Service `snapchatAds`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
      */
     breakdown?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Breakout on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakout).
+     * 	- Service `snapchatAds`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
      */
     breakout?: string;
     /**
@@ -4752,7 +4829,7 @@ export interface ConnectorConfigCustomReport {
     customEventsIncluded: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Dimension on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#dimension).
+     * 	- Service `snapchatAds`: [Sets Dimension on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#dimension).
      */
     dimension?: string;
     /**
@@ -4767,7 +4844,7 @@ export interface ConnectorConfigCustomReport {
     eventNames?: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/applications/snapchat-ads/customr-reports#granularity).
+     * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
      */
     granularity?: string;
     /**
@@ -4803,7 +4880,7 @@ export interface ConnectorConfigCustomReport {
     segmentation?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#skadmetricsfields).
+     * 	- Service `snapchatAds`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#skadmetricsfields).
      */
     skAdMetricsFields?: string[];
     /**
@@ -4816,43 +4893,43 @@ export interface ConnectorConfigCustomReport {
 export interface ConnectorConfigCustomTable {
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionbreakdowns).
+     * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionbreakdowns).
      */
     actionBreakdowns?: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionreporttime).
+     * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionreporttime).
      */
     actionReportTime: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#aggregation).
+     * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#aggregation).
      */
     aggregation: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#breakdowns).
+     * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#breakdowns).
      */
     breakdowns?: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#clickattributionwindow).
+     * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#clickattributionwindow).
      */
     clickAttributionWindow: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#configtype).
+     * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
      */
     configType: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#fields).
+     * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#fields).
      */
     fields?: string[];
     level?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#prebuiltreport).
+     * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#prebuiltreport).
      */
     prebuiltReportName: string;
     /**
@@ -4863,7 +4940,7 @@ export interface ConnectorConfigCustomTable {
     useUnifiedAttributionSetting: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#viewattributionwindow).
+     * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#viewattributionwindow).
      */
     viewAttributionWindow: string;
 }
@@ -4899,7 +4976,7 @@ export interface ConnectorConfigReport {
     attributes?: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+     * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      * 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
      */
     configType: string;
@@ -5100,7 +5177,7 @@ export interface ConnectorFingerprintsFingerprint {
      */
     validatedBy: string;
     /**
-     * The date when SSH fingerprint was approved.
+     * The date when fingerprint was approved.
      */
     validatedDate: string;
 }
@@ -5120,11 +5197,11 @@ export interface ConnectorSchemaConfigSchema {
 export interface ConnectorSchemaConfigSchemaTable {
     columns?: outputs.ConnectorSchemaConfigSchemaTableColumn[];
     /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     * The boolean value specifying whether the sync of table into the destination is enabled.
      */
     enabled: boolean;
     /**
-     * The schema name within your destination in accordance with Fivetran conventional rules.
+     * The table name within your destination in accordance with Fivetran conventional rules.
      */
     name: string;
     /**
@@ -5135,7 +5212,7 @@ export interface ConnectorSchemaConfigSchemaTable {
 
 export interface ConnectorSchemaConfigSchemaTableColumn {
     /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     * The boolean value specifying whether the sync of the column into the destination is enabled.
      */
     enabled: boolean;
     /**
@@ -5143,7 +5220,7 @@ export interface ConnectorSchemaConfigSchemaTableColumn {
      */
     hashed: boolean;
     /**
-     * The schema name within your destination in accordance with Fivetran conventional rules.
+     * The column name within your destination in accordance with Fivetran conventional rules.
      */
     name: string;
 }
@@ -5165,7 +5242,7 @@ export interface ConnectorSchemaConfigSchemasTables {
      */
     columns?: {[key: string]: outputs.ConnectorSchemaConfigSchemasTablesColumns};
     /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     * The boolean value specifying whether the sync for the table into the destination is enabled.
      */
     enabled: boolean;
     /**
@@ -5176,7 +5253,7 @@ export interface ConnectorSchemaConfigSchemasTables {
 
 export interface ConnectorSchemaConfigSchemasTablesColumns {
     /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     * The boolean value specifying whether the sync of the column into the destination is enabled.
      */
     enabled: boolean;
     /**
@@ -5221,7 +5298,7 @@ export interface DbtProjectModel {
      */
     modelName: string;
     /**
-     * Boolean specifying whether the model is selected for execution.
+     * Boolean specifying whether the model is selected for execution in the dashboard.
      */
     scheduled: boolean;
 }
@@ -5230,22 +5307,29 @@ export interface DbtProjectProjectConfig {
     /**
      * Folder in Git repo with your dbt project.
      */
-    folderPath: string;
+    folderPath?: string;
     /**
      * Git branch.
      */
-    gitBranch: string;
+    gitBranch?: string;
     /**
      * Git remote URL with your dbt project.
      */
-    gitRemoteUrl: string;
+    gitRemoteUrl?: string;
+}
+
+export interface DbtProjectTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
 }
 
 export interface DbtTransformationSchedule {
     /**
      * The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
      */
-    daysOfWeeks: string[];
+    daysOfWeeks?: string[];
     /**
      * The time interval in minutes between subsequent transformation runs.
      */
@@ -5253,11 +5337,18 @@ export interface DbtTransformationSchedule {
     /**
      * The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
      */
-    scheduleType: string;
+    scheduleType?: string;
     /**
      * The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
      */
-    timeOfDay: string;
+    timeOfDay?: string;
+}
+
+export interface DbtTransformationTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
 }
 
 export interface DestinationCertificatesCertificate {
@@ -5266,7 +5357,7 @@ export interface DestinationCertificatesCertificate {
      */
     encodedCert: string;
     /**
-     * Hash of the fingerprint.
+     * Hash of the certificate.
      */
     hash: string;
     /**
@@ -5274,7 +5365,7 @@ export interface DestinationCertificatesCertificate {
      */
     name: string;
     /**
-     * Certificate public key.
+     * The SSH public key.
      */
     publicKey: string;
     /**
@@ -5286,7 +5377,7 @@ export interface DestinationCertificatesCertificate {
      */
     sha256: string;
     /**
-     * Certificate type.
+     * Type of the certificate.
      */
     type: string;
     /**
@@ -5294,7 +5385,7 @@ export interface DestinationCertificatesCertificate {
      */
     validatedBy: string;
     /**
-     * The date when the certificate was approved.
+     * The date when certificate was approved.
      */
     validatedDate: string;
 }
@@ -5496,7 +5587,7 @@ export interface DestinationConfig {
     isPrivateKeyEncrypted: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `newS3Datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelinkbeta).
+     * 	- Service `newS3Datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
      */
     isPrivateLinkRequired: boolean;
     /**
@@ -5511,6 +5602,16 @@ export interface DestinationConfig {
     lakehouseName?: string;
     mskStsRegion?: string;
     numOfPartitions: number;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `databricks`: OAuth 2.0 client ID. Required if authType is set to OAUTH2.
+     */
+    oauth2ClientId?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `databricks`: OAuth 2.0 secret. Required if authType is set to OAUTH2.
+     */
+    oauth2Secret?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
@@ -5800,7 +5901,7 @@ export interface DestinationFingerprintsFingerprint {
      */
     validatedBy: string;
     /**
-     * The date when SSH fingerprint was approved.
+     * The date when fingerprint was approved.
      */
     validatedDate: string;
 }
@@ -5881,7 +5982,7 @@ export interface ExternalLoggingConfig {
 
 export interface GetConnectorCertificatesCertificate {
     /**
-     * Hash of the fingerprint.
+     * Hash of the certificate.
      */
     hash: string;
     /**
@@ -5889,7 +5990,7 @@ export interface GetConnectorCertificatesCertificate {
      */
     name: string;
     /**
-     * Certificate public key.
+     * The SSH public key.
      */
     publicKey: string;
     /**
@@ -5901,7 +6002,7 @@ export interface GetConnectorCertificatesCertificate {
      */
     sha256: string;
     /**
-     * Certificate type.
+     * Type of the certificate.
      */
     type: string;
     /**
@@ -5909,7 +6010,7 @@ export interface GetConnectorCertificatesCertificate {
      */
     validatedBy: string;
     /**
-     * The date when the certificate was approved.
+     * The date when certificate was approved.
      */
     validatedDate: string;
 }
@@ -6050,6 +6151,7 @@ export interface GetConnectorConfig {
     accountKey: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `eventsforce`: Your Eventsforce account name.
      * 	- Service `freshdeskContactCenter`: Your Freshdesk Contact Center account name.
      * 	- Service `happyfox`: Your HappyFox account name.
      * 	- Service `maxioSaasoptics`: Your Maxio SaaSOptics account name.
@@ -6057,6 +6159,11 @@ export interface GetConnectorConfig {
      * 	- Service `udemyBusiness`: Your Udemy Business account name.
      */
     accountName: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `tymeshift`: Your Tymeshift account plan.
+     */
+    accountPlan: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `iterable`: If your Iterable account URL starts with `https://app.eu.iterable.com` then provide `EU` else `US`
@@ -6310,6 +6417,11 @@ export interface GetConnectorConfig {
     alwaysEncrypted: boolean;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `freshsuccess`: Set this parameter to `api`.
+     */
+    api: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `shopify`: API access token of your custom app.
      * 	- Service `square`: The Square API access token of your application.
      */
@@ -6341,6 +6453,7 @@ export interface GetConnectorConfig {
      * 	- Service `avantlink`: Your AvantLink API key.
      * 	- Service `ballotready`: Your BallotReady API token.
      * 	- Service `bamboohr`: Your API Key.
+     * 	- Service `bizzabo`: Your Bizzabo API key.
      * 	- Service `braze`: Your Braze API Key.
      * 	- Service `brevo`: Your Brevo API key.
      * 	- Service `callrail`: Your CallRail API key.
@@ -6386,6 +6499,7 @@ export interface GetConnectorConfig {
      * 	- Service `freshdesk`: Your Freshdesk API Key.
      * 	- Service `freshdeskContactCenter`: Your Freshdesk Contact Center API key.
      * 	- Service `freshservice`: Your Freshservice API Key.
+     * 	- Service `freshsuccess`: Your Freshsuccess API key.
      * 	- Service `freshteam`: Your Freshteam API key.
      * 	- Service `friendbuy`: Your Friendbuy API key.
      * 	- Service `fullstory`: Your Fullstory API key.
@@ -6411,6 +6525,7 @@ export interface GetConnectorConfig {
      * 	- Service `kisi`: Your Kisi API key.
      * 	- Service `klaviyo`: Your Klaviyo API key.
      * 	- Service `learnupon`: Your Learnupon API key.
+     * 	- Service `lemlist`: Your Lemlist API key.
      * 	- Service `lever`: Your Lever API key.
      * 	- Service `liftoff`: Your Liftoff API key.
      * 	- Service `linksquares`: Your LinkSquares API key.
@@ -6423,12 +6538,15 @@ export interface GetConnectorConfig {
      * 	- Service `maxioChargify`: Enter Your API Key.
      * 	- Service `messagebird`: Your MessageBird API key.
      * 	- Service `mountain`: Your MNTN API key.
+     * 	- Service `myosh`: Your Myosh API Key.
      * 	- Service `ometria`: Your Ometria API Key.
      * 	- Service `ordway`: Your Ordway API key.
      * 	- Service `ortto`: Your Ortto API key.
      * 	- Service `pagerduty`: Your PagerDuty API key.
      * 	- Service `papershift`: Your Papershift API Key
+     * 	- Service `partnerize`: Your Partnerize user API key.
      * 	- Service `persona`: Your Persona API key.
+     * 	- Service `picqer`: Your Picqer API key.
      * 	- Service `pinpoint`: Your Pinpoint API key.
      * 	- Service `pipe17`: The Pipe17 API key.
      * 	- Service `playvox`: Your Playvox API Key.
@@ -6455,7 +6573,7 @@ export interface GetConnectorConfig {
      * 	- Service `shortcut`: Your Shortcut API token.
      * 	- Service `shortio`: Your Short.io API key.
      * 	- Service `simplesat`: Your Simplesat API key.
-     * 	- Service `sistrix`: Your Sistrix api key.
+     * 	- Service `sistrix`: Your SISTRIX API key.
      * 	- Service `smartwaiver`: Your Smartwaiver API key.
      * 	- Service `snyk`: Your Snyk API key.
      * 	- Service `sonarqube`: Your Sonarqube API key.
@@ -6471,12 +6589,14 @@ export interface GetConnectorConfig {
      * 	- Service `transcend`: Your Transcend API Key.
      * 	- Service `trello`: Your TRELLO api key.
      * 	- Service `uppromote`: Your UpPromote API key.
+     * 	- Service `veeqo`: Your Veeqo API key.
      * 	- Service `visitByGes`: Your Visit by GES API key.
      * 	- Service `vitally`: Your Vitally API key.
      * 	- Service `vonage`: Your Vonage API Key.
      * 	- Service `vts`: Your VTS API key.
      * 	- Service `webconnex`: Your Webconnex API key.
      * 	- Service `xsolla`: Your Xsolla API key.
+     * 	- Service `yougovSport`: Your Yougov Sport API key.
      * 	- Service `zingtree`: Your Zingtree API key.
      */
     apiKey: string;
@@ -6557,7 +6677,7 @@ export interface GetConnectorConfig {
      * 	- Service `qualtrics`: API token of the Qualtrics account.
      * 	- Service `rakutenadvertising`: Your Rakuten Advertising API token.
      * 	- Service `recharge`: The Recharge API token.
-     * 	- Service `referralhero`: Your Referralhero API Token.
+     * 	- Service `referralhero`: Your Referralhero API token.
      * 	- Service `resourceManagementBySmartsheet`: Your Resource Management by Smartsheet API token.
      * 	- Service `retently`: Your Retently API token.
      * 	- Service `safetyculture`: Your SafetyCulture API token.
@@ -6653,6 +6773,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `datadog`: Your Datadog application key.
      * 	- Service `dear`: Your Dear Application key.
+     * 	- Service `partnerize`: Your Partnerize user application key.
      */
     applicationKey: string;
     /**
@@ -6829,6 +6950,7 @@ export interface GetConnectorConfig {
      * 	- Service `ortto`: Your Ortto base URL. Possible values: `api`, `api.au`, `api.eu`.
      * 	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `salesforceSandbox`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
+     * 	- Service `veevavault`: Your Veeva Vault base URL.
      */
     baseUrl: string;
     /**
@@ -6954,6 +7076,7 @@ export interface GetConnectorConfig {
      * 	- Service `cultureAmp`: Your Culture Amp client ID.
      * 	- Service `cvent`: Your Cvent client ID.
      * 	- Service `d2lBrightspace`: Your D2L Brightspace client ID.
+     * 	- Service `ebay`: Your eBay client ID.
      * 	- Service `flexport`: The Flexport API Key.
      * 	- Service `genesys`: Your Genesys client ID.
      * 	- Service `hanaSapHvaEccNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
@@ -6988,11 +7111,15 @@ export interface GetConnectorConfig {
      * 	- Service `swoogo`: Your Swoogo client Id.
      * 	- Service `taboola`: The Taboola client ID.
      * 	- Service `talkdesk`: The Client ID of your OAuth Client
+     * 	- Service `toast`: Your Toast client ID.
      * 	- Service `trelica`: Your Trelica client ID.
+     * 	- Service `tymeshift`: Your Tymeshift client ID.
      * 	- Service `udemyBusiness`: Your Udemy Business client ID.
+     * 	- Service `vonageContactCenter`: Your Vonage Contact Center client ID.
      * 	- Service `walmartMarketplace`: Your Walmart Marketplace client ID.
      * 	- Service `xero`: your clientId
      * 	- Service `xray`: Your Xray Client ID.
+     * 	- Service `yougovSport`: Your Yougov Sport client ID.
      * 	- Service `zendeskChat`: Your Zendesk client ID.
      * 	- Service `zohoBooks`: Your Zoho Books Client ID.
      * 	- Service `zohoCampaigns`: Your Zoho Campaigns Client ID.
@@ -7005,6 +7132,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `appfigures`: Your Appfigures Client Key.
      * 	- Service `thinkific`: Your Thinkific client key.
+     * 	- Service `yougovSport`: Your Yougov Sport client key.
      */
     clientKey: string;
     /**
@@ -7055,6 +7183,7 @@ export interface GetConnectorConfig {
      * 	- Service `cultureAmp`: Your Culture Amp client secret.
      * 	- Service `cvent`: Your Cvent client secret.
      * 	- Service `d2lBrightspace`: Your D2L Brightspace client secret.
+     * 	- Service `ebay`: Your eBay client secret.
      * 	- Service `flexport`: The Flexport API Secret.
      * 	- Service `genesys`: Your Genesys client secret.
      * 	- Service `instructure`: Your Instructure client secret.
@@ -7084,8 +7213,11 @@ export interface GetConnectorConfig {
      * 	- Service `taboola`: The Taboola client secret.
      * 	- Service `talkdesk`: The Client Secret of your OAuth Client
      * 	- Service `thinkific`: Your Thinkific client secret.
+     * 	- Service `toast`: Your Toast client secret.
      * 	- Service `trelica`: Your Trelica client secret.
+     * 	- Service `tymeshift`: Your Tymeshift client secret.
      * 	- Service `udemyBusiness`: Your Udemy Business client secret.
+     * 	- Service `vonageContactCenter`: Your Vonage Contact Center client secret.
      * 	- Service `walmartMarketplace`: Your Walmart Marketplace client secret.
      * 	- Service `xero`: your clientSecret
      * 	- Service `xray`: Your Xray Client Secret.
@@ -7176,7 +7308,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#configtype).
-     * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+     * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      */
     configType: string;
     connectingUser: string;
@@ -7200,6 +7332,7 @@ export interface GetConnectorConfig {
      * 	- Service `azureBlobStorage`: The blob storage container connection string.
      * 	- Service `azureEventHub`: Connection string of the Event Hub Namespace you want to sync.
      * 	- Service `azureServiceBus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
+     * 	- Service `microsoftDynamics365Fno`: The blob storage container's connection string.
      * 	- Service `microsoftDynamics365Fo`: The blob storage container connection string.
      */
     connectionString: string;
@@ -7293,6 +7426,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The name of the blob container.
+     * 	- Service `microsoftDynamics365Fno`: The name of the blob container.
      * 	- Service `microsoftDynamics365Fo`: The name of the blob container.
      */
     containerName: string;
@@ -7321,6 +7455,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleAds`: A period of time in days during which a conversion is recorded.
      */
     conversionWindowSize: number;
+    convertDatsTypeToDate: boolean;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adjust`: CSV definition for the CSV export (https://help.adjust.com/en/article/csv-uploads#how-do-i-format-my-csv-definition).
@@ -7361,7 +7496,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
-     * 	- Service `snapchatAds`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/applications/snapchat-ads/custom-reports).
+     * 	- Service `snapchatAds`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
      * 	- Service `tiktokAds`: Title of Custom Report
      */
     customReports: outputs.GetConnectorConfigCustomReport[];
@@ -7394,7 +7529,7 @@ export interface GetConnectorConfig {
     dailyApiCallLimit: number;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/databases/cosmos#dataaccessmethods).
+     * 	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/connectors/databases/cosmos#dataaccessmethods).
      */
     dataAccessMethod: string;
     /**
@@ -7476,6 +7611,11 @@ export interface GetConnectorConfig {
     dateGranularity: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `myosh`: Your Myosh Server variables/db .
+     */
+    db: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
      * 	- Service `azureBlobStorage`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `box`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
@@ -7524,7 +7664,8 @@ export interface GetConnectorConfig {
      * 	- Service `okta`: Your Okta domain.
      * 	- Service `pipedrive`: Your Pipedrive domain.
      * 	- Service `shopware`: Your Shopware domain.
-     * 	- Service `sistrix`: Your domain for which you want to fetch data.
+     * 	- Service `sistrix`: Your SISTRIX domain.
+     * 	- Service `solarwindsServiceDesk`: Your SolarWinds Service Desk domain.
      * 	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
      * 	- Service `zendesk`: Zendesk domain.
      * 	- Service `zendeskSunshine`: Zendesk domain.
@@ -8045,7 +8186,7 @@ export interface GetConnectorConfig {
     isPrivateKeyEncrypted: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `awsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelink).
+     * 	- Service `awsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
      */
     isPrivateLinkRequired: boolean;
     /**
@@ -8343,7 +8484,7 @@ export interface GetConnectorConfig {
     organizationId: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `confluence`: Your Confluence Organization name.
+     * 	- Service `confluence`: Your Confluence organization name.
      */
     organizationName: string;
     /**
@@ -8451,6 +8592,7 @@ export interface GetConnectorConfig {
      * 	- Service `moloco`: Your Moloco account password.
      * 	- Service `mongo`: The user's password.
      * 	- Service `mongoSharded`: The user's password.
+     * 	- Service `myosh`: Your Myosh Password .
      * 	- Service `mysql`: The user's password.
      * 	- Service `mysqlAzure`: The user's password.
      * 	- Service `mysqlRds`: The user's password.
@@ -8499,6 +8641,7 @@ export interface GetConnectorConfig {
      * 	- Service `ukgPro`: Your UKG Pro password.
      * 	- Service `unicommerce`: Your uniware login password.
      * 	- Service `upland`: Your Upland Software Password.
+     * 	- Service `veevavault`: Your Veeva Vault password.
      * 	- Service `whenIWork`: Your When I Work password.
      * 	- Service `wherefour`: Your Wherefour password.
      * 	- Service `workday`: Workday password.
@@ -8591,6 +8734,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -8600,6 +8744,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -8694,6 +8839,7 @@ export interface GetConnectorConfig {
      * 	- Service `wasabiCloudStorage`: All files and folders under this folder path will be searched for files to sync.
      */
     prefix: string;
+    primaryKey: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Primary Keys
@@ -8701,7 +8847,7 @@ export interface GetConnectorConfig {
     primaryKeys: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `absorbLms`: Your Absorb LMS Private Key.
+     * 	- Service `absorbLms`: Your Absorb LMS REST API private key.
      * 	- Service `adobeAnalytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
      * 	- Service `adpWorkforceNow`: Private Key.
      * 	- Service `anaplan`: The contents of your private key file. Must be populated if `authMode` is set to `Certificate`.
@@ -8863,10 +9009,12 @@ export interface GetConnectorConfig {
      * 	- Service `navan`: Your Navan region.
      * 	- Service `on24`: Your ON24 region.
      * 	- Service `pendo`: The Pendo account region.
+     * 	- Service `proofpointSecurityAwareness`: Your Proofpoint Security Awareness Region.
      * 	- Service `ringover`: Your Ringover region.
      * 	- Service `samsara`: The region of your Samsara account. For instance, if your region is `EUROPE`, provide `eu.samsara` in the `Region` field. If your region is not in Europe, provide `samsara`.
      * 	- Service `snyk`: Your Snyk region.
      * 	- Service `talkdesk`: Your Talkdesk region (".com",".eu","ca.com")
+     * 	- Service `vonageContactCenter`: Your Vonage Contact Center region.
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage bucket region. Required for connector creation. Default value: `US_EAST_1`.
      * 	- Service `zohoBooks`: Your Zoho Books application host region.
      * 	- Service `zohoCampaigns`: Your Zoho Campaigns application host region.
@@ -9190,6 +9338,11 @@ export interface GetConnectorConfig {
     schemaRegistryUrls: string[];
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `ebay`: Your eBay Scopes.
+     */
+    scope: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specific Seats to sync. Must be populated if `syncModeSeat` is set to `SPECIFIC_SEATS`.
      */
     seats: string[];
@@ -9353,7 +9506,7 @@ export interface GetConnectorConfig {
     sftpUser: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `sharePoint`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/files/share-point/setup-guide).
+     * 	- Service `sharePoint`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/connectors/files/share-point/setup-guide).
      */
     shareUrl: string;
     /**
@@ -9390,6 +9543,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+     * 	- Service `gcs`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -9451,12 +9605,15 @@ export interface GetConnectorConfig {
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified before syncing data.
      */
     skipBefore: number;
+    sncCertificate: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Path to the external security product's library.
      * 	- Service `hanaSapHvaS4Netweaver`: Path to the external security product's library.
      */
     sncLibraryPath: string;
+    sncMode: string;
+    sncMyName: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Client SNC name.
@@ -9531,9 +9688,11 @@ export interface GetConnectorConfig {
      * 	- Service `lookerSource`: Your looker SubDomain name.
      * 	- Service `mailgun`: Your Mailgun subdomain.
      * 	- Service `maxioChargify`: Enter Your Subdomain.
+     * 	- Service `myosh`: Your Myosh Subdomain .
      * 	- Service `namely`: Your Namely subdomain.
      * 	- Service `nylas`: Your Nylas subdomain.
      * 	- Service `okta`: Your Okta subdomain.
+     * 	- Service `picqer`: Your Picqer sub domain name.
      * 	- Service `pinpoint`: Your Pinpoint sub domain name.
      * 	- Service `piwikPro`: Your Piwik PRO subdomain.
      * 	- Service `playvox`: Your Playvox Subdomain.
@@ -9547,9 +9706,11 @@ export interface GetConnectorConfig {
      * 	- Service `sapSuccessFactors`: Your SAP SuccessFactors Subdomain.
      * 	- Service `sonarqube`: Your Sonarqube subdomain.
      * 	- Service `starrez`: Your StarRez subdomain
+     * 	- Service `tableauSource`: Your Tableau Source subdomain.
      * 	- Service `tempo`: Your Tempo subdomain.
      * 	- Service `thinkific`: Your Thinkific subdomain.
      * 	- Service `totango`: Your Totango Subdomain.
+     * 	- Service `tymeshift`: Your Tymeshift subdomain.
      * 	- Service `upland`: Your Upland Software subDomain.
      * 	- Service `wordpress`: Your WordPress subdomain.
      * 	- Service `workable`: Your Workable Subdomain.
@@ -9559,14 +9720,17 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
+     * 	- Service `ebay`: Your eBay Environment.
      * 	- Service `freshdesk`: Your company's freshdesk subdomain (usually **company**.freshdesk.com).
      * 	- Service `freshservice`: Your company's freshservice subdomain (usually **company**.freshservice.com).
+     * 	- Service `freshsuccess`: Your Freshsuccess subdomain.
      * 	- Service `gorgias`: Your Gorgias subdomain.
      * 	- Service `klarna`: Your Klarna subdomain.
      * 	- Service `learnupon`: Your Learnupon subdomain.
      * 	- Service `maxioSaasoptics`: Your Maxio SaaSOptics subdomain.
      * 	- Service `medallia`: Medallia subdomain
      * 	- Service `sonarqube`: Your Sonarqube subdomain.
+     * 	- Service `toast`: Your Toast Domain.
      * 	- Service `vts`: Your VTS Subdomain.
      * 	- Service `zendeskChat`: Your Zendesk domain.
      */
@@ -9645,7 +9809,7 @@ export interface GetConnectorConfig {
      * 	- Service `dynamodb`: Whether to sync all tables in unpacked mode only or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
      * 	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
      * 	- Service `facebookAdAccount`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-     * 	- Service `facebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#syncmode).
+     * 	- Service `facebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#syncmode).
      * 	- Service `facebookPages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
      * 	- Service `github`: Whether to sync all repositories or specific repositories.
      * 	- Service `googleAds`: Whether to sync all accounts or specific accounts.
@@ -9670,6 +9834,8 @@ export interface GetConnectorConfig {
      * 	- Service `twitter`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
      * 	- Service `twitterAds`: Whether to sync all accounts or specific accounts.
      * 	- Service `yahooGemini`: Whether to sync all accounts or specific accounts. Default value: `SpecificAccounts`.
+     * 	- Service `zuora`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
+     * 	- Service `zuoraSandbox`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
      */
     syncMode: string;
     /**
@@ -9689,7 +9855,7 @@ export interface GetConnectorConfig {
     syncMultipleAccounts: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/databases/cosmos#packmodeoptions).
+     * 	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
      * 	- Service `documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
      */
     syncPackMode: string;
@@ -9853,8 +10019,14 @@ export interface GetConnectorConfig {
     tns: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `toast`: Your Toast Restaurant External ID.
+     */
+    toastId: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `mode`: Your Mode Token.
      * 	- Service `oracleMoatAnalytics`: Your Oracle Moat Analytics Token.
+     * 	- Service `solarwindsServiceDesk`: Your SolarWinds Service Desk token.
      */
     token: string;
     /**
@@ -9877,6 +10049,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Token ID
      * 	- Service `on24`: Your ON24 token key.
+     * 	- Service `proofpointSecurityAwareness`: Your Proofpoint Security Awareness Token Key.
      */
     tokenKey: string;
     /**
@@ -10133,6 +10306,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
      * 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
+     * 	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
      * 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
      * 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
      * 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -10220,6 +10394,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `coassemble`: Your Coassemble user ID.
      * 	- Service `gmail`: Your Gmail user ID.
+     * 	- Service `hibob`: Your HiBob Service User Token.
      * 	- Service `marketo`: Marketo SOAP API User Id.
      * 	- Service `playvox`: Your Playvox User ID.
      * 	- Service `sageIntacct`: User ID
@@ -10238,6 +10413,7 @@ export interface GetConnectorConfig {
     userProfiles: string[];
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `hibob`: Your HiBob Service User ID.
      * 	- Service `konnectInsights`: Your Konnect Insights User Token.
      * 	- Service `sonarqube`: Your Sonarqube user token.
      */
@@ -10253,7 +10429,7 @@ export interface GetConnectorConfig {
      * 	- Service `cin7`: Your Cin7 API Username.
      * 	- Service `collibra`: Your collibra username.
      * 	- Service `concur`: The SAP Concur username.
-     * 	- Service `confluence`: Your Confluence email address.
+     * 	- Service `confluence`: Your Confluence username.
      * 	- Service `contrastSecurity`: Your Contrast Security API Username.
      * 	- Service `dclLogistics`: Your DCL Logistics username.
      * 	- Service `github`: `Login` of your GitHub profile.
@@ -10271,6 +10447,7 @@ export interface GetConnectorConfig {
      * 	- Service `learnupon`: Your Learnupon username.
      * 	- Service `lessonly`: Your Lessonly username.
      * 	- Service `mailgun`: Your Mailgun API username.
+     * 	- Service `myosh`: Your Myosh  Username.
      * 	- Service `oracleBusinessIntelligencePublisher`: The Oracle Business Intelligence username.
      * 	- Service `oracleFusionCloudAppsCrm`: The Oracle Fusion Cloud username.
      * 	- Service `oracleFusionCloudAppsFscm`: The Oracle Fusion Cloud username.
@@ -10289,10 +10466,11 @@ export interface GetConnectorConfig {
      * 	- Service `starrez`: Your StarRez API username
      * 	- Service `stylight`: Your Stylight Username.
      * 	- Service `teamwork`: Your Teamwork username.
-     * 	- Service `testrail`: Your TestRail API username.
+     * 	- Service `testrail`: Your TestRail username.
      * 	- Service `ukgPro`: Your UKG Pro username.
      * 	- Service `unicommerce`: Your uniware login username.
      * 	- Service `upland`: Your Upland Software Username.
+     * 	- Service `veevavault`: Your Veeva Vault username.
      * 	- Service `whenIWork`: Your When I Work username.
      * 	- Service `wherefour`: Your Wherefour username.
      * 	- Service `workdayFinancialManagement`: Workday username.
@@ -10467,17 +10645,17 @@ export interface GetConnectorConfigCustomReport {
     aggregate: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#basemetricsfields).
+     * 	- Service `snapchatAds`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#basemetricsfields).
      */
     baseMetricsFields: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Breakdown on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakdown).
+     * 	- Service `snapchatAds`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
      */
     breakdown: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Breakout on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakout).
+     * 	- Service `snapchatAds`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
      */
     breakout: string;
     /**
@@ -10492,7 +10670,7 @@ export interface GetConnectorConfigCustomReport {
     customEventsIncluded: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Dimension on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#dimension).
+     * 	- Service `snapchatAds`: [Sets Dimension on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#dimension).
      */
     dimension: string;
     /**
@@ -10507,7 +10685,7 @@ export interface GetConnectorConfigCustomReport {
     eventNames: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/applications/snapchat-ads/customr-reports#granularity).
+     * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
      */
     granularity: string;
     /**
@@ -10543,7 +10721,7 @@ export interface GetConnectorConfigCustomReport {
     segmentation: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#skadmetricsfields).
+     * 	- Service `snapchatAds`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#skadmetricsfields).
      */
     skAdMetricsFields: string[];
     /**
@@ -10556,43 +10734,43 @@ export interface GetConnectorConfigCustomReport {
 export interface GetConnectorConfigCustomTable {
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionbreakdowns).
+     * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionbreakdowns).
      */
     actionBreakdowns: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionreporttime).
+     * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionreporttime).
      */
     actionReportTime: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#aggregation).
+     * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#aggregation).
      */
     aggregation: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#breakdowns).
+     * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#breakdowns).
      */
     breakdowns: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#clickattributionwindow).
+     * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#clickattributionwindow).
      */
     clickAttributionWindow: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#configtype).
+     * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
      */
     configType: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#fields).
+     * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#fields).
      */
     fields: string[];
     level: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#prebuiltreport).
+     * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#prebuiltreport).
      */
     prebuiltReportName: string;
     /**
@@ -10603,7 +10781,7 @@ export interface GetConnectorConfigCustomTable {
     useUnifiedAttributionSetting: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#viewattributionwindow).
+     * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#viewattributionwindow).
      */
     viewAttributionWindow: string;
 }
@@ -10639,7 +10817,7 @@ export interface GetConnectorConfigReport {
     attributes: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+     * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      * 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
      */
     configType: string;
@@ -10840,7 +11018,7 @@ export interface GetConnectorFingerprintsFingerprint {
      */
     validatedBy: string;
     /**
-     * The date when SSH fingerprint was approved.
+     * The date when fingerprint was approved.
      */
     validatedDate: string;
 }
@@ -10935,7 +11113,7 @@ export interface GetDbtModelsModel {
      */
     modelName: string;
     /**
-     * Boolean specifying whether the model is selected for execution.
+     * Boolean specifying whether the model is selected for execution in the dashboard.
      */
     scheduled: boolean;
 }
@@ -10950,7 +11128,7 @@ export interface GetDbtProjectModel {
      */
     modelName: string;
     /**
-     * Boolean specifying whether the model is selected for execution.
+     * Boolean specifying whether the model is selected for execution in the dashboard.
      */
     scheduled: boolean;
 }
@@ -10999,7 +11177,7 @@ export interface GetDbtTransformationSchedule {
      */
     interval: number;
     /**
-     * The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME_OF_DAY, INTERVAL. For INTEGRATED schedule type, interval and timeOfDay values are ignored and only the daysOfWeek parameter values are taken into account (but may be empty or null). For TIME_OF_DAY schedule type, the interval parameter value is ignored and the timeOfDay values is taken into account along with daysOfWeek value. For INTERVAL schedule type, timeOfDay value is ignored and the interval parameter value is taken into account along with daysOfWeek value.
+     * The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
      */
     scheduleType: string;
     /**
@@ -11010,7 +11188,7 @@ export interface GetDbtTransformationSchedule {
 
 export interface GetDestinationCertificatesCertificate {
     /**
-     * Hash of the fingerprint.
+     * Hash of the certificate.
      */
     hash: string;
     /**
@@ -11018,7 +11196,7 @@ export interface GetDestinationCertificatesCertificate {
      */
     name: string;
     /**
-     * Certificate public key.
+     * The SSH public key.
      */
     publicKey: string;
     /**
@@ -11030,7 +11208,7 @@ export interface GetDestinationCertificatesCertificate {
      */
     sha256: string;
     /**
-     * Certificate type.
+     * Type of the certificate.
      */
     type: string;
     /**
@@ -11038,7 +11216,7 @@ export interface GetDestinationCertificatesCertificate {
      */
     validatedBy: string;
     /**
-     * The date when the certificate was approved.
+     * The date when certificate was approved.
      */
     validatedDate: string;
 }
@@ -11240,7 +11418,7 @@ export interface GetDestinationConfig {
     isPrivateKeyEncrypted: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `newS3Datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelinkbeta).
+     * 	- Service `newS3Datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
      */
     isPrivateLinkRequired: boolean;
     /**
@@ -11255,6 +11433,16 @@ export interface GetDestinationConfig {
     lakehouseName: string;
     mskStsRegion: string;
     numOfPartitions: number;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `databricks`: OAuth 2.0 client ID. Required if authType is set to OAUTH2.
+     */
+    oauth2ClientId: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `databricks`: OAuth 2.0 secret. Required if authType is set to OAUTH2.
+     */
+    oauth2Secret: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
@@ -11544,7 +11732,7 @@ export interface GetDestinationFingerprintsFingerprint {
      */
     validatedBy: string;
     /**
-     * The date when SSH fingerprint was approved.
+     * The date when fingerprint was approved.
      */
     validatedDate: string;
 }
@@ -11770,9 +11958,9 @@ export interface GetGroupsGroup {
      */
     id: string;
     /**
-     * The timestamp of when the group was updated in your account.
+     * The timestamp of when the resource/datasource was updated last time.
      */
-    lastUpdated?: string;
+    lastUpdated: string;
     /**
      * The name of the group within your account.
      */
@@ -11906,7 +12094,7 @@ export interface GetUsersUser {
      */
     givenName: string;
     /**
-     * The unique identifier for the user within the Fivetran system.
+     * The unique identifier for the user within your account.
      */
     id: string;
     /**

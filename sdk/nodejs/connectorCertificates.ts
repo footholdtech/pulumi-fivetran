@@ -36,7 +36,7 @@ export class ConnectorCertificates extends pulumi.CustomResource {
 
     public readonly certificates!: pulumi.Output<outputs.ConnectorCertificatesCertificate[] | undefined>;
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     public readonly connectorId!: pulumi.Output<string>;
 
@@ -74,7 +74,7 @@ export class ConnectorCertificates extends pulumi.CustomResource {
 export interface ConnectorCertificatesState {
     certificates?: pulumi.Input<pulumi.Input<inputs.ConnectorCertificatesCertificate>[]>;
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     connectorId?: pulumi.Input<string>;
 }
@@ -85,7 +85,7 @@ export interface ConnectorCertificatesState {
 export interface ConnectorCertificatesArgs {
     certificates?: pulumi.Input<pulumi.Input<inputs.ConnectorCertificatesCertificate>[]>;
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     connectorId: pulumi.Input<string>;
 }

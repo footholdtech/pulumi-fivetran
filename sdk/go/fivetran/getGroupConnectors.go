@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetGroupConnectors(ctx *pulumi.Context, args *GetGroupConnectorsArgs, opts ...pulumi.InvokeOption) (*GetGroupConnectorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupConnectorsResult
@@ -54,9 +52,9 @@ func GetGroupConnectors(ctx *pulumi.Context, args *GetGroupConnectorsArgs, opts 
 // A collection of arguments for invoking getGroupConnectors.
 type GetGroupConnectorsArgs struct {
 	Connectors []GetGroupConnectorsConnector `pulumi:"connectors"`
-	// The unique identifier for the Connector within the Fivetran system.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
-	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
+	// Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
 	Schema *string `pulumi:"schema"`
 }
 
@@ -85,9 +83,9 @@ func GetGroupConnectorsOutput(ctx *pulumi.Context, args GetGroupConnectorsOutput
 // A collection of arguments for invoking getGroupConnectors.
 type GetGroupConnectorsOutputArgs struct {
 	Connectors GetGroupConnectorsConnectorArrayInput `pulumi:"connectors"`
-	// The unique identifier for the Connector within the Fivetran system.
+	// The ID of this resource.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
+	// Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 }
 

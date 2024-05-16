@@ -21,7 +21,7 @@ export function getConnectorCertificates(args: GetConnectorCertificatesArgs, opt
 export interface GetConnectorCertificatesArgs {
     certificates?: inputs.GetConnectorCertificatesCertificate[];
     /**
-     * The unique identifier for the resource. Equal to target connector id.
+     * The unique identifier for the resource. Equal to target connection id.
      */
     id: string;
 }
@@ -32,11 +32,11 @@ export interface GetConnectorCertificatesArgs {
 export interface GetConnectorCertificatesResult {
     readonly certificates?: outputs.GetConnectorCertificatesCertificate[];
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     readonly connectorId: string;
     /**
-     * The unique identifier for the resource. Equal to target connector id.
+     * The unique identifier for the resource. Equal to target connection id.
      */
     readonly id: string;
 }
@@ -50,7 +50,7 @@ export function getConnectorCertificatesOutput(args: GetConnectorCertificatesOut
 export interface GetConnectorCertificatesOutputArgs {
     certificates?: pulumi.Input<pulumi.Input<inputs.GetConnectorCertificatesCertificateArgs>[]>;
     /**
-     * The unique identifier for the resource. Equal to target connector id.
+     * The unique identifier for the resource. Equal to target connection id.
      */
     id: pulumi.Input<string>;
 }

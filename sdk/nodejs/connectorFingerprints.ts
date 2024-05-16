@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
@@ -30,7 +29,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -87,7 +85,7 @@ export class ConnectorFingerprints extends pulumi.CustomResource {
     }
 
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     public readonly connectorId!: pulumi.Output<string>;
     public readonly fingerprints!: pulumi.Output<outputs.ConnectorFingerprintsFingerprint[] | undefined>;
@@ -125,7 +123,7 @@ export class ConnectorFingerprints extends pulumi.CustomResource {
  */
 export interface ConnectorFingerprintsState {
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     connectorId?: pulumi.Input<string>;
     fingerprints?: pulumi.Input<pulumi.Input<inputs.ConnectorFingerprintsFingerprint>[]>;
@@ -136,7 +134,7 @@ export interface ConnectorFingerprintsState {
  */
 export interface ConnectorFingerprintsArgs {
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     connectorId: pulumi.Input<string>;
     fingerprints?: pulumi.Input<pulumi.Input<inputs.ConnectorFingerprintsFingerprint>[]>;

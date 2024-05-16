@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupGroupUsers(ctx *pulumi.Context, args *LookupGroupUsersArgs, opts ...pulumi.InvokeOption) (*LookupGroupUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupUsersResult
@@ -52,7 +50,7 @@ func LookupGroupUsers(ctx *pulumi.Context, args *LookupGroupUsersArgs, opts ...p
 
 // A collection of arguments for invoking getGroupUsers.
 type LookupGroupUsersArgs struct {
-	// The unique identifier for the user within the account.
+	// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
 	Id    string              `pulumi:"id"`
 	Users []GetGroupUsersUser `pulumi:"users"`
 }
@@ -79,7 +77,7 @@ func LookupGroupUsersOutput(ctx *pulumi.Context, args LookupGroupUsersOutputArgs
 
 // A collection of arguments for invoking getGroupUsers.
 type LookupGroupUsersOutputArgs struct {
-	// The unique identifier for the user within the account.
+	// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
 	Id    pulumi.StringInput          `pulumi:"id"`
 	Users GetGroupUsersUserArrayInput `pulumi:"users"`
 }

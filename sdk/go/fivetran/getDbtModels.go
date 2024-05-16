@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDbtModels(ctx *pulumi.Context, args *GetDbtModelsArgs, opts ...pulumi.InvokeOption) (*GetDbtModelsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDbtModelsResult
@@ -52,19 +50,17 @@ func GetDbtModels(ctx *pulumi.Context, args *GetDbtModelsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getDbtModels.
 type GetDbtModelsArgs struct {
-	// The collection of dbt Models.
 	Models []GetDbtModelsModel `pulumi:"models"`
-	// The unique identifier for the dbt project within the Fivetran system.
+	// The unique identifier for the dbt Project within the Fivetran system.
 	ProjectId string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getDbtModels.
 type GetDbtModelsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The collection of dbt Models.
+	// The ID of this datasource (equals to `projectId`).
+	Id     string              `pulumi:"id"`
 	Models []GetDbtModelsModel `pulumi:"models"`
-	// The unique identifier for the dbt project within the Fivetran system.
+	// The unique identifier for the dbt Project within the Fivetran system.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -83,9 +79,8 @@ func GetDbtModelsOutput(ctx *pulumi.Context, args GetDbtModelsOutputArgs, opts .
 
 // A collection of arguments for invoking getDbtModels.
 type GetDbtModelsOutputArgs struct {
-	// The collection of dbt Models.
 	Models GetDbtModelsModelArrayInput `pulumi:"models"`
-	// The unique identifier for the dbt project within the Fivetran system.
+	// The unique identifier for the dbt Project within the Fivetran system.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -108,17 +103,16 @@ func (o GetDbtModelsResultOutput) ToGetDbtModelsResultOutputWithContext(ctx cont
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource (equals to `projectId`).
 func (o GetDbtModelsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbtModelsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The collection of dbt Models.
 func (o GetDbtModelsResultOutput) Models() GetDbtModelsModelArrayOutput {
 	return o.ApplyT(func(v GetDbtModelsResult) []GetDbtModelsModel { return v.Models }).(GetDbtModelsModelArrayOutput)
 }
 
-// The unique identifier for the dbt project within the Fivetran system.
+// The unique identifier for the dbt Project within the Fivetran system.
 func (o GetDbtModelsResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbtModelsResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }

@@ -19,21 +19,20 @@ class DbtProjectArgs:
                  dbt_version: pulumi.Input[str],
                  default_schema: pulumi.Input[str],
                  group_id: pulumi.Input[str],
-                 project_config: pulumi.Input['DbtProjectProjectConfigArgs'],
                  ensure_readiness: Optional[pulumi.Input[bool]] = None,
                  environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]] = None,
+                 project_config: Optional[pulumi.Input['DbtProjectProjectConfigArgs']] = None,
                  target_name: Optional[pulumi.Input[str]] = None,
                  threads: Optional[pulumi.Input[int]] = None,
+                 timeouts: Optional[pulumi.Input['DbtProjectTimeoutsArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DbtProject resource.
         :param pulumi.Input[str] dbt_version: The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.
         :param pulumi.Input[str] default_schema: Default schema in destination. This production schema will contain your transformed data.
         :param pulumi.Input[str] group_id: The unique identifier for the group within the Fivetran system.
-        :param pulumi.Input['DbtProjectProjectConfigArgs'] project_config: Type specific dbt Project configuration parameters.
         :param pulumi.Input[bool] ensure_readiness: Should resource wait for project to finish initialization. Default value: true.
-        :param pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]] models: The collection of dbt Models.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] environment_vars: List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
         :param pulumi.Input[str] target_name: Target name to set or override the value from the deployment.yaml
         :param pulumi.Input[int] threads: The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         :param pulumi.Input[str] type: Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
@@ -41,17 +40,18 @@ class DbtProjectArgs:
         pulumi.set(__self__, "dbt_version", dbt_version)
         pulumi.set(__self__, "default_schema", default_schema)
         pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "project_config", project_config)
         if ensure_readiness is not None:
             pulumi.set(__self__, "ensure_readiness", ensure_readiness)
         if environment_vars is not None:
             pulumi.set(__self__, "environment_vars", environment_vars)
-        if models is not None:
-            pulumi.set(__self__, "models", models)
+        if project_config is not None:
+            pulumi.set(__self__, "project_config", project_config)
         if target_name is not None:
             pulumi.set(__self__, "target_name", target_name)
         if threads is not None:
             pulumi.set(__self__, "threads", threads)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -92,18 +92,6 @@ class DbtProjectArgs:
         pulumi.set(self, "group_id", value)
 
     @property
-    @pulumi.getter(name="projectConfig")
-    def project_config(self) -> pulumi.Input['DbtProjectProjectConfigArgs']:
-        """
-        Type specific dbt Project configuration parameters.
-        """
-        return pulumi.get(self, "project_config")
-
-    @project_config.setter
-    def project_config(self, value: pulumi.Input['DbtProjectProjectConfigArgs']):
-        pulumi.set(self, "project_config", value)
-
-    @property
     @pulumi.getter(name="ensureReadiness")
     def ensure_readiness(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -118,6 +106,9 @@ class DbtProjectArgs:
     @property
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+        """
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
@@ -125,16 +116,13 @@ class DbtProjectArgs:
         pulumi.set(self, "environment_vars", value)
 
     @property
-    @pulumi.getter
-    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]]:
-        """
-        The collection of dbt Models.
-        """
-        return pulumi.get(self, "models")
+    @pulumi.getter(name="projectConfig")
+    def project_config(self) -> Optional[pulumi.Input['DbtProjectProjectConfigArgs']]:
+        return pulumi.get(self, "project_config")
 
-    @models.setter
-    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]]):
-        pulumi.set(self, "models", value)
+    @project_config.setter
+    def project_config(self, value: Optional[pulumi.Input['DbtProjectProjectConfigArgs']]):
+        pulumi.set(self, "project_config", value)
 
     @property
     @pulumi.getter(name="targetName")
@@ -159,6 +147,15 @@ class DbtProjectArgs:
     @threads.setter
     def threads(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "threads", value)
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DbtProjectTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DbtProjectTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
     @property
     @pulumi.getter
@@ -189,6 +186,7 @@ class _DbtProjectState:
                  status: Optional[pulumi.Input[str]] = None,
                  target_name: Optional[pulumi.Input[str]] = None,
                  threads: Optional[pulumi.Input[int]] = None,
+                 timeouts: Optional[pulumi.Input['DbtProjectTimeoutsArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DbtProject resources.
@@ -197,9 +195,8 @@ class _DbtProjectState:
         :param pulumi.Input[str] dbt_version: The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.
         :param pulumi.Input[str] default_schema: Default schema in destination. This production schema will contain your transformed data.
         :param pulumi.Input[bool] ensure_readiness: Should resource wait for project to finish initialization. Default value: true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] environment_vars: List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
         :param pulumi.Input[str] group_id: The unique identifier for the group within the Fivetran system.
-        :param pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]] models: The collection of dbt Models.
-        :param pulumi.Input['DbtProjectProjectConfigArgs'] project_config: Type specific dbt Project configuration parameters.
         :param pulumi.Input[str] public_key: Public key to grant Fivetran SSH access to git repository.
         :param pulumi.Input[str] status: Status of dbt Project (NOT_READY, READY, ERROR).
         :param pulumi.Input[str] target_name: Target name to set or override the value from the deployment.yaml
@@ -232,6 +229,8 @@ class _DbtProjectState:
             pulumi.set(__self__, "target_name", target_name)
         if threads is not None:
             pulumi.set(__self__, "threads", threads)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -298,6 +297,9 @@ class _DbtProjectState:
     @property
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+        """
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
@@ -319,9 +321,6 @@ class _DbtProjectState:
     @property
     @pulumi.getter
     def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]]:
-        """
-        The collection of dbt Models.
-        """
         return pulumi.get(self, "models")
 
     @models.setter
@@ -331,9 +330,6 @@ class _DbtProjectState:
     @property
     @pulumi.getter(name="projectConfig")
     def project_config(self) -> Optional[pulumi.Input['DbtProjectProjectConfigArgs']]:
-        """
-        Type specific dbt Project configuration parameters.
-        """
         return pulumi.get(self, "project_config")
 
     @project_config.setter
@@ -390,6 +386,15 @@ class _DbtProjectState:
 
     @property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DbtProjectTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DbtProjectTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
@@ -411,39 +416,16 @@ class DbtProject(pulumi.CustomResource):
                  ensure_readiness: Optional[pulumi.Input[bool]] = None,
                  environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbtProjectModelArgs']]]]] = None,
                  project_config: Optional[pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']]] = None,
                  target_name: Optional[pulumi.Input[str]] = None,
                  threads: Optional[pulumi.Input[int]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['DbtProjectTimeoutsArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Resource is in ALPHA state.
 
         This resource allows you to add, manage and delete dbt Projects in your account.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import footholdtech_fivetran as fivetran
-
-        project = fivetran.DbtProject("project",
-            dbt_version="1.4.1",
-            default_schema="default_schema",
-            environment_vars=["environment_var=value"],
-            group_id="group_id",
-            project_config=fivetran.DbtProjectProjectConfigArgs(
-                folder_path="/dbt/project/folder/path",
-                git_branch="main",
-                git_remote_url="your_git_remote_url",
-            ),
-            target_name="target_name",
-            threads=8,
-            type="GIT")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -476,9 +458,8 @@ class DbtProject(pulumi.CustomResource):
         :param pulumi.Input[str] dbt_version: The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.
         :param pulumi.Input[str] default_schema: Default schema in destination. This production schema will contain your transformed data.
         :param pulumi.Input[bool] ensure_readiness: Should resource wait for project to finish initialization. Default value: true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] environment_vars: List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
         :param pulumi.Input[str] group_id: The unique identifier for the group within the Fivetran system.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbtProjectModelArgs']]]] models: The collection of dbt Models.
-        :param pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']] project_config: Type specific dbt Project configuration parameters.
         :param pulumi.Input[str] target_name: Target name to set or override the value from the deployment.yaml
         :param pulumi.Input[int] threads: The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         :param pulumi.Input[str] type: Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
@@ -493,29 +474,6 @@ class DbtProject(pulumi.CustomResource):
         Resource is in ALPHA state.
 
         This resource allows you to add, manage and delete dbt Projects in your account.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import footholdtech_fivetran as fivetran
-
-        project = fivetran.DbtProject("project",
-            dbt_version="1.4.1",
-            default_schema="default_schema",
-            environment_vars=["environment_var=value"],
-            group_id="group_id",
-            project_config=fivetran.DbtProjectProjectConfigArgs(
-                folder_path="/dbt/project/folder/path",
-                git_branch="main",
-                git_remote_url="your_git_remote_url",
-            ),
-            target_name="target_name",
-            threads=8,
-            type="GIT")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -563,10 +521,10 @@ class DbtProject(pulumi.CustomResource):
                  ensure_readiness: Optional[pulumi.Input[bool]] = None,
                  environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbtProjectModelArgs']]]]] = None,
                  project_config: Optional[pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']]] = None,
                  target_name: Optional[pulumi.Input[str]] = None,
                  threads: Optional[pulumi.Input[int]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['DbtProjectTimeoutsArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -588,15 +546,14 @@ class DbtProject(pulumi.CustomResource):
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
-            __props__.__dict__["models"] = models
-            if project_config is None and not opts.urn:
-                raise TypeError("Missing required property 'project_config'")
             __props__.__dict__["project_config"] = project_config
             __props__.__dict__["target_name"] = target_name
             __props__.__dict__["threads"] = threads
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["type"] = type
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by_id"] = None
+            __props__.__dict__["models"] = None
             __props__.__dict__["public_key"] = None
             __props__.__dict__["status"] = None
         super(DbtProject, __self__).__init__(
@@ -622,6 +579,7 @@ class DbtProject(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             target_name: Optional[pulumi.Input[str]] = None,
             threads: Optional[pulumi.Input[int]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['DbtProjectTimeoutsArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'DbtProject':
         """
         Get an existing DbtProject resource's state with the given name, id, and optional extra
@@ -635,9 +593,8 @@ class DbtProject(pulumi.CustomResource):
         :param pulumi.Input[str] dbt_version: The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.
         :param pulumi.Input[str] default_schema: Default schema in destination. This production schema will contain your transformed data.
         :param pulumi.Input[bool] ensure_readiness: Should resource wait for project to finish initialization. Default value: true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] environment_vars: List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
         :param pulumi.Input[str] group_id: The unique identifier for the group within the Fivetran system.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbtProjectModelArgs']]]] models: The collection of dbt Models.
-        :param pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']] project_config: Type specific dbt Project configuration parameters.
         :param pulumi.Input[str] public_key: Public key to grant Fivetran SSH access to git repository.
         :param pulumi.Input[str] status: Status of dbt Project (NOT_READY, READY, ERROR).
         :param pulumi.Input[str] target_name: Target name to set or override the value from the deployment.yaml
@@ -661,6 +618,7 @@ class DbtProject(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["target_name"] = target_name
         __props__.__dict__["threads"] = threads
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["type"] = type
         return DbtProject(resource_name, opts=opts, __props__=__props__)
 
@@ -698,7 +656,7 @@ class DbtProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ensureReadiness")
-    def ensure_readiness(self) -> pulumi.Output[Optional[bool]]:
+    def ensure_readiness(self) -> pulumi.Output[bool]:
         """
         Should resource wait for project to finish initialization. Default value: true.
         """
@@ -707,6 +665,9 @@ class DbtProject(pulumi.CustomResource):
     @property
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+        """
         return pulumi.get(self, "environment_vars")
 
     @property
@@ -720,17 +681,11 @@ class DbtProject(pulumi.CustomResource):
     @property
     @pulumi.getter
     def models(self) -> pulumi.Output[Sequence['outputs.DbtProjectModel']]:
-        """
-        The collection of dbt Models.
-        """
         return pulumi.get(self, "models")
 
     @property
     @pulumi.getter(name="projectConfig")
-    def project_config(self) -> pulumi.Output['outputs.DbtProjectProjectConfig']:
-        """
-        Type specific dbt Project configuration parameters.
-        """
+    def project_config(self) -> pulumi.Output[Optional['outputs.DbtProjectProjectConfig']]:
         return pulumi.get(self, "project_config")
 
     @property
@@ -759,7 +714,7 @@ class DbtProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def threads(self) -> pulumi.Output[Optional[int]]:
+    def threads(self) -> pulumi.Output[int]:
         """
         The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         """
@@ -767,7 +722,12 @@ class DbtProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Output[str]:
+    def timeouts(self) -> pulumi.Output[Optional['outputs.DbtProjectTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
         """

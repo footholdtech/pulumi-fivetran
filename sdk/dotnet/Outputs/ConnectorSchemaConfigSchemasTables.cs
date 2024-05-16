@@ -19,7 +19,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.ConnectorSchemaConfigSchemasTablesColumns>? Columns;
         /// <summary>
-        /// The boolean value specifying whether the sync for the schema into the destination is enabled.
+        /// The boolean value specifying whether the sync for the table into the destination is enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

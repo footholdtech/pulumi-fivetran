@@ -63,17 +63,15 @@ def get_users(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     users = fivetran.get_users()
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the user within the Fivetran system.
+    :param str id: The ID of this resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -95,16 +93,14 @@ def get_users_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     users = fivetran.get_users()
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the user within the Fivetran system.
+    :param str id: The ID of this resource.
     """
     ...

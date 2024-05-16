@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetUserGroupMembershipsResult> InvokeAsync(GetUserGroupMembershipsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserGroupMembershipsResult>("fivetran:index/getUserGroupMemberships:getUserGroupMemberships", args ?? new GetUserGroupMembershipsArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetUserGroupMembershipsResult> Invoke(GetUserGroupMembershipsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserGroupMembershipsResult>("fivetran:index/getUserGroupMemberships:getUserGroupMemberships", args ?? new GetUserGroupMembershipsInvokeArgs(), options.WithDefaults());

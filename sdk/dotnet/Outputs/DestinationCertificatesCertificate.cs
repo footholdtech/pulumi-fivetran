@@ -19,7 +19,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string EncodedCert;
         /// <summary>
-        /// Hash of the fingerprint.
+        /// Hash of the certificate.
         /// </summary>
         public readonly string Hash;
         /// <summary>
@@ -27,7 +27,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Certificate public key.
+        /// The SSH public key.
         /// </summary>
         public readonly string? PublicKey;
         /// <summary>
@@ -39,7 +39,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string? Sha256;
         /// <summary>
-        /// Certificate type.
+        /// Type of the certificate.
         /// </summary>
         public readonly string? Type;
         /// <summary>
@@ -47,7 +47,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string? ValidatedBy;
         /// <summary>
-        /// The date when the certificate was approved.
+        /// The date when certificate was approved.
         /// </summary>
         public readonly string? ValidatedDate;
 

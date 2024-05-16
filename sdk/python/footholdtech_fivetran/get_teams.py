@@ -63,17 +63,15 @@ def get_teams(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     teams = fivetran.get_teams()
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the team within your account.
+    :param str id: The ID of this resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -95,16 +93,14 @@ def get_teams_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     teams = fivetran.get_teams()
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the team within your account.
+    :param str id: The ID of this resource.
     """
     ...

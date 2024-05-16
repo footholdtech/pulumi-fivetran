@@ -43,7 +43,7 @@ class GetConnectorCertificatesResult:
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> str:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -51,7 +51,7 @@ class GetConnectorCertificatesResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier for the resource. Equal to target connector id.
+        The unique identifier for the resource. Equal to target connection id.
         """
         return pulumi.get(self, "id")
 
@@ -73,7 +73,7 @@ def get_connector_certificates(certificates: Optional[Sequence[pulumi.InputType[
     """
     Use this data source to access information about an existing resource.
 
-    :param str id: The unique identifier for the resource. Equal to target connector id.
+    :param str id: The unique identifier for the resource. Equal to target connection id.
     """
     __args__ = dict()
     __args__['certificates'] = certificates
@@ -94,6 +94,6 @@ def get_connector_certificates_output(certificates: Optional[pulumi.Input[Option
     """
     Use this data source to access information about an existing resource.
 
-    :param str id: The unique identifier for the resource. Equal to target connector id.
+    :param str id: The unique identifier for the resource. Equal to target connection id.
     """
     ...

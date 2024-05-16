@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     id: "connector_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConnectorFingerprints(args: GetConnectorFingerprintsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorFingerprintsResult> {
 
@@ -37,7 +35,7 @@ export function getConnectorFingerprints(args: GetConnectorFingerprintsArgs, opt
 export interface GetConnectorFingerprintsArgs {
     fingerprints?: inputs.GetConnectorFingerprintsFingerprint[];
     /**
-     * The unique identifier for the resource. Equal to target connector id.
+     * The unique identifier for the resource. Equal to target connection id.
      */
     id: string;
 }
@@ -47,12 +45,12 @@ export interface GetConnectorFingerprintsArgs {
  */
 export interface GetConnectorFingerprintsResult {
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     readonly connectorId: string;
     readonly fingerprints?: outputs.GetConnectorFingerprintsFingerprint[];
     /**
-     * The unique identifier for the resource. Equal to target connector id.
+     * The unique identifier for the resource. Equal to target connection id.
      */
     readonly id: string;
 }
@@ -61,7 +59,6 @@ export interface GetConnectorFingerprintsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -70,7 +67,6 @@ export interface GetConnectorFingerprintsResult {
  *     id: "connector_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConnectorFingerprintsOutput(args: GetConnectorFingerprintsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorFingerprintsResult> {
     return pulumi.output(args).apply((a: any) => getConnectorFingerprints(a, opts))
@@ -82,7 +78,7 @@ export function getConnectorFingerprintsOutput(args: GetConnectorFingerprintsOut
 export interface GetConnectorFingerprintsOutputArgs {
     fingerprints?: pulumi.Input<pulumi.Input<inputs.GetConnectorFingerprintsFingerprintArgs>[]>;
     /**
-     * The unique identifier for the resource. Equal to target connector id.
+     * The unique identifier for the resource. Equal to target connection id.
      */
     id: pulumi.Input<string>;
 }

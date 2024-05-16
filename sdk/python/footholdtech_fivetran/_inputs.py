@@ -37,7 +37,9 @@ __all__ = [
     'ConnectorTimeoutsArgs',
     'DbtProjectModelArgs',
     'DbtProjectProjectConfigArgs',
+    'DbtProjectTimeoutsArgs',
     'DbtTransformationScheduleArgs',
+    'DbtTransformationTimeoutsArgs',
     'DestinationCertificatesCertificateArgs',
     'DestinationConfigArgs',
     'DestinationFingerprintsFingerprintArgs',
@@ -69,8 +71,8 @@ __all__ = [
     'GetConnectorStatusWarningArgs',
     'GetConnectorsMetadataSourceArgs',
     'GetDbtModelsModelArgs',
-    'GetDbtProjectModelArgs',
-    'GetDbtProjectsProjectArgs',
+    'GetDbtProjectProjectConfigArgs',
+    'GetDbtTransformationScheduleArgs',
     'GetDestinationCertificatesCertificateArgs',
     'GetDestinationConfigArgs',
     'GetDestinationFingerprintsFingerprintArgs',
@@ -671,14 +673,14 @@ class ConnectorCertificatesCertificateArgs:
                  validated_date: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] encoded_cert: Base64 encoded certificate.
-        :param pulumi.Input[str] hash: Hash of the fingerprint.
+        :param pulumi.Input[str] hash: Hash of the certificate.
         :param pulumi.Input[str] name: Certificate name.
-        :param pulumi.Input[str] public_key: Certificate public key.
+        :param pulumi.Input[str] public_key: The SSH public key.
         :param pulumi.Input[str] sha1: Certificate sha1.
         :param pulumi.Input[str] sha256: Certificate sha256.
-        :param pulumi.Input[str] type: Certificate type.
+        :param pulumi.Input[str] type: Type of the certificate.
         :param pulumi.Input[str] validated_by: User name who validated the certificate.
-        :param pulumi.Input[str] validated_date: The date when the certificate was approved.
+        :param pulumi.Input[str] validated_date: The date when certificate was approved.
         """
         pulumi.set(__self__, "encoded_cert", encoded_cert)
         pulumi.set(__self__, "hash", hash)
@@ -713,7 +715,7 @@ class ConnectorCertificatesCertificateArgs:
     @pulumi.getter
     def hash(self) -> pulumi.Input[str]:
         """
-        Hash of the fingerprint.
+        Hash of the certificate.
         """
         return pulumi.get(self, "hash")
 
@@ -737,7 +739,7 @@ class ConnectorCertificatesCertificateArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Certificate public key.
+        The SSH public key.
         """
         return pulumi.get(self, "public_key")
 
@@ -773,7 +775,7 @@ class ConnectorCertificatesCertificateArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Certificate type.
+        Type of the certificate.
         """
         return pulumi.get(self, "type")
 
@@ -797,7 +799,7 @@ class ConnectorCertificatesCertificateArgs:
     @pulumi.getter(name="validatedDate")
     def validated_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The date when the certificate was approved.
+        The date when certificate was approved.
         """
         return pulumi.get(self, "validated_date")
 
@@ -829,6 +831,7 @@ class ConnectorConfigArgs:
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  account_key: Optional[pulumi.Input[str]] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
+                 account_plan: Optional[pulumi.Input[str]] = None,
                  account_region: Optional[pulumi.Input[str]] = None,
                  account_sid: Optional[pulumi.Input[str]] = None,
                  account_sync_mode: Optional[pulumi.Input[str]] = None,
@@ -858,6 +861,7 @@ class ConnectorConfigArgs:
                  aggregation: Optional[pulumi.Input[str]] = None,
                  agreement_grant_token: Optional[pulumi.Input[str]] = None,
                  always_encrypted: Optional[pulumi.Input[bool]] = None,
+                 api: Optional[pulumi.Input[str]] = None,
                  api_access_token: Optional[pulumi.Input[str]] = None,
                  api_environment: Optional[pulumi.Input[str]] = None,
                  api_id: Optional[pulumi.Input[str]] = None,
@@ -968,6 +972,7 @@ class ConnectorConfigArgs:
                  conversion_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  conversion_report_time: Optional[pulumi.Input[str]] = None,
                  conversion_window_size: Optional[pulumi.Input[int]] = None,
+                 convert_dats_type_to_date: Optional[pulumi.Input[bool]] = None,
                  csv_definition: Optional[pulumi.Input[str]] = None,
                  currency: Optional[pulumi.Input[str]] = None,
                  custom_event_sync_mode: Optional[pulumi.Input[str]] = None,
@@ -990,6 +995,7 @@ class ConnectorConfigArgs:
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  datasource: Optional[pulumi.Input[str]] = None,
                  date_granularity: Optional[pulumi.Input[str]] = None,
+                 db: Optional[pulumi.Input[str]] = None,
                  delimiter: Optional[pulumi.Input[str]] = None,
                  dimension_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1153,6 +1159,7 @@ class ConnectorConfigArgs:
                  post_click_attribution_window_size: Optional[pulumi.Input[str]] = None,
                  prebuilt_report: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
+                 primary_key: Optional[pulumi.Input[str]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  product: Optional[pulumi.Input[str]] = None,
@@ -1223,6 +1230,7 @@ class ConnectorConfigArgs:
                  schema_registry_key: Optional[pulumi.Input[str]] = None,
                  schema_registry_secret: Optional[pulumi.Input[str]] = None,
                  schema_registry_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
                  seats: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
@@ -1264,7 +1272,10 @@ class ConnectorConfigArgs:
                  site_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  skip_after: Optional[pulumi.Input[int]] = None,
                  skip_before: Optional[pulumi.Input[int]] = None,
+                 snc_certificate: Optional[pulumi.Input[str]] = None,
                  snc_library_path: Optional[pulumi.Input[str]] = None,
+                 snc_mode: Optional[pulumi.Input[str]] = None,
+                 snc_my_name: Optional[pulumi.Input[str]] = None,
                  snc_name: Optional[pulumi.Input[str]] = None,
                  snc_partner_name: Optional[pulumi.Input[str]] = None,
                  soap_uri: Optional[pulumi.Input[str]] = None,
@@ -1313,6 +1324,7 @@ class ConnectorConfigArgs:
                  time_zone: Optional[pulumi.Input[str]] = None,
                  timeframe_months: Optional[pulumi.Input[str]] = None,
                  tns: Optional[pulumi.Input[str]] = None,
+                 toast_id: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  token_authenticated_container: Optional[pulumi.Input[str]] = None,
                  token_authenticated_database: Optional[pulumi.Input[str]] = None,
@@ -1440,11 +1452,14 @@ class ConnectorConfigArgs:
                	- Service `cosmos`: The read-only primary or secondary account key for the database account. Required for the `ACCOUNT_KEY` data access method.
                	- Service `simplesat`: Your Simplesat account key.
         :param pulumi.Input[str] account_name: Field usage depends on `service` value: 
+               	- Service `eventsforce`: Your Eventsforce account name.
                	- Service `freshdesk_contact_center`: Your Freshdesk Contact Center account name.
                	- Service `happyfox`: Your HappyFox account name.
                	- Service `maxio_saasoptics`: Your Maxio SaaSOptics account name.
                	- Service `talkdesk`: Your Talkdesk Account Name.
                	- Service `udemy_business`: Your Udemy Business account name.
+        :param pulumi.Input[str] account_plan: Field usage depends on `service` value: 
+               	- Service `tymeshift`: Your Tymeshift account plan.
         :param pulumi.Input[str] account_region: Field usage depends on `service` value: 
                	- Service `iterable`: If your Iterable account URL starts with `https://app.eu.iterable.com` then provide `EU` else `US`
         :param pulumi.Input[str] account_sid: Field usage depends on `service` value: 
@@ -1607,6 +1622,8 @@ class ConnectorConfigArgs:
                	- Service `sql_server_hva`: Require TLS.
                	- Service `sql_server_rds`: Require TLS.
                	- Service `sql_server_sap_ecc_hva`: Require TLS.
+        :param pulumi.Input[str] api: Field usage depends on `service` value: 
+               	- Service `freshsuccess`: Set this parameter to `api`.
         :param pulumi.Input[str] api_access_token: Field usage depends on `service` value: 
                	- Service `shopify`: API access token of your custom app.
                	- Service `square`: The Square API access token of your application.
@@ -1630,6 +1647,7 @@ class ConnectorConfigArgs:
                	- Service `avantlink`: Your AvantLink API key.
                	- Service `ballotready`: Your BallotReady API token.
                	- Service `bamboohr`: Your API Key.
+               	- Service `bizzabo`: Your Bizzabo API key.
                	- Service `braze`: Your Braze API Key.
                	- Service `brevo`: Your Brevo API key.
                	- Service `callrail`: Your CallRail API key.
@@ -1675,6 +1693,7 @@ class ConnectorConfigArgs:
                	- Service `freshdesk`: Your Freshdesk API Key.
                	- Service `freshdesk_contact_center`: Your Freshdesk Contact Center API key.
                	- Service `freshservice`: Your Freshservice API Key.
+               	- Service `freshsuccess`: Your Freshsuccess API key.
                	- Service `freshteam`: Your Freshteam API key.
                	- Service `friendbuy`: Your Friendbuy API key.
                	- Service `fullstory`: Your Fullstory API key.
@@ -1700,6 +1719,7 @@ class ConnectorConfigArgs:
                	- Service `kisi`: Your Kisi API key.
                	- Service `klaviyo`: Your Klaviyo API key.
                	- Service `learnupon`: Your Learnupon API key.
+               	- Service `lemlist`: Your Lemlist API key.
                	- Service `lever`: Your Lever API key.
                	- Service `liftoff`: Your Liftoff API key.
                	- Service `linksquares`: Your LinkSquares API key.
@@ -1712,12 +1732,15 @@ class ConnectorConfigArgs:
                	- Service `maxio_chargify`: Enter Your API Key.
                	- Service `messagebird`: Your MessageBird API key.
                	- Service `mountain`: Your MNTN API key.
+               	- Service `myosh`: Your Myosh API Key.
                	- Service `ometria`: Your Ometria API Key.
                	- Service `ordway`: Your Ordway API key.
                	- Service `ortto`: Your Ortto API key.
                	- Service `pagerduty`: Your PagerDuty API key.
                	- Service `papershift`: Your Papershift API Key
+               	- Service `partnerize`: Your Partnerize user API key.
                	- Service `persona`: Your Persona API key.
+               	- Service `picqer`: Your Picqer API key.
                	- Service `pinpoint`: Your Pinpoint API key.
                	- Service `pipe17`: The Pipe17 API key.
                	- Service `playvox`: Your Playvox API Key.
@@ -1744,7 +1767,7 @@ class ConnectorConfigArgs:
                	- Service `shortcut`: Your Shortcut API token.
                	- Service `shortio`: Your Short.io API key.
                	- Service `simplesat`: Your Simplesat API key.
-               	- Service `sistrix`: Your Sistrix api key.
+               	- Service `sistrix`: Your SISTRIX API key.
                	- Service `smartwaiver`: Your Smartwaiver API key.
                	- Service `snyk`: Your Snyk API key.
                	- Service `sonarqube`: Your Sonarqube API key.
@@ -1760,12 +1783,14 @@ class ConnectorConfigArgs:
                	- Service `transcend`: Your Transcend API Key.
                	- Service `trello`: Your TRELLO api key.
                	- Service `uppromote`: Your UpPromote API key.
+               	- Service `veeqo`: Your Veeqo API key.
                	- Service `visit_by_ges`: Your Visit by GES API key.
                	- Service `vitally`: Your Vitally API key.
                	- Service `vonage`: Your Vonage API Key.
                	- Service `vts`: Your VTS API key.
                	- Service `webconnex`: Your Webconnex API key.
                	- Service `xsolla`: Your Xsolla API key.
+               	- Service `yougov_sport`: Your Yougov Sport API key.
                	- Service `zingtree`: Your Zingtree API key.
         :param pulumi.Input[str] api_key_api_secret: Field usage depends on `service` value: 
                	- Service `revel`: Your Revel Systems API Key and API Secret.
@@ -1822,7 +1847,7 @@ class ConnectorConfigArgs:
                	- Service `qualtrics`: API token of the Qualtrics account.
                	- Service `rakutenadvertising`: Your Rakuten Advertising API token.
                	- Service `recharge`: The Recharge API token.
-               	- Service `referralhero`: Your Referralhero API Token.
+               	- Service `referralhero`: Your Referralhero API token.
                	- Service `resource_management_by_smartsheet`: Your Resource Management by Smartsheet API token.
                	- Service `retently`: Your Retently API token.
                	- Service `safetyculture`: Your SafetyCulture API token.
@@ -1875,6 +1900,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] application_key: Field usage depends on `service` value: 
                	- Service `datadog`: Your Datadog application key.
                	- Service `dear`: Your Dear Application key.
+               	- Service `partnerize`: Your Partnerize user application key.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] apps: Field usage depends on `service` value: 
                	- Service `itunes_connect`: Specific apps to sync. Must be populated if `app_sync_mode` is set to `SpecificApps`.
         :param pulumi.Input[str] archive_log_format: Field usage depends on `service` value: 
@@ -1970,6 +1996,7 @@ class ConnectorConfigArgs:
                	- Service `ortto`: Your Ortto base URL. Possible values: `api`, `api.au`, `api.eu`.
                	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
                	- Service `salesforce_sandbox`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
+               	- Service `veevavault`: Your Veeva Vault base URL.
         :param pulumi.Input[str] bearer_token: Field usage depends on `service` value: 
                	- Service `ada`: Your Ada API Access Token.
                	- Service `crowddev`: Your crowd.dev Auth Token.
@@ -2043,6 +2070,7 @@ class ConnectorConfigArgs:
                	- Service `culture_amp`: Your Culture Amp client ID.
                	- Service `cvent`: Your Cvent client ID.
                	- Service `d2l_brightspace`: Your D2L Brightspace client ID.
+               	- Service `ebay`: Your eBay client ID.
                	- Service `flexport`: The Flexport API Key.
                	- Service `genesys`: Your Genesys client ID.
                	- Service `hana_sap_hva_ecc_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
@@ -2077,11 +2105,15 @@ class ConnectorConfigArgs:
                	- Service `swoogo`: Your Swoogo client Id.
                	- Service `taboola`: The Taboola client ID.
                	- Service `talkdesk`: The Client ID of your OAuth Client
+               	- Service `toast`: Your Toast client ID.
                	- Service `trelica`: Your Trelica client ID.
+               	- Service `tymeshift`: Your Tymeshift client ID.
                	- Service `udemy_business`: Your Udemy Business client ID.
+               	- Service `vonage_contact_center`: Your Vonage Contact Center client ID.
                	- Service `walmart_marketplace`: Your Walmart Marketplace client ID.
                	- Service `xero`: your clientId
                	- Service `xray`: Your Xray Client ID.
+               	- Service `yougov_sport`: Your Yougov Sport client ID.
                	- Service `zendesk_chat`: Your Zendesk client ID.
                	- Service `zoho_books`: Your Zoho Books Client ID.
                	- Service `zoho_campaigns`: Your Zoho Campaigns Client ID.
@@ -2091,6 +2123,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] client_key: Field usage depends on `service` value: 
                	- Service `appfigures`: Your Appfigures Client Key.
                	- Service `thinkific`: Your Thinkific client key.
+               	- Service `yougov_sport`: Your Yougov Sport client key.
         :param pulumi.Input[str] client_name: Field usage depends on `service` value: 
                	- Service `destini`: Your Destini Client Name.
                	- Service `medallia`: Medallia company name
@@ -2126,6 +2159,7 @@ class ConnectorConfigArgs:
                	- Service `culture_amp`: Your Culture Amp client secret.
                	- Service `cvent`: Your Cvent client secret.
                	- Service `d2l_brightspace`: Your D2L Brightspace client secret.
+               	- Service `ebay`: Your eBay client secret.
                	- Service `flexport`: The Flexport API Secret.
                	- Service `genesys`: Your Genesys client secret.
                	- Service `instructure`: Your Instructure client secret.
@@ -2155,8 +2189,11 @@ class ConnectorConfigArgs:
                	- Service `taboola`: The Taboola client secret.
                	- Service `talkdesk`: The Client Secret of your OAuth Client
                	- Service `thinkific`: Your Thinkific client secret.
+               	- Service `toast`: Your Toast client secret.
                	- Service `trelica`: Your Trelica client secret.
+               	- Service `tymeshift`: Your Tymeshift client secret.
                	- Service `udemy_business`: Your Udemy Business client secret.
+               	- Service `vonage_contact_center`: Your Vonage Contact Center client secret.
                	- Service `walmart_marketplace`: Your Walmart Marketplace client secret.
                	- Service `xero`: your clientSecret
                	- Service `xray`: Your Xray Client Secret.
@@ -2207,7 +2244,7 @@ class ConnectorConfigArgs:
                	- Service `snowplow`: Public repository URL containing JSON configuration files.
         :param pulumi.Input[str] config_type: Field usage depends on `service` value: 
                	- Service `facebook`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#configtype).
-               	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+               	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
         :param pulumi.Input[str] connection_method: Field usage depends on `service` value: 
                	- Service `aws_msk`: How Fivetran connects to your message brokers in the cluster
                	- Service `azure_blob_storage`: Connection Method. Possible values:  `DIRECT`: Fivetran will connect directly to your storage container, `SSH_TUNNEL`: Fivetran will connect to your storage container using a host machine (commonly used for VPN connections), `PRIVATE_LINK`: Fivetran will connect to your storage container using PrivateLink.
@@ -2220,6 +2257,7 @@ class ConnectorConfigArgs:
                	- Service `azure_blob_storage`: The blob storage container connection string.
                	- Service `azure_event_hub`: Connection string of the Event Hub Namespace you want to sync.
                	- Service `azure_service_bus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
+               	- Service `microsoft_dynamics_365_fno`: The blob storage container's connection string.
                	- Service `microsoft_dynamics_365_fo`: The blob storage container connection string.
         :param pulumi.Input[str] connection_type: Field usage depends on `service` value: 
                	- Service `aurora`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -2295,6 +2333,7 @@ class ConnectorConfigArgs:
                	- Service `azure_blob_storage`: IP address of the Azure Storage Container which is accessible from host machine.
         :param pulumi.Input[str] container_name: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The name of the blob container.
+               	- Service `microsoft_dynamics_365_fno`: The name of the blob container.
                	- Service `microsoft_dynamics_365_fo`: The name of the blob container.
         :param pulumi.Input[str] content_owner_id: Field usage depends on `service` value: 
                	- Service `youtube_analytics`: Used only for Content Owner reports. The ID of the content owner for whom the API request is being made.
@@ -2328,7 +2367,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] customer_list_id: Field usage depends on `service` value: 
                	- Service `salesforce_commerce_cloud`: The parameter to retrieve customer details.
         :param pulumi.Input[str] data_access_method: Field usage depends on `service` value: 
-               	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/databases/cosmos#dataaccessmethods).
+               	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/connectors/databases/cosmos#dataaccessmethods).
         :param pulumi.Input[str] data_center: Field usage depends on `service` value: 
                	- Service `qualtrics`: Data center ID of the Qualtrics account. Can be found in the URL before `qualtrics.com`. (For example, if your URL is `youraccount.ca1.qualtrics.com`, then the data center is `ca1`.)
                	- Service `zoho_crm`: Data Center
@@ -2385,6 +2424,8 @@ class ConnectorConfigArgs:
                	- Service `netsuite_suiteanalytics`: The NetSuite data source value: `NetSuite.com`.
         :param pulumi.Input[str] date_granularity: Field usage depends on `service` value: 
                	- Service `adobe_analytics`: The aggregation duration you want. Default value: `HOUR` .
+        :param pulumi.Input[str] db: Field usage depends on `service` value: 
+               	- Service `myosh`: Your Myosh Server variables/db .
         :param pulumi.Input[str] delimiter: Field usage depends on `service` value: 
                	- Service `aws_cost_report`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
                	- Service `azure_blob_storage`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
@@ -2419,7 +2460,8 @@ class ConnectorConfigArgs:
                	- Service `okta`: Your Okta domain.
                	- Service `pipedrive`: Your Pipedrive domain.
                	- Service `shopware`: Your Shopware domain.
-               	- Service `sistrix`: Your domain for which you want to fetch data.
+               	- Service `sistrix`: Your SISTRIX domain.
+               	- Service `solarwinds_service_desk`: Your SolarWinds Service Desk domain.
                	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
                	- Service `zendesk`: Zendesk domain.
                	- Service `zendesk_sunshine`: Zendesk domain.
@@ -2714,7 +2756,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[bool] is_private_key_encrypted: Field usage depends on `service` value: 
                	- Service `snowflake_db`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
         :param pulumi.Input[bool] is_private_link_required: Field usage depends on `service` value: 
-               	- Service `aws_lambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelink).
+               	- Service `aws_lambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
         :param pulumi.Input[bool] is_public: Field usage depends on `service` value: 
                	- Service `aws_cost_report`: Whether you are syncing from a public bucket. Default value: `false`.
                	- Service `kinesis`: Is the bucket public? (you don't need an AWS account for syncing public buckets!)
@@ -2880,7 +2922,7 @@ class ConnectorConfigArgs:
                	- Service `salesforce_commerce_cloud`: The organization ID from Salesforce Commerce Cloud account.
                	- Service `zoho_books`: Your Zoho Books Organization ID.
         :param pulumi.Input[str] organization_name: Field usage depends on `service` value: 
-               	- Service `confluence`: Your Confluence Organization name.
+               	- Service `confluence`: Your Confluence organization name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] organizations: Field usage depends on `service` value: 
                	- Service `apple_search_ads`: Organizations
                	- Service `snapchat_ads`: Specific organizations IDs to sync. Must be populated if `syncMode` is set to `SpecificOrganizations`.
@@ -2958,6 +3000,7 @@ class ConnectorConfigArgs:
                	- Service `moloco`: Your Moloco account password.
                	- Service `mongo`: The user's password.
                	- Service `mongo_sharded`: The user's password.
+               	- Service `myosh`: Your Myosh Password .
                	- Service `mysql`: The user's password.
                	- Service `mysql_azure`: The user's password.
                	- Service `mysql_rds`: The user's password.
@@ -3006,6 +3049,7 @@ class ConnectorConfigArgs:
                	- Service `ukg_pro`: Your UKG Pro password.
                	- Service `unicommerce`: Your uniware login password.
                	- Service `upland`: Your Upland Software Password.
+               	- Service `veevavault`: Your Veeva Vault password.
                	- Service `when_i_work`: Your When I Work password.
                	- Service `wherefour`: Your Wherefour password.
                	- Service `workday`: Workday password.
@@ -3059,12 +3103,14 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] pgp_pass_phrase: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
+               	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `wasabi_cloud_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         :param pulumi.Input[str] pgp_secret_key: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
+               	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `s3`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `wasabi_cloud_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -3145,7 +3191,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] primary_keys: Field usage depends on `service` value: 
                	- Service `workday`: Primary Keys
         :param pulumi.Input[str] private_key: Field usage depends on `service` value: 
-               	- Service `absorb_lms`: Your Absorb LMS Private Key.
+               	- Service `absorb_lms`: Your Absorb LMS REST API private key.
                	- Service `adobe_analytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
                	- Service `adp_workforce_now`: Private Key.
                	- Service `anaplan`: The contents of your private key file. Must be populated if `auth_mode` is set to `Certificate`.
@@ -3257,10 +3303,12 @@ class ConnectorConfigArgs:
                	- Service `navan`: Your Navan region.
                	- Service `on24`: Your ON24 region.
                	- Service `pendo`: The Pendo account region.
+               	- Service `proofpoint_security_awareness`: Your Proofpoint Security Awareness Region.
                	- Service `ringover`: Your Ringover region.
                	- Service `samsara`: The region of your Samsara account. For instance, if your region is `EUROPE`, provide `eu.samsara` in the `Region` field. If your region is not in Europe, provide `samsara`.
                	- Service `snyk`: Your Snyk region.
                	- Service `talkdesk`: Your Talkdesk region (".com",".eu","ca.com")
+               	- Service `vonage_contact_center`: Your Vonage Contact Center region.
                	- Service `wasabi_cloud_storage`: The Wasabi Cloud Storage bucket region. Required for connector creation. Default value: `US_EAST_1`.
                	- Service `zoho_books`: Your Zoho Books application host region.
                	- Service `zoho_campaigns`: Your Zoho Campaigns application host region.
@@ -3416,6 +3464,8 @@ class ConnectorConfigArgs:
                	- Service `aws_msk`: Your schema registry URLs
                	- Service `azure_service_bus`: The comma-separated list of schema registry servers in the `server:port` format
                	- Service `confluent_cloud`: Your schema registry URLs
+        :param pulumi.Input[str] scope: Field usage depends on `service` value: 
+               	- Service `ebay`: Your eBay Scopes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] seats: Field usage depends on `service` value: 
                	- Service `yahoo_dsp`: Specific Seats to sync. Must be populated if `sync_mode_seat` is set to `SPECIFIC_SEATS`.
         :param pulumi.Input[str] secret: Field usage depends on `service` value: 
@@ -3497,7 +3547,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] sftp_user: Field usage depends on `service` value: 
                	- Service `adobe_analytics_data_feed`: SFTP user.
         :param pulumi.Input[str] share_url: Field usage depends on `service` value: 
-               	- Service `share_point`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/files/share-point/setup-guide).
+               	- Service `share_point`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/connectors/files/share-point/setup-guide).
         :param pulumi.Input[str] sheet_id: Field usage depends on `service` value: 
                	- Service `google_sheets`: The URL of the sheet that can be copied from the browser address bar, or the ID of the sheet that can be found in the sheet's URL between **/d/** and **/edit**.
         :param pulumi.Input[str] shop: Field usage depends on `service` value: 
@@ -3513,6 +3563,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] signer_public_key: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
+               	- Service `gcs`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `s3`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `sftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `wasabi_cloud_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
@@ -3609,9 +3660,11 @@ class ConnectorConfigArgs:
                	- Service `looker_source`: Your looker SubDomain name.
                	- Service `mailgun`: Your Mailgun subdomain.
                	- Service `maxio_chargify`: Enter Your Subdomain.
+               	- Service `myosh`: Your Myosh Subdomain .
                	- Service `namely`: Your Namely subdomain.
                	- Service `nylas`: Your Nylas subdomain.
                	- Service `okta`: Your Okta subdomain.
+               	- Service `picqer`: Your Picqer sub domain name.
                	- Service `pinpoint`: Your Pinpoint sub domain name.
                	- Service `piwik_pro`: Your Piwik PRO subdomain.
                	- Service `playvox`: Your Playvox Subdomain.
@@ -3625,23 +3678,28 @@ class ConnectorConfigArgs:
                	- Service `sap_success_factors`: Your SAP SuccessFactors Subdomain.
                	- Service `sonarqube`: Your Sonarqube subdomain.
                	- Service `starrez`: Your StarRez subdomain
+               	- Service `tableau_source`: Your Tableau Source subdomain.
                	- Service `tempo`: Your Tempo subdomain.
                	- Service `thinkific`: Your Thinkific subdomain.
                	- Service `totango`: Your Totango Subdomain.
+               	- Service `tymeshift`: Your Tymeshift subdomain.
                	- Service `upland`: Your Upland Software subDomain.
                	- Service `wordpress`: Your WordPress subdomain.
                	- Service `workable`: Your Workable Subdomain.
                	- Service `wrike`: Your Wrike Subdomain.
         :param pulumi.Input[str] subdomain: Field usage depends on `service` value: 
                	- Service `bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
+               	- Service `ebay`: Your eBay Environment.
                	- Service `freshdesk`: Your company's freshdesk subdomain (usually **company**.freshdesk.com).
                	- Service `freshservice`: Your company's freshservice subdomain (usually **company**.freshservice.com).
+               	- Service `freshsuccess`: Your Freshsuccess subdomain.
                	- Service `gorgias`: Your Gorgias subdomain.
                	- Service `klarna`: Your Klarna subdomain.
                	- Service `learnupon`: Your Learnupon subdomain.
                	- Service `maxio_saasoptics`: Your Maxio SaaSOptics subdomain.
                	- Service `medallia`: Medallia subdomain
                	- Service `sonarqube`: Your Sonarqube subdomain.
+               	- Service `toast`: Your Toast Domain.
                	- Service `vts`: Your VTS Subdomain.
                	- Service `zendesk_chat`: Your Zendesk domain.
         :param pulumi.Input[str] subscriber_name: Field usage depends on `service` value: 
@@ -3681,7 +3739,7 @@ class ConnectorConfigArgs:
                	- Service `dynamodb`: Whether to sync all tables in unpacked mode only or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
                	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
                	- Service `facebook_ad_account`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-               	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#syncmode).
+               	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#syncmode).
                	- Service `facebook_pages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
                	- Service `github`: Whether to sync all repositories or specific repositories.
                	- Service `google_ads`: Whether to sync all accounts or specific accounts.
@@ -3706,6 +3764,8 @@ class ConnectorConfigArgs:
                	- Service `twitter`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
                	- Service `twitter_ads`: Whether to sync all accounts or specific accounts.
                	- Service `yahoo_gemini`: Whether to sync all accounts or specific accounts. Default value: `SpecificAccounts`.
+               	- Service `zuora`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
+               	- Service `zuora_sandbox`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
         :param pulumi.Input[str] sync_mode_advertiser: Field usage depends on `service` value: 
                	- Service `yahoo_dsp`: Whether to sync all advertisers or specific advertisers. Default value: `ALL_ADVERTISERS`.
         :param pulumi.Input[str] sync_mode_seat: Field usage depends on `service` value: 
@@ -3713,7 +3773,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[bool] sync_multiple_accounts: Field usage depends on `service` value: 
                	- Service `reddit_ads`: When this parameter is set to `true`, we sync the data of the additional linked accounts. When this parameter is set to `false`, we sync only the data from the main account that was used for authorization
         :param pulumi.Input[str] sync_pack_mode: Field usage depends on `service` value: 
-               	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/databases/cosmos#packmodeoptions).
+               	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
                	- Service `documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
         :param pulumi.Input[bool] sync_pull_api: Field usage depends on `service` value: 
                	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
@@ -3809,9 +3869,12 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] tns: Field usage depends on `service` value: 
                	- Service `oracle_hva`: Single-tenant database: The database's SID.  Multi-tenant database: The database's TNS.
                	- Service `oracle_sap_hva`: Single-tenant database: The database SID.  Multi-tenant database: The database TNS.
+        :param pulumi.Input[str] toast_id: Field usage depends on `service` value: 
+               	- Service `toast`: Your Toast Restaurant External ID.
         :param pulumi.Input[str] token: Field usage depends on `service` value: 
                	- Service `mode`: Your Mode Token.
                	- Service `oracle_moat_analytics`: Your Oracle Moat Analytics Token.
+               	- Service `solarwinds_service_desk`: Your SolarWinds Service Desk token.
         :param pulumi.Input[str] token_authenticated_container: Field usage depends on `service` value: 
                	- Service `cosmos`: The container name. Required for the `RESOURCE_TOKEN` data access method.
         :param pulumi.Input[str] token_authenticated_database: Field usage depends on `service` value: 
@@ -3822,6 +3885,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] token_key: Field usage depends on `service` value: 
                	- Service `netsuite_suiteanalytics`: Token ID
                	- Service `on24`: Your ON24 token key.
+               	- Service `proofpoint_security_awareness`: Your Proofpoint Security Awareness Token Key.
         :param pulumi.Input[str] token_secret: Field usage depends on `service` value: 
                	- Service `netsuite_suiteanalytics`: Token Secret
                	- Service `on24`: Your ON24 token secret.
@@ -4026,6 +4090,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[bool] use_pgp_encryption_options: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
                	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
+               	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
                	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
                	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
                	- Service `wasabi_cloud_storage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -4095,6 +4160,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[str] user_id: Field usage depends on `service` value: 
                	- Service `coassemble`: Your Coassemble user ID.
                	- Service `gmail`: Your Gmail user ID.
+               	- Service `hibob`: Your HiBob Service User Token.
                	- Service `marketo`: Marketo SOAP API User Id.
                	- Service `playvox`: Your Playvox User ID.
                	- Service `sage_intacct`: User ID
@@ -4103,6 +4169,7 @@ class ConnectorConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_profiles: Field usage depends on `service` value: 
                	- Service `double_click_campaign_manager`: IDs of specific User Profiles to sync. Must be populated if `sync_mode` is set to `SpecificAccounts`.
         :param pulumi.Input[str] user_token: Field usage depends on `service` value: 
+               	- Service `hibob`: Your HiBob Service User ID.
                	- Service `konnect_insights`: Your Konnect Insights User Token.
                	- Service `sonarqube`: Your Sonarqube user token.
         :param pulumi.Input[str] username: Field usage depends on `service` value: 
@@ -4115,7 +4182,7 @@ class ConnectorConfigArgs:
                	- Service `cin7`: Your Cin7 API Username.
                	- Service `collibra`: Your collibra username.
                	- Service `concur`: The SAP Concur username.
-               	- Service `confluence`: Your Confluence email address.
+               	- Service `confluence`: Your Confluence username.
                	- Service `contrast_security`: Your Contrast Security API Username.
                	- Service `dcl_logistics`: Your DCL Logistics username.
                	- Service `github`: `Login` of your GitHub profile.
@@ -4133,6 +4200,7 @@ class ConnectorConfigArgs:
                	- Service `learnupon`: Your Learnupon username.
                	- Service `lessonly`: Your Lessonly username.
                	- Service `mailgun`: Your Mailgun API username.
+               	- Service `myosh`: Your Myosh  Username.
                	- Service `oracle_business_intelligence_publisher`: The Oracle Business Intelligence username.
                	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud username.
                	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud username.
@@ -4151,10 +4219,11 @@ class ConnectorConfigArgs:
                	- Service `starrez`: Your StarRez API username
                	- Service `stylight`: Your Stylight Username.
                	- Service `teamwork`: Your Teamwork username.
-               	- Service `testrail`: Your TestRail API username.
+               	- Service `testrail`: Your TestRail username.
                	- Service `ukg_pro`: Your UKG Pro username.
                	- Service `unicommerce`: Your uniware login username.
                	- Service `upland`: Your Upland Software Username.
+               	- Service `veevavault`: Your Veeva Vault username.
                	- Service `when_i_work`: Your When I Work username.
                	- Service `wherefour`: Your Wherefour username.
                	- Service `workday_financial_management`: Workday username.
@@ -4237,6 +4306,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "account_key", account_key)
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
+        if account_plan is not None:
+            pulumi.set(__self__, "account_plan", account_plan)
         if account_region is not None:
             pulumi.set(__self__, "account_region", account_region)
         if account_sid is not None:
@@ -4295,6 +4366,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "agreement_grant_token", agreement_grant_token)
         if always_encrypted is not None:
             pulumi.set(__self__, "always_encrypted", always_encrypted)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if api_access_token is not None:
             pulumi.set(__self__, "api_access_token", api_access_token)
         if api_environment is not None:
@@ -4515,6 +4588,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "conversion_report_time", conversion_report_time)
         if conversion_window_size is not None:
             pulumi.set(__self__, "conversion_window_size", conversion_window_size)
+        if convert_dats_type_to_date is not None:
+            pulumi.set(__self__, "convert_dats_type_to_date", convert_dats_type_to_date)
         if csv_definition is not None:
             pulumi.set(__self__, "csv_definition", csv_definition)
         if currency is not None:
@@ -4559,6 +4634,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "datasource", datasource)
         if date_granularity is not None:
             pulumi.set(__self__, "date_granularity", date_granularity)
+        if db is not None:
+            pulumi.set(__self__, "db", db)
         if delimiter is not None:
             pulumi.set(__self__, "delimiter", delimiter)
         if dimension_attributes is not None:
@@ -4885,6 +4962,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "prebuilt_report", prebuilt_report)
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
         if private_key is not None:
@@ -5025,6 +5104,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "schema_registry_secret", schema_registry_secret)
         if schema_registry_urls is not None:
             pulumi.set(__self__, "schema_registry_urls", schema_registry_urls)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
         if seats is not None:
             pulumi.set(__self__, "seats", seats)
         if secret is not None:
@@ -5107,8 +5188,14 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "skip_after", skip_after)
         if skip_before is not None:
             pulumi.set(__self__, "skip_before", skip_before)
+        if snc_certificate is not None:
+            pulumi.set(__self__, "snc_certificate", snc_certificate)
         if snc_library_path is not None:
             pulumi.set(__self__, "snc_library_path", snc_library_path)
+        if snc_mode is not None:
+            pulumi.set(__self__, "snc_mode", snc_mode)
+        if snc_my_name is not None:
+            pulumi.set(__self__, "snc_my_name", snc_my_name)
         if snc_name is not None:
             pulumi.set(__self__, "snc_name", snc_name)
         if snc_partner_name is not None:
@@ -5205,6 +5292,8 @@ class ConnectorConfigArgs:
             pulumi.set(__self__, "timeframe_months", timeframe_months)
         if tns is not None:
             pulumi.set(__self__, "tns", tns)
+        if toast_id is not None:
+            pulumi.set(__self__, "toast_id", toast_id)
         if token is not None:
             pulumi.set(__self__, "token", token)
         if token_authenticated_container is not None:
@@ -5594,6 +5683,7 @@ class ConnectorConfigArgs:
     def account_name(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
+        	- Service `eventsforce`: Your Eventsforce account name.
         	- Service `freshdesk_contact_center`: Your Freshdesk Contact Center account name.
         	- Service `happyfox`: Your HappyFox account name.
         	- Service `maxio_saasoptics`: Your Maxio SaaSOptics account name.
@@ -5605,6 +5695,19 @@ class ConnectorConfigArgs:
     @account_name.setter
     def account_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="accountPlan")
+    def account_plan(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field usage depends on `service` value: 
+        	- Service `tymeshift`: Your Tymeshift account plan.
+        """
+        return pulumi.get(self, "account_plan")
+
+    @account_plan.setter
+    def account_plan(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_plan", value)
 
     @property
     @pulumi.getter(name="accountRegion")
@@ -6082,6 +6185,19 @@ class ConnectorConfigArgs:
         pulumi.set(self, "always_encrypted", value)
 
     @property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field usage depends on `service` value: 
+        	- Service `freshsuccess`: Set this parameter to `api`.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api", value)
+
+    @property
     @pulumi.getter(name="apiAccessToken")
     def api_access_token(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6141,6 +6257,7 @@ class ConnectorConfigArgs:
         	- Service `avantlink`: Your AvantLink API key.
         	- Service `ballotready`: Your BallotReady API token.
         	- Service `bamboohr`: Your API Key.
+        	- Service `bizzabo`: Your Bizzabo API key.
         	- Service `braze`: Your Braze API Key.
         	- Service `brevo`: Your Brevo API key.
         	- Service `callrail`: Your CallRail API key.
@@ -6186,6 +6303,7 @@ class ConnectorConfigArgs:
         	- Service `freshdesk`: Your Freshdesk API Key.
         	- Service `freshdesk_contact_center`: Your Freshdesk Contact Center API key.
         	- Service `freshservice`: Your Freshservice API Key.
+        	- Service `freshsuccess`: Your Freshsuccess API key.
         	- Service `freshteam`: Your Freshteam API key.
         	- Service `friendbuy`: Your Friendbuy API key.
         	- Service `fullstory`: Your Fullstory API key.
@@ -6211,6 +6329,7 @@ class ConnectorConfigArgs:
         	- Service `kisi`: Your Kisi API key.
         	- Service `klaviyo`: Your Klaviyo API key.
         	- Service `learnupon`: Your Learnupon API key.
+        	- Service `lemlist`: Your Lemlist API key.
         	- Service `lever`: Your Lever API key.
         	- Service `liftoff`: Your Liftoff API key.
         	- Service `linksquares`: Your LinkSquares API key.
@@ -6223,12 +6342,15 @@ class ConnectorConfigArgs:
         	- Service `maxio_chargify`: Enter Your API Key.
         	- Service `messagebird`: Your MessageBird API key.
         	- Service `mountain`: Your MNTN API key.
+        	- Service `myosh`: Your Myosh API Key.
         	- Service `ometria`: Your Ometria API Key.
         	- Service `ordway`: Your Ordway API key.
         	- Service `ortto`: Your Ortto API key.
         	- Service `pagerduty`: Your PagerDuty API key.
         	- Service `papershift`: Your Papershift API Key
+        	- Service `partnerize`: Your Partnerize user API key.
         	- Service `persona`: Your Persona API key.
+        	- Service `picqer`: Your Picqer API key.
         	- Service `pinpoint`: Your Pinpoint API key.
         	- Service `pipe17`: The Pipe17 API key.
         	- Service `playvox`: Your Playvox API Key.
@@ -6255,7 +6377,7 @@ class ConnectorConfigArgs:
         	- Service `shortcut`: Your Shortcut API token.
         	- Service `shortio`: Your Short.io API key.
         	- Service `simplesat`: Your Simplesat API key.
-        	- Service `sistrix`: Your Sistrix api key.
+        	- Service `sistrix`: Your SISTRIX API key.
         	- Service `smartwaiver`: Your Smartwaiver API key.
         	- Service `snyk`: Your Snyk API key.
         	- Service `sonarqube`: Your Sonarqube API key.
@@ -6271,12 +6393,14 @@ class ConnectorConfigArgs:
         	- Service `transcend`: Your Transcend API Key.
         	- Service `trello`: Your TRELLO api key.
         	- Service `uppromote`: Your UpPromote API key.
+        	- Service `veeqo`: Your Veeqo API key.
         	- Service `visit_by_ges`: Your Visit by GES API key.
         	- Service `vitally`: Your Vitally API key.
         	- Service `vonage`: Your Vonage API Key.
         	- Service `vts`: Your VTS API key.
         	- Service `webconnex`: Your Webconnex API key.
         	- Service `xsolla`: Your Xsolla API key.
+        	- Service `yougov_sport`: Your Yougov Sport API key.
         	- Service `zingtree`: Your Zingtree API key.
         """
         return pulumi.get(self, "api_key")
@@ -6421,7 +6545,7 @@ class ConnectorConfigArgs:
         	- Service `qualtrics`: API token of the Qualtrics account.
         	- Service `rakutenadvertising`: Your Rakuten Advertising API token.
         	- Service `recharge`: The Recharge API token.
-        	- Service `referralhero`: Your Referralhero API Token.
+        	- Service `referralhero`: Your Referralhero API token.
         	- Service `resource_management_by_smartsheet`: Your Resource Management by Smartsheet API token.
         	- Service `retently`: Your Retently API token.
         	- Service `safetyculture`: Your SafetyCulture API token.
@@ -6633,6 +6757,7 @@ class ConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `datadog`: Your Datadog application key.
         	- Service `dear`: Your Dear Application key.
+        	- Service `partnerize`: Your Partnerize user application key.
         """
         return pulumi.get(self, "application_key")
 
@@ -7041,6 +7166,7 @@ class ConnectorConfigArgs:
         	- Service `ortto`: Your Ortto base URL. Possible values: `api`, `api.au`, `api.eu`.
         	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
         	- Service `salesforce_sandbox`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
+        	- Service `veevavault`: Your Veeva Vault base URL.
         """
         return pulumi.get(self, "base_url")
 
@@ -7310,6 +7436,7 @@ class ConnectorConfigArgs:
         	- Service `culture_amp`: Your Culture Amp client ID.
         	- Service `cvent`: Your Cvent client ID.
         	- Service `d2l_brightspace`: Your D2L Brightspace client ID.
+        	- Service `ebay`: Your eBay client ID.
         	- Service `flexport`: The Flexport API Key.
         	- Service `genesys`: Your Genesys client ID.
         	- Service `hana_sap_hva_ecc_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
@@ -7344,11 +7471,15 @@ class ConnectorConfigArgs:
         	- Service `swoogo`: Your Swoogo client Id.
         	- Service `taboola`: The Taboola client ID.
         	- Service `talkdesk`: The Client ID of your OAuth Client
+        	- Service `toast`: Your Toast client ID.
         	- Service `trelica`: Your Trelica client ID.
+        	- Service `tymeshift`: Your Tymeshift client ID.
         	- Service `udemy_business`: Your Udemy Business client ID.
+        	- Service `vonage_contact_center`: Your Vonage Contact Center client ID.
         	- Service `walmart_marketplace`: Your Walmart Marketplace client ID.
         	- Service `xero`: your clientId
         	- Service `xray`: Your Xray Client ID.
+        	- Service `yougov_sport`: Your Yougov Sport client ID.
         	- Service `zendesk_chat`: Your Zendesk client ID.
         	- Service `zoho_books`: Your Zoho Books Client ID.
         	- Service `zoho_campaigns`: Your Zoho Campaigns Client ID.
@@ -7369,6 +7500,7 @@ class ConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `appfigures`: Your Appfigures Client Key.
         	- Service `thinkific`: Your Thinkific client key.
+        	- Service `yougov_sport`: Your Yougov Sport client key.
         """
         return pulumi.get(self, "client_key")
 
@@ -7459,6 +7591,7 @@ class ConnectorConfigArgs:
         	- Service `culture_amp`: Your Culture Amp client secret.
         	- Service `cvent`: Your Cvent client secret.
         	- Service `d2l_brightspace`: Your D2L Brightspace client secret.
+        	- Service `ebay`: Your eBay client secret.
         	- Service `flexport`: The Flexport API Secret.
         	- Service `genesys`: Your Genesys client secret.
         	- Service `instructure`: Your Instructure client secret.
@@ -7488,8 +7621,11 @@ class ConnectorConfigArgs:
         	- Service `taboola`: The Taboola client secret.
         	- Service `talkdesk`: The Client Secret of your OAuth Client
         	- Service `thinkific`: Your Thinkific client secret.
+        	- Service `toast`: Your Toast client secret.
         	- Service `trelica`: Your Trelica client secret.
+        	- Service `tymeshift`: Your Tymeshift client secret.
         	- Service `udemy_business`: Your Udemy Business client secret.
+        	- Service `vonage_contact_center`: Your Vonage Contact Center client secret.
         	- Service `walmart_marketplace`: Your Walmart Marketplace client secret.
         	- Service `xero`: your clientSecret
         	- Service `xray`: Your Xray Client Secret.
@@ -7692,7 +7828,7 @@ class ConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `facebook`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#configtype).
-        	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+        	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
         """
         return pulumi.get(self, "config_type")
 
@@ -7756,6 +7892,7 @@ class ConnectorConfigArgs:
         	- Service `azure_blob_storage`: The blob storage container connection string.
         	- Service `azure_event_hub`: Connection string of the Event Hub Namespace you want to sync.
         	- Service `azure_service_bus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
+        	- Service `microsoft_dynamics_365_fno`: The blob storage container's connection string.
         	- Service `microsoft_dynamics_365_fo`: The blob storage container connection string.
         """
         return pulumi.get(self, "connection_string")
@@ -7897,6 +8034,7 @@ class ConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The name of the blob container.
+        	- Service `microsoft_dynamics_365_fno`: The name of the blob container.
         	- Service `microsoft_dynamics_365_fo`: The name of the blob container.
         """
         return pulumi.get(self, "container_name")
@@ -7969,6 +8107,15 @@ class ConnectorConfigArgs:
     @conversion_window_size.setter
     def conversion_window_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "conversion_window_size", value)
+
+    @property
+    @pulumi.getter(name="convertDatsTypeToDate")
+    def convert_dats_type_to_date(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "convert_dats_type_to_date")
+
+    @convert_dats_type_to_date.setter
+    def convert_dats_type_to_date(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "convert_dats_type_to_date", value)
 
     @property
     @pulumi.getter(name="csvDefinition")
@@ -8142,7 +8289,7 @@ class ConnectorConfigArgs:
     def data_access_method(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/databases/cosmos#dataaccessmethods).
+        	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/connectors/databases/cosmos#dataaccessmethods).
         """
         return pulumi.get(self, "data_access_method")
 
@@ -8285,6 +8432,19 @@ class ConnectorConfigArgs:
 
     @property
     @pulumi.getter
+    def db(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field usage depends on `service` value: 
+        	- Service `myosh`: Your Myosh Server variables/db .
+        """
+        return pulumi.get(self, "db")
+
+    @db.setter
+    def db(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db", value)
+
+    @property
+    @pulumi.getter
     def delimiter(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
@@ -8376,7 +8536,8 @@ class ConnectorConfigArgs:
         	- Service `okta`: Your Okta domain.
         	- Service `pipedrive`: Your Pipedrive domain.
         	- Service `shopware`: Your Shopware domain.
-        	- Service `sistrix`: Your domain for which you want to fetch data.
+        	- Service `sistrix`: Your SISTRIX domain.
+        	- Service `solarwinds_service_desk`: Your SolarWinds Service Desk domain.
         	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
         	- Service `zendesk`: Zendesk domain.
         	- Service `zendesk_sunshine`: Zendesk domain.
@@ -9537,7 +9698,7 @@ class ConnectorConfigArgs:
     def is_private_link_required(self) -> Optional[pulumi.Input[bool]]:
         """
         Field usage depends on `service` value: 
-        	- Service `aws_lambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelink).
+        	- Service `aws_lambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
         """
         return pulumi.get(self, "is_private_link_required")
 
@@ -10219,7 +10380,7 @@ class ConnectorConfigArgs:
     def organization_name(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `confluence`: Your Confluence Organization name.
+        	- Service `confluence`: Your Confluence organization name.
         """
         return pulumi.get(self, "organization_name")
 
@@ -10407,6 +10568,7 @@ class ConnectorConfigArgs:
         	- Service `moloco`: Your Moloco account password.
         	- Service `mongo`: The user's password.
         	- Service `mongo_sharded`: The user's password.
+        	- Service `myosh`: Your Myosh Password .
         	- Service `mysql`: The user's password.
         	- Service `mysql_azure`: The user's password.
         	- Service `mysql_rds`: The user's password.
@@ -10455,6 +10617,7 @@ class ConnectorConfigArgs:
         	- Service `ukg_pro`: Your UKG Pro password.
         	- Service `unicommerce`: Your uniware login password.
         	- Service `upland`: Your Upland Software Password.
+        	- Service `veevavault`: Your Veeva Vault password.
         	- Service `when_i_work`: Your When I Work password.
         	- Service `wherefour`: Your Wherefour password.
         	- Service `workday`: Workday password.
@@ -10651,6 +10814,7 @@ class ConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `wasabi_cloud_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -10668,6 +10832,7 @@ class ConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `s3`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `wasabi_cloud_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -10808,6 +10973,15 @@ class ConnectorConfigArgs:
         pulumi.set(self, "prefix", value)
 
     @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
     @pulumi.getter(name="primaryKeys")
     def primary_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -10825,7 +10999,7 @@ class ConnectorConfigArgs:
     def private_key(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `absorb_lms`: Your Absorb LMS Private Key.
+        	- Service `absorb_lms`: Your Absorb LMS REST API private key.
         	- Service `adobe_analytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
         	- Service `adp_workforce_now`: Private Key.
         	- Service `anaplan`: The contents of your private key file. Must be populated if `auth_mode` is set to `Certificate`.
@@ -11111,10 +11285,12 @@ class ConnectorConfigArgs:
         	- Service `navan`: Your Navan region.
         	- Service `on24`: Your ON24 region.
         	- Service `pendo`: The Pendo account region.
+        	- Service `proofpoint_security_awareness`: Your Proofpoint Security Awareness Region.
         	- Service `ringover`: Your Ringover region.
         	- Service `samsara`: The region of your Samsara account. For instance, if your region is `EUROPE`, provide `eu.samsara` in the `Region` field. If your region is not in Europe, provide `samsara`.
         	- Service `snyk`: Your Snyk region.
         	- Service `talkdesk`: Your Talkdesk region (".com",".eu","ca.com")
+        	- Service `vonage_contact_center`: Your Vonage Contact Center region.
         	- Service `wasabi_cloud_storage`: The Wasabi Cloud Storage bucket region. Required for connector creation. Default value: `US_EAST_1`.
         	- Service `zoho_books`: Your Zoho Books application host region.
         	- Service `zoho_campaigns`: Your Zoho Campaigns application host region.
@@ -11843,6 +12019,19 @@ class ConnectorConfigArgs:
 
     @property
     @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field usage depends on `service` value: 
+        	- Service `ebay`: Your eBay Scopes.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
     def seats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field usage depends on `service` value: 
@@ -12219,7 +12408,7 @@ class ConnectorConfigArgs:
     def share_url(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `share_point`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/files/share-point/setup-guide).
+        	- Service `share_point`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/connectors/files/share-point/setup-guide).
         """
         return pulumi.get(self, "share_url")
 
@@ -12312,6 +12501,7 @@ class ConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
+        	- Service `gcs`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `s3`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `sftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `wasabi_cloud_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
@@ -12427,6 +12617,15 @@ class ConnectorConfigArgs:
         pulumi.set(self, "skip_before", value)
 
     @property
+    @pulumi.getter(name="sncCertificate")
+    def snc_certificate(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "snc_certificate")
+
+    @snc_certificate.setter
+    def snc_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snc_certificate", value)
+
+    @property
     @pulumi.getter(name="sncLibraryPath")
     def snc_library_path(self) -> Optional[pulumi.Input[str]]:
         """
@@ -12439,6 +12638,24 @@ class ConnectorConfigArgs:
     @snc_library_path.setter
     def snc_library_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snc_library_path", value)
+
+    @property
+    @pulumi.getter(name="sncMode")
+    def snc_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "snc_mode")
+
+    @snc_mode.setter
+    def snc_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snc_mode", value)
+
+    @property
+    @pulumi.getter(name="sncMyName")
+    def snc_my_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "snc_my_name")
+
+    @snc_my_name.setter
+    def snc_my_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snc_my_name", value)
 
     @property
     @pulumi.getter(name="sncName")
@@ -12573,9 +12790,11 @@ class ConnectorConfigArgs:
         	- Service `looker_source`: Your looker SubDomain name.
         	- Service `mailgun`: Your Mailgun subdomain.
         	- Service `maxio_chargify`: Enter Your Subdomain.
+        	- Service `myosh`: Your Myosh Subdomain .
         	- Service `namely`: Your Namely subdomain.
         	- Service `nylas`: Your Nylas subdomain.
         	- Service `okta`: Your Okta subdomain.
+        	- Service `picqer`: Your Picqer sub domain name.
         	- Service `pinpoint`: Your Pinpoint sub domain name.
         	- Service `piwik_pro`: Your Piwik PRO subdomain.
         	- Service `playvox`: Your Playvox Subdomain.
@@ -12589,9 +12808,11 @@ class ConnectorConfigArgs:
         	- Service `sap_success_factors`: Your SAP SuccessFactors Subdomain.
         	- Service `sonarqube`: Your Sonarqube subdomain.
         	- Service `starrez`: Your StarRez subdomain
+        	- Service `tableau_source`: Your Tableau Source subdomain.
         	- Service `tempo`: Your Tempo subdomain.
         	- Service `thinkific`: Your Thinkific subdomain.
         	- Service `totango`: Your Totango Subdomain.
+        	- Service `tymeshift`: Your Tymeshift subdomain.
         	- Service `upland`: Your Upland Software subDomain.
         	- Service `wordpress`: Your WordPress subdomain.
         	- Service `workable`: Your Workable Subdomain.
@@ -12609,14 +12830,17 @@ class ConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
+        	- Service `ebay`: Your eBay Environment.
         	- Service `freshdesk`: Your company's freshdesk subdomain (usually **company**.freshdesk.com).
         	- Service `freshservice`: Your company's freshservice subdomain (usually **company**.freshservice.com).
+        	- Service `freshsuccess`: Your Freshsuccess subdomain.
         	- Service `gorgias`: Your Gorgias subdomain.
         	- Service `klarna`: Your Klarna subdomain.
         	- Service `learnupon`: Your Learnupon subdomain.
         	- Service `maxio_saasoptics`: Your Maxio SaaSOptics subdomain.
         	- Service `medallia`: Medallia subdomain
         	- Service `sonarqube`: Your Sonarqube subdomain.
+        	- Service `toast`: Your Toast Domain.
         	- Service `vts`: Your VTS Subdomain.
         	- Service `zendesk_chat`: Your Zendesk domain.
         """
@@ -12799,7 +13023,7 @@ class ConnectorConfigArgs:
         	- Service `dynamodb`: Whether to sync all tables in unpacked mode only or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
         	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
         	- Service `facebook_ad_account`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-        	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#syncmode).
+        	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#syncmode).
         	- Service `facebook_pages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
         	- Service `github`: Whether to sync all repositories or specific repositories.
         	- Service `google_ads`: Whether to sync all accounts or specific accounts.
@@ -12824,6 +13048,8 @@ class ConnectorConfigArgs:
         	- Service `twitter`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
         	- Service `twitter_ads`: Whether to sync all accounts or specific accounts.
         	- Service `yahoo_gemini`: Whether to sync all accounts or specific accounts. Default value: `SpecificAccounts`.
+        	- Service `zuora`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
+        	- Service `zuora_sandbox`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
         """
         return pulumi.get(self, "sync_mode")
 
@@ -12875,7 +13101,7 @@ class ConnectorConfigArgs:
     def sync_pack_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/databases/cosmos#packmodeoptions).
+        	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
         	- Service `documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
         """
         return pulumi.get(self, "sync_pack_mode")
@@ -13219,12 +13445,26 @@ class ConnectorConfigArgs:
         pulumi.set(self, "tns", value)
 
     @property
+    @pulumi.getter(name="toastId")
+    def toast_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field usage depends on `service` value: 
+        	- Service `toast`: Your Toast Restaurant External ID.
+        """
+        return pulumi.get(self, "toast_id")
+
+    @toast_id.setter
+    def toast_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "toast_id", value)
+
+    @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
         	- Service `mode`: Your Mode Token.
         	- Service `oracle_moat_analytics`: Your Oracle Moat Analytics Token.
+        	- Service `solarwinds_service_desk`: Your SolarWinds Service Desk token.
         """
         return pulumi.get(self, "token")
 
@@ -13279,6 +13519,7 @@ class ConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `netsuite_suiteanalytics`: Token ID
         	- Service `on24`: Your ON24 token key.
+        	- Service `proofpoint_security_awareness`: Your Proofpoint Security Awareness Token Key.
         """
         return pulumi.get(self, "token_key")
 
@@ -13679,6 +13920,7 @@ class ConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
         	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
+        	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
         	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
         	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
         	- Service `wasabi_cloud_storage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -13814,6 +14056,7 @@ class ConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `coassemble`: Your Coassemble user ID.
         	- Service `gmail`: Your Gmail user ID.
+        	- Service `hibob`: Your HiBob Service User Token.
         	- Service `marketo`: Marketo SOAP API User Id.
         	- Service `playvox`: Your Playvox User ID.
         	- Service `sage_intacct`: User ID
@@ -13864,6 +14107,7 @@ class ConnectorConfigArgs:
     def user_token(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
+        	- Service `hibob`: Your HiBob Service User ID.
         	- Service `konnect_insights`: Your Konnect Insights User Token.
         	- Service `sonarqube`: Your Sonarqube user token.
         """
@@ -13887,7 +14131,7 @@ class ConnectorConfigArgs:
         	- Service `cin7`: Your Cin7 API Username.
         	- Service `collibra`: Your collibra username.
         	- Service `concur`: The SAP Concur username.
-        	- Service `confluence`: Your Confluence email address.
+        	- Service `confluence`: Your Confluence username.
         	- Service `contrast_security`: Your Contrast Security API Username.
         	- Service `dcl_logistics`: Your DCL Logistics username.
         	- Service `github`: `Login` of your GitHub profile.
@@ -13905,6 +14149,7 @@ class ConnectorConfigArgs:
         	- Service `learnupon`: Your Learnupon username.
         	- Service `lessonly`: Your Lessonly username.
         	- Service `mailgun`: Your Mailgun API username.
+        	- Service `myosh`: Your Myosh  Username.
         	- Service `oracle_business_intelligence_publisher`: The Oracle Business Intelligence username.
         	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud username.
         	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud username.
@@ -13923,10 +14168,11 @@ class ConnectorConfigArgs:
         	- Service `starrez`: Your StarRez API username
         	- Service `stylight`: Your Stylight Username.
         	- Service `teamwork`: Your Teamwork username.
-        	- Service `testrail`: Your TestRail API username.
+        	- Service `testrail`: Your TestRail username.
         	- Service `ukg_pro`: Your UKG Pro username.
         	- Service `unicommerce`: Your uniware login username.
         	- Service `upland`: Your Upland Software Username.
+        	- Service `veevavault`: Your Veeva Vault username.
         	- Service `when_i_work`: Your When I Work username.
         	- Service `wherefour`: Your Wherefour username.
         	- Service `workday_financial_management`: Workday username.
@@ -14403,23 +14649,23 @@ class ConnectorConfigCustomReportArgs:
         :param pulumi.Input[str] aggregate: Field usage depends on `service` value: 
                	- Service `tiktok_ads`: Time aggregation of report
         :param pulumi.Input[Sequence[pulumi.Input[str]]] base_metrics_fields: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#basemetricsfields).
+               	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#basemetricsfields).
         :param pulumi.Input[str] breakdown: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakdown).
+               	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
         :param pulumi.Input[str] breakout: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakout).
+               	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
         :param pulumi.Input[bool] conversions_report_included: Field usage depends on `service` value: 
                	- Service `reddit_ads`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `false`
         :param pulumi.Input[bool] custom_events_included: Field usage depends on `service` value: 
                	- Service `reddit_ads`: The boolean value specifying whether the custom events are included in event conversions report. Default value: `false`
         :param pulumi.Input[str] dimension: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#dimension).
+               	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#dimension).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dimensions: Field usage depends on `service` value: 
                	- Service `tiktok_ads`: Dimensions to synced
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_names: Field usage depends on `service` value: 
                	- Service `reddit_ads`: The list of events the conversion data will be synchronised for
         :param pulumi.Input[str] granularity: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/applications/snapchat-ads/customr-reports#granularity).
+               	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
         :param pulumi.Input[str] level: Field usage depends on `service` value: 
                	- Service `reddit_ads`: Level of custom report.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] metrics: Field usage depends on `service` value: 
@@ -14434,7 +14680,7 @@ class ConnectorConfigCustomReportArgs:
         :param pulumi.Input[str] segmentation: Field usage depends on `service` value: 
                	- Service `reddit_ads`: Level of custom report.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sk_ad_metrics_fields: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#skadmetricsfields).
+               	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#skadmetricsfields).
         :param pulumi.Input[str] table_name: Field usage depends on `service` value: 
                	- Service `tiktok_ads`: Destination Table name of report
         """
@@ -14508,7 +14754,7 @@ class ConnectorConfigCustomReportArgs:
     def base_metrics_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#basemetricsfields).
+        	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#basemetricsfields).
         """
         return pulumi.get(self, "base_metrics_fields")
 
@@ -14521,7 +14767,7 @@ class ConnectorConfigCustomReportArgs:
     def breakdown(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakdown).
+        	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
         """
         return pulumi.get(self, "breakdown")
 
@@ -14534,7 +14780,7 @@ class ConnectorConfigCustomReportArgs:
     def breakout(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakout).
+        	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
         """
         return pulumi.get(self, "breakout")
 
@@ -14573,7 +14819,7 @@ class ConnectorConfigCustomReportArgs:
     def dimension(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#dimension).
+        	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#dimension).
         """
         return pulumi.get(self, "dimension")
 
@@ -14612,7 +14858,7 @@ class ConnectorConfigCustomReportArgs:
     def granularity(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/applications/snapchat-ads/customr-reports#granularity).
+        	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
         """
         return pulumi.get(self, "granularity")
 
@@ -14704,7 +14950,7 @@ class ConnectorConfigCustomReportArgs:
     def sk_ad_metrics_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#skadmetricsfields).
+        	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#skadmetricsfields).
         """
         return pulumi.get(self, "sk_ad_metrics_fields")
 
@@ -14743,25 +14989,25 @@ class ConnectorConfigCustomTableArgs:
                  view_attribution_window: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] action_breakdowns: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionbreakdowns).
+               	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionbreakdowns).
         :param pulumi.Input[str] action_report_time: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionreporttime).
+               	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionreporttime).
         :param pulumi.Input[str] aggregation: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#aggregation).
+               	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#aggregation).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] breakdowns: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#breakdowns).
+               	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#breakdowns).
         :param pulumi.Input[str] click_attribution_window: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#clickattributionwindow).
+               	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#clickattributionwindow).
         :param pulumi.Input[str] config_type: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#configtype).
+               	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#fields).
+               	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#fields).
         :param pulumi.Input[str] prebuilt_report_name: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#prebuiltreport).
+               	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#prebuiltreport).
         :param pulumi.Input[str] table_name: Field usage depends on `service` value: 
                	- Service `facebook_ads`: The table name within the schema to which the connector will sync the data. It must be unique within the connector and must comply with [Fivetran's naming conventions](https://fivetran.com/docs/getting-started/core-concepts#namingconventions).
         :param pulumi.Input[str] view_attribution_window: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#viewattributionwindow).
+               	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#viewattributionwindow).
         """
         if action_breakdowns is not None:
             pulumi.set(__self__, "action_breakdowns", action_breakdowns)
@@ -14793,7 +15039,7 @@ class ConnectorConfigCustomTableArgs:
     def action_breakdowns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionbreakdowns).
+        	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionbreakdowns).
         """
         return pulumi.get(self, "action_breakdowns")
 
@@ -14806,7 +15052,7 @@ class ConnectorConfigCustomTableArgs:
     def action_report_time(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionreporttime).
+        	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionreporttime).
         """
         return pulumi.get(self, "action_report_time")
 
@@ -14819,7 +15065,7 @@ class ConnectorConfigCustomTableArgs:
     def aggregation(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#aggregation).
+        	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#aggregation).
         """
         return pulumi.get(self, "aggregation")
 
@@ -14832,7 +15078,7 @@ class ConnectorConfigCustomTableArgs:
     def breakdowns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#breakdowns).
+        	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#breakdowns).
         """
         return pulumi.get(self, "breakdowns")
 
@@ -14845,7 +15091,7 @@ class ConnectorConfigCustomTableArgs:
     def click_attribution_window(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#clickattributionwindow).
+        	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#clickattributionwindow).
         """
         return pulumi.get(self, "click_attribution_window")
 
@@ -14858,7 +15104,7 @@ class ConnectorConfigCustomTableArgs:
     def config_type(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#configtype).
+        	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
         """
         return pulumi.get(self, "config_type")
 
@@ -14871,7 +15117,7 @@ class ConnectorConfigCustomTableArgs:
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#fields).
+        	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#fields).
         """
         return pulumi.get(self, "fields")
 
@@ -14893,7 +15139,7 @@ class ConnectorConfigCustomTableArgs:
     def prebuilt_report_name(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#prebuiltreport).
+        	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#prebuiltreport).
         """
         return pulumi.get(self, "prebuilt_report_name")
 
@@ -14928,7 +15174,7 @@ class ConnectorConfigCustomTableArgs:
     def view_attribution_window(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#viewattributionwindow).
+        	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#viewattributionwindow).
         """
         return pulumi.get(self, "view_attribution_window")
 
@@ -15025,7 +15271,7 @@ class ConnectorConfigReportArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Field usage depends on `service` value: 
                	- Service `google_search_ads_360`: The report attributes included to sync.
         :param pulumi.Input[str] config_type: Field usage depends on `service` value: 
-               	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+               	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
                	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dimensions: Field usage depends on `service` value: 
                	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
@@ -15133,7 +15379,7 @@ class ConnectorConfigReportArgs:
     def config_type(self) -> Optional[pulumi.Input[str]]:
         """
         Field usage depends on `service` value: 
-        	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+        	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
         	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
         """
         return pulumi.get(self, "config_type")
@@ -15706,7 +15952,7 @@ class ConnectorFingerprintsFingerprintArgs:
         :param pulumi.Input[str] hash: Hash of the fingerprint.
         :param pulumi.Input[str] public_key: The SSH public key.
         :param pulumi.Input[str] validated_by: User name who validated the fingerprint.
-        :param pulumi.Input[str] validated_date: The date when SSH fingerprint was approved.
+        :param pulumi.Input[str] validated_date: The date when fingerprint was approved.
         """
         pulumi.set(__self__, "hash", hash)
         pulumi.set(__self__, "public_key", public_key)
@@ -15755,7 +16001,7 @@ class ConnectorFingerprintsFingerprintArgs:
     @pulumi.getter(name="validatedDate")
     def validated_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The date when SSH fingerprint was approved.
+        The date when fingerprint was approved.
         """
         return pulumi.get(self, "validated_date")
 
@@ -15822,8 +16068,8 @@ class ConnectorSchemaConfigSchemaTableArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The schema name within your destination in accordance with Fivetran conventional rules.
-        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param pulumi.Input[str] name: The table name within your destination in accordance with Fivetran conventional rules.
+        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync of table into the destination is enabled.
         :param pulumi.Input[str] sync_mode: This field appears in the response if the connector supports switching sync modes for tables.
         """
         pulumi.set(__self__, "name", name)
@@ -15838,7 +16084,7 @@ class ConnectorSchemaConfigSchemaTableArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The schema name within your destination in accordance with Fivetran conventional rules.
+        The table name within your destination in accordance with Fivetran conventional rules.
         """
         return pulumi.get(self, "name")
 
@@ -15859,7 +16105,7 @@ class ConnectorSchemaConfigSchemaTableArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        The boolean value specifying whether the sync of table into the destination is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -15887,8 +16133,8 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  hashed: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] name: The schema name within your destination in accordance with Fivetran conventional rules.
-        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param pulumi.Input[str] name: The column name within your destination in accordance with Fivetran conventional rules.
+        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param pulumi.Input[bool] hashed: The boolean value specifying whether a column should be hashed.
         """
         pulumi.set(__self__, "name", name)
@@ -15901,7 +16147,7 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The schema name within your destination in accordance with Fivetran conventional rules.
+        The column name within your destination in accordance with Fivetran conventional rules.
         """
         return pulumi.get(self, "name")
 
@@ -15913,7 +16159,7 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        The boolean value specifying whether the sync of the column into the destination is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -15981,7 +16227,7 @@ class ConnectorSchemaConfigSchemasTablesArgs:
                  sync_mode: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasTablesColumnsArgs']]] columns: Map of table configurations.
-        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync for the table into the destination is enabled.
         :param pulumi.Input[str] sync_mode: This field appears in the response if the connector supports switching sync modes for tables.
         """
         if columns is not None:
@@ -16007,7 +16253,7 @@ class ConnectorSchemaConfigSchemasTablesArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        The boolean value specifying whether the sync for the table into the destination is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -16034,7 +16280,7 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  hashed: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param pulumi.Input[bool] hashed: The boolean value specifying whether a column should be hashed.
         """
         if enabled is not None:
@@ -16046,7 +16292,7 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        The boolean value specifying whether the sync of the column into the destination is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -16170,7 +16416,7 @@ class DbtProjectModelArgs:
         """
         :param pulumi.Input[str] id: The unique identifier for the dbt Model within the Fivetran system.
         :param pulumi.Input[str] model_name: The dbt Model name.
-        :param pulumi.Input[bool] scheduled: Boolean specifying whether the model is selected for execution.
+        :param pulumi.Input[bool] scheduled: Boolean specifying whether the model is selected for execution in the dashboard.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -16207,7 +16453,7 @@ class DbtProjectModelArgs:
     @pulumi.getter
     def scheduled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean specifying whether the model is selected for execution.
+        Boolean specifying whether the model is selected for execution in the dashboard.
         """
         return pulumi.get(self, "scheduled")
 
@@ -16272,37 +16518,49 @@ class DbtProjectProjectConfigArgs:
 
 
 @pulumi.input_type
+class DbtProjectTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+
+@pulumi.input_type
 class DbtTransformationScheduleArgs:
     def __init__(__self__, *,
-                 schedule_type: pulumi.Input[str],
                  days_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interval: Optional[pulumi.Input[int]] = None,
+                 schedule_type: Optional[pulumi.Input[str]] = None,
                  time_of_day: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] schedule_type: The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] days_of_weeks: The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
         :param pulumi.Input[int] interval: The time interval in minutes between subsequent transformation runs.
+        :param pulumi.Input[str] schedule_type: The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
         :param pulumi.Input[str] time_of_day: The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
         """
-        pulumi.set(__self__, "schedule_type", schedule_type)
         if days_of_weeks is not None:
             pulumi.set(__self__, "days_of_weeks", days_of_weeks)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
+        if schedule_type is not None:
+            pulumi.set(__self__, "schedule_type", schedule_type)
         if time_of_day is not None:
             pulumi.set(__self__, "time_of_day", time_of_day)
-
-    @property
-    @pulumi.getter(name="scheduleType")
-    def schedule_type(self) -> pulumi.Input[str]:
-        """
-        The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
-        """
-        return pulumi.get(self, "schedule_type")
-
-    @schedule_type.setter
-    def schedule_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "schedule_type", value)
 
     @property
     @pulumi.getter(name="daysOfWeeks")
@@ -16329,6 +16587,18 @@ class DbtTransformationScheduleArgs:
         pulumi.set(self, "interval", value)
 
     @property
+    @pulumi.getter(name="scheduleType")
+    def schedule_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
+        """
+        return pulumi.get(self, "schedule_type")
+
+    @schedule_type.setter
+    def schedule_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_type", value)
+
+    @property
     @pulumi.getter(name="timeOfDay")
     def time_of_day(self) -> Optional[pulumi.Input[str]]:
         """
@@ -16339,6 +16609,29 @@ class DbtTransformationScheduleArgs:
     @time_of_day.setter
     def time_of_day(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_of_day", value)
+
+
+@pulumi.input_type
+class DbtTransformationTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
 
 
 @pulumi.input_type
@@ -16355,14 +16648,14 @@ class DestinationCertificatesCertificateArgs:
                  validated_date: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] encoded_cert: Base64 encoded certificate.
-        :param pulumi.Input[str] hash: Hash of the fingerprint.
+        :param pulumi.Input[str] hash: Hash of the certificate.
         :param pulumi.Input[str] name: Certificate name.
-        :param pulumi.Input[str] public_key: Certificate public key.
+        :param pulumi.Input[str] public_key: The SSH public key.
         :param pulumi.Input[str] sha1: Certificate sha1.
         :param pulumi.Input[str] sha256: Certificate sha256.
-        :param pulumi.Input[str] type: Certificate type.
+        :param pulumi.Input[str] type: Type of the certificate.
         :param pulumi.Input[str] validated_by: User name who validated the certificate.
-        :param pulumi.Input[str] validated_date: The date when the certificate was approved.
+        :param pulumi.Input[str] validated_date: The date when certificate was approved.
         """
         pulumi.set(__self__, "encoded_cert", encoded_cert)
         pulumi.set(__self__, "hash", hash)
@@ -16397,7 +16690,7 @@ class DestinationCertificatesCertificateArgs:
     @pulumi.getter
     def hash(self) -> pulumi.Input[str]:
         """
-        Hash of the fingerprint.
+        Hash of the certificate.
         """
         return pulumi.get(self, "hash")
 
@@ -16421,7 +16714,7 @@ class DestinationCertificatesCertificateArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Certificate public key.
+        The SSH public key.
         """
         return pulumi.get(self, "public_key")
 
@@ -16457,7 +16750,7 @@ class DestinationCertificatesCertificateArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Certificate type.
+        Type of the certificate.
         """
         return pulumi.get(self, "type")
 
@@ -16481,7 +16774,7 @@ class DestinationCertificatesCertificateArgs:
     @pulumi.getter(name="validatedDate")
     def validated_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The date when the certificate was approved.
+        The date when certificate was approved.
         """
         return pulumi.get(self, "validated_date")
 
@@ -16525,6 +16818,8 @@ class DestinationConfigArgs:
                  lakehouse_name: Optional[pulumi.Input[str]] = None,
                  msk_sts_region: Optional[pulumi.Input[str]] = None,
                  num_of_partitions: Optional[pulumi.Input[int]] = None,
+                 oauth2_client_id: Optional[pulumi.Input[str]] = None,
+                 oauth2_secret: Optional[pulumi.Input[str]] = None,
                  passphrase: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  personal_access_token: Optional[pulumi.Input[str]] = None,
@@ -16690,11 +16985,15 @@ class DestinationConfigArgs:
         :param pulumi.Input[bool] is_private_key_encrypted: Field usage depends on `service` value: 
                	- Service `snowflake`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
         :param pulumi.Input[bool] is_private_link_required: Field usage depends on `service` value: 
-               	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelinkbeta).
+               	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
         :param pulumi.Input[bool] is_redshift_serverless: Field usage depends on `service` value: 
                	- Service `redshift`: Is your destination Redshift Serverless
         :param pulumi.Input[str] lakehouse_name: Field usage depends on `service` value: 
                	- Service `onelake`: Name of your lakehouse
+        :param pulumi.Input[str] oauth2_client_id: Field usage depends on `service` value: 
+               	- Service `databricks`: OAuth 2.0 client ID. Required if auth_type is set to OAUTH2.
+        :param pulumi.Input[str] oauth2_secret: Field usage depends on `service` value: 
+               	- Service `databricks`: OAuth 2.0 secret. Required if auth_type is set to OAUTH2.
         :param pulumi.Input[str] passphrase: Field usage depends on `service` value: 
                	- Service `snowflake`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
         :param pulumi.Input[str] password: Field usage depends on `service` value: 
@@ -16953,6 +17252,10 @@ class DestinationConfigArgs:
             pulumi.set(__self__, "msk_sts_region", msk_sts_region)
         if num_of_partitions is not None:
             pulumi.set(__self__, "num_of_partitions", num_of_partitions)
+        if oauth2_client_id is not None:
+            pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
+        if oauth2_secret is not None:
+            pulumi.set(__self__, "oauth2_secret", oauth2_secret)
         if passphrase is not None:
             pulumi.set(__self__, "passphrase", passphrase)
         if password is not None:
@@ -17441,7 +17744,7 @@ class DestinationConfigArgs:
     def is_private_link_required(self) -> Optional[pulumi.Input[bool]]:
         """
         Field usage depends on `service` value: 
-        	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelinkbeta).
+        	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
         """
         return pulumi.get(self, "is_private_link_required")
 
@@ -17492,6 +17795,32 @@ class DestinationConfigArgs:
     @num_of_partitions.setter
     def num_of_partitions(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_partitions", value)
+
+    @property
+    @pulumi.getter(name="oauth2ClientId")
+    def oauth2_client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field usage depends on `service` value: 
+        	- Service `databricks`: OAuth 2.0 client ID. Required if auth_type is set to OAUTH2.
+        """
+        return pulumi.get(self, "oauth2_client_id")
+
+    @oauth2_client_id.setter
+    def oauth2_client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth2_client_id", value)
+
+    @property
+    @pulumi.getter(name="oauth2Secret")
+    def oauth2_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field usage depends on `service` value: 
+        	- Service `databricks`: OAuth 2.0 secret. Required if auth_type is set to OAUTH2.
+        """
+        return pulumi.get(self, "oauth2_secret")
+
+    @oauth2_secret.setter
+    def oauth2_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth2_secret", value)
 
     @property
     @pulumi.getter
@@ -18066,7 +18395,7 @@ class DestinationFingerprintsFingerprintArgs:
         :param pulumi.Input[str] hash: Hash of the fingerprint.
         :param pulumi.Input[str] public_key: The SSH public key.
         :param pulumi.Input[str] validated_by: User name who validated the fingerprint.
-        :param pulumi.Input[str] validated_date: The date when SSH fingerprint was approved.
+        :param pulumi.Input[str] validated_date: The date when fingerprint was approved.
         """
         pulumi.set(__self__, "hash", hash)
         pulumi.set(__self__, "public_key", public_key)
@@ -18115,7 +18444,7 @@ class DestinationFingerprintsFingerprintArgs:
     @pulumi.getter(name="validatedDate")
     def validated_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The date when SSH fingerprint was approved.
+        The date when fingerprint was approved.
         """
         return pulumi.get(self, "validated_date")
 
@@ -18724,14 +19053,14 @@ class GetConnectorCertificatesCertificateArgs:
                  validated_by: str,
                  validated_date: str):
         """
-        :param str hash: Hash of the fingerprint.
+        :param str hash: Hash of the certificate.
         :param str name: Certificate name.
-        :param str public_key: Certificate public key.
+        :param str public_key: The SSH public key.
         :param str sha1: Certificate sha1.
         :param str sha256: Certificate sha256.
-        :param str type: Certificate type.
+        :param str type: Type of the certificate.
         :param str validated_by: User name who validated the certificate.
-        :param str validated_date: The date when the certificate was approved.
+        :param str validated_date: The date when certificate was approved.
         """
         pulumi.set(__self__, "hash", hash)
         pulumi.set(__self__, "name", name)
@@ -18746,7 +19075,7 @@ class GetConnectorCertificatesCertificateArgs:
     @pulumi.getter
     def hash(self) -> str:
         """
-        Hash of the fingerprint.
+        Hash of the certificate.
         """
         return pulumi.get(self, "hash")
 
@@ -18770,7 +19099,7 @@ class GetConnectorCertificatesCertificateArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
         """
-        Certificate public key.
+        The SSH public key.
         """
         return pulumi.get(self, "public_key")
 
@@ -18806,7 +19135,7 @@ class GetConnectorCertificatesCertificateArgs:
     @pulumi.getter
     def type(self) -> str:
         """
-        Certificate type.
+        Type of the certificate.
         """
         return pulumi.get(self, "type")
 
@@ -18830,7 +19159,7 @@ class GetConnectorCertificatesCertificateArgs:
     @pulumi.getter(name="validatedDate")
     def validated_date(self) -> str:
         """
-        The date when the certificate was approved.
+        The date when certificate was approved.
         """
         return pulumi.get(self, "validated_date")
 
@@ -18862,6 +19191,7 @@ class GetConnectorConfigArgs:
                  account_ids: Sequence[str],
                  account_key: str,
                  account_name: str,
+                 account_plan: str,
                  account_region: str,
                  account_sid: str,
                  account_sync_mode: str,
@@ -18891,6 +19221,7 @@ class GetConnectorConfigArgs:
                  aggregation: str,
                  agreement_grant_token: str,
                  always_encrypted: bool,
+                 api: str,
                  api_access_token: str,
                  api_environment: str,
                  api_id: str,
@@ -19001,6 +19332,7 @@ class GetConnectorConfigArgs:
                  conversion_dimensions: Sequence[str],
                  conversion_report_time: str,
                  conversion_window_size: int,
+                 convert_dats_type_to_date: bool,
                  csv_definition: str,
                  currency: str,
                  custom_event_sync_mode: str,
@@ -19023,6 +19355,7 @@ class GetConnectorConfigArgs:
                  dataset_id: str,
                  datasource: str,
                  date_granularity: str,
+                 db: str,
                  delimiter: str,
                  dimension_attributes: Sequence[str],
                  dimensions: Sequence[str],
@@ -19186,6 +19519,7 @@ class GetConnectorConfigArgs:
                  post_click_attribution_window_size: str,
                  prebuilt_report: str,
                  prefix: str,
+                 primary_key: str,
                  primary_keys: Sequence[str],
                  private_key: str,
                  product: str,
@@ -19256,6 +19590,7 @@ class GetConnectorConfigArgs:
                  schema_registry_key: str,
                  schema_registry_secret: str,
                  schema_registry_urls: Sequence[str],
+                 scope: str,
                  seats: Sequence[str],
                  secret: str,
                  secret_key: str,
@@ -19297,7 +19632,10 @@ class GetConnectorConfigArgs:
                  site_urls: Sequence[str],
                  skip_after: int,
                  skip_before: int,
+                 snc_certificate: str,
                  snc_library_path: str,
+                 snc_mode: str,
+                 snc_my_name: str,
                  snc_name: str,
                  snc_partner_name: str,
                  soap_uri: str,
@@ -19346,6 +19684,7 @@ class GetConnectorConfigArgs:
                  time_zone: str,
                  timeframe_months: str,
                  tns: str,
+                 toast_id: str,
                  token: str,
                  token_authenticated_container: str,
                  token_authenticated_database: str,
@@ -19473,11 +19812,14 @@ class GetConnectorConfigArgs:
                	- Service `cosmos`: The read-only primary or secondary account key for the database account. Required for the `ACCOUNT_KEY` data access method.
                	- Service `simplesat`: Your Simplesat account key.
         :param str account_name: Field usage depends on `service` value: 
+               	- Service `eventsforce`: Your Eventsforce account name.
                	- Service `freshdesk_contact_center`: Your Freshdesk Contact Center account name.
                	- Service `happyfox`: Your HappyFox account name.
                	- Service `maxio_saasoptics`: Your Maxio SaaSOptics account name.
                	- Service `talkdesk`: Your Talkdesk Account Name.
                	- Service `udemy_business`: Your Udemy Business account name.
+        :param str account_plan: Field usage depends on `service` value: 
+               	- Service `tymeshift`: Your Tymeshift account plan.
         :param str account_region: Field usage depends on `service` value: 
                	- Service `iterable`: If your Iterable account URL starts with `https://app.eu.iterable.com` then provide `EU` else `US`
         :param str account_sid: Field usage depends on `service` value: 
@@ -19644,6 +19986,8 @@ class GetConnectorConfigArgs:
                	- Service `sql_server_hva`: Require TLS.
                	- Service `sql_server_rds`: Require TLS.
                	- Service `sql_server_sap_ecc_hva`: Require TLS.
+        :param str api: Field usage depends on `service` value: 
+               	- Service `freshsuccess`: Set this parameter to `api`.
         :param str api_access_token: Field usage depends on `service` value: 
                	- Service `shopify`: API access token of your custom app.
                	- Service `square`: The Square API access token of your application.
@@ -19667,6 +20011,7 @@ class GetConnectorConfigArgs:
                	- Service `avantlink`: Your AvantLink API key.
                	- Service `ballotready`: Your BallotReady API token.
                	- Service `bamboohr`: Your API Key.
+               	- Service `bizzabo`: Your Bizzabo API key.
                	- Service `braze`: Your Braze API Key.
                	- Service `brevo`: Your Brevo API key.
                	- Service `callrail`: Your CallRail API key.
@@ -19712,6 +20057,7 @@ class GetConnectorConfigArgs:
                	- Service `freshdesk`: Your Freshdesk API Key.
                	- Service `freshdesk_contact_center`: Your Freshdesk Contact Center API key.
                	- Service `freshservice`: Your Freshservice API Key.
+               	- Service `freshsuccess`: Your Freshsuccess API key.
                	- Service `freshteam`: Your Freshteam API key.
                	- Service `friendbuy`: Your Friendbuy API key.
                	- Service `fullstory`: Your Fullstory API key.
@@ -19737,6 +20083,7 @@ class GetConnectorConfigArgs:
                	- Service `kisi`: Your Kisi API key.
                	- Service `klaviyo`: Your Klaviyo API key.
                	- Service `learnupon`: Your Learnupon API key.
+               	- Service `lemlist`: Your Lemlist API key.
                	- Service `lever`: Your Lever API key.
                	- Service `liftoff`: Your Liftoff API key.
                	- Service `linksquares`: Your LinkSquares API key.
@@ -19749,12 +20096,15 @@ class GetConnectorConfigArgs:
                	- Service `maxio_chargify`: Enter Your API Key.
                	- Service `messagebird`: Your MessageBird API key.
                	- Service `mountain`: Your MNTN API key.
+               	- Service `myosh`: Your Myosh API Key.
                	- Service `ometria`: Your Ometria API Key.
                	- Service `ordway`: Your Ordway API key.
                	- Service `ortto`: Your Ortto API key.
                	- Service `pagerduty`: Your PagerDuty API key.
                	- Service `papershift`: Your Papershift API Key
+               	- Service `partnerize`: Your Partnerize user API key.
                	- Service `persona`: Your Persona API key.
+               	- Service `picqer`: Your Picqer API key.
                	- Service `pinpoint`: Your Pinpoint API key.
                	- Service `pipe17`: The Pipe17 API key.
                	- Service `playvox`: Your Playvox API Key.
@@ -19781,7 +20131,7 @@ class GetConnectorConfigArgs:
                	- Service `shortcut`: Your Shortcut API token.
                	- Service `shortio`: Your Short.io API key.
                	- Service `simplesat`: Your Simplesat API key.
-               	- Service `sistrix`: Your Sistrix api key.
+               	- Service `sistrix`: Your SISTRIX API key.
                	- Service `smartwaiver`: Your Smartwaiver API key.
                	- Service `snyk`: Your Snyk API key.
                	- Service `sonarqube`: Your Sonarqube API key.
@@ -19797,12 +20147,14 @@ class GetConnectorConfigArgs:
                	- Service `transcend`: Your Transcend API Key.
                	- Service `trello`: Your TRELLO api key.
                	- Service `uppromote`: Your UpPromote API key.
+               	- Service `veeqo`: Your Veeqo API key.
                	- Service `visit_by_ges`: Your Visit by GES API key.
                	- Service `vitally`: Your Vitally API key.
                	- Service `vonage`: Your Vonage API Key.
                	- Service `vts`: Your VTS API key.
                	- Service `webconnex`: Your Webconnex API key.
                	- Service `xsolla`: Your Xsolla API key.
+               	- Service `yougov_sport`: Your Yougov Sport API key.
                	- Service `zingtree`: Your Zingtree API key.
         :param str api_key_api_secret: Field usage depends on `service` value: 
                	- Service `revel`: Your Revel Systems API Key and API Secret.
@@ -19859,7 +20211,7 @@ class GetConnectorConfigArgs:
                	- Service `qualtrics`: API token of the Qualtrics account.
                	- Service `rakutenadvertising`: Your Rakuten Advertising API token.
                	- Service `recharge`: The Recharge API token.
-               	- Service `referralhero`: Your Referralhero API Token.
+               	- Service `referralhero`: Your Referralhero API token.
                	- Service `resource_management_by_smartsheet`: Your Resource Management by Smartsheet API token.
                	- Service `retently`: Your Retently API token.
                	- Service `safetyculture`: Your SafetyCulture API token.
@@ -19914,6 +20266,7 @@ class GetConnectorConfigArgs:
         :param str application_key: Field usage depends on `service` value: 
                	- Service `datadog`: Your Datadog application key.
                	- Service `dear`: Your Dear Application key.
+               	- Service `partnerize`: Your Partnerize user application key.
         :param Sequence[str] apps: Field usage depends on `service` value: 
                	- Service `itunes_connect`: Specific apps to sync. Must be populated if `app_sync_mode` is set to `SpecificApps`.
         :param str archive_log_format: Field usage depends on `service` value: 
@@ -20009,6 +20362,7 @@ class GetConnectorConfigArgs:
                	- Service `ortto`: Your Ortto base URL. Possible values: `api`, `api.au`, `api.eu`.
                	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
                	- Service `salesforce_sandbox`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
+               	- Service `veevavault`: Your Veeva Vault base URL.
         :param str bearer_token: Field usage depends on `service` value: 
                	- Service `ada`: Your Ada API Access Token.
                	- Service `crowddev`: Your crowd.dev Auth Token.
@@ -20082,6 +20436,7 @@ class GetConnectorConfigArgs:
                	- Service `culture_amp`: Your Culture Amp client ID.
                	- Service `cvent`: Your Cvent client ID.
                	- Service `d2l_brightspace`: Your D2L Brightspace client ID.
+               	- Service `ebay`: Your eBay client ID.
                	- Service `flexport`: The Flexport API Key.
                	- Service `genesys`: Your Genesys client ID.
                	- Service `hana_sap_hva_ecc_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
@@ -20116,11 +20471,15 @@ class GetConnectorConfigArgs:
                	- Service `swoogo`: Your Swoogo client Id.
                	- Service `taboola`: The Taboola client ID.
                	- Service `talkdesk`: The Client ID of your OAuth Client
+               	- Service `toast`: Your Toast client ID.
                	- Service `trelica`: Your Trelica client ID.
+               	- Service `tymeshift`: Your Tymeshift client ID.
                	- Service `udemy_business`: Your Udemy Business client ID.
+               	- Service `vonage_contact_center`: Your Vonage Contact Center client ID.
                	- Service `walmart_marketplace`: Your Walmart Marketplace client ID.
                	- Service `xero`: your clientId
                	- Service `xray`: Your Xray Client ID.
+               	- Service `yougov_sport`: Your Yougov Sport client ID.
                	- Service `zendesk_chat`: Your Zendesk client ID.
                	- Service `zoho_books`: Your Zoho Books Client ID.
                	- Service `zoho_campaigns`: Your Zoho Campaigns Client ID.
@@ -20130,6 +20489,7 @@ class GetConnectorConfigArgs:
         :param str client_key: Field usage depends on `service` value: 
                	- Service `appfigures`: Your Appfigures Client Key.
                	- Service `thinkific`: Your Thinkific client key.
+               	- Service `yougov_sport`: Your Yougov Sport client key.
         :param str client_name: Field usage depends on `service` value: 
                	- Service `destini`: Your Destini Client Name.
                	- Service `medallia`: Medallia company name
@@ -20165,6 +20525,7 @@ class GetConnectorConfigArgs:
                	- Service `culture_amp`: Your Culture Amp client secret.
                	- Service `cvent`: Your Cvent client secret.
                	- Service `d2l_brightspace`: Your D2L Brightspace client secret.
+               	- Service `ebay`: Your eBay client secret.
                	- Service `flexport`: The Flexport API Secret.
                	- Service `genesys`: Your Genesys client secret.
                	- Service `instructure`: Your Instructure client secret.
@@ -20194,8 +20555,11 @@ class GetConnectorConfigArgs:
                	- Service `taboola`: The Taboola client secret.
                	- Service `talkdesk`: The Client Secret of your OAuth Client
                	- Service `thinkific`: Your Thinkific client secret.
+               	- Service `toast`: Your Toast client secret.
                	- Service `trelica`: Your Trelica client secret.
+               	- Service `tymeshift`: Your Tymeshift client secret.
                	- Service `udemy_business`: Your Udemy Business client secret.
+               	- Service `vonage_contact_center`: Your Vonage Contact Center client secret.
                	- Service `walmart_marketplace`: Your Walmart Marketplace client secret.
                	- Service `xero`: your clientSecret
                	- Service `xray`: Your Xray Client Secret.
@@ -20246,7 +20610,7 @@ class GetConnectorConfigArgs:
                	- Service `snowplow`: Public repository URL containing JSON configuration files.
         :param str config_type: Field usage depends on `service` value: 
                	- Service `facebook`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#configtype).
-               	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+               	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
         :param str connection_method: Field usage depends on `service` value: 
                	- Service `aws_msk`: How Fivetran connects to your message brokers in the cluster
                	- Service `azure_blob_storage`: Connection Method. Possible values:  `DIRECT`: Fivetran will connect directly to your storage container, `SSH_TUNNEL`: Fivetran will connect to your storage container using a host machine (commonly used for VPN connections), `PRIVATE_LINK`: Fivetran will connect to your storage container using PrivateLink.
@@ -20259,6 +20623,7 @@ class GetConnectorConfigArgs:
                	- Service `azure_blob_storage`: The blob storage container connection string.
                	- Service `azure_event_hub`: Connection string of the Event Hub Namespace you want to sync.
                	- Service `azure_service_bus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
+               	- Service `microsoft_dynamics_365_fno`: The blob storage container's connection string.
                	- Service `microsoft_dynamics_365_fo`: The blob storage container connection string.
         :param str connection_type: Field usage depends on `service` value: 
                	- Service `aurora`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -20334,6 +20699,7 @@ class GetConnectorConfigArgs:
                	- Service `azure_blob_storage`: IP address of the Azure Storage Container which is accessible from host machine.
         :param str container_name: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The name of the blob container.
+               	- Service `microsoft_dynamics_365_fno`: The name of the blob container.
                	- Service `microsoft_dynamics_365_fo`: The name of the blob container.
         :param str content_owner_id: Field usage depends on `service` value: 
                	- Service `youtube_analytics`: Used only for Content Owner reports. The ID of the content owner for whom the API request is being made.
@@ -20363,7 +20729,7 @@ class GetConnectorConfigArgs:
                	- Service `google_cloud_function`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
         :param Sequence['GetConnectorConfigCustomReportArgs'] custom_reports: Field usage depends on `service` value: 
                	- Service `reddit_ads`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
-               	- Service `snapchat_ads`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/applications/snapchat-ads/custom-reports).
+               	- Service `snapchat_ads`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
                	- Service `tiktok_ads`: Title of Custom Report
         :param Sequence['GetConnectorConfigCustomTableArgs'] custom_tables: Field usage depends on `service` value: 
                	- Service `facebook_ads`: List of custom tables. Each custom table corresponds to a table within the schema to which connector will sync the data.
@@ -20377,7 +20743,7 @@ class GetConnectorConfigArgs:
         :param str customer_list_id: Field usage depends on `service` value: 
                	- Service `salesforce_commerce_cloud`: The parameter to retrieve customer details.
         :param str data_access_method: Field usage depends on `service` value: 
-               	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/databases/cosmos#dataaccessmethods).
+               	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/connectors/databases/cosmos#dataaccessmethods).
         :param str data_center: Field usage depends on `service` value: 
                	- Service `qualtrics`: Data center ID of the Qualtrics account. Can be found in the URL before `qualtrics.com`. (For example, if your URL is `youraccount.ca1.qualtrics.com`, then the data center is `ca1`.)
                	- Service `zoho_crm`: Data Center
@@ -20434,6 +20800,8 @@ class GetConnectorConfigArgs:
                	- Service `netsuite_suiteanalytics`: The NetSuite data source value: `NetSuite.com`.
         :param str date_granularity: Field usage depends on `service` value: 
                	- Service `adobe_analytics`: The aggregation duration you want. Default value: `HOUR` .
+        :param str db: Field usage depends on `service` value: 
+               	- Service `myosh`: Your Myosh Server variables/db .
         :param str delimiter: Field usage depends on `service` value: 
                	- Service `aws_cost_report`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
                	- Service `azure_blob_storage`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
@@ -20468,7 +20836,8 @@ class GetConnectorConfigArgs:
                	- Service `okta`: Your Okta domain.
                	- Service `pipedrive`: Your Pipedrive domain.
                	- Service `shopware`: Your Shopware domain.
-               	- Service `sistrix`: Your domain for which you want to fetch data.
+               	- Service `sistrix`: Your SISTRIX domain.
+               	- Service `solarwinds_service_desk`: Your SolarWinds Service Desk domain.
                	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
                	- Service `zendesk`: Zendesk domain.
                	- Service `zendesk_sunshine`: Zendesk domain.
@@ -20763,7 +21132,7 @@ class GetConnectorConfigArgs:
         :param bool is_private_key_encrypted: Field usage depends on `service` value: 
                	- Service `snowflake_db`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
         :param bool is_private_link_required: Field usage depends on `service` value: 
-               	- Service `aws_lambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelink).
+               	- Service `aws_lambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
         :param bool is_public: Field usage depends on `service` value: 
                	- Service `aws_cost_report`: Whether you are syncing from a public bucket. Default value: `false`.
                	- Service `kinesis`: Is the bucket public? (you don't need an AWS account for syncing public buckets!)
@@ -20929,7 +21298,7 @@ class GetConnectorConfigArgs:
                	- Service `salesforce_commerce_cloud`: The organization ID from Salesforce Commerce Cloud account.
                	- Service `zoho_books`: Your Zoho Books Organization ID.
         :param str organization_name: Field usage depends on `service` value: 
-               	- Service `confluence`: Your Confluence Organization name.
+               	- Service `confluence`: Your Confluence organization name.
         :param Sequence[str] organizations: Field usage depends on `service` value: 
                	- Service `apple_search_ads`: Organizations
                	- Service `snapchat_ads`: Specific organizations IDs to sync. Must be populated if `syncMode` is set to `SpecificOrganizations`.
@@ -21007,6 +21376,7 @@ class GetConnectorConfigArgs:
                	- Service `moloco`: Your Moloco account password.
                	- Service `mongo`: The user's password.
                	- Service `mongo_sharded`: The user's password.
+               	- Service `myosh`: Your Myosh Password .
                	- Service `mysql`: The user's password.
                	- Service `mysql_azure`: The user's password.
                	- Service `mysql_rds`: The user's password.
@@ -21055,6 +21425,7 @@ class GetConnectorConfigArgs:
                	- Service `ukg_pro`: Your UKG Pro password.
                	- Service `unicommerce`: Your uniware login password.
                	- Service `upland`: Your Upland Software Password.
+               	- Service `veevavault`: Your Veeva Vault password.
                	- Service `when_i_work`: Your When I Work password.
                	- Service `wherefour`: Your Wherefour password.
                	- Service `workday`: Workday password.
@@ -21108,12 +21479,14 @@ class GetConnectorConfigArgs:
         :param str pgp_pass_phrase: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
+               	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `wasabi_cloud_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         :param str pgp_secret_key: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
+               	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `s3`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
                	- Service `wasabi_cloud_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -21194,7 +21567,7 @@ class GetConnectorConfigArgs:
         :param Sequence[str] primary_keys: Field usage depends on `service` value: 
                	- Service `workday`: Primary Keys
         :param str private_key: Field usage depends on `service` value: 
-               	- Service `absorb_lms`: Your Absorb LMS Private Key.
+               	- Service `absorb_lms`: Your Absorb LMS REST API private key.
                	- Service `adobe_analytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
                	- Service `adp_workforce_now`: Private Key.
                	- Service `anaplan`: The contents of your private key file. Must be populated if `auth_mode` is set to `Certificate`.
@@ -21308,10 +21681,12 @@ class GetConnectorConfigArgs:
                	- Service `navan`: Your Navan region.
                	- Service `on24`: Your ON24 region.
                	- Service `pendo`: The Pendo account region.
+               	- Service `proofpoint_security_awareness`: Your Proofpoint Security Awareness Region.
                	- Service `ringover`: Your Ringover region.
                	- Service `samsara`: The region of your Samsara account. For instance, if your region is `EUROPE`, provide `eu.samsara` in the `Region` field. If your region is not in Europe, provide `samsara`.
                	- Service `snyk`: Your Snyk region.
                	- Service `talkdesk`: Your Talkdesk region (".com",".eu","ca.com")
+               	- Service `vonage_contact_center`: Your Vonage Contact Center region.
                	- Service `wasabi_cloud_storage`: The Wasabi Cloud Storage bucket region. Required for connector creation. Default value: `US_EAST_1`.
                	- Service `zoho_books`: Your Zoho Books application host region.
                	- Service `zoho_campaigns`: Your Zoho Campaigns application host region.
@@ -21477,6 +21852,8 @@ class GetConnectorConfigArgs:
                	- Service `aws_msk`: Your schema registry URLs
                	- Service `azure_service_bus`: The comma-separated list of schema registry servers in the `server:port` format
                	- Service `confluent_cloud`: Your schema registry URLs
+        :param str scope: Field usage depends on `service` value: 
+               	- Service `ebay`: Your eBay Scopes.
         :param Sequence[str] seats: Field usage depends on `service` value: 
                	- Service `yahoo_dsp`: Specific Seats to sync. Must be populated if `sync_mode_seat` is set to `SPECIFIC_SEATS`.
         :param str secret: Field usage depends on `service` value: 
@@ -21562,7 +21939,7 @@ class GetConnectorConfigArgs:
         :param str sftp_user: Field usage depends on `service` value: 
                	- Service `adobe_analytics_data_feed`: SFTP user.
         :param str share_url: Field usage depends on `service` value: 
-               	- Service `share_point`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/files/share-point/setup-guide).
+               	- Service `share_point`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/connectors/files/share-point/setup-guide).
         :param str sheet_id: Field usage depends on `service` value: 
                	- Service `google_sheets`: The URL of the sheet that can be copied from the browser address bar, or the ID of the sheet that can be found in the sheet's URL between **/d/** and **/edit**.
         :param str shop: Field usage depends on `service` value: 
@@ -21578,6 +21955,7 @@ class GetConnectorConfigArgs:
         :param str signer_public_key: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
+               	- Service `gcs`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `s3`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `sftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
                	- Service `wasabi_cloud_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
@@ -21674,9 +22052,11 @@ class GetConnectorConfigArgs:
                	- Service `looker_source`: Your looker SubDomain name.
                	- Service `mailgun`: Your Mailgun subdomain.
                	- Service `maxio_chargify`: Enter Your Subdomain.
+               	- Service `myosh`: Your Myosh Subdomain .
                	- Service `namely`: Your Namely subdomain.
                	- Service `nylas`: Your Nylas subdomain.
                	- Service `okta`: Your Okta subdomain.
+               	- Service `picqer`: Your Picqer sub domain name.
                	- Service `pinpoint`: Your Pinpoint sub domain name.
                	- Service `piwik_pro`: Your Piwik PRO subdomain.
                	- Service `playvox`: Your Playvox Subdomain.
@@ -21690,23 +22070,28 @@ class GetConnectorConfigArgs:
                	- Service `sap_success_factors`: Your SAP SuccessFactors Subdomain.
                	- Service `sonarqube`: Your Sonarqube subdomain.
                	- Service `starrez`: Your StarRez subdomain
+               	- Service `tableau_source`: Your Tableau Source subdomain.
                	- Service `tempo`: Your Tempo subdomain.
                	- Service `thinkific`: Your Thinkific subdomain.
                	- Service `totango`: Your Totango Subdomain.
+               	- Service `tymeshift`: Your Tymeshift subdomain.
                	- Service `upland`: Your Upland Software subDomain.
                	- Service `wordpress`: Your WordPress subdomain.
                	- Service `workable`: Your Workable Subdomain.
                	- Service `wrike`: Your Wrike Subdomain.
         :param str subdomain: Field usage depends on `service` value: 
                	- Service `bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
+               	- Service `ebay`: Your eBay Environment.
                	- Service `freshdesk`: Your company's freshdesk subdomain (usually **company**.freshdesk.com).
                	- Service `freshservice`: Your company's freshservice subdomain (usually **company**.freshservice.com).
+               	- Service `freshsuccess`: Your Freshsuccess subdomain.
                	- Service `gorgias`: Your Gorgias subdomain.
                	- Service `klarna`: Your Klarna subdomain.
                	- Service `learnupon`: Your Learnupon subdomain.
                	- Service `maxio_saasoptics`: Your Maxio SaaSOptics subdomain.
                	- Service `medallia`: Medallia subdomain
                	- Service `sonarqube`: Your Sonarqube subdomain.
+               	- Service `toast`: Your Toast Domain.
                	- Service `vts`: Your VTS Subdomain.
                	- Service `zendesk_chat`: Your Zendesk domain.
         :param str subscriber_name: Field usage depends on `service` value: 
@@ -21746,7 +22131,7 @@ class GetConnectorConfigArgs:
                	- Service `dynamodb`: Whether to sync all tables in unpacked mode only or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
                	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
                	- Service `facebook_ad_account`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-               	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#syncmode).
+               	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#syncmode).
                	- Service `facebook_pages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
                	- Service `github`: Whether to sync all repositories or specific repositories.
                	- Service `google_ads`: Whether to sync all accounts or specific accounts.
@@ -21771,6 +22156,8 @@ class GetConnectorConfigArgs:
                	- Service `twitter`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
                	- Service `twitter_ads`: Whether to sync all accounts or specific accounts.
                	- Service `yahoo_gemini`: Whether to sync all accounts or specific accounts. Default value: `SpecificAccounts`.
+               	- Service `zuora`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
+               	- Service `zuora_sandbox`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
         :param str sync_mode_advertiser: Field usage depends on `service` value: 
                	- Service `yahoo_dsp`: Whether to sync all advertisers or specific advertisers. Default value: `ALL_ADVERTISERS`.
         :param str sync_mode_seat: Field usage depends on `service` value: 
@@ -21778,7 +22165,7 @@ class GetConnectorConfigArgs:
         :param bool sync_multiple_accounts: Field usage depends on `service` value: 
                	- Service `reddit_ads`: When this parameter is set to `true`, we sync the data of the additional linked accounts. When this parameter is set to `false`, we sync only the data from the main account that was used for authorization
         :param str sync_pack_mode: Field usage depends on `service` value: 
-               	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/databases/cosmos#packmodeoptions).
+               	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
                	- Service `documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
         :param bool sync_pull_api: Field usage depends on `service` value: 
                	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
@@ -21874,9 +22261,12 @@ class GetConnectorConfigArgs:
         :param str tns: Field usage depends on `service` value: 
                	- Service `oracle_hva`: Single-tenant database: The database's SID.  Multi-tenant database: The database's TNS.
                	- Service `oracle_sap_hva`: Single-tenant database: The database SID.  Multi-tenant database: The database TNS.
+        :param str toast_id: Field usage depends on `service` value: 
+               	- Service `toast`: Your Toast Restaurant External ID.
         :param str token: Field usage depends on `service` value: 
                	- Service `mode`: Your Mode Token.
                	- Service `oracle_moat_analytics`: Your Oracle Moat Analytics Token.
+               	- Service `solarwinds_service_desk`: Your SolarWinds Service Desk token.
         :param str token_authenticated_container: Field usage depends on `service` value: 
                	- Service `cosmos`: The container name. Required for the `RESOURCE_TOKEN` data access method.
         :param str token_authenticated_database: Field usage depends on `service` value: 
@@ -21887,6 +22277,7 @@ class GetConnectorConfigArgs:
         :param str token_key: Field usage depends on `service` value: 
                	- Service `netsuite_suiteanalytics`: Token ID
                	- Service `on24`: Your ON24 token key.
+               	- Service `proofpoint_security_awareness`: Your Proofpoint Security Awareness Token Key.
         :param str token_secret: Field usage depends on `service` value: 
                	- Service `netsuite_suiteanalytics`: Token Secret
                	- Service `on24`: Your ON24 token secret.
@@ -22091,6 +22482,7 @@ class GetConnectorConfigArgs:
         :param bool use_pgp_encryption_options: Field usage depends on `service` value: 
                	- Service `azure_blob_storage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
                	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
+               	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
                	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
                	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
                	- Service `wasabi_cloud_storage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -22160,6 +22552,7 @@ class GetConnectorConfigArgs:
         :param str user_id: Field usage depends on `service` value: 
                	- Service `coassemble`: Your Coassemble user ID.
                	- Service `gmail`: Your Gmail user ID.
+               	- Service `hibob`: Your HiBob Service User Token.
                	- Service `marketo`: Marketo SOAP API User Id.
                	- Service `playvox`: Your Playvox User ID.
                	- Service `sage_intacct`: User ID
@@ -22168,6 +22561,7 @@ class GetConnectorConfigArgs:
         :param Sequence[str] user_profiles: Field usage depends on `service` value: 
                	- Service `double_click_campaign_manager`: IDs of specific User Profiles to sync. Must be populated if `sync_mode` is set to `SpecificAccounts`.
         :param str user_token: Field usage depends on `service` value: 
+               	- Service `hibob`: Your HiBob Service User ID.
                	- Service `konnect_insights`: Your Konnect Insights User Token.
                	- Service `sonarqube`: Your Sonarqube user token.
         :param str username: Field usage depends on `service` value: 
@@ -22180,7 +22574,7 @@ class GetConnectorConfigArgs:
                	- Service `cin7`: Your Cin7 API Username.
                	- Service `collibra`: Your collibra username.
                	- Service `concur`: The SAP Concur username.
-               	- Service `confluence`: Your Confluence email address.
+               	- Service `confluence`: Your Confluence username.
                	- Service `contrast_security`: Your Contrast Security API Username.
                	- Service `dcl_logistics`: Your DCL Logistics username.
                	- Service `github`: `Login` of your GitHub profile.
@@ -22198,6 +22592,7 @@ class GetConnectorConfigArgs:
                	- Service `learnupon`: Your Learnupon username.
                	- Service `lessonly`: Your Lessonly username.
                	- Service `mailgun`: Your Mailgun API username.
+               	- Service `myosh`: Your Myosh  Username.
                	- Service `oracle_business_intelligence_publisher`: The Oracle Business Intelligence username.
                	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud username.
                	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud username.
@@ -22216,10 +22611,11 @@ class GetConnectorConfigArgs:
                	- Service `starrez`: Your StarRez API username
                	- Service `stylight`: Your Stylight Username.
                	- Service `teamwork`: Your Teamwork username.
-               	- Service `testrail`: Your TestRail API username.
+               	- Service `testrail`: Your TestRail username.
                	- Service `ukg_pro`: Your UKG Pro username.
                	- Service `unicommerce`: Your uniware login username.
                	- Service `upland`: Your Upland Software Username.
+               	- Service `veevavault`: Your Veeva Vault username.
                	- Service `when_i_work`: Your When I Work username.
                	- Service `wherefour`: Your Wherefour username.
                	- Service `workday_financial_management`: Workday username.
@@ -22282,6 +22678,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "account_ids", account_ids)
         pulumi.set(__self__, "account_key", account_key)
         pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "account_plan", account_plan)
         pulumi.set(__self__, "account_region", account_region)
         pulumi.set(__self__, "account_sid", account_sid)
         pulumi.set(__self__, "account_sync_mode", account_sync_mode)
@@ -22311,6 +22708,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "aggregation", aggregation)
         pulumi.set(__self__, "agreement_grant_token", agreement_grant_token)
         pulumi.set(__self__, "always_encrypted", always_encrypted)
+        pulumi.set(__self__, "api", api)
         pulumi.set(__self__, "api_access_token", api_access_token)
         pulumi.set(__self__, "api_environment", api_environment)
         pulumi.set(__self__, "api_id", api_id)
@@ -22421,6 +22819,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "conversion_dimensions", conversion_dimensions)
         pulumi.set(__self__, "conversion_report_time", conversion_report_time)
         pulumi.set(__self__, "conversion_window_size", conversion_window_size)
+        pulumi.set(__self__, "convert_dats_type_to_date", convert_dats_type_to_date)
         pulumi.set(__self__, "csv_definition", csv_definition)
         pulumi.set(__self__, "currency", currency)
         pulumi.set(__self__, "custom_event_sync_mode", custom_event_sync_mode)
@@ -22443,6 +22842,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "datasource", datasource)
         pulumi.set(__self__, "date_granularity", date_granularity)
+        pulumi.set(__self__, "db", db)
         pulumi.set(__self__, "delimiter", delimiter)
         pulumi.set(__self__, "dimension_attributes", dimension_attributes)
         pulumi.set(__self__, "dimensions", dimensions)
@@ -22606,6 +23006,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "post_click_attribution_window_size", post_click_attribution_window_size)
         pulumi.set(__self__, "prebuilt_report", prebuilt_report)
         pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "primary_key", primary_key)
         pulumi.set(__self__, "primary_keys", primary_keys)
         pulumi.set(__self__, "private_key", private_key)
         pulumi.set(__self__, "product", product)
@@ -22676,6 +23077,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "schema_registry_key", schema_registry_key)
         pulumi.set(__self__, "schema_registry_secret", schema_registry_secret)
         pulumi.set(__self__, "schema_registry_urls", schema_registry_urls)
+        pulumi.set(__self__, "scope", scope)
         pulumi.set(__self__, "seats", seats)
         pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "secret_key", secret_key)
@@ -22717,7 +23119,10 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "site_urls", site_urls)
         pulumi.set(__self__, "skip_after", skip_after)
         pulumi.set(__self__, "skip_before", skip_before)
+        pulumi.set(__self__, "snc_certificate", snc_certificate)
         pulumi.set(__self__, "snc_library_path", snc_library_path)
+        pulumi.set(__self__, "snc_mode", snc_mode)
+        pulumi.set(__self__, "snc_my_name", snc_my_name)
         pulumi.set(__self__, "snc_name", snc_name)
         pulumi.set(__self__, "snc_partner_name", snc_partner_name)
         pulumi.set(__self__, "soap_uri", soap_uri)
@@ -22766,6 +23171,7 @@ class GetConnectorConfigArgs:
         pulumi.set(__self__, "time_zone", time_zone)
         pulumi.set(__self__, "timeframe_months", timeframe_months)
         pulumi.set(__self__, "tns", tns)
+        pulumi.set(__self__, "toast_id", toast_id)
         pulumi.set(__self__, "token", token)
         pulumi.set(__self__, "token_authenticated_container", token_authenticated_container)
         pulumi.set(__self__, "token_authenticated_database", token_authenticated_database)
@@ -23106,6 +23512,7 @@ class GetConnectorConfigArgs:
     def account_name(self) -> str:
         """
         Field usage depends on `service` value: 
+        	- Service `eventsforce`: Your Eventsforce account name.
         	- Service `freshdesk_contact_center`: Your Freshdesk Contact Center account name.
         	- Service `happyfox`: Your HappyFox account name.
         	- Service `maxio_saasoptics`: Your Maxio SaaSOptics account name.
@@ -23117,6 +23524,19 @@ class GetConnectorConfigArgs:
     @account_name.setter
     def account_name(self, value: str):
         pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="accountPlan")
+    def account_plan(self) -> str:
+        """
+        Field usage depends on `service` value: 
+        	- Service `tymeshift`: Your Tymeshift account plan.
+        """
+        return pulumi.get(self, "account_plan")
+
+    @account_plan.setter
+    def account_plan(self, value: str):
+        pulumi.set(self, "account_plan", value)
 
     @property
     @pulumi.getter(name="accountRegion")
@@ -23602,6 +24022,19 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "always_encrypted", value)
 
     @property
+    @pulumi.getter
+    def api(self) -> str:
+        """
+        Field usage depends on `service` value: 
+        	- Service `freshsuccess`: Set this parameter to `api`.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: str):
+        pulumi.set(self, "api", value)
+
+    @property
     @pulumi.getter(name="apiAccessToken")
     def api_access_token(self) -> str:
         """
@@ -23661,6 +24094,7 @@ class GetConnectorConfigArgs:
         	- Service `avantlink`: Your AvantLink API key.
         	- Service `ballotready`: Your BallotReady API token.
         	- Service `bamboohr`: Your API Key.
+        	- Service `bizzabo`: Your Bizzabo API key.
         	- Service `braze`: Your Braze API Key.
         	- Service `brevo`: Your Brevo API key.
         	- Service `callrail`: Your CallRail API key.
@@ -23706,6 +24140,7 @@ class GetConnectorConfigArgs:
         	- Service `freshdesk`: Your Freshdesk API Key.
         	- Service `freshdesk_contact_center`: Your Freshdesk Contact Center API key.
         	- Service `freshservice`: Your Freshservice API Key.
+        	- Service `freshsuccess`: Your Freshsuccess API key.
         	- Service `freshteam`: Your Freshteam API key.
         	- Service `friendbuy`: Your Friendbuy API key.
         	- Service `fullstory`: Your Fullstory API key.
@@ -23731,6 +24166,7 @@ class GetConnectorConfigArgs:
         	- Service `kisi`: Your Kisi API key.
         	- Service `klaviyo`: Your Klaviyo API key.
         	- Service `learnupon`: Your Learnupon API key.
+        	- Service `lemlist`: Your Lemlist API key.
         	- Service `lever`: Your Lever API key.
         	- Service `liftoff`: Your Liftoff API key.
         	- Service `linksquares`: Your LinkSquares API key.
@@ -23743,12 +24179,15 @@ class GetConnectorConfigArgs:
         	- Service `maxio_chargify`: Enter Your API Key.
         	- Service `messagebird`: Your MessageBird API key.
         	- Service `mountain`: Your MNTN API key.
+        	- Service `myosh`: Your Myosh API Key.
         	- Service `ometria`: Your Ometria API Key.
         	- Service `ordway`: Your Ordway API key.
         	- Service `ortto`: Your Ortto API key.
         	- Service `pagerduty`: Your PagerDuty API key.
         	- Service `papershift`: Your Papershift API Key
+        	- Service `partnerize`: Your Partnerize user API key.
         	- Service `persona`: Your Persona API key.
+        	- Service `picqer`: Your Picqer API key.
         	- Service `pinpoint`: Your Pinpoint API key.
         	- Service `pipe17`: The Pipe17 API key.
         	- Service `playvox`: Your Playvox API Key.
@@ -23775,7 +24214,7 @@ class GetConnectorConfigArgs:
         	- Service `shortcut`: Your Shortcut API token.
         	- Service `shortio`: Your Short.io API key.
         	- Service `simplesat`: Your Simplesat API key.
-        	- Service `sistrix`: Your Sistrix api key.
+        	- Service `sistrix`: Your SISTRIX API key.
         	- Service `smartwaiver`: Your Smartwaiver API key.
         	- Service `snyk`: Your Snyk API key.
         	- Service `sonarqube`: Your Sonarqube API key.
@@ -23791,12 +24230,14 @@ class GetConnectorConfigArgs:
         	- Service `transcend`: Your Transcend API Key.
         	- Service `trello`: Your TRELLO api key.
         	- Service `uppromote`: Your UpPromote API key.
+        	- Service `veeqo`: Your Veeqo API key.
         	- Service `visit_by_ges`: Your Visit by GES API key.
         	- Service `vitally`: Your Vitally API key.
         	- Service `vonage`: Your Vonage API Key.
         	- Service `vts`: Your VTS API key.
         	- Service `webconnex`: Your Webconnex API key.
         	- Service `xsolla`: Your Xsolla API key.
+        	- Service `yougov_sport`: Your Yougov Sport API key.
         	- Service `zingtree`: Your Zingtree API key.
         """
         return pulumi.get(self, "api_key")
@@ -23941,7 +24382,7 @@ class GetConnectorConfigArgs:
         	- Service `qualtrics`: API token of the Qualtrics account.
         	- Service `rakutenadvertising`: Your Rakuten Advertising API token.
         	- Service `recharge`: The Recharge API token.
-        	- Service `referralhero`: Your Referralhero API Token.
+        	- Service `referralhero`: Your Referralhero API token.
         	- Service `resource_management_by_smartsheet`: Your Resource Management by Smartsheet API token.
         	- Service `retently`: Your Retently API token.
         	- Service `safetyculture`: Your SafetyCulture API token.
@@ -24157,6 +24598,7 @@ class GetConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `datadog`: Your Datadog application key.
         	- Service `dear`: Your Dear Application key.
+        	- Service `partnerize`: Your Partnerize user application key.
         """
         return pulumi.get(self, "application_key")
 
@@ -24565,6 +25007,7 @@ class GetConnectorConfigArgs:
         	- Service `ortto`: Your Ortto base URL. Possible values: `api`, `api.au`, `api.eu`.
         	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
         	- Service `salesforce_sandbox`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
+        	- Service `veevavault`: Your Veeva Vault base URL.
         """
         return pulumi.get(self, "base_url")
 
@@ -24834,6 +25277,7 @@ class GetConnectorConfigArgs:
         	- Service `culture_amp`: Your Culture Amp client ID.
         	- Service `cvent`: Your Cvent client ID.
         	- Service `d2l_brightspace`: Your D2L Brightspace client ID.
+        	- Service `ebay`: Your eBay client ID.
         	- Service `flexport`: The Flexport API Key.
         	- Service `genesys`: Your Genesys client ID.
         	- Service `hana_sap_hva_ecc_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
@@ -24868,11 +25312,15 @@ class GetConnectorConfigArgs:
         	- Service `swoogo`: Your Swoogo client Id.
         	- Service `taboola`: The Taboola client ID.
         	- Service `talkdesk`: The Client ID of your OAuth Client
+        	- Service `toast`: Your Toast client ID.
         	- Service `trelica`: Your Trelica client ID.
+        	- Service `tymeshift`: Your Tymeshift client ID.
         	- Service `udemy_business`: Your Udemy Business client ID.
+        	- Service `vonage_contact_center`: Your Vonage Contact Center client ID.
         	- Service `walmart_marketplace`: Your Walmart Marketplace client ID.
         	- Service `xero`: your clientId
         	- Service `xray`: Your Xray Client ID.
+        	- Service `yougov_sport`: Your Yougov Sport client ID.
         	- Service `zendesk_chat`: Your Zendesk client ID.
         	- Service `zoho_books`: Your Zoho Books Client ID.
         	- Service `zoho_campaigns`: Your Zoho Campaigns Client ID.
@@ -24893,6 +25341,7 @@ class GetConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `appfigures`: Your Appfigures Client Key.
         	- Service `thinkific`: Your Thinkific client key.
+        	- Service `yougov_sport`: Your Yougov Sport client key.
         """
         return pulumi.get(self, "client_key")
 
@@ -24983,6 +25432,7 @@ class GetConnectorConfigArgs:
         	- Service `culture_amp`: Your Culture Amp client secret.
         	- Service `cvent`: Your Cvent client secret.
         	- Service `d2l_brightspace`: Your D2L Brightspace client secret.
+        	- Service `ebay`: Your eBay client secret.
         	- Service `flexport`: The Flexport API Secret.
         	- Service `genesys`: Your Genesys client secret.
         	- Service `instructure`: Your Instructure client secret.
@@ -25012,8 +25462,11 @@ class GetConnectorConfigArgs:
         	- Service `taboola`: The Taboola client secret.
         	- Service `talkdesk`: The Client Secret of your OAuth Client
         	- Service `thinkific`: Your Thinkific client secret.
+        	- Service `toast`: Your Toast client secret.
         	- Service `trelica`: Your Trelica client secret.
+        	- Service `tymeshift`: Your Tymeshift client secret.
         	- Service `udemy_business`: Your Udemy Business client secret.
+        	- Service `vonage_contact_center`: Your Vonage Contact Center client secret.
         	- Service `walmart_marketplace`: Your Walmart Marketplace client secret.
         	- Service `xero`: your clientSecret
         	- Service `xray`: Your Xray Client Secret.
@@ -25216,7 +25669,7 @@ class GetConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `facebook`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#configtype).
-        	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+        	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
         """
         return pulumi.get(self, "config_type")
 
@@ -25280,6 +25733,7 @@ class GetConnectorConfigArgs:
         	- Service `azure_blob_storage`: The blob storage container connection string.
         	- Service `azure_event_hub`: Connection string of the Event Hub Namespace you want to sync.
         	- Service `azure_service_bus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
+        	- Service `microsoft_dynamics_365_fno`: The blob storage container's connection string.
         	- Service `microsoft_dynamics_365_fo`: The blob storage container connection string.
         """
         return pulumi.get(self, "connection_string")
@@ -25421,6 +25875,7 @@ class GetConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The name of the blob container.
+        	- Service `microsoft_dynamics_365_fno`: The name of the blob container.
         	- Service `microsoft_dynamics_365_fo`: The name of the blob container.
         """
         return pulumi.get(self, "container_name")
@@ -25493,6 +25948,15 @@ class GetConnectorConfigArgs:
     @conversion_window_size.setter
     def conversion_window_size(self, value: int):
         pulumi.set(self, "conversion_window_size", value)
+
+    @property
+    @pulumi.getter(name="convertDatsTypeToDate")
+    def convert_dats_type_to_date(self) -> bool:
+        return pulumi.get(self, "convert_dats_type_to_date")
+
+    @convert_dats_type_to_date.setter
+    def convert_dats_type_to_date(self, value: bool):
+        pulumi.set(self, "convert_dats_type_to_date", value)
 
     @property
     @pulumi.getter(name="csvDefinition")
@@ -25593,7 +26057,7 @@ class GetConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `reddit_ads`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
-        	- Service `snapchat_ads`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/applications/snapchat-ads/custom-reports).
+        	- Service `snapchat_ads`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
         	- Service `tiktok_ads`: Title of Custom Report
         """
         return pulumi.get(self, "custom_reports")
@@ -25682,7 +26146,7 @@ class GetConnectorConfigArgs:
     def data_access_method(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/databases/cosmos#dataaccessmethods).
+        	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/connectors/databases/cosmos#dataaccessmethods).
         """
         return pulumi.get(self, "data_access_method")
 
@@ -25825,6 +26289,19 @@ class GetConnectorConfigArgs:
 
     @property
     @pulumi.getter
+    def db(self) -> str:
+        """
+        Field usage depends on `service` value: 
+        	- Service `myosh`: Your Myosh Server variables/db .
+        """
+        return pulumi.get(self, "db")
+
+    @db.setter
+    def db(self, value: str):
+        pulumi.set(self, "db", value)
+
+    @property
+    @pulumi.getter
     def delimiter(self) -> str:
         """
         Field usage depends on `service` value: 
@@ -25916,7 +26393,8 @@ class GetConnectorConfigArgs:
         	- Service `okta`: Your Okta domain.
         	- Service `pipedrive`: Your Pipedrive domain.
         	- Service `shopware`: Your Shopware domain.
-        	- Service `sistrix`: Your domain for which you want to fetch data.
+        	- Service `sistrix`: Your SISTRIX domain.
+        	- Service `solarwinds_service_desk`: Your SolarWinds Service Desk domain.
         	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
         	- Service `zendesk`: Zendesk domain.
         	- Service `zendesk_sunshine`: Zendesk domain.
@@ -27077,7 +27555,7 @@ class GetConnectorConfigArgs:
     def is_private_link_required(self) -> bool:
         """
         Field usage depends on `service` value: 
-        	- Service `aws_lambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelink).
+        	- Service `aws_lambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
         """
         return pulumi.get(self, "is_private_link_required")
 
@@ -27759,7 +28237,7 @@ class GetConnectorConfigArgs:
     def organization_name(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `confluence`: Your Confluence Organization name.
+        	- Service `confluence`: Your Confluence organization name.
         """
         return pulumi.get(self, "organization_name")
 
@@ -27947,6 +28425,7 @@ class GetConnectorConfigArgs:
         	- Service `moloco`: Your Moloco account password.
         	- Service `mongo`: The user's password.
         	- Service `mongo_sharded`: The user's password.
+        	- Service `myosh`: Your Myosh Password .
         	- Service `mysql`: The user's password.
         	- Service `mysql_azure`: The user's password.
         	- Service `mysql_rds`: The user's password.
@@ -27995,6 +28474,7 @@ class GetConnectorConfigArgs:
         	- Service `ukg_pro`: Your UKG Pro password.
         	- Service `unicommerce`: Your uniware login password.
         	- Service `upland`: Your Upland Software Password.
+        	- Service `veevavault`: Your Veeva Vault password.
         	- Service `when_i_work`: Your When I Work password.
         	- Service `wherefour`: Your Wherefour password.
         	- Service `workday`: Workday password.
@@ -28191,6 +28671,7 @@ class GetConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `wasabi_cloud_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -28208,6 +28689,7 @@ class GetConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `s3`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         	- Service `wasabi_cloud_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
@@ -28348,6 +28830,15 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "prefix", value)
 
     @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> str:
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: str):
+        pulumi.set(self, "primary_key", value)
+
+    @property
     @pulumi.getter(name="primaryKeys")
     def primary_keys(self) -> Sequence[str]:
         """
@@ -28365,7 +28856,7 @@ class GetConnectorConfigArgs:
     def private_key(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `absorb_lms`: Your Absorb LMS Private Key.
+        	- Service `absorb_lms`: Your Absorb LMS REST API private key.
         	- Service `adobe_analytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
         	- Service `adp_workforce_now`: Private Key.
         	- Service `anaplan`: The contents of your private key file. Must be populated if `auth_mode` is set to `Certificate`.
@@ -28655,10 +29146,12 @@ class GetConnectorConfigArgs:
         	- Service `navan`: Your Navan region.
         	- Service `on24`: Your ON24 region.
         	- Service `pendo`: The Pendo account region.
+        	- Service `proofpoint_security_awareness`: Your Proofpoint Security Awareness Region.
         	- Service `ringover`: Your Ringover region.
         	- Service `samsara`: The region of your Samsara account. For instance, if your region is `EUROPE`, provide `eu.samsara` in the `Region` field. If your region is not in Europe, provide `samsara`.
         	- Service `snyk`: Your Snyk region.
         	- Service `talkdesk`: Your Talkdesk region (".com",".eu","ca.com")
+        	- Service `vonage_contact_center`: Your Vonage Contact Center region.
         	- Service `wasabi_cloud_storage`: The Wasabi Cloud Storage bucket region. Required for connector creation. Default value: `US_EAST_1`.
         	- Service `zoho_books`: Your Zoho Books application host region.
         	- Service `zoho_campaigns`: Your Zoho Campaigns application host region.
@@ -29403,6 +29896,19 @@ class GetConnectorConfigArgs:
 
     @property
     @pulumi.getter
+    def scope(self) -> str:
+        """
+        Field usage depends on `service` value: 
+        	- Service `ebay`: Your eBay Scopes.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: str):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
     def seats(self) -> Sequence[str]:
         """
         Field usage depends on `service` value: 
@@ -29785,7 +30291,7 @@ class GetConnectorConfigArgs:
     def share_url(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `share_point`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/files/share-point/setup-guide).
+        	- Service `share_point`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/connectors/files/share-point/setup-guide).
         """
         return pulumi.get(self, "share_url")
 
@@ -29878,6 +30384,7 @@ class GetConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
+        	- Service `gcs`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `s3`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `sftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         	- Service `wasabi_cloud_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
@@ -29993,6 +30500,15 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "skip_before", value)
 
     @property
+    @pulumi.getter(name="sncCertificate")
+    def snc_certificate(self) -> str:
+        return pulumi.get(self, "snc_certificate")
+
+    @snc_certificate.setter
+    def snc_certificate(self, value: str):
+        pulumi.set(self, "snc_certificate", value)
+
+    @property
     @pulumi.getter(name="sncLibraryPath")
     def snc_library_path(self) -> str:
         """
@@ -30005,6 +30521,24 @@ class GetConnectorConfigArgs:
     @snc_library_path.setter
     def snc_library_path(self, value: str):
         pulumi.set(self, "snc_library_path", value)
+
+    @property
+    @pulumi.getter(name="sncMode")
+    def snc_mode(self) -> str:
+        return pulumi.get(self, "snc_mode")
+
+    @snc_mode.setter
+    def snc_mode(self, value: str):
+        pulumi.set(self, "snc_mode", value)
+
+    @property
+    @pulumi.getter(name="sncMyName")
+    def snc_my_name(self) -> str:
+        return pulumi.get(self, "snc_my_name")
+
+    @snc_my_name.setter
+    def snc_my_name(self, value: str):
+        pulumi.set(self, "snc_my_name", value)
 
     @property
     @pulumi.getter(name="sncName")
@@ -30139,9 +30673,11 @@ class GetConnectorConfigArgs:
         	- Service `looker_source`: Your looker SubDomain name.
         	- Service `mailgun`: Your Mailgun subdomain.
         	- Service `maxio_chargify`: Enter Your Subdomain.
+        	- Service `myosh`: Your Myosh Subdomain .
         	- Service `namely`: Your Namely subdomain.
         	- Service `nylas`: Your Nylas subdomain.
         	- Service `okta`: Your Okta subdomain.
+        	- Service `picqer`: Your Picqer sub domain name.
         	- Service `pinpoint`: Your Pinpoint sub domain name.
         	- Service `piwik_pro`: Your Piwik PRO subdomain.
         	- Service `playvox`: Your Playvox Subdomain.
@@ -30155,9 +30691,11 @@ class GetConnectorConfigArgs:
         	- Service `sap_success_factors`: Your SAP SuccessFactors Subdomain.
         	- Service `sonarqube`: Your Sonarqube subdomain.
         	- Service `starrez`: Your StarRez subdomain
+        	- Service `tableau_source`: Your Tableau Source subdomain.
         	- Service `tempo`: Your Tempo subdomain.
         	- Service `thinkific`: Your Thinkific subdomain.
         	- Service `totango`: Your Totango Subdomain.
+        	- Service `tymeshift`: Your Tymeshift subdomain.
         	- Service `upland`: Your Upland Software subDomain.
         	- Service `wordpress`: Your WordPress subdomain.
         	- Service `workable`: Your Workable Subdomain.
@@ -30175,14 +30713,17 @@ class GetConnectorConfigArgs:
         """
         Field usage depends on `service` value: 
         	- Service `bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
+        	- Service `ebay`: Your eBay Environment.
         	- Service `freshdesk`: Your company's freshdesk subdomain (usually **company**.freshdesk.com).
         	- Service `freshservice`: Your company's freshservice subdomain (usually **company**.freshservice.com).
+        	- Service `freshsuccess`: Your Freshsuccess subdomain.
         	- Service `gorgias`: Your Gorgias subdomain.
         	- Service `klarna`: Your Klarna subdomain.
         	- Service `learnupon`: Your Learnupon subdomain.
         	- Service `maxio_saasoptics`: Your Maxio SaaSOptics subdomain.
         	- Service `medallia`: Medallia subdomain
         	- Service `sonarqube`: Your Sonarqube subdomain.
+        	- Service `toast`: Your Toast Domain.
         	- Service `vts`: Your VTS Subdomain.
         	- Service `zendesk_chat`: Your Zendesk domain.
         """
@@ -30365,7 +30906,7 @@ class GetConnectorConfigArgs:
         	- Service `dynamodb`: Whether to sync all tables in unpacked mode only or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
         	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
         	- Service `facebook_ad_account`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-        	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#syncmode).
+        	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#syncmode).
         	- Service `facebook_pages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
         	- Service `github`: Whether to sync all repositories or specific repositories.
         	- Service `google_ads`: Whether to sync all accounts or specific accounts.
@@ -30390,6 +30931,8 @@ class GetConnectorConfigArgs:
         	- Service `twitter`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
         	- Service `twitter_ads`: Whether to sync all accounts or specific accounts.
         	- Service `yahoo_gemini`: Whether to sync all accounts or specific accounts. Default value: `SpecificAccounts`.
+        	- Service `zuora`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
+        	- Service `zuora_sandbox`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
         """
         return pulumi.get(self, "sync_mode")
 
@@ -30441,7 +30984,7 @@ class GetConnectorConfigArgs:
     def sync_pack_mode(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/databases/cosmos#packmodeoptions).
+        	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
         	- Service `documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
         """
         return pulumi.get(self, "sync_pack_mode")
@@ -30785,12 +31328,26 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "tns", value)
 
     @property
+    @pulumi.getter(name="toastId")
+    def toast_id(self) -> str:
+        """
+        Field usage depends on `service` value: 
+        	- Service `toast`: Your Toast Restaurant External ID.
+        """
+        return pulumi.get(self, "toast_id")
+
+    @toast_id.setter
+    def toast_id(self, value: str):
+        pulumi.set(self, "toast_id", value)
+
+    @property
     @pulumi.getter
     def token(self) -> str:
         """
         Field usage depends on `service` value: 
         	- Service `mode`: Your Mode Token.
         	- Service `oracle_moat_analytics`: Your Oracle Moat Analytics Token.
+        	- Service `solarwinds_service_desk`: Your SolarWinds Service Desk token.
         """
         return pulumi.get(self, "token")
 
@@ -30845,6 +31402,7 @@ class GetConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `netsuite_suiteanalytics`: Token ID
         	- Service `on24`: Your ON24 token key.
+        	- Service `proofpoint_security_awareness`: Your Proofpoint Security Awareness Token Key.
         """
         return pulumi.get(self, "token_key")
 
@@ -31245,6 +31803,7 @@ class GetConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `azure_blob_storage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
         	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
+        	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
         	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
         	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
         	- Service `wasabi_cloud_storage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
@@ -31380,6 +31939,7 @@ class GetConnectorConfigArgs:
         Field usage depends on `service` value: 
         	- Service `coassemble`: Your Coassemble user ID.
         	- Service `gmail`: Your Gmail user ID.
+        	- Service `hibob`: Your HiBob Service User Token.
         	- Service `marketo`: Marketo SOAP API User Id.
         	- Service `playvox`: Your Playvox User ID.
         	- Service `sage_intacct`: User ID
@@ -31430,6 +31990,7 @@ class GetConnectorConfigArgs:
     def user_token(self) -> str:
         """
         Field usage depends on `service` value: 
+        	- Service `hibob`: Your HiBob Service User ID.
         	- Service `konnect_insights`: Your Konnect Insights User Token.
         	- Service `sonarqube`: Your Sonarqube user token.
         """
@@ -31453,7 +32014,7 @@ class GetConnectorConfigArgs:
         	- Service `cin7`: Your Cin7 API Username.
         	- Service `collibra`: Your collibra username.
         	- Service `concur`: The SAP Concur username.
-        	- Service `confluence`: Your Confluence email address.
+        	- Service `confluence`: Your Confluence username.
         	- Service `contrast_security`: Your Contrast Security API Username.
         	- Service `dcl_logistics`: Your DCL Logistics username.
         	- Service `github`: `Login` of your GitHub profile.
@@ -31471,6 +32032,7 @@ class GetConnectorConfigArgs:
         	- Service `learnupon`: Your Learnupon username.
         	- Service `lessonly`: Your Lessonly username.
         	- Service `mailgun`: Your Mailgun API username.
+        	- Service `myosh`: Your Myosh  Username.
         	- Service `oracle_business_intelligence_publisher`: The Oracle Business Intelligence username.
         	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud username.
         	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud username.
@@ -31489,10 +32051,11 @@ class GetConnectorConfigArgs:
         	- Service `starrez`: Your StarRez API username
         	- Service `stylight`: Your Stylight Username.
         	- Service `teamwork`: Your Teamwork username.
-        	- Service `testrail`: Your TestRail API username.
+        	- Service `testrail`: Your TestRail username.
         	- Service `ukg_pro`: Your UKG Pro username.
         	- Service `unicommerce`: Your uniware login username.
         	- Service `upland`: Your Upland Software Username.
+        	- Service `veevavault`: Your Veeva Vault username.
         	- Service `when_i_work`: Your When I Work username.
         	- Service `wherefour`: Your Wherefour username.
         	- Service `workday_financial_management`: Workday username.
@@ -31958,23 +32521,23 @@ class GetConnectorConfigCustomReportArgs:
         :param str aggregate: Field usage depends on `service` value: 
                	- Service `tiktok_ads`: Time aggregation of report
         :param Sequence[str] base_metrics_fields: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#basemetricsfields).
+               	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#basemetricsfields).
         :param str breakdown: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakdown).
+               	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
         :param str breakout: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakout).
+               	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
         :param bool conversions_report_included: Field usage depends on `service` value: 
                	- Service `reddit_ads`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `false`
         :param bool custom_events_included: Field usage depends on `service` value: 
                	- Service `reddit_ads`: The boolean value specifying whether the custom events are included in event conversions report. Default value: `false`
         :param str dimension: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#dimension).
+               	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#dimension).
         :param Sequence[str] dimensions: Field usage depends on `service` value: 
                	- Service `tiktok_ads`: Dimensions to synced
         :param Sequence[str] event_names: Field usage depends on `service` value: 
                	- Service `reddit_ads`: The list of events the conversion data will be synchronised for
         :param str granularity: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/applications/snapchat-ads/customr-reports#granularity).
+               	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
         :param str level: Field usage depends on `service` value: 
                	- Service `reddit_ads`: Level of custom report.
         :param Sequence[str] metrics: Field usage depends on `service` value: 
@@ -31989,7 +32552,7 @@ class GetConnectorConfigCustomReportArgs:
         :param str segmentation: Field usage depends on `service` value: 
                	- Service `reddit_ads`: Level of custom report.
         :param Sequence[str] sk_ad_metrics_fields: Field usage depends on `service` value: 
-               	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#skadmetricsfields).
+               	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#skadmetricsfields).
         :param str table_name: Field usage depends on `service` value: 
                	- Service `tiktok_ads`: Destination Table name of report
         """
@@ -32044,7 +32607,7 @@ class GetConnectorConfigCustomReportArgs:
     def base_metrics_fields(self) -> Sequence[str]:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#basemetricsfields).
+        	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#basemetricsfields).
         """
         return pulumi.get(self, "base_metrics_fields")
 
@@ -32057,7 +32620,7 @@ class GetConnectorConfigCustomReportArgs:
     def breakdown(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakdown).
+        	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
         """
         return pulumi.get(self, "breakdown")
 
@@ -32070,7 +32633,7 @@ class GetConnectorConfigCustomReportArgs:
     def breakout(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#breakout).
+        	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
         """
         return pulumi.get(self, "breakout")
 
@@ -32109,7 +32672,7 @@ class GetConnectorConfigCustomReportArgs:
     def dimension(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#dimension).
+        	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#dimension).
         """
         return pulumi.get(self, "dimension")
 
@@ -32148,7 +32711,7 @@ class GetConnectorConfigCustomReportArgs:
     def granularity(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/applications/snapchat-ads/customr-reports#granularity).
+        	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
         """
         return pulumi.get(self, "granularity")
 
@@ -32240,7 +32803,7 @@ class GetConnectorConfigCustomReportArgs:
     def sk_ad_metrics_fields(self) -> Sequence[str]:
         """
         Field usage depends on `service` value: 
-        	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/applications/snapchat-ads/custom-reports#skadmetricsfields).
+        	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#skadmetricsfields).
         """
         return pulumi.get(self, "sk_ad_metrics_fields")
 
@@ -32279,25 +32842,25 @@ class GetConnectorConfigCustomTableArgs:
                  view_attribution_window: str):
         """
         :param Sequence[str] action_breakdowns: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionbreakdowns).
+               	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionbreakdowns).
         :param str action_report_time: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionreporttime).
+               	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionreporttime).
         :param str aggregation: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#aggregation).
+               	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#aggregation).
         :param Sequence[str] breakdowns: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#breakdowns).
+               	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#breakdowns).
         :param str click_attribution_window: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#clickattributionwindow).
+               	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#clickattributionwindow).
         :param str config_type: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#configtype).
+               	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
         :param Sequence[str] fields: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#fields).
+               	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#fields).
         :param str prebuilt_report_name: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#prebuiltreport).
+               	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#prebuiltreport).
         :param str table_name: Field usage depends on `service` value: 
                	- Service `facebook_ads`: The table name within the schema to which the connector will sync the data. It must be unique within the connector and must comply with [Fivetran's naming conventions](https://fivetran.com/docs/getting-started/core-concepts#namingconventions).
         :param str view_attribution_window: Field usage depends on `service` value: 
-               	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#viewattributionwindow).
+               	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#viewattributionwindow).
         """
         pulumi.set(__self__, "action_breakdowns", action_breakdowns)
         pulumi.set(__self__, "action_report_time", action_report_time)
@@ -32317,7 +32880,7 @@ class GetConnectorConfigCustomTableArgs:
     def action_breakdowns(self) -> Sequence[str]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionbreakdowns).
+        	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionbreakdowns).
         """
         return pulumi.get(self, "action_breakdowns")
 
@@ -32330,7 +32893,7 @@ class GetConnectorConfigCustomTableArgs:
     def action_report_time(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#actionreporttime).
+        	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionreporttime).
         """
         return pulumi.get(self, "action_report_time")
 
@@ -32343,7 +32906,7 @@ class GetConnectorConfigCustomTableArgs:
     def aggregation(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#aggregation).
+        	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#aggregation).
         """
         return pulumi.get(self, "aggregation")
 
@@ -32356,7 +32919,7 @@ class GetConnectorConfigCustomTableArgs:
     def breakdowns(self) -> Sequence[str]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#breakdowns).
+        	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#breakdowns).
         """
         return pulumi.get(self, "breakdowns")
 
@@ -32369,7 +32932,7 @@ class GetConnectorConfigCustomTableArgs:
     def click_attribution_window(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#clickattributionwindow).
+        	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#clickattributionwindow).
         """
         return pulumi.get(self, "click_attribution_window")
 
@@ -32382,7 +32945,7 @@ class GetConnectorConfigCustomTableArgs:
     def config_type(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#configtype).
+        	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
         """
         return pulumi.get(self, "config_type")
 
@@ -32395,7 +32958,7 @@ class GetConnectorConfigCustomTableArgs:
     def fields(self) -> Sequence[str]:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#fields).
+        	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#fields).
         """
         return pulumi.get(self, "fields")
 
@@ -32417,7 +32980,7 @@ class GetConnectorConfigCustomTableArgs:
     def prebuilt_report_name(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#prebuiltreport).
+        	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#prebuiltreport).
         """
         return pulumi.get(self, "prebuilt_report_name")
 
@@ -32452,7 +33015,7 @@ class GetConnectorConfigCustomTableArgs:
     def view_attribution_window(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/applications/facebook-ads-insights/api-config#viewattributionwindow).
+        	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#viewattributionwindow).
         """
         return pulumi.get(self, "view_attribution_window")
 
@@ -32546,7 +33109,7 @@ class GetConnectorConfigReportArgs:
         :param Sequence[str] attributes: Field usage depends on `service` value: 
                	- Service `google_search_ads_360`: The report attributes included to sync.
         :param str config_type: Field usage depends on `service` value: 
-               	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+               	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
                	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
         :param Sequence[str] dimensions: Field usage depends on `service` value: 
                	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
@@ -32636,7 +33199,7 @@ class GetConnectorConfigReportArgs:
     def config_type(self) -> str:
         """
         Field usage depends on `service` value: 
-        	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/applications/google-analytics#schemainformation).
+        	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
         	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
         """
         return pulumi.get(self, "config_type")
@@ -33191,7 +33754,7 @@ class GetConnectorFingerprintsFingerprintArgs:
         :param str hash: Hash of the fingerprint.
         :param str public_key: The SSH public key.
         :param str validated_by: User name who validated the fingerprint.
-        :param str validated_date: The date when SSH fingerprint was approved.
+        :param str validated_date: The date when fingerprint was approved.
         """
         pulumi.set(__self__, "hash", hash)
         pulumi.set(__self__, "public_key", public_key)
@@ -33238,7 +33801,7 @@ class GetConnectorFingerprintsFingerprintArgs:
     @pulumi.getter(name="validatedDate")
     def validated_date(self) -> str:
         """
-        The date when SSH fingerprint was approved.
+        The date when fingerprint was approved.
         """
         return pulumi.get(self, "validated_date")
 
@@ -33539,7 +34102,7 @@ class GetDbtModelsModelArgs:
         """
         :param str id: The unique identifier for the dbt Model within the Fivetran system.
         :param str model_name: The dbt Model name.
-        :param bool scheduled: Boolean specifying whether the model is selected for execution.
+        :param bool scheduled: Boolean specifying whether the model is selected for execution in the dashboard.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "model_name", model_name)
@@ -33573,7 +34136,7 @@ class GetDbtModelsModelArgs:
     @pulumi.getter
     def scheduled(self) -> bool:
         """
-        Boolean specifying whether the model is selected for execution.
+        Boolean specifying whether the model is selected for execution in the dashboard.
         """
         return pulumi.get(self, "scheduled")
 
@@ -33583,122 +34146,122 @@ class GetDbtModelsModelArgs:
 
 
 @pulumi.input_type
-class GetDbtProjectModelArgs:
+class GetDbtProjectProjectConfigArgs:
     def __init__(__self__, *,
-                 id: str,
-                 model_name: str,
-                 scheduled: bool):
+                 folder_path: str,
+                 git_branch: str,
+                 git_remote_url: str):
         """
-        :param str id: The unique identifier for the dbt Model within the Fivetran system.
-        :param str model_name: The dbt Model name.
-        :param bool scheduled: Boolean specifying whether the model is selected for execution.
+        :param str folder_path: Folder in Git repo with your dbt project.
+        :param str git_branch: Git branch.
+        :param str git_remote_url: Git remote URL with your dbt project.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "model_name", model_name)
-        pulumi.set(__self__, "scheduled", scheduled)
+        pulumi.set(__self__, "folder_path", folder_path)
+        pulumi.set(__self__, "git_branch", git_branch)
+        pulumi.set(__self__, "git_remote_url", git_remote_url)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="folderPath")
+    def folder_path(self) -> str:
         """
-        The unique identifier for the dbt Model within the Fivetran system.
+        Folder in Git repo with your dbt project.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "folder_path")
 
-    @id.setter
-    def id(self, value: str):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="modelName")
-    def model_name(self) -> str:
-        """
-        The dbt Model name.
-        """
-        return pulumi.get(self, "model_name")
-
-    @model_name.setter
-    def model_name(self, value: str):
-        pulumi.set(self, "model_name", value)
+    @folder_path.setter
+    def folder_path(self, value: str):
+        pulumi.set(self, "folder_path", value)
 
     @property
-    @pulumi.getter
-    def scheduled(self) -> bool:
+    @pulumi.getter(name="gitBranch")
+    def git_branch(self) -> str:
         """
-        Boolean specifying whether the model is selected for execution.
+        Git branch.
         """
-        return pulumi.get(self, "scheduled")
+        return pulumi.get(self, "git_branch")
 
-    @scheduled.setter
-    def scheduled(self, value: bool):
-        pulumi.set(self, "scheduled", value)
+    @git_branch.setter
+    def git_branch(self, value: str):
+        pulumi.set(self, "git_branch", value)
+
+    @property
+    @pulumi.getter(name="gitRemoteUrl")
+    def git_remote_url(self) -> str:
+        """
+        Git remote URL with your dbt project.
+        """
+        return pulumi.get(self, "git_remote_url")
+
+    @git_remote_url.setter
+    def git_remote_url(self, value: str):
+        pulumi.set(self, "git_remote_url", value)
 
 
 @pulumi.input_type
-class GetDbtProjectsProjectArgs:
+class GetDbtTransformationScheduleArgs:
     def __init__(__self__, *,
-                 created_at: str,
-                 created_by_id: str,
-                 group_id: str,
-                 id: str):
+                 days_of_weeks: Sequence[str],
+                 interval: int,
+                 schedule_type: str,
+                 time_of_day: str):
         """
-        :param str created_at: The timestamp of when the project was created in your account.
-        :param str created_by_id: The unique identifier for the User within the Fivetran system who created the DBT Project.
-        :param str group_id: The name of the group within your account related to the project.
-        :param str id: The unique identifier for the dbt project within the Fivetran system.
+        :param Sequence[str] days_of_weeks: The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
+        :param int interval: The time interval in minutes between subsequent transformation runs.
+        :param str schedule_type: The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
+        :param str time_of_day: The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
         """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "created_by_id", created_by_id)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "schedule_type", schedule_type)
+        pulumi.set(__self__, "time_of_day", time_of_day)
 
     @property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Sequence[str]:
         """
-        The timestamp of when the project was created in your account.
+        The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
         """
-        return pulumi.get(self, "created_at")
+        return pulumi.get(self, "days_of_weeks")
 
-    @created_at.setter
-    def created_at(self, value: str):
-        pulumi.set(self, "created_at", value)
-
-    @property
-    @pulumi.getter(name="createdById")
-    def created_by_id(self) -> str:
-        """
-        The unique identifier for the User within the Fivetran system who created the DBT Project.
-        """
-        return pulumi.get(self, "created_by_id")
-
-    @created_by_id.setter
-    def created_by_id(self, value: str):
-        pulumi.set(self, "created_by_id", value)
-
-    @property
-    @pulumi.getter(name="groupId")
-    def group_id(self) -> str:
-        """
-        The name of the group within your account related to the project.
-        """
-        return pulumi.get(self, "group_id")
-
-    @group_id.setter
-    def group_id(self, value: str):
-        pulumi.set(self, "group_id", value)
+    @days_of_weeks.setter
+    def days_of_weeks(self, value: Sequence[str]):
+        pulumi.set(self, "days_of_weeks", value)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def interval(self) -> int:
         """
-        The unique identifier for the dbt project within the Fivetran system.
+        The time interval in minutes between subsequent transformation runs.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "interval")
 
-    @id.setter
-    def id(self, value: str):
-        pulumi.set(self, "id", value)
+    @interval.setter
+    def interval(self, value: int):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter(name="scheduleType")
+    def schedule_type(self) -> str:
+        """
+        The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
+        """
+        return pulumi.get(self, "schedule_type")
+
+    @schedule_type.setter
+    def schedule_type(self, value: str):
+        pulumi.set(self, "schedule_type", value)
+
+    @property
+    @pulumi.getter(name="timeOfDay")
+    def time_of_day(self) -> str:
+        """
+        The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
+        """
+        return pulumi.get(self, "time_of_day")
+
+    @time_of_day.setter
+    def time_of_day(self, value: str):
+        pulumi.set(self, "time_of_day", value)
 
 
 @pulumi.input_type
@@ -33713,14 +34276,14 @@ class GetDestinationCertificatesCertificateArgs:
                  validated_by: str,
                  validated_date: str):
         """
-        :param str hash: Hash of the fingerprint.
+        :param str hash: Hash of the certificate.
         :param str name: Certificate name.
-        :param str public_key: Certificate public key.
+        :param str public_key: The SSH public key.
         :param str sha1: Certificate sha1.
         :param str sha256: Certificate sha256.
-        :param str type: Certificate type.
+        :param str type: Type of the certificate.
         :param str validated_by: User name who validated the certificate.
-        :param str validated_date: The date when the certificate was approved.
+        :param str validated_date: The date when certificate was approved.
         """
         pulumi.set(__self__, "hash", hash)
         pulumi.set(__self__, "name", name)
@@ -33735,7 +34298,7 @@ class GetDestinationCertificatesCertificateArgs:
     @pulumi.getter
     def hash(self) -> str:
         """
-        Hash of the fingerprint.
+        Hash of the certificate.
         """
         return pulumi.get(self, "hash")
 
@@ -33759,7 +34322,7 @@ class GetDestinationCertificatesCertificateArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
         """
-        Certificate public key.
+        The SSH public key.
         """
         return pulumi.get(self, "public_key")
 
@@ -33795,7 +34358,7 @@ class GetDestinationCertificatesCertificateArgs:
     @pulumi.getter
     def type(self) -> str:
         """
-        Certificate type.
+        Type of the certificate.
         """
         return pulumi.get(self, "type")
 
@@ -33819,7 +34382,7 @@ class GetDestinationCertificatesCertificateArgs:
     @pulumi.getter(name="validatedDate")
     def validated_date(self) -> str:
         """
-        The date when the certificate was approved.
+        The date when certificate was approved.
         """
         return pulumi.get(self, "validated_date")
 
@@ -33863,6 +34426,8 @@ class GetDestinationConfigArgs:
                  lakehouse_name: str,
                  msk_sts_region: str,
                  num_of_partitions: int,
+                 oauth2_client_id: str,
+                 oauth2_secret: str,
                  passphrase: str,
                  password: str,
                  personal_access_token: str,
@@ -34028,11 +34593,15 @@ class GetDestinationConfigArgs:
         :param bool is_private_key_encrypted: Field usage depends on `service` value: 
                	- Service `snowflake`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
         :param bool is_private_link_required: Field usage depends on `service` value: 
-               	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelinkbeta).
+               	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
         :param bool is_redshift_serverless: Field usage depends on `service` value: 
                	- Service `redshift`: Is your destination Redshift Serverless
         :param str lakehouse_name: Field usage depends on `service` value: 
                	- Service `onelake`: Name of your lakehouse
+        :param str oauth2_client_id: Field usage depends on `service` value: 
+               	- Service `databricks`: OAuth 2.0 client ID. Required if auth_type is set to OAUTH2.
+        :param str oauth2_secret: Field usage depends on `service` value: 
+               	- Service `databricks`: OAuth 2.0 secret. Required if auth_type is set to OAUTH2.
         :param str passphrase: Field usage depends on `service` value: 
                	- Service `snowflake`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
         :param str password: Field usage depends on `service` value: 
@@ -34259,6 +34828,8 @@ class GetDestinationConfigArgs:
         pulumi.set(__self__, "lakehouse_name", lakehouse_name)
         pulumi.set(__self__, "msk_sts_region", msk_sts_region)
         pulumi.set(__self__, "num_of_partitions", num_of_partitions)
+        pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
+        pulumi.set(__self__, "oauth2_secret", oauth2_secret)
         pulumi.set(__self__, "passphrase", passphrase)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "personal_access_token", personal_access_token)
@@ -34711,7 +35282,7 @@ class GetDestinationConfigArgs:
     def is_private_link_required(self) -> bool:
         """
         Field usage depends on `service` value: 
-        	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelinkbeta).
+        	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
         """
         return pulumi.get(self, "is_private_link_required")
 
@@ -34762,6 +35333,32 @@ class GetDestinationConfigArgs:
     @num_of_partitions.setter
     def num_of_partitions(self, value: int):
         pulumi.set(self, "num_of_partitions", value)
+
+    @property
+    @pulumi.getter(name="oauth2ClientId")
+    def oauth2_client_id(self) -> str:
+        """
+        Field usage depends on `service` value: 
+        	- Service `databricks`: OAuth 2.0 client ID. Required if auth_type is set to OAUTH2.
+        """
+        return pulumi.get(self, "oauth2_client_id")
+
+    @oauth2_client_id.setter
+    def oauth2_client_id(self, value: str):
+        pulumi.set(self, "oauth2_client_id", value)
+
+    @property
+    @pulumi.getter(name="oauth2Secret")
+    def oauth2_secret(self) -> str:
+        """
+        Field usage depends on `service` value: 
+        	- Service `databricks`: OAuth 2.0 secret. Required if auth_type is set to OAUTH2.
+        """
+        return pulumi.get(self, "oauth2_secret")
+
+    @oauth2_secret.setter
+    def oauth2_secret(self, value: str):
+        pulumi.set(self, "oauth2_secret", value)
 
     @property
     @pulumi.getter
@@ -35336,7 +35933,7 @@ class GetDestinationFingerprintsFingerprintArgs:
         :param str hash: Hash of the fingerprint.
         :param str public_key: The SSH public key.
         :param str validated_by: User name who validated the fingerprint.
-        :param str validated_date: The date when SSH fingerprint was approved.
+        :param str validated_date: The date when fingerprint was approved.
         """
         pulumi.set(__self__, "hash", hash)
         pulumi.set(__self__, "public_key", public_key)
@@ -35383,7 +35980,7 @@ class GetDestinationFingerprintsFingerprintArgs:
     @pulumi.getter(name="validatedDate")
     def validated_date(self) -> str:
         """
-        The date when SSH fingerprint was approved.
+        The date when fingerprint was approved.
         """
         return pulumi.get(self, "validated_date")
 
@@ -36188,19 +36785,18 @@ class GetGroupsGroupArgs:
     def __init__(__self__, *,
                  created_at: str,
                  id: str,
-                 name: str,
-                 last_updated: Optional[str] = None):
+                 last_updated: str,
+                 name: str):
         """
         :param str created_at: The timestamp of when the group was created in your account.
         :param str id: The unique identifier for the group within the Fivetran system.
+        :param str last_updated: The timestamp of when the resource/datasource was updated last time.
         :param str name: The name of the group within your account.
-        :param str last_updated: The timestamp of when the group was updated in your account.
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_updated", last_updated)
         pulumi.set(__self__, "name", name)
-        if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -36227,6 +36823,18 @@ class GetGroupsGroupArgs:
         pulumi.set(self, "id", value)
 
     @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        """
+        The timestamp of when the resource/datasource was updated last time.
+        """
+        return pulumi.get(self, "last_updated")
+
+    @last_updated.setter
+    def last_updated(self, value: str):
+        pulumi.set(self, "last_updated", value)
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -36237,18 +36845,6 @@ class GetGroupsGroupArgs:
     @name.setter
     def name(self, value: str):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[str]:
-        """
-        The timestamp of when the group was updated in your account.
-        """
-        return pulumi.get(self, "last_updated")
-
-    @last_updated.setter
-    def last_updated(self, value: Optional[str]):
-        pulumi.set(self, "last_updated", value)
 
 
 @pulumi.input_type
@@ -36648,7 +37244,7 @@ class GetUsersUserArgs:
         :param str email: The email address that the user has associated with their user profile.
         :param str family_name: The last name of the user.
         :param str given_name: The first name of the user.
-        :param str id: The unique identifier for the user within the Fivetran system.
+        :param str id: The unique identifier for the user within your account.
         :param bool invited: The field indicates whether the user has been invited to your account.
         :param str logged_in_at: The last time that the user has logged into their Fivetran account.
         :param str phone: The phone number of the user.
@@ -36718,7 +37314,7 @@ class GetUsersUserArgs:
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier for the user within the Fivetran system.
+        The unique identifier for the user within your account.
         """
         return pulumi.get(self, "id")
 

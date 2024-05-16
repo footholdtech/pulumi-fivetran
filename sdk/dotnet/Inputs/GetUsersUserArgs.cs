@@ -38,7 +38,7 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string> GivenName { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier for the user within the Fivetran system.
+        /// The unique identifier for the user within your account.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

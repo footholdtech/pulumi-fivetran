@@ -9,14 +9,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
  *
  * const group = new fivetran.Group("group", {});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -77,7 +75,7 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The timestamp of when the group was updated in your account.
+     * The timestamp of when the resource/datasource was updated last time.
      */
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
@@ -121,7 +119,7 @@ export interface GroupState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The timestamp of when the group was updated in your account.
+     * The timestamp of when the resource/datasource was updated last time.
      */
     lastUpdated?: pulumi.Input<string>;
     /**

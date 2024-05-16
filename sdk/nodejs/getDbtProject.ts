@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -20,14 +19,13 @@ import * as utilities from "./utilities";
  *     id: "project_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDbtProject(args: GetDbtProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetDbtProjectResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDbtProject:getDbtProject", {
         "id": args.id,
-        "models": args.models,
+        "projectConfig": args.projectConfig,
     }, opts);
 }
 
@@ -36,13 +34,10 @@ export function getDbtProject(args: GetDbtProjectArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetDbtProjectArgs {
     /**
-     * The unique identifier for the dbt Model within the Fivetran system.
+     * The unique identifier for the dbt Project within the Fivetran system.
      */
     id: string;
-    /**
-     * The collection of dbt Models.
-     */
-    models?: inputs.GetDbtProjectModel[];
+    projectConfig?: inputs.GetDbtProjectProjectConfig;
 }
 
 /**
@@ -65,6 +60,13 @@ export interface GetDbtProjectResult {
      * Default schema in destination. This production schema will contain your transformed data.
      */
     readonly defaultSchema: string;
+    /**
+     * Should resource wait for project to finish initialization. Default value: true.
+     */
+    readonly ensureReadiness: boolean;
+    /**
+     * List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+     */
     readonly environmentVars: string[];
     /**
      * The unique identifier for the group within the Fivetran system.
@@ -74,14 +76,8 @@ export interface GetDbtProjectResult {
      * The unique identifier for the dbt Project within the Fivetran system.
      */
     readonly id: string;
-    /**
-     * The collection of dbt Models.
-     */
     readonly models: outputs.GetDbtProjectModel[];
-    /**
-     * Type specific dbt Project configuration parameters.
-     */
-    readonly projectConfigs: outputs.GetDbtProjectProjectConfig[];
+    readonly projectConfig?: outputs.GetDbtProjectProjectConfig;
     /**
      * Public key to grant Fivetran SSH access to git repository.
      */
@@ -108,7 +104,6 @@ export interface GetDbtProjectResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -117,7 +112,6 @@ export interface GetDbtProjectResult {
  *     id: "project_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDbtProjectOutput(args: GetDbtProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtProjectResult> {
     return pulumi.output(args).apply((a: any) => getDbtProject(a, opts))
@@ -128,11 +122,8 @@ export function getDbtProjectOutput(args: GetDbtProjectOutputArgs, opts?: pulumi
  */
 export interface GetDbtProjectOutputArgs {
     /**
-     * The unique identifier for the dbt Model within the Fivetran system.
+     * The unique identifier for the dbt Project within the Fivetran system.
      */
     id: pulumi.Input<string>;
-    /**
-     * The collection of dbt Models.
-     */
-    models?: pulumi.Input<pulumi.Input<inputs.GetDbtProjectModelArgs>[]>;
+    projectConfig?: pulumi.Input<inputs.GetDbtProjectProjectConfigArgs>;
 }

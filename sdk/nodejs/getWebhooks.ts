@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const webhooks = fivetran.getWebhooks({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getWebhooks(opts?: pulumi.InvokeOptions): Promise<GetWebhooksResult> {
 
@@ -42,14 +40,12 @@ export interface GetWebhooksResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const webhooks = fivetran.getWebhooks({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getWebhooksOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhooksResult> {
     return pulumi.output(getWebhooks(opts))

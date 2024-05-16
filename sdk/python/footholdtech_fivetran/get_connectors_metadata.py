@@ -62,14 +62,12 @@ def get_connectors_metadata(sources: Optional[Sequence[pulumi.InputType['GetConn
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     sources = fivetran.get_connectors_metadata()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['sources'] = sources
@@ -89,13 +87,11 @@ def get_connectors_metadata_output(sources: Optional[pulumi.Input[Optional[Seque
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     sources = fivetran.get_connectors_metadata()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

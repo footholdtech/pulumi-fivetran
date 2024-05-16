@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     id: "anonymous_mystery",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDestination(args: GetDestinationArgs, opts?: pulumi.InvokeOptions): Promise<GetDestinationResult> {
 
@@ -57,7 +55,6 @@ export interface GetDestinationResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -66,7 +63,6 @@ export interface GetDestinationResult {
  *     id: "anonymous_mystery",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDestinationOutput(args: GetDestinationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestinationResult> {
     return pulumi.output(args).apply((a: any) => getDestination(a, opts))

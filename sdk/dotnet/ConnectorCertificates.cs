@@ -17,7 +17,7 @@ namespace Footholdtech.Fivetran
         public Output<ImmutableArray<Outputs.ConnectorCertificatesCertificate>> Certificates { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier for the target connector within the Fivetran system.
+        /// The unique identifier for the target connection within the Fivetran system.
         /// </summary>
         [Output("connectorId")]
         public Output<string> ConnectorId { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The unique identifier for the target connector within the Fivetran system.
+        /// The unique identifier for the target connection within the Fivetran system.
         /// </summary>
         [Input("connectorId", required: true)]
         public Input<string> ConnectorId { get; set; } = null!;
@@ -100,7 +100,7 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The unique identifier for the target connector within the Fivetran system.
+        /// The unique identifier for the target connection within the Fivetran system.
         /// </summary>
         [Input("connectorId")]
         public Input<string>? ConnectorId { get; set; }

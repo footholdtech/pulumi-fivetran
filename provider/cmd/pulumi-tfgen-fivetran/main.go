@@ -20,5 +20,5 @@ import (
 )
 
 func main() {
-	tfgen.MainWithMuxer("fivetran", fivetran.Provider())
+	tfgen.Main("fivetran", fivetran.Provider())
 }

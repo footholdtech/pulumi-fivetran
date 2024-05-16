@@ -14,7 +14,7 @@ namespace Footholdtech.Fivetran.Inputs
     public sealed class ConnectorSchemaConfigSchemasTablesColumnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The boolean value specifying whether the sync for the schema into the destination is enabled.
+        /// The boolean value specifying whether the sync of the column into the destination is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

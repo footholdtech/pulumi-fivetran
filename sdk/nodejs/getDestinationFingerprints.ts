@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     id: "destination_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDestinationFingerprints(args: GetDestinationFingerprintsArgs, opts?: pulumi.InvokeOptions): Promise<GetDestinationFingerprintsResult> {
 
@@ -61,7 +59,6 @@ export interface GetDestinationFingerprintsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -70,7 +67,6 @@ export interface GetDestinationFingerprintsResult {
  *     id: "destination_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDestinationFingerprintsOutput(args: GetDestinationFingerprintsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestinationFingerprintsResult> {
     return pulumi.output(args).apply((a: any) => getDestinationFingerprints(a, opts))

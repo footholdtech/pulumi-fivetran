@@ -55,7 +55,7 @@ class GetGroupResult:
     @pulumi.getter(name="lastUpdated")
     def last_updated(self) -> str:
         """
-        The timestamp of when the group was updated in your account.
+        The timestamp of when the resource/datasource was updated last time.
         """
         return pulumi.get(self, "last_updated")
 
@@ -87,14 +87,12 @@ def get_group(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_group = fivetran.get_group(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the group within the Fivetran system.
@@ -119,14 +117,12 @@ def get_group_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_group = fivetran.get_group(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the group within the Fivetran system.

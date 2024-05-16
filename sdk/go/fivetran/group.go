@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,7 +36,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -69,7 +67,7 @@ type Group struct {
 
 	// The timestamp of when the group was created in your account.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The timestamp of when the group was updated in your account.
+	// The timestamp of when the resource/datasource was updated last time.
 	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
 	// The name of the group within your account.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -107,7 +105,7 @@ func GetGroup(ctx *pulumi.Context,
 type groupState struct {
 	// The timestamp of when the group was created in your account.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The timestamp of when the group was updated in your account.
+	// The timestamp of when the resource/datasource was updated last time.
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// The name of the group within your account.
 	Name *string `pulumi:"name"`
@@ -116,7 +114,7 @@ type groupState struct {
 type GroupState struct {
 	// The timestamp of when the group was created in your account.
 	CreatedAt pulumi.StringPtrInput
-	// The timestamp of when the group was updated in your account.
+	// The timestamp of when the resource/datasource was updated last time.
 	LastUpdated pulumi.StringPtrInput
 	// The name of the group within your account.
 	Name pulumi.StringPtrInput
@@ -229,7 +227,7 @@ func (o GroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The timestamp of when the group was updated in your account.
+// The timestamp of when the resource/datasource was updated last time.
 func (o GroupOutput) LastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
 }

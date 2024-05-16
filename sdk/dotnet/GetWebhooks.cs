@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,7 +29,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWebhooksResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebhooksResult>("fivetran:index/getWebhooks:getWebhooks", InvokeArgs.Empty, options.WithDefaults());
@@ -40,7 +38,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +50,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWebhooksResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("fivetran:index/getWebhooks:getWebhooks", InvokeArgs.Empty, options.WithDefaults());

@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const teams = fivetran.getTeams({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTeams(args?: GetTeamsArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamsResult> {
     args = args || {};
@@ -35,7 +33,7 @@ export function getTeams(args?: GetTeamsArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetTeamsArgs {
     /**
-     * The unique identifier for the team within your account.
+     * The ID of this resource.
      */
     id?: string;
     teams?: inputs.GetTeamsTeam[];
@@ -56,14 +54,12 @@ export interface GetTeamsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const teams = fivetran.getTeams({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTeamsOutput(args?: GetTeamsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamsResult> {
     return pulumi.output(args).apply((a: any) => getTeams(a, opts))
@@ -74,7 +70,7 @@ export function getTeamsOutput(args?: GetTeamsOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetTeamsOutputArgs {
     /**
-     * The unique identifier for the team within your account.
+     * The ID of this resource.
      */
     id?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<inputs.GetTeamsTeamArgs>[]>;

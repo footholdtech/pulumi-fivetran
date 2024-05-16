@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -20,13 +19,13 @@ import * as utilities from "./utilities";
  *     id: "transformation_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDbtTransformation(args: GetDbtTransformationArgs, opts?: pulumi.InvokeOptions): Promise<GetDbtTransformationResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDbtTransformation:getDbtTransformation", {
         "id": args.id,
+        "schedule": args.schedule,
     }, opts);
 }
 
@@ -35,9 +34,10 @@ export function getDbtTransformation(args: GetDbtTransformationArgs, opts?: pulu
  */
 export interface GetDbtTransformationArgs {
     /**
-     * The ID of this resource.
+     * The unique identifier for the dbt Transformation within the Fivetran system.
      */
     id: string;
+    schedule?: inputs.GetDbtTransformationSchedule;
 }
 
 /**
@@ -65,7 +65,7 @@ export interface GetDbtTransformationResult {
      */
     readonly dbtProjectId: string;
     /**
-     * The ID of this resource.
+     * The unique identifier for the dbt Transformation within the Fivetran system.
      */
     readonly id: string;
     /**
@@ -77,24 +77,20 @@ export interface GetDbtTransformationResult {
      */
     readonly outputModelName: string;
     /**
-     * The field indicating whether the transformation will be created in paused state. By default, the value is false.
+     * The field indicating whether the transformation will be set into the paused state. By default, the value is false.
      */
     readonly paused: boolean;
     /**
      * The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
      */
     readonly runTests: boolean;
-    /**
-     * dbt Transformation schedule parameters.
-     */
-    readonly schedules: outputs.GetDbtTransformationSchedule[];
+    readonly schedule?: outputs.GetDbtTransformationSchedule;
 }
 /**
  * This data source returns a dbt Transformation object.
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -103,7 +99,6 @@ export interface GetDbtTransformationResult {
  *     id: "transformation_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDbtTransformationOutput(args: GetDbtTransformationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtTransformationResult> {
     return pulumi.output(args).apply((a: any) => getDbtTransformation(a, opts))
@@ -114,7 +109,8 @@ export function getDbtTransformationOutput(args: GetDbtTransformationOutputArgs,
  */
 export interface GetDbtTransformationOutputArgs {
     /**
-     * The ID of this resource.
+     * The unique identifier for the dbt Transformation within the Fivetran system.
      */
     id: pulumi.Input<string>;
+    schedule?: pulumi.Input<inputs.GetDbtTransformationScheduleArgs>;
 }

@@ -12,30 +12,6 @@ import * as utilities from "./utilities";
  * This resource allows you to add, manage and delete dbt Transformations for existing dbt Model.
  * To retrieve available dbt Models use this [Retrieve dbt Project models](https://fivetran.com/docs/rest-api/dbt-transformation-management#retrievedbtprojectmodels) endpoint.
  *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fivetran from "@footholdtech/fivetran";
- *
- * const transformation = new fivetran.DbtTransformation("transformation", {
- *     dbtModelName: "dbt_model_name",
- *     dbtProjectId: "dbt_project_id",
- *     paused: false,
- *     runTests: false,
- *     schedule: {
- *         daysOfWeeks: [
- *             "MONDAY",
- *             "SATURDAY",
- *         ],
- *         scheduleType: "TIME_OF_DAY",
- *         timeOfDay: "12:00",
- *     },
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * 1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard.
@@ -117,17 +93,15 @@ export class DbtTransformation extends pulumi.CustomResource {
      */
     public /*out*/ readonly outputModelName!: pulumi.Output<string>;
     /**
-     * The field indicating whether the transformation will be created in paused state. By default, the value is false.
+     * The field indicating whether the transformation will be set into the paused state. By default, the value is false.
      */
     public readonly paused!: pulumi.Output<boolean>;
     /**
      * The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
      */
     public readonly runTests!: pulumi.Output<boolean>;
-    /**
-     * dbt Transformation schedule parameters.
-     */
-    public readonly schedule!: pulumi.Output<outputs.DbtTransformationSchedule>;
+    public readonly schedule!: pulumi.Output<outputs.DbtTransformationSchedule | undefined>;
+    public readonly timeouts!: pulumi.Output<outputs.DbtTransformationTimeouts | undefined>;
 
     /**
      * Create a DbtTransformation resource with the given unique name, arguments, and options.
@@ -152,6 +126,7 @@ export class DbtTransformation extends pulumi.CustomResource {
             resourceInputs["paused"] = state ? state.paused : undefined;
             resourceInputs["runTests"] = state ? state.runTests : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
         } else {
             const args = argsOrState as DbtTransformationArgs | undefined;
             if ((!args || args.dbtModelName === undefined) && !opts.urn) {
@@ -160,20 +135,12 @@ export class DbtTransformation extends pulumi.CustomResource {
             if ((!args || args.dbtProjectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbtProjectId'");
             }
-            if ((!args || args.paused === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'paused'");
-            }
-            if ((!args || args.runTests === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'runTests'");
-            }
-            if ((!args || args.schedule === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'schedule'");
-            }
             resourceInputs["dbtModelName"] = args ? args.dbtModelName : undefined;
             resourceInputs["dbtProjectId"] = args ? args.dbtProjectId : undefined;
             resourceInputs["paused"] = args ? args.paused : undefined;
             resourceInputs["runTests"] = args ? args.runTests : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["connectorIds"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["dbtModelId"] = undefined /*out*/;
@@ -218,17 +185,15 @@ export interface DbtTransformationState {
      */
     outputModelName?: pulumi.Input<string>;
     /**
-     * The field indicating whether the transformation will be created in paused state. By default, the value is false.
+     * The field indicating whether the transformation will be set into the paused state. By default, the value is false.
      */
     paused?: pulumi.Input<boolean>;
     /**
      * The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
      */
     runTests?: pulumi.Input<boolean>;
-    /**
-     * dbt Transformation schedule parameters.
-     */
     schedule?: pulumi.Input<inputs.DbtTransformationSchedule>;
+    timeouts?: pulumi.Input<inputs.DbtTransformationTimeouts>;
 }
 
 /**
@@ -244,15 +209,13 @@ export interface DbtTransformationArgs {
      */
     dbtProjectId: pulumi.Input<string>;
     /**
-     * The field indicating whether the transformation will be created in paused state. By default, the value is false.
+     * The field indicating whether the transformation will be set into the paused state. By default, the value is false.
      */
-    paused: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean>;
     /**
      * The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
      */
-    runTests: pulumi.Input<boolean>;
-    /**
-     * dbt Transformation schedule parameters.
-     */
-    schedule: pulumi.Input<inputs.DbtTransformationSchedule>;
+    runTests?: pulumi.Input<boolean>;
+    schedule?: pulumi.Input<inputs.DbtTransformationSchedule>;
+    timeouts?: pulumi.Input<inputs.DbtTransformationTimeouts>;
 }

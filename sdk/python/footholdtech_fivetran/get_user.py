@@ -171,14 +171,12 @@ def get_user(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_user = fivetran.get_user(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the user within the Fivetran system.
@@ -210,14 +208,12 @@ def get_user_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_user = fivetran.get_user(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier for the user within the Fivetran system.

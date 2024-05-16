@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     id: "anonymous_mystery",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getExternalLogging(args: GetExternalLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalLoggingResult> {
 
@@ -78,7 +76,6 @@ export interface GetExternalLoggingResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -87,7 +84,6 @@ export interface GetExternalLoggingResult {
  *     id: "anonymous_mystery",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getExternalLoggingOutput(args: GetExternalLoggingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalLoggingResult> {
     return pulumi.output(args).apply((a: any) => getExternalLogging(a, opts))

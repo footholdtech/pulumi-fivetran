@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetDbtProjectsResult',
@@ -55,24 +54,20 @@ class AwaitableGetDbtProjectsResult(GetDbtProjectsResult):
             projects=self.projects)
 
 
-def get_dbt_projects(projects: Optional[Sequence[pulumi.InputType['GetDbtProjectsProjectArgs']]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbtProjectsResult:
+def get_dbt_projects(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbtProjectsResult:
     """
     This data source returns a list of all dbt Projects within your Fivetran account.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_projects = fivetran.get_dbt_projects()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
-    __args__['projects'] = projects
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('fivetran:index/getDbtProjects:getDbtProjects', __args__, opts=opts, typ=GetDbtProjectsResult).value
 
@@ -82,20 +77,17 @@ def get_dbt_projects(projects: Optional[Sequence[pulumi.InputType['GetDbtProject
 
 
 @_utilities.lift_output_func(get_dbt_projects)
-def get_dbt_projects_output(projects: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDbtProjectsProjectArgs']]]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtProjectsResult]:
+def get_dbt_projects_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtProjectsResult]:
     """
     This data source returns a list of all dbt Projects within your Fivetran account.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     my_projects = fivetran.get_dbt_projects()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGroupUsersResult> InvokeAsync(GetGroupUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupUsersResult>("fivetran:index/getGroupUsers:getGroupUsers", args ?? new GetGroupUsersArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupUsersResult> Invoke(GetGroupUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupUsersResult>("fivetran:index/getGroupUsers:getGroupUsers", args ?? new GetGroupUsersInvokeArgs(), options.WithDefaults());
@@ -69,7 +65,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetGroupUsersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the user within the account.
+        /// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -91,7 +87,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetGroupUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the user within the account.
+        /// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

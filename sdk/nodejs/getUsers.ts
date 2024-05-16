@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const users = fivetran.getUsers({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
@@ -35,7 +33,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetUsersArgs {
     /**
-     * The unique identifier for the user within the Fivetran system.
+     * The ID of this resource.
      */
     id?: string;
     users?: inputs.GetUsersUser[];
@@ -56,14 +54,12 @@ export interface GetUsersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const users = fivetran.getUsers({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))
@@ -74,7 +70,7 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetUsersOutputArgs {
     /**
-     * The unique identifier for the user within the Fivetran system.
+     * The ID of this resource.
      */
     id?: pulumi.Input<string>;
     users?: pulumi.Input<pulumi.Input<inputs.GetUsersUserArgs>[]>;

@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("fivetran:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("fivetran:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
@@ -107,7 +103,7 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The timestamp of when the group was updated in your account.
+        /// The timestamp of when the resource/datasource was updated last time.
         /// </summary>
         public readonly string LastUpdated;
         /// <summary>

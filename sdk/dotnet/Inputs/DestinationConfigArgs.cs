@@ -268,7 +268,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/databases/connection-options#awsprivatelinkbeta).
+        /// 	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
         /// </summary>
         [Input("isPrivateLinkRequired")]
         public Input<bool>? IsPrivateLinkRequired { get; set; }
@@ -292,6 +292,30 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("numOfPartitions")]
         public Input<int>? NumOfPartitions { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: OAuth 2.0 client ID. Required if auth_type is set to OAUTH2.
+        /// </summary>
+        [Input("oauth2ClientId")]
+        public Input<string>? Oauth2ClientId { get; set; }
+
+        [Input("oauth2Secret")]
+        private Input<string>? _oauth2Secret;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: OAuth 2.0 secret. Required if auth_type is set to OAUTH2.
+        /// </summary>
+        public Input<string>? Oauth2Secret
+        {
+            get => _oauth2Secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauth2Secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("passphrase")]
         private Input<string>? _passphrase;

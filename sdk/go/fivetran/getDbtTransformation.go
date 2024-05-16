@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupDbtTransformation(ctx *pulumi.Context, args *LookupDbtTransformationArgs, opts ...pulumi.InvokeOption) (*LookupDbtTransformationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDbtTransformationResult
@@ -52,8 +50,9 @@ func LookupDbtTransformation(ctx *pulumi.Context, args *LookupDbtTransformationA
 
 // A collection of arguments for invoking getDbtTransformation.
 type LookupDbtTransformationArgs struct {
-	// The ID of this resource.
-	Id string `pulumi:"id"`
+	// The unique identifier for the dbt Transformation within the Fivetran system.
+	Id       string                        `pulumi:"id"`
+	Schedule *GetDbtTransformationSchedule `pulumi:"schedule"`
 }
 
 // A collection of values returned by getDbtTransformation.
@@ -68,18 +67,17 @@ type LookupDbtTransformationResult struct {
 	DbtModelName string `pulumi:"dbtModelName"`
 	// The unique identifier for the dbt Project within the Fivetran system.
 	DbtProjectId string `pulumi:"dbtProjectId"`
-	// The ID of this resource.
+	// The unique identifier for the dbt Transformation within the Fivetran system.
 	Id string `pulumi:"id"`
 	// Identifiers of related models.
 	ModelIds []string `pulumi:"modelIds"`
 	// The dbt Model name.
 	OutputModelName string `pulumi:"outputModelName"`
-	// The field indicating whether the transformation will be created in paused state. By default, the value is false.
+	// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
 	Paused bool `pulumi:"paused"`
 	// The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-	RunTests bool `pulumi:"runTests"`
-	// dbt Transformation schedule parameters.
-	Schedules []GetDbtTransformationSchedule `pulumi:"schedules"`
+	RunTests bool                          `pulumi:"runTests"`
+	Schedule *GetDbtTransformationSchedule `pulumi:"schedule"`
 }
 
 func LookupDbtTransformationOutput(ctx *pulumi.Context, args LookupDbtTransformationOutputArgs, opts ...pulumi.InvokeOption) LookupDbtTransformationResultOutput {
@@ -97,8 +95,9 @@ func LookupDbtTransformationOutput(ctx *pulumi.Context, args LookupDbtTransforma
 
 // A collection of arguments for invoking getDbtTransformation.
 type LookupDbtTransformationOutputArgs struct {
-	// The ID of this resource.
-	Id pulumi.StringInput `pulumi:"id"`
+	// The unique identifier for the dbt Transformation within the Fivetran system.
+	Id       pulumi.StringInput                   `pulumi:"id"`
+	Schedule GetDbtTransformationSchedulePtrInput `pulumi:"schedule"`
 }
 
 func (LookupDbtTransformationOutputArgs) ElementType() reflect.Type {
@@ -145,7 +144,7 @@ func (o LookupDbtTransformationResultOutput) DbtProjectId() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupDbtTransformationResult) string { return v.DbtProjectId }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
+// The unique identifier for the dbt Transformation within the Fivetran system.
 func (o LookupDbtTransformationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbtTransformationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -160,7 +159,7 @@ func (o LookupDbtTransformationResultOutput) OutputModelName() pulumi.StringOutp
 	return o.ApplyT(func(v LookupDbtTransformationResult) string { return v.OutputModelName }).(pulumi.StringOutput)
 }
 
-// The field indicating whether the transformation will be created in paused state. By default, the value is false.
+// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
 func (o LookupDbtTransformationResultOutput) Paused() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDbtTransformationResult) bool { return v.Paused }).(pulumi.BoolOutput)
 }
@@ -170,9 +169,8 @@ func (o LookupDbtTransformationResultOutput) RunTests() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDbtTransformationResult) bool { return v.RunTests }).(pulumi.BoolOutput)
 }
 
-// dbt Transformation schedule parameters.
-func (o LookupDbtTransformationResultOutput) Schedules() GetDbtTransformationScheduleArrayOutput {
-	return o.ApplyT(func(v LookupDbtTransformationResult) []GetDbtTransformationSchedule { return v.Schedules }).(GetDbtTransformationScheduleArrayOutput)
+func (o LookupDbtTransformationResultOutput) Schedule() GetDbtTransformationSchedulePtrOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) *GetDbtTransformationSchedule { return v.Schedule }).(GetDbtTransformationSchedulePtrOutput)
 }
 
 func init() {

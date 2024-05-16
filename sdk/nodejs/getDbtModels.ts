@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     projectId: "project_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDbtModels(args: GetDbtModelsArgs, opts?: pulumi.InvokeOptions): Promise<GetDbtModelsResult> {
 
@@ -35,12 +33,9 @@ export function getDbtModels(args: GetDbtModelsArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getDbtModels.
  */
 export interface GetDbtModelsArgs {
-    /**
-     * The collection of dbt Models.
-     */
     models?: inputs.GetDbtModelsModel[];
     /**
-     * The unique identifier for the dbt project within the Fivetran system.
+     * The unique identifier for the dbt Project within the Fivetran system.
      */
     projectId: string;
 }
@@ -50,15 +45,12 @@ export interface GetDbtModelsArgs {
  */
 export interface GetDbtModelsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource (equals to `projectId`).
      */
     readonly id: string;
+    readonly models?: outputs.GetDbtModelsModel[];
     /**
-     * The collection of dbt Models.
-     */
-    readonly models: outputs.GetDbtModelsModel[];
-    /**
-     * The unique identifier for the dbt project within the Fivetran system.
+     * The unique identifier for the dbt Project within the Fivetran system.
      */
     readonly projectId: string;
 }
@@ -67,7 +59,6 @@ export interface GetDbtModelsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
@@ -76,7 +67,6 @@ export interface GetDbtModelsResult {
  *     projectId: "project_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDbtModelsOutput(args: GetDbtModelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtModelsResult> {
     return pulumi.output(args).apply((a: any) => getDbtModels(a, opts))
@@ -86,12 +76,9 @@ export function getDbtModelsOutput(args: GetDbtModelsOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getDbtModels.
  */
 export interface GetDbtModelsOutputArgs {
-    /**
-     * The collection of dbt Models.
-     */
     models?: pulumi.Input<pulumi.Input<inputs.GetDbtModelsModelArgs>[]>;
     /**
-     * The unique identifier for the dbt project within the Fivetran system.
+     * The unique identifier for the dbt Project within the Fivetran system.
      */
     projectId: pulumi.Input<string>;
 }

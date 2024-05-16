@@ -25,8 +25,9 @@ import (
 )
 
 //go:embed schema-embed.json
-var pulumiSchema []byte
+var schema []byte
 
 func main() {
-	tfbridge.MainWithMuxer(context.Background(), "fivetran", fivetran.Provider(), pulumiSchema)
+    meta := tfbridge.ProviderMetadata{PackageSchema: schema}
+	tfbridge.Main(context.Background(), "fivetran", fivetran.Provider(), meta)
 }

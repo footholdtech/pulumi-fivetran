@@ -26,7 +26,7 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string>? ModelName { get; set; }
 
         /// <summary>
-        /// Boolean specifying whether the model is selected for execution.
+        /// Boolean specifying whether the model is selected for execution in the dashboard.
         /// </summary>
         [Input("scheduled")]
         public Input<bool>? Scheduled { get; set; }

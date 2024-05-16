@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const sources = fivetran.getConnectorsMetadata({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConnectorsMetadata(args?: GetConnectorsMetadataArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorsMetadataResult> {
     args = args || {};
@@ -51,14 +49,12 @@ export interface GetConnectorsMetadataResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
  * const sources = fivetran.getConnectorsMetadata({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConnectorsMetadataOutput(args?: GetConnectorsMetadataOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorsMetadataResult> {
     return pulumi.output(args).apply((a: any) => getConnectorsMetadata(a, opts))

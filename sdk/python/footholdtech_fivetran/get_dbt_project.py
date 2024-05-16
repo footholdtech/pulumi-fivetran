@@ -23,7 +23,7 @@ class GetDbtProjectResult:
     """
     A collection of values returned by getDbtProject.
     """
-    def __init__(__self__, created_at=None, created_by_id=None, dbt_version=None, default_schema=None, environment_vars=None, group_id=None, id=None, models=None, project_configs=None, public_key=None, status=None, target_name=None, threads=None, type=None):
+    def __init__(__self__, created_at=None, created_by_id=None, dbt_version=None, default_schema=None, ensure_readiness=None, environment_vars=None, group_id=None, id=None, models=None, project_config=None, public_key=None, status=None, target_name=None, threads=None, type=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -36,6 +36,9 @@ class GetDbtProjectResult:
         if default_schema and not isinstance(default_schema, str):
             raise TypeError("Expected argument 'default_schema' to be a str")
         pulumi.set(__self__, "default_schema", default_schema)
+        if ensure_readiness and not isinstance(ensure_readiness, bool):
+            raise TypeError("Expected argument 'ensure_readiness' to be a bool")
+        pulumi.set(__self__, "ensure_readiness", ensure_readiness)
         if environment_vars and not isinstance(environment_vars, list):
             raise TypeError("Expected argument 'environment_vars' to be a list")
         pulumi.set(__self__, "environment_vars", environment_vars)
@@ -48,9 +51,9 @@ class GetDbtProjectResult:
         if models and not isinstance(models, list):
             raise TypeError("Expected argument 'models' to be a list")
         pulumi.set(__self__, "models", models)
-        if project_configs and not isinstance(project_configs, list):
-            raise TypeError("Expected argument 'project_configs' to be a list")
-        pulumi.set(__self__, "project_configs", project_configs)
+        if project_config and not isinstance(project_config, dict):
+            raise TypeError("Expected argument 'project_config' to be a dict")
+        pulumi.set(__self__, "project_config", project_config)
         if public_key and not isinstance(public_key, str):
             raise TypeError("Expected argument 'public_key' to be a str")
         pulumi.set(__self__, "public_key", public_key)
@@ -100,8 +103,19 @@ class GetDbtProjectResult:
         return pulumi.get(self, "default_schema")
 
     @property
+    @pulumi.getter(name="ensureReadiness")
+    def ensure_readiness(self) -> bool:
+        """
+        Should resource wait for project to finish initialization. Default value: true.
+        """
+        return pulumi.get(self, "ensure_readiness")
+
+    @property
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Sequence[str]:
+        """
+        List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+        """
         return pulumi.get(self, "environment_vars")
 
     @property
@@ -123,18 +137,12 @@ class GetDbtProjectResult:
     @property
     @pulumi.getter
     def models(self) -> Sequence['outputs.GetDbtProjectModelResult']:
-        """
-        The collection of dbt Models.
-        """
         return pulumi.get(self, "models")
 
     @property
-    @pulumi.getter(name="projectConfigs")
-    def project_configs(self) -> Sequence['outputs.GetDbtProjectProjectConfigResult']:
-        """
-        Type specific dbt Project configuration parameters.
-        """
-        return pulumi.get(self, "project_configs")
+    @pulumi.getter(name="projectConfig")
+    def project_config(self) -> Optional['outputs.GetDbtProjectProjectConfigResult']:
+        return pulumi.get(self, "project_config")
 
     @property
     @pulumi.getter(name="publicKey")
@@ -187,11 +195,12 @@ class AwaitableGetDbtProjectResult(GetDbtProjectResult):
             created_by_id=self.created_by_id,
             dbt_version=self.dbt_version,
             default_schema=self.default_schema,
+            ensure_readiness=self.ensure_readiness,
             environment_vars=self.environment_vars,
             group_id=self.group_id,
             id=self.id,
             models=self.models,
-            project_configs=self.project_configs,
+            project_config=self.project_config,
             public_key=self.public_key,
             status=self.status,
             target_name=self.target_name,
@@ -200,29 +209,26 @@ class AwaitableGetDbtProjectResult(GetDbtProjectResult):
 
 
 def get_dbt_project(id: Optional[str] = None,
-                    models: Optional[Sequence[pulumi.InputType['GetDbtProjectModelArgs']]] = None,
+                    project_config: Optional[pulumi.InputType['GetDbtProjectProjectConfigArgs']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbtProjectResult:
     """
     This data source returns a dbt Project object.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     project = fivetran.get_dbt_project(id="project_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the dbt Model within the Fivetran system.
-    :param Sequence[pulumi.InputType['GetDbtProjectModelArgs']] models: The collection of dbt Models.
+    :param str id: The unique identifier for the dbt Project within the Fivetran system.
     """
     __args__ = dict()
     __args__['id'] = id
-    __args__['models'] = models
+    __args__['projectConfig'] = project_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('fivetran:index/getDbtProject:getDbtProject', __args__, opts=opts, typ=GetDbtProjectResult).value
 
@@ -231,11 +237,12 @@ def get_dbt_project(id: Optional[str] = None,
         created_by_id=pulumi.get(__ret__, 'created_by_id'),
         dbt_version=pulumi.get(__ret__, 'dbt_version'),
         default_schema=pulumi.get(__ret__, 'default_schema'),
+        ensure_readiness=pulumi.get(__ret__, 'ensure_readiness'),
         environment_vars=pulumi.get(__ret__, 'environment_vars'),
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
         models=pulumi.get(__ret__, 'models'),
-        project_configs=pulumi.get(__ret__, 'project_configs'),
+        project_config=pulumi.get(__ret__, 'project_config'),
         public_key=pulumi.get(__ret__, 'public_key'),
         status=pulumi.get(__ret__, 'status'),
         target_name=pulumi.get(__ret__, 'target_name'),
@@ -245,24 +252,21 @@ def get_dbt_project(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_dbt_project)
 def get_dbt_project_output(id: Optional[pulumi.Input[str]] = None,
-                           models: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDbtProjectModelArgs']]]]] = None,
+                           project_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetDbtProjectProjectConfigArgs']]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtProjectResult]:
     """
     This data source returns a dbt Project object.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     project = fivetran.get_dbt_project(id="project_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the dbt Model within the Fivetran system.
-    :param Sequence[pulumi.InputType['GetDbtProjectModelArgs']] models: The collection of dbt Models.
+    :param str id: The unique identifier for the dbt Project within the Fivetran system.
     """
     ...

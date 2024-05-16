@@ -62,14 +62,12 @@ def get_groups(groups: Optional[Sequence[pulumi.InputType['GetGroupsGroupArgs']]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     all = fivetran.get_groups()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['groups'] = groups
@@ -89,13 +87,11 @@ def get_groups_output(groups: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     all = fivetran.get_groups()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

@@ -30,7 +30,7 @@ namespace Footholdtech.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Hash of the fingerprint.
+        /// Hash of the certificate.
         /// </summary>
         [Input("hash", required: true)]
         public Input<string> Hash { get; set; } = null!;
@@ -42,7 +42,7 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Certificate public key.
+        /// The SSH public key.
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
@@ -60,7 +60,7 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string>? Sha256 { get; set; }
 
         /// <summary>
-        /// Certificate type.
+        /// Type of the certificate.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -72,7 +72,7 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string>? ValidatedBy { get; set; }
 
         /// <summary>
-        /// The date when the certificate was approved.
+        /// The date when certificate was approved.
         /// </summary>
         [Input("validatedDate")]
         public Input<string>? ValidatedDate { get; set; }

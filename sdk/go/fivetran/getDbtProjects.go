@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,20 +36,14 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
-func GetDbtProjects(ctx *pulumi.Context, args *GetDbtProjectsArgs, opts ...pulumi.InvokeOption) (*GetDbtProjectsResult, error) {
+func GetDbtProjects(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetDbtProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDbtProjectsResult
-	err := ctx.Invoke("fivetran:index/getDbtProjects:getDbtProjects", args, &rv, opts...)
+	err := ctx.Invoke("fivetran:index/getDbtProjects:getDbtProjects", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
-}
-
-// A collection of arguments for invoking getDbtProjects.
-type GetDbtProjectsArgs struct {
-	Projects []GetDbtProjectsProject `pulumi:"projects"`
 }
 
 // A collection of values returned by getDbtProjects.
@@ -60,26 +53,15 @@ type GetDbtProjectsResult struct {
 	Projects []GetDbtProjectsProject `pulumi:"projects"`
 }
 
-func GetDbtProjectsOutput(ctx *pulumi.Context, args GetDbtProjectsOutputArgs, opts ...pulumi.InvokeOption) GetDbtProjectsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDbtProjectsResult, error) {
-			args := v.(GetDbtProjectsArgs)
-			r, err := GetDbtProjects(ctx, &args, opts...)
-			var s GetDbtProjectsResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
-		}).(GetDbtProjectsResultOutput)
-}
-
-// A collection of arguments for invoking getDbtProjects.
-type GetDbtProjectsOutputArgs struct {
-	Projects GetDbtProjectsProjectArrayInput `pulumi:"projects"`
-}
-
-func (GetDbtProjectsOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbtProjectsArgs)(nil)).Elem()
+func GetDbtProjectsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDbtProjectsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetDbtProjectsResult, error) {
+		r, err := GetDbtProjects(ctx, opts...)
+		var s GetDbtProjectsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetDbtProjectsResultOutput)
 }
 
 // A collection of values returned by getDbtProjects.

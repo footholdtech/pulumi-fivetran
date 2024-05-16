@@ -90,7 +90,7 @@ export const getDbtProject: typeof import("./getDbtProject").getDbtProject = nul
 export const getDbtProjectOutput: typeof import("./getDbtProject").getDbtProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getDbtProject","getDbtProjectOutput"], () => require("./getDbtProject"));
 
-export { GetDbtProjectsArgs, GetDbtProjectsResult, GetDbtProjectsOutputArgs } from "./getDbtProjects";
+export { GetDbtProjectsResult } from "./getDbtProjects";
 export const getDbtProjects: typeof import("./getDbtProjects").getDbtProjects = null as any;
 export const getDbtProjectsOutput: typeof import("./getDbtProjects").getDbtProjectsOutput = null as any;
 utilities.lazyLoad(exports, ["getDbtProjects","getDbtProjectsOutput"], () => require("./getDbtProjects"));

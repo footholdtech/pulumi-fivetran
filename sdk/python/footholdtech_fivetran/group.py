@@ -44,7 +44,7 @@ class _GroupState:
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[str] created_at: The timestamp of when the group was created in your account.
-        :param pulumi.Input[str] last_updated: The timestamp of when the group was updated in your account.
+        :param pulumi.Input[str] last_updated: The timestamp of when the resource/datasource was updated last time.
         :param pulumi.Input[str] name: The name of the group within your account.
         """
         if created_at is not None:
@@ -70,7 +70,7 @@ class _GroupState:
     @pulumi.getter(name="lastUpdated")
     def last_updated(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp of when the group was updated in your account.
+        The timestamp of when the resource/datasource was updated last time.
         """
         return pulumi.get(self, "last_updated")
 
@@ -103,14 +103,12 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
 
         group = fivetran.Group("group")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -153,14 +151,12 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
 
         group = fivetran.Group("group")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -237,7 +233,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The timestamp of when the group was created in your account.
-        :param pulumi.Input[str] last_updated: The timestamp of when the group was updated in your account.
+        :param pulumi.Input[str] last_updated: The timestamp of when the resource/datasource was updated last time.
         :param pulumi.Input[str] name: The name of the group within your account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -261,7 +257,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="lastUpdated")
     def last_updated(self) -> pulumi.Output[str]:
         """
-        The timestamp of when the group was updated in your account.
+        The timestamp of when the resource/datasource was updated last time.
         """
         return pulumi.get(self, "last_updated")
 

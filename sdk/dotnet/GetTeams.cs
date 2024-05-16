@@ -17,7 +17,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,7 +29,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTeamsResult> InvokeAsync(GetTeamsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTeamsResult>("fivetran:index/getTeams:getTeams", args ?? new GetTeamsArgs(), options.WithDefaults());
@@ -40,7 +38,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +50,6 @@ namespace Footholdtech.Fivetran
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTeamsResult> Invoke(GetTeamsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTeamsResult>("fivetran:index/getTeams:getTeams", args ?? new GetTeamsInvokeArgs(), options.WithDefaults());
@@ -63,7 +59,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetTeamsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the team within your account.
+        /// The ID of this resource.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -85,7 +81,7 @@ namespace Footholdtech.Fivetran
     public sealed class GetTeamsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the team within your account.
+        /// The ID of this resource.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

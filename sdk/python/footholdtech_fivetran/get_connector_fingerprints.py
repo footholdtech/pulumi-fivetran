@@ -38,7 +38,7 @@ class GetConnectorFingerprintsResult:
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> str:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -51,7 +51,7 @@ class GetConnectorFingerprintsResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier for the resource. Equal to target connector id.
+        The unique identifier for the resource. Equal to target connection id.
         """
         return pulumi.get(self, "id")
 
@@ -75,17 +75,15 @@ def get_connector_fingerprints(fingerprints: Optional[Sequence[pulumi.InputType[
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     connector_fingerprints = fivetran.get_connector_fingerprints(id="connector_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the resource. Equal to target connector id.
+    :param str id: The unique identifier for the resource. Equal to target connection id.
     """
     __args__ = dict()
     __args__['fingerprints'] = fingerprints
@@ -108,16 +106,14 @@ def get_connector_fingerprints_output(fingerprints: Optional[pulumi.Input[Option
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     connector_fingerprints = fivetran.get_connector_fingerprints(id="connector_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str id: The unique identifier for the resource. Equal to target connector id.
+    :param str id: The unique identifier for the resource. Equal to target connection id.
     """
     ...

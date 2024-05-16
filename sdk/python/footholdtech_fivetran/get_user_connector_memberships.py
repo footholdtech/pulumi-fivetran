@@ -75,14 +75,12 @@ def get_user_connector_memberships(connectors: Optional[Sequence[pulumi.InputTyp
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     user_connector_membership = fivetran.get_user_connector_memberships(user_id="user_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str user_id: The unique identifier for the user within your account.
@@ -108,14 +106,12 @@ def get_user_connector_memberships_output(connectors: Optional[pulumi.Input[Opti
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     user_connector_membership = fivetran.get_user_connector_memberships(user_id="user_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str user_id: The unique identifier for the user within your account.

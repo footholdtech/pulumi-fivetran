@@ -27,7 +27,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string ValidatedBy;
         /// <summary>
-        /// The date when SSH fingerprint was approved.
+        /// The date when fingerprint was approved.
         /// </summary>
         public readonly string ValidatedDate;
 

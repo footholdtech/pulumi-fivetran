@@ -114,14 +114,12 @@ def get_destination(config: Optional[pulumi.InputType['GetDestinationConfigArgs'
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     dest = fivetran.get_destination(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['config'] = config
@@ -149,13 +147,11 @@ def get_destination_output(config: Optional[pulumi.Input[Optional[pulumi.InputTy
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_fivetran as fivetran
 
     dest = fivetran.get_destination(id="anonymous_mystery")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

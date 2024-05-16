@@ -31,7 +31,7 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The unique identifier for the resource. Equal to target connector id.
+        /// The unique identifier for the resource. Equal to target connection id.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -53,7 +53,7 @@ namespace Footholdtech.Fivetran
         }
 
         /// <summary>
-        /// The unique identifier for the resource. Equal to target connector id.
+        /// The unique identifier for the resource. Equal to target connection id.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -70,11 +70,11 @@ namespace Footholdtech.Fivetran
     {
         public readonly ImmutableArray<Outputs.GetConnectorCertificatesCertificateResult> Certificates;
         /// <summary>
-        /// The unique identifier for the target connector within the Fivetran system.
+        /// The unique identifier for the target connection within the Fivetran system.
         /// </summary>
         public readonly string ConnectorId;
         /// <summary>
-        /// The unique identifier for the resource. Equal to target connector id.
+        /// The unique identifier for the resource. Equal to target connection id.
         /// </summary>
         public readonly string Id;
 
