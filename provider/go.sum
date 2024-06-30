@@ -757,10 +757,10 @@ github.com/felixge/httpsnoop v1.0.2/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSw
 github.com/felixge/httpsnoop v1.0.3/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
 github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2Wg=
 github.com/felixge/httpsnoop v1.0.4/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
-github.com/fivetran/go-fivetran v0.8.4 h1:Jas3wrw5J/RZpqOqwIWUrgKaTrniD8o7B6/RQXa2huc=
-github.com/fivetran/go-fivetran v0.8.4/go.mod h1:EIy5Uwn1zylQCr/7O+8rrwvmjvhW3PPpzHkQj26ON7Y=
-github.com/fivetran/terraform-provider-fivetran v1.1.23 h1:E97Ub8XY0trseYlztD1Dadp9bgC6FftOz3NQ6YOoUIo=
-github.com/fivetran/terraform-provider-fivetran v1.1.23/go.mod h1:5sBBxKUXhU7ZhtrmX414Poq+5wybfhFNnsssoqKPIqU=
+github.com/fivetran/go-fivetran v0.8.8 h1:48wl0lUBBicRvfkuOM0btHHceYLYbSY5VIJnEvnsNLc=
+github.com/fivetran/go-fivetran v0.8.8/go.mod h1:EIy5Uwn1zylQCr/7O+8rrwvmjvhW3PPpzHkQj26ON7Y=
+github.com/fivetran/terraform-provider-fivetran v1.2.0 h1:UmyEfgdavuUS6WofOCE3cnF4TFTPerGdFklFAJ8srtw=
+github.com/fivetran/terraform-provider-fivetran v1.2.0/go.mod h1:ykD7TU6FeQB38JfyhSDuQo4pmlnqpHc0SyKE8yk9vbs=
 github.com/form3tech-oss/jwt-go v3.2.2+incompatible/go.mod h1:pbq4aXjuKjdthFRnoDwaVPLA+WlJuPGy+QneDUgJi2k=
 github.com/form3tech-oss/jwt-go v3.2.3+incompatible/go.mod h1:pbq4aXjuKjdthFRnoDwaVPLA+WlJuPGy+QneDUgJi2k=
 github.com/fortytw2/leaktest v1.3.0/go.mod h1:jDsjWgpAGjm2CA7WthBh/CdZYEPF31XHquHwclZch5g=
