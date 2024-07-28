@@ -3,7 +3,7 @@ module github.com/footholdtech/pulumi-fivetran/provider
 go 1.21
 
 require (
-	github.com/fivetran/terraform-provider-fivetran v1.1.23
+	github.com/fivetran/terraform-provider-fivetran v1.2.5
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.35.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.82.0
 	github.com/pulumi/pulumi/sdk/v3 v3.116.1
@@ -81,7 +81,7 @@ require (
 	github.com/ettle/strcase v0.1.1 // indirect
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
-	github.com/fivetran/go-fivetran v0.8.4 // indirect
+	github.com/fivetran/go-fivetran v0.8.8 // indirect
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.5.0 // indirect
