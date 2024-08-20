@@ -38,6 +38,13 @@ const (
 	mainMod = "index" // the fivetran module
 )
 
+// makeResource manufactures a standard resource token given a module and resource name.  It
+// automatically uses the main package and names the file by simply lower casing the resource's
+// first character.
+func makeResource(field string) tokens.Type {
+    return tfbridge.MakeResource(mainPkg, mainMod, field)
+}
+
 type ComputeID = info.ComputeID
 
 func delegateIDField(field resource.PropertyKey) ComputeID {
@@ -87,7 +94,9 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		Resources: map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo {
+            "fivetran_local_processing_agent":   {Tok: makeResource(mainMod, "LocalProcessingAgent")},
+            "fivetran_proxy_agent": {Tok: makeResource(mainMod, "ProxyAgent")},
 			"fivetran_user_connector_membership":   {
 			    ComputeID: delegateIDField(resource.PropertyKey("key")),
 			},
