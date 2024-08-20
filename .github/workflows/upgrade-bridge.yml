@@ -60,8 +60,6 @@ jobs:
         uses: pulumi/pulumi-upgrade-provider-action@v0.0.12
         with:
           kind: ${{ inputs.kind }}
-          email: noreply@github.com
-          username: GitHub
           automerge: ${{ inputs.automerge }}
           target-bridge-version: ${{ inputs.target-bridge-version }}
           target-pulumi-version: ${{ inputs.target-pulumi-version }}
@@ -73,8 +71,6 @@ jobs:
         uses: pulumi/pulumi-upgrade-provider-action@v0.0.12
         with:
           kind: ${{ github.event.client_payload.kind || 'bridge' }}
-          email: bot@pulumi.com
-          username: pulumi-bot
           automerge: ${{ github.event.client_payload.automerge }}
           target-pulumi-version: ${{ github.event.client_payload.target-pulumi-version }}
           target-bridge-version: ${{ github.event.client_payload.target-bridge-version }}
