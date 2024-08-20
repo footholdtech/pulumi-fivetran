@@ -67,7 +67,7 @@ jobs:
       - name: Call upgrade provider action
         if: github.event_name == 'workflow_dispatch'
         # uses: pulumi/pulumi-upgrade-provider-action@v0.0.12
-        uses: ./.github/actions/upgrade-provider.yml
+        uses: ./.github/actions/upgrade-provider
         with:
           kind: ${{ inputs.kind }}
           automerge: ${{ inputs.automerge }}
@@ -79,7 +79,8 @@ jobs:
           pr-title-prefix: ${{ inputs.pr-title-prefix }}
       - name: Call upgrade provider action
         if: github.event_name == 'repository_dispatch'
-        uses: pulumi/pulumi-upgrade-provider-action@v0.0.12
+        # uses: pulumi/pulumi-upgrade-provider-action@v0.0.12
+        uses: ./.github/actions/upgrade-provider
         with:
           kind: ${{ github.event.client_payload.kind || 'bridge' }}
           automerge: ${{ github.event.client_payload.automerge }}
