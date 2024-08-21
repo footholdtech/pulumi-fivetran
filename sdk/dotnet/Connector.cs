@@ -46,6 +46,13 @@ namespace Footholdtech.Fivetran
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// </summary>
+        [Output("localProcessingAgentId")]
+        public Output<string?> LocalProcessingAgentId { get; private set; } = null!;
+
+        /// <summary>
         /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
         /// destination.
         /// </summary>
@@ -53,7 +60,19 @@ namespace Footholdtech.Fivetran
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// </summary>
+        [Output("networkingMethod")]
+        public Output<string> NetworkingMethod { get; private set; } = null!;
+
+        /// <summary>
+        /// The proxy agent ID.
+        /// </summary>
+        [Output("proxyAgentId")]
+        public Output<string?> ProxyAgentId { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether the setup tests should be run automatically. The default value is FALSE.
         /// </summary>
         [Output("runSetupTests")]
         public Output<bool> RunSetupTests { get; private set; } = null!;
@@ -146,7 +165,26 @@ namespace Footholdtech.Fivetran
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        /// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// </summary>
+        [Input("localProcessingAgentId")]
+        public Input<string>? LocalProcessingAgentId { get; set; }
+
+        /// <summary>
+        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// </summary>
+        [Input("networkingMethod")]
+        public Input<string>? NetworkingMethod { get; set; }
+
+        /// <summary>
+        /// The proxy agent ID.
+        /// </summary>
+        [Input("proxyAgentId")]
+        public Input<string>? ProxyAgentId { get; set; }
+
+        /// <summary>
+        /// Specifies whether the setup tests should be run automatically. The default value is FALSE.
         /// </summary>
         [Input("runSetupTests")]
         public Input<bool>? RunSetupTests { get; set; }
@@ -212,6 +250,13 @@ namespace Footholdtech.Fivetran
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
+        /// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// </summary>
+        [Input("localProcessingAgentId")]
+        public Input<string>? LocalProcessingAgentId { get; set; }
+
+        /// <summary>
         /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
         /// destination.
         /// </summary>
@@ -219,7 +264,19 @@ namespace Footholdtech.Fivetran
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// </summary>
+        [Input("networkingMethod")]
+        public Input<string>? NetworkingMethod { get; set; }
+
+        /// <summary>
+        /// The proxy agent ID.
+        /// </summary>
+        [Input("proxyAgentId")]
+        public Input<string>? ProxyAgentId { get; set; }
+
+        /// <summary>
+        /// Specifies whether the setup tests should be run automatically. The default value is FALSE.
         /// </summary>
         [Input("runSetupTests")]
         public Input<bool>? RunSetupTests { get; set; }

@@ -53,9 +53,12 @@ export interface GetConnectorResult {
     readonly failedAt: string;
     readonly groupId: string;
     readonly id: string;
+    readonly localProcessingAgentId: string;
     readonly name: string;
+    readonly networkingMethod: string;
     readonly pauseAfterTrial: boolean;
     readonly paused: boolean;
+    readonly proxyAgentId: string;
     readonly scheduleType: string;
     readonly service: string;
     readonly serviceVersion: string;

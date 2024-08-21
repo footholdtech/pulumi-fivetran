@@ -110,6 +110,16 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `tiktok_ads`: Destination Table name of report
         /// </summary>
         public readonly string? TableName;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The specific time zone to sync report data if  `useAccountTimeZone` set to `false`.
+        /// </summary>
+        public readonly string? TimeZone;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: When this parameter is set to `ACCOUNT`, connector will use account related time zone to sync report data. Default value: `ACCOUNT`. Possible values: `ACCOUNT`, `USER`
+        /// </summary>
+        public readonly string? TimeZoneMode;
 
         [OutputConstructor]
         private ConnectorConfigCustomReport(
@@ -149,7 +159,11 @@ namespace Footholdtech.Fivetran.Outputs
 
             ImmutableArray<string> skAdMetricsFields,
 
-            string? tableName)
+            string? tableName,
+
+            string? timeZone,
+
+            string? timeZoneMode)
         {
             AddMetricVariants = addMetricVariants;
             Aggregate = aggregate;
@@ -170,6 +184,8 @@ namespace Footholdtech.Fivetran.Outputs
             Segmentation = segmentation;
             SkAdMetricsFields = skAdMetricsFields;
             TableName = tableName;
+            TimeZone = timeZone;
+            TimeZoneMode = timeZoneMode;
         }
     }
 }

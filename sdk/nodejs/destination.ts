@@ -73,6 +73,15 @@ export class Destination extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
+     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    public readonly localProcessingAgentId!: pulumi.Output<string | undefined>;
+    /**
+     * Possible values: Directly, SshTunnel, ProxyAgent.
+     */
+    public readonly networkingMethod!: pulumi.Output<string>;
+    /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
     public readonly region!: pulumi.Output<string>;
@@ -122,6 +131,8 @@ export class Destination extends pulumi.CustomResource {
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["daylightSavingTimeEnabled"] = state ? state.daylightSavingTimeEnabled : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["localProcessingAgentId"] = state ? state.localProcessingAgentId : undefined;
+            resourceInputs["networkingMethod"] = state ? state.networkingMethod : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["runSetupTests"] = state ? state.runSetupTests : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
@@ -147,6 +158,8 @@ export class Destination extends pulumi.CustomResource {
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["daylightSavingTimeEnabled"] = args ? args.daylightSavingTimeEnabled : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["localProcessingAgentId"] = args ? args.localProcessingAgentId : undefined;
+            resourceInputs["networkingMethod"] = args ? args.networkingMethod : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["runSetupTests"] = args ? args.runSetupTests : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
@@ -174,6 +187,15 @@ export interface DestinationState {
      * The unique identifier for the Group within the Fivetran system.
      */
     groupId?: pulumi.Input<string>;
+    /**
+     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    localProcessingAgentId?: pulumi.Input<string>;
+    /**
+     * Possible values: Directly, SshTunnel, ProxyAgent.
+     */
+    networkingMethod?: pulumi.Input<string>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
@@ -222,6 +244,15 @@ export interface DestinationArgs {
      * The unique identifier for the Group within the Fivetran system.
      */
     groupId: pulumi.Input<string>;
+    /**
+     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    localProcessingAgentId?: pulumi.Input<string>;
+    /**
+     * Possible values: Directly, SshTunnel, ProxyAgent.
+     */
+    networkingMethod?: pulumi.Input<string>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */

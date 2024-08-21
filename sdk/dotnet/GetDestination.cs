@@ -98,6 +98,8 @@ namespace Footholdtech.Fivetran
         public readonly bool DaylightSavingTimeEnabled;
         public readonly string GroupId;
         public readonly string Id;
+        public readonly string LocalProcessingAgentId;
+        public readonly string NetworkingMethod;
         public readonly string Region;
         public readonly string Service;
         public readonly string SetupStatus;
@@ -113,6 +115,10 @@ namespace Footholdtech.Fivetran
 
             string id,
 
+            string localProcessingAgentId,
+
+            string networkingMethod,
+
             string region,
 
             string service,
@@ -125,6 +131,8 @@ namespace Footholdtech.Fivetran
             DaylightSavingTimeEnabled = daylightSavingTimeEnabled;
             GroupId = groupId;
             Id = id;
+            LocalProcessingAgentId = localProcessingAgentId;
+            NetworkingMethod = networkingMethod;
             Region = region;
             Service = service;
             SetupStatus = setupStatus;

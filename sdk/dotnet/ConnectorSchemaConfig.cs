@@ -27,6 +27,9 @@ namespace Footholdtech.Fivetran
         [Output("schema")]
         public Output<ImmutableArray<Outputs.ConnectorSchemaConfigSchema>> Schema { get; private set; } = null!;
 
+        /// <summary>
+        /// The value specifying how new source data is handled.
+        /// </summary>
         [Output("schemaChangeHandling")]
         public Output<string> SchemaChangeHandling { get; private set; } = null!;
 
@@ -44,6 +47,14 @@ namespace Footholdtech.Fivetran
 
         [Output("timeouts")]
         public Output<Outputs.ConnectorSchemaConfigTimeouts?> Timeouts { get; private set; } = null!;
+
+        /// <summary>
+        /// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+        /// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+        /// names. The resource will try to fetch columns for every configured table and verify column names.
+        /// </summary>
+        [Output("validationLevel")]
+        public Output<string> ValidationLevel { get; private set; } = null!;
 
 
         /// <summary>
@@ -107,6 +118,9 @@ namespace Footholdtech.Fivetran
             set => _schema = value;
         }
 
+        /// <summary>
+        /// The value specifying how new source data is handled.
+        /// </summary>
         [Input("schemaChangeHandling", required: true)]
         public Input<string> SchemaChangeHandling { get; set; } = null!;
 
@@ -131,6 +145,14 @@ namespace Footholdtech.Fivetran
         [Input("timeouts")]
         public Input<Inputs.ConnectorSchemaConfigTimeoutsArgs>? Timeouts { get; set; }
 
+        /// <summary>
+        /// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+        /// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+        /// names. The resource will try to fetch columns for every configured table and verify column names.
+        /// </summary>
+        [Input("validationLevel")]
+        public Input<string>? ValidationLevel { get; set; }
+
         public ConnectorSchemaConfigArgs()
         {
         }
@@ -154,6 +176,9 @@ namespace Footholdtech.Fivetran
             set => _schema = value;
         }
 
+        /// <summary>
+        /// The value specifying how new source data is handled.
+        /// </summary>
         [Input("schemaChangeHandling")]
         public Input<string>? SchemaChangeHandling { get; set; }
 
@@ -177,6 +202,14 @@ namespace Footholdtech.Fivetran
 
         [Input("timeouts")]
         public Input<Inputs.ConnectorSchemaConfigTimeoutsGetArgs>? Timeouts { get; set; }
+
+        /// <summary>
+        /// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+        /// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+        /// names. The resource will try to fetch columns for every configured table and verify column names.
+        /// </summary>
+        [Input("validationLevel")]
+        public Input<string>? ValidationLevel { get; set; }
 
         public ConnectorSchemaConfigState()
         {

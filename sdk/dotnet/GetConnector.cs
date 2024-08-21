@@ -114,9 +114,12 @@ namespace Footholdtech.Fivetran
         public readonly string FailedAt;
         public readonly string GroupId;
         public readonly string Id;
+        public readonly string LocalProcessingAgentId;
         public readonly string Name;
+        public readonly string NetworkingMethod;
         public readonly bool PauseAfterTrial;
         public readonly bool Paused;
+        public readonly string ProxyAgentId;
         public readonly string ScheduleType;
         public readonly string Service;
         public readonly string ServiceVersion;
@@ -142,11 +145,17 @@ namespace Footholdtech.Fivetran
 
             string id,
 
+            string localProcessingAgentId,
+
             string name,
+
+            string networkingMethod,
 
             bool pauseAfterTrial,
 
             bool paused,
+
+            string proxyAgentId,
 
             string scheduleType,
 
@@ -168,9 +177,12 @@ namespace Footholdtech.Fivetran
             FailedAt = failedAt;
             GroupId = groupId;
             Id = id;
+            LocalProcessingAgentId = localProcessingAgentId;
             Name = name;
+            NetworkingMethod = networkingMethod;
             PauseAfterTrial = pauseAfterTrial;
             Paused = paused;
+            ProxyAgentId = proxyAgentId;
             ScheduleType = scheduleType;
             Service = service;
             ServiceVersion = serviceVersion;

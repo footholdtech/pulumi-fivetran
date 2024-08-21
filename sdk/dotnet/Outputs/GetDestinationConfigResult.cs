@@ -43,6 +43,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string Auth;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Authentication type
         /// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
         /// </summary>
         public readonly string AuthType;
@@ -227,12 +228,12 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly int NumOfPartitions;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `databricks`: OAuth 2.0 client ID. Required if auth_type is set to OAUTH2.
+        /// 	- Service `databricks`: OAuth 2.0 client ID
         /// </summary>
         public readonly string Oauth2ClientId;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `databricks`: OAuth 2.0 secret. Required if auth_type is set to OAUTH2.
+        /// 	- Service `databricks`: OAuth 2.0 secret
         /// </summary>
         public readonly string Oauth2Secret;
         /// <summary>
@@ -400,6 +401,13 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `databricks`: Server name
         /// </summary>
         public readonly string ServerHostName;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// 	- Service `new_s3_datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// </summary>
+        public readonly string SnapshotRetentionPeriod;
         public readonly string SnowflakeCloud;
         public readonly string SnowflakeRegion;
         /// <summary>
@@ -408,6 +416,11 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `onelake`: Storage account for Azure Data Lake Storage Gen2 name
         /// </summary>
         public readonly string StorageAccountName;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `new_s3_datalake`: The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
+        /// </summary>
+        public readonly string TableFormat;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Tenant id of service principal
@@ -633,11 +646,15 @@ namespace Footholdtech.Fivetran.Outputs
 
             string serverHostName,
 
+            string snapshotRetentionPeriod,
+
             string snowflakeCloud,
 
             string snowflakeRegion,
 
             string storageAccountName,
+
+            string tableFormat,
 
             string tenantId,
 
@@ -712,9 +729,11 @@ namespace Footholdtech.Fivetran.Outputs
             SecretValue = secretValue;
             SecurityProtocol = securityProtocol;
             ServerHostName = serverHostName;
+            SnapshotRetentionPeriod = snapshotRetentionPeriod;
             SnowflakeCloud = snowflakeCloud;
             SnowflakeRegion = snowflakeRegion;
             StorageAccountName = storageAccountName;
+            TableFormat = tableFormat;
             TenantId = tenantId;
             TunnelHost = tunnelHost;
             TunnelPort = tunnelPort;

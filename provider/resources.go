@@ -25,7 +25,7 @@ import (
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
-	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
@@ -104,19 +104,14 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0",
 				"@types/mime": "^2.0.0",
 			},
-			RespectSchemaVersion: true,
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-                PackageName: "footholdtech_fivetran",
-                RespectSchemaVersion: true,
-                Requires: map[string]string{
-                    "pulumi": ">=3.0.0,<4.0.0",
-                },
-			}
-			i.PyProject.Enabled = true
-			return i
-		})(),
+		Python: &tfbridge.PythonInfo{
+			PackageName: "footholdtech_fivetran",
+			// List any Python dependencies and their version ranges
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
 				fmt.Sprintf("github.com/footholdtech/pulumi-%[1]s/sdk/", mainPkg),
@@ -125,11 +120,9 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg,
 			),
 			GenerateResourceContainerTypes: true,
-			RespectSchemaVersion:           true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			RootNamespace: "Footholdtech",
-			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
@@ -139,8 +132,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	prov.MustComputeTokens(tfbridgetokens.SingleModule("fivetran_",
-		mainMod, tfbridgetokens.MakeStandard(mainPkg)))
+    prov.MustComputeTokens(tokens.SingleModule("fivetran_", mainMod,
+		    tokens.MakeStandard(mainPkg)))
 
 	prov.MustApplyAutoAliases()
 

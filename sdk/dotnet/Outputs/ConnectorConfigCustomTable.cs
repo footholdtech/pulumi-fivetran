@@ -44,6 +44,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
         /// </summary>
         public readonly string? ConfigType;
+        public readonly string? EngagedViewAttributionWindow;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#fields).
@@ -81,6 +82,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? configType,
 
+            string? engagedViewAttributionWindow,
+
             ImmutableArray<string> fields,
 
             string? level,
@@ -99,6 +102,7 @@ namespace Footholdtech.Fivetran.Outputs
             Breakdowns = breakdowns;
             ClickAttributionWindow = clickAttributionWindow;
             ConfigType = configType;
+            EngagedViewAttributionWindow = engagedViewAttributionWindow;
             Fields = fields;
             Level = level;
             PrebuiltReportName = prebuiltReportName;

@@ -58,6 +58,19 @@ namespace Footholdtech.Fivetran
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// </summary>
+        [Output("localProcessingAgentId")]
+        public Output<string?> LocalProcessingAgentId { get; private set; } = null!;
+
+        /// <summary>
+        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// </summary>
+        [Output("networkingMethod")]
+        public Output<string> NetworkingMethod { get; private set; } = null!;
+
+        /// <summary>
         /// Data processing location. This is where Fivetran will operate and run computation on data.
         /// </summary>
         [Output("region")]
@@ -169,6 +182,19 @@ namespace Footholdtech.Fivetran
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
+        /// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// </summary>
+        [Input("localProcessingAgentId")]
+        public Input<string>? LocalProcessingAgentId { get; set; }
+
+        /// <summary>
+        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// </summary>
+        [Input("networkingMethod")]
+        public Input<string>? NetworkingMethod { get; set; }
+
+        /// <summary>
         /// Data processing location. This is where Fivetran will operate and run computation on data.
         /// </summary>
         [Input("region", required: true)]
@@ -233,6 +259,19 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
+
+        /// <summary>
+        /// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// </summary>
+        [Input("localProcessingAgentId")]
+        public Input<string>? LocalProcessingAgentId { get; set; }
+
+        /// <summary>
+        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// </summary>
+        [Input("networkingMethod")]
+        public Input<string>? NetworkingMethod { get; set; }
 
         /// <summary>
         /// Data processing location. This is where Fivetran will operate and run computation on data.

@@ -62,6 +62,14 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `elastic_cloud`: The Elasticsearch API key. If omitted, then basic user and password authentication will apply.
+        /// 	- Service `es_self_hosted`: The Elasticsearch API key. If omitted, then basic user and password authentication will apply.
+        /// </summary>
+        [Input("apiKey")]
+        public Input<string>? ApiKey { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `amazon_selling_partner`: `AWS Access Key` of your AWS Account User.
         /// </summary>
         [Input("awsAccessKey")]
@@ -81,6 +89,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `amazon_selling_partner`: `Client ID` of your Amazon Seller/Vendor Central client application.
         /// 	- Service `apple_search_ads`: Apple Search Ads REST API Client ID. Must be populated if `is_auth2_enabled` is set to `true`.
+        /// 	- Service `workday`: Client ID
         /// 	- Service `yahoo_dsp`: Your Yahoo DSP Client ID.
         /// </summary>
         [Input("clientId")]
@@ -89,6 +98,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `amazon_selling_partner`: `Client Secret` of your Amazon Seller/Vendor Central client application.
+        /// 	- Service `workday`: Client Secret
         /// 	- Service `yahoo_dsp`: Your Yahoo DSP Client Secret.
         /// </summary>
         [Input("clientSecret")]
@@ -210,6 +220,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `pinterest_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `pinterest_organic`: Your Pinterest refresh token.
         /// 	- Service `pipedrive`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `qualtrics`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `quickbooks`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `ramp`: Your Ramp refresh token.
         /// 	- Service `reddit_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.

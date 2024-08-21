@@ -46,6 +46,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Authentication type
         /// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
         /// </summary>
         [Input("authType", required: true)]
@@ -295,7 +296,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `databricks`: OAuth 2.0 client ID. Required if auth_type is set to OAUTH2.
+        /// 	- Service `databricks`: OAuth 2.0 client ID
         /// </summary>
         [Input("oauth2ClientId", required: true)]
         public Input<string> Oauth2ClientId { get; set; } = null!;
@@ -305,7 +306,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `databricks`: OAuth 2.0 secret. Required if auth_type is set to OAUTH2.
+        /// 	- Service `databricks`: OAuth 2.0 secret
         /// </summary>
         public Input<string>? Oauth2Secret
         {
@@ -642,6 +643,15 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("serverHostName", required: true)]
         public Input<string> ServerHostName { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// 	- Service `new_s3_datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// </summary>
+        [Input("snapshotRetentionPeriod", required: true)]
+        public Input<string> SnapshotRetentionPeriod { get; set; } = null!;
+
         [Input("snowflakeCloud", required: true)]
         public Input<string> SnowflakeCloud { get; set; } = null!;
 
@@ -655,6 +665,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("storageAccountName", required: true)]
         public Input<string> StorageAccountName { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `new_s3_datalake`: The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
+        /// </summary>
+        [Input("tableFormat", required: true)]
+        public Input<string> TableFormat { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `service` value: 

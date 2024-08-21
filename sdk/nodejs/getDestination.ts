@@ -45,6 +45,8 @@ export interface GetDestinationResult {
     readonly daylightSavingTimeEnabled: boolean;
     readonly groupId: string;
     readonly id: string;
+    readonly localProcessingAgentId: string;
+    readonly networkingMethod: string;
     readonly region: string;
     readonly service: string;
     readonly setupStatus: string;

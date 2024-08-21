@@ -60,6 +60,8 @@ type LookupDestinationResult struct {
 	DaylightSavingTimeEnabled bool                  `pulumi:"daylightSavingTimeEnabled"`
 	GroupId                   string                `pulumi:"groupId"`
 	Id                        string                `pulumi:"id"`
+	LocalProcessingAgentId    string                `pulumi:"localProcessingAgentId"`
+	NetworkingMethod          string                `pulumi:"networkingMethod"`
 	Region                    string                `pulumi:"region"`
 	Service                   string                `pulumi:"service"`
 	SetupStatus               string                `pulumi:"setupStatus"`
@@ -118,6 +120,14 @@ func (o LookupDestinationResultOutput) GroupId() pulumi.StringOutput {
 
 func (o LookupDestinationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDestinationResultOutput) LocalProcessingAgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.LocalProcessingAgentId }).(pulumi.StringOutput)
+}
+
+func (o LookupDestinationResultOutput) NetworkingMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.NetworkingMethod }).(pulumi.StringOutput)
 }
 
 func (o LookupDestinationResultOutput) Region() pulumi.StringOutput {
