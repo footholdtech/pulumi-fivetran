@@ -132,7 +132,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-    prov.MustComputeTokens(tokens.SingleModule("xyz_", mainMod,
+    prov.MustComputeTokens(tokens.SingleModule("fivetran_", mainMod,
 		    tokens.MakeStandard(mainPkg)))
 
 	prov.MustApplyAutoAliases()
