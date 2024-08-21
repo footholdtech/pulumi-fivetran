@@ -15,11 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
  *
- * const testLpa = new fivetran.LocalProcessingAgent("testLpa", {
+ * const testLpa = new fivetran.LocalProcessingAgent("test_lpa", {
  *     displayName: "display_name",
  *     groupId: "group_id",
- * }, {
- *     provider: fivetran_provider,
  * });
  * ```
  */

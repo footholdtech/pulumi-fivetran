@@ -23,7 +23,7 @@ namespace Footholdtech.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testTeamUserMembership = new Fivetran.TeamUserMembership("testTeamUserMembership", new()
+    ///     var testTeamUserMembership = new Fivetran.TeamUserMembership("test_team_user_membership", new()
     ///     {
     ///         TeamId = "test_team",
     ///         Users = new[]
@@ -39,9 +39,6 @@ namespace Footholdtech.Fivetran
     ///                 Role = "Connector Administrator",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = fivetran_provider,
     ///     });
     /// 
     /// });

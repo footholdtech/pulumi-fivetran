@@ -23,9 +23,9 @@ namespace Footholdtech.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myConnectorSchedule = new Fivetran.ConnectorSchedule("myConnectorSchedule", new()
+    ///     var myConnectorSchedule = new Fivetran.ConnectorSchedule("my_connector_schedule", new()
     ///     {
-    ///         ConnectorId = fivetran_connector.My_connector.Id,
+    ///         ConnectorId = myConnector.Id,
     ///         SyncFrequency = "1440",
     ///         DailySyncTime = "03:00",
     ///         Paused = "false",

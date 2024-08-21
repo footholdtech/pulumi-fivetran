@@ -13,8 +13,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
  *
- * const myConnectorSchedule = new fivetran.ConnectorSchedule("myConnectorSchedule", {
- *     connectorId: fivetran_connector.my_connector.id,
+ * const myConnectorSchedule = new fivetran.ConnectorSchedule("my_connector_schedule", {
+ *     connectorId: myConnector.id,
  *     syncFrequency: "1440",
  *     dailySyncTime: "03:00",
  *     paused: "false",

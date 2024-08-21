@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.NewLocalProcessingAgent(ctx, "testLpa", &fivetran.LocalProcessingAgentArgs{
+//			_, err := fivetran.NewLocalProcessingAgent(ctx, "test_lpa", &fivetran.LocalProcessingAgentArgs{
 //				DisplayName: pulumi.String("display_name"),
 //				GroupId:     pulumi.String("group_id"),
-//			}, pulumi.Provider(fivetran_provider))
+//			})
 //			if err != nil {
 //				return err
 //			}

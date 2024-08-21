@@ -23,9 +23,9 @@ namespace Footholdtech.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myConnectorApprovedFingerprints = new Fivetran.ConnectorFingerprints("myConnectorApprovedFingerprints", new()
+    ///     var myConnectorApprovedFingerprints = new Fivetran.ConnectorFingerprints("my_connector_approved_fingerprints", new()
     ///     {
-    ///         ConnectorId = fivetran_connector.My_connector.Id,
+    ///         ConnectorId = myConnector.Id,
     ///         Fingerprints = new[]
     ///         {
     ///             new Fivetran.Inputs.ConnectorFingerprintsFingerprintArgs

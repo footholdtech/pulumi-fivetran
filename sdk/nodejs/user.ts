@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  *
  * const user = new fivetran.User("user", {
  *     email: "user@email.address.com",
- *     familyName: "Doe",
  *     givenName: "John",
+ *     familyName: "Doe",
  *     phone: "+353 00 0000 0000",
  * });
  * ```

@@ -23,13 +23,10 @@ namespace Footholdtech.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testLpa = new Fivetran.LocalProcessingAgent("testLpa", new()
+    ///     var testLpa = new Fivetran.LocalProcessingAgent("test_lpa", new()
     ///     {
     ///         DisplayName = "display_name",
     ///         GroupId = "group_id",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = fivetran_provider,
     ///     });
     /// 
     /// });

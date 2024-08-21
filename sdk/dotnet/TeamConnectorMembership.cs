@@ -23,7 +23,7 @@ namespace Footholdtech.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testTeamConnectorMembership = new Fivetran.TeamConnectorMembership("testTeamConnectorMembership", new()
+    ///     var testTeamConnectorMembership = new Fivetran.TeamConnectorMembership("test_team_connector_membership", new()
     ///     {
     ///         TeamId = "test_team",
     ///         Connectors = new[]
@@ -41,9 +41,6 @@ namespace Footholdtech.Fivetran
     ///                 CreatedAt = "2020-05-25T15:26:47.306509Z",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = fivetran_provider,
     ///     });
     /// 
     /// });

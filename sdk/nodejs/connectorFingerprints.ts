@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
  *
- * const myConnectorApprovedFingerprints = new fivetran.ConnectorFingerprints("myConnectorApprovedFingerprints", {
- *     connectorId: fivetran_connector.my_connector.id,
+ * const myConnectorApprovedFingerprints = new fivetran.ConnectorFingerprints("my_connector_approved_fingerprints", {
+ *     connectorId: myConnector.id,
  *     fingerprints: [
  *         {
  *             hash: "jhgfJfgrI6yy...",

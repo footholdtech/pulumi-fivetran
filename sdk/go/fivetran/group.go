@@ -31,7 +31,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.NewGroup(ctx, "group", nil)
+//			_, err := fivetran.NewGroup(ctx, "group", &fivetran.GroupArgs{
+//				Name: pulumi.String("MyGroup"),
+//			})
 //			if err != nil {
 //				return err
 //			}

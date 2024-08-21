@@ -23,13 +23,10 @@ namespace Footholdtech.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testProxyAgent = new Fivetran.ProxyAgent("testProxyAgent", new()
+    ///     var testProxyAgent = new Fivetran.ProxyAgent("test_proxy_agent", new()
     ///     {
     ///         DisplayName = "display_name",
     ///         GroupRegion = "group_region",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = fivetran_provider,
     ///     });
     /// 
     /// });

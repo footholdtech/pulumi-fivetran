@@ -28,8 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.NewConnectorSchedule(ctx, "myConnectorSchedule", &fivetran.ConnectorScheduleArgs{
-//				ConnectorId:     pulumi.Any(fivetran_connector.My_connector.Id),
+//			_, err := fivetran.NewConnectorSchedule(ctx, "my_connector_schedule", &fivetran.ConnectorScheduleArgs{
+//				ConnectorId:     pulumi.Any(myConnector.Id),
 //				SyncFrequency:   pulumi.String("1440"),
 //				DailySyncTime:   pulumi.String("03:00"),
 //				Paused:          pulumi.String("false"),

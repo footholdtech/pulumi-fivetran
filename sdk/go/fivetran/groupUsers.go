@@ -28,8 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.NewGroupUsers(ctx, "groupUsers", &fivetran.GroupUsersArgs{
-//				GroupId: pulumi.Any(fivetran_group.Group.Id),
+//			_, err := fivetran.NewGroupUsers(ctx, "group_users", &fivetran.GroupUsersArgs{
+//				GroupId: pulumi.Any(group.Id),
 //				Users: fivetran.GroupUsersUserArray{
 //					&fivetran.GroupUsersUserArgs{
 //						Email: pulumi.String("mail@example.com"),

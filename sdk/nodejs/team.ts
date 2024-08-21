@@ -13,11 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
  *
- * const testTeam = new fivetran.Team("testTeam", {
+ * const testTeam = new fivetran.Team("test_team", {
+ *     name: "test_team",
  *     description: "test_description",
  *     role: "Account Reviewer",
- * }, {
- *     provider: fivetran_provider,
  * });
  * ```
  *

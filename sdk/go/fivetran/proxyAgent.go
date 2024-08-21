@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.NewProxyAgent(ctx, "testProxyAgent", &fivetran.ProxyAgentArgs{
+//			_, err := fivetran.NewProxyAgent(ctx, "test_proxy_agent", &fivetran.ProxyAgentArgs{
 //				DisplayName: pulumi.String("display_name"),
 //				GroupRegion: pulumi.String("group_region"),
-//			}, pulumi.Provider(fivetran_provider))
+//			})
 //			if err != nil {
 //				return err
 //			}

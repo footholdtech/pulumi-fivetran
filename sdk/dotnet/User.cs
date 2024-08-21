@@ -26,8 +26,8 @@ namespace Footholdtech.Fivetran
     ///     var user = new Fivetran.User("user", new()
     ///     {
     ///         Email = "user@email.address.com",
-    ///         FamilyName = "Doe",
     ///         GivenName = "John",
+    ///         FamilyName = "Doe",
     ///         Phone = "+353 00 0000 0000",
     ///     });
     /// 

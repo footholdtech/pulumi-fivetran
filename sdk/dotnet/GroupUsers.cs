@@ -23,9 +23,9 @@ namespace Footholdtech.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var groupUsers = new Fivetran.GroupUsers("groupUsers", new()
+    ///     var groupUsers = new Fivetran.GroupUsers("group_users", new()
     ///     {
-    ///         GroupId = fivetran_group.Group.Id,
+    ///         GroupId = @group.Id,
     ///         Users = new[]
     ///         {
     ///             new Fivetran.Inputs.GroupUsersUserArgs

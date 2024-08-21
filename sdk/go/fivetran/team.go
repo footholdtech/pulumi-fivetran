@@ -28,10 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.NewTeam(ctx, "testTeam", &fivetran.TeamArgs{
+//			_, err := fivetran.NewTeam(ctx, "test_team", &fivetran.TeamArgs{
+//				Name:        pulumi.String("test_team"),
 //				Description: pulumi.String("test_description"),
 //				Role:        pulumi.String("Account Reviewer"),
-//			}, pulumi.Provider(fivetran_provider))
+//			})
 //			if err != nil {
 //				return err
 //			}

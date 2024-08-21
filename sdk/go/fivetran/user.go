@@ -30,8 +30,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewUser(ctx, "user", &fivetran.UserArgs{
 //				Email:      pulumi.String("user@email.address.com"),
-//				FamilyName: pulumi.String("Doe"),
 //				GivenName:  pulumi.String("John"),
+//				FamilyName: pulumi.String("Doe"),
 //				Phone:      pulumi.String("+353 00 0000 0000"),
 //			})
 //			if err != nil {

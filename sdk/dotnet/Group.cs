@@ -27,7 +27,10 @@ namespace Footholdtech.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @group = new Fivetran.Group("group");
+    ///     var @group = new Fivetran.Group("group", new()
+    ///     {
+    ///         Name = "MyGroup",
+    ///     });
     /// 
     /// });
     /// ```

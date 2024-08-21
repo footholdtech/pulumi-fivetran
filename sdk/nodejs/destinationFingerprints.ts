@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
  *
- * const myDestinationApprovedFingerprints = new fivetran.DestinationFingerprints("myDestinationApprovedFingerprints", {
- *     destinationId: fivetran_destination.my_destination.id,
+ * const myDestinationApprovedFingerprints = new fivetran.DestinationFingerprints("my_destination_approved_fingerprints", {
+ *     destinationId: myDestination.id,
  *     fingerprints: [
  *         {
  *             hash: "jhgfJfgrI6yy...",

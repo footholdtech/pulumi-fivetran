@@ -28,8 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.NewDestinationFingerprints(ctx, "myDestinationApprovedFingerprints", &fivetran.DestinationFingerprintsArgs{
-//				DestinationId: pulumi.Any(fivetran_destination.My_destination.Id),
+//			_, err := fivetran.NewDestinationFingerprints(ctx, "my_destination_approved_fingerprints", &fivetran.DestinationFingerprintsArgs{
+//				DestinationId: pulumi.Any(myDestination.Id),
 //				Fingerprints: fivetran.DestinationFingerprintsFingerprintArray{
 //					&fivetran.DestinationFingerprintsFingerprintArgs{
 //						Hash:      pulumi.String("jhgfJfgrI6yy..."),

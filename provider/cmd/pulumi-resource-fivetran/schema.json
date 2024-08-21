@@ -10624,7 +10624,7 @@
             }
         },
         "fivetran:index/connectorFingerprints:ConnectorFingerprints": {
-            "description": "This resource allows you to manage list of approved SSH fingerprints for a particular connector.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst myConnectorApprovedFingerprints = new fivetran.ConnectorFingerprints(\"myConnectorApprovedFingerprints\", {\n    connectorId: fivetran_connector.my_connector.id,\n    fingerprints: [\n        {\n            hash: \"jhgfJfgrI6yy...\",\n            publicKey: \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        },\n        {\n            hash: \"eUtPirI6yytWe...\",\n            publicKey: \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nmy_connector_approved_fingerprints = fivetran.ConnectorFingerprints(\"myConnectorApprovedFingerprints\",\n    connector_id=fivetran_connector[\"my_connector\"][\"id\"],\n    fingerprints=[\n        {\n            \"hash\": \"jhgfJfgrI6yy...\",\n            \"public_key\": \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        },\n        {\n            \"hash\": \"eUtPirI6yytWe...\",\n            \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myConnectorApprovedFingerprints = new Fivetran.ConnectorFingerprints(\"myConnectorApprovedFingerprints\", new()\n    {\n        ConnectorId = fivetran_connector.My_connector.Id,\n        Fingerprints = new[]\n        {\n            new Fivetran.Inputs.ConnectorFingerprintsFingerprintArgs\n            {\n                Hash = \"jhgfJfgrI6yy...\",\n                PublicKey = \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n            },\n            new Fivetran.Inputs.ConnectorFingerprintsFingerprintArgs\n            {\n                Hash = \"eUtPirI6yytWe...\",\n                PublicKey = \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewConnectorFingerprints(ctx, \"myConnectorApprovedFingerprints\", \u0026fivetran.ConnectorFingerprintsArgs{\n\t\t\tConnectorId: pulumi.Any(fivetran_connector.My_connector.Id),\n\t\t\tFingerprints: fivetran.ConnectorFingerprintsFingerprintArray{\n\t\t\t\t\u0026fivetran.ConnectorFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"jhgfJfgrI6yy...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.ConnectorFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"eUtPirI6yytWe...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectorFingerprints;\nimport com.pulumi.fivetran.ConnectorFingerprintsArgs;\nimport com.pulumi.fivetran.inputs.ConnectorFingerprintsFingerprintArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myConnectorApprovedFingerprints = new ConnectorFingerprints(\"myConnectorApprovedFingerprints\", ConnectorFingerprintsArgs.builder()\n            .connectorId(fivetran_connector.my_connector().id())\n            .fingerprints(            \n                ConnectorFingerprintsFingerprintArgs.builder()\n                    .hash(\"jhgfJfgrI6yy...\")\n                    .publicKey(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\")\n                    .build(),\n                ConnectorFingerprintsFingerprintArgs.builder()\n                    .hash(\"eUtPirI6yytWe...\")\n                    .publicKey(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myConnectorApprovedFingerprints:\n    type: fivetran:ConnectorFingerprints\n    properties:\n      connectorId: ${fivetran_connector.my_connector.id}\n      fingerprints:\n        - hash: jhgfJfgrI6yy...\n          publicKey: ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\n        - hash: eUtPirI6yytWe...\n          publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.\n\n2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).\n\n3. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_connector_fingerprints\" \"my_imported_connector_fingerprints\" {\n\n}\n\n4. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints my_imported_connector_fingerprints {your Fivetran Connector ID}\n```\n\n5.  Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_connector_fingerprints.my_imported_connector_fingerprints'\n\n6. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "This resource allows you to manage list of approved SSH fingerprints for a particular connector.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst myConnectorApprovedFingerprints = new fivetran.ConnectorFingerprints(\"my_connector_approved_fingerprints\", {\n    connectorId: myConnector.id,\n    fingerprints: [\n        {\n            hash: \"jhgfJfgrI6yy...\",\n            publicKey: \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        },\n        {\n            hash: \"eUtPirI6yytWe...\",\n            publicKey: \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nmy_connector_approved_fingerprints = fivetran.ConnectorFingerprints(\"my_connector_approved_fingerprints\",\n    connector_id=my_connector[\"id\"],\n    fingerprints=[\n        {\n            \"hash\": \"jhgfJfgrI6yy...\",\n            \"public_key\": \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        },\n        {\n            \"hash\": \"eUtPirI6yytWe...\",\n            \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myConnectorApprovedFingerprints = new Fivetran.ConnectorFingerprints(\"my_connector_approved_fingerprints\", new()\n    {\n        ConnectorId = myConnector.Id,\n        Fingerprints = new[]\n        {\n            new Fivetran.Inputs.ConnectorFingerprintsFingerprintArgs\n            {\n                Hash = \"jhgfJfgrI6yy...\",\n                PublicKey = \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n            },\n            new Fivetran.Inputs.ConnectorFingerprintsFingerprintArgs\n            {\n                Hash = \"eUtPirI6yytWe...\",\n                PublicKey = \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewConnectorFingerprints(ctx, \"my_connector_approved_fingerprints\", \u0026fivetran.ConnectorFingerprintsArgs{\n\t\t\tConnectorId: pulumi.Any(myConnector.Id),\n\t\t\tFingerprints: fivetran.ConnectorFingerprintsFingerprintArray{\n\t\t\t\t\u0026fivetran.ConnectorFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"jhgfJfgrI6yy...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.ConnectorFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"eUtPirI6yytWe...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectorFingerprints;\nimport com.pulumi.fivetran.ConnectorFingerprintsArgs;\nimport com.pulumi.fivetran.inputs.ConnectorFingerprintsFingerprintArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myConnectorApprovedFingerprints = new ConnectorFingerprints(\"myConnectorApprovedFingerprints\", ConnectorFingerprintsArgs.builder()\n            .connectorId(myConnector.id())\n            .fingerprints(            \n                ConnectorFingerprintsFingerprintArgs.builder()\n                    .hash(\"jhgfJfgrI6yy...\")\n                    .publicKey(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\")\n                    .build(),\n                ConnectorFingerprintsFingerprintArgs.builder()\n                    .hash(\"eUtPirI6yytWe...\")\n                    .publicKey(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myConnectorApprovedFingerprints:\n    type: fivetran:ConnectorFingerprints\n    name: my_connector_approved_fingerprints\n    properties:\n      connectorId: ${myConnector.id}\n      fingerprints:\n        - hash: jhgfJfgrI6yy...\n          publicKey: ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\n        - hash: eUtPirI6yytWe...\n          publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.\n\n2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).\n\n3. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_connector_fingerprints\" \"my_imported_connector_fingerprints\" {\n\n}\n\n4. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints my_imported_connector_fingerprints {your Fivetran Connector ID}\n```\n\n5.  Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_connector_fingerprints.my_imported_connector_fingerprints'\n\n6. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "connectorId": {
                     "type": "string",
@@ -10673,7 +10673,7 @@
             }
         },
         "fivetran:index/connectorSchedule:ConnectorSchedule": {
-            "description": "-This resource allows you to manage connectors schedule: pause/unpause connector, set daily_sync_time and sync_frequency.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst myConnectorSchedule = new fivetran.ConnectorSchedule(\"myConnectorSchedule\", {\n    connectorId: fivetran_connector.my_connector.id,\n    syncFrequency: \"1440\",\n    dailySyncTime: \"03:00\",\n    paused: \"false\",\n    pauseAfterTrial: \"true\",\n    scheduleType: \"auto\",\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nmy_connector_schedule = fivetran.ConnectorSchedule(\"myConnectorSchedule\",\n    connector_id=fivetran_connector[\"my_connector\"][\"id\"],\n    sync_frequency=\"1440\",\n    daily_sync_time=\"03:00\",\n    paused=\"false\",\n    pause_after_trial=\"true\",\n    schedule_type=\"auto\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myConnectorSchedule = new Fivetran.ConnectorSchedule(\"myConnectorSchedule\", new()\n    {\n        ConnectorId = fivetran_connector.My_connector.Id,\n        SyncFrequency = \"1440\",\n        DailySyncTime = \"03:00\",\n        Paused = \"false\",\n        PauseAfterTrial = \"true\",\n        ScheduleType = \"auto\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewConnectorSchedule(ctx, \"myConnectorSchedule\", \u0026fivetran.ConnectorScheduleArgs{\n\t\t\tConnectorId:     pulumi.Any(fivetran_connector.My_connector.Id),\n\t\t\tSyncFrequency:   pulumi.String(\"1440\"),\n\t\t\tDailySyncTime:   pulumi.String(\"03:00\"),\n\t\t\tPaused:          pulumi.String(\"false\"),\n\t\t\tPauseAfterTrial: pulumi.String(\"true\"),\n\t\t\tScheduleType:    pulumi.String(\"auto\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectorSchedule;\nimport com.pulumi.fivetran.ConnectorScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myConnectorSchedule = new ConnectorSchedule(\"myConnectorSchedule\", ConnectorScheduleArgs.builder()\n            .connectorId(fivetran_connector.my_connector().id())\n            .syncFrequency(\"1440\")\n            .dailySyncTime(\"03:00\")\n            .paused(false)\n            .pauseAfterTrial(true)\n            .scheduleType(\"auto\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myConnectorSchedule:\n    type: fivetran:ConnectorSchedule\n    properties:\n      connectorId: ${fivetran_connector.my_connector.id}\n      syncFrequency: '1440'\n      dailySyncTime: 03:00\n      paused: false\n      pauseAfterTrial: true\n      scheduleType: auto\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nYou don't need to import this resource as it is synthetic. \n\nTo fetch schedule values from existing connector use `fivetran_connector` data source:\n\nhcl\n\ndata \"fivetran_connector\" \"my_connector\" {\n\n    id = \"my_connector_id\"\n\n}\n\nnow you can use schedule values from this data_source:\n\n  sync_frequency = data.fivetran_connector.my_connector.sync_frequency\n\n  paused = data.fivetran_connector.my_connector.paused\n\nThis resource manages settings for already existing connector instance and doesn't create a new one.\n\nIf you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:\n\nhcl\n\nresource \"fivetran_connector_schedule\" \"my_connector_schedule\" {\n\n    connector_id = \"my_connector_id\"\n\n    sync_frequency     = \"360\"\n\n    paused             = false\n\n    pause_after_trial  = true\n\n    schedule_type      = \"auto\"\n\n}\n\n-\u003e NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.\n\n",
+            "description": "-This resource allows you to manage connectors schedule: pause/unpause connector, set daily_sync_time and sync_frequency.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst myConnectorSchedule = new fivetran.ConnectorSchedule(\"my_connector_schedule\", {\n    connectorId: myConnector.id,\n    syncFrequency: \"1440\",\n    dailySyncTime: \"03:00\",\n    paused: \"false\",\n    pauseAfterTrial: \"true\",\n    scheduleType: \"auto\",\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nmy_connector_schedule = fivetran.ConnectorSchedule(\"my_connector_schedule\",\n    connector_id=my_connector[\"id\"],\n    sync_frequency=\"1440\",\n    daily_sync_time=\"03:00\",\n    paused=\"false\",\n    pause_after_trial=\"true\",\n    schedule_type=\"auto\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myConnectorSchedule = new Fivetran.ConnectorSchedule(\"my_connector_schedule\", new()\n    {\n        ConnectorId = myConnector.Id,\n        SyncFrequency = \"1440\",\n        DailySyncTime = \"03:00\",\n        Paused = \"false\",\n        PauseAfterTrial = \"true\",\n        ScheduleType = \"auto\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewConnectorSchedule(ctx, \"my_connector_schedule\", \u0026fivetran.ConnectorScheduleArgs{\n\t\t\tConnectorId:     pulumi.Any(myConnector.Id),\n\t\t\tSyncFrequency:   pulumi.String(\"1440\"),\n\t\t\tDailySyncTime:   pulumi.String(\"03:00\"),\n\t\t\tPaused:          pulumi.String(\"false\"),\n\t\t\tPauseAfterTrial: pulumi.String(\"true\"),\n\t\t\tScheduleType:    pulumi.String(\"auto\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectorSchedule;\nimport com.pulumi.fivetran.ConnectorScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myConnectorSchedule = new ConnectorSchedule(\"myConnectorSchedule\", ConnectorScheduleArgs.builder()\n            .connectorId(myConnector.id())\n            .syncFrequency(\"1440\")\n            .dailySyncTime(\"03:00\")\n            .paused(false)\n            .pauseAfterTrial(true)\n            .scheduleType(\"auto\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myConnectorSchedule:\n    type: fivetran:ConnectorSchedule\n    name: my_connector_schedule\n    properties:\n      connectorId: ${myConnector.id}\n      syncFrequency: '1440'\n      dailySyncTime: 03:00\n      paused: false\n      pauseAfterTrial: true\n      scheduleType: auto\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nYou don't need to import this resource as it is synthetic. \n\nTo fetch schedule values from existing connector use `fivetran_connector` data source:\n\nhcl\n\ndata \"fivetran_connector\" \"my_connector\" {\n\n    id = \"my_connector_id\"\n\n}\n\nnow you can use schedule values from this data_source:\n\n  sync_frequency = data.fivetran_connector.my_connector.sync_frequency\n\n  paused = data.fivetran_connector.my_connector.paused\n\nThis resource manages settings for already existing connector instance and doesn't create a new one.\n\nIf you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:\n\nhcl\n\nresource \"fivetran_connector_schedule\" \"my_connector_schedule\" {\n\n    connector_id = \"my_connector_id\"\n\n    sync_frequency     = \"360\"\n\n    paused             = false\n\n    pause_after_trial  = true\n\n    schedule_type      = \"auto\"\n\n}\n\n-\u003e NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.\n\n",
             "properties": {
                 "connectorId": {
                     "type": "string",
@@ -10890,7 +10890,7 @@
             }
         },
         "fivetran:index/dbtProject:DbtProject": {
-            "description": "Resource is in ALPHA state.\n\nThis resource allows you to add, manage and delete dbt Projects in your account. \n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.DbtProject;\nimport com.pulumi.fivetran.DbtProjectArgs;\nimport com.pulumi.fivetran.inputs.DbtProjectProjectConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var project = new DbtProject(\"project\", DbtProjectArgs.builder()\n            .dbtVersion(\"1.4.1\")\n            .defaultSchema(\"default_schema\")\n            .environmentVars(\"environment_var=value\")\n            .groupId(\"group_id\")\n            .projectConfig(DbtProjectProjectConfigArgs.builder()\n                .folder_path(\"/dbt/project/folder/path\")\n                .git_branch(\"main\")\n                .git_remote_url(\"your_git_remote_url\")\n                .build())\n            .targetName(\"target_name\")\n            .threads(8)\n            .type(\"GIT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  project:\n    type: fivetran:DbtProject\n    properties:\n      dbtVersion: 1.4.1\n      defaultSchema: default_schema\n      environmentVars:\n        - environment_var=value\n      groupId: group_id\n      projectConfig:\n        folder_path: /dbt/project/folder/path\n        git_branch: main\n        git_remote_url: your_git_remote_url\n      targetName: target_name\n      threads: 8\n      type: GIT\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.\n\n2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import.\n\n3. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_dbt_project\" \"my_imported_fivetran_dbt_project\" {\n\n}\n\n4. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "Resource is in ALPHA state.\n\nThis resource allows you to add, manage and delete dbt Projects in your account. \n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.DbtProject;\nimport com.pulumi.fivetran.DbtProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var project = new DbtProject(\"project\", DbtProjectArgs.builder()\n            .groupId(\"group_id\")\n            .dbtVersion(\"1.4.1\")\n            .defaultSchema(\"default_schema\")\n            .targetName(\"target_name\")\n            .environmentVars(\"environment_var=value\")\n            .threads(8)\n            .type(\"GIT\")\n            .projectConfig(DbtProjectProjectConfigArgs.builder()\n                .gitRemoteUrl(\"your_git_remote_url\")\n                .gitBranch(\"main\")\n                .folderPath(\"/dbt/project/folder/path\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  project:\n    type: fivetran:DbtProject\n    properties:\n      groupId: group_id\n      dbtVersion: 1.4.1\n      defaultSchema: default_schema\n      targetName: target_name\n      environmentVars:\n        - environment_var=value\n      threads: 8\n      type: GIT\n      projectConfig:\n        - gitRemoteUrl: your_git_remote_url\n          gitBranch: main\n          folderPath: /dbt/project/folder/path\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.\n\n2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import.\n\n3. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_dbt_project\" \"my_imported_fivetran_dbt_project\" {\n\n}\n\n4. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -11087,7 +11087,7 @@
             }
         },
         "fivetran:index/dbtTransformation:DbtTransformation": {
-            "description": "Resource is in ALPHA state.\n\nThis resource allows you to add, manage and delete dbt Transformations for existing dbt Model. \nTo retrieve available dbt Models use this [Retrieve dbt Project models](https://fivetran.com/docs/rest-api/dbt-transformation-management#retrievedbtprojectmodels) endpoint.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.DbtTransformation;\nimport com.pulumi.fivetran.DbtTransformationArgs;\nimport com.pulumi.fivetran.inputs.DbtTransformationScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var transformation = new DbtTransformation(\"transformation\", DbtTransformationArgs.builder()\n            .dbtModelName(\"dbt_model_name\")\n            .dbtProjectId(\"dbt_project_id\")\n            .paused(\"false\")\n            .runTests(\"false\")\n            .schedule(DbtTransformationScheduleArgs.builder()\n                .days_of_week(                \n                    \"MONDAY\",\n                    \"SATURDAY\")\n                .schedule_type(\"TIME_OF_DAY\")\n                .time_of_day(\"12:00\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  transformation:\n    type: fivetran:DbtTransformation\n    properties:\n      dbtModelName: dbt_model_name\n      dbtProjectId: dbt_project_id\n      paused: 'false'\n      runTests: 'false'\n      schedule:\n        days_of_week:\n          - MONDAY\n          - SATURDAY\n        schedule_type: TIME_OF_DAY\n        time_of_day: 12:00\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard.\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_dbt_transformation\" \"my_imported_fivetran_dbt_transformation\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "Resource is in ALPHA state.\n\nThis resource allows you to add, manage and delete dbt Transformations for existing dbt Model. \nTo retrieve available dbt Models use this [Retrieve dbt Project models](https://fivetran.com/docs/rest-api/dbt-transformation-management#retrievedbtprojectmodels) endpoint.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.DbtTransformation;\nimport com.pulumi.fivetran.DbtTransformationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var transformation = new DbtTransformation(\"transformation\", DbtTransformationArgs.builder()\n            .dbtModelName(\"dbt_model_name\")\n            .dbtProjectId(\"dbt_project_id\")\n            .runTests(\"false\")\n            .paused(\"false\")\n            .schedule(DbtTransformationScheduleArgs.builder()\n                .scheduleType(\"TIME_OF_DAY\")\n                .timeOfDay(\"12:00\")\n                .daysOfWeeks(                \n                    \"MONDAY\",\n                    \"SATURDAY\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  transformation:\n    type: fivetran:DbtTransformation\n    properties:\n      dbtModelName: dbt_model_name\n      dbtProjectId: dbt_project_id\n      runTests: 'false'\n      paused: 'false'\n      schedule:\n        - scheduleType: TIME_OF_DAY\n          timeOfDay: 12:00\n          daysOfWeeks:\n            - MONDAY\n            - SATURDAY\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard.\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_dbt_transformation\" \"my_imported_fivetran_dbt_transformation\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "connectorIds": {
                     "type": "array",
@@ -11458,7 +11458,7 @@
             }
         },
         "fivetran:index/destinationFingerprints:DestinationFingerprints": {
-            "description": "This resource allows you to manage list of approved SSH fingerprints for a particular destination.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst myDestinationApprovedFingerprints = new fivetran.DestinationFingerprints(\"myDestinationApprovedFingerprints\", {\n    destinationId: fivetran_destination.my_destination.id,\n    fingerprints: [\n        {\n            hash: \"jhgfJfgrI6yy...\",\n            publicKey: \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        },\n        {\n            hash: \"eUtPirI6yytWe...\",\n            publicKey: \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nmy_destination_approved_fingerprints = fivetran.DestinationFingerprints(\"myDestinationApprovedFingerprints\",\n    destination_id=fivetran_destination[\"my_destination\"][\"id\"],\n    fingerprints=[\n        {\n            \"hash\": \"jhgfJfgrI6yy...\",\n            \"public_key\": \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        },\n        {\n            \"hash\": \"eUtPirI6yytWe...\",\n            \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myDestinationApprovedFingerprints = new Fivetran.DestinationFingerprints(\"myDestinationApprovedFingerprints\", new()\n    {\n        DestinationId = fivetran_destination.My_destination.Id,\n        Fingerprints = new[]\n        {\n            new Fivetran.Inputs.DestinationFingerprintsFingerprintArgs\n            {\n                Hash = \"jhgfJfgrI6yy...\",\n                PublicKey = \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n            },\n            new Fivetran.Inputs.DestinationFingerprintsFingerprintArgs\n            {\n                Hash = \"eUtPirI6yytWe...\",\n                PublicKey = \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewDestinationFingerprints(ctx, \"myDestinationApprovedFingerprints\", \u0026fivetran.DestinationFingerprintsArgs{\n\t\t\tDestinationId: pulumi.Any(fivetran_destination.My_destination.Id),\n\t\t\tFingerprints: fivetran.DestinationFingerprintsFingerprintArray{\n\t\t\t\t\u0026fivetran.DestinationFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"jhgfJfgrI6yy...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.DestinationFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"eUtPirI6yytWe...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.DestinationFingerprints;\nimport com.pulumi.fivetran.DestinationFingerprintsArgs;\nimport com.pulumi.fivetran.inputs.DestinationFingerprintsFingerprintArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myDestinationApprovedFingerprints = new DestinationFingerprints(\"myDestinationApprovedFingerprints\", DestinationFingerprintsArgs.builder()\n            .destinationId(fivetran_destination.my_destination().id())\n            .fingerprints(            \n                DestinationFingerprintsFingerprintArgs.builder()\n                    .hash(\"jhgfJfgrI6yy...\")\n                    .publicKey(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\")\n                    .build(),\n                DestinationFingerprintsFingerprintArgs.builder()\n                    .hash(\"eUtPirI6yytWe...\")\n                    .publicKey(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myDestinationApprovedFingerprints:\n    type: fivetran:DestinationFingerprints\n    properties:\n      destinationId: ${fivetran_destination.my_destination.id}\n      fingerprints:\n        - hash: jhgfJfgrI6yy...\n          publicKey: ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\n        - hash: eUtPirI6yytWe...\n          publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.\n\n2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).\n\n3. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_destination_fingerprints\" \"my_imported_destination_fingerprints\" {\n\n}\n\n4. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}\n```\n\n5.  Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_destination_fingerprints.my_imported_destination_fingerprints'\n\n6. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "This resource allows you to manage list of approved SSH fingerprints for a particular destination.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst myDestinationApprovedFingerprints = new fivetran.DestinationFingerprints(\"my_destination_approved_fingerprints\", {\n    destinationId: myDestination.id,\n    fingerprints: [\n        {\n            hash: \"jhgfJfgrI6yy...\",\n            publicKey: \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        },\n        {\n            hash: \"eUtPirI6yytWe...\",\n            publicKey: \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nmy_destination_approved_fingerprints = fivetran.DestinationFingerprints(\"my_destination_approved_fingerprints\",\n    destination_id=my_destination[\"id\"],\n    fingerprints=[\n        {\n            \"hash\": \"jhgfJfgrI6yy...\",\n            \"public_key\": \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n        },\n        {\n            \"hash\": \"eUtPirI6yytWe...\",\n            \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myDestinationApprovedFingerprints = new Fivetran.DestinationFingerprints(\"my_destination_approved_fingerprints\", new()\n    {\n        DestinationId = myDestination.Id,\n        Fingerprints = new[]\n        {\n            new Fivetran.Inputs.DestinationFingerprintsFingerprintArgs\n            {\n                Hash = \"jhgfJfgrI6yy...\",\n                PublicKey = \"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\",\n            },\n            new Fivetran.Inputs.DestinationFingerprintsFingerprintArgs\n            {\n                Hash = \"eUtPirI6yytWe...\",\n                PublicKey = \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewDestinationFingerprints(ctx, \"my_destination_approved_fingerprints\", \u0026fivetran.DestinationFingerprintsArgs{\n\t\t\tDestinationId: pulumi.Any(myDestination.Id),\n\t\t\tFingerprints: fivetran.DestinationFingerprintsFingerprintArray{\n\t\t\t\t\u0026fivetran.DestinationFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"jhgfJfgrI6yy...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.DestinationFingerprintsFingerprintArgs{\n\t\t\t\t\tHash:      pulumi.String(\"eUtPirI6yytWe...\"),\n\t\t\t\t\tPublicKey: pulumi.String(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.DestinationFingerprints;\nimport com.pulumi.fivetran.DestinationFingerprintsArgs;\nimport com.pulumi.fivetran.inputs.DestinationFingerprintsFingerprintArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myDestinationApprovedFingerprints = new DestinationFingerprints(\"myDestinationApprovedFingerprints\", DestinationFingerprintsArgs.builder()\n            .destinationId(myDestination.id())\n            .fingerprints(            \n                DestinationFingerprintsFingerprintArgs.builder()\n                    .hash(\"jhgfJfgrI6yy...\")\n                    .publicKey(\"ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\")\n                    .build(),\n                DestinationFingerprintsFingerprintArgs.builder()\n                    .hash(\"eUtPirI6yytWe...\")\n                    .publicKey(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myDestinationApprovedFingerprints:\n    type: fivetran:DestinationFingerprints\n    name: my_destination_approved_fingerprints\n    properties:\n      destinationId: ${myDestination.id}\n      fingerprints:\n        - hash: jhgfJfgrI6yy...\n          publicKey: ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key\n        - hash: eUtPirI6yytWe...\n          publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.\n\n2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).\n\n3. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_destination_fingerprints\" \"my_imported_destination_fingerprints\" {\n\n}\n\n4. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}\n```\n\n5.  Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_destination_fingerprints.my_imported_destination_fingerprints'\n\n6. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "destinationId": {
                     "type": "string",
@@ -11585,7 +11585,7 @@
             }
         },
         "fivetran:index/group:Group": {
-            "description": "This resource allows you to create, update, and delete groups.\n\nIMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our Terrafrom Provider, and the destination's group_id value that you specify when you create a destination using our Terrafrom Provider. This means that if you use our Terrafrom Provider to create a destination, you must create a group in your Fivetran account before you can create a destination in it.\n\nWhen you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same group_id value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst group = new fivetran.Group(\"group\", {});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ngroup = fivetran.Group(\"group\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @group = new Fivetran.Group(\"group\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewGroup(ctx, \"group\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.Group;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var group = new Group(\"group\");\n\n    }\n}\n```\n```yaml\nresources:\n  group:\n    type: fivetran:Group\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.\n\nTo retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_group\" \"my_imported_fivetran_group\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_group.my_imported_fivetran_group'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "This resource allows you to create, update, and delete groups.\n\nIMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our Terrafrom Provider, and the destination's group_id value that you specify when you create a destination using our Terrafrom Provider. This means that if you use our Terrafrom Provider to create a destination, you must create a group in your Fivetran account before you can create a destination in it.\n\nWhen you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same group_id value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst group = new fivetran.Group(\"group\", {name: \"MyGroup\"});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ngroup = fivetran.Group(\"group\", name=\"MyGroup\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @group = new Fivetran.Group(\"group\", new()\n    {\n        Name = \"MyGroup\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewGroup(ctx, \"group\", \u0026fivetran.GroupArgs{\n\t\t\tName: pulumi.String(\"MyGroup\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.Group;\nimport com.pulumi.fivetran.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var group = new Group(\"group\", GroupArgs.builder()\n            .name(\"MyGroup\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  group:\n    type: fivetran:Group\n    properties:\n      name: MyGroup\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.\n\nTo retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_group\" \"my_imported_fivetran_group\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_group.my_imported_fivetran_group'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -11631,7 +11631,7 @@
             }
         },
         "fivetran:index/groupUsers:GroupUsers": {
-            "description": "This resource allows you to create, update, and delete user memberships in groups.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst groupUsers = new fivetran.GroupUsers(\"groupUsers\", {\n    groupId: fivetran_group.group.id,\n    users: [\n        {\n            email: \"mail@example.com\",\n            role: \"Destination Analyst\",\n        },\n        {\n            email: \"another_mail@example.com\",\n            role: \"Destination Analyst\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ngroup_users = fivetran.GroupUsers(\"groupUsers\",\n    group_id=fivetran_group[\"group\"][\"id\"],\n    users=[\n        {\n            \"email\": \"mail@example.com\",\n            \"role\": \"Destination Analyst\",\n        },\n        {\n            \"email\": \"another_mail@example.com\",\n            \"role\": \"Destination Analyst\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var groupUsers = new Fivetran.GroupUsers(\"groupUsers\", new()\n    {\n        GroupId = fivetran_group.Group.Id,\n        Users = new[]\n        {\n            new Fivetran.Inputs.GroupUsersUserArgs\n            {\n                Email = \"mail@example.com\",\n                Role = \"Destination Analyst\",\n            },\n            new Fivetran.Inputs.GroupUsersUserArgs\n            {\n                Email = \"another_mail@example.com\",\n                Role = \"Destination Analyst\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewGroupUsers(ctx, \"groupUsers\", \u0026fivetran.GroupUsersArgs{\n\t\t\tGroupId: pulumi.Any(fivetran_group.Group.Id),\n\t\t\tUsers: fivetran.GroupUsersUserArray{\n\t\t\t\t\u0026fivetran.GroupUsersUserArgs{\n\t\t\t\t\tEmail: pulumi.String(\"mail@example.com\"),\n\t\t\t\t\tRole:  pulumi.String(\"Destination Analyst\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.GroupUsersUserArgs{\n\t\t\t\t\tEmail: pulumi.String(\"another_mail@example.com\"),\n\t\t\t\t\tRole:  pulumi.String(\"Destination Analyst\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.GroupUsers;\nimport com.pulumi.fivetran.GroupUsersArgs;\nimport com.pulumi.fivetran.inputs.GroupUsersUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var groupUsers = new GroupUsers(\"groupUsers\", GroupUsersArgs.builder()\n            .groupId(fivetran_group.group().id())\n            .users(            \n                GroupUsersUserArgs.builder()\n                    .email(\"mail@example.com\")\n                    .role(\"Destination Analyst\")\n                    .build(),\n                GroupUsersUserArgs.builder()\n                    .email(\"another_mail@example.com\")\n                    .role(\"Destination Analyst\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  groupUsers:\n    type: fivetran:GroupUsers\n    properties:\n      groupId: ${fivetran_group.group.id}\n      users:\n        - email: mail@example.com\n          role: Destination Analyst\n        - email: another_mail@example.com\n          role: Destination Analyst\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This resource allows you to create, update, and delete user memberships in groups.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst groupUsers = new fivetran.GroupUsers(\"group_users\", {\n    groupId: group.id,\n    users: [\n        {\n            email: \"mail@example.com\",\n            role: \"Destination Analyst\",\n        },\n        {\n            email: \"another_mail@example.com\",\n            role: \"Destination Analyst\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ngroup_users = fivetran.GroupUsers(\"group_users\",\n    group_id=group[\"id\"],\n    users=[\n        {\n            \"email\": \"mail@example.com\",\n            \"role\": \"Destination Analyst\",\n        },\n        {\n            \"email\": \"another_mail@example.com\",\n            \"role\": \"Destination Analyst\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var groupUsers = new Fivetran.GroupUsers(\"group_users\", new()\n    {\n        GroupId = @group.Id,\n        Users = new[]\n        {\n            new Fivetran.Inputs.GroupUsersUserArgs\n            {\n                Email = \"mail@example.com\",\n                Role = \"Destination Analyst\",\n            },\n            new Fivetran.Inputs.GroupUsersUserArgs\n            {\n                Email = \"another_mail@example.com\",\n                Role = \"Destination Analyst\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewGroupUsers(ctx, \"group_users\", \u0026fivetran.GroupUsersArgs{\n\t\t\tGroupId: pulumi.Any(group.Id),\n\t\t\tUsers: fivetran.GroupUsersUserArray{\n\t\t\t\t\u0026fivetran.GroupUsersUserArgs{\n\t\t\t\t\tEmail: pulumi.String(\"mail@example.com\"),\n\t\t\t\t\tRole:  pulumi.String(\"Destination Analyst\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.GroupUsersUserArgs{\n\t\t\t\t\tEmail: pulumi.String(\"another_mail@example.com\"),\n\t\t\t\t\tRole:  pulumi.String(\"Destination Analyst\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.GroupUsers;\nimport com.pulumi.fivetran.GroupUsersArgs;\nimport com.pulumi.fivetran.inputs.GroupUsersUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var groupUsers = new GroupUsers(\"groupUsers\", GroupUsersArgs.builder()\n            .groupId(group.id())\n            .users(            \n                GroupUsersUserArgs.builder()\n                    .email(\"mail@example.com\")\n                    .role(\"Destination Analyst\")\n                    .build(),\n                GroupUsersUserArgs.builder()\n                    .email(\"another_mail@example.com\")\n                    .role(\"Destination Analyst\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  groupUsers:\n    type: fivetran:GroupUsers\n    name: group_users\n    properties:\n      groupId: ${group.id}\n      users:\n        - email: mail@example.com\n          role: Destination Analyst\n        - email: another_mail@example.com\n          role: Destination Analyst\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "groupId": {
                     "type": "string",
@@ -11687,7 +11687,7 @@
             }
         },
         "fivetran:index/localProcessingAgent:LocalProcessingAgent": {
-            "description": "This resource allows you to create, update, and delete local processing agents.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testLpa = new fivetran.LocalProcessingAgent(\"testLpa\", {\n    displayName: \"display_name\",\n    groupId: \"group_id\",\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_lpa = fivetran.LocalProcessingAgent(\"testLpa\",\n    display_name=\"display_name\",\n    group_id=\"group_id\",\n    opts = pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testLpa = new Fivetran.LocalProcessingAgent(\"testLpa\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupId = \"group_id\",\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewLocalProcessingAgent(ctx, \"testLpa\", \u0026fivetran.LocalProcessingAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupId:     pulumi.String(\"group_id\"),\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.LocalProcessingAgent;\nimport com.pulumi.fivetran.LocalProcessingAgentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testLpa = new LocalProcessingAgent(\"testLpa\", LocalProcessingAgentArgs.builder()\n            .displayName(\"display_name\")\n            .groupId(\"group_id\")\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testLpa:\n    type: fivetran:LocalProcessingAgent\n    properties:\n      displayName: display_name\n      groupId: group_id\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This resource allows you to create, update, and delete local processing agents.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testLpa = new fivetran.LocalProcessingAgent(\"test_lpa\", {\n    displayName: \"display_name\",\n    groupId: \"group_id\",\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_lpa = fivetran.LocalProcessingAgent(\"test_lpa\",\n    display_name=\"display_name\",\n    group_id=\"group_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testLpa = new Fivetran.LocalProcessingAgent(\"test_lpa\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupId = \"group_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewLocalProcessingAgent(ctx, \"test_lpa\", \u0026fivetran.LocalProcessingAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupId:     pulumi.String(\"group_id\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.LocalProcessingAgent;\nimport com.pulumi.fivetran.LocalProcessingAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testLpa = new LocalProcessingAgent(\"testLpa\", LocalProcessingAgentArgs.builder()\n            .displayName(\"display_name\")\n            .groupId(\"group_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testLpa:\n    type: fivetran:LocalProcessingAgent\n    name: test_lpa\n    properties:\n      displayName: display_name\n      groupId: group_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "authJson": {
                     "type": "string",
@@ -11794,7 +11794,7 @@
             }
         },
         "fivetran:index/proxyAgent:ProxyAgent": {
-            "description": "This resource allows you to create, update, and delete proxy agent.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testProxyAgent = new fivetran.ProxyAgent(\"testProxyAgent\", {\n    displayName: \"display_name\",\n    groupRegion: \"group_region\",\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_proxy_agent = fivetran.ProxyAgent(\"testProxyAgent\",\n    display_name=\"display_name\",\n    group_region=\"group_region\",\n    opts = pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testProxyAgent = new Fivetran.ProxyAgent(\"testProxyAgent\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupRegion = \"group_region\",\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewProxyAgent(ctx, \"testProxyAgent\", \u0026fivetran.ProxyAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupRegion: pulumi.String(\"group_region\"),\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ProxyAgent;\nimport com.pulumi.fivetran.ProxyAgentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testProxyAgent = new ProxyAgent(\"testProxyAgent\", ProxyAgentArgs.builder()\n            .displayName(\"display_name\")\n            .groupRegion(\"group_region\")\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testProxyAgent:\n    type: fivetran:ProxyAgent\n    properties:\n      displayName: display_name\n      groupRegion: group_region\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This resource allows you to create, update, and delete proxy agent.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testProxyAgent = new fivetran.ProxyAgent(\"test_proxy_agent\", {\n    displayName: \"display_name\",\n    groupRegion: \"group_region\",\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_proxy_agent = fivetran.ProxyAgent(\"test_proxy_agent\",\n    display_name=\"display_name\",\n    group_region=\"group_region\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testProxyAgent = new Fivetran.ProxyAgent(\"test_proxy_agent\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupRegion = \"group_region\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewProxyAgent(ctx, \"test_proxy_agent\", \u0026fivetran.ProxyAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupRegion: pulumi.String(\"group_region\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ProxyAgent;\nimport com.pulumi.fivetran.ProxyAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testProxyAgent = new ProxyAgent(\"testProxyAgent\", ProxyAgentArgs.builder()\n            .displayName(\"display_name\")\n            .groupRegion(\"group_region\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testProxyAgent:\n    type: fivetran:ProxyAgent\n    name: test_proxy_agent\n    properties:\n      displayName: display_name\n      groupRegion: group_region\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "createdBy": {
                     "type": "string",
@@ -11884,7 +11884,7 @@
             }
         },
         "fivetran:index/team:Team": {
-            "description": "This resource allows you to create, update, and delete teams.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testTeam = new fivetran.Team(\"testTeam\", {\n    description: \"test_description\",\n    role: \"Account Reviewer\",\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_team = fivetran.Team(\"testTeam\",\n    description=\"test_description\",\n    role=\"Account Reviewer\",\n    opts = pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testTeam = new Fivetran.Team(\"testTeam\", new()\n    {\n        Description = \"test_description\",\n        Role = \"Account Reviewer\",\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewTeam(ctx, \"testTeam\", \u0026fivetran.TeamArgs{\n\t\t\tDescription: pulumi.String(\"test_description\"),\n\t\t\tRole:        pulumi.String(\"Account Reviewer\"),\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.Team;\nimport com.pulumi.fivetran.TeamArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeam = new Team(\"testTeam\", TeamArgs.builder()\n            .description(\"test_description\")\n            .role(\"Account Reviewer\")\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeam:\n    type: fivetran:Team\n    properties:\n      description: test_description\n      role: Account Reviewer\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_team` resource into your Terraform state, you need to get `team_id`. \n\nYou can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_team\" \"my_imported_fivetran_team\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_team.my_imported_fivetran_team'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "This resource allows you to create, update, and delete teams.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testTeam = new fivetran.Team(\"test_team\", {\n    name: \"test_team\",\n    description: \"test_description\",\n    role: \"Account Reviewer\",\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_team = fivetran.Team(\"test_team\",\n    name=\"test_team\",\n    description=\"test_description\",\n    role=\"Account Reviewer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testTeam = new Fivetran.Team(\"test_team\", new()\n    {\n        Name = \"test_team\",\n        Description = \"test_description\",\n        Role = \"Account Reviewer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewTeam(ctx, \"test_team\", \u0026fivetran.TeamArgs{\n\t\t\tName:        pulumi.String(\"test_team\"),\n\t\t\tDescription: pulumi.String(\"test_description\"),\n\t\t\tRole:        pulumi.String(\"Account Reviewer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.Team;\nimport com.pulumi.fivetran.TeamArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeam = new Team(\"testTeam\", TeamArgs.builder()\n            .name(\"test_team\")\n            .description(\"test_description\")\n            .role(\"Account Reviewer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeam:\n    type: fivetran:Team\n    name: test_team\n    properties:\n      name: test_team\n      description: test_description\n      role: Account Reviewer\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_team` resource into your Terraform state, you need to get `team_id`. \n\nYou can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_team\" \"my_imported_fivetran_team\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_team.my_imported_fivetran_team'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -11940,7 +11940,7 @@
             }
         },
         "fivetran:index/teamConnectorMembership:TeamConnectorMembership": {
-            "description": "This resource allows you to create, update, and delete connector membership for teams\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testTeamConnectorMembership = new fivetran.TeamConnectorMembership(\"testTeamConnectorMembership\", {\n    teamId: \"test_team\",\n    connectors: [\n        {\n            connectorId: \"test_connector\",\n            role: \"Connector Administrator\",\n            createdAt: \"2020-05-25T15:26:47.306509Z\",\n        },\n        {\n            connectorId: \"test_connector\",\n            role: \"Connector Administrator\",\n            createdAt: \"2020-05-25T15:26:47.306509Z\",\n        },\n    ],\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_team_connector_membership = fivetran.TeamConnectorMembership(\"testTeamConnectorMembership\",\n    team_id=\"test_team\",\n    connectors=[\n        {\n            \"connector_id\": \"test_connector\",\n            \"role\": \"Connector Administrator\",\n            \"created_at\": \"2020-05-25T15:26:47.306509Z\",\n        },\n        {\n            \"connector_id\": \"test_connector\",\n            \"role\": \"Connector Administrator\",\n            \"created_at\": \"2020-05-25T15:26:47.306509Z\",\n        },\n    ],\n    opts = pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testTeamConnectorMembership = new Fivetran.TeamConnectorMembership(\"testTeamConnectorMembership\", new()\n    {\n        TeamId = \"test_team\",\n        Connectors = new[]\n        {\n            new Fivetran.Inputs.TeamConnectorMembershipConnectorArgs\n            {\n                ConnectorId = \"test_connector\",\n                Role = \"Connector Administrator\",\n                CreatedAt = \"2020-05-25T15:26:47.306509Z\",\n            },\n            new Fivetran.Inputs.TeamConnectorMembershipConnectorArgs\n            {\n                ConnectorId = \"test_connector\",\n                Role = \"Connector Administrator\",\n                CreatedAt = \"2020-05-25T15:26:47.306509Z\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewTeamConnectorMembership(ctx, \"testTeamConnectorMembership\", \u0026fivetran.TeamConnectorMembershipArgs{\n\t\t\tTeamId: pulumi.String(\"test_team\"),\n\t\t\tConnectors: fivetran.TeamConnectorMembershipConnectorArray{\n\t\t\t\t\u0026fivetran.TeamConnectorMembershipConnectorArgs{\n\t\t\t\t\tConnectorId: pulumi.String(\"test_connector\"),\n\t\t\t\t\tRole:        pulumi.String(\"Connector Administrator\"),\n\t\t\t\t\tCreatedAt:   pulumi.String(\"2020-05-25T15:26:47.306509Z\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.TeamConnectorMembershipConnectorArgs{\n\t\t\t\t\tConnectorId: pulumi.String(\"test_connector\"),\n\t\t\t\t\tRole:        pulumi.String(\"Connector Administrator\"),\n\t\t\t\t\tCreatedAt:   pulumi.String(\"2020-05-25T15:26:47.306509Z\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.TeamConnectorMembership;\nimport com.pulumi.fivetran.TeamConnectorMembershipArgs;\nimport com.pulumi.fivetran.inputs.TeamConnectorMembershipConnectorArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeamConnectorMembership = new TeamConnectorMembership(\"testTeamConnectorMembership\", TeamConnectorMembershipArgs.builder()\n            .teamId(\"test_team\")\n            .connectors(            \n                TeamConnectorMembershipConnectorArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .role(\"Connector Administrator\")\n                    .createdAt(\"2020-05-25T15:26:47.306509Z\")\n                    .build(),\n                TeamConnectorMembershipConnectorArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .role(\"Connector Administrator\")\n                    .createdAt(\"2020-05-25T15:26:47.306509Z\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeamConnectorMembership:\n    type: fivetran:TeamConnectorMembership\n    properties:\n      teamId: test_team\n      connectors:\n        - connectorId: test_connector\n          role: Connector Administrator\n          createdAt: 2020-05-25T15:26:47.306509Z\n        - connectorId: test_connector\n          role: Connector Administrator\n          createdAt: 2020-05-25T15:26:47.306509Z\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_team_connector_membership` resource into your Terraform state, you need to get `team_id` and `connector_id`\n\nYou can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_team_connector_membership\" \"my_imported_fivetran_team_connector_membership\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/teamConnectorMembership:TeamConnectorMembership my_imported_fivetran_team_connector_membership {team_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_team_connector_membership.my_imported_fivetran_team_connector_membership'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "This resource allows you to create, update, and delete connector membership for teams\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testTeamConnectorMembership = new fivetran.TeamConnectorMembership(\"test_team_connector_membership\", {\n    teamId: \"test_team\",\n    connectors: [\n        {\n            connectorId: \"test_connector\",\n            role: \"Connector Administrator\",\n            createdAt: \"2020-05-25T15:26:47.306509Z\",\n        },\n        {\n            connectorId: \"test_connector\",\n            role: \"Connector Administrator\",\n            createdAt: \"2020-05-25T15:26:47.306509Z\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_team_connector_membership = fivetran.TeamConnectorMembership(\"test_team_connector_membership\",\n    team_id=\"test_team\",\n    connectors=[\n        {\n            \"connector_id\": \"test_connector\",\n            \"role\": \"Connector Administrator\",\n            \"created_at\": \"2020-05-25T15:26:47.306509Z\",\n        },\n        {\n            \"connector_id\": \"test_connector\",\n            \"role\": \"Connector Administrator\",\n            \"created_at\": \"2020-05-25T15:26:47.306509Z\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testTeamConnectorMembership = new Fivetran.TeamConnectorMembership(\"test_team_connector_membership\", new()\n    {\n        TeamId = \"test_team\",\n        Connectors = new[]\n        {\n            new Fivetran.Inputs.TeamConnectorMembershipConnectorArgs\n            {\n                ConnectorId = \"test_connector\",\n                Role = \"Connector Administrator\",\n                CreatedAt = \"2020-05-25T15:26:47.306509Z\",\n            },\n            new Fivetran.Inputs.TeamConnectorMembershipConnectorArgs\n            {\n                ConnectorId = \"test_connector\",\n                Role = \"Connector Administrator\",\n                CreatedAt = \"2020-05-25T15:26:47.306509Z\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewTeamConnectorMembership(ctx, \"test_team_connector_membership\", \u0026fivetran.TeamConnectorMembershipArgs{\n\t\t\tTeamId: pulumi.String(\"test_team\"),\n\t\t\tConnectors: fivetran.TeamConnectorMembershipConnectorArray{\n\t\t\t\t\u0026fivetran.TeamConnectorMembershipConnectorArgs{\n\t\t\t\t\tConnectorId: pulumi.String(\"test_connector\"),\n\t\t\t\t\tRole:        pulumi.String(\"Connector Administrator\"),\n\t\t\t\t\tCreatedAt:   pulumi.String(\"2020-05-25T15:26:47.306509Z\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.TeamConnectorMembershipConnectorArgs{\n\t\t\t\t\tConnectorId: pulumi.String(\"test_connector\"),\n\t\t\t\t\tRole:        pulumi.String(\"Connector Administrator\"),\n\t\t\t\t\tCreatedAt:   pulumi.String(\"2020-05-25T15:26:47.306509Z\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.TeamConnectorMembership;\nimport com.pulumi.fivetran.TeamConnectorMembershipArgs;\nimport com.pulumi.fivetran.inputs.TeamConnectorMembershipConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeamConnectorMembership = new TeamConnectorMembership(\"testTeamConnectorMembership\", TeamConnectorMembershipArgs.builder()\n            .teamId(\"test_team\")\n            .connectors(            \n                TeamConnectorMembershipConnectorArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .role(\"Connector Administrator\")\n                    .createdAt(\"2020-05-25T15:26:47.306509Z\")\n                    .build(),\n                TeamConnectorMembershipConnectorArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .role(\"Connector Administrator\")\n                    .createdAt(\"2020-05-25T15:26:47.306509Z\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeamConnectorMembership:\n    type: fivetran:TeamConnectorMembership\n    name: test_team_connector_membership\n    properties:\n      teamId: test_team\n      connectors:\n        - connectorId: test_connector\n          role: Connector Administrator\n          createdAt: 2020-05-25T15:26:47.306509Z\n        - connectorId: test_connector\n          role: Connector Administrator\n          createdAt: 2020-05-25T15:26:47.306509Z\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_team_connector_membership` resource into your Terraform state, you need to get `team_id` and `connector_id`\n\nYou can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_team_connector_membership\" \"my_imported_fivetran_team_connector_membership\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/teamConnectorMembership:TeamConnectorMembership my_imported_fivetran_team_connector_membership {team_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_team_connector_membership.my_imported_fivetran_team_connector_membership'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "connectors": {
                     "type": "array",
@@ -11989,7 +11989,7 @@
             }
         },
         "fivetran:index/teamGroupMembership:TeamGroupMembership": {
-            "description": "This resource allows you to create, update, and delete group membership for teams\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.TeamGroupMembership;\nimport com.pulumi.fivetran.TeamGroupMembershipArgs;\nimport com.pulumi.fivetran.inputs.TeamGroupMembershipGroupArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeamGroupMembership = new TeamGroupMembership(\"testTeamGroupMembership\", TeamGroupMembershipArgs.builder()\n            .teamId(\"test_team\")\n            .groups(            \n                TeamGroupMembershipGroupArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .groupId(\"test_group\")\n                    .role(\"Destination Administrator\")\n                    .build(),\n                TeamGroupMembershipGroupArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .groupId(\"test_group\")\n                    .role(\"Destination Administrator\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeamGroupMembership:\n    type: fivetran:TeamGroupMembership\n    properties:\n      teamId: test_team\n      groups:\n        - connectorId: test_connector\n          groupId: test_group\n          role: Destination Administrator\n        - connectorId: test_connector\n          groupId: test_group\n          role: Destination Administrator\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id`\n\nYou can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_team_group_membership\" \"my_imported_fivetran_team_group_membership\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/teamGroupMembership:TeamGroupMembership my_imported_fivetran_team_group_membership {team_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_team_group_membership.my_imported_fivetran_team_group_membership'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "This resource allows you to create, update, and delete group membership for teams\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.TeamGroupMembership;\nimport com.pulumi.fivetran.TeamGroupMembershipArgs;\nimport com.pulumi.fivetran.inputs.TeamGroupMembershipGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeamGroupMembership = new TeamGroupMembership(\"testTeamGroupMembership\", TeamGroupMembershipArgs.builder()\n            .teamId(\"test_team\")\n            .groups(            \n                TeamGroupMembershipGroupArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .groupId(\"test_group\")\n                    .role(\"Destination Administrator\")\n                    .build(),\n                TeamGroupMembershipGroupArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .groupId(\"test_group\")\n                    .role(\"Destination Administrator\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeamGroupMembership:\n    type: fivetran:TeamGroupMembership\n    name: test_team_group_membership\n    properties:\n      teamId: test_team\n      groups:\n        - connectorId: test_connector\n          groupId: test_group\n          role: Destination Administrator\n        - connectorId: test_connector\n          groupId: test_group\n          role: Destination Administrator\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id`\n\nYou can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_team_group_membership\" \"my_imported_fivetran_team_group_membership\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/teamGroupMembership:TeamGroupMembership my_imported_fivetran_team_group_membership {team_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_team_group_membership.my_imported_fivetran_team_group_membership'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "groups": {
                     "type": "array",
@@ -12038,7 +12038,7 @@
             }
         },
         "fivetran:index/teamUserMembership:TeamUserMembership": {
-            "description": "This resource allows you to create, update, and delete user membership for teams\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testTeamUserMembership = new fivetran.TeamUserMembership(\"testTeamUserMembership\", {\n    teamId: \"test_team\",\n    users: [\n        {\n            userId: \"test_user\",\n            role: \"Connector Administrator\",\n        },\n        {\n            userId: \"test_user\",\n            role: \"Connector Administrator\",\n        },\n    ],\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_team_user_membership = fivetran.TeamUserMembership(\"testTeamUserMembership\",\n    team_id=\"test_team\",\n    users=[\n        {\n            \"user_id\": \"test_user\",\n            \"role\": \"Connector Administrator\",\n        },\n        {\n            \"user_id\": \"test_user\",\n            \"role\": \"Connector Administrator\",\n        },\n    ],\n    opts = pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testTeamUserMembership = new Fivetran.TeamUserMembership(\"testTeamUserMembership\", new()\n    {\n        TeamId = \"test_team\",\n        Users = new[]\n        {\n            new Fivetran.Inputs.TeamUserMembershipUserArgs\n            {\n                UserId = \"test_user\",\n                Role = \"Connector Administrator\",\n            },\n            new Fivetran.Inputs.TeamUserMembershipUserArgs\n            {\n                UserId = \"test_user\",\n                Role = \"Connector Administrator\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewTeamUserMembership(ctx, \"testTeamUserMembership\", \u0026fivetran.TeamUserMembershipArgs{\n\t\t\tTeamId: pulumi.String(\"test_team\"),\n\t\t\tUsers: fivetran.TeamUserMembershipUserArray{\n\t\t\t\t\u0026fivetran.TeamUserMembershipUserArgs{\n\t\t\t\t\tUserId: pulumi.String(\"test_user\"),\n\t\t\t\t\tRole:   pulumi.String(\"Connector Administrator\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.TeamUserMembershipUserArgs{\n\t\t\t\t\tUserId: pulumi.String(\"test_user\"),\n\t\t\t\t\tRole:   pulumi.String(\"Connector Administrator\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.TeamUserMembership;\nimport com.pulumi.fivetran.TeamUserMembershipArgs;\nimport com.pulumi.fivetran.inputs.TeamUserMembershipUserArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeamUserMembership = new TeamUserMembership(\"testTeamUserMembership\", TeamUserMembershipArgs.builder()\n            .teamId(\"test_team\")\n            .users(            \n                TeamUserMembershipUserArgs.builder()\n                    .userId(\"test_user\")\n                    .role(\"Connector Administrator\")\n                    .build(),\n                TeamUserMembershipUserArgs.builder()\n                    .userId(\"test_user\")\n                    .role(\"Connector Administrator\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeamUserMembership:\n    type: fivetran:TeamUserMembership\n    properties:\n      teamId: test_team\n      users:\n        - userId: test_user\n          role: Connector Administrator\n        - userId: test_user\n          role: Connector Administrator\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id`\n\nYou can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_team_user_membership\" \"my_imported_fivetran_team_user_membership\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/teamUserMembership:TeamUserMembership my_imported_fivetran_team_user_membership {team_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "This resource allows you to create, update, and delete user membership for teams\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testTeamUserMembership = new fivetran.TeamUserMembership(\"test_team_user_membership\", {\n    teamId: \"test_team\",\n    users: [\n        {\n            userId: \"test_user\",\n            role: \"Connector Administrator\",\n        },\n        {\n            userId: \"test_user\",\n            role: \"Connector Administrator\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_team_user_membership = fivetran.TeamUserMembership(\"test_team_user_membership\",\n    team_id=\"test_team\",\n    users=[\n        {\n            \"user_id\": \"test_user\",\n            \"role\": \"Connector Administrator\",\n        },\n        {\n            \"user_id\": \"test_user\",\n            \"role\": \"Connector Administrator\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testTeamUserMembership = new Fivetran.TeamUserMembership(\"test_team_user_membership\", new()\n    {\n        TeamId = \"test_team\",\n        Users = new[]\n        {\n            new Fivetran.Inputs.TeamUserMembershipUserArgs\n            {\n                UserId = \"test_user\",\n                Role = \"Connector Administrator\",\n            },\n            new Fivetran.Inputs.TeamUserMembershipUserArgs\n            {\n                UserId = \"test_user\",\n                Role = \"Connector Administrator\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewTeamUserMembership(ctx, \"test_team_user_membership\", \u0026fivetran.TeamUserMembershipArgs{\n\t\t\tTeamId: pulumi.String(\"test_team\"),\n\t\t\tUsers: fivetran.TeamUserMembershipUserArray{\n\t\t\t\t\u0026fivetran.TeamUserMembershipUserArgs{\n\t\t\t\t\tUserId: pulumi.String(\"test_user\"),\n\t\t\t\t\tRole:   pulumi.String(\"Connector Administrator\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.TeamUserMembershipUserArgs{\n\t\t\t\t\tUserId: pulumi.String(\"test_user\"),\n\t\t\t\t\tRole:   pulumi.String(\"Connector Administrator\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.TeamUserMembership;\nimport com.pulumi.fivetran.TeamUserMembershipArgs;\nimport com.pulumi.fivetran.inputs.TeamUserMembershipUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testTeamUserMembership = new TeamUserMembership(\"testTeamUserMembership\", TeamUserMembershipArgs.builder()\n            .teamId(\"test_team\")\n            .users(            \n                TeamUserMembershipUserArgs.builder()\n                    .userId(\"test_user\")\n                    .role(\"Connector Administrator\")\n                    .build(),\n                TeamUserMembershipUserArgs.builder()\n                    .userId(\"test_user\")\n                    .role(\"Connector Administrator\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testTeamUserMembership:\n    type: fivetran:TeamUserMembership\n    name: test_team_user_membership\n    properties:\n      teamId: test_team\n      users:\n        - userId: test_user\n          role: Connector Administrator\n        - userId: test_user\n          role: Connector Administrator\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id`\n\nYou can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_team_user_membership\" \"my_imported_fivetran_team_user_membership\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/teamUserMembership:TeamUserMembership my_imported_fivetran_team_user_membership {team_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "teamId": {
                     "type": "string",
@@ -12087,7 +12087,7 @@
             }
         },
         "fivetran:index/user:User": {
-            "description": "-This resource allows you to create, update, and delete users.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst user = new fivetran.User(\"user\", {\n    email: \"user@email.address.com\",\n    familyName: \"Doe\",\n    givenName: \"John\",\n    phone: \"+353 00 0000 0000\",\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nuser = fivetran.User(\"user\",\n    email=\"user@email.address.com\",\n    family_name=\"Doe\",\n    given_name=\"John\",\n    phone=\"+353 00 0000 0000\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Fivetran.User(\"user\", new()\n    {\n        Email = \"user@email.address.com\",\n        FamilyName = \"Doe\",\n        GivenName = \"John\",\n        Phone = \"+353 00 0000 0000\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewUser(ctx, \"user\", \u0026fivetran.UserArgs{\n\t\t\tEmail:      pulumi.String(\"user@email.address.com\"),\n\t\t\tFamilyName: pulumi.String(\"Doe\"),\n\t\t\tGivenName:  pulumi.String(\"John\"),\n\t\t\tPhone:      pulumi.String(\"+353 00 0000 0000\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.User;\nimport com.pulumi.fivetran.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new User(\"user\", UserArgs.builder()\n            .email(\"user@email.address.com\")\n            .familyName(\"Doe\")\n            .givenName(\"John\")\n            .phone(\"+353 00 0000 0000\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: fivetran:User\n    properties:\n      email: user@email.address.com\n      familyName: Doe\n      givenName: John\n      phone: +353 00 0000 0000\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_user` resource into your Terraform state, you need to get `user_id`. \n\nYou can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_user\" \"my_imported_fivetran_user\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/user:User my_imported_fivetran_user {user_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_user.my_imported_fivetran_user'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "-This resource allows you to create, update, and delete users.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst user = new fivetran.User(\"user\", {\n    email: \"user@email.address.com\",\n    givenName: \"John\",\n    familyName: \"Doe\",\n    phone: \"+353 00 0000 0000\",\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nuser = fivetran.User(\"user\",\n    email=\"user@email.address.com\",\n    given_name=\"John\",\n    family_name=\"Doe\",\n    phone=\"+353 00 0000 0000\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Fivetran.User(\"user\", new()\n    {\n        Email = \"user@email.address.com\",\n        GivenName = \"John\",\n        FamilyName = \"Doe\",\n        Phone = \"+353 00 0000 0000\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewUser(ctx, \"user\", \u0026fivetran.UserArgs{\n\t\t\tEmail:      pulumi.String(\"user@email.address.com\"),\n\t\t\tGivenName:  pulumi.String(\"John\"),\n\t\t\tFamilyName: pulumi.String(\"Doe\"),\n\t\t\tPhone:      pulumi.String(\"+353 00 0000 0000\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.User;\nimport com.pulumi.fivetran.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new User(\"user\", UserArgs.builder()\n            .email(\"user@email.address.com\")\n            .givenName(\"John\")\n            .familyName(\"Doe\")\n            .phone(\"+353 00 0000 0000\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: fivetran:User\n    properties:\n      email: user@email.address.com\n      givenName: John\n      familyName: Doe\n      phone: +353 00 0000 0000\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_user` resource into your Terraform state, you need to get `user_id`. \n\nYou can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_user\" \"my_imported_fivetran_user\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/user:User my_imported_fivetran_user {user_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_user.my_imported_fivetran_user'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -12226,7 +12226,7 @@
             }
         },
         "fivetran:index/userConnectorMembership:UserConnectorMembership": {
-            "description": "This resource allows you to create, update, and delete connector membership for user\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testUserConnectorMembership = new fivetran.UserConnectorMembership(\"testUserConnectorMembership\", {\n    userId: \"test_user\",\n    connectors: [\n        {\n            connectorId: \"test_connector\",\n            role: \"Connector Administrator\",\n            createdAt: \"2020-05-25T15:26:47.306509Z\",\n        },\n        {\n            connectorId: \"test_connector\",\n            role: \"Connector Administrator\",\n            createdAt: \"2020-05-25T15:26:47.306509Z\",\n        },\n    ],\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_user_connector_membership = fivetran.UserConnectorMembership(\"testUserConnectorMembership\",\n    user_id=\"test_user\",\n    connectors=[\n        {\n            \"connector_id\": \"test_connector\",\n            \"role\": \"Connector Administrator\",\n            \"created_at\": \"2020-05-25T15:26:47.306509Z\",\n        },\n        {\n            \"connector_id\": \"test_connector\",\n            \"role\": \"Connector Administrator\",\n            \"created_at\": \"2020-05-25T15:26:47.306509Z\",\n        },\n    ],\n    opts = pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testUserConnectorMembership = new Fivetran.UserConnectorMembership(\"testUserConnectorMembership\", new()\n    {\n        UserId = \"test_user\",\n        Connectors = new[]\n        {\n            new Fivetran.Inputs.UserConnectorMembershipConnectorArgs\n            {\n                ConnectorId = \"test_connector\",\n                Role = \"Connector Administrator\",\n                CreatedAt = \"2020-05-25T15:26:47.306509Z\",\n            },\n            new Fivetran.Inputs.UserConnectorMembershipConnectorArgs\n            {\n                ConnectorId = \"test_connector\",\n                Role = \"Connector Administrator\",\n                CreatedAt = \"2020-05-25T15:26:47.306509Z\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewUserConnectorMembership(ctx, \"testUserConnectorMembership\", \u0026fivetran.UserConnectorMembershipArgs{\n\t\t\tUserId: pulumi.String(\"test_user\"),\n\t\t\tConnectors: fivetran.UserConnectorMembershipConnectorArray{\n\t\t\t\t\u0026fivetran.UserConnectorMembershipConnectorArgs{\n\t\t\t\t\tConnectorId: pulumi.String(\"test_connector\"),\n\t\t\t\t\tRole:        pulumi.String(\"Connector Administrator\"),\n\t\t\t\t\tCreatedAt:   pulumi.String(\"2020-05-25T15:26:47.306509Z\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.UserConnectorMembershipConnectorArgs{\n\t\t\t\t\tConnectorId: pulumi.String(\"test_connector\"),\n\t\t\t\t\tRole:        pulumi.String(\"Connector Administrator\"),\n\t\t\t\t\tCreatedAt:   pulumi.String(\"2020-05-25T15:26:47.306509Z\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.UserConnectorMembership;\nimport com.pulumi.fivetran.UserConnectorMembershipArgs;\nimport com.pulumi.fivetran.inputs.UserConnectorMembershipConnectorArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testUserConnectorMembership = new UserConnectorMembership(\"testUserConnectorMembership\", UserConnectorMembershipArgs.builder()\n            .userId(\"test_user\")\n            .connectors(            \n                UserConnectorMembershipConnectorArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .role(\"Connector Administrator\")\n                    .createdAt(\"2020-05-25T15:26:47.306509Z\")\n                    .build(),\n                UserConnectorMembershipConnectorArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .role(\"Connector Administrator\")\n                    .createdAt(\"2020-05-25T15:26:47.306509Z\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testUserConnectorMembership:\n    type: fivetran:UserConnectorMembership\n    properties:\n      userId: test_user\n      connectors:\n        - connectorId: test_connector\n          role: Connector Administrator\n          createdAt: 2020-05-25T15:26:47.306509Z\n        - connectorId: test_connector\n          role: Connector Administrator\n          createdAt: 2020-05-25T15:26:47.306509Z\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_user_connector_membership` resource into your Terraform state, you need to get `user_id` and `connector_id`\n\nYou can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_user_connector_membership\" \"my_imported_fivetran_user_connector_membership\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/userConnectorMembership:UserConnectorMembership my_imported_fivetran_user_connector_membership {user_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_user_connector_membership.my_imported_fivetran_user_connector_membership'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "This resource allows you to create, update, and delete connector membership for user\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testUserConnectorMembership = new fivetran.UserConnectorMembership(\"test_user_connector_membership\", {\n    userId: \"test_user\",\n    connectors: [\n        {\n            connectorId: \"test_connector\",\n            role: \"Connector Administrator\",\n            createdAt: \"2020-05-25T15:26:47.306509Z\",\n        },\n        {\n            connectorId: \"test_connector\",\n            role: \"Connector Administrator\",\n            createdAt: \"2020-05-25T15:26:47.306509Z\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_user_connector_membership = fivetran.UserConnectorMembership(\"test_user_connector_membership\",\n    user_id=\"test_user\",\n    connectors=[\n        {\n            \"connector_id\": \"test_connector\",\n            \"role\": \"Connector Administrator\",\n            \"created_at\": \"2020-05-25T15:26:47.306509Z\",\n        },\n        {\n            \"connector_id\": \"test_connector\",\n            \"role\": \"Connector Administrator\",\n            \"created_at\": \"2020-05-25T15:26:47.306509Z\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testUserConnectorMembership = new Fivetran.UserConnectorMembership(\"test_user_connector_membership\", new()\n    {\n        UserId = \"test_user\",\n        Connectors = new[]\n        {\n            new Fivetran.Inputs.UserConnectorMembershipConnectorArgs\n            {\n                ConnectorId = \"test_connector\",\n                Role = \"Connector Administrator\",\n                CreatedAt = \"2020-05-25T15:26:47.306509Z\",\n            },\n            new Fivetran.Inputs.UserConnectorMembershipConnectorArgs\n            {\n                ConnectorId = \"test_connector\",\n                Role = \"Connector Administrator\",\n                CreatedAt = \"2020-05-25T15:26:47.306509Z\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewUserConnectorMembership(ctx, \"test_user_connector_membership\", \u0026fivetran.UserConnectorMembershipArgs{\n\t\t\tUserId: pulumi.String(\"test_user\"),\n\t\t\tConnectors: fivetran.UserConnectorMembershipConnectorArray{\n\t\t\t\t\u0026fivetran.UserConnectorMembershipConnectorArgs{\n\t\t\t\t\tConnectorId: pulumi.String(\"test_connector\"),\n\t\t\t\t\tRole:        pulumi.String(\"Connector Administrator\"),\n\t\t\t\t\tCreatedAt:   pulumi.String(\"2020-05-25T15:26:47.306509Z\"),\n\t\t\t\t},\n\t\t\t\t\u0026fivetran.UserConnectorMembershipConnectorArgs{\n\t\t\t\t\tConnectorId: pulumi.String(\"test_connector\"),\n\t\t\t\t\tRole:        pulumi.String(\"Connector Administrator\"),\n\t\t\t\t\tCreatedAt:   pulumi.String(\"2020-05-25T15:26:47.306509Z\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.UserConnectorMembership;\nimport com.pulumi.fivetran.UserConnectorMembershipArgs;\nimport com.pulumi.fivetran.inputs.UserConnectorMembershipConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testUserConnectorMembership = new UserConnectorMembership(\"testUserConnectorMembership\", UserConnectorMembershipArgs.builder()\n            .userId(\"test_user\")\n            .connectors(            \n                UserConnectorMembershipConnectorArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .role(\"Connector Administrator\")\n                    .createdAt(\"2020-05-25T15:26:47.306509Z\")\n                    .build(),\n                UserConnectorMembershipConnectorArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .role(\"Connector Administrator\")\n                    .createdAt(\"2020-05-25T15:26:47.306509Z\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testUserConnectorMembership:\n    type: fivetran:UserConnectorMembership\n    name: test_user_connector_membership\n    properties:\n      userId: test_user\n      connectors:\n        - connectorId: test_connector\n          role: Connector Administrator\n          createdAt: 2020-05-25T15:26:47.306509Z\n        - connectorId: test_connector\n          role: Connector Administrator\n          createdAt: 2020-05-25T15:26:47.306509Z\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_user_connector_membership` resource into your Terraform state, you need to get `user_id` and `connector_id`\n\nYou can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_user_connector_membership\" \"my_imported_fivetran_user_connector_membership\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/userConnectorMembership:UserConnectorMembership my_imported_fivetran_user_connector_membership {user_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_user_connector_membership.my_imported_fivetran_user_connector_membership'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "connectors": {
                     "type": "array",
@@ -12275,7 +12275,7 @@
             }
         },
         "fivetran:index/userGroupMembership:UserGroupMembership": {
-            "description": "This resource allows you to create, update, and delete group membership for user\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.UserGroupMembership;\nimport com.pulumi.fivetran.UserGroupMembershipArgs;\nimport com.pulumi.fivetran.inputs.UserGroupMembershipGroupArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testUserGroupMembership = new UserGroupMembership(\"testUserGroupMembership\", UserGroupMembershipArgs.builder()\n            .userId(\"test_user\")\n            .groups(            \n                UserGroupMembershipGroupArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .groupId(\"test_group\")\n                    .role(\"Destination Administrator\")\n                    .build(),\n                UserGroupMembershipGroupArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .groupId(\"test_group\")\n                    .role(\"Destination Administrator\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testUserGroupMembership:\n    type: fivetran:UserGroupMembership\n    properties:\n      userId: test_user\n      groups:\n        - connectorId: test_connector\n          groupId: test_group\n          role: Destination Administrator\n        - connectorId: test_connector\n          groupId: test_group\n          role: Destination Administrator\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_user_group_membership` resource into your Terraform state, you need to get `user_id` and `group_id`\n\nYou can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_user_group_membership\" \"my_imported_fivetran_user_group_membership\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/userGroupMembership:UserGroupMembership my_imported_fivetran_user_group_membership {user_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_user_group_membership.my_imported_fivetran_user_group_membership'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
+            "description": "This resource allows you to create, update, and delete group membership for user\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.UserGroupMembership;\nimport com.pulumi.fivetran.UserGroupMembershipArgs;\nimport com.pulumi.fivetran.inputs.UserGroupMembershipGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testUserGroupMembership = new UserGroupMembership(\"testUserGroupMembership\", UserGroupMembershipArgs.builder()\n            .userId(\"test_user\")\n            .groups(            \n                UserGroupMembershipGroupArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .groupId(\"test_group\")\n                    .role(\"Destination Administrator\")\n                    .build(),\n                UserGroupMembershipGroupArgs.builder()\n                    .connectorId(\"test_connector\")\n                    .groupId(\"test_group\")\n                    .role(\"Destination Administrator\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testUserGroupMembership:\n    type: fivetran:UserGroupMembership\n    name: test_user_group_membership\n    properties:\n      userId: test_user\n      groups:\n        - connectorId: test_connector\n          groupId: test_group\n          role: Destination Administrator\n        - connectorId: test_connector\n          groupId: test_group\n          role: Destination Administrator\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n1. To import an existing `fivetran_user_group_membership` resource into your Terraform state, you need to get `user_id` and `group_id`\n\nYou can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).\n\n2. Define an empty resource in your `.tf` configuration:\n\nhcl\n\nresource \"fivetran_user_group_membership\" \"my_imported_fivetran_user_group_membership\" {\n\n}\n\n3. Run the `pulumi import` command:\n\n```sh\n$ pulumi import fivetran:index/userGroupMembership:UserGroupMembership my_imported_fivetran_user_group_membership {user_id}\n```\n\n4. Use the `terraform state show` command to get the values from the state:\n\nterraform state show 'fivetran_user_group_membership.my_imported_fivetran_user_group_membership'\n\n5. Copy the values and paste them to your `.tf` configuration.\n\n",
             "properties": {
                 "groups": {
                     "type": "array",
@@ -12553,7 +12553,6 @@
                         "type": "integer"
                     }
                 },
-                "type": "object",
                 "required": [
                     "connectedBy",
                     "createdAt",
@@ -12572,7 +12571,8 @@
                     "serviceVersion",
                     "succeededAt",
                     "syncFrequency"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getConnectorCertificates:getConnectorCertificates": {
@@ -12599,25 +12599,25 @@
                 "description": "A collection of values returned by getConnectorCertificates.\n",
                 "properties": {
                     "certificates": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getConnectorCertificatesCertificate:getConnectorCertificatesCertificate"
-                        }
+                        },
+                        "type": "array"
                     },
                     "connectorId": {
-                        "type": "string",
-                        "description": "The unique identifier for the target connection within the Fivetran system.\n"
+                        "description": "The unique identifier for the target connection within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the resource. Equal to target connection id.\n"
+                        "description": "The unique identifier for the resource. Equal to target connection id.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "connectorId",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getConnectorFingerprints:getConnectorFingerprints": {
@@ -12645,25 +12645,25 @@
                 "description": "A collection of values returned by getConnectorFingerprints.\n",
                 "properties": {
                     "connectorId": {
-                        "type": "string",
-                        "description": "The unique identifier for the target connection within the Fivetran system.\n"
+                        "description": "The unique identifier for the target connection within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "fingerprints": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getConnectorFingerprintsFingerprint:getConnectorFingerprintsFingerprint"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the resource. Equal to target connection id.\n"
+                        "description": "The unique identifier for the resource. Equal to target connection id.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "connectorId",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getConnectorsMetadata:getConnectorsMetadata": {
@@ -12684,20 +12684,20 @@
                 "description": "A collection of values returned by getConnectorsMetadata.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The ID of this resource.\n"
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
                     },
                     "sources": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getConnectorsMetadataSource:getConnectorsMetadataSource"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getDbtModels:getDbtModels": {
@@ -12725,25 +12725,25 @@
                 "description": "A collection of values returned by getDbtModels.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The ID of this datasource (equals to `project_id`).\n"
+                        "description": "The ID of this datasource (equals to `project_id`).\n",
+                        "type": "string"
                     },
                     "models": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getDbtModelsModel:getDbtModelsModel"
-                        }
+                        },
+                        "type": "array"
                     },
                     "projectId": {
-                        "type": "string",
-                        "description": "The unique identifier for the dbt Project within the Fivetran system.\n"
+                        "description": "The unique identifier for the dbt Project within the Fivetran system.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id",
                     "projectId"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getDbtProject:getDbtProject": {
@@ -12768,71 +12768,70 @@
                 "description": "A collection of values returned by getDbtProject.\n",
                 "properties": {
                     "createdAt": {
-                        "type": "string",
-                        "description": "The timestamp of the dbt Project creation.\n"
+                        "description": "The timestamp of the dbt Project creation.\n",
+                        "type": "string"
                     },
                     "createdById": {
-                        "type": "string",
-                        "description": "The unique identifier for the User within the Fivetran system who created the dbt Project.\n"
+                        "description": "The unique identifier for the User within the Fivetran system who created the dbt Project.\n",
+                        "type": "string"
                     },
                     "dbtVersion": {
-                        "type": "string",
-                        "description": "The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.\n"
+                        "description": "The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.\n",
+                        "type": "string"
                     },
                     "defaultSchema": {
-                        "type": "string",
-                        "description": "Default schema in destination. This production schema will contain your transformed data.\n"
+                        "description": "Default schema in destination. This production schema will contain your transformed data.\n",
+                        "type": "string"
                     },
                     "ensureReadiness": {
-                        "type": "boolean",
-                        "description": "Should resource wait for project to finish initialization. Default value: true.\n"
+                        "description": "Should resource wait for project to finish initialization. Default value: true.\n",
+                        "type": "boolean"
                     },
                     "environmentVars": {
-                        "type": "array",
+                        "description": "List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: \"DBT*VARIABLE=variable*value\"\n",
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: \"DBT*VARIABLE=variable*value\"\n"
+                        "type": "array"
                     },
                     "groupId": {
-                        "type": "string",
-                        "description": "The unique identifier for the group within the Fivetran system.\n"
+                        "description": "The unique identifier for the group within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the dbt Project within the Fivetran system.\n"
+                        "description": "The unique identifier for the dbt Project within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "models": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getDbtProjectModel:getDbtProjectModel"
-                        }
+                        },
+                        "type": "array"
                     },
                     "projectConfig": {
                         "$ref": "#/types/fivetran:index/getDbtProjectProjectConfig:getDbtProjectProjectConfig"
                     },
                     "publicKey": {
-                        "type": "string",
-                        "description": "Public key to grant Fivetran SSH access to git repository.\n"
+                        "description": "Public key to grant Fivetran SSH access to git repository.\n",
+                        "type": "string"
                     },
                     "status": {
-                        "type": "string",
-                        "description": "Status of dbt Project (NOT_READY, READY, ERROR).\n"
+                        "description": "Status of dbt Project (NOT_READY, READY, ERROR).\n",
+                        "type": "string"
                     },
                     "targetName": {
-                        "type": "string",
-                        "description": "Target name to set or override the value from the deployment.yaml\n"
+                        "description": "Target name to set or override the value from the deployment.yaml\n",
+                        "type": "string"
                     },
                     "threads": {
-                        "type": "integer",
-                        "description": "The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.\n"
+                        "description": "The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.\n",
+                        "type": "integer"
                     },
                     "type": {
-                        "type": "string",
-                        "description": "Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).\n"
+                        "description": "Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "createdAt",
                     "createdById",
@@ -12848,7 +12847,8 @@
                     "targetName",
                     "threads",
                     "type"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getDbtProjects:getDbtProjects": {
@@ -12857,21 +12857,21 @@
                 "description": "A collection of values returned by getDbtProjects.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "projects": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getDbtProjectsProject:getDbtProjectsProject"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "projects",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getDbtTransformation:getDbtTransformation": {
@@ -12896,56 +12896,55 @@
                 "description": "A collection of values returned by getDbtTransformation.\n",
                 "properties": {
                     "connectorIds": {
-                        "type": "array",
+                        "description": "Identifiers of related connectors.\n",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Identifiers of related connectors.\n"
+                        "type": "array"
                     },
                     "createdAt": {
-                        "type": "string",
-                        "description": "The timestamp of the dbt Transformation creation.\n"
+                        "description": "The timestamp of the dbt Transformation creation.\n",
+                        "type": "string"
                     },
                     "dbtModelId": {
-                        "type": "string",
-                        "description": "The unique identifier for the dbt Model within the Fivetran system.\n"
+                        "description": "The unique identifier for the dbt Model within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "dbtModelName": {
-                        "type": "string",
-                        "description": "Target dbt Model name.\n"
+                        "description": "Target dbt Model name.\n",
+                        "type": "string"
                     },
                     "dbtProjectId": {
-                        "type": "string",
-                        "description": "The unique identifier for the dbt Project within the Fivetran system.\n"
+                        "description": "The unique identifier for the dbt Project within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the dbt Transformation within the Fivetran system.\n"
+                        "description": "The unique identifier for the dbt Transformation within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "modelIds": {
-                        "type": "array",
+                        "description": "Identifiers of related models.\n",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Identifiers of related models.\n"
+                        "type": "array"
                     },
                     "outputModelName": {
-                        "type": "string",
-                        "description": "The dbt Model name.\n"
+                        "description": "The dbt Model name.\n",
+                        "type": "string"
                     },
                     "paused": {
-                        "type": "boolean",
-                        "description": "The field indicating whether the transformation will be set into the paused state. By default, the value is false.\n"
+                        "description": "The field indicating whether the transformation will be set into the paused state. By default, the value is false.\n",
+                        "type": "boolean"
                     },
                     "runTests": {
-                        "type": "boolean",
-                        "description": "The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.\n"
+                        "description": "The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.\n",
+                        "type": "boolean"
                     },
                     "schedule": {
                         "$ref": "#/types/fivetran:index/getDbtTransformationSchedule:getDbtTransformationSchedule"
                     }
                 },
-                "type": "object",
                 "required": [
                     "connectorIds",
                     "createdAt",
@@ -12957,7 +12956,8 @@
                     "outputModelName",
                     "paused",
                     "runTests"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getDestination:getDestination": {
@@ -13011,7 +13011,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "daylightSavingTimeEnabled",
                     "groupId",
@@ -13022,7 +13021,8 @@
                     "service",
                     "setupStatus",
                     "timeZoneOffset"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getDestinationCertificates:getDestinationCertificates": {
@@ -13049,25 +13049,25 @@
                 "description": "A collection of values returned by getDestinationCertificates.\n",
                 "properties": {
                     "certificates": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getDestinationCertificatesCertificate:getDestinationCertificatesCertificate"
-                        }
+                        },
+                        "type": "array"
                     },
                     "destinationId": {
-                        "type": "string",
-                        "description": "The unique identifier for the target destination within the Fivetran system.\n"
+                        "description": "The unique identifier for the target destination within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the resource. Equal to target destination id.\n"
+                        "description": "The unique identifier for the resource. Equal to target destination id.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "destinationId",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getDestinationFingerprints:getDestinationFingerprints": {
@@ -13095,25 +13095,25 @@
                 "description": "A collection of values returned by getDestinationFingerprints.\n",
                 "properties": {
                     "destinationId": {
-                        "type": "string",
-                        "description": "The unique identifier for the target destination within the Fivetran system.\n"
+                        "description": "The unique identifier for the target destination within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "fingerprints": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getDestinationFingerprintsFingerprint:getDestinationFingerprintsFingerprint"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the resource. Equal to target destination id.\n"
+                        "description": "The unique identifier for the resource. Equal to target destination id.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "destinationId",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getExternalLogging:getExternalLogging": {
@@ -13145,33 +13145,33 @@
                         "$ref": "#/types/fivetran:index/getExternalLoggingConfig:getExternalLoggingConfig"
                     },
                     "enabled": {
-                        "type": "boolean",
-                        "description": "The boolean value specifying whether the log service is enabled.\n"
+                        "description": "The boolean value specifying whether the log service is enabled.\n",
+                        "type": "boolean"
                     },
                     "groupId": {
-                        "type": "string",
-                        "description": "The unique identifier for the log service within the Fivetran system.\n"
+                        "description": "The unique identifier for the log service within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the log service within the Fivetran system.\n"
+                        "description": "The unique identifier for the log service within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "runSetupTests": {
-                        "type": "boolean",
-                        "description": "Specifies whether the setup tests should be run automatically. The default value is TRUE.\n"
+                        "description": "Specifies whether the setup tests should be run automatically. The default value is TRUE.\n",
+                        "type": "boolean"
                     },
                     "service": {
-                        "type": "string",
-                        "description": "The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.\n"
+                        "description": "The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "enabled",
                     "groupId",
                     "id",
                     "service"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getGroup:getGroup": {
@@ -13193,29 +13193,29 @@
                 "description": "A collection of values returned by getGroup.\n",
                 "properties": {
                     "createdAt": {
-                        "type": "string",
-                        "description": "The timestamp of when the group was created in your account.\n"
+                        "description": "The timestamp of when the group was created in your account.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the group within the Fivetran system.\n"
+                        "description": "The unique identifier for the group within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "lastUpdated": {
-                        "type": "string",
-                        "description": "The timestamp of when the resource/datasource was updated last time.\n"
+                        "description": "The timestamp of when the resource/datasource was updated last time.\n",
+                        "type": "string"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The name of the group within your account.\n"
+                        "description": "The name of the group within your account.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "createdAt",
                     "id",
                     "lastUpdated",
                     "name"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getGroupConnectors:getGroupConnectors": {
@@ -13247,24 +13247,24 @@
                 "description": "A collection of values returned by getGroupConnectors.\n",
                 "properties": {
                     "connectors": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getGroupConnectorsConnector:getGroupConnectorsConnector"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The ID of this resource.\n"
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
                     },
                     "schema": {
-                        "type": "string",
-                        "description": "Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.\n"
+                        "description": "Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getGroupServiceAccount:getGroupServiceAccount": {
@@ -13286,19 +13286,19 @@
                 "description": "A collection of values returned by getGroupServiceAccount.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the group within the Fivetran system.\n"
+                        "description": "The unique identifier for the group within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "serviceAccount": {
-                        "type": "string",
-                        "description": "Fivetran service account associated with the group.\n"
+                        "description": "Fivetran service account associated with the group.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id",
                     "serviceAccount"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getGroupSshKey:getGroupSshKey": {
@@ -13320,19 +13320,19 @@
                 "description": "A collection of values returned by getGroupSshKey.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the group within the Fivetran system.\n"
+                        "description": "The unique identifier for the group within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "publicKey": {
-                        "type": "string",
-                        "description": "Public key from SSH key pair associated with the group.\n"
+                        "description": "Public key from SSH key pair associated with the group.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id",
                     "publicKey"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getGroupUsers:getGroupUsers": {
@@ -13360,20 +13360,20 @@
                 "description": "A collection of values returned by getGroupUsers.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.\n"
+                        "description": "The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.\n",
+                        "type": "string"
                     },
                     "users": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getGroupUsersUser:getGroupUsersUser"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getGroups:getGroups": {
@@ -13394,20 +13394,20 @@
                 "description": "A collection of values returned by getGroups.\n",
                 "properties": {
                     "groups": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getGroupsGroup:getGroupsGroup"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The ID of this resource.\n"
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent": {
@@ -13429,36 +13429,36 @@
                 "description": "A collection of values returned by getLocalProcessingAgent.\n",
                 "properties": {
                     "displayName": {
-                        "type": "string",
-                        "description": "The unique name for the local processing agent.\n"
+                        "description": "The unique name for the local processing agent.\n",
+                        "type": "string"
                     },
                     "groupId": {
-                        "type": "string",
-                        "description": "The unique identifier for the Group within the Fivetran system.\n"
+                        "description": "The unique identifier for the Group within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the local processing agent within your account.\n"
+                        "description": "The unique identifier for the local processing agent within your account.\n",
+                        "type": "string"
                     },
                     "registeredAt": {
-                        "type": "string",
-                        "description": "The timestamp of the time the local processing agent was created in your account.\n"
+                        "description": "The timestamp of the time the local processing agent was created in your account.\n",
+                        "type": "string"
                     },
                     "usages": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getLocalProcessingAgentUsage:getLocalProcessingAgentUsage"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "displayName",
                     "groupId",
                     "id",
                     "registeredAt",
                     "usages"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents": {
@@ -13467,21 +13467,21 @@
                 "description": "A collection of values returned by getLocalProcessingAgents.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "items": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getLocalProcessingAgentsItem:getLocalProcessingAgentsItem"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "items",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getProxyAgent:getProxyAgent": {
@@ -13503,35 +13503,34 @@
                 "description": "A collection of values returned by getProxyAgent.\n",
                 "properties": {
                     "createdBy": {
-                        "type": "string",
-                        "description": "The actor who created the proxy agent.\n"
+                        "description": "The actor who created the proxy agent.\n",
+                        "type": "string"
                     },
                     "displayName": {
-                        "type": "string",
-                        "description": "Proxy agent name.\n"
+                        "description": "Proxy agent name.\n",
+                        "type": "string"
                     },
                     "groupRegion": {
-                        "type": "string",
-                        "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                        "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the proxy within your account.\n"
+                        "description": "The unique identifier for the proxy within your account.\n",
+                        "type": "string"
                     },
                     "registredAt": {
-                        "type": "string",
-                        "description": "The timestamp of the time the proxy agent was created in your account.\n"
+                        "description": "The timestamp of the time the proxy agent was created in your account.\n",
+                        "type": "string"
                     },
                     "salt": {
-                        "type": "string",
-                        "description": "The salt.\n"
+                        "description": "The salt.\n",
+                        "type": "string"
                     },
                     "token": {
-                        "type": "string",
-                        "description": "The auth token.\n"
+                        "description": "The auth token.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "createdBy",
                     "displayName",
@@ -13540,7 +13539,8 @@
                     "registredAt",
                     "salt",
                     "token"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getProxyAgents:getProxyAgents": {
@@ -13561,20 +13561,20 @@
                 "description": "A collection of values returned by getProxyAgents.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "items": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getProxyAgentsItem:getProxyAgentsItem"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getRoles:getRoles": {
@@ -13595,20 +13595,20 @@
                 "description": "A collection of values returned by getRoles.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The ID of this resource.\n"
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
                     },
                     "roles": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getRolesRole:getRolesRole"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getTeam:getTeam": {
@@ -13630,29 +13630,29 @@
                 "description": "A collection of values returned by getTeam.\n",
                 "properties": {
                     "description": {
-                        "type": "string",
-                        "description": "The description of the team within your account.\n"
+                        "description": "The description of the team within your account.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the team within your account.\n"
+                        "description": "The unique identifier for the team within your account.\n",
+                        "type": "string"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The name of the team within your account.\n"
+                        "description": "The name of the team within your account.\n",
+                        "type": "string"
                     },
                     "role": {
-                        "type": "string",
-                        "description": "The account role of the team.\n"
+                        "description": "The account role of the team.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "description",
                     "id",
                     "name",
                     "role"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships": {
@@ -13680,25 +13680,25 @@
                 "description": "A collection of values returned by getTeamConnectorMemberships.\n",
                 "properties": {
                     "connectors": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getTeamConnectorMembershipsConnector:getTeamConnectorMembershipsConnector"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for resource.\n"
+                        "description": "The unique identifier for resource.\n",
+                        "type": "string"
                     },
                     "teamId": {
-                        "type": "string",
-                        "description": "The unique identifier for the team within your account.\n"
+                        "description": "The unique identifier for the team within your account.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id",
                     "teamId"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getTeamGroupMemberships:getTeamGroupMemberships": {
@@ -13726,25 +13726,25 @@
                 "description": "A collection of values returned by getTeamGroupMemberships.\n",
                 "properties": {
                     "groups": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getTeamGroupMembershipsGroup:getTeamGroupMembershipsGroup"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for resource.\n"
+                        "description": "The unique identifier for resource.\n",
+                        "type": "string"
                     },
                     "teamId": {
-                        "type": "string",
-                        "description": "The unique identifier for the team within your account.\n"
+                        "description": "The unique identifier for the team within your account.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id",
                     "teamId"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getTeamUserMemberships:getTeamUserMemberships": {
@@ -13772,25 +13772,25 @@
                 "description": "A collection of values returned by getTeamUserMemberships.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for resource.\n"
+                        "description": "The unique identifier for resource.\n",
+                        "type": "string"
                     },
                     "teamId": {
-                        "type": "string",
-                        "description": "The unique identifier for the team within your account.\n"
+                        "description": "The unique identifier for the team within your account.\n",
+                        "type": "string"
                     },
                     "users": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getTeamUserMembershipsUser:getTeamUserMembershipsUser"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id",
                     "teamId"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getTeams:getTeams": {
@@ -13815,14 +13815,14 @@
                 "description": "A collection of values returned by getTeams.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The ID of this resource.\n"
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
                     },
                     "teams": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getTeamsTeam:getTeamsTeam"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
                 "type": "object"
@@ -13847,51 +13847,50 @@
                 "description": "A collection of values returned by getUser.\n",
                 "properties": {
                     "createdAt": {
-                        "type": "string",
-                        "description": "The timestamp that the user created their Fivetran account.\n"
+                        "description": "The timestamp that the user created their Fivetran account.\n",
+                        "type": "string"
                     },
                     "email": {
-                        "type": "string",
-                        "description": "The email address that the user has associated with their user profile.\n"
+                        "description": "The email address that the user has associated with their user profile.\n",
+                        "type": "string"
                     },
                     "familyName": {
-                        "type": "string",
-                        "description": "The last name of the user.\n"
+                        "description": "The last name of the user.\n",
+                        "type": "string"
                     },
                     "givenName": {
-                        "type": "string",
-                        "description": "The first name of the user.\n"
+                        "description": "The first name of the user.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The unique identifier for the user within the Fivetran system.\n"
+                        "description": "The unique identifier for the user within the Fivetran system.\n",
+                        "type": "string"
                     },
                     "invited": {
-                        "type": "boolean",
-                        "description": "The field indicates whether the user has been invited to your account.\n"
+                        "description": "The field indicates whether the user has been invited to your account.\n",
+                        "type": "boolean"
                     },
                     "loggedInAt": {
-                        "type": "string",
-                        "description": "The last time that the user has logged into their Fivetran account.\n"
+                        "description": "The last time that the user has logged into their Fivetran account.\n",
+                        "type": "string"
                     },
                     "phone": {
-                        "type": "string",
-                        "description": "The phone number of the user.\n"
+                        "description": "The phone number of the user.\n",
+                        "type": "string"
                     },
                     "picture": {
-                        "type": "string",
-                        "description": "The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')\n"
+                        "description": "The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')\n",
+                        "type": "string"
                     },
                     "role": {
-                        "type": "string",
-                        "description": "The role that you would like to assign to the user.\n"
+                        "description": "The role that you would like to assign to the user.\n",
+                        "type": "string"
                     },
                     "verified": {
-                        "type": "boolean",
-                        "description": "The field indicates whether the user has verified their email address in the account creation process.\n"
+                        "description": "The field indicates whether the user has verified their email address in the account creation process.\n",
+                        "type": "boolean"
                     }
                 },
-                "type": "object",
                 "required": [
                     "createdAt",
                     "email",
@@ -13904,7 +13903,8 @@
                     "picture",
                     "role",
                     "verified"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships": {
@@ -13932,25 +13932,25 @@
                 "description": "A collection of values returned by getUserConnectorMemberships.\n",
                 "properties": {
                     "connectors": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getUserConnectorMembershipsConnector:getUserConnectorMembershipsConnector"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "userId": {
-                        "type": "string",
-                        "description": "The unique identifier for the user within your account.\n"
+                        "description": "The unique identifier for the user within your account.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "userId",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getUserGroupMemberships:getUserGroupMemberships": {
@@ -13978,25 +13978,25 @@
                 "description": "A collection of values returned by getUserGroupMemberships.\n",
                 "properties": {
                     "groups": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getUserGroupMembershipsGroup:getUserGroupMembershipsGroup"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "userId": {
-                        "type": "string",
-                        "description": "The unique identifier for the user within your account.\n"
+                        "description": "The unique identifier for the user within your account.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "userId",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getUsers:getUsers": {
@@ -14021,14 +14021,14 @@
                 "description": "A collection of values returned by getUsers.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The ID of this resource.\n"
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
                     },
                     "users": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getUsersUser:getUsersUser"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
                 "type": "object"
@@ -14053,50 +14053,49 @@
                 "description": "A collection of values returned by getWebhook.\n",
                 "properties": {
                     "active": {
-                        "type": "boolean",
-                        "description": "Boolean, if set to true, webhooks are immediately sent in response to events\n"
+                        "description": "Boolean, if set to true, webhooks are immediately sent in response to events\n",
+                        "type": "boolean"
                     },
                     "createdAt": {
-                        "type": "string",
-                        "description": "The webhook creation timestamp\n"
+                        "description": "The webhook creation timestamp\n",
+                        "type": "string"
                     },
                     "createdBy": {
-                        "type": "string",
-                        "description": "The ID of the user who created the webhook.\n"
+                        "description": "The ID of the user who created the webhook.\n",
+                        "type": "string"
                     },
                     "events": {
-                        "type": "array",
+                        "description": "The array of event types\n",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The array of event types\n"
+                        "type": "array"
                     },
                     "groupId": {
-                        "type": "string",
-                        "description": "The group ID\n"
+                        "description": "The group ID\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The webhook ID\n"
+                        "description": "The webhook ID\n",
+                        "type": "string"
                     },
                     "runTests": {
-                        "type": "boolean",
-                        "description": "Specifies whether the setup tests should be run\n"
+                        "description": "Specifies whether the setup tests should be run\n",
+                        "type": "boolean"
                     },
                     "secret": {
-                        "type": "string",
-                        "description": "The secret string used for payload signing and masked in the response.\n"
+                        "description": "The secret string used for payload signing and masked in the response.\n",
+                        "type": "string"
                     },
                     "type": {
-                        "type": "string",
-                        "description": "The webhook type (group, account)\n"
+                        "description": "The webhook type (group, account)\n",
+                        "type": "string"
                     },
                     "url": {
-                        "type": "string",
-                        "description": "Your webhooks URL endpoint for your application\n"
+                        "description": "Your webhooks URL endpoint for your application\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "active",
                     "createdAt",
@@ -14108,7 +14107,8 @@
                     "secret",
                     "type",
                     "url"
-                ]
+                ],
+                "type": "object"
             }
         },
         "fivetran:index/getWebhooks:getWebhooks": {
@@ -14117,21 +14117,21 @@
                 "description": "A collection of values returned by getWebhooks.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "webhooks": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/getWebhooksWebhook:getWebhooksWebhook"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "webhooks",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         }
     }

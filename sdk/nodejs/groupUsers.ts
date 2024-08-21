@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
  *
- * const groupUsers = new fivetran.GroupUsers("groupUsers", {
- *     groupId: fivetran_group.group.id,
+ * const groupUsers = new fivetran.GroupUsers("group_users", {
+ *     groupId: group.id,
  *     users: [
  *         {
  *             email: "mail@example.com",

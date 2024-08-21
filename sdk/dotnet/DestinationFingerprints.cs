@@ -23,9 +23,9 @@ namespace Footholdtech.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myDestinationApprovedFingerprints = new Fivetran.DestinationFingerprints("myDestinationApprovedFingerprints", new()
+    ///     var myDestinationApprovedFingerprints = new Fivetran.DestinationFingerprints("my_destination_approved_fingerprints", new()
     ///     {
-    ///         DestinationId = fivetran_destination.My_destination.Id,
+    ///         DestinationId = myDestination.Id,
     ///         Fingerprints = new[]
     ///         {
     ///             new Fivetran.Inputs.DestinationFingerprintsFingerprintArgs

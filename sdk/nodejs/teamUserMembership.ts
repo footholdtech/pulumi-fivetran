@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
  *
- * const testTeamUserMembership = new fivetran.TeamUserMembership("testTeamUserMembership", {
+ * const testTeamUserMembership = new fivetran.TeamUserMembership("test_team_user_membership", {
  *     teamId: "test_team",
  *     users: [
  *         {
@@ -27,8 +27,6 @@ import * as utilities from "./utilities";
  *             role: "Connector Administrator",
  *         },
  *     ],
- * }, {
- *     provider: fivetran_provider,
  * });
  * ```
  *

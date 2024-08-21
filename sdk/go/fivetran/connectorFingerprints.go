@@ -28,8 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.NewConnectorFingerprints(ctx, "myConnectorApprovedFingerprints", &fivetran.ConnectorFingerprintsArgs{
-//				ConnectorId: pulumi.Any(fivetran_connector.My_connector.Id),
+//			_, err := fivetran.NewConnectorFingerprints(ctx, "my_connector_approved_fingerprints", &fivetran.ConnectorFingerprintsArgs{
+//				ConnectorId: pulumi.Any(myConnector.Id),
 //				Fingerprints: fivetran.ConnectorFingerprintsFingerprintArray{
 //					&fivetran.ConnectorFingerprintsFingerprintArgs{
 //						Hash:      pulumi.String("jhgfJfgrI6yy..."),

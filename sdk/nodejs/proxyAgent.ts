@@ -13,11 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@footholdtech/fivetran";
  *
- * const testProxyAgent = new fivetran.ProxyAgent("testProxyAgent", {
+ * const testProxyAgent = new fivetran.ProxyAgent("test_proxy_agent", {
  *     displayName: "display_name",
  *     groupRegion: "group_region",
- * }, {
- *     provider: fivetran_provider,
  * });
  * ```
  */

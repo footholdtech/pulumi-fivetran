@@ -23,13 +23,11 @@ namespace Footholdtech.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testTeam = new Fivetran.Team("testTeam", new()
+    ///     var testTeam = new Fivetran.Team("test_team", new()
     ///     {
+    ///         Name = "test_team",
     ///         Description = "test_description",
     ///         Role = "Account Reviewer",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = fivetran_provider,
     ///     });
     /// 
     /// });
