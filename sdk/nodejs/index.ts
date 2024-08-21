@@ -150,6 +150,26 @@ export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
 
+export { GetLocalProcessingAgentArgs, GetLocalProcessingAgentResult, GetLocalProcessingAgentOutputArgs } from "./getLocalProcessingAgent";
+export const getLocalProcessingAgent: typeof import("./getLocalProcessingAgent").getLocalProcessingAgent = null as any;
+export const getLocalProcessingAgentOutput: typeof import("./getLocalProcessingAgent").getLocalProcessingAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getLocalProcessingAgent","getLocalProcessingAgentOutput"], () => require("./getLocalProcessingAgent"));
+
+export { GetLocalProcessingAgentsResult } from "./getLocalProcessingAgents";
+export const getLocalProcessingAgents: typeof import("./getLocalProcessingAgents").getLocalProcessingAgents = null as any;
+export const getLocalProcessingAgentsOutput: typeof import("./getLocalProcessingAgents").getLocalProcessingAgentsOutput = null as any;
+utilities.lazyLoad(exports, ["getLocalProcessingAgents","getLocalProcessingAgentsOutput"], () => require("./getLocalProcessingAgents"));
+
+export { GetProxyAgentArgs, GetProxyAgentResult, GetProxyAgentOutputArgs } from "./getProxyAgent";
+export const getProxyAgent: typeof import("./getProxyAgent").getProxyAgent = null as any;
+export const getProxyAgentOutput: typeof import("./getProxyAgent").getProxyAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getProxyAgent","getProxyAgentOutput"], () => require("./getProxyAgent"));
+
+export { GetProxyAgentsArgs, GetProxyAgentsResult, GetProxyAgentsOutputArgs } from "./getProxyAgents";
+export const getProxyAgents: typeof import("./getProxyAgents").getProxyAgents = null as any;
+export const getProxyAgentsOutput: typeof import("./getProxyAgents").getProxyAgentsOutput = null as any;
+utilities.lazyLoad(exports, ["getProxyAgents","getProxyAgentsOutput"], () => require("./getProxyAgents"));
+
 export { GetRolesArgs, GetRolesResult, GetRolesOutputArgs } from "./getRoles";
 export const getRoles: typeof import("./getRoles").getRoles = null as any;
 export const getRolesOutput: typeof import("./getRoles").getRolesOutput = null as any;
@@ -220,10 +240,20 @@ export type GroupUsers = import("./groupUsers").GroupUsers;
 export const GroupUsers: typeof import("./groupUsers").GroupUsers = null as any;
 utilities.lazyLoad(exports, ["GroupUsers"], () => require("./groupUsers"));
 
+export { LocalProcessingAgentArgs, LocalProcessingAgentState } from "./localProcessingAgent";
+export type LocalProcessingAgent = import("./localProcessingAgent").LocalProcessingAgent;
+export const LocalProcessingAgent: typeof import("./localProcessingAgent").LocalProcessingAgent = null as any;
+utilities.lazyLoad(exports, ["LocalProcessingAgent"], () => require("./localProcessingAgent"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { ProxyAgentArgs, ProxyAgentState } from "./proxyAgent";
+export type ProxyAgent = import("./proxyAgent").ProxyAgent;
+export const ProxyAgent: typeof import("./proxyAgent").ProxyAgent = null as any;
+utilities.lazyLoad(exports, ["ProxyAgent"], () => require("./proxyAgent"));
 
 export { TeamArgs, TeamState } from "./team";
 export type Team = import("./team").Team;
@@ -305,6 +335,10 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "fivetran:index/groupUsers:GroupUsers":
                 return new GroupUsers(name, <any>undefined, { urn })
+            case "fivetran:index/localProcessingAgent:LocalProcessingAgent":
+                return new LocalProcessingAgent(name, <any>undefined, { urn })
+            case "fivetran:index/proxyAgent:ProxyAgent":
+                return new ProxyAgent(name, <any>undefined, { urn })
             case "fivetran:index/team:Team":
                 return new Team(name, <any>undefined, { urn })
             case "fivetran:index/teamConnectorMembership:TeamConnectorMembership":
@@ -339,6 +373,8 @@ pulumi.runtime.registerResourceModule("fivetran", "index/destinationFingerprints
 pulumi.runtime.registerResourceModule("fivetran", "index/externalLogging", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/group", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/groupUsers", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/localProcessingAgent", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/proxyAgent", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/team", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/teamConnectorMembership", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/teamGroupMembership", _module)

@@ -47,6 +47,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "fivetran:index/groupUsers:GroupUsers":
 		r = &GroupUsers{}
+	case "fivetran:index/localProcessingAgent:LocalProcessingAgent":
+		r = &LocalProcessingAgent{}
+	case "fivetran:index/proxyAgent:ProxyAgent":
+		r = &ProxyAgent{}
 	case "fivetran:index/team:Team":
 		r = &Team{}
 	case "fivetran:index/teamConnectorMembership:TeamConnectorMembership":
@@ -157,6 +161,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"fivetran",
 		"index/groupUsers",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/localProcessingAgent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/proxyAgent",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

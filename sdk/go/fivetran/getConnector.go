@@ -58,23 +58,26 @@ type LookupConnectorArgs struct {
 
 // A collection of values returned by getConnector.
 type LookupConnectorResult struct {
-	Config            *GetConnectorConfig            `pulumi:"config"`
-	ConnectedBy       string                         `pulumi:"connectedBy"`
-	CreatedAt         string                         `pulumi:"createdAt"`
-	DailySyncTime     string                         `pulumi:"dailySyncTime"`
-	DestinationSchema *GetConnectorDestinationSchema `pulumi:"destinationSchema"`
-	FailedAt          string                         `pulumi:"failedAt"`
-	GroupId           string                         `pulumi:"groupId"`
-	Id                string                         `pulumi:"id"`
-	Name              string                         `pulumi:"name"`
-	PauseAfterTrial   bool                           `pulumi:"pauseAfterTrial"`
-	Paused            bool                           `pulumi:"paused"`
-	ScheduleType      string                         `pulumi:"scheduleType"`
-	Service           string                         `pulumi:"service"`
-	ServiceVersion    string                         `pulumi:"serviceVersion"`
-	Status            *GetConnectorStatus            `pulumi:"status"`
-	SucceededAt       string                         `pulumi:"succeededAt"`
-	SyncFrequency     int                            `pulumi:"syncFrequency"`
+	Config                 *GetConnectorConfig            `pulumi:"config"`
+	ConnectedBy            string                         `pulumi:"connectedBy"`
+	CreatedAt              string                         `pulumi:"createdAt"`
+	DailySyncTime          string                         `pulumi:"dailySyncTime"`
+	DestinationSchema      *GetConnectorDestinationSchema `pulumi:"destinationSchema"`
+	FailedAt               string                         `pulumi:"failedAt"`
+	GroupId                string                         `pulumi:"groupId"`
+	Id                     string                         `pulumi:"id"`
+	LocalProcessingAgentId string                         `pulumi:"localProcessingAgentId"`
+	Name                   string                         `pulumi:"name"`
+	NetworkingMethod       string                         `pulumi:"networkingMethod"`
+	PauseAfterTrial        bool                           `pulumi:"pauseAfterTrial"`
+	Paused                 bool                           `pulumi:"paused"`
+	ProxyAgentId           string                         `pulumi:"proxyAgentId"`
+	ScheduleType           string                         `pulumi:"scheduleType"`
+	Service                string                         `pulumi:"service"`
+	ServiceVersion         string                         `pulumi:"serviceVersion"`
+	Status                 *GetConnectorStatus            `pulumi:"status"`
+	SucceededAt            string                         `pulumi:"succeededAt"`
+	SyncFrequency          int                            `pulumi:"syncFrequency"`
 }
 
 func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorResultOutput {
@@ -149,8 +152,16 @@ func (o LookupConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o LookupConnectorResultOutput) LocalProcessingAgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.LocalProcessingAgentId }).(pulumi.StringOutput)
+}
+
 func (o LookupConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupConnectorResultOutput) NetworkingMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.NetworkingMethod }).(pulumi.StringOutput)
 }
 
 func (o LookupConnectorResultOutput) PauseAfterTrial() pulumi.BoolOutput {
@@ -159,6 +170,10 @@ func (o LookupConnectorResultOutput) PauseAfterTrial() pulumi.BoolOutput {
 
 func (o LookupConnectorResultOutput) Paused() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupConnectorResult) bool { return v.Paused }).(pulumi.BoolOutput)
+}
+
+func (o LookupConnectorResultOutput) ProxyAgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.ProxyAgentId }).(pulumi.StringOutput)
 }
 
 func (o LookupConnectorResultOutput) ScheduleType() pulumi.StringOutput {

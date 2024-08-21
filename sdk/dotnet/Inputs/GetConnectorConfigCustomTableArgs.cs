@@ -67,6 +67,9 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("configType", required: true)]
         public Input<string> ConfigType { get; set; } = null!;
 
+        [Input("engagedViewAttributionWindow", required: true)]
+        public Input<string> EngagedViewAttributionWindow { get; set; } = null!;
+
         [Input("fields", required: true)]
         private InputList<string>? _fields;
 

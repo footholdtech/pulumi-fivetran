@@ -47,6 +47,9 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */
     public readonly schema!: pulumi.Output<outputs.ConnectorSchemaConfigSchema[] | undefined>;
+    /**
+     * The value specifying how new source data is handled.
+     */
     public readonly schemaChangeHandling!: pulumi.Output<string>;
     /**
      * Map of schema configurations.
@@ -57,6 +60,12 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
      */
     public readonly schemasJson!: pulumi.Output<string | undefined>;
     public readonly timeouts!: pulumi.Output<outputs.ConnectorSchemaConfigTimeouts | undefined>;
+    /**
+     * The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+     * fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+     * names. The resource will try to fetch columns for every configured table and verify column names.
+     */
+    public readonly validationLevel!: pulumi.Output<string>;
 
     /**
      * Create a ConnectorSchemaConfig resource with the given unique name, arguments, and options.
@@ -77,6 +86,7 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
             resourceInputs["schemas"] = state ? state.schemas : undefined;
             resourceInputs["schemasJson"] = state ? state.schemasJson : undefined;
             resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["validationLevel"] = state ? state.validationLevel : undefined;
         } else {
             const args = argsOrState as ConnectorSchemaConfigArgs | undefined;
             if ((!args || args.connectorId === undefined) && !opts.urn) {
@@ -91,6 +101,7 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
             resourceInputs["schemas"] = args ? args.schemas : undefined;
             resourceInputs["schemasJson"] = args ? args.schemasJson : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["validationLevel"] = args ? args.validationLevel : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectorSchemaConfig.__pulumiType, name, resourceInputs, opts);
@@ -109,6 +120,9 @@ export interface ConnectorSchemaConfigState {
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */
     schema?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[]>;
+    /**
+     * The value specifying how new source data is handled.
+     */
     schemaChangeHandling?: pulumi.Input<string>;
     /**
      * Map of schema configurations.
@@ -119,6 +133,12 @@ export interface ConnectorSchemaConfigState {
      */
     schemasJson?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.ConnectorSchemaConfigTimeouts>;
+    /**
+     * The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+     * fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+     * names. The resource will try to fetch columns for every configured table and verify column names.
+     */
+    validationLevel?: pulumi.Input<string>;
 }
 
 /**
@@ -133,6 +153,9 @@ export interface ConnectorSchemaConfigArgs {
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */
     schema?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[]>;
+    /**
+     * The value specifying how new source data is handled.
+     */
     schemaChangeHandling: pulumi.Input<string>;
     /**
      * Map of schema configurations.
@@ -143,4 +166,10 @@ export interface ConnectorSchemaConfigArgs {
      */
     schemasJson?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.ConnectorSchemaConfigTimeouts>;
+    /**
+     * The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+     * fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+     * names. The resource will try to fetch columns for every configured table and verify column names.
+     */
+    validationLevel?: pulumi.Input<string>;
 }

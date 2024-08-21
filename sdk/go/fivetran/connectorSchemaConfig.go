@@ -21,13 +21,18 @@ type ConnectorSchemaConfig struct {
 	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId pulumi.StringOutput `pulumi:"connectorId"`
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
-	Schema               ConnectorSchemaConfigSchemaArrayOutput `pulumi:"schema"`
-	SchemaChangeHandling pulumi.StringOutput                    `pulumi:"schemaChangeHandling"`
+	Schema ConnectorSchemaConfigSchemaArrayOutput `pulumi:"schema"`
+	// The value specifying how new source data is handled.
+	SchemaChangeHandling pulumi.StringOutput `pulumi:"schemaChangeHandling"`
 	// Map of schema configurations.
 	Schemas ConnectorSchemaConfigSchemasMapOutput `pulumi:"schemas"`
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
 	SchemasJson pulumi.StringPtrOutput                 `pulumi:"schemasJson"`
 	Timeouts    ConnectorSchemaConfigTimeoutsPtrOutput `pulumi:"timeouts"`
+	// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+	// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+	// names. The resource will try to fetch columns for every configured table and verify column names.
+	ValidationLevel pulumi.StringOutput `pulumi:"validationLevel"`
 }
 
 // NewConnectorSchemaConfig registers a new resource with the given unique name, arguments, and options.
@@ -69,26 +74,36 @@ type connectorSchemaConfigState struct {
 	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId *string `pulumi:"connectorId"`
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
-	Schema               []ConnectorSchemaConfigSchema `pulumi:"schema"`
-	SchemaChangeHandling *string                       `pulumi:"schemaChangeHandling"`
+	Schema []ConnectorSchemaConfigSchema `pulumi:"schema"`
+	// The value specifying how new source data is handled.
+	SchemaChangeHandling *string `pulumi:"schemaChangeHandling"`
 	// Map of schema configurations.
 	Schemas map[string]ConnectorSchemaConfigSchemas `pulumi:"schemas"`
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
 	SchemasJson *string                        `pulumi:"schemasJson"`
 	Timeouts    *ConnectorSchemaConfigTimeouts `pulumi:"timeouts"`
+	// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+	// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+	// names. The resource will try to fetch columns for every configured table and verify column names.
+	ValidationLevel *string `pulumi:"validationLevel"`
 }
 
 type ConnectorSchemaConfigState struct {
 	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId pulumi.StringPtrInput
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
-	Schema               ConnectorSchemaConfigSchemaArrayInput
+	Schema ConnectorSchemaConfigSchemaArrayInput
+	// The value specifying how new source data is handled.
 	SchemaChangeHandling pulumi.StringPtrInput
 	// Map of schema configurations.
 	Schemas ConnectorSchemaConfigSchemasMapInput
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
 	SchemasJson pulumi.StringPtrInput
 	Timeouts    ConnectorSchemaConfigTimeoutsPtrInput
+	// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+	// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+	// names. The resource will try to fetch columns for every configured table and verify column names.
+	ValidationLevel pulumi.StringPtrInput
 }
 
 func (ConnectorSchemaConfigState) ElementType() reflect.Type {
@@ -99,13 +114,18 @@ type connectorSchemaConfigArgs struct {
 	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId string `pulumi:"connectorId"`
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
-	Schema               []ConnectorSchemaConfigSchema `pulumi:"schema"`
-	SchemaChangeHandling string                        `pulumi:"schemaChangeHandling"`
+	Schema []ConnectorSchemaConfigSchema `pulumi:"schema"`
+	// The value specifying how new source data is handled.
+	SchemaChangeHandling string `pulumi:"schemaChangeHandling"`
 	// Map of schema configurations.
 	Schemas map[string]ConnectorSchemaConfigSchemas `pulumi:"schemas"`
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
 	SchemasJson *string                        `pulumi:"schemasJson"`
 	Timeouts    *ConnectorSchemaConfigTimeouts `pulumi:"timeouts"`
+	// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+	// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+	// names. The resource will try to fetch columns for every configured table and verify column names.
+	ValidationLevel *string `pulumi:"validationLevel"`
 }
 
 // The set of arguments for constructing a ConnectorSchemaConfig resource.
@@ -113,13 +133,18 @@ type ConnectorSchemaConfigArgs struct {
 	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId pulumi.StringInput
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
-	Schema               ConnectorSchemaConfigSchemaArrayInput
+	Schema ConnectorSchemaConfigSchemaArrayInput
+	// The value specifying how new source data is handled.
 	SchemaChangeHandling pulumi.StringInput
 	// Map of schema configurations.
 	Schemas ConnectorSchemaConfigSchemasMapInput
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
 	SchemasJson pulumi.StringPtrInput
 	Timeouts    ConnectorSchemaConfigTimeoutsPtrInput
+	// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+	// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+	// names. The resource will try to fetch columns for every configured table and verify column names.
+	ValidationLevel pulumi.StringPtrInput
 }
 
 func (ConnectorSchemaConfigArgs) ElementType() reflect.Type {
@@ -219,6 +244,7 @@ func (o ConnectorSchemaConfigOutput) Schema() ConnectorSchemaConfigSchemaArrayOu
 	return o.ApplyT(func(v *ConnectorSchemaConfig) ConnectorSchemaConfigSchemaArrayOutput { return v.Schema }).(ConnectorSchemaConfigSchemaArrayOutput)
 }
 
+// The value specifying how new source data is handled.
 func (o ConnectorSchemaConfigOutput) SchemaChangeHandling() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringOutput { return v.SchemaChangeHandling }).(pulumi.StringOutput)
 }
@@ -235,6 +261,13 @@ func (o ConnectorSchemaConfigOutput) SchemasJson() pulumi.StringPtrOutput {
 
 func (o ConnectorSchemaConfigOutput) Timeouts() ConnectorSchemaConfigTimeoutsPtrOutput {
 	return o.ApplyT(func(v *ConnectorSchemaConfig) ConnectorSchemaConfigTimeoutsPtrOutput { return v.Timeouts }).(ConnectorSchemaConfigTimeoutsPtrOutput)
+}
+
+// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+// names. The resource will try to fetch columns for every configured table and verify column names.
+func (o ConnectorSchemaConfigOutput) ValidationLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringOutput { return v.ValidationLevel }).(pulumi.StringOutput)
 }
 
 type ConnectorSchemaConfigArrayOutput struct{ *pulumi.OutputState }

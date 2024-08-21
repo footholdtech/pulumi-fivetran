@@ -183,6 +183,20 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("tableName")]
         public Input<string>? TableName { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: The specific time zone to sync report data if  `useAccountTimeZone` set to `false`.
+        /// </summary>
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reddit_ads`: When this parameter is set to `ACCOUNT`, connector will use account related time zone to sync report data. Default value: `ACCOUNT`. Possible values: `ACCOUNT`, `USER`
+        /// </summary>
+        [Input("timeZoneMode")]
+        public Input<string>? TimeZoneMode { get; set; }
+
         public ConnectorConfigCustomReportGetArgs()
         {
         }
