@@ -7,7 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getConnectorCertificates(args: GetConnectorCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorCertificatesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getConnectorCertificates:getConnectorCertificates", {
         "certificates": args.certificates,
@@ -41,7 +40,11 @@ export interface GetConnectorCertificatesResult {
     readonly id: string;
 }
 export function getConnectorCertificatesOutput(args: GetConnectorCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorCertificatesResult> {
-    return pulumi.output(args).apply((a: any) => getConnectorCertificates(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getConnectorCertificates:getConnectorCertificates", {
+        "certificates": args.certificates,
+        "id": args.id,
+    }, opts);
 }
 
 /**

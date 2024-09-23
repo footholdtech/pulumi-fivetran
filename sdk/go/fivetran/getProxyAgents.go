@@ -60,14 +60,20 @@ type GetProxyAgentsResult struct {
 
 func GetProxyAgentsOutput(ctx *pulumi.Context, args GetProxyAgentsOutputArgs, opts ...pulumi.InvokeOption) GetProxyAgentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetProxyAgentsResult, error) {
+		ApplyT(func(v interface{}) (GetProxyAgentsResultOutput, error) {
 			args := v.(GetProxyAgentsArgs)
-			r, err := GetProxyAgents(ctx, &args, opts...)
-			var s GetProxyAgentsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetProxyAgentsResult
+			secret, err := ctx.InvokePackageRaw("fivetran:index/getProxyAgents:getProxyAgents", args, &rv, "", opts...)
+			if err != nil {
+				return GetProxyAgentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetProxyAgentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetProxyAgentsResultOutput), nil
+			}
+			return output, nil
 		}).(GetProxyAgentsResultOutput)
 }
 

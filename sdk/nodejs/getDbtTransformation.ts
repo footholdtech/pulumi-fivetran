@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDbtTransformation(args: GetDbtTransformationArgs, opts?: pulumi.InvokeOptions): Promise<GetDbtTransformationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDbtTransformation:getDbtTransformation", {
         "id": args.id,
@@ -101,7 +100,11 @@ export interface GetDbtTransformationResult {
  * ```
  */
 export function getDbtTransformationOutput(args: GetDbtTransformationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtTransformationResult> {
-    return pulumi.output(args).apply((a: any) => getDbtTransformation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getDbtTransformation:getDbtTransformation", {
+        "id": args.id,
+        "schedule": args.schedule,
+    }, opts);
 }
 
 /**

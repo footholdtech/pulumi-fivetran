@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getUserGroupMemberships(args: GetUserGroupMembershipsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserGroupMembershipsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getUserGroupMemberships:getUserGroupMemberships", {
         "groups": args.groups,
@@ -69,7 +68,11 @@ export interface GetUserGroupMembershipsResult {
  * ```
  */
 export function getUserGroupMembershipsOutput(args: GetUserGroupMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserGroupMembershipsResult> {
-    return pulumi.output(args).apply((a: any) => getUserGroupMemberships(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getUserGroupMemberships:getUserGroupMemberships", {
+        "groups": args.groups,
+        "userId": args.userId,
+    }, opts);
 }
 
 /**

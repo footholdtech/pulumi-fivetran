@@ -47,6 +47,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
         /// </summary>
         public readonly string? AuthType;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
+        /// </summary>
         public readonly ImmutableArray<string> BootstrapServers;
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -124,6 +128,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `databricks`: Whether to create external tables
         /// </summary>
         public readonly bool? CreateExternalTables;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Confluent Cloud message format.
+        /// </summary>
         public readonly string? DataFormat;
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -225,6 +233,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string? LakehouseName;
         public readonly string? MskStsRegion;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Number of partitions per topic.
+        /// </summary>
         public readonly int? NumOfPartitions;
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -339,6 +351,10 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? Region;
         public readonly string? RegistryName;
         public readonly string? RegistryStsRegion;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Replication factor.
+        /// </summary>
         public readonly int? ReplicationFactor;
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -374,13 +390,41 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         /// </summary>
         public readonly string? RoleArn;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Security protocol for Confluent Cloud interaction.
+        /// </summary>
         public readonly string? SaslMechanism;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Confluent Cloud SASL key.
+        /// </summary>
         public readonly string? SaslPlainKey;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Confluent Cloud SASL secret.
+        /// </summary>
         public readonly string? SaslPlainSecret;
         public readonly string? SchemaCompatibility;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Schema Registry
+        /// </summary>
         public readonly string? SchemaRegistry;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Schema registry API key.
+        /// </summary>
         public readonly string? SchemaRegistryApiKey;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Schema registry API secret.
+        /// </summary>
         public readonly string? SchemaRegistryApiSecret;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Schema registry URL.
+        /// </summary>
         public readonly string? SchemaRegistryUrl;
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -395,6 +439,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `onelake`: Secret value for service principal
         /// </summary>
         public readonly string? SecretValue;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Security protocol for Confluent Cloud interaction.
+        /// </summary>
         public readonly string? SecurityProtocol;
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -418,7 +466,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? StorageAccountName;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `new_s3_datalake`: The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
+        /// 	- Service `new_s3_datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
         /// </summary>
         public readonly string? TableFormat;
         /// <summary>

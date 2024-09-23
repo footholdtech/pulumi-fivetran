@@ -14,6 +14,10 @@ namespace Footholdtech.Fivetran.Outputs
     [OutputType]
     public sealed class ConnectorConfigTenantConfig
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reltio`: Your Reltio subdomain.
+        /// </summary>
         public readonly string? Subdomain;
         /// <summary>
         /// Field usage depends on `service` value: 

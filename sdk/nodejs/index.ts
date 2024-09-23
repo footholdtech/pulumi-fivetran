@@ -30,6 +30,11 @@ export type ConnectorSchemaConfig = import("./connectorSchemaConfig").ConnectorS
 export const ConnectorSchemaConfig: typeof import("./connectorSchemaConfig").ConnectorSchemaConfig = null as any;
 utilities.lazyLoad(exports, ["ConnectorSchemaConfig"], () => require("./connectorSchemaConfig"));
 
+export { DbtGitProjectConfigArgs, DbtGitProjectConfigState } from "./dbtGitProjectConfig";
+export type DbtGitProjectConfig = import("./dbtGitProjectConfig").DbtGitProjectConfig;
+export const DbtGitProjectConfig: typeof import("./dbtGitProjectConfig").DbtGitProjectConfig = null as any;
+utilities.lazyLoad(exports, ["DbtGitProjectConfig"], () => require("./dbtGitProjectConfig"));
+
 export { DbtProjectArgs, DbtProjectState } from "./dbtProject";
 export type DbtProject = import("./dbtProject").DbtProject;
 export const DbtProject: typeof import("./dbtProject").DbtProject = null as any;
@@ -319,6 +324,8 @@ const _module = {
                 return new ConnectorSchedule(name, <any>undefined, { urn })
             case "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig":
                 return new ConnectorSchemaConfig(name, <any>undefined, { urn })
+            case "fivetran:index/dbtGitProjectConfig:DbtGitProjectConfig":
+                return new DbtGitProjectConfig(name, <any>undefined, { urn })
             case "fivetran:index/dbtProject:DbtProject":
                 return new DbtProject(name, <any>undefined, { urn })
             case "fivetran:index/dbtTransformation:DbtTransformation":
@@ -365,6 +372,7 @@ pulumi.runtime.registerResourceModule("fivetran", "index/connectorCertificates",
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorFingerprints", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchedule", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchemaConfig", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/dbtGitProjectConfig", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/dbtProject", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/dbtTransformation", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destination", _module)

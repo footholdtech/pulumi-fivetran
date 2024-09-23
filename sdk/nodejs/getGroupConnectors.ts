@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGroupConnectors(args: GetGroupConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupConnectorsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getGroupConnectors:getGroupConnectors", {
         "connectors": args.connectors,
@@ -76,7 +75,12 @@ export interface GetGroupConnectorsResult {
  * ```
  */
 export function getGroupConnectorsOutput(args: GetGroupConnectorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupConnectorsResult> {
-    return pulumi.output(args).apply((a: any) => getGroupConnectors(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getGroupConnectors:getGroupConnectors", {
+        "connectors": args.connectors,
+        "id": args.id,
+        "schema": args.schema,
+    }, opts);
 }
 
 /**

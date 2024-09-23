@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getLocalProcessingAgents(opts?: pulumi.InvokeOptions): Promise<GetLocalProcessingAgentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents", {
     }, opts);
@@ -48,5 +47,7 @@ export interface GetLocalProcessingAgentsResult {
  * ```
  */
 export function getLocalProcessingAgentsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLocalProcessingAgentsResult> {
-    return pulumi.output(getLocalProcessingAgents(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents", {
+    }, opts);
 }

@@ -54,13 +54,19 @@ type GetLocalProcessingAgentsResult struct {
 }
 
 func GetLocalProcessingAgentsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetLocalProcessingAgentsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetLocalProcessingAgentsResult, error) {
-		r, err := GetLocalProcessingAgents(ctx, opts...)
-		var s GetLocalProcessingAgentsResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetLocalProcessingAgentsResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetLocalProcessingAgentsResult
+		secret, err := ctx.InvokePackageRaw("fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents", nil, &rv, "", opts...)
+		if err != nil {
+			return GetLocalProcessingAgentsResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetLocalProcessingAgentsResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetLocalProcessingAgentsResultOutput), nil
+		}
+		return output, nil
 	}).(GetLocalProcessingAgentsResultOutput)
 }
 

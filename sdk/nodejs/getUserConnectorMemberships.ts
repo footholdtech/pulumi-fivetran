@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getUserConnectorMemberships(args: GetUserConnectorMembershipsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserConnectorMembershipsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships", {
         "connectors": args.connectors,
@@ -69,7 +68,11 @@ export interface GetUserConnectorMembershipsResult {
  * ```
  */
 export function getUserConnectorMembershipsOutput(args: GetUserConnectorMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserConnectorMembershipsResult> {
-    return pulumi.output(args).apply((a: any) => getUserConnectorMemberships(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships", {
+        "connectors": args.connectors,
+        "userId": args.userId,
+    }, opts);
 }
 
 /**

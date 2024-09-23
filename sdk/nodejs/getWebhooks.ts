@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getWebhooks(opts?: pulumi.InvokeOptions): Promise<GetWebhooksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getWebhooks:getWebhooks", {
     }, opts);
@@ -48,5 +47,7 @@ export interface GetWebhooksResult {
  * ```
  */
 export function getWebhooksOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhooksResult> {
-    return pulumi.output(getWebhooks(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getWebhooks:getWebhooks", {
+    }, opts);
 }

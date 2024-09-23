@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getConnector:getConnector", {
         "config": args.config,
@@ -81,7 +80,13 @@ export interface GetConnectorResult {
  * ```
  */
 export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getConnector:getConnector", {
+        "config": args.config,
+        "destinationSchema": args.destinationSchema,
+        "id": args.id,
+        "status": args.status,
+    }, opts);
 }
 
 /**

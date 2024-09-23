@@ -54,6 +54,11 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("bootstrapServers")]
         private InputList<string>? _bootstrapServers;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
+        /// </summary>
         public InputList<string> BootstrapServers
         {
             get => _bootstrapServers ?? (_bootstrapServers = new InputList<string>());
@@ -158,6 +163,10 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("createExternalTables")]
         public Input<bool>? CreateExternalTables { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Confluent Cloud message format.
+        /// </summary>
         [Input("dataFormat")]
         public Input<string>? DataFormat { get; set; }
 
@@ -291,6 +300,10 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("mskStsRegion")]
         public Input<string>? MskStsRegion { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Number of partitions per topic.
+        /// </summary>
         [Input("numOfPartitions")]
         public Input<int>? NumOfPartitions { get; set; }
 
@@ -483,6 +496,10 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("registryStsRegion")]
         public Input<string>? RegistryStsRegion { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Replication factor.
+        /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }
 
@@ -536,11 +553,20 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Security protocol for Confluent Cloud interaction.
+        /// </summary>
         [Input("saslMechanism")]
         public Input<string>? SaslMechanism { get; set; }
 
         [Input("saslPlainKey")]
         private Input<string>? _saslPlainKey;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Confluent Cloud SASL key.
+        /// </summary>
         public Input<string>? SaslPlainKey
         {
             get => _saslPlainKey;
@@ -553,6 +579,11 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("saslPlainSecret")]
         private Input<string>? _saslPlainSecret;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Confluent Cloud SASL secret.
+        /// </summary>
         public Input<string>? SaslPlainSecret
         {
             get => _saslPlainSecret;
@@ -566,11 +597,20 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("schemaCompatibility")]
         public Input<string>? SchemaCompatibility { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Schema Registry
+        /// </summary>
         [Input("schemaRegistry")]
         public Input<string>? SchemaRegistry { get; set; }
 
         [Input("schemaRegistryApiKey")]
         private Input<string>? _schemaRegistryApiKey;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Schema registry API key.
+        /// </summary>
         public Input<string>? SchemaRegistryApiKey
         {
             get => _schemaRegistryApiKey;
@@ -583,6 +623,11 @@ namespace Footholdtech.Fivetran.Inputs
 
         [Input("schemaRegistryApiSecret")]
         private Input<string>? _schemaRegistryApiSecret;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Schema registry API secret.
+        /// </summary>
         public Input<string>? SchemaRegistryApiSecret
         {
             get => _schemaRegistryApiSecret;
@@ -593,6 +638,10 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Schema registry URL.
+        /// </summary>
         [Input("schemaRegistryUrl")]
         public Input<string>? SchemaRegistryUrl { get; set; }
 
@@ -633,6 +682,10 @@ namespace Footholdtech.Fivetran.Inputs
             }
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Security protocol for Confluent Cloud interaction.
+        /// </summary>
         [Input("securityProtocol")]
         public Input<string>? SecurityProtocol { get; set; }
 
@@ -668,7 +721,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `new_s3_datalake`: The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
+        /// 	- Service `new_s3_datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
         /// </summary>
         [Input("tableFormat")]
         public Input<string>? TableFormat { get; set; }

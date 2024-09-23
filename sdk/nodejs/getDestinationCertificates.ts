@@ -7,7 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getDestinationCertificates(args: GetDestinationCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetDestinationCertificatesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDestinationCertificates:getDestinationCertificates", {
         "certificates": args.certificates,
@@ -41,7 +40,11 @@ export interface GetDestinationCertificatesResult {
     readonly id: string;
 }
 export function getDestinationCertificatesOutput(args: GetDestinationCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestinationCertificatesResult> {
-    return pulumi.output(args).apply((a: any) => getDestinationCertificates(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getDestinationCertificates:getDestinationCertificates", {
+        "certificates": args.certificates,
+        "id": args.id,
+    }, opts);
 }
 
 /**

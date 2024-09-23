@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDestinationFingerprints(args: GetDestinationFingerprintsArgs, opts?: pulumi.InvokeOptions): Promise<GetDestinationFingerprintsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDestinationFingerprints:getDestinationFingerprints", {
         "fingerprints": args.fingerprints,
@@ -69,7 +68,11 @@ export interface GetDestinationFingerprintsResult {
  * ```
  */
 export function getDestinationFingerprintsOutput(args: GetDestinationFingerprintsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestinationFingerprintsResult> {
-    return pulumi.output(args).apply((a: any) => getDestinationFingerprints(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getDestinationFingerprints:getDestinationFingerprints", {
+        "fingerprints": args.fingerprints,
+        "id": args.id,
+    }, opts);
 }
 
 /**

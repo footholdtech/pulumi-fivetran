@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDbtProjects(opts?: pulumi.InvokeOptions): Promise<GetDbtProjectsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDbtProjects:getDbtProjects", {
     }, opts);
@@ -48,5 +47,7 @@ export interface GetDbtProjectsResult {
  * ```
  */
 export function getDbtProjectsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtProjectsResult> {
-    return pulumi.output(getDbtProjects(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getDbtProjects:getDbtProjects", {
+    }, opts);
 }

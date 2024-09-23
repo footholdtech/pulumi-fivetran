@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getGroup:getGroup", {
         "id": args.id,
@@ -72,7 +71,10 @@ export interface GetGroupResult {
  * ```
  */
 export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
-    return pulumi.output(args).apply((a: any) => getGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getGroup:getGroup", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

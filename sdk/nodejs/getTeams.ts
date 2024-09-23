@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getTeams(args?: GetTeamsArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getTeams:getTeams", {
         "id": args.id,
@@ -62,7 +61,12 @@ export interface GetTeamsResult {
  * ```
  */
 export function getTeamsOutput(args?: GetTeamsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamsResult> {
-    return pulumi.output(args).apply((a: any) => getTeams(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getTeams:getTeams", {
+        "id": args.id,
+        "teams": args.teams,
+    }, opts);
 }
 
 /**

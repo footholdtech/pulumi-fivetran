@@ -14,19 +14,19 @@ namespace Footholdtech.Fivetran.Inputs
     public sealed class DbtProjectProjectConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Folder in Git repo with your dbt project.
+        /// Folder in Git repo with your dbt project
         /// </summary>
         [Input("folderPath")]
         public Input<string>? FolderPath { get; set; }
 
         /// <summary>
-        /// Git branch.
+        /// Git branch
         /// </summary>
         [Input("gitBranch")]
         public Input<string>? GitBranch { get; set; }
 
         /// <summary>
-        /// Git remote URL with your dbt project.
+        /// Git remote URL with your dbt project
         /// </summary>
         [Input("gitRemoteUrl")]
         public Input<string>? GitRemoteUrl { get; set; }

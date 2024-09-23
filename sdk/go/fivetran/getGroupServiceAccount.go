@@ -64,14 +64,20 @@ type GetGroupServiceAccountResult struct {
 
 func GetGroupServiceAccountOutput(ctx *pulumi.Context, args GetGroupServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetGroupServiceAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGroupServiceAccountResult, error) {
+		ApplyT(func(v interface{}) (GetGroupServiceAccountResultOutput, error) {
 			args := v.(GetGroupServiceAccountArgs)
-			r, err := GetGroupServiceAccount(ctx, &args, opts...)
-			var s GetGroupServiceAccountResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGroupServiceAccountResult
+			secret, err := ctx.InvokePackageRaw("fivetran:index/getGroupServiceAccount:getGroupServiceAccount", args, &rv, "", opts...)
+			if err != nil {
+				return GetGroupServiceAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGroupServiceAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGroupServiceAccountResultOutput), nil
+			}
+			return output, nil
 		}).(GetGroupServiceAccountResultOutput)
 }
 
