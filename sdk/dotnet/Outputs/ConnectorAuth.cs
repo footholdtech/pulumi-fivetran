@@ -30,7 +30,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `gitlab`: Your GitLab access token.
         /// 	- Service `google_business_profile`: Your Google Business Profile Access token.
         /// 	- Service `google_calendar`: Your Google Calendar access token.
+        /// 	- Service `google_classroom`: The `Access Token` that carries the information necessary for API resources to fetch data.
         /// 	- Service `google_tasks`: The access token that carries the information necessary for API resources to your Google Tasks fetch data.
+        /// 	- Service `instagram_business`: The `Access Token` carries the information necessary for API resources to fetch data
+        /// 	- Service `intercom`: The long-lived `Access Token` carries the information necessary for API resources to fetch data.
         /// 	- Service `medallia`: Your Medallia access token that contains all the information necessary for the API resources to fetch your data.
         /// 	- Service `pinterest_organic`: Your Pinterest access token.
         /// 	- Service `ramp`: Your Ramp access token.
@@ -71,6 +74,8 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `amazon_selling_partner`: `Client ID` of your Amazon Seller/Vendor Central client application.
         /// 	- Service `apple_search_ads`: Apple Search Ads REST API Client ID. Must be populated if `is_auth2_enabled` is set to `true`.
         /// 	- Service `workday`: Client ID
+        /// 	- Service `workday_financial_management`: ID of your Workday Client App
+        /// 	- Service `workday_hcm`: ID of your Workday Client App
         /// 	- Service `yahoo_dsp`: Your Yahoo DSP Client ID.
         /// </summary>
         public readonly string? ClientId;
@@ -78,6 +83,8 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `amazon_selling_partner`: `Client Secret` of your Amazon Seller/Vendor Central client application.
         /// 	- Service `workday`: Client Secret
+        /// 	- Service `workday_financial_management`: Secret of your Workday Client App
+        /// 	- Service `workday_hcm`: Secret of your Workday Client App
         /// 	- Service `yahoo_dsp`: Your Yahoo DSP Client Secret.
         /// </summary>
         public readonly string? ClientSecret;
@@ -125,6 +132,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adroll`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `airtable`: The long-lived refresh token along with the client ID and client secret carry the information necessary to get a new access token for API resources.
         /// 	- Service `amazon_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `amazon_selling_partner`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `asana`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
@@ -134,6 +142,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `azure_sql_managed_db`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
         /// 	- Service `billing_platform`: Your BillingPlatform refresh token.
         /// 	- Service `bingads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `business_central`: The long-lived refresh token along with the client ID and client secret parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `calendly`: Your Calendly refresh token.
         /// 	- Service `docebo`: Your Docebo Refresh Token.
         /// 	- Service `double_click_campaign_manager`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
@@ -152,7 +161,9 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `google_analytics_mcf`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `google_business_profile`: Your Google Business Profile Refresh token.
         /// 	- Service `google_calendar`: Your Google Calendar refresh token.
+        /// 	- Service `google_classroom`: The long-lived `Refresh token` of your Google Calendar client application.
         /// 	- Service `google_display_and_video_360`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `google_play`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `google_search_ads_360`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `google_sheets`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `google_tasks`: The long-lived refresh token of your Google Tasks client application.
@@ -160,6 +171,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `hubspot`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `linkedin_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `linkedin_company_pages`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `microsoft_lists`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
         /// 	- Service `one_drive`: The long-lived `Refresh token` carries the information necessary to get a new access token for API resources.
         /// 	- Service `optimizely`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `outreach`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
@@ -178,7 +190,9 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `snapchat_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `spotify_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `typeform`: The Typeform API refresh token.
+        /// 	- Service `workday`: OAuth Refresh Token
         /// 	- Service `yahoo_search_ads_yahoo_japan`: Your Yahoo Search Ads Refresh Token.
+        /// 	- Service `zoho_crm`: The long-lived `Refresh token`, along with the `client_id` and `client_secret` parameters, carries the information necessary to get a new access token for API resources.
         /// 	- Service `zoom`: Your Zoom Refresh token.
         /// </summary>
         public readonly string? RefreshToken;

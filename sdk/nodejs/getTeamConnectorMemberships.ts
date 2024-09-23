@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * This data source returns a connector membership within team object.
  */
 export function getTeamConnectorMemberships(args: GetTeamConnectorMembershipsArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamConnectorMembershipsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships", {
         "connectors": args.connectors,
@@ -47,7 +46,11 @@ export interface GetTeamConnectorMembershipsResult {
  * This data source returns a connector membership within team object.
  */
 export function getTeamConnectorMembershipsOutput(args: GetTeamConnectorMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamConnectorMembershipsResult> {
-    return pulumi.output(args).apply((a: any) => getTeamConnectorMemberships(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships", {
+        "connectors": args.connectors,
+        "teamId": args.teamId,
+    }, opts);
 }
 
 /**

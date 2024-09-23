@@ -44,6 +44,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
         /// </summary>
         public readonly string ConfigType;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Time period to attribute conversions based on engaged views. [Possible view_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads#engagedviewattributionwindow).
+        /// </summary>
         public readonly string EngagedViewAttributionWindow;
         /// <summary>
         /// Field usage depends on `service` value: 

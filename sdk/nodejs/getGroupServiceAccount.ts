@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGroupServiceAccount(args: GetGroupServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupServiceAccountResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getGroupServiceAccount:getGroupServiceAccount", {
         "id": args.id,
@@ -64,7 +63,10 @@ export interface GetGroupServiceAccountResult {
  * ```
  */
 export function getGroupServiceAccountOutput(args: GetGroupServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupServiceAccountResult> {
-    return pulumi.output(args).apply((a: any) => getGroupServiceAccount(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getGroupServiceAccount:getGroupServiceAccount", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

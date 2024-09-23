@@ -66,14 +66,20 @@ type LookupDestinationFingerprintsResult struct {
 
 func LookupDestinationFingerprintsOutput(ctx *pulumi.Context, args LookupDestinationFingerprintsOutputArgs, opts ...pulumi.InvokeOption) LookupDestinationFingerprintsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDestinationFingerprintsResult, error) {
+		ApplyT(func(v interface{}) (LookupDestinationFingerprintsResultOutput, error) {
 			args := v.(LookupDestinationFingerprintsArgs)
-			r, err := LookupDestinationFingerprints(ctx, &args, opts...)
-			var s LookupDestinationFingerprintsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDestinationFingerprintsResult
+			secret, err := ctx.InvokePackageRaw("fivetran:index/getDestinationFingerprints:getDestinationFingerprints", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDestinationFingerprintsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDestinationFingerprintsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDestinationFingerprintsResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDestinationFingerprintsResultOutput)
 }
 

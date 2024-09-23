@@ -60,14 +60,20 @@ type GetConnectorsMetadataResult struct {
 
 func GetConnectorsMetadataOutput(ctx *pulumi.Context, args GetConnectorsMetadataOutputArgs, opts ...pulumi.InvokeOption) GetConnectorsMetadataResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetConnectorsMetadataResult, error) {
+		ApplyT(func(v interface{}) (GetConnectorsMetadataResultOutput, error) {
 			args := v.(GetConnectorsMetadataArgs)
-			r, err := GetConnectorsMetadata(ctx, &args, opts...)
-			var s GetConnectorsMetadataResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetConnectorsMetadataResult
+			secret, err := ctx.InvokePackageRaw("fivetran:index/getConnectorsMetadata:getConnectorsMetadata", args, &rv, "", opts...)
+			if err != nil {
+				return GetConnectorsMetadataResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetConnectorsMetadataResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetConnectorsMetadataResultOutput), nil
+			}
+			return output, nil
 		}).(GetConnectorsMetadataResultOutput)
 }
 

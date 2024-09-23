@@ -67,6 +67,10 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("configType")]
         public Input<string>? ConfigType { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `facebook_ads`: Time period to attribute conversions based on engaged views. [Possible view_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads#engagedviewattributionwindow).
+        /// </summary>
         [Input("engagedViewAttributionWindow")]
         public Input<string>? EngagedViewAttributionWindow { get; set; }
 

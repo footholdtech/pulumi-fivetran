@@ -82,14 +82,20 @@ type LookupDbtTransformationResult struct {
 
 func LookupDbtTransformationOutput(ctx *pulumi.Context, args LookupDbtTransformationOutputArgs, opts ...pulumi.InvokeOption) LookupDbtTransformationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDbtTransformationResult, error) {
+		ApplyT(func(v interface{}) (LookupDbtTransformationResultOutput, error) {
 			args := v.(LookupDbtTransformationArgs)
-			r, err := LookupDbtTransformation(ctx, &args, opts...)
-			var s LookupDbtTransformationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDbtTransformationResult
+			secret, err := ctx.InvokePackageRaw("fivetran:index/getDbtTransformation:getDbtTransformation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDbtTransformationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDbtTransformationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDbtTransformationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDbtTransformationResultOutput)
 }
 

@@ -13,6 +13,10 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class GetConnectorConfigTenantConfigInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `reltio`: Your Reltio subdomain.
+        /// </summary>
         [Input("subdomain", required: true)]
         public Input<string> Subdomain { get; set; } = null!;
 

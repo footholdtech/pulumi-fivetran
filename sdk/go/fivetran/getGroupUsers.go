@@ -64,14 +64,20 @@ type LookupGroupUsersResult struct {
 
 func LookupGroupUsersOutput(ctx *pulumi.Context, args LookupGroupUsersOutputArgs, opts ...pulumi.InvokeOption) LookupGroupUsersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGroupUsersResult, error) {
+		ApplyT(func(v interface{}) (LookupGroupUsersResultOutput, error) {
 			args := v.(LookupGroupUsersArgs)
-			r, err := LookupGroupUsers(ctx, &args, opts...)
-			var s LookupGroupUsersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupGroupUsersResult
+			secret, err := ctx.InvokePackageRaw("fivetran:index/getGroupUsers:getGroupUsers", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGroupUsersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGroupUsersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGroupUsersResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGroupUsersResultOutput)
 }
 

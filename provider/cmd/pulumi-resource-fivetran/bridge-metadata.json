@@ -347,6 +347,10 @@
                     }
                 }
             },
+            "fivetran_dbt_git_project_config": {
+                "current": "fivetran:index/dbtGitProjectConfig:DbtGitProjectConfig",
+                "majorVersion": 1
+            },
             "fivetran_dbt_project": {
                 "current": "fivetran:index/dbtProject:DbtProject",
                 "majorVersion": 1,

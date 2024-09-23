@@ -45,6 +45,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `linkedin_ads`: `Client ID` of your LinkedIn client application.
         /// 	- Service `linkedin_company_pages`: `Client ID` of your LinkedIn client application.
         /// 	- Service `microsoft_lists`: `Client ID` of your Microsoft client application.
+        /// 	- Service `one_drive`: `Client ID` of your Microsoft OneDrive client application.
         /// 	- Service `optimizely`: `Client ID` of your Optimizely client application.
         /// 	- Service `outreach`: `Client ID` of your Outreach client application.
         /// 	- Service `pardot`: `Client ID` of your Pardot client application.
@@ -105,6 +106,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `linkedin_ads`: `Client Secret` of your LinkedIn client application.
         /// 	- Service `linkedin_company_pages`: `Client Secret` of your LinkedIn client application.
         /// 	- Service `microsoft_lists`: `Client Secret` of your Microsoft client application.
+        /// 	- Service `one_drive`: `Client Secret` of your Microsoft OneDrive client application.
         /// 	- Service `optimizely`: `Client Secret` of your Optimizely client application.
         /// 	- Service `outreach`: `Client Secret` of your Outreach client application.
         /// 	- Service `pardot`: `Client Secret` of your Pardot client application.

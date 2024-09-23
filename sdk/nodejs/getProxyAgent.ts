@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getProxyAgent(args: GetProxyAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetProxyAgentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getProxyAgent:getProxyAgent", {
         "id": args.id,
@@ -84,7 +83,10 @@ export interface GetProxyAgentResult {
  * ```
  */
 export function getProxyAgentOutput(args: GetProxyAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProxyAgentResult> {
-    return pulumi.output(args).apply((a: any) => getProxyAgent(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getProxyAgent:getProxyAgent", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

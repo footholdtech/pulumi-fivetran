@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGroupSshKey(args: GetGroupSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupSshKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getGroupSshKey:getGroupSshKey", {
         "id": args.id,
@@ -64,7 +63,10 @@ export interface GetGroupSshKeyResult {
  * ```
  */
 export function getGroupSshKeyOutput(args: GetGroupSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupSshKeyResult> {
-    return pulumi.output(args).apply((a: any) => getGroupSshKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getGroupSshKey:getGroupSshKey", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

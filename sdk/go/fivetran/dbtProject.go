@@ -53,12 +53,15 @@ type DbtProject struct {
 	// Default schema in destination. This production schema will contain your transformed data.
 	DefaultSchema pulumi.StringOutput `pulumi:"defaultSchema"`
 	// Should resource wait for project to finish initialization. Default value: true.
+	//
+	// Deprecated: Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config
 	EnsureReadiness pulumi.BoolOutput `pulumi:"ensureReadiness"`
 	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars pulumi.StringArrayOutput `pulumi:"environmentVars"`
 	// The unique identifier for the group within the Fivetran system.
-	GroupId       pulumi.StringOutput              `pulumi:"groupId"`
-	Models        DbtProjectModelArrayOutput       `pulumi:"models"`
+	GroupId pulumi.StringOutput        `pulumi:"groupId"`
+	Models  DbtProjectModelArrayOutput `pulumi:"models"`
+	// Deprecated: Deprecated block. The projectConfig block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config
 	ProjectConfig DbtProjectProjectConfigPtrOutput `pulumi:"projectConfig"`
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
@@ -121,12 +124,15 @@ type dbtProjectState struct {
 	// Default schema in destination. This production schema will contain your transformed data.
 	DefaultSchema *string `pulumi:"defaultSchema"`
 	// Should resource wait for project to finish initialization. Default value: true.
+	//
+	// Deprecated: Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config
 	EnsureReadiness *bool `pulumi:"ensureReadiness"`
 	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars []string `pulumi:"environmentVars"`
 	// The unique identifier for the group within the Fivetran system.
-	GroupId       *string                  `pulumi:"groupId"`
-	Models        []DbtProjectModel        `pulumi:"models"`
+	GroupId *string           `pulumi:"groupId"`
+	Models  []DbtProjectModel `pulumi:"models"`
+	// Deprecated: Deprecated block. The projectConfig block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config
 	ProjectConfig *DbtProjectProjectConfig `pulumi:"projectConfig"`
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey *string `pulumi:"publicKey"`
@@ -151,12 +157,15 @@ type DbtProjectState struct {
 	// Default schema in destination. This production schema will contain your transformed data.
 	DefaultSchema pulumi.StringPtrInput
 	// Should resource wait for project to finish initialization. Default value: true.
+	//
+	// Deprecated: Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config
 	EnsureReadiness pulumi.BoolPtrInput
 	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars pulumi.StringArrayInput
 	// The unique identifier for the group within the Fivetran system.
-	GroupId       pulumi.StringPtrInput
-	Models        DbtProjectModelArrayInput
+	GroupId pulumi.StringPtrInput
+	Models  DbtProjectModelArrayInput
+	// Deprecated: Deprecated block. The projectConfig block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config
 	ProjectConfig DbtProjectProjectConfigPtrInput
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey pulumi.StringPtrInput
@@ -181,11 +190,14 @@ type dbtProjectArgs struct {
 	// Default schema in destination. This production schema will contain your transformed data.
 	DefaultSchema string `pulumi:"defaultSchema"`
 	// Should resource wait for project to finish initialization. Default value: true.
+	//
+	// Deprecated: Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config
 	EnsureReadiness *bool `pulumi:"ensureReadiness"`
 	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars []string `pulumi:"environmentVars"`
 	// The unique identifier for the group within the Fivetran system.
-	GroupId       string                   `pulumi:"groupId"`
+	GroupId string `pulumi:"groupId"`
+	// Deprecated: Deprecated block. The projectConfig block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config
 	ProjectConfig *DbtProjectProjectConfig `pulumi:"projectConfig"`
 	// Target name to set or override the value from the deployment.yaml
 	TargetName *string `pulumi:"targetName"`
@@ -203,11 +215,14 @@ type DbtProjectArgs struct {
 	// Default schema in destination. This production schema will contain your transformed data.
 	DefaultSchema pulumi.StringInput
 	// Should resource wait for project to finish initialization. Default value: true.
+	//
+	// Deprecated: Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config
 	EnsureReadiness pulumi.BoolPtrInput
 	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars pulumi.StringArrayInput
 	// The unique identifier for the group within the Fivetran system.
-	GroupId       pulumi.StringInput
+	GroupId pulumi.StringInput
+	// Deprecated: Deprecated block. The projectConfig block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config
 	ProjectConfig DbtProjectProjectConfigPtrInput
 	// Target name to set or override the value from the deployment.yaml
 	TargetName pulumi.StringPtrInput
@@ -326,6 +341,8 @@ func (o DbtProjectOutput) DefaultSchema() pulumi.StringOutput {
 }
 
 // Should resource wait for project to finish initialization. Default value: true.
+//
+// Deprecated: Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config
 func (o DbtProjectOutput) EnsureReadiness() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DbtProject) pulumi.BoolOutput { return v.EnsureReadiness }).(pulumi.BoolOutput)
 }
@@ -344,6 +361,7 @@ func (o DbtProjectOutput) Models() DbtProjectModelArrayOutput {
 	return o.ApplyT(func(v *DbtProject) DbtProjectModelArrayOutput { return v.Models }).(DbtProjectModelArrayOutput)
 }
 
+// Deprecated: Deprecated block. The projectConfig block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config
 func (o DbtProjectOutput) ProjectConfig() DbtProjectProjectConfigPtrOutput {
 	return o.ApplyT(func(v *DbtProject) DbtProjectProjectConfigPtrOutput { return v.ProjectConfig }).(DbtProjectProjectConfigPtrOutput)
 }

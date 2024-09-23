@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDestination(args: GetDestinationArgs, opts?: pulumi.InvokeOptions): Promise<GetDestinationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDestination:getDestination", {
         "config": args.config,
@@ -67,7 +66,11 @@ export interface GetDestinationResult {
  * ```
  */
 export function getDestinationOutput(args: GetDestinationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestinationResult> {
-    return pulumi.output(args).apply((a: any) => getDestination(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getDestination:getDestination", {
+        "config": args.config,
+        "id": args.id,
+    }, opts);
 }
 
 /**

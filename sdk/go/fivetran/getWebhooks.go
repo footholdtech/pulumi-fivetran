@@ -54,13 +54,19 @@ type GetWebhooksResult struct {
 }
 
 func GetWebhooksOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetWebhooksResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetWebhooksResult, error) {
-		r, err := GetWebhooks(ctx, opts...)
-		var s GetWebhooksResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetWebhooksResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetWebhooksResult
+		secret, err := ctx.InvokePackageRaw("fivetran:index/getWebhooks:getWebhooks", nil, &rv, "", opts...)
+		if err != nil {
+			return GetWebhooksResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetWebhooksResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetWebhooksResultOutput), nil
+		}
+		return output, nil
 	}).(GetWebhooksResultOutput)
 }
 

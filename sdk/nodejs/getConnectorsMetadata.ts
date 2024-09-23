@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getConnectorsMetadata(args?: GetConnectorsMetadataArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorsMetadataResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getConnectorsMetadata:getConnectorsMetadata", {
         "sources": args.sources,
@@ -57,7 +56,11 @@ export interface GetConnectorsMetadataResult {
  * ```
  */
 export function getConnectorsMetadataOutput(args?: GetConnectorsMetadataOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorsMetadataResult> {
-    return pulumi.output(args).apply((a: any) => getConnectorsMetadata(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getConnectorsMetadata:getConnectorsMetadata", {
+        "sources": args.sources,
+    }, opts);
 }
 
 /**

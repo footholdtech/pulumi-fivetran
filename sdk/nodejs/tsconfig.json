@@ -20,6 +20,7 @@
         "connectorFingerprints.ts",
         "connectorSchedule.ts",
         "connectorSchemaConfig.ts",
+        "dbtGitProjectConfig.ts",
         "dbtProject.ts",
         "dbtTransformation.ts",
         "destination.ts",

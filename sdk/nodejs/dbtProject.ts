@@ -83,6 +83,8 @@ export class DbtProject extends pulumi.CustomResource {
     public readonly defaultSchema!: pulumi.Output<string>;
     /**
      * Should resource wait for project to finish initialization. Default value: true.
+     *
+     * @deprecated Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config
      */
     public readonly ensureReadiness!: pulumi.Output<boolean>;
     /**
@@ -94,6 +96,9 @@ export class DbtProject extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     public /*out*/ readonly models!: pulumi.Output<outputs.DbtProjectModel[]>;
+    /**
+     * @deprecated Deprecated block. The projectConfig block of the resource fivetran.DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config
+     */
     public readonly projectConfig!: pulumi.Output<outputs.DbtProjectProjectConfig | undefined>;
     /**
      * Public key to grant Fivetran SSH access to git repository.
@@ -199,6 +204,8 @@ export interface DbtProjectState {
     defaultSchema?: pulumi.Input<string>;
     /**
      * Should resource wait for project to finish initialization. Default value: true.
+     *
+     * @deprecated Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config
      */
     ensureReadiness?: pulumi.Input<boolean>;
     /**
@@ -210,6 +217,9 @@ export interface DbtProjectState {
      */
     groupId?: pulumi.Input<string>;
     models?: pulumi.Input<pulumi.Input<inputs.DbtProjectModel>[]>;
+    /**
+     * @deprecated Deprecated block. The projectConfig block of the resource fivetran.DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config
+     */
     projectConfig?: pulumi.Input<inputs.DbtProjectProjectConfig>;
     /**
      * Public key to grant Fivetran SSH access to git repository.
@@ -248,6 +258,8 @@ export interface DbtProjectArgs {
     defaultSchema: pulumi.Input<string>;
     /**
      * Should resource wait for project to finish initialization. Default value: true.
+     *
+     * @deprecated Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config
      */
     ensureReadiness?: pulumi.Input<boolean>;
     /**
@@ -258,6 +270,9 @@ export interface DbtProjectArgs {
      * The unique identifier for the group within the Fivetran system.
      */
     groupId: pulumi.Input<string>;
+    /**
+     * @deprecated Deprecated block. The projectConfig block of the resource fivetran.DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config
+     */
     projectConfig?: pulumi.Input<inputs.DbtProjectProjectConfig>;
     /**
      * Target name to set or override the value from the deployment.yaml

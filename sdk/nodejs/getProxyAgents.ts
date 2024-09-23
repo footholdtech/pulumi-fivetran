@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getProxyAgents(args?: GetProxyAgentsArgs, opts?: pulumi.InvokeOptions): Promise<GetProxyAgentsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getProxyAgents:getProxyAgents", {
         "items": args.items,
@@ -57,7 +56,11 @@ export interface GetProxyAgentsResult {
  * ```
  */
 export function getProxyAgentsOutput(args?: GetProxyAgentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProxyAgentsResult> {
-    return pulumi.output(args).apply((a: any) => getProxyAgents(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getProxyAgents:getProxyAgents", {
+        "items": args.items,
+    }, opts);
 }
 
 /**

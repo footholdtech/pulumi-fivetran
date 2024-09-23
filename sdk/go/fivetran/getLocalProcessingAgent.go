@@ -69,14 +69,20 @@ type LookupLocalProcessingAgentResult struct {
 
 func LookupLocalProcessingAgentOutput(ctx *pulumi.Context, args LookupLocalProcessingAgentOutputArgs, opts ...pulumi.InvokeOption) LookupLocalProcessingAgentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLocalProcessingAgentResult, error) {
+		ApplyT(func(v interface{}) (LookupLocalProcessingAgentResultOutput, error) {
 			args := v.(LookupLocalProcessingAgentArgs)
-			r, err := LookupLocalProcessingAgent(ctx, &args, opts...)
-			var s LookupLocalProcessingAgentResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupLocalProcessingAgentResult
+			secret, err := ctx.InvokePackageRaw("fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLocalProcessingAgentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLocalProcessingAgentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLocalProcessingAgentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLocalProcessingAgentResultOutput)
 }
 

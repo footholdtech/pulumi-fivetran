@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTeamGroupMemberships(args: GetTeamGroupMembershipsArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamGroupMembershipsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getTeamGroupMemberships:getTeamGroupMemberships", {
         "groups": args.groups,
@@ -69,7 +68,11 @@ export interface GetTeamGroupMembershipsResult {
  * ```
  */
 export function getTeamGroupMembershipsOutput(args: GetTeamGroupMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamGroupMembershipsResult> {
-    return pulumi.output(args).apply((a: any) => getTeamGroupMemberships(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getTeamGroupMemberships:getTeamGroupMemberships", {
+        "groups": args.groups,
+        "teamId": args.teamId,
+    }, opts);
 }
 
 /**

@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDbtModels(args: GetDbtModelsArgs, opts?: pulumi.InvokeOptions): Promise<GetDbtModelsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDbtModels:getDbtModels", {
         "models": args.models,
@@ -69,7 +68,11 @@ export interface GetDbtModelsResult {
  * ```
  */
 export function getDbtModelsOutput(args: GetDbtModelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtModelsResult> {
-    return pulumi.output(args).apply((a: any) => getDbtModels(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("fivetran:index/getDbtModels:getDbtModels", {
+        "models": args.models,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**
