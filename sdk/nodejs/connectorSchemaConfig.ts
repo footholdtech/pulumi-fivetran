@@ -50,7 +50,7 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
     /**
      * The value specifying how new source data is handled.
      */
-    public readonly schemaChangeHandling!: pulumi.Output<string>;
+    public readonly schemaChangeHandling!: pulumi.Output<string | undefined>;
     /**
      * Map of schema configurations.
      */
@@ -91,9 +91,6 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
             const args = argsOrState as ConnectorSchemaConfigArgs | undefined;
             if ((!args || args.connectorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
-            }
-            if ((!args || args.schemaChangeHandling === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'schemaChangeHandling'");
             }
             resourceInputs["connectorId"] = args ? args.connectorId : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
@@ -156,7 +153,7 @@ export interface ConnectorSchemaConfigArgs {
     /**
      * The value specifying how new source data is handled.
      */
-    schemaChangeHandling: pulumi.Input<string>;
+    schemaChangeHandling?: pulumi.Input<string>;
     /**
      * Map of schema configurations.
      */

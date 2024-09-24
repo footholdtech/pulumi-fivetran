@@ -15,6 +15,33 @@ namespace Footholdtech.Fivetran
     /// 
     /// This resource allows you to add, manage and delete dbt Projects in your account.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Footholdtech.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Fivetran.DbtProject("project", new()
+    ///     {
+    ///         GroupId = "group_id",
+    ///         DbtVersion = "1.4.1",
+    ///         DefaultSchema = "default_schema",
+    ///         TargetName = "target_name",
+    ///         EnvironmentVars = new[]
+    ///         {
+    ///             "environment_var=value",
+    ///         },
+    ///         Threads = 8,
+    ///         Type = "GIT",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// 1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.

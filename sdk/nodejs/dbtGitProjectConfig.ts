@@ -9,6 +9,20 @@ import * as utilities from "./utilities";
  *
  * This resource allows you to add and manage dbt Git Projects Configs.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@footholdtech/fivetran";
+ *
+ * const gitProjectConfig = new fivetran.DbtGitProjectConfig("git_project_config", {
+ *     projectId: "project_id",
+ *     gitRemoteUrl: "your_git_remote_url",
+ *     gitBranch: "main",
+ *     folderPath: "/dbt/project/folder/path",
+ * });
+ * ```
+ *
  * ## Import
  *
  * 1. To import an existing `fivetran_dbt_git_project_config` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.

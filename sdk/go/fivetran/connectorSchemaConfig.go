@@ -23,7 +23,7 @@ type ConnectorSchemaConfig struct {
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
 	Schema ConnectorSchemaConfigSchemaArrayOutput `pulumi:"schema"`
 	// The value specifying how new source data is handled.
-	SchemaChangeHandling pulumi.StringOutput `pulumi:"schemaChangeHandling"`
+	SchemaChangeHandling pulumi.StringPtrOutput `pulumi:"schemaChangeHandling"`
 	// Map of schema configurations.
 	Schemas ConnectorSchemaConfigSchemasMapOutput `pulumi:"schemas"`
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
@@ -44,9 +44,6 @@ func NewConnectorSchemaConfig(ctx *pulumi.Context,
 
 	if args.ConnectorId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectorId'")
-	}
-	if args.SchemaChangeHandling == nil {
-		return nil, errors.New("invalid value for required argument 'SchemaChangeHandling'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConnectorSchemaConfig
@@ -116,7 +113,7 @@ type connectorSchemaConfigArgs struct {
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
 	Schema []ConnectorSchemaConfigSchema `pulumi:"schema"`
 	// The value specifying how new source data is handled.
-	SchemaChangeHandling string `pulumi:"schemaChangeHandling"`
+	SchemaChangeHandling *string `pulumi:"schemaChangeHandling"`
 	// Map of schema configurations.
 	Schemas map[string]ConnectorSchemaConfigSchemas `pulumi:"schemas"`
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
@@ -135,7 +132,7 @@ type ConnectorSchemaConfigArgs struct {
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
 	Schema ConnectorSchemaConfigSchemaArrayInput
 	// The value specifying how new source data is handled.
-	SchemaChangeHandling pulumi.StringInput
+	SchemaChangeHandling pulumi.StringPtrInput
 	// Map of schema configurations.
 	Schemas ConnectorSchemaConfigSchemasMapInput
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
@@ -245,8 +242,8 @@ func (o ConnectorSchemaConfigOutput) Schema() ConnectorSchemaConfigSchemaArrayOu
 }
 
 // The value specifying how new source data is handled.
-func (o ConnectorSchemaConfigOutput) SchemaChangeHandling() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringOutput { return v.SchemaChangeHandling }).(pulumi.StringOutput)
+func (o ConnectorSchemaConfigOutput) SchemaChangeHandling() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringPtrOutput { return v.SchemaChangeHandling }).(pulumi.StringPtrOutput)
 }
 
 // Map of schema configurations.

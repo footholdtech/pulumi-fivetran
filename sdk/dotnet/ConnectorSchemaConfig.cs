@@ -31,7 +31,7 @@ namespace Footholdtech.Fivetran
         /// The value specifying how new source data is handled.
         /// </summary>
         [Output("schemaChangeHandling")]
-        public Output<string> SchemaChangeHandling { get; private set; } = null!;
+        public Output<string?> SchemaChangeHandling { get; private set; } = null!;
 
         /// <summary>
         /// Map of schema configurations.
@@ -121,8 +121,8 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// The value specifying how new source data is handled.
         /// </summary>
-        [Input("schemaChangeHandling", required: true)]
-        public Input<string> SchemaChangeHandling { get; set; } = null!;
+        [Input("schemaChangeHandling")]
+        public Input<string>? SchemaChangeHandling { get; set; }
 
         [Input("schemas")]
         private InputMap<Inputs.ConnectorSchemaConfigSchemasArgs>? _schemas;
