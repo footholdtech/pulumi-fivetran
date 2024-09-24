@@ -16,6 +16,40 @@ import (
 //
 // This resource allows you to add, manage and delete dbt Projects in your account.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewDbtProject(ctx, "project", &fivetran.DbtProjectArgs{
+//				GroupId:       pulumi.String("group_id"),
+//				DbtVersion:    pulumi.String("1.4.1"),
+//				DefaultSchema: pulumi.String("default_schema"),
+//				TargetName:    pulumi.String("target_name"),
+//				EnvironmentVars: pulumi.StringArray{
+//					pulumi.String("environment_var=value"),
+//				},
+//				Threads: pulumi.Int(8),
+//				Type:    pulumi.String("GIT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // 1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.
