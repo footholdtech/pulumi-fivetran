@@ -55,7 +55,7 @@ export interface GetProxyAgentsResult {
  * const proxyAgents = fivetran.getProxyAgents({});
  * ```
  */
-export function getProxyAgentsOutput(args?: GetProxyAgentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProxyAgentsResult> {
+export function getProxyAgentsOutput(args?: GetProxyAgentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProxyAgentsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getProxyAgents:getProxyAgents", {

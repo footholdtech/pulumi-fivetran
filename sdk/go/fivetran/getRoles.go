@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetRoles(ctx, nil, nil)
+//			_, err := fivetran.GetRoles(ctx, &fivetran.GetRolesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -59,21 +59,11 @@ type GetRolesResult struct {
 }
 
 func GetRolesOutput(ctx *pulumi.Context, args GetRolesOutputArgs, opts ...pulumi.InvokeOption) GetRolesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRolesResultOutput, error) {
 			args := v.(GetRolesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRolesResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getRoles:getRoles", args, &rv, "", opts...)
-			if err != nil {
-				return GetRolesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRolesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRolesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getRoles:getRoles", args, GetRolesResultOutput{}, options).(GetRolesResultOutput), nil
 		}).(GetRolesResultOutput)
 }
 

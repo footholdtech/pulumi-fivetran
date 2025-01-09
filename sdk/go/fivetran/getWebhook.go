@@ -79,21 +79,11 @@ type LookupWebhookResult struct {
 }
 
 func LookupWebhookOutput(ctx *pulumi.Context, args LookupWebhookOutputArgs, opts ...pulumi.InvokeOption) LookupWebhookResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebhookResultOutput, error) {
 			args := v.(LookupWebhookArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebhookResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getWebhook:getWebhook", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebhookResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebhookResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebhookResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getWebhook:getWebhook", args, LookupWebhookResultOutput{}, options).(LookupWebhookResultOutput), nil
 		}).(LookupWebhookResultOutput)
 }
 

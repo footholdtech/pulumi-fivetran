@@ -5824,6 +5824,7 @@ export interface ConnectorSchemaConfigSchemaTableColumn {
      * The boolean value specifying whether a column should be hashed.
      */
     hashed?: pulumi.Input<boolean>;
+    isPrimaryKey?: pulumi.Input<boolean>;
     /**
      * The column name within your destination in accordance with Fivetran conventional rules.
      */
@@ -5865,6 +5866,7 @@ export interface ConnectorSchemaConfigSchemasTablesColumns {
      * The boolean value specifying whether a column should be hashed.
      */
     hashed?: pulumi.Input<boolean>;
+    isPrimaryKey?: pulumi.Input<boolean>;
 }
 
 export interface ConnectorSchemaConfigTimeouts {
@@ -19608,6 +19610,84 @@ export interface GetGroupsGroupArgs {
      * The name of the group within your account.
      */
     name?: pulumi.Input<string>;
+}
+
+export interface GetPrivateLinksItem {
+    /**
+     * The cloud provider name.
+     */
+    cloudProvider?: string;
+    /**
+     * The date and time the membership was created.
+     */
+    createdAt?: string;
+    /**
+     * The unique identifier for the User within the Fivetran system.
+     */
+    createdBy?: string;
+    /**
+     * The unique identifier for the private link within the Fivetran system.
+     */
+    id?: string;
+    /**
+     * The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+     */
+    name?: string;
+    /**
+     * Data processing location. This is where Fivetran will operate and run computation on data.
+     */
+    region?: string;
+    /**
+     * Service type.
+     */
+    service?: string;
+    /**
+     * The state of the private link.
+     */
+    state?: string;
+    /**
+     * The state of the private link.
+     */
+    stateSummary?: string;
+}
+
+export interface GetPrivateLinksItemArgs {
+    /**
+     * The cloud provider name.
+     */
+    cloudProvider?: pulumi.Input<string>;
+    /**
+     * The date and time the membership was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the User within the Fivetran system.
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the private link within the Fivetran system.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Data processing location. This is where Fivetran will operate and run computation on data.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Service type.
+     */
+    service?: pulumi.Input<string>;
+    /**
+     * The state of the private link.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * The state of the private link.
+     */
+    stateSummary?: pulumi.Input<string>;
 }
 
 export interface GetProxyAgentsItem {

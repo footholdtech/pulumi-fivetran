@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetExternalLoggingResult> Invoke(GetExternalLoggingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalLoggingResult>("fivetran:index/getExternalLogging:getExternalLogging", args ?? new GetExternalLoggingInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a logging service object.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var extlog = Fivetran.GetExternalLogging.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetExternalLoggingResult> Invoke(GetExternalLoggingInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetExternalLoggingResult>("fivetran:index/getExternalLogging:getExternalLogging", args ?? new GetExternalLoggingInvokeArgs(), options.WithDefaults());
     }
 
 

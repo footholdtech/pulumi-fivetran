@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+//
 // This data source returns a list of all local processing agents within your Fivetran account.
 //
 // ## Example Usage
@@ -27,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetLocalProcessingAgents(ctx, nil, nil)
+//			_, err := fivetran.GetLocalProcessingAgents(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -55,18 +57,8 @@ type GetLocalProcessingAgentsResult struct {
 
 func GetLocalProcessingAgentsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetLocalProcessingAgentsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetLocalProcessingAgentsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetLocalProcessingAgentsResult
-		secret, err := ctx.InvokePackageRaw("fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents", nil, &rv, "", opts...)
-		if err != nil {
-			return GetLocalProcessingAgentsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetLocalProcessingAgentsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetLocalProcessingAgentsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents", nil, GetLocalProcessingAgentsResultOutput{}, options).(GetLocalProcessingAgentsResultOutput), nil
 	}).(GetLocalProcessingAgentsResultOutput)
 }
 

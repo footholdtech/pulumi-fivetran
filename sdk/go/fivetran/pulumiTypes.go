@@ -26383,7 +26383,8 @@ type ConnectorSchemaConfigSchemaTableColumn struct {
 	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
-	Hashed *bool `pulumi:"hashed"`
+	Hashed       *bool `pulumi:"hashed"`
+	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
 	// The column name within your destination in accordance with Fivetran conventional rules.
 	Name string `pulumi:"name"`
 }
@@ -26403,7 +26404,8 @@ type ConnectorSchemaConfigSchemaTableColumnArgs struct {
 	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
-	Hashed pulumi.BoolPtrInput `pulumi:"hashed"`
+	Hashed       pulumi.BoolPtrInput `pulumi:"hashed"`
+	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
 	// The column name within your destination in accordance with Fivetran conventional rules.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -26467,6 +26469,10 @@ func (o ConnectorSchemaConfigSchemaTableColumnOutput) Enabled() pulumi.BoolPtrOu
 // The boolean value specifying whether a column should be hashed.
 func (o ConnectorSchemaConfigSchemaTableColumnOutput) Hashed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *bool { return v.Hashed }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *bool { return v.IsPrimaryKey }).(pulumi.BoolPtrOutput)
 }
 
 // The column name within your destination in accordance with Fivetran conventional rules.
@@ -26721,7 +26727,8 @@ type ConnectorSchemaConfigSchemasTablesColumns struct {
 	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
-	Hashed *bool `pulumi:"hashed"`
+	Hashed       *bool `pulumi:"hashed"`
+	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
 }
 
 // ConnectorSchemaConfigSchemasTablesColumnsInput is an input type that accepts ConnectorSchemaConfigSchemasTablesColumnsArgs and ConnectorSchemaConfigSchemasTablesColumnsOutput values.
@@ -26739,7 +26746,8 @@ type ConnectorSchemaConfigSchemasTablesColumnsArgs struct {
 	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
-	Hashed pulumi.BoolPtrInput `pulumi:"hashed"`
+	Hashed       pulumi.BoolPtrInput `pulumi:"hashed"`
+	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
 }
 
 func (ConnectorSchemaConfigSchemasTablesColumnsArgs) ElementType() reflect.Type {
@@ -26801,6 +26809,10 @@ func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) Enabled() pulumi.BoolPt
 // The boolean value specifying whether a column should be hashed.
 func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) Hashed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesColumns) *bool { return v.Hashed }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesColumns) *bool { return v.IsPrimaryKey }).(pulumi.BoolPtrOutput)
 }
 
 type ConnectorSchemaConfigSchemasTablesColumnsMapOutput struct{ *pulumi.OutputState }
@@ -62460,6 +62472,130 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 	}).(GetGroupsGroupOutput)
 }
 
+type GetHybridDeploymentAgentsItem struct {
+	// The unique name for the hybrid deployment agent.
+	DisplayName string `pulumi:"displayName"`
+	// The unique identifier for the Group within the Fivetran system.
+	GroupId string `pulumi:"groupId"`
+	// The unique identifier for the hybrid deployment agent within your account.
+	Id string `pulumi:"id"`
+	// The timestamp of the time the hybrid deployment agent was created in your account.
+	RegisteredAt string `pulumi:"registeredAt"`
+}
+
+// GetHybridDeploymentAgentsItemInput is an input type that accepts GetHybridDeploymentAgentsItemArgs and GetHybridDeploymentAgentsItemOutput values.
+// You can construct a concrete instance of `GetHybridDeploymentAgentsItemInput` via:
+//
+//	GetHybridDeploymentAgentsItemArgs{...}
+type GetHybridDeploymentAgentsItemInput interface {
+	pulumi.Input
+
+	ToGetHybridDeploymentAgentsItemOutput() GetHybridDeploymentAgentsItemOutput
+	ToGetHybridDeploymentAgentsItemOutputWithContext(context.Context) GetHybridDeploymentAgentsItemOutput
+}
+
+type GetHybridDeploymentAgentsItemArgs struct {
+	// The unique name for the hybrid deployment agent.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The unique identifier for the Group within the Fivetran system.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The unique identifier for the hybrid deployment agent within your account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The timestamp of the time the hybrid deployment agent was created in your account.
+	RegisteredAt pulumi.StringInput `pulumi:"registeredAt"`
+}
+
+func (GetHybridDeploymentAgentsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridDeploymentAgentsItem)(nil)).Elem()
+}
+
+func (i GetHybridDeploymentAgentsItemArgs) ToGetHybridDeploymentAgentsItemOutput() GetHybridDeploymentAgentsItemOutput {
+	return i.ToGetHybridDeploymentAgentsItemOutputWithContext(context.Background())
+}
+
+func (i GetHybridDeploymentAgentsItemArgs) ToGetHybridDeploymentAgentsItemOutputWithContext(ctx context.Context) GetHybridDeploymentAgentsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridDeploymentAgentsItemOutput)
+}
+
+// GetHybridDeploymentAgentsItemArrayInput is an input type that accepts GetHybridDeploymentAgentsItemArray and GetHybridDeploymentAgentsItemArrayOutput values.
+// You can construct a concrete instance of `GetHybridDeploymentAgentsItemArrayInput` via:
+//
+//	GetHybridDeploymentAgentsItemArray{ GetHybridDeploymentAgentsItemArgs{...} }
+type GetHybridDeploymentAgentsItemArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridDeploymentAgentsItemArrayOutput() GetHybridDeploymentAgentsItemArrayOutput
+	ToGetHybridDeploymentAgentsItemArrayOutputWithContext(context.Context) GetHybridDeploymentAgentsItemArrayOutput
+}
+
+type GetHybridDeploymentAgentsItemArray []GetHybridDeploymentAgentsItemInput
+
+func (GetHybridDeploymentAgentsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridDeploymentAgentsItem)(nil)).Elem()
+}
+
+func (i GetHybridDeploymentAgentsItemArray) ToGetHybridDeploymentAgentsItemArrayOutput() GetHybridDeploymentAgentsItemArrayOutput {
+	return i.ToGetHybridDeploymentAgentsItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridDeploymentAgentsItemArray) ToGetHybridDeploymentAgentsItemArrayOutputWithContext(ctx context.Context) GetHybridDeploymentAgentsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridDeploymentAgentsItemArrayOutput)
+}
+
+type GetHybridDeploymentAgentsItemOutput struct{ *pulumi.OutputState }
+
+func (GetHybridDeploymentAgentsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridDeploymentAgentsItem)(nil)).Elem()
+}
+
+func (o GetHybridDeploymentAgentsItemOutput) ToGetHybridDeploymentAgentsItemOutput() GetHybridDeploymentAgentsItemOutput {
+	return o
+}
+
+func (o GetHybridDeploymentAgentsItemOutput) ToGetHybridDeploymentAgentsItemOutputWithContext(ctx context.Context) GetHybridDeploymentAgentsItemOutput {
+	return o
+}
+
+// The unique name for the hybrid deployment agent.
+func (o GetHybridDeploymentAgentsItemOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridDeploymentAgentsItem) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the Group within the Fivetran system.
+func (o GetHybridDeploymentAgentsItemOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridDeploymentAgentsItem) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the hybrid deployment agent within your account.
+func (o GetHybridDeploymentAgentsItemOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridDeploymentAgentsItem) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The timestamp of the time the hybrid deployment agent was created in your account.
+func (o GetHybridDeploymentAgentsItemOutput) RegisteredAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridDeploymentAgentsItem) string { return v.RegisteredAt }).(pulumi.StringOutput)
+}
+
+type GetHybridDeploymentAgentsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridDeploymentAgentsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridDeploymentAgentsItem)(nil)).Elem()
+}
+
+func (o GetHybridDeploymentAgentsItemArrayOutput) ToGetHybridDeploymentAgentsItemArrayOutput() GetHybridDeploymentAgentsItemArrayOutput {
+	return o
+}
+
+func (o GetHybridDeploymentAgentsItemArrayOutput) ToGetHybridDeploymentAgentsItemArrayOutputWithContext(ctx context.Context) GetHybridDeploymentAgentsItemArrayOutput {
+	return o
+}
+
+func (o GetHybridDeploymentAgentsItemArrayOutput) Index(i pulumi.IntInput) GetHybridDeploymentAgentsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridDeploymentAgentsItem {
+		return vs[0].([]GetHybridDeploymentAgentsItem)[vs[1].(int)]
+	}).(GetHybridDeploymentAgentsItemOutput)
+}
+
 type GetLocalProcessingAgentUsage struct {
 	// The unique identifier of the connection associated with the agent.
 	ConnectionId string `pulumi:"connectionId"`
@@ -62818,6 +62954,175 @@ func (o GetLocalProcessingAgentsItemUsageArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLocalProcessingAgentsItemUsage {
 		return vs[0].([]GetLocalProcessingAgentsItemUsage)[vs[1].(int)]
 	}).(GetLocalProcessingAgentsItemUsageOutput)
+}
+
+type GetPrivateLinksItem struct {
+	// The cloud provider name.
+	CloudProvider string `pulumi:"cloudProvider"`
+	// The date and time the membership was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The unique identifier for the User within the Fivetran system.
+	CreatedBy string `pulumi:"createdBy"`
+	// The unique identifier for the private link within the Fivetran system.
+	Id string `pulumi:"id"`
+	// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+	Name string `pulumi:"name"`
+	// Data processing location. This is where Fivetran will operate and run computation on data.
+	Region string `pulumi:"region"`
+	// Service type.
+	Service string `pulumi:"service"`
+	// The state of the private link.
+	State string `pulumi:"state"`
+	// The state of the private link.
+	StateSummary string `pulumi:"stateSummary"`
+}
+
+// GetPrivateLinksItemInput is an input type that accepts GetPrivateLinksItemArgs and GetPrivateLinksItemOutput values.
+// You can construct a concrete instance of `GetPrivateLinksItemInput` via:
+//
+//	GetPrivateLinksItemArgs{...}
+type GetPrivateLinksItemInput interface {
+	pulumi.Input
+
+	ToGetPrivateLinksItemOutput() GetPrivateLinksItemOutput
+	ToGetPrivateLinksItemOutputWithContext(context.Context) GetPrivateLinksItemOutput
+}
+
+type GetPrivateLinksItemArgs struct {
+	// The cloud provider name.
+	CloudProvider pulumi.StringInput `pulumi:"cloudProvider"`
+	// The date and time the membership was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The unique identifier for the User within the Fivetran system.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// The unique identifier for the private link within the Fivetran system.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Data processing location. This is where Fivetran will operate and run computation on data.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Service type.
+	Service pulumi.StringInput `pulumi:"service"`
+	// The state of the private link.
+	State pulumi.StringInput `pulumi:"state"`
+	// The state of the private link.
+	StateSummary pulumi.StringInput `pulumi:"stateSummary"`
+}
+
+func (GetPrivateLinksItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateLinksItem)(nil)).Elem()
+}
+
+func (i GetPrivateLinksItemArgs) ToGetPrivateLinksItemOutput() GetPrivateLinksItemOutput {
+	return i.ToGetPrivateLinksItemOutputWithContext(context.Background())
+}
+
+func (i GetPrivateLinksItemArgs) ToGetPrivateLinksItemOutputWithContext(ctx context.Context) GetPrivateLinksItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateLinksItemOutput)
+}
+
+// GetPrivateLinksItemArrayInput is an input type that accepts GetPrivateLinksItemArray and GetPrivateLinksItemArrayOutput values.
+// You can construct a concrete instance of `GetPrivateLinksItemArrayInput` via:
+//
+//	GetPrivateLinksItemArray{ GetPrivateLinksItemArgs{...} }
+type GetPrivateLinksItemArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateLinksItemArrayOutput() GetPrivateLinksItemArrayOutput
+	ToGetPrivateLinksItemArrayOutputWithContext(context.Context) GetPrivateLinksItemArrayOutput
+}
+
+type GetPrivateLinksItemArray []GetPrivateLinksItemInput
+
+func (GetPrivateLinksItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateLinksItem)(nil)).Elem()
+}
+
+func (i GetPrivateLinksItemArray) ToGetPrivateLinksItemArrayOutput() GetPrivateLinksItemArrayOutput {
+	return i.ToGetPrivateLinksItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateLinksItemArray) ToGetPrivateLinksItemArrayOutputWithContext(ctx context.Context) GetPrivateLinksItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateLinksItemArrayOutput)
+}
+
+type GetPrivateLinksItemOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateLinksItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateLinksItem)(nil)).Elem()
+}
+
+func (o GetPrivateLinksItemOutput) ToGetPrivateLinksItemOutput() GetPrivateLinksItemOutput {
+	return o
+}
+
+func (o GetPrivateLinksItemOutput) ToGetPrivateLinksItemOutputWithContext(ctx context.Context) GetPrivateLinksItemOutput {
+	return o
+}
+
+// The cloud provider name.
+func (o GetPrivateLinksItemOutput) CloudProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateLinksItem) string { return v.CloudProvider }).(pulumi.StringOutput)
+}
+
+// The date and time the membership was created.
+func (o GetPrivateLinksItemOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateLinksItem) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the User within the Fivetran system.
+func (o GetPrivateLinksItemOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateLinksItem) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the private link within the Fivetran system.
+func (o GetPrivateLinksItemOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateLinksItem) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+func (o GetPrivateLinksItemOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateLinksItem) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Data processing location. This is where Fivetran will operate and run computation on data.
+func (o GetPrivateLinksItemOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateLinksItem) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Service type.
+func (o GetPrivateLinksItemOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateLinksItem) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// The state of the private link.
+func (o GetPrivateLinksItemOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateLinksItem) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The state of the private link.
+func (o GetPrivateLinksItemOutput) StateSummary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateLinksItem) string { return v.StateSummary }).(pulumi.StringOutput)
+}
+
+type GetPrivateLinksItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateLinksItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateLinksItem)(nil)).Elem()
+}
+
+func (o GetPrivateLinksItemArrayOutput) ToGetPrivateLinksItemArrayOutput() GetPrivateLinksItemArrayOutput {
+	return o
+}
+
+func (o GetPrivateLinksItemArrayOutput) ToGetPrivateLinksItemArrayOutputWithContext(ctx context.Context) GetPrivateLinksItemArrayOutput {
+	return o
+}
+
+func (o GetPrivateLinksItemArrayOutput) Index(i pulumi.IntInput) GetPrivateLinksItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateLinksItem {
+		return vs[0].([]GetPrivateLinksItem)[vs[1].(int)]
+	}).(GetPrivateLinksItemOutput)
 }
 
 type GetProxyAgentsItem struct {
@@ -64298,12 +64603,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupUsersUserArrayInput)(nil)).Elem(), GetGroupUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridDeploymentAgentsItemInput)(nil)).Elem(), GetHybridDeploymentAgentsItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridDeploymentAgentsItemArrayInput)(nil)).Elem(), GetHybridDeploymentAgentsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentUsageInput)(nil)).Elem(), GetLocalProcessingAgentUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentUsageArrayInput)(nil)).Elem(), GetLocalProcessingAgentUsageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentsItemInput)(nil)).Elem(), GetLocalProcessingAgentsItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentsItemArrayInput)(nil)).Elem(), GetLocalProcessingAgentsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentsItemUsageInput)(nil)).Elem(), GetLocalProcessingAgentsItemUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentsItemUsageArrayInput)(nil)).Elem(), GetLocalProcessingAgentsItemUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateLinksItemInput)(nil)).Elem(), GetPrivateLinksItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateLinksItemArrayInput)(nil)).Elem(), GetPrivateLinksItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProxyAgentsItemInput)(nil)).Elem(), GetProxyAgentsItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProxyAgentsItemArrayInput)(nil)).Elem(), GetProxyAgentsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleInput)(nil)).Elem(), GetRolesRoleArgs{})
@@ -64480,12 +64789,16 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridDeploymentAgentsItemOutput{})
+	pulumi.RegisterOutputType(GetHybridDeploymentAgentsItemArrayOutput{})
 	pulumi.RegisterOutputType(GetLocalProcessingAgentUsageOutput{})
 	pulumi.RegisterOutputType(GetLocalProcessingAgentUsageArrayOutput{})
 	pulumi.RegisterOutputType(GetLocalProcessingAgentsItemOutput{})
 	pulumi.RegisterOutputType(GetLocalProcessingAgentsItemArrayOutput{})
 	pulumi.RegisterOutputType(GetLocalProcessingAgentsItemUsageOutput{})
 	pulumi.RegisterOutputType(GetLocalProcessingAgentsItemUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateLinksItemOutput{})
+	pulumi.RegisterOutputType(GetPrivateLinksItemArrayOutput{})
 	pulumi.RegisterOutputType(GetProxyAgentsItemOutput{})
 	pulumi.RegisterOutputType(GetProxyAgentsItemArrayOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleOutput{})

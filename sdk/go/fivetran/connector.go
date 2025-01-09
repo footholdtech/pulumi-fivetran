@@ -27,14 +27,21 @@ type Connector struct {
 	DestinationSchema ConnectorDestinationSchemaPtrOutput `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
+	HybridDeploymentAgentId pulumi.StringPtrOutput `pulumi:"hybridDeploymentAgentId"`
+	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+	// to. If the value is specified, the system will try to associate the connection with an existing agent.
+	//
+	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 	LocalProcessingAgentId pulumi.StringPtrOutput `pulumi:"localProcessingAgentId"`
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringOutput `pulumi:"networkingMethod"`
+	// The private link ID.
+	PrivateLinkId pulumi.StringPtrOutput `pulumi:"privateLinkId"`
 	// The proxy agent ID.
 	ProxyAgentId pulumi.StringPtrOutput `pulumi:"proxyAgentId"`
 	// Specifies whether the setup tests should be run automatically. The default value is FALSE.
@@ -97,14 +104,21 @@ type connectorState struct {
 	DestinationSchema *ConnectorDestinationSchema `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId *string `pulumi:"groupId"`
-	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
+	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
+	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+	// to. If the value is specified, the system will try to associate the connection with an existing agent.
+	//
+	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 	LocalProcessingAgentId *string `pulumi:"localProcessingAgentId"`
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name *string `pulumi:"name"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
+	// The private link ID.
+	PrivateLinkId *string `pulumi:"privateLinkId"`
 	// The proxy agent ID.
 	ProxyAgentId *string `pulumi:"proxyAgentId"`
 	// Specifies whether the setup tests should be run automatically. The default value is FALSE.
@@ -132,14 +146,21 @@ type ConnectorState struct {
 	DestinationSchema ConnectorDestinationSchemaPtrInput
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId pulumi.StringPtrInput
-	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
+	HybridDeploymentAgentId pulumi.StringPtrInput
+	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+	// to. If the value is specified, the system will try to associate the connection with an existing agent.
+	//
+	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 	LocalProcessingAgentId pulumi.StringPtrInput
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name pulumi.StringPtrInput
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringPtrInput
+	// The private link ID.
+	PrivateLinkId pulumi.StringPtrInput
 	// The proxy agent ID.
 	ProxyAgentId pulumi.StringPtrInput
 	// Specifies whether the setup tests should be run automatically. The default value is FALSE.
@@ -167,11 +188,18 @@ type connectorArgs struct {
 	DestinationSchema *ConnectorDestinationSchema `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
-	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
+	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
+	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+	// to. If the value is specified, the system will try to associate the connection with an existing agent.
+	//
+	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 	LocalProcessingAgentId *string `pulumi:"localProcessingAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
+	// The private link ID.
+	PrivateLinkId *string `pulumi:"privateLinkId"`
 	// The proxy agent ID.
 	ProxyAgentId *string `pulumi:"proxyAgentId"`
 	// Specifies whether the setup tests should be run automatically. The default value is FALSE.
@@ -196,11 +224,18 @@ type ConnectorArgs struct {
 	DestinationSchema ConnectorDestinationSchemaPtrInput
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId pulumi.StringInput
-	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
+	HybridDeploymentAgentId pulumi.StringPtrInput
+	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+	// to. If the value is specified, the system will try to associate the connection with an existing agent.
+	//
+	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 	LocalProcessingAgentId pulumi.StringPtrInput
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringPtrInput
+	// The private link ID.
+	PrivateLinkId pulumi.StringPtrInput
 	// The proxy agent ID.
 	ProxyAgentId pulumi.StringPtrInput
 	// Specifies whether the setup tests should be run automatically. The default value is FALSE.
@@ -332,8 +367,16 @@ func (o ConnectorOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 // value is specified, the system will try to associate the connection with an existing agent.
+func (o ConnectorOutput) HybridDeploymentAgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.HybridDeploymentAgentId }).(pulumi.StringPtrOutput)
+}
+
+// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+// to. If the value is specified, the system will try to associate the connection with an existing agent.
+//
+// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 func (o ConnectorOutput) LocalProcessingAgentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.LocalProcessingAgentId }).(pulumi.StringPtrOutput)
 }
@@ -347,6 +390,11 @@ func (o ConnectorOutput) Name() pulumi.StringOutput {
 // Possible values: Directly, SshTunnel, ProxyAgent.
 func (o ConnectorOutput) NetworkingMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.NetworkingMethod }).(pulumi.StringOutput)
+}
+
+// The private link ID.
+func (o ConnectorOutput) PrivateLinkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.PrivateLinkId }).(pulumi.StringPtrOutput)
 }
 
 // The proxy agent ID.

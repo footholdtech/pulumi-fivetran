@@ -55,8 +55,15 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
      * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    public readonly hybridDeploymentAgentId!: pulumi.Output<string | undefined>;
+    /**
+     * (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+     * to. If the value is specified, the system will try to associate the connection with an existing agent.
+     *
+     * @deprecated This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
      */
     public readonly localProcessingAgentId!: pulumi.Output<string | undefined>;
     /**
@@ -68,6 +75,10 @@ export class Connector extends pulumi.CustomResource {
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
     public readonly networkingMethod!: pulumi.Output<string>;
+    /**
+     * The private link ID.
+     */
+    public readonly privateLinkId!: pulumi.Output<string | undefined>;
     /**
      * The proxy agent ID.
      */
@@ -113,9 +124,11 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["destinationSchema"] = state ? state.destinationSchema : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["hybridDeploymentAgentId"] = state ? state.hybridDeploymentAgentId : undefined;
             resourceInputs["localProcessingAgentId"] = state ? state.localProcessingAgentId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkingMethod"] = state ? state.networkingMethod : undefined;
+            resourceInputs["privateLinkId"] = state ? state.privateLinkId : undefined;
             resourceInputs["proxyAgentId"] = state ? state.proxyAgentId : undefined;
             resourceInputs["runSetupTests"] = state ? state.runSetupTests : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
@@ -134,8 +147,10 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["destinationSchema"] = args ? args.destinationSchema : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["hybridDeploymentAgentId"] = args ? args.hybridDeploymentAgentId : undefined;
             resourceInputs["localProcessingAgentId"] = args ? args.localProcessingAgentId : undefined;
             resourceInputs["networkingMethod"] = args ? args.networkingMethod : undefined;
+            resourceInputs["privateLinkId"] = args ? args.privateLinkId : undefined;
             resourceInputs["proxyAgentId"] = args ? args.proxyAgentId : undefined;
             resourceInputs["runSetupTests"] = args ? args.runSetupTests : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
@@ -171,8 +186,15 @@ export interface ConnectorState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
      * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    hybridDeploymentAgentId?: pulumi.Input<string>;
+    /**
+     * (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+     * to. If the value is specified, the system will try to associate the connection with an existing agent.
+     *
+     * @deprecated This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
      */
     localProcessingAgentId?: pulumi.Input<string>;
     /**
@@ -184,6 +206,10 @@ export interface ConnectorState {
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
     networkingMethod?: pulumi.Input<string>;
+    /**
+     * The private link ID.
+     */
+    privateLinkId?: pulumi.Input<string>;
     /**
      * The proxy agent ID.
      */
@@ -223,14 +249,25 @@ export interface ConnectorArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
      * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    hybridDeploymentAgentId?: pulumi.Input<string>;
+    /**
+     * (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+     * to. If the value is specified, the system will try to associate the connection with an existing agent.
+     *
+     * @deprecated This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
      */
     localProcessingAgentId?: pulumi.Input<string>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
     networkingMethod?: pulumi.Input<string>;
+    /**
+     * The private link ID.
+     */
+    privateLinkId?: pulumi.Input<string>;
     /**
      * The proxy agent ID.
      */

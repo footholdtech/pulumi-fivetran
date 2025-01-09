@@ -67,7 +67,7 @@ export interface GetDestinationFingerprintsResult {
  * });
  * ```
  */
-export function getDestinationFingerprintsOutput(args: GetDestinationFingerprintsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestinationFingerprintsResult> {
+export function getDestinationFingerprintsOutput(args: GetDestinationFingerprintsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDestinationFingerprintsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getDestinationFingerprints:getDestinationFingerprints", {
         "fingerprints": args.fingerprints,

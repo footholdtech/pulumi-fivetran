@@ -67,7 +67,7 @@ export interface GetTeamGroupMembershipsResult {
  * });
  * ```
  */
-export function getTeamGroupMembershipsOutput(args: GetTeamGroupMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamGroupMembershipsResult> {
+export function getTeamGroupMembershipsOutput(args: GetTeamGroupMembershipsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTeamGroupMembershipsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getTeamGroupMemberships:getTeamGroupMemberships", {
         "groups": args.groups,

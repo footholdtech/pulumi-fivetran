@@ -65,21 +65,11 @@ type GetUserConnectorMembershipsResult struct {
 }
 
 func GetUserConnectorMembershipsOutput(ctx *pulumi.Context, args GetUserConnectorMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetUserConnectorMembershipsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetUserConnectorMembershipsResultOutput, error) {
 			args := v.(GetUserConnectorMembershipsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetUserConnectorMembershipsResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships", args, &rv, "", opts...)
-			if err != nil {
-				return GetUserConnectorMembershipsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetUserConnectorMembershipsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetUserConnectorMembershipsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships", args, GetUserConnectorMembershipsResultOutput{}, options).(GetUserConnectorMembershipsResultOutput), nil
 		}).(GetUserConnectorMembershipsResultOutput)
 }
 

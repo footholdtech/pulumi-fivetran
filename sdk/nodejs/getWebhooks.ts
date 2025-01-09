@@ -46,7 +46,7 @@ export interface GetWebhooksResult {
  * const webhooks = fivetran.getWebhooks({});
  * ```
  */
-export function getWebhooksOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhooksResult> {
+export function getWebhooksOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebhooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getWebhooks:getWebhooks", {
     }, opts);

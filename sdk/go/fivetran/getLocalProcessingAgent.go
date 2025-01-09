@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+//
 // This data source returns a local processing agent object.
 //
 // ## Example Usage
@@ -68,21 +70,11 @@ type LookupLocalProcessingAgentResult struct {
 }
 
 func LookupLocalProcessingAgentOutput(ctx *pulumi.Context, args LookupLocalProcessingAgentOutputArgs, opts ...pulumi.InvokeOption) LookupLocalProcessingAgentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLocalProcessingAgentResultOutput, error) {
 			args := v.(LookupLocalProcessingAgentArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupLocalProcessingAgentResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLocalProcessingAgentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLocalProcessingAgentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLocalProcessingAgentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent", args, LookupLocalProcessingAgentResultOutput{}, options).(LookupLocalProcessingAgentResultOutput), nil
 		}).(LookupLocalProcessingAgentResultOutput)
 }
 

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetWebhooks(ctx, nil, nil)
+//			_, err := fivetran.GetWebhooks(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -55,18 +55,8 @@ type GetWebhooksResult struct {
 
 func GetWebhooksOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetWebhooksResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetWebhooksResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetWebhooksResult
-		secret, err := ctx.InvokePackageRaw("fivetran:index/getWebhooks:getWebhooks", nil, &rv, "", opts...)
-		if err != nil {
-			return GetWebhooksResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetWebhooksResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetWebhooksResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("fivetran:index/getWebhooks:getWebhooks", nil, GetWebhooksResultOutput{}, options).(GetWebhooksResultOutput), nil
 	}).(GetWebhooksResultOutput)
 }
 

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetProxyAgents(ctx, nil, nil)
+//			_, err := fivetran.GetProxyAgents(ctx, &fivetran.GetProxyAgentsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -59,21 +59,11 @@ type GetProxyAgentsResult struct {
 }
 
 func GetProxyAgentsOutput(ctx *pulumi.Context, args GetProxyAgentsOutputArgs, opts ...pulumi.InvokeOption) GetProxyAgentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProxyAgentsResultOutput, error) {
 			args := v.(GetProxyAgentsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetProxyAgentsResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getProxyAgents:getProxyAgents", args, &rv, "", opts...)
-			if err != nil {
-				return GetProxyAgentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProxyAgentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProxyAgentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getProxyAgents:getProxyAgents", args, GetProxyAgentsResultOutput{}, options).(GetProxyAgentsResultOutput), nil
 		}).(GetProxyAgentsResultOutput)
 }
 

@@ -67,7 +67,7 @@ export interface GetDbtModelsResult {
  * });
  * ```
  */
-export function getDbtModelsOutput(args: GetDbtModelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtModelsResult> {
+export function getDbtModelsOutput(args: GetDbtModelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbtModelsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getDbtModels:getDbtModels", {
         "models": args.models,

@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetConnectorResult> Invoke(GetConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("fivetran:index/getConnector:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a connector object.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connector = Fivetran.GetConnector.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConnectorResult> Invoke(GetConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("fivetran:index/getConnector:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -113,12 +137,14 @@ namespace Footholdtech.Fivetran
         public readonly Outputs.GetConnectorDestinationSchemaResult? DestinationSchema;
         public readonly string FailedAt;
         public readonly string GroupId;
+        public readonly string HybridDeploymentAgentId;
         public readonly string Id;
         public readonly string LocalProcessingAgentId;
         public readonly string Name;
         public readonly string NetworkingMethod;
         public readonly bool PauseAfterTrial;
         public readonly bool Paused;
+        public readonly string PrivateLinkId;
         public readonly string ProxyAgentId;
         public readonly string ScheduleType;
         public readonly string Service;
@@ -143,6 +169,8 @@ namespace Footholdtech.Fivetran
 
             string groupId,
 
+            string hybridDeploymentAgentId,
+
             string id,
 
             string localProcessingAgentId,
@@ -154,6 +182,8 @@ namespace Footholdtech.Fivetran
             bool pauseAfterTrial,
 
             bool paused,
+
+            string privateLinkId,
 
             string proxyAgentId,
 
@@ -176,12 +206,14 @@ namespace Footholdtech.Fivetran
             DestinationSchema = destinationSchema;
             FailedAt = failedAt;
             GroupId = groupId;
+            HybridDeploymentAgentId = hybridDeploymentAgentId;
             Id = id;
             LocalProcessingAgentId = localProcessingAgentId;
             Name = name;
             NetworkingMethod = networkingMethod;
             PauseAfterTrial = pauseAfterTrial;
             Paused = paused;
+            PrivateLinkId = privateLinkId;
             ProxyAgentId = proxyAgentId;
             ScheduleType = scheduleType;
             Service = service;

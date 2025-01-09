@@ -46,7 +46,7 @@ export interface GetDbtProjectsResult {
  * const myProjects = fivetran.getDbtProjects({});
  * ```
  */
-export function getDbtProjectsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtProjectsResult> {
+export function getDbtProjectsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbtProjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getDbtProjects:getDbtProjects", {
     }, opts);

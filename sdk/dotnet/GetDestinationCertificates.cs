@@ -17,6 +17,9 @@ namespace Footholdtech.Fivetran
 
         public static Output<GetDestinationCertificatesResult> Invoke(GetDestinationCertificatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDestinationCertificatesResult>("fivetran:index/getDestinationCertificates:getDestinationCertificates", args ?? new GetDestinationCertificatesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetDestinationCertificatesResult> Invoke(GetDestinationCertificatesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDestinationCertificatesResult>("fivetran:index/getDestinationCertificates:getDestinationCertificates", args ?? new GetDestinationCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 

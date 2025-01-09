@@ -73,14 +73,25 @@ export class Destination extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
      * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    public readonly hybridDeploymentAgentId!: pulumi.Output<string | undefined>;
+    /**
+     * (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+     * to. If the value is specified, the system will try to associate the connection with an existing agent.
+     *
+     * @deprecated This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
      */
     public readonly localProcessingAgentId!: pulumi.Output<string | undefined>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
     public readonly networkingMethod!: pulumi.Output<string>;
+    /**
+     * The private link ID.
+     */
+    public readonly privateLinkId!: pulumi.Output<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
@@ -131,8 +142,10 @@ export class Destination extends pulumi.CustomResource {
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["daylightSavingTimeEnabled"] = state ? state.daylightSavingTimeEnabled : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["hybridDeploymentAgentId"] = state ? state.hybridDeploymentAgentId : undefined;
             resourceInputs["localProcessingAgentId"] = state ? state.localProcessingAgentId : undefined;
             resourceInputs["networkingMethod"] = state ? state.networkingMethod : undefined;
+            resourceInputs["privateLinkId"] = state ? state.privateLinkId : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["runSetupTests"] = state ? state.runSetupTests : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
@@ -158,8 +171,10 @@ export class Destination extends pulumi.CustomResource {
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["daylightSavingTimeEnabled"] = args ? args.daylightSavingTimeEnabled : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["hybridDeploymentAgentId"] = args ? args.hybridDeploymentAgentId : undefined;
             resourceInputs["localProcessingAgentId"] = args ? args.localProcessingAgentId : undefined;
             resourceInputs["networkingMethod"] = args ? args.networkingMethod : undefined;
+            resourceInputs["privateLinkId"] = args ? args.privateLinkId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["runSetupTests"] = args ? args.runSetupTests : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
@@ -188,14 +203,25 @@ export interface DestinationState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
      * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    hybridDeploymentAgentId?: pulumi.Input<string>;
+    /**
+     * (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+     * to. If the value is specified, the system will try to associate the connection with an existing agent.
+     *
+     * @deprecated This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
      */
     localProcessingAgentId?: pulumi.Input<string>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
     networkingMethod?: pulumi.Input<string>;
+    /**
+     * The private link ID.
+     */
+    privateLinkId?: pulumi.Input<string>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
@@ -245,14 +271,25 @@ export interface DestinationArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
      * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    hybridDeploymentAgentId?: pulumi.Input<string>;
+    /**
+     * (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+     * to. If the value is specified, the system will try to associate the connection with an existing agent.
+     *
+     * @deprecated This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
      */
     localProcessingAgentId?: pulumi.Input<string>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
     networkingMethod?: pulumi.Input<string>;
+    /**
+     * The private link ID.
+     */
+    privateLinkId?: pulumi.Input<string>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */

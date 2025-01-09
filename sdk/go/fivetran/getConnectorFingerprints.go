@@ -65,21 +65,11 @@ type LookupConnectorFingerprintsResult struct {
 }
 
 func LookupConnectorFingerprintsOutput(ctx *pulumi.Context, args LookupConnectorFingerprintsOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorFingerprintsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectorFingerprintsResultOutput, error) {
 			args := v.(LookupConnectorFingerprintsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectorFingerprintsResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getConnectorFingerprints:getConnectorFingerprints", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectorFingerprintsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectorFingerprintsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectorFingerprintsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getConnectorFingerprints:getConnectorFingerprints", args, LookupConnectorFingerprintsResultOutput{}, options).(LookupConnectorFingerprintsResultOutput), nil
 		}).(LookupConnectorFingerprintsResultOutput)
 }
 

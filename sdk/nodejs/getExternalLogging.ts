@@ -84,7 +84,7 @@ export interface GetExternalLoggingResult {
  * });
  * ```
  */
-export function getExternalLoggingOutput(args: GetExternalLoggingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalLoggingResult> {
+export function getExternalLoggingOutput(args: GetExternalLoggingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalLoggingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getExternalLogging:getExternalLogging", {
         "config": args.config,

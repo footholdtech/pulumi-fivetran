@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetDbtProjects(ctx, nil, nil)
+//			_, err := fivetran.GetDbtProjects(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -55,18 +55,8 @@ type GetDbtProjectsResult struct {
 
 func GetDbtProjectsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDbtProjectsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetDbtProjectsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetDbtProjectsResult
-		secret, err := ctx.InvokePackageRaw("fivetran:index/getDbtProjects:getDbtProjects", nil, &rv, "", opts...)
-		if err != nil {
-			return GetDbtProjectsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetDbtProjectsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetDbtProjectsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("fivetran:index/getDbtProjects:getDbtProjects", nil, GetDbtProjectsResultOutput{}, options).(GetDbtProjectsResultOutput), nil
 	}).(GetDbtProjectsResultOutput)
 }
 

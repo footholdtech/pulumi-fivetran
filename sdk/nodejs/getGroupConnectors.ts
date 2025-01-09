@@ -74,7 +74,7 @@ export interface GetGroupConnectorsResult {
  * });
  * ```
  */
-export function getGroupConnectorsOutput(args: GetGroupConnectorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupConnectorsResult> {
+export function getGroupConnectorsOutput(args: GetGroupConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupConnectorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getGroupConnectors:getGroupConnectors", {
         "connectors": args.connectors,

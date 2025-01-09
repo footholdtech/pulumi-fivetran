@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetDbtModelsResult> Invoke(GetDbtModelsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbtModelsResult>("fivetran:index/getDbtModels:getDbtModels", args ?? new GetDbtModelsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a list of all dbt Models available for specified dbt Project id.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myModels = Fivetran.GetDbtModels.Invoke(new()
+        ///     {
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDbtModelsResult> Invoke(GetDbtModelsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbtModelsResult>("fivetran:index/getDbtModels:getDbtModels", args ?? new GetDbtModelsInvokeArgs(), options.WithDefaults());
     }
 
 

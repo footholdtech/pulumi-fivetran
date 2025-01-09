@@ -53,6 +53,27 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetWebhooksResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("fivetran:index/getWebhooks:getWebhooks", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a list of all webhooks within your Fivetran account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var webhooks = Fivetran.GetWebhooks.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetWebhooksResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("fivetran:index/getWebhooks:getWebhooks", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

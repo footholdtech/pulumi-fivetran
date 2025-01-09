@@ -51,12 +51,14 @@ export interface GetConnectorResult {
     readonly destinationSchema?: outputs.GetConnectorDestinationSchema;
     readonly failedAt: string;
     readonly groupId: string;
+    readonly hybridDeploymentAgentId: string;
     readonly id: string;
     readonly localProcessingAgentId: string;
     readonly name: string;
     readonly networkingMethod: string;
     readonly pauseAfterTrial: boolean;
     readonly paused: boolean;
+    readonly privateLinkId: string;
     readonly proxyAgentId: string;
     readonly scheduleType: string;
     readonly service: string;
@@ -79,7 +81,7 @@ export interface GetConnectorResult {
  * });
  * ```
  */
-export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorResult> {
+export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getConnector:getConnector", {
         "config": args.config,

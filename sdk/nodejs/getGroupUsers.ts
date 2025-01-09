@@ -63,7 +63,7 @@ export interface GetGroupUsersResult {
  * });
  * ```
  */
-export function getGroupUsersOutput(args: GetGroupUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupUsersResult> {
+export function getGroupUsersOutput(args: GetGroupUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getGroupUsers:getGroupUsers", {
         "id": args.id,

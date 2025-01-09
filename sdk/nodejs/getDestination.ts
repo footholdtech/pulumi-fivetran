@@ -43,9 +43,11 @@ export interface GetDestinationResult {
     readonly config?: outputs.GetDestinationConfig;
     readonly daylightSavingTimeEnabled: boolean;
     readonly groupId: string;
+    readonly hybridDeploymentAgentId: string;
     readonly id: string;
     readonly localProcessingAgentId: string;
     readonly networkingMethod: string;
+    readonly privateLinkId: string;
     readonly region: string;
     readonly service: string;
     readonly setupStatus: string;
@@ -65,7 +67,7 @@ export interface GetDestinationResult {
  * });
  * ```
  */
-export function getDestinationOutput(args: GetDestinationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestinationResult> {
+export function getDestinationOutput(args: GetDestinationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDestinationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getDestination:getDestination", {
         "config": args.config,

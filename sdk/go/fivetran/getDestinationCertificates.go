@@ -38,21 +38,11 @@ type LookupDestinationCertificatesResult struct {
 }
 
 func LookupDestinationCertificatesOutput(ctx *pulumi.Context, args LookupDestinationCertificatesOutputArgs, opts ...pulumi.InvokeOption) LookupDestinationCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDestinationCertificatesResultOutput, error) {
 			args := v.(LookupDestinationCertificatesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDestinationCertificatesResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getDestinationCertificates:getDestinationCertificates", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDestinationCertificatesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDestinationCertificatesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDestinationCertificatesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getDestinationCertificates:getDestinationCertificates", args, LookupDestinationCertificatesResultOutput{}, options).(LookupDestinationCertificatesResultOutput), nil
 		}).(LookupDestinationCertificatesResultOutput)
 }
 

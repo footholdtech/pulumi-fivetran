@@ -25,6 +25,9 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("hashed")]
         public Input<bool>? Hashed { get; set; }
 
+        [Input("isPrimaryKey")]
+        public Input<bool>? IsPrimaryKey { get; set; }
+
         public ConnectorSchemaConfigSchemasTablesColumnsGetArgs()
         {
         }

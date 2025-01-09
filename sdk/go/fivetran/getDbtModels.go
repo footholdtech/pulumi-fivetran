@@ -65,21 +65,11 @@ type GetDbtModelsResult struct {
 }
 
 func GetDbtModelsOutput(ctx *pulumi.Context, args GetDbtModelsOutputArgs, opts ...pulumi.InvokeOption) GetDbtModelsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDbtModelsResultOutput, error) {
 			args := v.(GetDbtModelsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDbtModelsResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getDbtModels:getDbtModels", args, &rv, "", opts...)
-			if err != nil {
-				return GetDbtModelsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDbtModelsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDbtModelsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getDbtModels:getDbtModels", args, GetDbtModelsResultOutput{}, options).(GetDbtModelsResultOutput), nil
 		}).(GetDbtModelsResultOutput)
 }
 

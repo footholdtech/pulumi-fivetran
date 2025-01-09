@@ -88,21 +88,11 @@ type LookupDbtProjectResult struct {
 }
 
 func LookupDbtProjectOutput(ctx *pulumi.Context, args LookupDbtProjectOutputArgs, opts ...pulumi.InvokeOption) LookupDbtProjectResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDbtProjectResultOutput, error) {
 			args := v.(LookupDbtProjectArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDbtProjectResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getDbtProject:getDbtProject", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDbtProjectResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDbtProjectResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDbtProjectResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getDbtProject:getDbtProject", args, LookupDbtProjectResultOutput{}, options).(LookupDbtProjectResultOutput), nil
 		}).(LookupDbtProjectResultOutput)
 }
 

@@ -65,21 +65,11 @@ type GetTeamUserMembershipsResult struct {
 }
 
 func GetTeamUserMembershipsOutput(ctx *pulumi.Context, args GetTeamUserMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetTeamUserMembershipsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTeamUserMembershipsResultOutput, error) {
 			args := v.(GetTeamUserMembershipsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTeamUserMembershipsResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getTeamUserMemberships:getTeamUserMemberships", args, &rv, "", opts...)
-			if err != nil {
-				return GetTeamUserMembershipsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTeamUserMembershipsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTeamUserMembershipsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getTeamUserMemberships:getTeamUserMemberships", args, GetTeamUserMembershipsResultOutput{}, options).(GetTeamUserMembershipsResultOutput), nil
 		}).(GetTeamUserMembershipsResultOutput)
 }
 

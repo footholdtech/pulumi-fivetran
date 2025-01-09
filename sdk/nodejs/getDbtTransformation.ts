@@ -99,7 +99,7 @@ export interface GetDbtTransformationResult {
  * });
  * ```
  */
-export function getDbtTransformationOutput(args: GetDbtTransformationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtTransformationResult> {
+export function getDbtTransformationOutput(args: GetDbtTransformationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbtTransformationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getDbtTransformation:getDbtTransformation", {
         "id": args.id,

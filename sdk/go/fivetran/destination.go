@@ -47,11 +47,18 @@ type Destination struct {
 	DaylightSavingTimeEnabled pulumi.BoolOutput `pulumi:"daylightSavingTimeEnabled"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
+	HybridDeploymentAgentId pulumi.StringPtrOutput `pulumi:"hybridDeploymentAgentId"`
+	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+	// to. If the value is specified, the system will try to associate the connection with an existing agent.
+	//
+	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 	LocalProcessingAgentId pulumi.StringPtrOutput `pulumi:"localProcessingAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringOutput `pulumi:"networkingMethod"`
+	// The private link ID.
+	PrivateLinkId pulumi.StringPtrOutput `pulumi:"privateLinkId"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -120,11 +127,18 @@ type destinationState struct {
 	DaylightSavingTimeEnabled *bool `pulumi:"daylightSavingTimeEnabled"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId *string `pulumi:"groupId"`
-	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
+	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
+	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+	// to. If the value is specified, the system will try to associate the connection with an existing agent.
+	//
+	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 	LocalProcessingAgentId *string `pulumi:"localProcessingAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
+	// The private link ID.
+	PrivateLinkId *string `pulumi:"privateLinkId"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region *string `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -152,11 +166,18 @@ type DestinationState struct {
 	DaylightSavingTimeEnabled pulumi.BoolPtrInput
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringPtrInput
-	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
+	HybridDeploymentAgentId pulumi.StringPtrInput
+	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+	// to. If the value is specified, the system will try to associate the connection with an existing agent.
+	//
+	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 	LocalProcessingAgentId pulumi.StringPtrInput
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringPtrInput
+	// The private link ID.
+	PrivateLinkId pulumi.StringPtrInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringPtrInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -188,11 +209,18 @@ type destinationArgs struct {
 	DaylightSavingTimeEnabled *bool `pulumi:"daylightSavingTimeEnabled"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
-	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
+	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
+	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+	// to. If the value is specified, the system will try to associate the connection with an existing agent.
+	//
+	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 	LocalProcessingAgentId *string `pulumi:"localProcessingAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
+	// The private link ID.
+	PrivateLinkId *string `pulumi:"privateLinkId"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region string `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -219,11 +247,18 @@ type DestinationArgs struct {
 	DaylightSavingTimeEnabled pulumi.BoolPtrInput
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringInput
-	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
+	HybridDeploymentAgentId pulumi.StringPtrInput
+	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+	// to. If the value is specified, the system will try to associate the connection with an existing agent.
+	//
+	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 	LocalProcessingAgentId pulumi.StringPtrInput
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringPtrInput
+	// The private link ID.
+	PrivateLinkId pulumi.StringPtrInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -344,8 +379,16 @@ func (o DestinationOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 // value is specified, the system will try to associate the connection with an existing agent.
+func (o DestinationOutput) HybridDeploymentAgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Destination) pulumi.StringPtrOutput { return v.HybridDeploymentAgentId }).(pulumi.StringPtrOutput)
+}
+
+// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+// to. If the value is specified, the system will try to associate the connection with an existing agent.
+//
+// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
 func (o DestinationOutput) LocalProcessingAgentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringPtrOutput { return v.LocalProcessingAgentId }).(pulumi.StringPtrOutput)
 }
@@ -353,6 +396,11 @@ func (o DestinationOutput) LocalProcessingAgentId() pulumi.StringPtrOutput {
 // Possible values: Directly, SshTunnel, ProxyAgent.
 func (o DestinationOutput) NetworkingMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.NetworkingMethod }).(pulumi.StringOutput)
+}
+
+// The private link ID.
+func (o DestinationOutput) PrivateLinkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Destination) pulumi.StringPtrOutput { return v.PrivateLinkId }).(pulumi.StringPtrOutput)
 }
 
 // Data processing location. This is where Fivetran will operate and run computation on data.
