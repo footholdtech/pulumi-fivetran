@@ -73,21 +73,11 @@ type LookupProxyAgentResult struct {
 }
 
 func LookupProxyAgentOutput(ctx *pulumi.Context, args LookupProxyAgentOutputArgs, opts ...pulumi.InvokeOption) LookupProxyAgentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProxyAgentResultOutput, error) {
 			args := v.(LookupProxyAgentArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupProxyAgentResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getProxyAgent:getProxyAgent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProxyAgentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProxyAgentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProxyAgentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getProxyAgent:getProxyAgent", args, LookupProxyAgentResultOutput{}, options).(LookupProxyAgentResultOutput), nil
 		}).(LookupProxyAgentResultOutput)
 }
 

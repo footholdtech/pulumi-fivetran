@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetTeamUserMembershipsResult> Invoke(GetTeamUserMembershipsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTeamUserMembershipsResult>("fivetran:index/getTeamUserMemberships:getTeamUserMemberships", args ?? new GetTeamUserMembershipsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a list of user memberships within team object.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var teamUserMemberships = Fivetran.GetTeamUserMemberships.Invoke(new()
+        ///     {
+        ///         TeamId = "team_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTeamUserMembershipsResult> Invoke(GetTeamUserMembershipsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTeamUserMembershipsResult>("fivetran:index/getTeamUserMemberships:getTeamUserMemberships", args ?? new GetTeamUserMembershipsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this resource.
+ *
  * This resource allows you to create, update, and delete local processing agents.
  *
  * ## Example Usage

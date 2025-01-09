@@ -38,21 +38,11 @@ type LookupConnectorCertificatesResult struct {
 }
 
 func LookupConnectorCertificatesOutput(ctx *pulumi.Context, args LookupConnectorCertificatesOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectorCertificatesResultOutput, error) {
 			args := v.(LookupConnectorCertificatesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectorCertificatesResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getConnectorCertificates:getConnectorCertificates", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectorCertificatesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectorCertificatesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectorCertificatesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getConnectorCertificates:getConnectorCertificates", args, LookupConnectorCertificatesResultOutput{}, options).(LookupConnectorCertificatesResultOutput), nil
 		}).(LookupConnectorCertificatesResultOutput)
 }
 

@@ -45,7 +45,7 @@ export interface GetTeamConnectorMembershipsResult {
 /**
  * This data source returns a connector membership within team object.
  */
-export function getTeamConnectorMembershipsOutput(args: GetTeamConnectorMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamConnectorMembershipsResult> {
+export function getTeamConnectorMembershipsOutput(args: GetTeamConnectorMembershipsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTeamConnectorMembershipsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships", {
         "connectors": args.connectors,

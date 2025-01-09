@@ -22,15 +22,19 @@ namespace Footholdtech.Fivetran.Outputs
         /// The boolean value specifying whether a column should be hashed.
         /// </summary>
         public readonly bool? Hashed;
+        public readonly bool? IsPrimaryKey;
 
         [OutputConstructor]
         private ConnectorSchemaConfigSchemasTablesColumns(
             bool? enabled,
 
-            bool? hashed)
+            bool? hashed,
+
+            bool? isPrimaryKey)
         {
             Enabled = enabled;
             Hashed = hashed;
+            IsPrimaryKey = isPrimaryKey;
         }
     }
 }

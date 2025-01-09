@@ -22,6 +22,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// The boolean value specifying whether a column should be hashed.
         /// </summary>
         public readonly bool? Hashed;
+        public readonly bool? IsPrimaryKey;
         /// <summary>
         /// The column name within your destination in accordance with Fivetran conventional rules.
         /// </summary>
@@ -33,10 +34,13 @@ namespace Footholdtech.Fivetran.Outputs
 
             bool? hashed,
 
+            bool? isPrimaryKey,
+
             string name)
         {
             Enabled = enabled;
             Hashed = hashed;
+            IsPrimaryKey = isPrimaryKey;
             Name = name;
         }
     }

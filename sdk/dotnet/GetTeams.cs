@@ -53,6 +53,27 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetTeamsResult> Invoke(GetTeamsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTeamsResult>("fivetran:index/getTeams:getTeams", args ?? new GetTeamsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a list of all teams within your Fivetran account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var teams = Fivetran.GetTeams.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTeamsResult> Invoke(GetTeamsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTeamsResult>("fivetran:index/getTeams:getTeams", args ?? new GetTeamsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+ *
  * This data source returns a local processing agent object.
  *
  * ## Example Usage
@@ -60,6 +62,8 @@ export interface GetLocalProcessingAgentResult {
     readonly usages: outputs.GetLocalProcessingAgentUsage[];
 }
 /**
+ * NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+ *
  * This data source returns a local processing agent object.
  *
  * ## Example Usage
@@ -73,7 +77,7 @@ export interface GetLocalProcessingAgentResult {
  * });
  * ```
  */
-export function getLocalProcessingAgentOutput(args: GetLocalProcessingAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLocalProcessingAgentResult> {
+export function getLocalProcessingAgentOutput(args: GetLocalProcessingAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLocalProcessingAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent", {
         "id": args.id,

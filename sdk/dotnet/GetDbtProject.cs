@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetDbtProjectResult> Invoke(GetDbtProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbtProjectResult>("fivetran:index/getDbtProject:getDbtProject", args ?? new GetDbtProjectInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a dbt Project object.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project = Fivetran.GetDbtProject.Invoke(new()
+        ///     {
+        ///         Id = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDbtProjectResult> Invoke(GetDbtProjectInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbtProjectResult>("fivetran:index/getDbtProject:getDbtProject", args ?? new GetDbtProjectInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetGroups(ctx, nil, nil)
+//			_, err := fivetran.GetGroups(ctx, &fivetran.GetGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -59,21 +59,11 @@ type GetGroupsResult struct {
 }
 
 func GetGroupsOutput(ctx *pulumi.Context, args GetGroupsOutputArgs, opts ...pulumi.InvokeOption) GetGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupsResultOutput, error) {
 			args := v.(GetGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGroupsResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getGroups:getGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getGroups:getGroups", args, GetGroupsResultOutput{}, options).(GetGroupsResultOutput), nil
 		}).(GetGroupsResultOutput)
 }
 

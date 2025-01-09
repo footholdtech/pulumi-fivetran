@@ -13,6 +13,8 @@ namespace Footholdtech.Fivetran
     public static class GetLocalProcessingAgent
     {
         /// <summary>
+        /// NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+        /// 
         /// This data source returns a local processing agent object.
         /// 
         /// ## Example Usage
@@ -37,6 +39,8 @@ namespace Footholdtech.Fivetran
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLocalProcessingAgentResult>("fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent", args ?? new GetLocalProcessingAgentArgs(), options.WithDefaults());
 
         /// <summary>
+        /// NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+        /// 
         /// This data source returns a local processing agent object.
         /// 
         /// ## Example Usage
@@ -58,6 +62,32 @@ namespace Footholdtech.Fivetran
         /// ```
         /// </summary>
         public static Output<GetLocalProcessingAgentResult> Invoke(GetLocalProcessingAgentInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLocalProcessingAgentResult>("fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent", args ?? new GetLocalProcessingAgentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+        /// 
+        /// This data source returns a local processing agent object.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var localProcessingAgent = Fivetran.GetLocalProcessingAgent.Invoke(new()
+        ///     {
+        ///         Id = "local_processing_agent_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLocalProcessingAgentResult> Invoke(GetLocalProcessingAgentInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLocalProcessingAgentResult>("fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent", args ?? new GetLocalProcessingAgentInvokeArgs(), options.WithDefaults());
     }
 

@@ -67,7 +67,7 @@ export interface GetConnectorFingerprintsResult {
  * });
  * ```
  */
-export function getConnectorFingerprintsOutput(args: GetConnectorFingerprintsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorFingerprintsResult> {
+export function getConnectorFingerprintsOutput(args: GetConnectorFingerprintsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorFingerprintsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getConnectorFingerprints:getConnectorFingerprints", {
         "fingerprints": args.fingerprints,

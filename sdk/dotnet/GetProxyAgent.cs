@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetProxyAgentResult> Invoke(GetProxyAgentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProxyAgentResult>("fivetran:index/getProxyAgent:getProxyAgent", args ?? new GetProxyAgentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a proxy agent object.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var proxyAgent = Fivetran.GetProxyAgent.Invoke(new()
+        ///     {
+        ///         Id = "proxy_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProxyAgentResult> Invoke(GetProxyAgentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProxyAgentResult>("fivetran:index/getProxyAgent:getProxyAgent", args ?? new GetProxyAgentInvokeArgs(), options.WithDefaults());
     }
 
 

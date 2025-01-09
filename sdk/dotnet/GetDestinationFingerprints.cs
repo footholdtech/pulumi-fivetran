@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetDestinationFingerprintsResult> Invoke(GetDestinationFingerprintsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDestinationFingerprintsResult>("fivetran:index/getDestinationFingerprints:getDestinationFingerprints", args ?? new GetDestinationFingerprintsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a list of SSH fingerprints approved for specified destination.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var destinationFingerprints = Fivetran.GetDestinationFingerprints.Invoke(new()
+        ///     {
+        ///         Id = "destination_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDestinationFingerprintsResult> Invoke(GetDestinationFingerprintsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDestinationFingerprintsResult>("fivetran:index/getDestinationFingerprints:getDestinationFingerprints", args ?? new GetDestinationFingerprintsInvokeArgs(), options.WithDefaults());
     }
 
 

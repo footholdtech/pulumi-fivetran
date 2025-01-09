@@ -67,7 +67,7 @@ export interface GetUserConnectorMembershipsResult {
  * });
  * ```
  */
-export function getUserConnectorMembershipsOutput(args: GetUserConnectorMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserConnectorMembershipsResult> {
+export function getUserConnectorMembershipsOutput(args: GetUserConnectorMembershipsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserConnectorMembershipsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships", {
         "connectors": args.connectors,

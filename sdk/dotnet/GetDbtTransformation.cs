@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetDbtTransformationResult> Invoke(GetDbtTransformationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbtTransformationResult>("fivetran:index/getDbtTransformation:getDbtTransformation", args ?? new GetDbtTransformationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a dbt Transformation object.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var transformation = Fivetran.GetDbtTransformation.Invoke(new()
+        ///     {
+        ///         Id = "transformation_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDbtTransformationResult> Invoke(GetDbtTransformationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbtTransformationResult>("fivetran:index/getDbtTransformation:getDbtTransformation", args ?? new GetDbtTransformationInvokeArgs(), options.WithDefaults());
     }
 
 

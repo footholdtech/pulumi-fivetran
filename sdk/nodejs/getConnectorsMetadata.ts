@@ -55,7 +55,7 @@ export interface GetConnectorsMetadataResult {
  * const sources = fivetran.getConnectorsMetadata({});
  * ```
  */
-export function getConnectorsMetadataOutput(args?: GetConnectorsMetadataOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorsMetadataResult> {
+export function getConnectorsMetadataOutput(args?: GetConnectorsMetadataOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorsMetadataResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getConnectorsMetadata:getConnectorsMetadata", {

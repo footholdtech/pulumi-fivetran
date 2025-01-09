@@ -39,7 +39,7 @@ export interface GetDestinationCertificatesResult {
      */
     readonly id: string;
 }
-export function getDestinationCertificatesOutput(args: GetDestinationCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestinationCertificatesResult> {
+export function getDestinationCertificatesOutput(args: GetDestinationCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDestinationCertificatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getDestinationCertificates:getDestinationCertificates", {
         "certificates": args.certificates,

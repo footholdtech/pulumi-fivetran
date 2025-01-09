@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetUserConnectorMembershipsResult> Invoke(GetUserConnectorMembershipsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserConnectorMembershipsResult>("fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships", args ?? new GetUserConnectorMembershipsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a connector membership for user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var userConnectorMembership = Fivetran.GetUserConnectorMemberships.Invoke(new()
+        ///     {
+        ///         UserId = "user_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetUserConnectorMembershipsResult> Invoke(GetUserConnectorMembershipsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserConnectorMembershipsResult>("fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships", args ?? new GetUserConnectorMembershipsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -62,7 +62,7 @@ export interface GetGroupServiceAccountResult {
  * });
  * ```
  */
-export function getGroupServiceAccountOutput(args: GetGroupServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupServiceAccountResult> {
+export function getGroupServiceAccountOutput(args: GetGroupServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getGroupServiceAccount:getGroupServiceAccount", {
         "id": args.id,

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetConnectorsMetadata(ctx, nil, nil)
+//			_, err := fivetran.GetConnectorsMetadata(ctx, &fivetran.GetConnectorsMetadataArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -59,21 +59,11 @@ type GetConnectorsMetadataResult struct {
 }
 
 func GetConnectorsMetadataOutput(ctx *pulumi.Context, args GetConnectorsMetadataOutputArgs, opts ...pulumi.InvokeOption) GetConnectorsMetadataResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetConnectorsMetadataResultOutput, error) {
 			args := v.(GetConnectorsMetadataArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetConnectorsMetadataResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getConnectorsMetadata:getConnectorsMetadata", args, &rv, "", opts...)
-			if err != nil {
-				return GetConnectorsMetadataResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetConnectorsMetadataResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetConnectorsMetadataResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getConnectorsMetadata:getConnectorsMetadata", args, GetConnectorsMetadataResultOutput{}, options).(GetConnectorsMetadataResultOutput), nil
 		}).(GetConnectorsMetadataResultOutput)
 }
 

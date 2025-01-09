@@ -61,6 +61,31 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetGroupConnectorsResult> Invoke(GetGroupConnectorsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupConnectorsResult>("fivetran:index/getGroupConnectors:getGroupConnectors", args ?? new GetGroupConnectorsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a list of information about all connectors within a group in your Fivetran account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groupConnectors = Fivetran.GetGroupConnectors.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///         Schema = "connector_schema_name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupConnectorsResult> Invoke(GetGroupConnectorsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupConnectorsResult>("fivetran:index/getGroupConnectors:getGroupConnectors", args ?? new GetGroupConnectorsInvokeArgs(), options.WithDefaults());
     }
 
 

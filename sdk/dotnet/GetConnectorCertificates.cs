@@ -17,6 +17,9 @@ namespace Footholdtech.Fivetran
 
         public static Output<GetConnectorCertificatesResult> Invoke(GetConnectorCertificatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorCertificatesResult>("fivetran:index/getConnectorCertificates:getConnectorCertificates", args ?? new GetConnectorCertificatesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetConnectorCertificatesResult> Invoke(GetConnectorCertificatesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectorCertificatesResult>("fivetran:index/getConnectorCertificates:getConnectorCertificates", args ?? new GetConnectorCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 

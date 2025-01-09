@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetGroupSshKeyResult> Invoke(GetGroupSshKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupSshKeyResult>("fivetran:index/getGroupSshKey:getGroupSshKey", args ?? new GetGroupSshKeyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns public key from SSH key pair associated with the group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myGroupPublicKey = Fivetran.GetGroupSshKey.Invoke(new()
+        ///     {
+        ///         Id = "group_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupSshKeyResult> Invoke(GetGroupSshKeyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupSshKeyResult>("fivetran:index/getGroupSshKey:getGroupSshKey", args ?? new GetGroupSshKeyInvokeArgs(), options.WithDefaults());
     }
 
 

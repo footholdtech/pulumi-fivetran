@@ -112,7 +112,7 @@ export interface GetDbtProjectResult {
  * });
  * ```
  */
-export function getDbtProjectOutput(args: GetDbtProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtProjectResult> {
+export function getDbtProjectOutput(args: GetDbtProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbtProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getDbtProject:getDbtProject", {
         "id": args.id,

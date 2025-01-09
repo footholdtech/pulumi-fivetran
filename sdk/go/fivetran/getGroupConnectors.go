@@ -68,21 +68,11 @@ type GetGroupConnectorsResult struct {
 }
 
 func GetGroupConnectorsOutput(ctx *pulumi.Context, args GetGroupConnectorsOutputArgs, opts ...pulumi.InvokeOption) GetGroupConnectorsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupConnectorsResultOutput, error) {
 			args := v.(GetGroupConnectorsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGroupConnectorsResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getGroupConnectors:getGroupConnectors", args, &rv, "", opts...)
-			if err != nil {
-				return GetGroupConnectorsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGroupConnectorsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGroupConnectorsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getGroupConnectors:getGroupConnectors", args, GetGroupConnectorsResultOutput{}, options).(GetGroupConnectorsResultOutput), nil
 		}).(GetGroupConnectorsResultOutput)
 }
 

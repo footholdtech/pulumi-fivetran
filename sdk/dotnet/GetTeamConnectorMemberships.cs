@@ -23,6 +23,12 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetTeamConnectorMembershipsResult> Invoke(GetTeamConnectorMembershipsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTeamConnectorMembershipsResult>("fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships", args ?? new GetTeamConnectorMembershipsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a connector membership within team object.
+        /// </summary>
+        public static Output<GetTeamConnectorMembershipsResult> Invoke(GetTeamConnectorMembershipsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTeamConnectorMembershipsResult>("fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships", args ?? new GetTeamConnectorMembershipsInvokeArgs(), options.WithDefaults());
     }
 
 

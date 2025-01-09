@@ -59,6 +59,30 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public static Output<GetDestinationResult> Invoke(GetDestinationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDestinationResult>("fivetran:index/getDestination:getDestination", args ?? new GetDestinationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source returns a destination object.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dest = Fivetran.GetDestination.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDestinationResult> Invoke(GetDestinationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDestinationResult>("fivetran:index/getDestination:getDestination", args ?? new GetDestinationInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -97,9 +121,11 @@ namespace Footholdtech.Fivetran
         public readonly Outputs.GetDestinationConfigResult? Config;
         public readonly bool DaylightSavingTimeEnabled;
         public readonly string GroupId;
+        public readonly string HybridDeploymentAgentId;
         public readonly string Id;
         public readonly string LocalProcessingAgentId;
         public readonly string NetworkingMethod;
+        public readonly string PrivateLinkId;
         public readonly string Region;
         public readonly string Service;
         public readonly string SetupStatus;
@@ -113,11 +139,15 @@ namespace Footholdtech.Fivetran
 
             string groupId,
 
+            string hybridDeploymentAgentId,
+
             string id,
 
             string localProcessingAgentId,
 
             string networkingMethod,
+
+            string privateLinkId,
 
             string region,
 
@@ -130,9 +160,11 @@ namespace Footholdtech.Fivetran
             Config = config;
             DaylightSavingTimeEnabled = daylightSavingTimeEnabled;
             GroupId = groupId;
+            HybridDeploymentAgentId = hybridDeploymentAgentId;
             Id = id;
             LocalProcessingAgentId = localProcessingAgentId;
             NetworkingMethod = networkingMethod;
+            PrivateLinkId = privateLinkId;
             Region = region;
             Service = service;
             SetupStatus = setupStatus;

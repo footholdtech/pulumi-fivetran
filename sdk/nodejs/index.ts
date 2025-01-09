@@ -155,6 +155,16 @@ export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
 
+export { GetHybridDeploymentAgentArgs, GetHybridDeploymentAgentResult, GetHybridDeploymentAgentOutputArgs } from "./getHybridDeploymentAgent";
+export const getHybridDeploymentAgent: typeof import("./getHybridDeploymentAgent").getHybridDeploymentAgent = null as any;
+export const getHybridDeploymentAgentOutput: typeof import("./getHybridDeploymentAgent").getHybridDeploymentAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getHybridDeploymentAgent","getHybridDeploymentAgentOutput"], () => require("./getHybridDeploymentAgent"));
+
+export { GetHybridDeploymentAgentsResult } from "./getHybridDeploymentAgents";
+export const getHybridDeploymentAgents: typeof import("./getHybridDeploymentAgents").getHybridDeploymentAgents = null as any;
+export const getHybridDeploymentAgentsOutput: typeof import("./getHybridDeploymentAgents").getHybridDeploymentAgentsOutput = null as any;
+utilities.lazyLoad(exports, ["getHybridDeploymentAgents","getHybridDeploymentAgentsOutput"], () => require("./getHybridDeploymentAgents"));
+
 export { GetLocalProcessingAgentArgs, GetLocalProcessingAgentResult, GetLocalProcessingAgentOutputArgs } from "./getLocalProcessingAgent";
 export const getLocalProcessingAgent: typeof import("./getLocalProcessingAgent").getLocalProcessingAgent = null as any;
 export const getLocalProcessingAgentOutput: typeof import("./getLocalProcessingAgent").getLocalProcessingAgentOutput = null as any;
@@ -164,6 +174,16 @@ export { GetLocalProcessingAgentsResult } from "./getLocalProcessingAgents";
 export const getLocalProcessingAgents: typeof import("./getLocalProcessingAgents").getLocalProcessingAgents = null as any;
 export const getLocalProcessingAgentsOutput: typeof import("./getLocalProcessingAgents").getLocalProcessingAgentsOutput = null as any;
 utilities.lazyLoad(exports, ["getLocalProcessingAgents","getLocalProcessingAgentsOutput"], () => require("./getLocalProcessingAgents"));
+
+export { GetPrivateLinkArgs, GetPrivateLinkResult, GetPrivateLinkOutputArgs } from "./getPrivateLink";
+export const getPrivateLink: typeof import("./getPrivateLink").getPrivateLink = null as any;
+export const getPrivateLinkOutput: typeof import("./getPrivateLink").getPrivateLinkOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateLink","getPrivateLinkOutput"], () => require("./getPrivateLink"));
+
+export { GetPrivateLinksArgs, GetPrivateLinksResult, GetPrivateLinksOutputArgs } from "./getPrivateLinks";
+export const getPrivateLinks: typeof import("./getPrivateLinks").getPrivateLinks = null as any;
+export const getPrivateLinksOutput: typeof import("./getPrivateLinks").getPrivateLinksOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateLinks","getPrivateLinksOutput"], () => require("./getPrivateLinks"));
 
 export { GetProxyAgentArgs, GetProxyAgentResult, GetProxyAgentOutputArgs } from "./getProxyAgent";
 export const getProxyAgent: typeof import("./getProxyAgent").getProxyAgent = null as any;
@@ -245,10 +265,20 @@ export type GroupUsers = import("./groupUsers").GroupUsers;
 export const GroupUsers: typeof import("./groupUsers").GroupUsers = null as any;
 utilities.lazyLoad(exports, ["GroupUsers"], () => require("./groupUsers"));
 
+export { HybridDeploymentAgentArgs, HybridDeploymentAgentState } from "./hybridDeploymentAgent";
+export type HybridDeploymentAgent = import("./hybridDeploymentAgent").HybridDeploymentAgent;
+export const HybridDeploymentAgent: typeof import("./hybridDeploymentAgent").HybridDeploymentAgent = null as any;
+utilities.lazyLoad(exports, ["HybridDeploymentAgent"], () => require("./hybridDeploymentAgent"));
+
 export { LocalProcessingAgentArgs, LocalProcessingAgentState } from "./localProcessingAgent";
 export type LocalProcessingAgent = import("./localProcessingAgent").LocalProcessingAgent;
 export const LocalProcessingAgent: typeof import("./localProcessingAgent").LocalProcessingAgent = null as any;
 utilities.lazyLoad(exports, ["LocalProcessingAgent"], () => require("./localProcessingAgent"));
+
+export { PrivateLinkArgs, PrivateLinkState } from "./privateLink";
+export type PrivateLink = import("./privateLink").PrivateLink;
+export const PrivateLink: typeof import("./privateLink").PrivateLink = null as any;
+utilities.lazyLoad(exports, ["PrivateLink"], () => require("./privateLink"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
@@ -342,8 +372,12 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "fivetran:index/groupUsers:GroupUsers":
                 return new GroupUsers(name, <any>undefined, { urn })
+            case "fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent":
+                return new HybridDeploymentAgent(name, <any>undefined, { urn })
             case "fivetran:index/localProcessingAgent:LocalProcessingAgent":
                 return new LocalProcessingAgent(name, <any>undefined, { urn })
+            case "fivetran:index/privateLink:PrivateLink":
+                return new PrivateLink(name, <any>undefined, { urn })
             case "fivetran:index/proxyAgent:ProxyAgent":
                 return new ProxyAgent(name, <any>undefined, { urn })
             case "fivetran:index/team:Team":
@@ -381,7 +415,9 @@ pulumi.runtime.registerResourceModule("fivetran", "index/destinationFingerprints
 pulumi.runtime.registerResourceModule("fivetran", "index/externalLogging", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/group", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/groupUsers", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/hybridDeploymentAgent", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/localProcessingAgent", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/privateLink", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/proxyAgent", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/team", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/teamConnectorMembership", _module)

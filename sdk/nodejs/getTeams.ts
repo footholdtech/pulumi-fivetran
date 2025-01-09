@@ -60,7 +60,7 @@ export interface GetTeamsResult {
  * const teams = fivetran.getTeams({});
  * ```
  */
-export function getTeamsOutput(args?: GetTeamsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamsResult> {
+export function getTeamsOutput(args?: GetTeamsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTeamsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getTeams:getTeams", {

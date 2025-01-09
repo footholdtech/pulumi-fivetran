@@ -5824,6 +5824,7 @@ export interface ConnectorSchemaConfigSchemaTableColumn {
      * The boolean value specifying whether a column should be hashed.
      */
     hashed: boolean;
+    isPrimaryKey?: boolean;
     /**
      * The column name within your destination in accordance with Fivetran conventional rules.
      */
@@ -5865,6 +5866,7 @@ export interface ConnectorSchemaConfigSchemasTablesColumns {
      * The boolean value specifying whether a column should be hashed.
      */
     hashed: boolean;
+    isPrimaryKey: boolean;
 }
 
 export interface ConnectorSchemaConfigTimeouts {
@@ -13162,6 +13164,25 @@ export interface GetGroupsGroup {
     name: string;
 }
 
+export interface GetHybridDeploymentAgentsItem {
+    /**
+     * The unique name for the hybrid deployment agent.
+     */
+    displayName: string;
+    /**
+     * The unique identifier for the Group within the Fivetran system.
+     */
+    groupId: string;
+    /**
+     * The unique identifier for the hybrid deployment agent within your account.
+     */
+    id: string;
+    /**
+     * The timestamp of the time the hybrid deployment agent was created in your account.
+     */
+    registeredAt: string;
+}
+
 export interface GetLocalProcessingAgentUsage {
     /**
      * The unique identifier of the connection associated with the agent.
@@ -13210,6 +13231,45 @@ export interface GetLocalProcessingAgentsItemUsage {
      * The connection type.
      */
     service: string;
+}
+
+export interface GetPrivateLinksItem {
+    /**
+     * The cloud provider name.
+     */
+    cloudProvider: string;
+    /**
+     * The date and time the membership was created.
+     */
+    createdAt: string;
+    /**
+     * The unique identifier for the User within the Fivetran system.
+     */
+    createdBy: string;
+    /**
+     * The unique identifier for the private link within the Fivetran system.
+     */
+    id: string;
+    /**
+     * The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+     */
+    name: string;
+    /**
+     * Data processing location. This is where Fivetran will operate and run computation on data.
+     */
+    region: string;
+    /**
+     * Service type.
+     */
+    service: string;
+    /**
+     * The state of the private link.
+     */
+    state: string;
+    /**
+     * The state of the private link.
+     */
+    stateSummary: string;
 }
 
 export interface GetProxyAgentsItem {

@@ -82,7 +82,7 @@ export interface GetProxyAgentResult {
  * });
  * ```
  */
-export function getProxyAgentOutput(args: GetProxyAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProxyAgentResult> {
+export function getProxyAgentOutput(args: GetProxyAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProxyAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getProxyAgent:getProxyAgent", {
         "id": args.id,
