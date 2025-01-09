@@ -430,6 +430,10 @@
                     }
                 }
             },
+            "fivetran_hybrid_deployment_agent": {
+                "current": "fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent",
+                "majorVersion": 1
+            },
             "fivetran_local_processing_agent": {
                 "current": "fivetran:index/localProcessingAgent:LocalProcessingAgent",
                 "majorVersion": 1,
@@ -438,6 +442,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "fivetran_private_link": {
+                "current": "fivetran:index/privateLink:PrivateLink",
+                "majorVersion": 1
             },
             "fivetran_proxy_agent": {
                 "current": "fivetran:index/proxyAgent:ProxyAgent",
@@ -982,6 +990,19 @@
                     }
                 }
             },
+            "fivetran_hybrid_deployment_agent": {
+                "current": "fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent",
+                "majorVersion": 1
+            },
+            "fivetran_hybrid_deployment_agents": {
+                "current": "fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents",
+                "majorVersion": 1,
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "fivetran_local_processing_agent": {
                 "current": "fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent",
                 "majorVersion": 1,
@@ -1004,6 +1025,19 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "fivetran_private_link": {
+                "current": "fivetran:index/getPrivateLink:getPrivateLink",
+                "majorVersion": 1
+            },
+            "fivetran_private_links": {
+                "current": "fivetran:index/getPrivateLinks:getPrivateLinks",
+                "majorVersion": 1,
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false
                     }
                 }
             },

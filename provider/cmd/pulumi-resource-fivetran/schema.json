@@ -3907,6 +3907,9 @@
                     "type": "boolean",
                     "description": "The boolean value specifying whether a column should be hashed.\n"
                 },
+                "isPrimaryKey": {
+                    "type": "boolean"
+                },
                 "name": {
                     "type": "string",
                     "description": "The column name within your destination in accordance with Fivetran conventional rules.\n"
@@ -3986,6 +3989,9 @@
                 "hashed": {
                     "type": "boolean",
                     "description": "The boolean value specifying whether a column should be hashed.\n"
+                },
+                "isPrimaryKey": {
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -3993,7 +3999,8 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "enabled",
-                        "hashed"
+                        "hashed",
+                        "isPrimaryKey"
                     ]
                 }
             }
@@ -9969,6 +9976,38 @@
                 }
             }
         },
+        "fivetran:index/getHybridDeploymentAgentsItem:getHybridDeploymentAgentsItem": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "The unique name for the hybrid deployment agent.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group within the Fivetran system.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for the hybrid deployment agent within your account.\n"
+                },
+                "registeredAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the hybrid deployment agent was created in your account.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "groupId",
+                "id",
+                "registeredAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "fivetran:index/getLocalProcessingAgentUsage:getLocalProcessingAgentUsage": {
             "properties": {
                 "connectionId": {
@@ -10055,6 +10094,63 @@
                 "connectionId",
                 "schema",
                 "service"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getPrivateLinksItem:getPrivateLinksItem": {
+            "properties": {
+                "cloudProvider": {
+                    "type": "string",
+                    "description": "The cloud provider name.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the membership was created.\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The unique identifier for the User within the Fivetran system.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for the private link within the Fivetran system.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "Service type.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state of the private link.\n"
+                },
+                "stateSummary": {
+                    "type": "string",
+                    "description": "The state of the private link.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cloudProvider",
+                "createdAt",
+                "createdBy",
+                "id",
+                "name",
+                "region",
+                "service",
+                "state",
+                "stateSummary"
             ],
             "language": {
                 "nodejs": {
@@ -10511,9 +10607,14 @@
                     "type": "string",
                     "description": "The unique identifier for the Group (Destination) within the Fivetran system.\n"
                 },
+                "hybridDeploymentAgentId": {
+                    "type": "string",
+                    "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
                 "localProcessingAgentId": {
                     "type": "string",
-                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                    "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                 },
                 "name": {
                     "type": "string",
@@ -10522,6 +10623,10 @@
                 "networkingMethod": {
                     "type": "string",
                     "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
+                "privateLinkId": {
+                    "type": "string",
+                    "description": "The private link ID.\n"
                 },
                 "proxyAgentId": {
                     "type": "string",
@@ -10572,13 +10677,22 @@
                     "type": "string",
                     "description": "The unique identifier for the Group (Destination) within the Fivetran system.\n"
                 },
+                "hybridDeploymentAgentId": {
+                    "type": "string",
+                    "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
                 "localProcessingAgentId": {
                     "type": "string",
-                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                    "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                 },
                 "networkingMethod": {
                     "type": "string",
                     "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
+                "privateLinkId": {
+                    "type": "string",
+                    "description": "The private link ID.\n"
                 },
                 "proxyAgentId": {
                     "type": "string",
@@ -10632,9 +10746,14 @@
                         "type": "string",
                         "description": "The unique identifier for the Group (Destination) within the Fivetran system.\n"
                     },
+                    "hybridDeploymentAgentId": {
+                        "type": "string",
+                        "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    },
                     "localProcessingAgentId": {
                         "type": "string",
-                        "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                        "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                        "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                     },
                     "name": {
                         "type": "string",
@@ -10643,6 +10762,10 @@
                     "networkingMethod": {
                         "type": "string",
                         "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                    },
+                    "privateLinkId": {
+                        "type": "string",
+                        "description": "The private link ID.\n"
                     },
                     "proxyAgentId": {
                         "type": "string",
@@ -11426,13 +11549,22 @@
                     "type": "string",
                     "description": "The unique identifier for the Group within the Fivetran system.\n"
                 },
+                "hybridDeploymentAgentId": {
+                    "type": "string",
+                    "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
                 "localProcessingAgentId": {
                     "type": "string",
-                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                    "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                 },
                 "networkingMethod": {
                     "type": "string",
                     "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
+                "privateLinkId": {
+                    "type": "string",
+                    "description": "The private link ID.\n"
                 },
                 "region": {
                     "type": "string",
@@ -11490,13 +11622,22 @@
                     "type": "string",
                     "description": "The unique identifier for the Group within the Fivetran system.\n"
                 },
+                "hybridDeploymentAgentId": {
+                    "type": "string",
+                    "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
                 "localProcessingAgentId": {
                     "type": "string",
-                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                    "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                 },
                 "networkingMethod": {
                     "type": "string",
                     "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
+                "privateLinkId": {
+                    "type": "string",
+                    "description": "The private link ID.\n"
                 },
                 "region": {
                     "type": "string",
@@ -11546,13 +11687,22 @@
                         "type": "string",
                         "description": "The unique identifier for the Group within the Fivetran system.\n"
                     },
+                    "hybridDeploymentAgentId": {
+                        "type": "string",
+                        "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    },
                     "localProcessingAgentId": {
                         "type": "string",
-                        "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                        "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                        "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                     },
                     "networkingMethod": {
                         "type": "string",
                         "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                    },
+                    "privateLinkId": {
+                        "type": "string",
+                        "description": "The private link ID.\n"
                     },
                     "region": {
                         "type": "string",
@@ -11866,8 +12016,125 @@
                 "type": "object"
             }
         },
+        "fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent": {
+            "description": "This resource allows you to create, update, and delete hybrid deployment agents.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst hybridDeploymentAgent = new fivetran.HybridDeploymentAgent(\"hybrid_deployment_agent\", {\n    displayName: \"display_name\",\n    groupId: \"group_id\",\n    authType: \"AUTO\",\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\nhybrid_deployment_agent = fivetran.HybridDeploymentAgent(\"hybrid_deployment_agent\",\n    display_name=\"display_name\",\n    group_id=\"group_id\",\n    auth_type=\"AUTO\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var hybridDeploymentAgent = new Fivetran.HybridDeploymentAgent(\"hybrid_deployment_agent\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupId = \"group_id\",\n        AuthType = \"AUTO\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewHybridDeploymentAgent(ctx, \"hybrid_deployment_agent\", \u0026fivetran.HybridDeploymentAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupId:     pulumi.String(\"group_id\"),\n\t\t\tAuthType:    pulumi.String(\"AUTO\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.HybridDeploymentAgent;\nimport com.pulumi.fivetran.HybridDeploymentAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var hybridDeploymentAgent = new HybridDeploymentAgent(\"hybridDeploymentAgent\", HybridDeploymentAgentArgs.builder()\n            .displayName(\"display_name\")\n            .groupId(\"group_id\")\n            .authType(\"AUTO\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  hybridDeploymentAgent:\n    type: fivetran:HybridDeploymentAgent\n    name: hybrid_deployment_agent\n    properties:\n      displayName: display_name\n      groupId: group_id\n      authType: AUTO\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "authJson": {
+                    "type": "string",
+                    "description": "Base64-encoded content of the auth.json file.\n"
+                },
+                "authType": {
+                    "type": "string",
+                    "description": "Type of authentification. Possible values `AUTO`,`MANUAL`\n"
+                },
+                "authenticationCounter": {
+                    "type": "integer",
+                    "description": "Determines whether re-authentication needs to be performed.\n"
+                },
+                "configJson": {
+                    "type": "string",
+                    "description": "Base64-encoded content of the config.json file.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The unique name for the hybrid deployment agent.\n"
+                },
+                "dockerComposeYaml": {
+                    "type": "string",
+                    "description": "Base64-encoded content of the compose file for the chosen containerization type.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group within the Fivetran system.\n"
+                },
+                "registeredAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the hybrid deployment agent was created in your account.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "Base64 encoded content of token.\n"
+                }
+            },
+            "required": [
+                "authJson",
+                "authType",
+                "authenticationCounter",
+                "configJson",
+                "displayName",
+                "dockerComposeYaml",
+                "groupId",
+                "registeredAt",
+                "token"
+            ],
+            "inputProperties": {
+                "authType": {
+                    "type": "string",
+                    "description": "Type of authentification. Possible values `AUTO`,`MANUAL`\n"
+                },
+                "authenticationCounter": {
+                    "type": "integer",
+                    "description": "Determines whether re-authentication needs to be performed.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The unique name for the hybrid deployment agent.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group within the Fivetran system.\n"
+                }
+            },
+            "requiredInputs": [
+                "authType",
+                "displayName",
+                "groupId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering HybridDeploymentAgent resources.\n",
+                "properties": {
+                    "authJson": {
+                        "type": "string",
+                        "description": "Base64-encoded content of the auth.json file.\n"
+                    },
+                    "authType": {
+                        "type": "string",
+                        "description": "Type of authentification. Possible values `AUTO`,`MANUAL`\n"
+                    },
+                    "authenticationCounter": {
+                        "type": "integer",
+                        "description": "Determines whether re-authentication needs to be performed.\n"
+                    },
+                    "configJson": {
+                        "type": "string",
+                        "description": "Base64-encoded content of the config.json file.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The unique name for the hybrid deployment agent.\n"
+                    },
+                    "dockerComposeYaml": {
+                        "type": "string",
+                        "description": "Base64-encoded content of the compose file for the chosen containerization type.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The unique identifier for the Group within the Fivetran system.\n"
+                    },
+                    "registeredAt": {
+                        "type": "string",
+                        "description": "The timestamp of the time the hybrid deployment agent was created in your account.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "Base64 encoded content of token.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "fivetran:index/localProcessingAgent:LocalProcessingAgent": {
-            "description": "This resource allows you to create, update, and delete local processing agents.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testLpa = new fivetran.LocalProcessingAgent(\"test_lpa\", {\n    displayName: \"display_name\",\n    groupId: \"group_id\",\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_lpa = fivetran.LocalProcessingAgent(\"test_lpa\",\n    display_name=\"display_name\",\n    group_id=\"group_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testLpa = new Fivetran.LocalProcessingAgent(\"test_lpa\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupId = \"group_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewLocalProcessingAgent(ctx, \"test_lpa\", \u0026fivetran.LocalProcessingAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupId:     pulumi.String(\"group_id\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.LocalProcessingAgent;\nimport com.pulumi.fivetran.LocalProcessingAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testLpa = new LocalProcessingAgent(\"testLpa\", LocalProcessingAgentArgs.builder()\n            .displayName(\"display_name\")\n            .groupId(\"group_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testLpa:\n    type: fivetran:LocalProcessingAgent\n    name: test_lpa\n    properties:\n      displayName: display_name\n      groupId: group_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this resource.\n\nThis resource allows you to create, update, and delete local processing agents.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@footholdtech/fivetran\";\n\nconst testLpa = new fivetran.LocalProcessingAgent(\"test_lpa\", {\n    displayName: \"display_name\",\n    groupId: \"group_id\",\n});\n```\n```python\nimport pulumi\nimport footholdtech_fivetran as fivetran\n\ntest_lpa = fivetran.LocalProcessingAgent(\"test_lpa\",\n    display_name=\"display_name\",\n    group_id=\"group_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Footholdtech.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testLpa = new Fivetran.LocalProcessingAgent(\"test_lpa\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupId = \"group_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewLocalProcessingAgent(ctx, \"test_lpa\", \u0026fivetran.LocalProcessingAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupId:     pulumi.String(\"group_id\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.LocalProcessingAgent;\nimport com.pulumi.fivetran.LocalProcessingAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testLpa = new LocalProcessingAgent(\"testLpa\", LocalProcessingAgentArgs.builder()\n            .displayName(\"display_name\")\n            .groupId(\"group_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testLpa:\n    type: fivetran:LocalProcessingAgent\n    name: test_lpa\n    properties:\n      displayName: display_name\n      groupId: group_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "authJson": {
                     "type": "string",
@@ -11968,6 +12235,132 @@
                         "items": {
                             "$ref": "#/types/fivetran:index/LocalProcessingAgentUsage:LocalProcessingAgentUsage"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/privateLink:PrivateLink": {
+            "description": "This resource allows you to create, update, and delete private links.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  testPl:\n    type: fivetran:PrivateLink\n    name: test_pl\n    properties:\n      name: name\n      region: region\n      service: service\n      config:\n        - connectionServiceName: connection_service_name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "cloudProvider": {
+                    "type": "string",
+                    "description": "The cloud provider name.\n"
+                },
+                "configMap": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Configuration.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the membership was created.\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The unique identifier for the User within the Fivetran system.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters,\nnumbers, or underscores. Maximum size of name is 23 characters.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "Service type.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state of the private link.\n"
+                },
+                "stateSummary": {
+                    "type": "string",
+                    "description": "The state of the private link.\n"
+                }
+            },
+            "required": [
+                "cloudProvider",
+                "configMap",
+                "createdAt",
+                "createdBy",
+                "name",
+                "region",
+                "service",
+                "state",
+                "stateSummary"
+            ],
+            "inputProperties": {
+                "configMap": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Configuration.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters,\nnumbers, or underscores. Maximum size of name is 23 characters.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "Service type.\n"
+                }
+            },
+            "requiredInputs": [
+                "configMap",
+                "region",
+                "service"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PrivateLink resources.\n",
+                "properties": {
+                    "cloudProvider": {
+                        "type": "string",
+                        "description": "The cloud provider name.\n"
+                    },
+                    "configMap": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Configuration.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time the membership was created.\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The unique identifier for the User within the Fivetran system.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters,\nnumbers, or underscores. Maximum size of name is 23 characters.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "Service type.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The state of the private link.\n"
+                    },
+                    "stateSummary": {
+                        "type": "string",
+                        "description": "The state of the private link.\n"
                     }
                 },
                 "type": "object"
@@ -12647,7 +13040,7 @@
     },
     "functions": {
         "fivetran:index/getConnector:getConnector": {
-            "description": "This data source returns a connector object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst connector = fivetran.getConnector({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nconnector = fivetran.get_connector(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var connector = Fivetran.GetConnector.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupConnector(ctx, \u0026fivetran.LookupConnectorArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var connector = FivetranFunctions.getConnector(GetConnectorArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  connector:\n    fn::invoke:\n      Function: fivetran:getConnector\n      Arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a connector object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst connector = fivetran.getConnector({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nconnector = fivetran.get_connector(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var connector = Fivetran.GetConnector.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupConnector(ctx, \u0026fivetran.LookupConnectorArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var connector = FivetranFunctions.getConnector(GetConnectorArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  connector:\n    fn::invoke:\n      function: fivetran:getConnector\n      arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getConnector.\n",
                 "properties": {
@@ -12693,6 +13086,9 @@
                     "groupId": {
                         "type": "string"
                     },
+                    "hybridDeploymentAgentId": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string"
                     },
@@ -12710,6 +13106,9 @@
                     },
                     "paused": {
                         "type": "boolean"
+                    },
+                    "privateLinkId": {
+                        "type": "string"
                     },
                     "proxyAgentId": {
                         "type": "string"
@@ -12739,12 +13138,14 @@
                     "dailySyncTime",
                     "failedAt",
                     "groupId",
+                    "hybridDeploymentAgentId",
                     "id",
                     "localProcessingAgentId",
                     "name",
                     "networkingMethod",
                     "pauseAfterTrial",
                     "paused",
+                    "privateLinkId",
                     "proxyAgentId",
                     "scheduleType",
                     "service",
@@ -12801,7 +13202,7 @@
             }
         },
         "fivetran:index/getConnectorFingerprints:getConnectorFingerprints": {
-            "description": "This data source returns a list of SSH fingerprints approved for specified connector.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst connectorFingerprints = fivetran.getConnectorFingerprints({\n    id: \"connector_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nconnector_fingerprints = fivetran.get_connector_fingerprints(id=\"connector_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var connectorFingerprints = Fivetran.GetConnectorFingerprints.Invoke(new()\n    {\n        Id = \"connector_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupConnectorFingerprints(ctx, \u0026fivetran.LookupConnectorFingerprintsArgs{\n\t\t\tId: \"connector_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetConnectorFingerprintsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var connectorFingerprints = FivetranFunctions.getConnectorFingerprints(GetConnectorFingerprintsArgs.builder()\n            .id(\"connector_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  connectorFingerprints:\n    fn::invoke:\n      Function: fivetran:getConnectorFingerprints\n      Arguments:\n        id: connector_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of SSH fingerprints approved for specified connector.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst connectorFingerprints = fivetran.getConnectorFingerprints({\n    id: \"connector_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nconnector_fingerprints = fivetran.get_connector_fingerprints(id=\"connector_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var connectorFingerprints = Fivetran.GetConnectorFingerprints.Invoke(new()\n    {\n        Id = \"connector_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupConnectorFingerprints(ctx, \u0026fivetran.LookupConnectorFingerprintsArgs{\n\t\t\tId: \"connector_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetConnectorFingerprintsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var connectorFingerprints = FivetranFunctions.getConnectorFingerprints(GetConnectorFingerprintsArgs.builder()\n            .id(\"connector_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  connectorFingerprints:\n    fn::invoke:\n      function: fivetran:getConnectorFingerprints\n      arguments:\n        id: connector_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getConnectorFingerprints.\n",
                 "properties": {
@@ -12847,7 +13248,7 @@
             }
         },
         "fivetran:index/getConnectorsMetadata:getConnectorsMetadata": {
-            "description": "This data source returns all available source types within your Fivetran account. This data source makes it easier to display Fivetran connectors within your application because it provides metadata including the proper source name (‘Facebook Ad Account’ instead of facebook_ad_account), the source icon, and links to Fivetran resources. As we update source names and icons, that metadata will automatically update within this endpoint.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst sources = fivetran.getConnectorsMetadata({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nsources = fivetran.get_connectors_metadata()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sources = Fivetran.GetConnectorsMetadata.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetConnectorsMetadata(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetConnectorsMetadataArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var sources = FivetranFunctions.getConnectorsMetadata();\n\n    }\n}\n```\n```yaml\nvariables:\n  sources:\n    fn::invoke:\n      Function: fivetran:getConnectorsMetadata\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns all available source types within your Fivetran account. This data source makes it easier to display Fivetran connectors within your application because it provides metadata including the proper source name (‘Facebook Ad Account’ instead of facebook_ad_account), the source icon, and links to Fivetran resources. As we update source names and icons, that metadata will automatically update within this endpoint.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst sources = fivetran.getConnectorsMetadata({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nsources = fivetran.get_connectors_metadata()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sources = Fivetran.GetConnectorsMetadata.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetConnectorsMetadata(ctx, \u0026fivetran.GetConnectorsMetadataArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetConnectorsMetadataArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var sources = FivetranFunctions.getConnectorsMetadata();\n\n    }\n}\n```\n```yaml\nvariables:\n  sources:\n    fn::invoke:\n      function: fivetran:getConnectorsMetadata\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getConnectorsMetadata.\n",
                 "properties": {
@@ -12881,7 +13282,7 @@
             }
         },
         "fivetran:index/getDbtModels:getDbtModels": {
-            "description": "This data source returns a list of all dbt Models available for specified dbt Project id.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myModels = fivetran.getDbtModels({\n    projectId: \"project_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_models = fivetran.get_dbt_models(project_id=\"project_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myModels = Fivetran.GetDbtModels.Invoke(new()\n    {\n        ProjectId = \"project_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetDbtModels(ctx, \u0026fivetran.GetDbtModelsArgs{\n\t\t\tProjectId: \"project_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDbtModelsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myModels = FivetranFunctions.getDbtModels(GetDbtModelsArgs.builder()\n            .projectId(\"project_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myModels:\n    fn::invoke:\n      Function: fivetran:getDbtModels\n      Arguments:\n        projectId: project_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of all dbt Models available for specified dbt Project id.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myModels = fivetran.getDbtModels({\n    projectId: \"project_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_models = fivetran.get_dbt_models(project_id=\"project_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myModels = Fivetran.GetDbtModels.Invoke(new()\n    {\n        ProjectId = \"project_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetDbtModels(ctx, \u0026fivetran.GetDbtModelsArgs{\n\t\t\tProjectId: \"project_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDbtModelsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myModels = FivetranFunctions.getDbtModels(GetDbtModelsArgs.builder()\n            .projectId(\"project_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myModels:\n    fn::invoke:\n      function: fivetran:getDbtModels\n      arguments:\n        projectId: project_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDbtModels.\n",
                 "properties": {
@@ -12927,7 +13328,7 @@
             }
         },
         "fivetran:index/getDbtProject:getDbtProject": {
-            "description": "This data source returns a dbt Project object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst project = fivetran.getDbtProject({\n    id: \"project_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nproject = fivetran.get_dbt_project(id=\"project_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var project = Fivetran.GetDbtProject.Invoke(new()\n    {\n        Id = \"project_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupDbtProject(ctx, \u0026fivetran.LookupDbtProjectArgs{\n\t\t\tId: \"project_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDbtProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var project = FivetranFunctions.getDbtProject(GetDbtProjectArgs.builder()\n            .id(\"project_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  project:\n    fn::invoke:\n      Function: fivetran:getDbtProject\n      Arguments:\n        id: project_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a dbt Project object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst project = fivetran.getDbtProject({\n    id: \"project_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nproject = fivetran.get_dbt_project(id=\"project_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var project = Fivetran.GetDbtProject.Invoke(new()\n    {\n        Id = \"project_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupDbtProject(ctx, \u0026fivetran.LookupDbtProjectArgs{\n\t\t\tId: \"project_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDbtProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var project = FivetranFunctions.getDbtProject(GetDbtProjectArgs.builder()\n            .id(\"project_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  project:\n    fn::invoke:\n      function: fivetran:getDbtProject\n      arguments:\n        id: project_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDbtProject.\n",
                 "properties": {
@@ -13032,7 +13433,7 @@
             }
         },
         "fivetran:index/getDbtProjects:getDbtProjects": {
-            "description": "This data source returns a list of all dbt Projects within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myProjects = fivetran.getDbtProjects({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_projects = fivetran.get_dbt_projects()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myProjects = Fivetran.GetDbtProjects.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetDbtProjects(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myProjects = FivetranFunctions.getDbtProjects();\n\n    }\n}\n```\n```yaml\nvariables:\n  myProjects:\n    fn::invoke:\n      Function: fivetran:getDbtProjects\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of all dbt Projects within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myProjects = fivetran.getDbtProjects({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_projects = fivetran.get_dbt_projects()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myProjects = Fivetran.GetDbtProjects.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetDbtProjects(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myProjects = FivetranFunctions.getDbtProjects();\n\n    }\n}\n```\n```yaml\nvariables:\n  myProjects:\n    fn::invoke:\n      function: fivetran:getDbtProjects\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
                 "description": "A collection of values returned by getDbtProjects.\n",
                 "properties": {
@@ -13055,7 +13456,7 @@
             }
         },
         "fivetran:index/getDbtTransformation:getDbtTransformation": {
-            "description": "This data source returns a dbt Transformation object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst transformation = fivetran.getDbtTransformation({\n    id: \"transformation_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ntransformation = fivetran.get_dbt_transformation(id=\"transformation_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var transformation = Fivetran.GetDbtTransformation.Invoke(new()\n    {\n        Id = \"transformation_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupDbtTransformation(ctx, \u0026fivetran.LookupDbtTransformationArgs{\n\t\t\tId: \"transformation_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDbtTransformationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var transformation = FivetranFunctions.getDbtTransformation(GetDbtTransformationArgs.builder()\n            .id(\"transformation_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  transformation:\n    fn::invoke:\n      Function: fivetran:getDbtTransformation\n      Arguments:\n        id: transformation_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a dbt Transformation object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst transformation = fivetran.getDbtTransformation({\n    id: \"transformation_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ntransformation = fivetran.get_dbt_transformation(id=\"transformation_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var transformation = Fivetran.GetDbtTransformation.Invoke(new()\n    {\n        Id = \"transformation_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupDbtTransformation(ctx, \u0026fivetran.LookupDbtTransformationArgs{\n\t\t\tId: \"transformation_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDbtTransformationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var transformation = FivetranFunctions.getDbtTransformation(GetDbtTransformationArgs.builder()\n            .id(\"transformation_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  transformation:\n    fn::invoke:\n      function: fivetran:getDbtTransformation\n      arguments:\n        id: transformation_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDbtTransformation.\n",
                 "properties": {
@@ -13141,7 +13542,7 @@
             }
         },
         "fivetran:index/getDestination:getDestination": {
-            "description": "This data source returns a destination object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst dest = fivetran.getDestination({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ndest = fivetran.get_destination(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dest = Fivetran.GetDestination.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupDestination(ctx, \u0026fivetran.LookupDestinationArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDestinationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var dest = FivetranFunctions.getDestination(GetDestinationArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  dest:\n    fn::invoke:\n      Function: fivetran:getDestination\n      Arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a destination object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst dest = fivetran.getDestination({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ndest = fivetran.get_destination(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dest = Fivetran.GetDestination.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupDestination(ctx, \u0026fivetran.LookupDestinationArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDestinationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var dest = FivetranFunctions.getDestination(GetDestinationArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  dest:\n    fn::invoke:\n      function: fivetran:getDestination\n      arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDestination.\n",
                 "properties": {
@@ -13169,6 +13570,9 @@
                     "groupId": {
                         "type": "string"
                     },
+                    "hybridDeploymentAgentId": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string"
                     },
@@ -13176,6 +13580,9 @@
                         "type": "string"
                     },
                     "networkingMethod": {
+                        "type": "string"
+                    },
+                    "privateLinkId": {
                         "type": "string"
                     },
                     "region": {
@@ -13194,9 +13601,11 @@
                 "required": [
                     "daylightSavingTimeEnabled",
                     "groupId",
+                    "hybridDeploymentAgentId",
                     "id",
                     "localProcessingAgentId",
                     "networkingMethod",
+                    "privateLinkId",
                     "region",
                     "service",
                     "setupStatus",
@@ -13251,7 +13660,7 @@
             }
         },
         "fivetran:index/getDestinationFingerprints:getDestinationFingerprints": {
-            "description": "This data source returns a list of SSH fingerprints approved for specified destination.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst destinationFingerprints = fivetran.getDestinationFingerprints({\n    id: \"destination_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ndestination_fingerprints = fivetran.get_destination_fingerprints(id=\"destination_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var destinationFingerprints = Fivetran.GetDestinationFingerprints.Invoke(new()\n    {\n        Id = \"destination_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupDestinationFingerprints(ctx, \u0026fivetran.LookupDestinationFingerprintsArgs{\n\t\t\tId: \"destination_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDestinationFingerprintsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var destinationFingerprints = FivetranFunctions.getDestinationFingerprints(GetDestinationFingerprintsArgs.builder()\n            .id(\"destination_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  destinationFingerprints:\n    fn::invoke:\n      Function: fivetran:getDestinationFingerprints\n      Arguments:\n        id: destination_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of SSH fingerprints approved for specified destination.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst destinationFingerprints = fivetran.getDestinationFingerprints({\n    id: \"destination_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ndestination_fingerprints = fivetran.get_destination_fingerprints(id=\"destination_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var destinationFingerprints = Fivetran.GetDestinationFingerprints.Invoke(new()\n    {\n        Id = \"destination_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupDestinationFingerprints(ctx, \u0026fivetran.LookupDestinationFingerprintsArgs{\n\t\t\tId: \"destination_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetDestinationFingerprintsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var destinationFingerprints = FivetranFunctions.getDestinationFingerprints(GetDestinationFingerprintsArgs.builder()\n            .id(\"destination_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  destinationFingerprints:\n    fn::invoke:\n      function: fivetran:getDestinationFingerprints\n      arguments:\n        id: destination_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDestinationFingerprints.\n",
                 "properties": {
@@ -13297,7 +13706,7 @@
             }
         },
         "fivetran:index/getExternalLogging:getExternalLogging": {
-            "description": "This data source returns a logging service object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst extlog = fivetran.getExternalLogging({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nextlog = fivetran.get_external_logging(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var extlog = Fivetran.GetExternalLogging.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupExternalLogging(ctx, \u0026fivetran.LookupExternalLoggingArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetExternalLoggingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var extlog = FivetranFunctions.getExternalLogging(GetExternalLoggingArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  extlog:\n    fn::invoke:\n      Function: fivetran:getExternalLogging\n      Arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a logging service object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst extlog = fivetran.getExternalLogging({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nextlog = fivetran.get_external_logging(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var extlog = Fivetran.GetExternalLogging.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupExternalLogging(ctx, \u0026fivetran.LookupExternalLoggingArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetExternalLoggingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var extlog = FivetranFunctions.getExternalLogging(GetExternalLoggingArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  extlog:\n    fn::invoke:\n      function: fivetran:getExternalLogging\n      arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getExternalLogging.\n",
                 "properties": {
@@ -13355,7 +13764,7 @@
             }
         },
         "fivetran:index/getGroup:getGroup": {
-            "description": "This data source returns a group object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myGroup = fivetran.getGroup({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_group = fivetran.get_group(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroup = Fivetran.GetGroup.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupGroup(ctx, \u0026fivetran.LookupGroupArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myGroup = FivetranFunctions.getGroup(GetGroupArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myGroup:\n    fn::invoke:\n      Function: fivetran:getGroup\n      Arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a group object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myGroup = fivetran.getGroup({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_group = fivetran.get_group(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroup = Fivetran.GetGroup.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupGroup(ctx, \u0026fivetran.LookupGroupArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myGroup = FivetranFunctions.getGroup(GetGroupArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myGroup:\n    fn::invoke:\n      function: fivetran:getGroup\n      arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGroup.\n",
                 "properties": {
@@ -13399,7 +13808,7 @@
             }
         },
         "fivetran:index/getGroupConnectors:getGroupConnectors": {
-            "description": "This data source returns a list of information about all connectors within a group in your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst groupConnectors = fivetran.getGroupConnectors({\n    id: \"anonymous_mystery\",\n    schema: \"connector_schema_name\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ngroup_connectors = fivetran.get_group_connectors(id=\"anonymous_mystery\",\n    schema=\"connector_schema_name\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var groupConnectors = Fivetran.GetGroupConnectors.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n        Schema = \"connector_schema_name\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetGroupConnectors(ctx, \u0026fivetran.GetGroupConnectorsArgs{\n\t\t\tId:     \"anonymous_mystery\",\n\t\t\tSchema: pulumi.StringRef(\"connector_schema_name\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupConnectorsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var groupConnectors = FivetranFunctions.getGroupConnectors(GetGroupConnectorsArgs.builder()\n            .id(\"anonymous_mystery\")\n            .schema(\"connector_schema_name\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  groupConnectors:\n    fn::invoke:\n      Function: fivetran:getGroupConnectors\n      Arguments:\n        id: anonymous_mystery\n        schema: connector_schema_name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of information about all connectors within a group in your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst groupConnectors = fivetran.getGroupConnectors({\n    id: \"anonymous_mystery\",\n    schema: \"connector_schema_name\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ngroup_connectors = fivetran.get_group_connectors(id=\"anonymous_mystery\",\n    schema=\"connector_schema_name\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var groupConnectors = Fivetran.GetGroupConnectors.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n        Schema = \"connector_schema_name\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetGroupConnectors(ctx, \u0026fivetran.GetGroupConnectorsArgs{\n\t\t\tId:     \"anonymous_mystery\",\n\t\t\tSchema: pulumi.StringRef(\"connector_schema_name\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupConnectorsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var groupConnectors = FivetranFunctions.getGroupConnectors(GetGroupConnectorsArgs.builder()\n            .id(\"anonymous_mystery\")\n            .schema(\"connector_schema_name\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  groupConnectors:\n    fn::invoke:\n      function: fivetran:getGroupConnectors\n      arguments:\n        id: anonymous_mystery\n        schema: connector_schema_name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGroupConnectors.\n",
                 "properties": {
@@ -13448,7 +13857,7 @@
             }
         },
         "fivetran:index/getGroupServiceAccount:getGroupServiceAccount": {
-            "description": "This data source returns Fivetran service account associated with the group.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myGroupServiceAccount = fivetran.getGroupServiceAccount({\n    id: \"group_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_group_service_account = fivetran.get_group_service_account(id=\"group_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroupServiceAccount = Fivetran.GetGroupServiceAccount.Invoke(new()\n    {\n        Id = \"group_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetGroupServiceAccount(ctx, \u0026fivetran.GetGroupServiceAccountArgs{\n\t\t\tId: \"group_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupServiceAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myGroupServiceAccount = FivetranFunctions.getGroupServiceAccount(GetGroupServiceAccountArgs.builder()\n            .id(\"group_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myGroupServiceAccount:\n    fn::invoke:\n      Function: fivetran:getGroupServiceAccount\n      Arguments:\n        id: group_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns Fivetran service account associated with the group.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myGroupServiceAccount = fivetran.getGroupServiceAccount({\n    id: \"group_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_group_service_account = fivetran.get_group_service_account(id=\"group_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroupServiceAccount = Fivetran.GetGroupServiceAccount.Invoke(new()\n    {\n        Id = \"group_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetGroupServiceAccount(ctx, \u0026fivetran.GetGroupServiceAccountArgs{\n\t\t\tId: \"group_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupServiceAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myGroupServiceAccount = FivetranFunctions.getGroupServiceAccount(GetGroupServiceAccountArgs.builder()\n            .id(\"group_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myGroupServiceAccount:\n    fn::invoke:\n      function: fivetran:getGroupServiceAccount\n      arguments:\n        id: group_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGroupServiceAccount.\n",
                 "properties": {
@@ -13482,7 +13891,7 @@
             }
         },
         "fivetran:index/getGroupSshKey:getGroupSshKey": {
-            "description": "This data source returns public key from SSH key pair associated with the group.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myGroupPublicKey = fivetran.getGroupSshKey({\n    id: \"group_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_group_public_key = fivetran.get_group_ssh_key(id=\"group_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroupPublicKey = Fivetran.GetGroupSshKey.Invoke(new()\n    {\n        Id = \"group_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetGroupSshKey(ctx, \u0026fivetran.GetGroupSshKeyArgs{\n\t\t\tId: \"group_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupSshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myGroupPublicKey = FivetranFunctions.getGroupSshKey(GetGroupSshKeyArgs.builder()\n            .id(\"group_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myGroupPublicKey:\n    fn::invoke:\n      Function: fivetran:getGroupSshKey\n      Arguments:\n        id: group_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns public key from SSH key pair associated with the group.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myGroupPublicKey = fivetran.getGroupSshKey({\n    id: \"group_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_group_public_key = fivetran.get_group_ssh_key(id=\"group_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroupPublicKey = Fivetran.GetGroupSshKey.Invoke(new()\n    {\n        Id = \"group_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetGroupSshKey(ctx, \u0026fivetran.GetGroupSshKeyArgs{\n\t\t\tId: \"group_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupSshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myGroupPublicKey = FivetranFunctions.getGroupSshKey(GetGroupSshKeyArgs.builder()\n            .id(\"group_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myGroupPublicKey:\n    fn::invoke:\n      function: fivetran:getGroupSshKey\n      arguments:\n        id: group_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGroupSshKey.\n",
                 "properties": {
@@ -13516,7 +13925,7 @@
             }
         },
         "fivetran:index/getGroupUsers:getGroupUsers": {
-            "description": "This data source returns a list of information about all users within a group in your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst groupUsers = fivetran.getGroupUsers({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ngroup_users = fivetran.get_group_users(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var groupUsers = Fivetran.GetGroupUsers.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupGroupUsers(ctx, \u0026fivetran.LookupGroupUsersArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupUsersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var groupUsers = FivetranFunctions.getGroupUsers(GetGroupUsersArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  groupUsers:\n    fn::invoke:\n      Function: fivetran:getGroupUsers\n      Arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of information about all users within a group in your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst groupUsers = fivetran.getGroupUsers({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ngroup_users = fivetran.get_group_users(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var groupUsers = Fivetran.GetGroupUsers.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupGroupUsers(ctx, \u0026fivetran.LookupGroupUsersArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupUsersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var groupUsers = FivetranFunctions.getGroupUsers(GetGroupUsersArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  groupUsers:\n    fn::invoke:\n      function: fivetran:getGroupUsers\n      arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGroupUsers.\n",
                 "properties": {
@@ -13557,7 +13966,7 @@
             }
         },
         "fivetran:index/getGroups:getGroups": {
-            "description": "This data source returns a list of all groups within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst all = fivetran.getGroups({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nall = fivetran.get_groups()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Fivetran.GetGroups.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetGroups(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = FivetranFunctions.getGroups();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: fivetran:getGroups\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of all groups within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst all = fivetran.getGroups({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nall = fivetran.get_groups()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Fivetran.GetGroups.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetGroups(ctx, \u0026fivetran.GetGroupsArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetGroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = FivetranFunctions.getGroups();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      function: fivetran:getGroups\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGroups.\n",
                 "properties": {
@@ -13590,8 +13999,75 @@
                 "type": "object"
             }
         },
+        "fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent": {
+            "description": "This data source returns a hybrid deployment agent object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var hybridDeploymentAgent = FivetranFunctions.getHybridDeploymentAgents(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n    }\n}\n```\n```yaml\nvariables:\n  hybridDeploymentAgent:\n    fn::invoke:\n      function: fivetran:getHybridDeploymentAgents\n      arguments:\n        id: hybrid_deployment_agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHybridDeploymentAgent.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the hybrid deployment agent within your account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHybridDeploymentAgent.\n",
+                "properties": {
+                    "displayName": {
+                        "description": "The unique name for the hybrid deployment agent.\n",
+                        "type": "string"
+                    },
+                    "groupId": {
+                        "description": "The unique identifier for the Group within the Fivetran system.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The unique identifier for the hybrid deployment agent within your account.\n",
+                        "type": "string"
+                    },
+                    "registeredAt": {
+                        "description": "The timestamp of the time the hybrid deployment agent was created in your account.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "displayName",
+                    "groupId",
+                    "id",
+                    "registeredAt"
+                ],
+                "type": "object"
+            }
+        },
+        "fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents": {
+            "description": "This data source returns a list of all hybrid deployment agents within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst hybridDeploymentAgents = fivetran.getHybridDeploymentAgents({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nhybrid_deployment_agents = fivetran.get_hybrid_deployment_agents()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var hybridDeploymentAgents = Fivetran.GetHybridDeploymentAgents.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetHybridDeploymentAgents(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var hybridDeploymentAgents = FivetranFunctions.getHybridDeploymentAgents();\n\n    }\n}\n```\n```yaml\nvariables:\n  hybridDeploymentAgents:\n    fn::invoke:\n      function: fivetran:getHybridDeploymentAgents\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getHybridDeploymentAgents.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "items": {
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getHybridDeploymentAgentsItem:getHybridDeploymentAgentsItem"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "items",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent": {
-            "description": "This data source returns a local processing agent object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst localProcessingAgent = fivetran.getLocalProcessingAgent({\n    id: \"local_processing_agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nlocal_processing_agent = fivetran.get_local_processing_agent(id=\"local_processing_agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localProcessingAgent = Fivetran.GetLocalProcessingAgent.Invoke(new()\n    {\n        Id = \"local_processing_agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupLocalProcessingAgent(ctx, \u0026fivetran.LookupLocalProcessingAgentArgs{\n\t\t\tId: \"local_processing_agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetLocalProcessingAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var localProcessingAgent = FivetranFunctions.getLocalProcessingAgent(GetLocalProcessingAgentArgs.builder()\n            .id(\"local_processing_agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  localProcessingAgent:\n    fn::invoke:\n      Function: fivetran:getLocalProcessingAgent\n      Arguments:\n        id: local_processing_agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.\n\nThis data source returns a local processing agent object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst localProcessingAgent = fivetran.getLocalProcessingAgent({\n    id: \"local_processing_agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nlocal_processing_agent = fivetran.get_local_processing_agent(id=\"local_processing_agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localProcessingAgent = Fivetran.GetLocalProcessingAgent.Invoke(new()\n    {\n        Id = \"local_processing_agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupLocalProcessingAgent(ctx, \u0026fivetran.LookupLocalProcessingAgentArgs{\n\t\t\tId: \"local_processing_agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetLocalProcessingAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var localProcessingAgent = FivetranFunctions.getLocalProcessingAgent(GetLocalProcessingAgentArgs.builder()\n            .id(\"local_processing_agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  localProcessingAgent:\n    fn::invoke:\n      function: fivetran:getLocalProcessingAgent\n      arguments:\n        id: local_processing_agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getLocalProcessingAgent.\n",
                 "properties": {
@@ -13642,7 +14118,7 @@
             }
         },
         "fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents": {
-            "description": "This data source returns a list of all local processing agents within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst localProcessingAgents = fivetran.getLocalProcessingAgents({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nlocal_processing_agents = fivetran.get_local_processing_agents()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localProcessingAgents = Fivetran.GetLocalProcessingAgents.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetLocalProcessingAgents(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var localProcessingAgents = FivetranFunctions.getLocalProcessingAgents();\n\n    }\n}\n```\n```yaml\nvariables:\n  localProcessingAgents:\n    fn::invoke:\n      Function: fivetran:getLocalProcessingAgents\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.\n\nThis data source returns a list of all local processing agents within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst localProcessingAgents = fivetran.getLocalProcessingAgents({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nlocal_processing_agents = fivetran.get_local_processing_agents()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localProcessingAgents = Fivetran.GetLocalProcessingAgents.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetLocalProcessingAgents(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var localProcessingAgents = FivetranFunctions.getLocalProcessingAgents();\n\n    }\n}\n```\n```yaml\nvariables:\n  localProcessingAgents:\n    fn::invoke:\n      function: fivetran:getLocalProcessingAgents\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
                 "description": "A collection of values returned by getLocalProcessingAgents.\n",
                 "properties": {
@@ -13664,8 +14140,118 @@
                 "type": "object"
             }
         },
+        "fivetran:index/getPrivateLink:getPrivateLink": {
+            "description": "This data source returns a private link object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst privateLink = fivetran.getPrivateLink({\n    id: \"private_link_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nprivate_link = fivetran.get_private_link(id=\"private_link_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var privateLink = Fivetran.GetPrivateLink.Invoke(new()\n    {\n        Id = \"private_link_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupPrivateLink(ctx, \u0026fivetran.LookupPrivateLinkArgs{\n\t\t\tId: \"private_link_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetPrivateLinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var privateLink = FivetranFunctions.getPrivateLink(GetPrivateLinkArgs.builder()\n            .id(\"private_link_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  privateLink:\n    fn::invoke:\n      function: fivetran:getPrivateLink\n      arguments:\n        id: private_link_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPrivateLink.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the private link within the Fivetran system.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPrivateLink.\n",
+                "properties": {
+                    "cloudProvider": {
+                        "description": "The cloud provider name.\n",
+                        "type": "string"
+                    },
+                    "configMap": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Configuration.\n",
+                        "type": "object"
+                    },
+                    "createdAt": {
+                        "description": "The date and time the membership was created.\n",
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "description": "The unique identifier for the User within the Fivetran system.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The unique identifier for the private link within the Fivetran system.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n",
+                        "type": "string"
+                    },
+                    "service": {
+                        "description": "Service type.\n",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "The state of the private link.\n",
+                        "type": "string"
+                    },
+                    "stateSummary": {
+                        "description": "The state of the private link.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "cloudProvider",
+                    "configMap",
+                    "createdAt",
+                    "createdBy",
+                    "id",
+                    "name",
+                    "region",
+                    "service",
+                    "state",
+                    "stateSummary"
+                ],
+                "type": "object"
+            }
+        },
+        "fivetran:index/getPrivateLinks:getPrivateLinks": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getPrivateLinks.\n",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getPrivateLinksItem:getPrivateLinksItem"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPrivateLinks.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "items": {
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getPrivateLinksItem:getPrivateLinksItem"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "fivetran:index/getProxyAgent:getProxyAgent": {
-            "description": "This data source returns a proxy agent object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst proxyAgent = fivetran.getProxyAgent({\n    id: \"proxy_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nproxy_agent = fivetran.get_proxy_agent(id=\"proxy_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var proxyAgent = Fivetran.GetProxyAgent.Invoke(new()\n    {\n        Id = \"proxy_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupProxyAgent(ctx, \u0026fivetran.LookupProxyAgentArgs{\n\t\t\tId: \"proxy_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetProxyAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var proxyAgent = FivetranFunctions.getProxyAgent(GetProxyAgentArgs.builder()\n            .id(\"proxy_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  proxyAgent:\n    fn::invoke:\n      Function: fivetran:getProxyAgent\n      Arguments:\n        id: proxy_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a proxy agent object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst proxyAgent = fivetran.getProxyAgent({\n    id: \"proxy_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nproxy_agent = fivetran.get_proxy_agent(id=\"proxy_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var proxyAgent = Fivetran.GetProxyAgent.Invoke(new()\n    {\n        Id = \"proxy_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupProxyAgent(ctx, \u0026fivetran.LookupProxyAgentArgs{\n\t\t\tId: \"proxy_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetProxyAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var proxyAgent = FivetranFunctions.getProxyAgent(GetProxyAgentArgs.builder()\n            .id(\"proxy_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  proxyAgent:\n    fn::invoke:\n      function: fivetran:getProxyAgent\n      arguments:\n        id: proxy_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getProxyAgent.\n",
                 "properties": {
@@ -13724,7 +14310,7 @@
             }
         },
         "fivetran:index/getProxyAgents:getProxyAgents": {
-            "description": "This data source returns a list of all proxy agents within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst proxyAgents = fivetran.getProxyAgents({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nproxy_agents = fivetran.get_proxy_agents()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var proxyAgents = Fivetran.GetProxyAgents.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetProxyAgents(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetProxyAgentsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var proxyAgents = FivetranFunctions.getProxyAgents();\n\n    }\n}\n```\n```yaml\nvariables:\n  proxyAgents:\n    fn::invoke:\n      Function: fivetran:getProxyAgents\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of all proxy agents within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst proxyAgents = fivetran.getProxyAgents({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nproxy_agents = fivetran.get_proxy_agents()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var proxyAgents = Fivetran.GetProxyAgents.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetProxyAgents(ctx, \u0026fivetran.GetProxyAgentsArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetProxyAgentsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var proxyAgents = FivetranFunctions.getProxyAgents();\n\n    }\n}\n```\n```yaml\nvariables:\n  proxyAgents:\n    fn::invoke:\n      function: fivetran:getProxyAgents\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getProxyAgents.\n",
                 "properties": {
@@ -13758,7 +14344,7 @@
             }
         },
         "fivetran:index/getRoles:getRoles": {
-            "description": "This data source returns a list of all predefined and custom roles within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst roles = fivetran.getRoles({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nroles = fivetran.get_roles()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var roles = Fivetran.GetRoles.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetRoles(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetRolesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var roles = FivetranFunctions.getRoles();\n\n    }\n}\n```\n```yaml\nvariables:\n  roles:\n    fn::invoke:\n      Function: fivetran:getRoles\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of all predefined and custom roles within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst roles = fivetran.getRoles({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nroles = fivetran.get_roles()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var roles = Fivetran.GetRoles.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetRoles(ctx, \u0026fivetran.GetRolesArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetRolesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var roles = FivetranFunctions.getRoles();\n\n    }\n}\n```\n```yaml\nvariables:\n  roles:\n    fn::invoke:\n      function: fivetran:getRoles\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRoles.\n",
                 "properties": {
@@ -13792,7 +14378,7 @@
             }
         },
         "fivetran:index/getTeam:getTeam": {
-            "description": "This data source returns a team object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst team = fivetran.getTeam({\n    id: \"team_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam = fivetran.get_team(id=\"team_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var team = Fivetran.GetTeam.Invoke(new()\n    {\n        Id = \"team_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupTeam(ctx, \u0026fivetran.LookupTeamArgs{\n\t\t\tId: \"team_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var team = FivetranFunctions.getTeam(GetTeamArgs.builder()\n            .id(\"team_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  team:\n    fn::invoke:\n      Function: fivetran:getTeam\n      Arguments:\n        id: team_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a team object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst team = fivetran.getTeam({\n    id: \"team_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam = fivetran.get_team(id=\"team_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var team = Fivetran.GetTeam.Invoke(new()\n    {\n        Id = \"team_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupTeam(ctx, \u0026fivetran.LookupTeamArgs{\n\t\t\tId: \"team_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var team = FivetranFunctions.getTeam(GetTeamArgs.builder()\n            .id(\"team_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  team:\n    fn::invoke:\n      function: fivetran:getTeam\n      arguments:\n        id: team_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTeam.\n",
                 "properties": {
@@ -13882,7 +14468,7 @@
             }
         },
         "fivetran:index/getTeamGroupMemberships:getTeamGroupMemberships": {
-            "description": "This data source returns a list of group memberships within team object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teamGroupMemberships = fivetran.getTeamGroupMemberships({\n    teamId: \"team_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam_group_memberships = fivetran.get_team_group_memberships(team_id=\"team_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teamGroupMemberships = Fivetran.GetTeamGroupMemberships.Invoke(new()\n    {\n        TeamId = \"team_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetTeamGroupMemberships(ctx, \u0026fivetran.GetTeamGroupMembershipsArgs{\n\t\t\tTeamId: \"team_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamGroupMembershipsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teamGroupMemberships = FivetranFunctions.getTeamGroupMemberships(GetTeamGroupMembershipsArgs.builder()\n            .teamId(\"team_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  teamGroupMemberships:\n    fn::invoke:\n      Function: fivetran:getTeamGroupMemberships\n      Arguments:\n        teamId: team_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of group memberships within team object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teamGroupMemberships = fivetran.getTeamGroupMemberships({\n    teamId: \"team_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam_group_memberships = fivetran.get_team_group_memberships(team_id=\"team_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teamGroupMemberships = Fivetran.GetTeamGroupMemberships.Invoke(new()\n    {\n        TeamId = \"team_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetTeamGroupMemberships(ctx, \u0026fivetran.GetTeamGroupMembershipsArgs{\n\t\t\tTeamId: \"team_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamGroupMembershipsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teamGroupMemberships = FivetranFunctions.getTeamGroupMemberships(GetTeamGroupMembershipsArgs.builder()\n            .teamId(\"team_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  teamGroupMemberships:\n    fn::invoke:\n      function: fivetran:getTeamGroupMemberships\n      arguments:\n        teamId: team_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTeamGroupMemberships.\n",
                 "properties": {
@@ -13928,7 +14514,7 @@
             }
         },
         "fivetran:index/getTeamUserMemberships:getTeamUserMemberships": {
-            "description": "This data source returns a list of user memberships within team object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teamUserMemberships = fivetran.getTeamUserMemberships({\n    teamId: \"team_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam_user_memberships = fivetran.get_team_user_memberships(team_id=\"team_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teamUserMemberships = Fivetran.GetTeamUserMemberships.Invoke(new()\n    {\n        TeamId = \"team_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetTeamUserMemberships(ctx, \u0026fivetran.GetTeamUserMembershipsArgs{\n\t\t\tTeamId: \"team_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamUserMembershipsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teamUserMemberships = FivetranFunctions.getTeamUserMemberships(GetTeamUserMembershipsArgs.builder()\n            .teamId(\"team_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  teamUserMemberships:\n    fn::invoke:\n      Function: fivetran:getTeamUserMemberships\n      Arguments:\n        teamId: team_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of user memberships within team object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teamUserMemberships = fivetran.getTeamUserMemberships({\n    teamId: \"team_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam_user_memberships = fivetran.get_team_user_memberships(team_id=\"team_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teamUserMemberships = Fivetran.GetTeamUserMemberships.Invoke(new()\n    {\n        TeamId = \"team_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetTeamUserMemberships(ctx, \u0026fivetran.GetTeamUserMembershipsArgs{\n\t\t\tTeamId: \"team_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamUserMembershipsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teamUserMemberships = FivetranFunctions.getTeamUserMemberships(GetTeamUserMembershipsArgs.builder()\n            .teamId(\"team_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  teamUserMemberships:\n    fn::invoke:\n      function: fivetran:getTeamUserMemberships\n      arguments:\n        teamId: team_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTeamUserMemberships.\n",
                 "properties": {
@@ -13974,7 +14560,7 @@
             }
         },
         "fivetran:index/getTeams:getTeams": {
-            "description": "This data source returns a list of all teams within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teams = fivetran.getTeams({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteams = fivetran.get_teams()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teams = Fivetran.GetTeams.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetTeams(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teams = FivetranFunctions.getTeams();\n\n    }\n}\n```\n```yaml\nvariables:\n  teams:\n    fn::invoke:\n      Function: fivetran:getTeams\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of all teams within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teams = fivetran.getTeams({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteams = fivetran.get_teams()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teams = Fivetran.GetTeams.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetTeams(ctx, \u0026fivetran.GetTeamsArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetTeamsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teams = FivetranFunctions.getTeams();\n\n    }\n}\n```\n```yaml\nvariables:\n  teams:\n    fn::invoke:\n      function: fivetran:getTeams\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTeams.\n",
                 "properties": {
@@ -14009,7 +14595,7 @@
             }
         },
         "fivetran:index/getUser:getUser": {
-            "description": "This data source returns a user object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myUser = fivetran.getUser({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_user = fivetran.get_user(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myUser = Fivetran.GetUser.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupUser(ctx, \u0026fivetran.LookupUserArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myUser = FivetranFunctions.getUser(GetUserArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myUser:\n    fn::invoke:\n      Function: fivetran:getUser\n      Arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a user object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst myUser = fivetran.getUser({\n    id: \"anonymous_mystery\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nmy_user = fivetran.get_user(id=\"anonymous_mystery\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myUser = Fivetran.GetUser.Invoke(new()\n    {\n        Id = \"anonymous_mystery\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupUser(ctx, \u0026fivetran.LookupUserArgs{\n\t\t\tId: \"anonymous_mystery\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myUser = FivetranFunctions.getUser(GetUserArgs.builder()\n            .id(\"anonymous_mystery\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myUser:\n    fn::invoke:\n      function: fivetran:getUser\n      arguments:\n        id: anonymous_mystery\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getUser.\n",
                 "properties": {
@@ -14088,7 +14674,7 @@
             }
         },
         "fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships": {
-            "description": "This data source returns a connector membership for user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst userConnectorMembership = fivetran.getUserConnectorMemberships({\n    userId: \"user_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nuser_connector_membership = fivetran.get_user_connector_memberships(user_id=\"user_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var userConnectorMembership = Fivetran.GetUserConnectorMemberships.Invoke(new()\n    {\n        UserId = \"user_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetUserConnectorMemberships(ctx, \u0026fivetran.GetUserConnectorMembershipsArgs{\n\t\t\tUserId: \"user_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetUserConnectorMembershipsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var userConnectorMembership = FivetranFunctions.getUserConnectorMemberships(GetUserConnectorMembershipsArgs.builder()\n            .userId(\"user_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  userConnectorMembership:\n    fn::invoke:\n      Function: fivetran:getUserConnectorMemberships\n      Arguments:\n        userId: user_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a connector membership for user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst userConnectorMembership = fivetran.getUserConnectorMemberships({\n    userId: \"user_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nuser_connector_membership = fivetran.get_user_connector_memberships(user_id=\"user_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var userConnectorMembership = Fivetran.GetUserConnectorMemberships.Invoke(new()\n    {\n        UserId = \"user_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetUserConnectorMemberships(ctx, \u0026fivetran.GetUserConnectorMembershipsArgs{\n\t\t\tUserId: \"user_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetUserConnectorMembershipsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var userConnectorMembership = FivetranFunctions.getUserConnectorMemberships(GetUserConnectorMembershipsArgs.builder()\n            .userId(\"user_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  userConnectorMembership:\n    fn::invoke:\n      function: fivetran:getUserConnectorMemberships\n      arguments:\n        userId: user_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getUserConnectorMemberships.\n",
                 "properties": {
@@ -14134,7 +14720,7 @@
             }
         },
         "fivetran:index/getUserGroupMemberships:getUserGroupMemberships": {
-            "description": "This data source returns a list of group memberships for user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teamGroupMemberships = fivetran.getUserGroupMemberships({\n    userId: \"user_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam_group_memberships = fivetran.get_user_group_memberships(user_id=\"user_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teamGroupMemberships = Fivetran.GetUserGroupMemberships.Invoke(new()\n    {\n        UserId = \"user_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetUserGroupMemberships(ctx, \u0026fivetran.GetUserGroupMembershipsArgs{\n\t\t\tUserId: \"user_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetUserGroupMembershipsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teamGroupMemberships = FivetranFunctions.getUserGroupMemberships(GetUserGroupMembershipsArgs.builder()\n            .userId(\"user_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  teamGroupMemberships:\n    fn::invoke:\n      Function: fivetran:getUserGroupMemberships\n      Arguments:\n        userId: user_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of group memberships for user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst teamGroupMemberships = fivetran.getUserGroupMemberships({\n    userId: \"user_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nteam_group_memberships = fivetran.get_user_group_memberships(user_id=\"user_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teamGroupMemberships = Fivetran.GetUserGroupMemberships.Invoke(new()\n    {\n        UserId = \"user_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetUserGroupMemberships(ctx, \u0026fivetran.GetUserGroupMembershipsArgs{\n\t\t\tUserId: \"user_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetUserGroupMembershipsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var teamGroupMemberships = FivetranFunctions.getUserGroupMemberships(GetUserGroupMembershipsArgs.builder()\n            .userId(\"user_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  teamGroupMemberships:\n    fn::invoke:\n      function: fivetran:getUserGroupMemberships\n      arguments:\n        userId: user_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getUserGroupMemberships.\n",
                 "properties": {
@@ -14180,7 +14766,7 @@
             }
         },
         "fivetran:index/getUsers:getUsers": {
-            "description": "This data source returns a list of all users within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst users = fivetran.getUsers({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nusers = fivetran.get_users()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var users = Fivetran.GetUsers.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetUsers(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetUsersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var users = FivetranFunctions.getUsers();\n\n    }\n}\n```\n```yaml\nvariables:\n  users:\n    fn::invoke:\n      Function: fivetran:getUsers\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of all users within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst users = fivetran.getUsers({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nusers = fivetran.get_users()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var users = Fivetran.GetUsers.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetUsers(ctx, \u0026fivetran.GetUsersArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetUsersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var users = FivetranFunctions.getUsers();\n\n    }\n}\n```\n```yaml\nvariables:\n  users:\n    fn::invoke:\n      function: fivetran:getUsers\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getUsers.\n",
                 "properties": {
@@ -14215,7 +14801,7 @@
             }
         },
         "fivetran:index/getWebhook:getWebhook": {
-            "description": "This data source returns a webhook object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst webhook = fivetran.getWebhook({\n    id: \"webhook_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nwebhook = fivetran.get_webhook(id=\"webhook_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var webhook = Fivetran.GetWebhook.Invoke(new()\n    {\n        Id = \"webhook_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupWebhook(ctx, \u0026fivetran.LookupWebhookArgs{\n\t\t\tId: \"webhook_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetWebhookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var webhook = FivetranFunctions.getWebhook(GetWebhookArgs.builder()\n            .id(\"webhook_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  webhook:\n    fn::invoke:\n      Function: fivetran:getWebhook\n      Arguments:\n        id: webhook_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a webhook object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst webhook = fivetran.getWebhook({\n    id: \"webhook_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nwebhook = fivetran.get_webhook(id=\"webhook_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var webhook = Fivetran.GetWebhook.Invoke(new()\n    {\n        Id = \"webhook_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupWebhook(ctx, \u0026fivetran.LookupWebhookArgs{\n\t\t\tId: \"webhook_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetWebhookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var webhook = FivetranFunctions.getWebhook(GetWebhookArgs.builder()\n            .id(\"webhook_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  webhook:\n    fn::invoke:\n      function: fivetran:getWebhook\n      arguments:\n        id: webhook_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getWebhook.\n",
                 "properties": {
@@ -14292,7 +14878,7 @@
             }
         },
         "fivetran:index/getWebhooks:getWebhooks": {
-            "description": "This data source returns a list of all webhooks within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst webhooks = fivetran.getWebhooks({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nwebhooks = fivetran.get_webhooks()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var webhooks = Fivetran.GetWebhooks.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetWebhooks(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var webhooks = FivetranFunctions.getWebhooks();\n\n    }\n}\n```\n```yaml\nvariables:\n  webhooks:\n    fn::invoke:\n      Function: fivetran:getWebhooks\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source returns a list of all webhooks within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst webhooks = fivetran.getWebhooks({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nwebhooks = fivetran.get_webhooks()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var webhooks = Fivetran.GetWebhooks.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetWebhooks(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var webhooks = FivetranFunctions.getWebhooks();\n\n    }\n}\n```\n```yaml\nvariables:\n  webhooks:\n    fn::invoke:\n      function: fivetran:getWebhooks\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
                 "description": "A collection of values returned by getWebhooks.\n",
                 "properties": {
