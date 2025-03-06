@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Resource is in ALPHA state.
+ * This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
  *
  * This resource allows you to add, manage and delete dbt Projects in your account.
  *

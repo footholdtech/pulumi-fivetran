@@ -16,7 +16,7 @@ import (
 //
 // 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
 //
-// To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+// To retrieve existing groups, use the [fivetran_groups data source](/providers/fivetran/fivetran/latest/docs/data-sources/groups).
 //
 // 2. Define an empty resource in your `.tf` configuration:
 //
@@ -50,11 +50,6 @@ type Destination struct {
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrOutput `pulumi:"hybridDeploymentAgentId"`
-	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-	// to. If the value is specified, the system will try to associate the connection with an existing agent.
-	//
-	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-	LocalProcessingAgentId pulumi.StringPtrOutput `pulumi:"localProcessingAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringOutput `pulumi:"networkingMethod"`
 	// The private link ID.
@@ -130,11 +125,6 @@ type destinationState struct {
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
-	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-	// to. If the value is specified, the system will try to associate the connection with an existing agent.
-	//
-	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-	LocalProcessingAgentId *string `pulumi:"localProcessingAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
 	// The private link ID.
@@ -169,11 +159,6 @@ type DestinationState struct {
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrInput
-	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-	// to. If the value is specified, the system will try to associate the connection with an existing agent.
-	//
-	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-	LocalProcessingAgentId pulumi.StringPtrInput
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringPtrInput
 	// The private link ID.
@@ -212,11 +197,6 @@ type destinationArgs struct {
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
-	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-	// to. If the value is specified, the system will try to associate the connection with an existing agent.
-	//
-	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-	LocalProcessingAgentId *string `pulumi:"localProcessingAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
 	// The private link ID.
@@ -250,11 +230,6 @@ type DestinationArgs struct {
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrInput
-	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-	// to. If the value is specified, the system will try to associate the connection with an existing agent.
-	//
-	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-	LocalProcessingAgentId pulumi.StringPtrInput
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringPtrInput
 	// The private link ID.
@@ -383,14 +358,6 @@ func (o DestinationOutput) GroupId() pulumi.StringOutput {
 // value is specified, the system will try to associate the connection with an existing agent.
 func (o DestinationOutput) HybridDeploymentAgentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringPtrOutput { return v.HybridDeploymentAgentId }).(pulumi.StringPtrOutput)
-}
-
-// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-// to. If the value is specified, the system will try to associate the connection with an existing agent.
-//
-// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-func (o DestinationOutput) LocalProcessingAgentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Destination) pulumi.StringPtrOutput { return v.LocalProcessingAgentId }).(pulumi.StringPtrOutput)
 }
 
 // Possible values: Directly, SshTunnel, ProxyAgent.

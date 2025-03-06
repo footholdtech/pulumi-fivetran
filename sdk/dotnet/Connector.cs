@@ -36,6 +36,20 @@ namespace Footholdtech.Fivetran
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+        /// CUSTOM is only available for customers using the Enterprise plan or above.
+        /// </summary>
+        [Output("dataDelaySensitivity")]
+        public Output<string?> DataDelaySensitivity { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+        /// data_delay_sensitivity set to CUSTOM.
+        /// </summary>
+        [Output("dataDelayThreshold")]
+        public Output<int> DataDelayThreshold { get; private set; } = null!;
+
         [Output("destinationSchema")]
         public Output<Outputs.ConnectorDestinationSchema?> DestinationSchema { get; private set; } = null!;
 
@@ -51,13 +65,6 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Output("hybridDeploymentAgentId")]
         public Output<string?> HybridDeploymentAgentId { get; private set; } = null!;
-
-        /// <summary>
-        /// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        /// to. If the value is specified, the system will try to associate the connection with an existing agent.
-        /// </summary>
-        [Output("localProcessingAgentId")]
-        public Output<string?> LocalProcessingAgentId { get; private set; } = null!;
 
         /// <summary>
         /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
@@ -168,6 +175,20 @@ namespace Footholdtech.Fivetran
         [Input("config")]
         public Input<Inputs.ConnectorConfigArgs>? Config { get; set; }
 
+        /// <summary>
+        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+        /// CUSTOM is only available for customers using the Enterprise plan or above.
+        /// </summary>
+        [Input("dataDelaySensitivity")]
+        public Input<string>? DataDelaySensitivity { get; set; }
+
+        /// <summary>
+        /// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+        /// data_delay_sensitivity set to CUSTOM.
+        /// </summary>
+        [Input("dataDelayThreshold")]
+        public Input<int>? DataDelayThreshold { get; set; }
+
         [Input("destinationSchema")]
         public Input<Inputs.ConnectorDestinationSchemaArgs>? DestinationSchema { get; set; }
 
@@ -183,13 +204,6 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Input("hybridDeploymentAgentId")]
         public Input<string>? HybridDeploymentAgentId { get; set; }
-
-        /// <summary>
-        /// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        /// to. If the value is specified, the system will try to associate the connection with an existing agent.
-        /// </summary>
-        [Input("localProcessingAgentId")]
-        public Input<string>? LocalProcessingAgentId { get; set; }
 
         /// <summary>
         /// Possible values: Directly, SshTunnel, ProxyAgent.
@@ -266,6 +280,20 @@ namespace Footholdtech.Fivetran
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+        /// CUSTOM is only available for customers using the Enterprise plan or above.
+        /// </summary>
+        [Input("dataDelaySensitivity")]
+        public Input<string>? DataDelaySensitivity { get; set; }
+
+        /// <summary>
+        /// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+        /// data_delay_sensitivity set to CUSTOM.
+        /// </summary>
+        [Input("dataDelayThreshold")]
+        public Input<int>? DataDelayThreshold { get; set; }
+
         [Input("destinationSchema")]
         public Input<Inputs.ConnectorDestinationSchemaGetArgs>? DestinationSchema { get; set; }
 
@@ -281,13 +309,6 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Input("hybridDeploymentAgentId")]
         public Input<string>? HybridDeploymentAgentId { get; set; }
-
-        /// <summary>
-        /// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        /// to. If the value is specified, the system will try to associate the connection with an existing agent.
-        /// </summary>
-        [Input("localProcessingAgentId")]
-        public Input<string>? LocalProcessingAgentId { get; set; }
 
         /// <summary>
         /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your

@@ -49,6 +49,16 @@ export class Connector extends pulumi.CustomResource {
      * The timestamp of the time the connector was created in your account.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+     * CUSTOM is only available for customers using the Enterprise plan or above.
+     */
+    public readonly dataDelaySensitivity!: pulumi.Output<string | undefined>;
+    /**
+     * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+     * dataDelaySensitivity set to CUSTOM.
+     */
+    public readonly dataDelayThreshold!: pulumi.Output<number>;
     public readonly destinationSchema!: pulumi.Output<outputs.ConnectorDestinationSchema | undefined>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
@@ -59,13 +69,6 @@ export class Connector extends pulumi.CustomResource {
      * value is specified, the system will try to associate the connection with an existing agent.
      */
     public readonly hybridDeploymentAgentId!: pulumi.Output<string | undefined>;
-    /**
-     * (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-     * to. If the value is specified, the system will try to associate the connection with an existing agent.
-     *
-     * @deprecated This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-     */
-    public readonly localProcessingAgentId!: pulumi.Output<string | undefined>;
     /**
      * The name used both as the connector's name within the Fivetran system and as the source schema's name within your
      * destination.
@@ -122,10 +125,11 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["connectedBy"] = state ? state.connectedBy : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["dataDelaySensitivity"] = state ? state.dataDelaySensitivity : undefined;
+            resourceInputs["dataDelayThreshold"] = state ? state.dataDelayThreshold : undefined;
             resourceInputs["destinationSchema"] = state ? state.destinationSchema : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["hybridDeploymentAgentId"] = state ? state.hybridDeploymentAgentId : undefined;
-            resourceInputs["localProcessingAgentId"] = state ? state.localProcessingAgentId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkingMethod"] = state ? state.networkingMethod : undefined;
             resourceInputs["privateLinkId"] = state ? state.privateLinkId : undefined;
@@ -145,10 +149,11 @@ export class Connector extends pulumi.CustomResource {
             }
             resourceInputs["auth"] = args ? args.auth : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["dataDelaySensitivity"] = args ? args.dataDelaySensitivity : undefined;
+            resourceInputs["dataDelayThreshold"] = args ? args.dataDelayThreshold : undefined;
             resourceInputs["destinationSchema"] = args ? args.destinationSchema : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["hybridDeploymentAgentId"] = args ? args.hybridDeploymentAgentId : undefined;
-            resourceInputs["localProcessingAgentId"] = args ? args.localProcessingAgentId : undefined;
             resourceInputs["networkingMethod"] = args ? args.networkingMethod : undefined;
             resourceInputs["privateLinkId"] = args ? args.privateLinkId : undefined;
             resourceInputs["proxyAgentId"] = args ? args.proxyAgentId : undefined;
@@ -180,6 +185,16 @@ export interface ConnectorState {
      * The timestamp of the time the connector was created in your account.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+     * CUSTOM is only available for customers using the Enterprise plan or above.
+     */
+    dataDelaySensitivity?: pulumi.Input<string>;
+    /**
+     * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+     * dataDelaySensitivity set to CUSTOM.
+     */
+    dataDelayThreshold?: pulumi.Input<number>;
     destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
@@ -190,13 +205,6 @@ export interface ConnectorState {
      * value is specified, the system will try to associate the connection with an existing agent.
      */
     hybridDeploymentAgentId?: pulumi.Input<string>;
-    /**
-     * (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-     * to. If the value is specified, the system will try to associate the connection with an existing agent.
-     *
-     * @deprecated This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-     */
-    localProcessingAgentId?: pulumi.Input<string>;
     /**
      * The name used both as the connector's name within the Fivetran system and as the source schema's name within your
      * destination.
@@ -243,6 +251,16 @@ export interface ConnectorState {
 export interface ConnectorArgs {
     auth?: pulumi.Input<inputs.ConnectorAuth>;
     config?: pulumi.Input<inputs.ConnectorConfig>;
+    /**
+     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+     * CUSTOM is only available for customers using the Enterprise plan or above.
+     */
+    dataDelaySensitivity?: pulumi.Input<string>;
+    /**
+     * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+     * dataDelaySensitivity set to CUSTOM.
+     */
+    dataDelayThreshold?: pulumi.Input<number>;
     destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
@@ -253,13 +271,6 @@ export interface ConnectorArgs {
      * value is specified, the system will try to associate the connection with an existing agent.
      */
     hybridDeploymentAgentId?: pulumi.Input<string>;
-    /**
-     * (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-     * to. If the value is specified, the system will try to associate the connection with an existing agent.
-     *
-     * @deprecated This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-     */
-    localProcessingAgentId?: pulumi.Input<string>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */

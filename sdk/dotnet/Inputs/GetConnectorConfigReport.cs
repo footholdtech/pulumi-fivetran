@@ -93,6 +93,13 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("filterValue", required: true)]
         public string FilterValue { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
+        /// </summary>
+        [Input("generateFivetranPk", required: true)]
+        public bool GenerateFivetranPk { get; set; }
+
         [Input("metrics", required: true)]
         private List<string>? _metrics;
 
@@ -116,6 +123,26 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("prebuiltReport", required: true)]
         public string PrebuiltReport { get; set; } = null!;
 
+        [Input("primaryKeys", required: true)]
+        private List<string>? _primaryKeys;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Primary Keys
+        /// </summary>
+        public List<string> PrimaryKeys
+        {
+            get => _primaryKeys ?? (_primaryKeys = new List<string>());
+            set => _primaryKeys = value;
+        }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
+        /// </summary>
+        [Input("reportFormatType", required: true)]
+        public string ReportFormatType { get; set; } = null!;
+
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `google_ads`: The name of the Google Ads report from which the connector will sync the data. [Possible report_type values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
@@ -124,6 +151,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("reportType", required: true)]
         public string ReportType { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: URL for a live custom report.
+        /// </summary>
+        [Input("reportUrl", required: true)]
+        public string ReportUrl { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -169,11 +203,19 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
+        /// </summary>
+        [Input("supportNestedColumns", required: true)]
+        public bool SupportNestedColumns { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `google_ads`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `google_analytics`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `google_analytics_4`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `google_search_ads_360`: The name of a table within the schema to which connector syncs the data of a given report.
         /// 	- Service `google_search_console`: The name of a table within the schema to which connector syncs the data of a given report.
+        /// 	- Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
         /// </summary>
         [Input("table", required: true)]
         public string Table { get; set; } = null!;

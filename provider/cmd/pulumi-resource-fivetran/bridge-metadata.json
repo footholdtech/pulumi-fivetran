@@ -241,6 +241,9 @@
                                         "metrics": {
                                             "maxItemsOne": false
                                         },
+                                        "primary_keys": {
+                                            "maxItemsOne": false
+                                        },
                                         "search_types": {
                                             "maxItemsOne": false
                                         },
@@ -434,15 +437,6 @@
                 "current": "fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent",
                 "majorVersion": 1
             },
-            "fivetran_local_processing_agent": {
-                "current": "fivetran:index/localProcessingAgent:LocalProcessingAgent",
-                "majorVersion": 1,
-                "fields": {
-                    "usage": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "fivetran_private_link": {
                 "current": "fivetran:index/privateLink:PrivateLink",
                 "majorVersion": 1
@@ -479,6 +473,57 @@
                 "fields": {
                     "user": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_transformation": {
+                "current": "fivetran:index/transformation:Transformation",
+                "majorVersion": 1,
+                "fields": {
+                    "output_model_names": {
+                        "maxItemsOne": false
+                    },
+                    "schedule": {
+                        "fields": {
+                            "connection_ids": {
+                                "maxItemsOne": false
+                            },
+                            "cron": {
+                                "maxItemsOne": false
+                            },
+                            "days_of_week": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "transformation_config": {
+                        "fields": {
+                            "connection_ids": {
+                                "maxItemsOne": false
+                            },
+                            "excluded_models": {
+                                "maxItemsOne": false
+                            },
+                            "steps": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_transformation_project": {
+                "current": "fivetran:index/transformationProject:TransformationProject",
+                "majorVersion": 1,
+                "fields": {
+                    "errors": {
+                        "maxItemsOne": false
+                    },
+                    "project_config": {
+                        "fields": {
+                            "environment_vars": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -755,6 +800,9 @@
                                         "metrics": {
                                             "maxItemsOne": false
                                         },
+                                        "primary_keys": {
+                                            "maxItemsOne": false
+                                        },
                                         "search_types": {
                                             "maxItemsOne": false
                                         },
@@ -840,6 +888,15 @@
                 "majorVersion": 1,
                 "fields": {
                     "fingerprints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connectors": {
+                "current": "fivetran:index/getConnectors:getConnectors",
+                "majorVersion": 1,
+                "fields": {
+                    "connectors": {
                         "maxItemsOne": false
                     }
                 }
@@ -933,9 +990,27 @@
                     }
                 }
             },
+            "fivetran_destinations": {
+                "current": "fivetran:index/getDestinations:getDestinations",
+                "majorVersion": 1,
+                "fields": {
+                    "destinations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "fivetran_external_logging": {
                 "current": "fivetran:index/getExternalLogging:getExternalLogging",
                 "majorVersion": 1
+            },
+            "fivetran_external_logs": {
+                "current": "fivetran:index/getExternalLogs:getExternalLogs",
+                "majorVersion": 1,
+                "fields": {
+                    "logs": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "fivetran_group": {
                 "current": "fivetran:index/getGroup:getGroup",
@@ -1003,31 +1078,6 @@
                     }
                 }
             },
-            "fivetran_local_processing_agent": {
-                "current": "fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent",
-                "majorVersion": 1,
-                "fields": {
-                    "usage": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "fivetran_local_processing_agents": {
-                "current": "fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents",
-                "majorVersion": 1,
-                "fields": {
-                    "items": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "usage": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "fivetran_private_link": {
                 "current": "fivetran:index/getPrivateLink:getPrivateLink",
                 "majorVersion": 1
@@ -1051,6 +1101,37 @@
                 "fields": {
                     "items": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_quickstart_package": {
+                "current": "fivetran:index/getQuickstartPackage:getQuickstartPackage",
+                "majorVersion": 1,
+                "fields": {
+                    "connector_types": {
+                        "maxItemsOne": false
+                    },
+                    "output_model_names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_quickstart_packages": {
+                "current": "fivetran:index/getQuickstartPackages:getQuickstartPackages",
+                "majorVersion": 1,
+                "fields": {
+                    "packages": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "connector_types": {
+                                    "maxItemsOne": false
+                                },
+                                "output_model_names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1107,6 +1188,108 @@
                 "fields": {
                     "teams": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_transformation": {
+                "current": "fivetran:index/getTransformation:getTransformation",
+                "majorVersion": 1,
+                "fields": {
+                    "output_model_names": {
+                        "maxItemsOne": false
+                    },
+                    "schedule": {
+                        "fields": {
+                            "connection_ids": {
+                                "maxItemsOne": false
+                            },
+                            "cron": {
+                                "maxItemsOne": false
+                            },
+                            "days_of_week": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "transformation_config": {
+                        "fields": {
+                            "connection_ids": {
+                                "maxItemsOne": false
+                            },
+                            "excluded_models": {
+                                "maxItemsOne": false
+                            },
+                            "steps": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_transformation_project": {
+                "current": "fivetran:index/getTransformationProject:getTransformationProject",
+                "majorVersion": 1,
+                "fields": {
+                    "errors": {
+                        "maxItemsOne": false
+                    },
+                    "project_config": {
+                        "fields": {
+                            "environment_vars": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_transformation_projects": {
+                "current": "fivetran:index/getTransformationProjects:getTransformationProjects",
+                "majorVersion": 1,
+                "fields": {
+                    "projects": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_transformations": {
+                "current": "fivetran:index/getTransformations:getTransformations",
+                "majorVersion": 1,
+                "fields": {
+                    "transformations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "output_model_names": {
+                                    "maxItemsOne": false
+                                },
+                                "schedule": {
+                                    "fields": {
+                                        "connection_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "cron": {
+                                            "maxItemsOne": false
+                                        },
+                                        "days_of_week": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "transformation_config": {
+                                    "fields": {
+                                        "connection_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "excluded_models": {
+                                            "maxItemsOne": false
+                                        },
+                                        "steps": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },

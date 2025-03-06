@@ -1,5 +1,5 @@
 module github.com/pulumi/pulumi-fivetran/examples
 
-go 1.21
+go 1.22
 
-toolchain go1.21.13
+toolchain go1.23.7

@@ -60,6 +60,11 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? FilterValue;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
+        /// </summary>
+        public readonly bool? GenerateFivetranPk;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics`: The report metrics to include into a sync.
         /// 	- Service `google_analytics_4`: The report metrics to include into a sync.
         /// 	- Service `google_search_ads_360`: The report metrics included to sync.
@@ -73,11 +78,26 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? PrebuiltReport;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Primary Keys
+        /// </summary>
+        public readonly ImmutableArray<string> PrimaryKeys;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
+        /// </summary>
+        public readonly string? ReportFormatType;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `google_ads`: The name of the Google Ads report from which the connector will sync the data. [Possible report_type values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
         /// 	- Service `google_search_ads_360`: The type of report
         /// 	- Service `google_search_console`: The type of report
         /// </summary>
         public readonly string? ReportType;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: URL for a live custom report.
+        /// </summary>
+        public readonly string? ReportUrl;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics_4`: The custom window size for rollback syncs.
@@ -97,11 +117,17 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> Segments;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
+        /// </summary>
+        public readonly bool? SupportNestedColumns;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `google_ads`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `google_analytics`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `google_analytics_4`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `google_search_ads_360`: The name of a table within the schema to which connector syncs the data of a given report.
         /// 	- Service `google_search_console`: The name of a table within the schema to which connector syncs the data of a given report.
+        /// 	- Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
         /// </summary>
         public readonly string? Table;
         /// <summary>
@@ -130,11 +156,19 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? filterValue,
 
+            bool? generateFivetranPk,
+
             ImmutableArray<string> metrics,
 
             string? prebuiltReport,
 
+            ImmutableArray<string> primaryKeys,
+
+            string? reportFormatType,
+
             string? reportType,
+
+            string? reportUrl,
 
             int? rollbackWindow,
 
@@ -143,6 +177,8 @@ namespace Footholdtech.Fivetran.Outputs
             ImmutableArray<string> segmentIds,
 
             ImmutableArray<string> segments,
+
+            bool? supportNestedColumns,
 
             string? table,
 
@@ -157,13 +193,18 @@ namespace Footholdtech.Fivetran.Outputs
             FilterFieldName = filterFieldName;
             FilterType = filterType;
             FilterValue = filterValue;
+            GenerateFivetranPk = generateFivetranPk;
             Metrics = metrics;
             PrebuiltReport = prebuiltReport;
+            PrimaryKeys = primaryKeys;
+            ReportFormatType = reportFormatType;
             ReportType = reportType;
+            ReportUrl = reportUrl;
             RollbackWindow = rollbackWindow;
             SearchTypes = searchTypes;
             SegmentIds = segmentIds;
             Segments = segments;
+            SupportNestedColumns = supportNestedColumns;
             Table = table;
             TimeAggregationGranularity = timeAggregationGranularity;
         }

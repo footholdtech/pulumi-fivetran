@@ -80,6 +80,11 @@ export const getConnectorFingerprints: typeof import("./getConnectorFingerprints
 export const getConnectorFingerprintsOutput: typeof import("./getConnectorFingerprints").getConnectorFingerprintsOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectorFingerprints","getConnectorFingerprintsOutput"], () => require("./getConnectorFingerprints"));
 
+export { GetConnectorsArgs, GetConnectorsResult, GetConnectorsOutputArgs } from "./getConnectors";
+export const getConnectors: typeof import("./getConnectors").getConnectors = null as any;
+export const getConnectorsOutput: typeof import("./getConnectors").getConnectorsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectors","getConnectorsOutput"], () => require("./getConnectors"));
+
 export { GetConnectorsMetadataArgs, GetConnectorsMetadataResult, GetConnectorsMetadataOutputArgs } from "./getConnectorsMetadata";
 export const getConnectorsMetadata: typeof import("./getConnectorsMetadata").getConnectorsMetadata = null as any;
 export const getConnectorsMetadataOutput: typeof import("./getConnectorsMetadata").getConnectorsMetadataOutput = null as any;
@@ -120,10 +125,20 @@ export const getDestinationFingerprints: typeof import("./getDestinationFingerpr
 export const getDestinationFingerprintsOutput: typeof import("./getDestinationFingerprints").getDestinationFingerprintsOutput = null as any;
 utilities.lazyLoad(exports, ["getDestinationFingerprints","getDestinationFingerprintsOutput"], () => require("./getDestinationFingerprints"));
 
+export { GetDestinationsArgs, GetDestinationsResult, GetDestinationsOutputArgs } from "./getDestinations";
+export const getDestinations: typeof import("./getDestinations").getDestinations = null as any;
+export const getDestinationsOutput: typeof import("./getDestinations").getDestinationsOutput = null as any;
+utilities.lazyLoad(exports, ["getDestinations","getDestinationsOutput"], () => require("./getDestinations"));
+
 export { GetExternalLoggingArgs, GetExternalLoggingResult, GetExternalLoggingOutputArgs } from "./getExternalLogging";
 export const getExternalLogging: typeof import("./getExternalLogging").getExternalLogging = null as any;
 export const getExternalLoggingOutput: typeof import("./getExternalLogging").getExternalLoggingOutput = null as any;
 utilities.lazyLoad(exports, ["getExternalLogging","getExternalLoggingOutput"], () => require("./getExternalLogging"));
+
+export { GetExternalLogsArgs, GetExternalLogsResult, GetExternalLogsOutputArgs } from "./getExternalLogs";
+export const getExternalLogs: typeof import("./getExternalLogs").getExternalLogs = null as any;
+export const getExternalLogsOutput: typeof import("./getExternalLogs").getExternalLogsOutput = null as any;
+utilities.lazyLoad(exports, ["getExternalLogs","getExternalLogsOutput"], () => require("./getExternalLogs"));
 
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
@@ -165,16 +180,6 @@ export const getHybridDeploymentAgents: typeof import("./getHybridDeploymentAgen
 export const getHybridDeploymentAgentsOutput: typeof import("./getHybridDeploymentAgents").getHybridDeploymentAgentsOutput = null as any;
 utilities.lazyLoad(exports, ["getHybridDeploymentAgents","getHybridDeploymentAgentsOutput"], () => require("./getHybridDeploymentAgents"));
 
-export { GetLocalProcessingAgentArgs, GetLocalProcessingAgentResult, GetLocalProcessingAgentOutputArgs } from "./getLocalProcessingAgent";
-export const getLocalProcessingAgent: typeof import("./getLocalProcessingAgent").getLocalProcessingAgent = null as any;
-export const getLocalProcessingAgentOutput: typeof import("./getLocalProcessingAgent").getLocalProcessingAgentOutput = null as any;
-utilities.lazyLoad(exports, ["getLocalProcessingAgent","getLocalProcessingAgentOutput"], () => require("./getLocalProcessingAgent"));
-
-export { GetLocalProcessingAgentsResult } from "./getLocalProcessingAgents";
-export const getLocalProcessingAgents: typeof import("./getLocalProcessingAgents").getLocalProcessingAgents = null as any;
-export const getLocalProcessingAgentsOutput: typeof import("./getLocalProcessingAgents").getLocalProcessingAgentsOutput = null as any;
-utilities.lazyLoad(exports, ["getLocalProcessingAgents","getLocalProcessingAgentsOutput"], () => require("./getLocalProcessingAgents"));
-
 export { GetPrivateLinkArgs, GetPrivateLinkResult, GetPrivateLinkOutputArgs } from "./getPrivateLink";
 export const getPrivateLink: typeof import("./getPrivateLink").getPrivateLink = null as any;
 export const getPrivateLinkOutput: typeof import("./getPrivateLink").getPrivateLinkOutput = null as any;
@@ -194,6 +199,16 @@ export { GetProxyAgentsArgs, GetProxyAgentsResult, GetProxyAgentsOutputArgs } fr
 export const getProxyAgents: typeof import("./getProxyAgents").getProxyAgents = null as any;
 export const getProxyAgentsOutput: typeof import("./getProxyAgents").getProxyAgentsOutput = null as any;
 utilities.lazyLoad(exports, ["getProxyAgents","getProxyAgentsOutput"], () => require("./getProxyAgents"));
+
+export { GetQuickstartPackageArgs, GetQuickstartPackageResult, GetQuickstartPackageOutputArgs } from "./getQuickstartPackage";
+export const getQuickstartPackage: typeof import("./getQuickstartPackage").getQuickstartPackage = null as any;
+export const getQuickstartPackageOutput: typeof import("./getQuickstartPackage").getQuickstartPackageOutput = null as any;
+utilities.lazyLoad(exports, ["getQuickstartPackage","getQuickstartPackageOutput"], () => require("./getQuickstartPackage"));
+
+export { GetQuickstartPackagesArgs, GetQuickstartPackagesResult, GetQuickstartPackagesOutputArgs } from "./getQuickstartPackages";
+export const getQuickstartPackages: typeof import("./getQuickstartPackages").getQuickstartPackages = null as any;
+export const getQuickstartPackagesOutput: typeof import("./getQuickstartPackages").getQuickstartPackagesOutput = null as any;
+utilities.lazyLoad(exports, ["getQuickstartPackages","getQuickstartPackagesOutput"], () => require("./getQuickstartPackages"));
 
 export { GetRolesArgs, GetRolesResult, GetRolesOutputArgs } from "./getRoles";
 export const getRoles: typeof import("./getRoles").getRoles = null as any;
@@ -224,6 +239,26 @@ export { GetTeamsArgs, GetTeamsResult, GetTeamsOutputArgs } from "./getTeams";
 export const getTeams: typeof import("./getTeams").getTeams = null as any;
 export const getTeamsOutput: typeof import("./getTeams").getTeamsOutput = null as any;
 utilities.lazyLoad(exports, ["getTeams","getTeamsOutput"], () => require("./getTeams"));
+
+export { GetTransformationArgs, GetTransformationResult, GetTransformationOutputArgs } from "./getTransformation";
+export const getTransformation: typeof import("./getTransformation").getTransformation = null as any;
+export const getTransformationOutput: typeof import("./getTransformation").getTransformationOutput = null as any;
+utilities.lazyLoad(exports, ["getTransformation","getTransformationOutput"], () => require("./getTransformation"));
+
+export { GetTransformationProjectArgs, GetTransformationProjectResult, GetTransformationProjectOutputArgs } from "./getTransformationProject";
+export const getTransformationProject: typeof import("./getTransformationProject").getTransformationProject = null as any;
+export const getTransformationProjectOutput: typeof import("./getTransformationProject").getTransformationProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getTransformationProject","getTransformationProjectOutput"], () => require("./getTransformationProject"));
+
+export { GetTransformationProjectsResult } from "./getTransformationProjects";
+export const getTransformationProjects: typeof import("./getTransformationProjects").getTransformationProjects = null as any;
+export const getTransformationProjectsOutput: typeof import("./getTransformationProjects").getTransformationProjectsOutput = null as any;
+utilities.lazyLoad(exports, ["getTransformationProjects","getTransformationProjectsOutput"], () => require("./getTransformationProjects"));
+
+export { GetTransformationsArgs, GetTransformationsResult, GetTransformationsOutputArgs } from "./getTransformations";
+export const getTransformations: typeof import("./getTransformations").getTransformations = null as any;
+export const getTransformationsOutput: typeof import("./getTransformations").getTransformationsOutput = null as any;
+utilities.lazyLoad(exports, ["getTransformations","getTransformationsOutput"], () => require("./getTransformations"));
 
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
@@ -270,11 +305,6 @@ export type HybridDeploymentAgent = import("./hybridDeploymentAgent").HybridDepl
 export const HybridDeploymentAgent: typeof import("./hybridDeploymentAgent").HybridDeploymentAgent = null as any;
 utilities.lazyLoad(exports, ["HybridDeploymentAgent"], () => require("./hybridDeploymentAgent"));
 
-export { LocalProcessingAgentArgs, LocalProcessingAgentState } from "./localProcessingAgent";
-export type LocalProcessingAgent = import("./localProcessingAgent").LocalProcessingAgent;
-export const LocalProcessingAgent: typeof import("./localProcessingAgent").LocalProcessingAgent = null as any;
-utilities.lazyLoad(exports, ["LocalProcessingAgent"], () => require("./localProcessingAgent"));
-
 export { PrivateLinkArgs, PrivateLinkState } from "./privateLink";
 export type PrivateLink = import("./privateLink").PrivateLink;
 export const PrivateLink: typeof import("./privateLink").PrivateLink = null as any;
@@ -309,6 +339,16 @@ export { TeamUserMembershipArgs, TeamUserMembershipState } from "./teamUserMembe
 export type TeamUserMembership = import("./teamUserMembership").TeamUserMembership;
 export const TeamUserMembership: typeof import("./teamUserMembership").TeamUserMembership = null as any;
 utilities.lazyLoad(exports, ["TeamUserMembership"], () => require("./teamUserMembership"));
+
+export { TransformationArgs, TransformationState } from "./transformation";
+export type Transformation = import("./transformation").Transformation;
+export const Transformation: typeof import("./transformation").Transformation = null as any;
+utilities.lazyLoad(exports, ["Transformation"], () => require("./transformation"));
+
+export { TransformationProjectArgs, TransformationProjectState } from "./transformationProject";
+export type TransformationProject = import("./transformationProject").TransformationProject;
+export const TransformationProject: typeof import("./transformationProject").TransformationProject = null as any;
+utilities.lazyLoad(exports, ["TransformationProject"], () => require("./transformationProject"));
 
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
@@ -374,8 +414,6 @@ const _module = {
                 return new GroupUsers(name, <any>undefined, { urn })
             case "fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent":
                 return new HybridDeploymentAgent(name, <any>undefined, { urn })
-            case "fivetran:index/localProcessingAgent:LocalProcessingAgent":
-                return new LocalProcessingAgent(name, <any>undefined, { urn })
             case "fivetran:index/privateLink:PrivateLink":
                 return new PrivateLink(name, <any>undefined, { urn })
             case "fivetran:index/proxyAgent:ProxyAgent":
@@ -388,6 +426,10 @@ const _module = {
                 return new TeamGroupMembership(name, <any>undefined, { urn })
             case "fivetran:index/teamUserMembership:TeamUserMembership":
                 return new TeamUserMembership(name, <any>undefined, { urn })
+            case "fivetran:index/transformation:Transformation":
+                return new Transformation(name, <any>undefined, { urn })
+            case "fivetran:index/transformationProject:TransformationProject":
+                return new TransformationProject(name, <any>undefined, { urn })
             case "fivetran:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "fivetran:index/userConnectorMembership:UserConnectorMembership":
@@ -416,13 +458,14 @@ pulumi.runtime.registerResourceModule("fivetran", "index/externalLogging", _modu
 pulumi.runtime.registerResourceModule("fivetran", "index/group", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/groupUsers", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/hybridDeploymentAgent", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/localProcessingAgent", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/privateLink", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/proxyAgent", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/team", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/teamConnectorMembership", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/teamGroupMembership", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/teamUserMembership", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/transformation", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/transformationProject", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/user", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/userConnectorMembership", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/userGroupMembership", _module)

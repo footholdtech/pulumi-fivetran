@@ -51,8 +51,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupUsers{}
 	case "fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent":
 		r = &HybridDeploymentAgent{}
-	case "fivetran:index/localProcessingAgent:LocalProcessingAgent":
-		r = &LocalProcessingAgent{}
 	case "fivetran:index/privateLink:PrivateLink":
 		r = &PrivateLink{}
 	case "fivetran:index/proxyAgent:ProxyAgent":
@@ -65,6 +63,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamGroupMembership{}
 	case "fivetran:index/teamUserMembership:TeamUserMembership":
 		r = &TeamUserMembership{}
+	case "fivetran:index/transformation:Transformation":
+		r = &Transformation{}
+	case "fivetran:index/transformationProject:TransformationProject":
+		r = &TransformationProject{}
 	case "fivetran:index/user:User":
 		r = &User{}
 	case "fivetran:index/userConnectorMembership:UserConnectorMembership":
@@ -181,11 +183,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/localProcessingAgent",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"fivetran",
 		"index/privateLink",
 		&module{version},
 	)
@@ -212,6 +209,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"fivetran",
 		"index/teamUserMembership",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/transformation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/transformationProject",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

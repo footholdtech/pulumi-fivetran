@@ -48,12 +48,13 @@ export interface GetConnectorResult {
     readonly connectedBy: string;
     readonly createdAt: string;
     readonly dailySyncTime: string;
+    readonly dataDelaySensitivity: string;
+    readonly dataDelayThreshold: number;
     readonly destinationSchema?: outputs.GetConnectorDestinationSchema;
     readonly failedAt: string;
     readonly groupId: string;
     readonly hybridDeploymentAgentId: string;
     readonly id: string;
-    readonly localProcessingAgentId: string;
     readonly name: string;
     readonly networkingMethod: string;
     readonly pauseAfterTrial: boolean;

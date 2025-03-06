@@ -23,18 +23,19 @@ type Connector struct {
 	// The unique identifier of the user who has created the connector in your account.
 	ConnectedBy pulumi.StringOutput `pulumi:"connectedBy"`
 	// The timestamp of the time the connector was created in your account.
-	CreatedAt         pulumi.StringOutput                 `pulumi:"createdAt"`
-	DestinationSchema ConnectorDestinationSchemaPtrOutput `pulumi:"destinationSchema"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+	// CUSTOM is only available for customers using the Enterprise plan or above.
+	DataDelaySensitivity pulumi.StringPtrOutput `pulumi:"dataDelaySensitivity"`
+	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+	// dataDelaySensitivity set to CUSTOM.
+	DataDelayThreshold pulumi.IntOutput                    `pulumi:"dataDelayThreshold"`
+	DestinationSchema  ConnectorDestinationSchemaPtrOutput `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrOutput `pulumi:"hybridDeploymentAgentId"`
-	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-	// to. If the value is specified, the system will try to associate the connection with an existing agent.
-	//
-	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-	LocalProcessingAgentId pulumi.StringPtrOutput `pulumi:"localProcessingAgentId"`
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -100,18 +101,19 @@ type connectorState struct {
 	// The unique identifier of the user who has created the connector in your account.
 	ConnectedBy *string `pulumi:"connectedBy"`
 	// The timestamp of the time the connector was created in your account.
-	CreatedAt         *string                     `pulumi:"createdAt"`
-	DestinationSchema *ConnectorDestinationSchema `pulumi:"destinationSchema"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+	// CUSTOM is only available for customers using the Enterprise plan or above.
+	DataDelaySensitivity *string `pulumi:"dataDelaySensitivity"`
+	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+	// dataDelaySensitivity set to CUSTOM.
+	DataDelayThreshold *int                        `pulumi:"dataDelayThreshold"`
+	DestinationSchema  *ConnectorDestinationSchema `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId *string `pulumi:"groupId"`
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
-	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-	// to. If the value is specified, the system will try to associate the connection with an existing agent.
-	//
-	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-	LocalProcessingAgentId *string `pulumi:"localProcessingAgentId"`
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name *string `pulumi:"name"`
@@ -142,18 +144,19 @@ type ConnectorState struct {
 	// The unique identifier of the user who has created the connector in your account.
 	ConnectedBy pulumi.StringPtrInput
 	// The timestamp of the time the connector was created in your account.
-	CreatedAt         pulumi.StringPtrInput
-	DestinationSchema ConnectorDestinationSchemaPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+	// CUSTOM is only available for customers using the Enterprise plan or above.
+	DataDelaySensitivity pulumi.StringPtrInput
+	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+	// dataDelaySensitivity set to CUSTOM.
+	DataDelayThreshold pulumi.IntPtrInput
+	DestinationSchema  ConnectorDestinationSchemaPtrInput
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId pulumi.StringPtrInput
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrInput
-	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-	// to. If the value is specified, the system will try to associate the connection with an existing agent.
-	//
-	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-	LocalProcessingAgentId pulumi.StringPtrInput
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name pulumi.StringPtrInput
@@ -183,19 +186,20 @@ func (ConnectorState) ElementType() reflect.Type {
 }
 
 type connectorArgs struct {
-	Auth              *ConnectorAuth              `pulumi:"auth"`
-	Config            *ConnectorConfig            `pulumi:"config"`
-	DestinationSchema *ConnectorDestinationSchema `pulumi:"destinationSchema"`
+	Auth   *ConnectorAuth   `pulumi:"auth"`
+	Config *ConnectorConfig `pulumi:"config"`
+	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+	// CUSTOM is only available for customers using the Enterprise plan or above.
+	DataDelaySensitivity *string `pulumi:"dataDelaySensitivity"`
+	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+	// dataDelaySensitivity set to CUSTOM.
+	DataDelayThreshold *int                        `pulumi:"dataDelayThreshold"`
+	DestinationSchema  *ConnectorDestinationSchema `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
-	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-	// to. If the value is specified, the system will try to associate the connection with an existing agent.
-	//
-	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-	LocalProcessingAgentId *string `pulumi:"localProcessingAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
 	// The private link ID.
@@ -219,19 +223,20 @@ type connectorArgs struct {
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
-	Auth              ConnectorAuthPtrInput
-	Config            ConnectorConfigPtrInput
-	DestinationSchema ConnectorDestinationSchemaPtrInput
+	Auth   ConnectorAuthPtrInput
+	Config ConnectorConfigPtrInput
+	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+	// CUSTOM is only available for customers using the Enterprise plan or above.
+	DataDelaySensitivity pulumi.StringPtrInput
+	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+	// dataDelaySensitivity set to CUSTOM.
+	DataDelayThreshold pulumi.IntPtrInput
+	DestinationSchema  ConnectorDestinationSchemaPtrInput
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId pulumi.StringInput
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrInput
-	// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-	// to. If the value is specified, the system will try to associate the connection with an existing agent.
-	//
-	// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-	LocalProcessingAgentId pulumi.StringPtrInput
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringPtrInput
 	// The private link ID.
@@ -358,6 +363,18 @@ func (o ConnectorOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+// CUSTOM is only available for customers using the Enterprise plan or above.
+func (o ConnectorOutput) DataDelaySensitivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.DataDelaySensitivity }).(pulumi.StringPtrOutput)
+}
+
+// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+// dataDelaySensitivity set to CUSTOM.
+func (o ConnectorOutput) DataDelayThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v *Connector) pulumi.IntOutput { return v.DataDelayThreshold }).(pulumi.IntOutput)
+}
+
 func (o ConnectorOutput) DestinationSchema() ConnectorDestinationSchemaPtrOutput {
 	return o.ApplyT(func(v *Connector) ConnectorDestinationSchemaPtrOutput { return v.DestinationSchema }).(ConnectorDestinationSchemaPtrOutput)
 }
@@ -371,14 +388,6 @@ func (o ConnectorOutput) GroupId() pulumi.StringOutput {
 // value is specified, the system will try to associate the connection with an existing agent.
 func (o ConnectorOutput) HybridDeploymentAgentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.HybridDeploymentAgentId }).(pulumi.StringPtrOutput)
-}
-
-// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-// to. If the value is specified, the system will try to associate the connection with an existing agent.
-//
-// Deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema
-func (o ConnectorOutput) LocalProcessingAgentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.LocalProcessingAgentId }).(pulumi.StringPtrOutput)
 }
 
 // The name used both as the connector's name within the Fivetran system and as the source schema's name within your

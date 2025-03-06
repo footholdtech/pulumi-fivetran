@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource is in ALPHA state.
+// This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
 //
 // This resource allows you to add, manage and delete dbt Transformations for existing dbt Model.
 // To retrieve available dbt Models use this [Retrieve dbt Project models](https://fivetran.com/docs/rest-api/dbt-transformation-management#retrievedbtprojectmodels) endpoint.
