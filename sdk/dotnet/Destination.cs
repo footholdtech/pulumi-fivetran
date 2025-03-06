@@ -15,7 +15,7 @@ namespace Footholdtech.Fivetran
     /// 
     /// 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
     /// 
-    /// To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+    /// To retrieve existing groups, use the [fivetran_groups data source](/providers/fivetran/fivetran/latest/docs/data-sources/groups).
     /// 
     /// 2. Define an empty resource in your `.tf` configuration:
     /// 
@@ -63,13 +63,6 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Output("hybridDeploymentAgentId")]
         public Output<string?> HybridDeploymentAgentId { get; private set; } = null!;
-
-        /// <summary>
-        /// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        /// to. If the value is specified, the system will try to associate the connection with an existing agent.
-        /// </summary>
-        [Output("localProcessingAgentId")]
-        public Output<string?> LocalProcessingAgentId { get; private set; } = null!;
 
         /// <summary>
         /// Possible values: Directly, SshTunnel, ProxyAgent.
@@ -202,13 +195,6 @@ namespace Footholdtech.Fivetran
         public Input<string>? HybridDeploymentAgentId { get; set; }
 
         /// <summary>
-        /// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        /// to. If the value is specified, the system will try to associate the connection with an existing agent.
-        /// </summary>
-        [Input("localProcessingAgentId")]
-        public Input<string>? LocalProcessingAgentId { get; set; }
-
-        /// <summary>
         /// Possible values: Directly, SshTunnel, ProxyAgent.
         /// </summary>
         [Input("networkingMethod")]
@@ -292,13 +278,6 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Input("hybridDeploymentAgentId")]
         public Input<string>? HybridDeploymentAgentId { get; set; }
-
-        /// <summary>
-        /// (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        /// to. If the value is specified, the system will try to associate the connection with an existing agent.
-        /// </summary>
-        [Input("localProcessingAgentId")]
-        public Input<string>? LocalProcessingAgentId { get; set; }
 
         /// <summary>
         /// Possible values: Directly, SshTunnel, ProxyAgent.

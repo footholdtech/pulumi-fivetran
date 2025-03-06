@@ -43,10 +43,23 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string Auth;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Authentication type
         /// 	- Service `databricks`: Authentication type
+        /// 	- Service `new_s3_datalake`: Authentication type
+        /// 	- Service `onelake`: Authentication type
         /// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
         /// </summary>
         public readonly string AuthType;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `new_s3_datalake`: AWS access key to access the S3 bucket and AWS Glue
+        /// </summary>
+        public readonly string AwsAccessKeyId;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `new_s3_datalake`: AWS secret access key to access the S3 bucket and AWS Glue
+        /// </summary>
+        public readonly string AwsSecretAccessKey;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `confluent_cloud_wh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
@@ -57,12 +70,15 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `big_query`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
         /// 	- Service `big_query_dts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
         /// 	- Service `managed_big_query`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-        /// 	- Service `new_s3_datalake`: The name of the bucket to be used as destination
+        /// 	- Service `new_s3_datalake`: (Immutable) The name of the bucket to be used as destination
         /// </summary>
         public readonly string Bucket;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Catalog name
         /// 	- Service `databricks`: Catalog name
+        /// 	- Service `new_s3_datalake`: Catalog name
+        /// 	- Service `onelake`: Catalog name
         /// </summary>
         public readonly string Catalog;
         /// <summary>
@@ -118,7 +134,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string ConnectionType;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Container to store delta table files
+        /// 	- Service `adls`: (Immutable) Container to store delta table files
         /// 	- Service `onelake`: Workspace name to store delta table files
         /// </summary>
         public readonly string ContainerName;
@@ -163,6 +179,13 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `sql_server_warehouse`: Database name
         /// </summary>
         public readonly string Database;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
+        /// 	- Service `new_s3_datalake`: Databricks Connection method. Default value: `Directly`.
+        /// 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
+        /// </summary>
+        public readonly string DatabricksConnectionType;
         public readonly bool EnableRemoteExecution;
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -209,7 +232,10 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string Host;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: HTTP path
         /// 	- Service `databricks`: HTTP path
+        /// 	- Service `new_s3_datalake`: HTTP path
+        /// 	- Service `onelake`: HTTP path
         /// </summary>
         public readonly string HttpPath;
         /// <summary>
@@ -229,7 +255,12 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly bool IsRedshiftServerless;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `onelake`: Name of your lakehouse
+        /// 	- Service `onelake`: (Immutable) OneLake lakehouse GUID
+        /// </summary>
+        public readonly string LakehouseGuid;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `onelake`: (Immutable) Name of your lakehouse
         /// </summary>
         public readonly string LakehouseName;
         public readonly string MskStsRegion;
@@ -240,12 +271,18 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly int NumOfPartitions;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: OAuth 2.0 client ID
         /// 	- Service `databricks`: OAuth 2.0 client ID
+        /// 	- Service `new_s3_datalake`: OAuth 2.0 client ID
+        /// 	- Service `onelake`: OAuth 2.0 client ID
         /// </summary>
         public readonly string Oauth2ClientId;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: OAuth 2.0 secret
         /// 	- Service `databricks`: OAuth 2.0 secret
+        /// 	- Service `new_s3_datalake`: OAuth 2.0 secret
+        /// 	- Service `onelake`: OAuth 2.0 secret
         /// </summary>
         public readonly string Oauth2Secret;
         /// <summary>
@@ -278,11 +315,15 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string Password;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Personal access token
         /// 	- Service `databricks`: Personal access token
+        /// 	- Service `new_s3_datalake`: Personal access token
+        /// 	- Service `onelake`: Personal access token
         /// </summary>
         public readonly string PersonalAccessToken;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Server port number
         /// 	- Service `aurora_postgres_warehouse`: Server port number
         /// 	- Service `aurora_warehouse`: Server port number
         /// 	- Service `azure_postgres_warehouse`: Server port number
@@ -294,6 +335,8 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `maria_warehouse`: Server port number
         /// 	- Service `mysql_rds_warehouse`: Server port number
         /// 	- Service `mysql_warehouse`: Server port number
+        /// 	- Service `new_s3_datalake`: Server port number
+        /// 	- Service `onelake`: Server port number
         /// 	- Service `panoply`: Server port number
         /// 	- Service `periscope_warehouse`: Server port number
         /// 	- Service `postgres_gcp_warehouse`: Server port number
@@ -307,9 +350,9 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly int Port;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: path/to/data within the container
-        /// 	- Service `new_s3_datalake`: Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
-        /// 	- Service `onelake`: path/to/data within your lakehouse inside the Files directory
+        /// 	- Service `adls`: (Immutable) path/to/data within the container
+        /// 	- Service `new_s3_datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+        /// 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
         /// </summary>
         public readonly string PrefixPath;
         /// <summary>
@@ -446,9 +489,19 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string SecurityProtocol;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Server Host name
         /// 	- Service `databricks`: Server name
+        /// 	- Service `new_s3_datalake`: Server host name
+        /// 	- Service `onelake`: Server Host name
         /// </summary>
         public readonly string ServerHostName;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `adls`: Should maintain tables in Databricks 
+        /// 	- Service `new_s3_datalake`: Should maintain tables in Databricks 
+        /// 	- Service `onelake`: Should maintain tables in Databricks
+        /// </summary>
+        public readonly bool ShouldMaintainTablesInDatabricks;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
@@ -460,8 +513,8 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string SnowflakeRegion;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Storage account for Azure Data Lake Storage Gen2 name
-        /// 	- Service `onelake`: Storage account for Azure Data Lake Storage Gen2 name
+        /// 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+        /// 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
         /// </summary>
         public readonly string StorageAccountName;
         /// <summary>
@@ -566,6 +619,11 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string User;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `onelake`: (Immutable) OneLake workspace GUID
+        /// </summary>
+        public readonly string WorkspaceGuid;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `onelake`: OneLake workspace name
         /// </summary>
         public readonly string WorkspaceName;
@@ -577,6 +635,10 @@ namespace Footholdtech.Fivetran.Outputs
             string auth,
 
             string authType,
+
+            string awsAccessKeyId,
+
+            string awsSecretAccessKey,
 
             ImmutableArray<string> bootstrapServers,
 
@@ -608,6 +670,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string database,
 
+            string databricksConnectionType,
+
             bool enableRemoteExecution,
 
             string externalId,
@@ -629,6 +693,8 @@ namespace Footholdtech.Fivetran.Outputs
             bool isPrivateLinkRequired,
 
             bool isRedshiftServerless,
+
+            string lakehouseGuid,
 
             string lakehouseName,
 
@@ -694,6 +760,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string serverHostName,
 
+            bool shouldMaintainTablesInDatabricks,
+
             string snapshotRetentionPeriod,
 
             string snowflakeCloud,
@@ -714,11 +782,15 @@ namespace Footholdtech.Fivetran.Outputs
 
             string user,
 
+            string workspaceGuid,
+
             string workspaceName)
         {
             AlwaysEncrypted = alwaysEncrypted;
             Auth = auth;
             AuthType = authType;
+            AwsAccessKeyId = awsAccessKeyId;
+            AwsSecretAccessKey = awsSecretAccessKey;
             BootstrapServers = bootstrapServers;
             Bucket = bucket;
             Catalog = catalog;
@@ -734,6 +806,7 @@ namespace Footholdtech.Fivetran.Outputs
             DataFormat = dataFormat;
             DataSetLocation = dataSetLocation;
             Database = database;
+            DatabricksConnectionType = databricksConnectionType;
             EnableRemoteExecution = enableRemoteExecution;
             ExternalId = externalId;
             ExternalLocation = externalLocation;
@@ -745,6 +818,7 @@ namespace Footholdtech.Fivetran.Outputs
             IsPrivateKeyEncrypted = isPrivateKeyEncrypted;
             IsPrivateLinkRequired = isPrivateLinkRequired;
             IsRedshiftServerless = isRedshiftServerless;
+            LakehouseGuid = lakehouseGuid;
             LakehouseName = lakehouseName;
             MskStsRegion = mskStsRegion;
             NumOfPartitions = numOfPartitions;
@@ -777,6 +851,7 @@ namespace Footholdtech.Fivetran.Outputs
             SecretValue = secretValue;
             SecurityProtocol = securityProtocol;
             ServerHostName = serverHostName;
+            ShouldMaintainTablesInDatabricks = shouldMaintainTablesInDatabricks;
             SnapshotRetentionPeriod = snapshotRetentionPeriod;
             SnowflakeCloud = snowflakeCloud;
             SnowflakeRegion = snowflakeRegion;
@@ -787,6 +862,7 @@ namespace Footholdtech.Fivetran.Outputs
             TunnelPort = tunnelPort;
             TunnelUser = tunnelUser;
             User = user;
+            WorkspaceGuid = workspaceGuid;
             WorkspaceName = workspaceName;
         }
     }

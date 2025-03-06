@@ -134,12 +134,13 @@ namespace Footholdtech.Fivetran
         public readonly string ConnectedBy;
         public readonly string CreatedAt;
         public readonly string DailySyncTime;
+        public readonly string DataDelaySensitivity;
+        public readonly int DataDelayThreshold;
         public readonly Outputs.GetConnectorDestinationSchemaResult? DestinationSchema;
         public readonly string FailedAt;
         public readonly string GroupId;
         public readonly string HybridDeploymentAgentId;
         public readonly string Id;
-        public readonly string LocalProcessingAgentId;
         public readonly string Name;
         public readonly string NetworkingMethod;
         public readonly bool PauseAfterTrial;
@@ -163,6 +164,10 @@ namespace Footholdtech.Fivetran
 
             string dailySyncTime,
 
+            string dataDelaySensitivity,
+
+            int dataDelayThreshold,
+
             Outputs.GetConnectorDestinationSchemaResult? destinationSchema,
 
             string failedAt,
@@ -172,8 +177,6 @@ namespace Footholdtech.Fivetran
             string hybridDeploymentAgentId,
 
             string id,
-
-            string localProcessingAgentId,
 
             string name,
 
@@ -203,12 +206,13 @@ namespace Footholdtech.Fivetran
             ConnectedBy = connectedBy;
             CreatedAt = createdAt;
             DailySyncTime = dailySyncTime;
+            DataDelaySensitivity = dataDelaySensitivity;
+            DataDelayThreshold = dataDelayThreshold;
             DestinationSchema = destinationSchema;
             FailedAt = failedAt;
             GroupId = groupId;
             HybridDeploymentAgentId = hybridDeploymentAgentId;
             Id = id;
-            LocalProcessingAgentId = localProcessingAgentId;
             Name = name;
             NetworkingMethod = networkingMethod;
             PauseAfterTrial = pauseAfterTrial;

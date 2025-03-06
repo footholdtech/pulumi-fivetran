@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource is in ALPHA state.
+// This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
 //
 // This resource allows you to add and manage dbt Git Projects Configs.
 //

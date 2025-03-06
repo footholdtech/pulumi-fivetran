@@ -61,7 +61,6 @@ type LookupDestinationResult struct {
 	GroupId                   string                `pulumi:"groupId"`
 	HybridDeploymentAgentId   string                `pulumi:"hybridDeploymentAgentId"`
 	Id                        string                `pulumi:"id"`
-	LocalProcessingAgentId    string                `pulumi:"localProcessingAgentId"`
 	NetworkingMethod          string                `pulumi:"networkingMethod"`
 	PrivateLinkId             string                `pulumi:"privateLinkId"`
 	Region                    string                `pulumi:"region"`
@@ -122,10 +121,6 @@ func (o LookupDestinationResultOutput) HybridDeploymentAgentId() pulumi.StringOu
 
 func (o LookupDestinationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o LookupDestinationResultOutput) LocalProcessingAgentId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDestinationResult) string { return v.LocalProcessingAgentId }).(pulumi.StringOutput)
 }
 
 func (o LookupDestinationResultOutput) NetworkingMethod() pulumi.StringOutput {

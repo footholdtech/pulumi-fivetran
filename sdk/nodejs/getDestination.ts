@@ -45,7 +45,6 @@ export interface GetDestinationResult {
     readonly groupId: string;
     readonly hybridDeploymentAgentId: string;
     readonly id: string;
-    readonly localProcessingAgentId: string;
     readonly networkingMethod: string;
     readonly privateLinkId: string;
     readonly region: string;

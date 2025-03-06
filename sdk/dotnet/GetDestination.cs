@@ -123,7 +123,6 @@ namespace Footholdtech.Fivetran
         public readonly string GroupId;
         public readonly string HybridDeploymentAgentId;
         public readonly string Id;
-        public readonly string LocalProcessingAgentId;
         public readonly string NetworkingMethod;
         public readonly string PrivateLinkId;
         public readonly string Region;
@@ -143,8 +142,6 @@ namespace Footholdtech.Fivetran
 
             string id,
 
-            string localProcessingAgentId,
-
             string networkingMethod,
 
             string privateLinkId,
@@ -162,7 +159,6 @@ namespace Footholdtech.Fivetran
             GroupId = groupId;
             HybridDeploymentAgentId = hybridDeploymentAgentId;
             Id = id;
-            LocalProcessingAgentId = localProcessingAgentId;
             NetworkingMethod = networkingMethod;
             PrivateLinkId = privateLinkId;
             Region = region;
