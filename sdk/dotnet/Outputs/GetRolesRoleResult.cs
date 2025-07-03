@@ -19,13 +19,21 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// TypeBool
+        /// Defines whether the role is standard or custom
         /// </summary>
         public readonly bool IsCustom;
+        /// <summary>
+        /// Defines whether the role is deprecated
+        /// </summary>
+        public readonly bool IsDeprecated;
         /// <summary>
         /// The role name
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The name of the new role replacing the deprecated role
+        /// </summary>
+        public readonly string ReplacementRoleName;
         /// <summary>
         /// Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
         /// </summary>
@@ -37,13 +45,19 @@ namespace Footholdtech.Fivetran.Outputs
 
             bool isCustom,
 
+            bool isDeprecated,
+
             string name,
+
+            string replacementRoleName,
 
             ImmutableArray<string> scopes)
         {
             Description = description;
             IsCustom = isCustom;
+            IsDeprecated = isDeprecated;
             Name = name;
+            ReplacementRoleName = replacementRoleName;
             Scopes = scopes;
         }
     }

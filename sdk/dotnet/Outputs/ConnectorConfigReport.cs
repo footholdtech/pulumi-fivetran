@@ -39,6 +39,16 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> Dimensions;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Dynamic parameter field name
+        /// </summary>
+        public readonly string? DynamicParameterField;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Select this option to enable dynamic report parameters.
+        /// </summary>
+        public readonly bool? EnableDynamicParameters;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `google_ads`: A list of the fields to sync. Must be populated if `config_type` is set to `Custom`.
         /// </summary>
         public readonly ImmutableArray<string> Fields;
@@ -117,9 +127,24 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> Segments;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Start date
+        /// </summary>
+        public readonly string? StartDate;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Start date parameter field name
+        /// </summary>
+        public readonly string? StartDateParameterField;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
         /// </summary>
         public readonly bool? SupportNestedColumns;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Dynamic report parameters sync strategy
+        /// </summary>
+        public readonly string? SyncStrategy;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `google_ads`: The table name within the schema to which connector will sync the data of the specific report.
@@ -145,6 +170,10 @@ namespace Footholdtech.Fivetran.Outputs
             string? configType,
 
             ImmutableArray<string> dimensions,
+
+            string? dynamicParameterField,
+
+            bool? enableDynamicParameters,
 
             ImmutableArray<string> fields,
 
@@ -178,7 +207,13 @@ namespace Footholdtech.Fivetran.Outputs
 
             ImmutableArray<string> segments,
 
+            string? startDate,
+
+            string? startDateParameterField,
+
             bool? supportNestedColumns,
+
+            string? syncStrategy,
 
             string? table,
 
@@ -188,6 +223,8 @@ namespace Footholdtech.Fivetran.Outputs
             Attributes = attributes;
             ConfigType = configType;
             Dimensions = dimensions;
+            DynamicParameterField = dynamicParameterField;
+            EnableDynamicParameters = enableDynamicParameters;
             Fields = fields;
             Filter = filter;
             FilterFieldName = filterFieldName;
@@ -204,7 +241,10 @@ namespace Footholdtech.Fivetran.Outputs
             SearchTypes = searchTypes;
             SegmentIds = segmentIds;
             Segments = segments;
+            StartDate = startDate;
+            StartDateParameterField = startDateParameterField;
             SupportNestedColumns = supportNestedColumns;
+            SyncStrategy = syncStrategy;
             Table = table;
             TimeAggregationGranularity = timeAggregationGranularity;
         }

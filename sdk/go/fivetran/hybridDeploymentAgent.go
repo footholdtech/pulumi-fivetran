@@ -56,6 +56,8 @@ type HybridDeploymentAgent struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Base64-encoded content of the compose file for the chosen containerization type.
 	DockerComposeYaml pulumi.StringOutput `pulumi:"dockerComposeYaml"`
+	// Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+	EnvType pulumi.StringOutput `pulumi:"envType"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The timestamp of the time the hybrid deployment agent was created in your account.
@@ -76,6 +78,9 @@ func NewHybridDeploymentAgent(ctx *pulumi.Context,
 	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.EnvType == nil {
+		return nil, errors.New("invalid value for required argument 'EnvType'")
 	}
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
@@ -115,6 +120,8 @@ type hybridDeploymentAgentState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Base64-encoded content of the compose file for the chosen containerization type.
 	DockerComposeYaml *string `pulumi:"dockerComposeYaml"`
+	// Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+	EnvType *string `pulumi:"envType"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId *string `pulumi:"groupId"`
 	// The timestamp of the time the hybrid deployment agent was created in your account.
@@ -136,6 +143,8 @@ type HybridDeploymentAgentState struct {
 	DisplayName pulumi.StringPtrInput
 	// Base64-encoded content of the compose file for the chosen containerization type.
 	DockerComposeYaml pulumi.StringPtrInput
+	// Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+	EnvType pulumi.StringPtrInput
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringPtrInput
 	// The timestamp of the time the hybrid deployment agent was created in your account.
@@ -155,6 +164,8 @@ type hybridDeploymentAgentArgs struct {
 	AuthenticationCounter *int `pulumi:"authenticationCounter"`
 	// The unique name for the hybrid deployment agent.
 	DisplayName string `pulumi:"displayName"`
+	// Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+	EnvType string `pulumi:"envType"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
 }
@@ -167,6 +178,8 @@ type HybridDeploymentAgentArgs struct {
 	AuthenticationCounter pulumi.IntPtrInput
 	// The unique name for the hybrid deployment agent.
 	DisplayName pulumi.StringInput
+	// Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+	EnvType pulumi.StringInput
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringInput
 }
@@ -286,6 +299,11 @@ func (o HybridDeploymentAgentOutput) DisplayName() pulumi.StringOutput {
 // Base64-encoded content of the compose file for the chosen containerization type.
 func (o HybridDeploymentAgentOutput) DockerComposeYaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *HybridDeploymentAgent) pulumi.StringOutput { return v.DockerComposeYaml }).(pulumi.StringOutput)
+}
+
+// Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+func (o HybridDeploymentAgentOutput) EnvType() pulumi.StringOutput {
+	return o.ApplyT(func(v *HybridDeploymentAgent) pulumi.StringOutput { return v.EnvType }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the Group within the Fivetran system.

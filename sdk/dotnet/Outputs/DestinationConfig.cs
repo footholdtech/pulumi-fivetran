@@ -186,7 +186,13 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
         /// </summary>
         public readonly string? DatabricksConnectionType;
+        public readonly bool? EnableExternalStorageForUnstructuredFiles;
         public readonly bool? EnableRemoteExecution;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Populate all tables in a single topic.
+        /// </summary>
+        public readonly bool? EnableSingleTopic;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `aws_msk_wh`: Fivetran generated External ID
@@ -200,6 +206,9 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
         /// </summary>
         public readonly string? ExternalLocation;
+        public readonly string? ExternalStageStorageProvider;
+        public readonly string? ExternalStorageIntegration;
+        public readonly string? ExternalStorageParentFolderUri;
         public readonly string? FivetranGlueRoleArn;
         public readonly string? FivetranMskRoleArn;
         /// <summary>
@@ -672,11 +681,21 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? databricksConnectionType,
 
+            bool? enableExternalStorageForUnstructuredFiles,
+
             bool? enableRemoteExecution,
+
+            bool? enableSingleTopic,
 
             string? externalId,
 
             string? externalLocation,
+
+            string? externalStageStorageProvider,
+
+            string? externalStorageIntegration,
+
+            string? externalStorageParentFolderUri,
 
             string? fivetranGlueRoleArn,
 
@@ -807,9 +826,14 @@ namespace Footholdtech.Fivetran.Outputs
             DataSetLocation = dataSetLocation;
             Database = database;
             DatabricksConnectionType = databricksConnectionType;
+            EnableExternalStorageForUnstructuredFiles = enableExternalStorageForUnstructuredFiles;
             EnableRemoteExecution = enableRemoteExecution;
+            EnableSingleTopic = enableSingleTopic;
             ExternalId = externalId;
             ExternalLocation = externalLocation;
+            ExternalStageStorageProvider = externalStageStorageProvider;
+            ExternalStorageIntegration = externalStorageIntegration;
+            ExternalStorageParentFolderUri = externalStorageParentFolderUri;
             FivetranGlueRoleArn = fivetranGlueRoleArn;
             FivetranMskRoleArn = fivetranMskRoleArn;
             FivetranRoleArn = fivetranRoleArn;

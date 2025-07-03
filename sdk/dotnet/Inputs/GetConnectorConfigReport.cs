@@ -56,6 +56,20 @@ namespace Footholdtech.Fivetran.Inputs
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Dynamic parameter field name
+        /// </summary>
+        [Input("dynamicParameterField", required: true)]
+        public string DynamicParameterField { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Select this option to enable dynamic report parameters.
+        /// </summary>
+        [Input("enableDynamicParameters", required: true)]
+        public bool EnableDynamicParameters { get; set; }
+
         [Input("fields", required: true)]
         private List<string>? _fields;
 
@@ -203,10 +217,31 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Start date
+        /// </summary>
+        [Input("startDate", required: true)]
+        public string StartDate { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Start date parameter field name
+        /// </summary>
+        [Input("startDateParameterField", required: true)]
+        public string StartDateParameterField { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
         /// </summary>
         [Input("supportNestedColumns", required: true)]
         public bool SupportNestedColumns { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Dynamic report parameters sync strategy
+        /// </summary>
+        [Input("syncStrategy", required: true)]
+        public string SyncStrategy { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `service` value: 

@@ -73,6 +73,10 @@ export class HybridDeploymentAgent extends pulumi.CustomResource {
      */
     public /*out*/ readonly dockerComposeYaml!: pulumi.Output<string>;
     /**
+     * Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+     */
+    public readonly envType!: pulumi.Output<string>;
+    /**
      * The unique identifier for the Group within the Fivetran system.
      */
     public readonly groupId!: pulumi.Output<string>;
@@ -104,6 +108,7 @@ export class HybridDeploymentAgent extends pulumi.CustomResource {
             resourceInputs["configJson"] = state ? state.configJson : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["dockerComposeYaml"] = state ? state.dockerComposeYaml : undefined;
+            resourceInputs["envType"] = state ? state.envType : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["registeredAt"] = state ? state.registeredAt : undefined;
             resourceInputs["token"] = state ? state.token : undefined;
@@ -115,12 +120,16 @@ export class HybridDeploymentAgent extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            if ((!args || args.envType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'envType'");
+            }
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
             resourceInputs["authType"] = args ? args.authType : undefined;
             resourceInputs["authenticationCounter"] = args ? args.authenticationCounter : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["envType"] = args ? args.envType : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["authJson"] = undefined /*out*/;
             resourceInputs["configJson"] = undefined /*out*/;
@@ -162,6 +171,10 @@ export interface HybridDeploymentAgentState {
      */
     dockerComposeYaml?: pulumi.Input<string>;
     /**
+     * Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+     */
+    envType?: pulumi.Input<string>;
+    /**
      * The unique identifier for the Group within the Fivetran system.
      */
     groupId?: pulumi.Input<string>;
@@ -191,6 +204,10 @@ export interface HybridDeploymentAgentArgs {
      * The unique name for the hybrid deployment agent.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+     */
+    envType: pulumi.Input<string>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */

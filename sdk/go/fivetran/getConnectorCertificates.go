@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source returns a list of SSH fingerprints approved for specified connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.LookupConnectorFingerprints(ctx, &fivetran.LookupConnectorFingerprintsArgs{
+//				Id: "connector_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupConnectorCertificates(ctx *pulumi.Context, args *LookupConnectorCertificatesArgs, opts ...pulumi.InvokeOption) (*LookupConnectorCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorCertificatesResult

@@ -31,12 +31,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectorSchedule{}
 	case "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig":
 		r = &ConnectorSchemaConfig{}
-	case "fivetran:index/dbtGitProjectConfig:DbtGitProjectConfig":
-		r = &DbtGitProjectConfig{}
-	case "fivetran:index/dbtProject:DbtProject":
-		r = &DbtProject{}
-	case "fivetran:index/dbtTransformation:DbtTransformation":
-		r = &DbtTransformation{}
 	case "fivetran:index/destination:Destination":
 		r = &Destination{}
 	case "fivetran:index/destinationCertificates:DestinationCertificates":
@@ -129,21 +123,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"fivetran",
 		"index/connectorSchemaConfig",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"fivetran",
-		"index/dbtGitProjectConfig",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"fivetran",
-		"index/dbtProject",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"fivetran",
-		"index/dbtTransformation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

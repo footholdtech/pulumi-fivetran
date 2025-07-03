@@ -31,6 +31,12 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("table")]
         public Input<string>? Table { get; set; }
 
+        /// <summary>
+        /// Table group name.
+        /// </summary>
+        [Input("tableGroupName")]
+        public Input<string>? TableGroupName { get; set; }
+
         public ConnectorDestinationSchemaArgs()
         {
         }

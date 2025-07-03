@@ -56,6 +56,20 @@ namespace Footholdtech.Fivetran.Inputs
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Dynamic parameter field name
+        /// </summary>
+        [Input("dynamicParameterField")]
+        public Input<string>? DynamicParameterField { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Select this option to enable dynamic report parameters.
+        /// </summary>
+        [Input("enableDynamicParameters")]
+        public Input<bool>? EnableDynamicParameters { get; set; }
+
         [Input("fields")]
         private InputList<string>? _fields;
 
@@ -203,10 +217,31 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Start date
+        /// </summary>
+        [Input("startDate")]
+        public Input<string>? StartDate { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Start date parameter field name
+        /// </summary>
+        [Input("startDateParameterField")]
+        public Input<string>? StartDateParameterField { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
         /// </summary>
         [Input("supportNestedColumns")]
         public Input<bool>? SupportNestedColumns { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday`: Dynamic report parameters sync strategy
+        /// </summary>
+        [Input("syncStrategy")]
+        public Input<string>? SyncStrategy { get; set; }
 
         /// <summary>
         /// Field usage depends on `service` value: 

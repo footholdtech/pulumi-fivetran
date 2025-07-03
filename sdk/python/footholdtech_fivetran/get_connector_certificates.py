@@ -76,7 +76,17 @@ def get_connector_certificates(certificates: Optional[Sequence[Union['GetConnect
                                id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorCertificatesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source returns a list of SSH fingerprints approved for specified connector.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_fivetran as fivetran
+
+    connector_fingerprints = fivetran.get_connector_fingerprints(id="connector_id")
+    ```
+
 
     :param str id: The unique identifier for the resource. Equal to target connection id.
     """
@@ -94,7 +104,17 @@ def get_connector_certificates_output(certificates: Optional[pulumi.Input[Option
                                       id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorCertificatesResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source returns a list of SSH fingerprints approved for specified connector.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_fivetran as fivetran
+
+    connector_fingerprints = fivetran.get_connector_fingerprints(id="connector_id")
+    ```
+
 
     :param str id: The unique identifier for the resource. Equal to target connection id.
     """

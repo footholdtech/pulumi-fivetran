@@ -10,22 +10,19 @@ from .connector_certificates import *
 from .connector_fingerprints import *
 from .connector_schedule import *
 from .connector_schema_config import *
-from .dbt_git_project_config import *
-from .dbt_project import *
-from .dbt_transformation import *
 from .destination import *
 from .destination_certificates import *
 from .destination_fingerprints import *
 from .external_logging import *
+from .get_connection import *
+from .get_connection_certificates import *
+from .get_connection_fingerprints import *
+from .get_connections import *
 from .get_connector import *
 from .get_connector_certificates import *
 from .get_connector_fingerprints import *
 from .get_connectors import *
 from .get_connectors_metadata import *
-from .get_dbt_models import *
-from .get_dbt_project import *
-from .get_dbt_projects import *
-from .get_dbt_transformation import *
 from .get_destination import *
 from .get_destination_certificates import *
 from .get_destination_fingerprints import *
@@ -33,6 +30,7 @@ from .get_destinations import *
 from .get_external_logging import *
 from .get_external_logs import *
 from .get_group import *
+from .get_group_connections import *
 from .get_group_connectors import *
 from .get_group_service_account import *
 from .get_group_ssh_key import *
@@ -48,6 +46,7 @@ from .get_quickstart_package import *
 from .get_quickstart_packages import *
 from .get_roles import *
 from .get_team import *
+from .get_team_connection_memberships import *
 from .get_team_connector_memberships import *
 from .get_team_group_memberships import *
 from .get_team_user_memberships import *
@@ -57,6 +56,7 @@ from .get_transformation_project import *
 from .get_transformation_projects import *
 from .get_transformations import *
 from .get_user import *
+from .get_user_connection_memberships import *
 from .get_user_connector_memberships import *
 from .get_user_group_memberships import *
 from .get_users import *
@@ -129,30 +129,6 @@ _utilities.register(
   "fqn": "footholdtech_fivetran",
   "classes": {
    "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig": "ConnectorSchemaConfig"
-  }
- },
- {
-  "pkg": "fivetran",
-  "mod": "index/dbtGitProjectConfig",
-  "fqn": "footholdtech_fivetran",
-  "classes": {
-   "fivetran:index/dbtGitProjectConfig:DbtGitProjectConfig": "DbtGitProjectConfig"
-  }
- },
- {
-  "pkg": "fivetran",
-  "mod": "index/dbtProject",
-  "fqn": "footholdtech_fivetran",
-  "classes": {
-   "fivetran:index/dbtProject:DbtProject": "DbtProject"
-  }
- },
- {
-  "pkg": "fivetran",
-  "mod": "index/dbtTransformation",
-  "fqn": "footholdtech_fivetran",
-  "classes": {
-   "fivetran:index/dbtTransformation:DbtTransformation": "DbtTransformation"
   }
  },
  {

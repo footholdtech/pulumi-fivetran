@@ -133,6 +133,9 @@
                                     }
                                 }
                             },
+                            "data_model_path_alias_list": {
+                                "maxItemsOne": false
+                            },
                             "dimension_attributes": {
                                 "maxItemsOne": false
                             },
@@ -149,6 +152,9 @@
                                 "maxItemsOne": false
                             },
                             "fields": {
+                                "maxItemsOne": false
+                            },
+                            "files": {
                                 "maxItemsOne": false
                             },
                             "finance_accounts": {
@@ -289,6 +295,9 @@
                             "site_urls": {
                                 "maxItemsOne": false
                             },
+                            "sub_collections": {
+                                "maxItemsOne": false
+                            },
                             "template_labels": {
                                 "maxItemsOne": false
                             },
@@ -345,41 +354,6 @@
                                         }
                                     }
                                 }
-                            }
-                        }
-                    }
-                }
-            },
-            "fivetran_dbt_git_project_config": {
-                "current": "fivetran:index/dbtGitProjectConfig:DbtGitProjectConfig",
-                "majorVersion": 1
-            },
-            "fivetran_dbt_project": {
-                "current": "fivetran:index/dbtProject:DbtProject",
-                "majorVersion": 1,
-                "fields": {
-                    "environment_vars": {
-                        "maxItemsOne": false
-                    },
-                    "models": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "fivetran_dbt_transformation": {
-                "current": "fivetran:index/dbtTransformation:DbtTransformation",
-                "majorVersion": 1,
-                "fields": {
-                    "connector_ids": {
-                        "maxItemsOne": false
-                    },
-                    "model_ids": {
-                        "maxItemsOne": false
-                    },
-                    "schedule": {
-                        "fields": {
-                            "days_of_week": {
-                                "maxItemsOne": false
                             }
                         }
                     }
@@ -560,6 +534,49 @@
             }
         },
         "datasources": {
+            "fivetran_connection": {
+                "current": "fivetran:index/getConnection:getConnection",
+                "majorVersion": 1,
+                "fields": {
+                    "status": {
+                        "fields": {
+                            "tasks": {
+                                "maxItemsOne": false
+                            },
+                            "warnings": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_connection_certificates": {
+                "current": "fivetran:index/getConnectionCertificates:getConnectionCertificates",
+                "majorVersion": 1,
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connection_fingerprints": {
+                "current": "fivetran:index/getConnectionFingerprints:getConnectionFingerprints",
+                "majorVersion": 1,
+                "fields": {
+                    "fingerprints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connections": {
+                "current": "fivetran:index/getConnections:getConnections",
+                "majorVersion": 1,
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "fivetran_connector": {
                 "current": "fivetran:index/getConnector:getConnector",
                 "majorVersion": 1,
@@ -692,6 +709,9 @@
                                     }
                                 }
                             },
+                            "data_model_path_alias_list": {
+                                "maxItemsOne": false
+                            },
                             "dimension_attributes": {
                                 "maxItemsOne": false
                             },
@@ -708,6 +728,9 @@
                                 "maxItemsOne": false
                             },
                             "fields": {
+                                "maxItemsOne": false
+                            },
+                            "files": {
                                 "maxItemsOne": false
                             },
                             "finance_accounts": {
@@ -848,6 +871,9 @@
                             "site_urls": {
                                 "maxItemsOne": false
                             },
+                            "sub_collections": {
+                                "maxItemsOne": false
+                            },
                             "template_labels": {
                                 "maxItemsOne": false
                             },
@@ -910,55 +936,6 @@
                     }
                 }
             },
-            "fivetran_dbt_models": {
-                "current": "fivetran:index/getDbtModels:getDbtModels",
-                "majorVersion": 1,
-                "fields": {
-                    "models": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "fivetran_dbt_project": {
-                "current": "fivetran:index/getDbtProject:getDbtProject",
-                "majorVersion": 1,
-                "fields": {
-                    "environment_vars": {
-                        "maxItemsOne": false
-                    },
-                    "models": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "fivetran_dbt_projects": {
-                "current": "fivetran:index/getDbtProjects:getDbtProjects",
-                "majorVersion": 1,
-                "fields": {
-                    "projects": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "fivetran_dbt_transformation": {
-                "current": "fivetran:index/getDbtTransformation:getDbtTransformation",
-                "majorVersion": 1,
-                "fields": {
-                    "connector_ids": {
-                        "maxItemsOne": false
-                    },
-                    "model_ids": {
-                        "maxItemsOne": false
-                    },
-                    "schedule": {
-                        "fields": {
-                            "days_of_week": {
-                                "maxItemsOne": false
-                            }
-                        }
-                    }
-                }
-            },
             "fivetran_destination": {
                 "current": "fivetran:index/getDestination:getDestination",
                 "majorVersion": 1,
@@ -1015,6 +992,29 @@
             "fivetran_group": {
                 "current": "fivetran:index/getGroup:getGroup",
                 "majorVersion": 1
+            },
+            "fivetran_group_connections": {
+                "current": "fivetran:index/getGroupConnections:getGroupConnections",
+                "majorVersion": 1,
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "status": {
+                                    "fields": {
+                                        "tasks": {
+                                            "maxItemsOne": false
+                                        },
+                                        "warnings": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "fivetran_group_connectors": {
                 "current": "fivetran:index/getGroupConnectors:getGroupConnectors",
@@ -1154,6 +1154,15 @@
             "fivetran_team": {
                 "current": "fivetran:index/getTeam:getTeam",
                 "majorVersion": 1
+            },
+            "fivetran_team_connection_memberships": {
+                "current": "fivetran:index/getTeamConnectionMemberships:getTeamConnectionMemberships",
+                "majorVersion": 1,
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "fivetran_team_connector_memberships": {
                 "current": "fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships",
@@ -1296,6 +1305,15 @@
             "fivetran_user": {
                 "current": "fivetran:index/getUser:getUser",
                 "majorVersion": 1
+            },
+            "fivetran_user_connection_memberships": {
+                "current": "fivetran:index/getUserConnectionMemberships:getUserConnectionMemberships",
+                "majorVersion": 1,
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "fivetran_user_connector_memberships": {
                 "current": "fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships",

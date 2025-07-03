@@ -6,6 +6,20 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * This data source returns a list of SSH fingerprints approved for specified connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@pulumi/fivetran";
+ *
+ * const connectorFingerprints = fivetran.getConnectorFingerprints({
+ *     id: "connector_id",
+ * });
+ * ```
+ */
 export function getConnectorCertificates(args: GetConnectorCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorCertificatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getConnectorCertificates:getConnectorCertificates", {
@@ -39,6 +53,20 @@ export interface GetConnectorCertificatesResult {
      */
     readonly id: string;
 }
+/**
+ * This data source returns a list of SSH fingerprints approved for specified connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@pulumi/fivetran";
+ *
+ * const connectorFingerprints = fivetran.getConnectorFingerprints({
+ *     id: "connector_id",
+ * });
+ * ```
+ */
 export function getConnectorCertificatesOutput(args: GetConnectorCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorCertificatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getConnectorCertificates:getConnectorCertificates", {

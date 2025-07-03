@@ -12,12 +12,75 @@ namespace Footholdtech.Fivetran
 {
     public static class GetConnectorCertificates
     {
+        /// <summary>
+        /// This data source returns a list of SSH fingerprints approved for specified connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connectorFingerprints = Fivetran.GetConnectorFingerprints.Invoke(new()
+        ///     {
+        ///         Id = "connector_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetConnectorCertificatesResult> InvokeAsync(GetConnectorCertificatesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectorCertificatesResult>("fivetran:index/getConnectorCertificates:getConnectorCertificates", args ?? new GetConnectorCertificatesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source returns a list of SSH fingerprints approved for specified connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connectorFingerprints = Fivetran.GetConnectorFingerprints.Invoke(new()
+        ///     {
+        ///         Id = "connector_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetConnectorCertificatesResult> Invoke(GetConnectorCertificatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorCertificatesResult>("fivetran:index/getConnectorCertificates:getConnectorCertificates", args ?? new GetConnectorCertificatesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source returns a list of SSH fingerprints approved for specified connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connectorFingerprints = Fivetran.GetConnectorFingerprints.Invoke(new()
+        ///     {
+        ///         Id = "connector_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetConnectorCertificatesResult> Invoke(GetConnectorCertificatesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorCertificatesResult>("fivetran:index/getConnectorCertificates:getConnectorCertificates", args ?? new GetConnectorCertificatesInvokeArgs(), options.WithDefaults());
     }
