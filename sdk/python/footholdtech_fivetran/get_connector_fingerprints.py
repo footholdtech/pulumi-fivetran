@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -67,7 +72,7 @@ class AwaitableGetConnectorFingerprintsResult(GetConnectorFingerprintsResult):
             id=self.id)
 
 
-def get_connector_fingerprints(fingerprints: Optional[Sequence[pulumi.InputType['GetConnectorFingerprintsFingerprintArgs']]] = None,
+def get_connector_fingerprints(fingerprints: Optional[Sequence[Union['GetConnectorFingerprintsFingerprintArgs', 'GetConnectorFingerprintsFingerprintArgsDict']]] = None,
                                id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorFingerprintsResult:
     """
@@ -95,12 +100,9 @@ def get_connector_fingerprints(fingerprints: Optional[Sequence[pulumi.InputType[
         connector_id=pulumi.get(__ret__, 'connector_id'),
         fingerprints=pulumi.get(__ret__, 'fingerprints'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_connector_fingerprints)
-def get_connector_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetConnectorFingerprintsFingerprintArgs']]]]] = None,
+def get_connector_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectorFingerprintsFingerprintArgs', 'GetConnectorFingerprintsFingerprintArgsDict']]]]] = None,
                                       id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorFingerprintsResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorFingerprintsResult]:
     """
     This data source returns a list of SSH fingerprints approved for specified connector.
 
@@ -116,4 +118,12 @@ def get_connector_fingerprints_output(fingerprints: Optional[pulumi.Input[Option
 
     :param str id: The unique identifier for the resource. Equal to target connection id.
     """
-    ...
+    __args__ = dict()
+    __args__['fingerprints'] = fingerprints
+    __args__['id'] = id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getConnectorFingerprints:getConnectorFingerprints', __args__, opts=opts, typ=GetConnectorFingerprintsResult)
+    return __ret__.apply(lambda __response__: GetConnectorFingerprintsResult(
+        connector_id=pulumi.get(__response__, 'connector_id'),
+        fingerprints=pulumi.get(__response__, 'fingerprints'),
+        id=pulumi.get(__response__, 'id')))

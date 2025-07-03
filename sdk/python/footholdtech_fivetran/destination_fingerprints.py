@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -90,7 +95,7 @@ class DestinationFingerprints(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_id: Optional[pulumi.Input[str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationFingerprintsFingerprintArgs']]]]] = None,
+                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DestinationFingerprintsFingerprintArgs', 'DestinationFingerprintsFingerprintArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to manage list of approved SSH fingerprints for a particular destination.
@@ -101,17 +106,17 @@ class DestinationFingerprints(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        my_destination_approved_fingerprints = fivetran.DestinationFingerprints("myDestinationApprovedFingerprints",
-            destination_id=fivetran_destination["my_destination"]["id"],
+        my_destination_approved_fingerprints = fivetran.DestinationFingerprints("my_destination_approved_fingerprints",
+            destination_id=my_destination["id"],
             fingerprints=[
-                fivetran.DestinationFingerprintsFingerprintArgs(
-                    hash="jhgfJfgrI6yy...",
-                    public_key="ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key",
-                ),
-                fivetran.DestinationFingerprintsFingerprintArgs(
-                    hash="eUtPirI6yytWe...",
-                    public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
-                ),
+                {
+                    "hash": "jhgfJfgrI6yy...",
+                    "public_key": "ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key",
+                },
+                {
+                    "hash": "eUtPirI6yytWe...",
+                    "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
+                },
             ])
         ```
 
@@ -160,17 +165,17 @@ class DestinationFingerprints(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        my_destination_approved_fingerprints = fivetran.DestinationFingerprints("myDestinationApprovedFingerprints",
-            destination_id=fivetran_destination["my_destination"]["id"],
+        my_destination_approved_fingerprints = fivetran.DestinationFingerprints("my_destination_approved_fingerprints",
+            destination_id=my_destination["id"],
             fingerprints=[
-                fivetran.DestinationFingerprintsFingerprintArgs(
-                    hash="jhgfJfgrI6yy...",
-                    public_key="ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key",
-                ),
-                fivetran.DestinationFingerprintsFingerprintArgs(
-                    hash="eUtPirI6yytWe...",
-                    public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
-                ),
+                {
+                    "hash": "jhgfJfgrI6yy...",
+                    "public_key": "ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key",
+                },
+                {
+                    "hash": "eUtPirI6yytWe...",
+                    "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
+                },
             ])
         ```
 
@@ -216,7 +221,7 @@ class DestinationFingerprints(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_id: Optional[pulumi.Input[str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationFingerprintsFingerprintArgs']]]]] = None,
+                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DestinationFingerprintsFingerprintArgs', 'DestinationFingerprintsFingerprintArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -241,7 +246,7 @@ class DestinationFingerprints(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             destination_id: Optional[pulumi.Input[str]] = None,
-            fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationFingerprintsFingerprintArgs']]]]] = None) -> 'DestinationFingerprints':
+            fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DestinationFingerprintsFingerprintArgs', 'DestinationFingerprintsFingerprintArgsDict']]]]] = None) -> 'DestinationFingerprints':
         """
         Get an existing DestinationFingerprints resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

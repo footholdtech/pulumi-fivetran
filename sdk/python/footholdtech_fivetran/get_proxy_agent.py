@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -146,11 +151,8 @@ def get_proxy_agent(id: Optional[str] = None,
         registred_at=pulumi.get(__ret__, 'registred_at'),
         salt=pulumi.get(__ret__, 'salt'),
         token=pulumi.get(__ret__, 'token'))
-
-
-@_utilities.lift_output_func(get_proxy_agent)
 def get_proxy_agent_output(id: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProxyAgentResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProxyAgentResult]:
     """
     This data source returns a proxy agent object.
 
@@ -166,4 +168,15 @@ def get_proxy_agent_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The unique identifier for the proxy within your account.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getProxyAgent:getProxyAgent', __args__, opts=opts, typ=GetProxyAgentResult)
+    return __ret__.apply(lambda __response__: GetProxyAgentResult(
+        created_by=pulumi.get(__response__, 'created_by'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        group_region=pulumi.get(__response__, 'group_region'),
+        id=pulumi.get(__response__, 'id'),
+        registred_at=pulumi.get(__response__, 'registred_at'),
+        salt=pulumi.get(__response__, 'salt'),
+        token=pulumi.get(__response__, 'token')))

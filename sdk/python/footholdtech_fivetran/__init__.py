@@ -10,6 +10,7 @@ from .connector_certificates import *
 from .connector_fingerprints import *
 from .connector_schedule import *
 from .connector_schema_config import *
+from .dbt_git_project_config import *
 from .dbt_project import *
 from .dbt_transformation import *
 from .destination import *
@@ -19,6 +20,7 @@ from .external_logging import *
 from .get_connector import *
 from .get_connector_certificates import *
 from .get_connector_fingerprints import *
+from .get_connectors import *
 from .get_connectors_metadata import *
 from .get_dbt_models import *
 from .get_dbt_project import *
@@ -27,19 +29,33 @@ from .get_dbt_transformation import *
 from .get_destination import *
 from .get_destination_certificates import *
 from .get_destination_fingerprints import *
+from .get_destinations import *
 from .get_external_logging import *
+from .get_external_logs import *
 from .get_group import *
 from .get_group_connectors import *
 from .get_group_service_account import *
 from .get_group_ssh_key import *
 from .get_group_users import *
 from .get_groups import *
+from .get_hybrid_deployment_agent import *
+from .get_hybrid_deployment_agents import *
+from .get_private_link import *
+from .get_private_links import *
+from .get_proxy_agent import *
+from .get_proxy_agents import *
+from .get_quickstart_package import *
+from .get_quickstart_packages import *
 from .get_roles import *
 from .get_team import *
 from .get_team_connector_memberships import *
 from .get_team_group_memberships import *
 from .get_team_user_memberships import *
 from .get_teams import *
+from .get_transformation import *
+from .get_transformation_project import *
+from .get_transformation_projects import *
+from .get_transformations import *
 from .get_user import *
 from .get_user_connector_memberships import *
 from .get_user_group_memberships import *
@@ -48,11 +64,16 @@ from .get_webhook import *
 from .get_webhooks import *
 from .group import *
 from .group_users import *
+from .hybrid_deployment_agent import *
+from .private_link import *
 from .provider import *
+from .proxy_agent import *
 from .team import *
 from .team_connector_membership import *
 from .team_group_membership import *
 from .team_user_membership import *
+from .transformation import *
+from .transformation_project import *
 from .user import *
 from .user_connector_membership import *
 from .user_group_membership import *
@@ -108,6 +129,14 @@ _utilities.register(
   "fqn": "footholdtech_fivetran",
   "classes": {
    "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig": "ConnectorSchemaConfig"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/dbtGitProjectConfig",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/dbtGitProjectConfig:DbtGitProjectConfig": "DbtGitProjectConfig"
   }
  },
  {
@@ -176,6 +205,30 @@ _utilities.register(
  },
  {
   "pkg": "fivetran",
+  "mod": "index/hybridDeploymentAgent",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent": "HybridDeploymentAgent"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/privateLink",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/privateLink:PrivateLink": "PrivateLink"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/proxyAgent",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/proxyAgent:ProxyAgent": "ProxyAgent"
+  }
+ },
+ {
+  "pkg": "fivetran",
   "mod": "index/team",
   "fqn": "footholdtech_fivetran",
   "classes": {
@@ -204,6 +257,22 @@ _utilities.register(
   "fqn": "footholdtech_fivetran",
   "classes": {
    "fivetran:index/teamUserMembership:TeamUserMembership": "TeamUserMembership"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/transformation",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/transformation:Transformation": "Transformation"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/transformationProject",
+  "fqn": "footholdtech_fivetran",
+  "classes": {
+   "fivetran:index/transformationProject:TransformationProject": "TransformationProject"
   }
  },
  {

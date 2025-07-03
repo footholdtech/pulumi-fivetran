@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -56,7 +61,7 @@ class AwaitableGetTeamsResult(GetTeamsResult):
 
 
 def get_teams(id: Optional[str] = None,
-              teams: Optional[Sequence[pulumi.InputType['GetTeamsTeamArgs']]] = None,
+              teams: Optional[Sequence[Union['GetTeamsTeamArgs', 'GetTeamsTeamArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTeamsResult:
     """
     This data source returns a list of all teams within your Fivetran account.
@@ -82,12 +87,9 @@ def get_teams(id: Optional[str] = None,
     return AwaitableGetTeamsResult(
         id=pulumi.get(__ret__, 'id'),
         teams=pulumi.get(__ret__, 'teams'))
-
-
-@_utilities.lift_output_func(get_teams)
 def get_teams_output(id: Optional[pulumi.Input[Optional[str]]] = None,
-                     teams: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTeamsTeamArgs']]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamsResult]:
+                     teams: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamsTeamArgs', 'GetTeamsTeamArgsDict']]]]] = None,
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamsResult]:
     """
     This data source returns a list of all teams within your Fivetran account.
 
@@ -103,4 +105,11 @@ def get_teams_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str id: The ID of this resource.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['teams'] = teams
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getTeams:getTeams', __args__, opts=opts, typ=GetTeamsResult)
+    return __ret__.apply(lambda __response__: GetTeamsResult(
+        id=pulumi.get(__response__, 'id'),
+        teams=pulumi.get(__response__, 'teams')))

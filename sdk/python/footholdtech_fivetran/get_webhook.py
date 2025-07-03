@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -185,11 +190,8 @@ def get_webhook(id: Optional[str] = None,
         secret=pulumi.get(__ret__, 'secret'),
         type=pulumi.get(__ret__, 'type'),
         url=pulumi.get(__ret__, 'url'))
-
-
-@_utilities.lift_output_func(get_webhook)
 def get_webhook_output(id: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebhookResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhookResult]:
     """
     This data source returns a webhook object.
 
@@ -205,4 +207,18 @@ def get_webhook_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The webhook ID
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getWebhook:getWebhook', __args__, opts=opts, typ=GetWebhookResult)
+    return __ret__.apply(lambda __response__: GetWebhookResult(
+        active=pulumi.get(__response__, 'active'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        created_by=pulumi.get(__response__, 'created_by'),
+        events=pulumi.get(__response__, 'events'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        run_tests=pulumi.get(__response__, 'run_tests'),
+        secret=pulumi.get(__response__, 'secret'),
+        type=pulumi.get(__response__, 'type'),
+        url=pulumi.get(__response__, 'url')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -67,7 +72,7 @@ class AwaitableGetDestinationFingerprintsResult(GetDestinationFingerprintsResult
             id=self.id)
 
 
-def get_destination_fingerprints(fingerprints: Optional[Sequence[pulumi.InputType['GetDestinationFingerprintsFingerprintArgs']]] = None,
+def get_destination_fingerprints(fingerprints: Optional[Sequence[Union['GetDestinationFingerprintsFingerprintArgs', 'GetDestinationFingerprintsFingerprintArgsDict']]] = None,
                                  id: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDestinationFingerprintsResult:
     """
@@ -95,12 +100,9 @@ def get_destination_fingerprints(fingerprints: Optional[Sequence[pulumi.InputTyp
         destination_id=pulumi.get(__ret__, 'destination_id'),
         fingerprints=pulumi.get(__ret__, 'fingerprints'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_destination_fingerprints)
-def get_destination_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDestinationFingerprintsFingerprintArgs']]]]] = None,
+def get_destination_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[Union['GetDestinationFingerprintsFingerprintArgs', 'GetDestinationFingerprintsFingerprintArgsDict']]]]] = None,
                                         id: Optional[pulumi.Input[str]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDestinationFingerprintsResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDestinationFingerprintsResult]:
     """
     This data source returns a list of SSH fingerprints approved for specified destination.
 
@@ -116,4 +118,12 @@ def get_destination_fingerprints_output(fingerprints: Optional[pulumi.Input[Opti
 
     :param str id: The unique identifier for the resource. Equal to target destination id.
     """
-    ...
+    __args__ = dict()
+    __args__['fingerprints'] = fingerprints
+    __args__['id'] = id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getDestinationFingerprints:getDestinationFingerprints', __args__, opts=opts, typ=GetDestinationFingerprintsResult)
+    return __ret__.apply(lambda __response__: GetDestinationFingerprintsResult(
+        destination_id=pulumi.get(__response__, 'destination_id'),
+        fingerprints=pulumi.get(__response__, 'fingerprints'),
+        id=pulumi.get(__response__, 'id')))

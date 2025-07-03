@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -164,7 +169,7 @@ class AwaitableGetDbtTransformationResult(GetDbtTransformationResult):
 
 
 def get_dbt_transformation(id: Optional[str] = None,
-                           schedule: Optional[pulumi.InputType['GetDbtTransformationScheduleArgs']] = None,
+                           schedule: Optional[Union['GetDbtTransformationScheduleArgs', 'GetDbtTransformationScheduleArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbtTransformationResult:
     """
     This data source returns a dbt Transformation object.
@@ -199,12 +204,9 @@ def get_dbt_transformation(id: Optional[str] = None,
         paused=pulumi.get(__ret__, 'paused'),
         run_tests=pulumi.get(__ret__, 'run_tests'),
         schedule=pulumi.get(__ret__, 'schedule'))
-
-
-@_utilities.lift_output_func(get_dbt_transformation)
 def get_dbt_transformation_output(id: Optional[pulumi.Input[str]] = None,
-                                  schedule: Optional[pulumi.Input[Optional[pulumi.InputType['GetDbtTransformationScheduleArgs']]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtTransformationResult]:
+                                  schedule: Optional[pulumi.Input[Optional[Union['GetDbtTransformationScheduleArgs', 'GetDbtTransformationScheduleArgsDict']]]] = None,
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbtTransformationResult]:
     """
     This data source returns a dbt Transformation object.
 
@@ -220,4 +222,20 @@ def get_dbt_transformation_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The unique identifier for the dbt Transformation within the Fivetran system.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['schedule'] = schedule
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getDbtTransformation:getDbtTransformation', __args__, opts=opts, typ=GetDbtTransformationResult)
+    return __ret__.apply(lambda __response__: GetDbtTransformationResult(
+        connector_ids=pulumi.get(__response__, 'connector_ids'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        dbt_model_id=pulumi.get(__response__, 'dbt_model_id'),
+        dbt_model_name=pulumi.get(__response__, 'dbt_model_name'),
+        dbt_project_id=pulumi.get(__response__, 'dbt_project_id'),
+        id=pulumi.get(__response__, 'id'),
+        model_ids=pulumi.get(__response__, 'model_ids'),
+        output_model_name=pulumi.get(__response__, 'output_model_name'),
+        paused=pulumi.get(__response__, 'paused'),
+        run_tests=pulumi.get(__response__, 'run_tests'),
+        schedule=pulumi.get(__response__, 'schedule')))

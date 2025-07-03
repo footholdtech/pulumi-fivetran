@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['GroupArgs', 'Group']
@@ -101,13 +106,17 @@ class Group(pulumi.CustomResource):
         """
         This resource allows you to create, update, and delete groups.
 
+        IMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our Terrafrom Provider, and the destination's group_id value that you specify when you create a destination using our Terrafrom Provider. This means that if you use our Terrafrom Provider to create a destination, you must create a group in your Fivetran account before you can create a destination in it.
+
+        When you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same group_id value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.
+
         ## Example Usage
 
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        group = fivetran.Group("group")
+        group = fivetran.Group("group", name="MyGroup")
         ```
 
         ## Import
@@ -149,13 +158,17 @@ class Group(pulumi.CustomResource):
         """
         This resource allows you to create, update, and delete groups.
 
+        IMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our Terrafrom Provider, and the destination's group_id value that you specify when you create a destination using our Terrafrom Provider. This means that if you use our Terrafrom Provider to create a destination, you must create a group in your Fivetran account before you can create a destination in it.
+
+        When you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same group_id value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.
+
         ## Example Usage
 
         ```python
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        group = fivetran.Group("group")
+        group = fivetran.Group("group", name="MyGroup")
         ```
 
         ## Import

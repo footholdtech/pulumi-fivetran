@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -337,8 +342,8 @@ class User(pulumi.CustomResource):
 
         user = fivetran.User("user",
             email="user@email.address.com",
-            family_name="Doe",
             given_name="John",
+            family_name="Doe",
             phone="+353 00 0000 0000")
         ```
 
@@ -396,8 +401,8 @@ class User(pulumi.CustomResource):
 
         user = fivetran.User("user",
             email="user@email.address.com",
-            family_name="Doe",
             given_name="John",
+            family_name="Doe",
             phone="+353 00 0000 0000")
         ```
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -67,7 +72,7 @@ class AwaitableGetUserGroupMembershipsResult(GetUserGroupMembershipsResult):
             user_id=self.user_id)
 
 
-def get_user_group_memberships(groups: Optional[Sequence[pulumi.InputType['GetUserGroupMembershipsGroupArgs']]] = None,
+def get_user_group_memberships(groups: Optional[Sequence[Union['GetUserGroupMembershipsGroupArgs', 'GetUserGroupMembershipsGroupArgsDict']]] = None,
                                user_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserGroupMembershipsResult:
     """
@@ -95,12 +100,9 @@ def get_user_group_memberships(groups: Optional[Sequence[pulumi.InputType['GetUs
         groups=pulumi.get(__ret__, 'groups'),
         id=pulumi.get(__ret__, 'id'),
         user_id=pulumi.get(__ret__, 'user_id'))
-
-
-@_utilities.lift_output_func(get_user_group_memberships)
-def get_user_group_memberships_output(groups: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUserGroupMembershipsGroupArgs']]]]] = None,
+def get_user_group_memberships_output(groups: Optional[pulumi.Input[Optional[Sequence[Union['GetUserGroupMembershipsGroupArgs', 'GetUserGroupMembershipsGroupArgsDict']]]]] = None,
                                       user_id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserGroupMembershipsResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserGroupMembershipsResult]:
     """
     This data source returns a list of group memberships for user.
 
@@ -116,4 +118,12 @@ def get_user_group_memberships_output(groups: Optional[pulumi.Input[Optional[Seq
 
     :param str user_id: The unique identifier for the user within your account.
     """
-    ...
+    __args__ = dict()
+    __args__['groups'] = groups
+    __args__['userId'] = user_id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getUserGroupMemberships:getUserGroupMemberships', __args__, opts=opts, typ=GetUserGroupMembershipsResult)
+    return __ret__.apply(lambda __response__: GetUserGroupMembershipsResult(
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        user_id=pulumi.get(__response__, 'user_id')))

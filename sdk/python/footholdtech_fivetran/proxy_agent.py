@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['ProxyAgentArgs', 'ProxyAgent']
@@ -186,10 +191,9 @@ class ProxyAgent(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        test_proxy_agent = fivetran.ProxyAgent("testProxyAgent",
+        test_proxy_agent = fivetran.ProxyAgent("test_proxy_agent",
             display_name="display_name",
-            group_region="group_region",
-            opts = pulumi.ResourceOptions(provider=fivetran_provider))
+            group_region="group_region")
         ```
 
         :param str resource_name: The name of the resource.
@@ -212,10 +216,9 @@ class ProxyAgent(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        test_proxy_agent = fivetran.ProxyAgent("testProxyAgent",
+        test_proxy_agent = fivetran.ProxyAgent("test_proxy_agent",
             display_name="display_name",
-            group_region="group_region",
-            opts = pulumi.ResourceOptions(provider=fivetran_provider))
+            group_region="group_region")
         ```
 
         :param str resource_name: The name of the resource.

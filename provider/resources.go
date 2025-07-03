@@ -15,18 +15,20 @@
 package fivetran
 
 import (
-	// Allow embedding files
-	_ "embed"
 	"fmt"
 	"path/filepath"
 
+	// Allow embedding files
+	_ "embed"
+
 	"github.com/fivetran/terraform-provider-fivetran/fivetran/framework"
-	"github.com/footholdtech/pulumi-fivetran/provider/pkg/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+
+	"github.com/footholdtech/pulumi-fivetran/provider/pkg/version"
 )
 
 // all of the token components used below.
@@ -49,28 +51,28 @@ var metadata []byte
 
 func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
-        P:              pf.ShimProvider(framework.FivetranProvider()),
-        Name:           "fivetran",
-        Description:    "A Pulumi package for creating and managing Fivetran resources.",
-        Keywords:       []string{"pulumi", "fivetran"},
-        License:        "Apache-2.0",
-        Homepage:       "https://pulumi.io",
-        Repository:     "https://github.com/footholdtech/pulumi-fivetran",
-        Publisher:      "Foothold Technology",
+		P:           pf.ShimProvider(framework.FivetranProvider()),
+		Name:        "fivetran",
+		Description: "A Pulumi package for creating and managing Fivetran resources.",
+		Keywords:    []string{"pulumi", "fivetran"},
+		License:     "Apache-2.0",
+		Homepage:    "https://pulumi.io",
+		Repository:  "https://github.com/footholdtech/pulumi-fivetran",
+		Publisher:   "Foothold Technology",
 
-        // PluginDownloadURL is an optional URL used to download the Provider
-        // for use in Pulumi programs
-        // e.g https://github.com/org/pulumi-provider-name/releases/
-        PluginDownloadURL: "github://api.github.com/footholdtech/pulumi-fivetran",
+		// PluginDownloadURL is an optional URL used to download the Provider
+		// for use in Pulumi programs
+		// e.g https://github.com/org/pulumi-provider-name/releases/
+		PluginDownloadURL: "github://api.github.com/footholdtech/pulumi-fivetran",
 
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 
-        Version:          version.Version,
+		Version: version.Version,
 
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "fivetran",
-		Config: map[string]*tfbridge.SchemaInfo {
+		Config: map[string]*tfbridge.SchemaInfo{
 			"api_key": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"FIVETRAN_APIKEY"},
@@ -87,12 +89,12 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		Resources: map[string]*tfbridge.ResourceInfo {
-			"fivetran_user_connector_membership":   {
-			    ComputeID: delegateIDField(resource.PropertyKey("key")),
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"fivetran_user_connector_membership": {
+				ComputeID: delegateIDField(resource.PropertyKey("key")),
 			},
-			"fivetran_user_group_membership":       {
-                ComputeID: delegateIDField(resource.PropertyKey("key")),
+			"fivetran_user_group_membership": {
+				ComputeID: delegateIDField(resource.PropertyKey("key")),
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -132,8 +134,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-    prov.MustComputeTokens(tokens.SingleModule("fivetran_", mainMod,
-		    tokens.MakeStandard(mainPkg)))
+	prov.MustComputeTokens(tokens.SingleModule("fivetran_", mainMod,
+		tokens.MakeStandard(mainPkg)))
 
 	prov.MustApplyAutoAliases()
 

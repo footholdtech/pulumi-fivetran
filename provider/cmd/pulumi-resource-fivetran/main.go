@@ -18,16 +18,18 @@ package main
 
 import (
 	"context"
+
 	_ "embed"
 
-	fivetran "github.com/footholdtech/pulumi-fivetran/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
+
+	fivetran "github.com/footholdtech/pulumi-fivetran/provider"
 )
 
 //go:embed schema-embed.json
 var schema []byte
 
 func main() {
-    meta := tfbridge.ProviderMetadata{PackageSchema: schema}
+	meta := tfbridge.ProviderMetadata{PackageSchema: schema}
 	tfbridge.Main(context.Background(), "fivetran", fivetran.Provider(), meta)
 }

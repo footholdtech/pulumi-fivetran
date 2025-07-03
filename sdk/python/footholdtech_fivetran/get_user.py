@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -198,11 +203,8 @@ def get_user(id: Optional[str] = None,
         picture=pulumi.get(__ret__, 'picture'),
         role=pulumi.get(__ret__, 'role'),
         verified=pulumi.get(__ret__, 'verified'))
-
-
-@_utilities.lift_output_func(get_user)
 def get_user_output(id: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     This data source returns a user object.
 
@@ -218,4 +220,19 @@ def get_user_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The unique identifier for the user within the Fivetran system.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    return __ret__.apply(lambda __response__: GetUserResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        email=pulumi.get(__response__, 'email'),
+        family_name=pulumi.get(__response__, 'family_name'),
+        given_name=pulumi.get(__response__, 'given_name'),
+        id=pulumi.get(__response__, 'id'),
+        invited=pulumi.get(__response__, 'invited'),
+        logged_in_at=pulumi.get(__response__, 'logged_in_at'),
+        phone=pulumi.get(__response__, 'phone'),
+        picture=pulumi.get(__response__, 'picture'),
+        role=pulumi.get(__response__, 'role'),
+        verified=pulumi.get(__response__, 'verified')))
