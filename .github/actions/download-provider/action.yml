@@ -5,19 +5,19 @@ runs:
   using: "composite"
   steps:
 
-    - name: Download pulumi-resource-xyz
+    - name: Download pulumi-resource-fivetran
       uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
       with:
-        pattern: pulumi-resource-xyz-*-linux-amd64.tar.gz
+        pattern: pulumi-resource-fivetran-*-linux-amd64.tar.gz
         path: ${{ github.workspace }}/bin
         merge-multiple: true
 
-    - name: Untar pulumi-resource-xyz
+    - name: Untar pulumi-resource-fivetran
       shell: bash
       run: |
         tar -zxf ${{ github.workspace }}/bin/*amd64.tar.gz -C ${{ github.workspace}}/bin
 
-    - name: Mark pulumi-resource-xyz as executable
+    - name: Mark pulumi-resource-fivetran as executable
       shell: bash
       run: |
-        find ${{ github.workspace }} -name "pulumi-*-xyz" -print -exec chmod +x {} \;
+        find ${{ github.workspace }} -name "pulumi-*-fivetran" -print -exec chmod +x {} \;
