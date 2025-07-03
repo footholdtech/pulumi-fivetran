@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -103,7 +108,7 @@ class AwaitableGetExternalLoggingResult(GetExternalLoggingResult):
             service=self.service)
 
 
-def get_external_logging(config: Optional[pulumi.InputType['GetExternalLoggingConfigArgs']] = None,
+def get_external_logging(config: Optional[Union['GetExternalLoggingConfigArgs', 'GetExternalLoggingConfigArgsDict']] = None,
                          id: Optional[str] = None,
                          run_setup_tests: Optional[bool] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLoggingResult:
@@ -137,13 +142,10 @@ def get_external_logging(config: Optional[pulumi.InputType['GetExternalLoggingCo
         id=pulumi.get(__ret__, 'id'),
         run_setup_tests=pulumi.get(__ret__, 'run_setup_tests'),
         service=pulumi.get(__ret__, 'service'))
-
-
-@_utilities.lift_output_func(get_external_logging)
-def get_external_logging_output(config: Optional[pulumi.Input[Optional[pulumi.InputType['GetExternalLoggingConfigArgs']]]] = None,
+def get_external_logging_output(config: Optional[pulumi.Input[Optional[Union['GetExternalLoggingConfigArgs', 'GetExternalLoggingConfigArgsDict']]]] = None,
                                 id: Optional[pulumi.Input[str]] = None,
                                 run_setup_tests: Optional[pulumi.Input[Optional[bool]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalLoggingResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLoggingResult]:
     """
     This data source returns a logging service object.
 
@@ -160,4 +162,16 @@ def get_external_logging_output(config: Optional[pulumi.Input[Optional[pulumi.In
     :param str id: The unique identifier for the log service within the Fivetran system.
     :param bool run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
     """
-    ...
+    __args__ = dict()
+    __args__['config'] = config
+    __args__['id'] = id
+    __args__['runSetupTests'] = run_setup_tests
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getExternalLogging:getExternalLogging', __args__, opts=opts, typ=GetExternalLoggingResult)
+    return __ret__.apply(lambda __response__: GetExternalLoggingResult(
+        config=pulumi.get(__response__, 'config'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        run_setup_tests=pulumi.get(__response__, 'run_setup_tests'),
+        service=pulumi.get(__response__, 'service')))

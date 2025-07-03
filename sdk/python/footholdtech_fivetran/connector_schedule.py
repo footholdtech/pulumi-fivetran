@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['ConnectorScheduleArgs', 'ConnectorSchedule']
@@ -239,8 +244,8 @@ class ConnectorSchedule(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        my_connector_schedule = fivetran.ConnectorSchedule("myConnectorSchedule",
-            connector_id=fivetran_connector["my_connector"]["id"],
+        my_connector_schedule = fivetran.ConnectorSchedule("my_connector_schedule",
+            connector_id=my_connector["id"],
             sync_frequency="1440",
             daily_sync_time="03:00",
             paused="false",
@@ -314,8 +319,8 @@ class ConnectorSchedule(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        my_connector_schedule = fivetran.ConnectorSchedule("myConnectorSchedule",
-            connector_id=fivetran_connector["my_connector"]["id"],
+        my_connector_schedule = fivetran.ConnectorSchedule("my_connector_schedule",
+            connector_id=my_connector["id"],
             sync_frequency="1440",
             daily_sync_time="03:00",
             paused="false",

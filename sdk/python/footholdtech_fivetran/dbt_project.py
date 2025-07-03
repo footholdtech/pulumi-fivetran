@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,9 +46,15 @@ class DbtProjectArgs:
         pulumi.set(__self__, "default_schema", default_schema)
         pulumi.set(__self__, "group_id", group_id)
         if ensure_readiness is not None:
+            warnings.warn("""Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config""", DeprecationWarning)
+            pulumi.log.warn("""ensure_readiness is deprecated: Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config""")
+        if ensure_readiness is not None:
             pulumi.set(__self__, "ensure_readiness", ensure_readiness)
         if environment_vars is not None:
             pulumi.set(__self__, "environment_vars", environment_vars)
+        if project_config is not None:
+            warnings.warn("""Deprecated block. The project_config block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config""", DeprecationWarning)
+            pulumi.log.warn("""project_config is deprecated: Deprecated block. The project_config block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config""")
         if project_config is not None:
             pulumi.set(__self__, "project_config", project_config)
         if target_name is not None:
@@ -93,6 +104,7 @@ class DbtProjectArgs:
 
     @property
     @pulumi.getter(name="ensureReadiness")
+    @_utilities.deprecated("""Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config""")
     def ensure_readiness(self) -> Optional[pulumi.Input[bool]]:
         """
         Should resource wait for project to finish initialization. Default value: true.
@@ -117,6 +129,7 @@ class DbtProjectArgs:
 
     @property
     @pulumi.getter(name="projectConfig")
+    @_utilities.deprecated("""Deprecated block. The project_config block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config""")
     def project_config(self) -> Optional[pulumi.Input['DbtProjectProjectConfigArgs']]:
         return pulumi.get(self, "project_config")
 
@@ -212,6 +225,9 @@ class _DbtProjectState:
         if default_schema is not None:
             pulumi.set(__self__, "default_schema", default_schema)
         if ensure_readiness is not None:
+            warnings.warn("""Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config""", DeprecationWarning)
+            pulumi.log.warn("""ensure_readiness is deprecated: Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config""")
+        if ensure_readiness is not None:
             pulumi.set(__self__, "ensure_readiness", ensure_readiness)
         if environment_vars is not None:
             pulumi.set(__self__, "environment_vars", environment_vars)
@@ -219,6 +235,9 @@ class _DbtProjectState:
             pulumi.set(__self__, "group_id", group_id)
         if models is not None:
             pulumi.set(__self__, "models", models)
+        if project_config is not None:
+            warnings.warn("""Deprecated block. The project_config block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config""", DeprecationWarning)
+            pulumi.log.warn("""project_config is deprecated: Deprecated block. The project_config block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config""")
         if project_config is not None:
             pulumi.set(__self__, "project_config", project_config)
         if public_key is not None:
@@ -284,6 +303,7 @@ class _DbtProjectState:
 
     @property
     @pulumi.getter(name="ensureReadiness")
+    @_utilities.deprecated("""Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config""")
     def ensure_readiness(self) -> Optional[pulumi.Input[bool]]:
         """
         Should resource wait for project to finish initialization. Default value: true.
@@ -329,6 +349,7 @@ class _DbtProjectState:
 
     @property
     @pulumi.getter(name="projectConfig")
+    @_utilities.deprecated("""Deprecated block. The project_config block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config""")
     def project_config(self) -> Optional[pulumi.Input['DbtProjectProjectConfigArgs']]:
         return pulumi.get(self, "project_config")
 
@@ -416,16 +437,32 @@ class DbtProject(pulumi.CustomResource):
                  ensure_readiness: Optional[pulumi.Input[bool]] = None,
                  environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 project_config: Optional[pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']]] = None,
+                 project_config: Optional[pulumi.Input[Union['DbtProjectProjectConfigArgs', 'DbtProjectProjectConfigArgsDict']]] = None,
                  target_name: Optional[pulumi.Input[str]] = None,
                  threads: Optional[pulumi.Input[int]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['DbtProjectTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DbtProjectTimeoutsArgs', 'DbtProjectTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource is in ALPHA state.
+        This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
 
         This resource allows you to add, manage and delete dbt Projects in your account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import footholdtech_fivetran as fivetran
+
+        project = fivetran.DbtProject("project",
+            group_id="group_id",
+            dbt_version="1.4.1",
+            default_schema="default_schema",
+            target_name="target_name",
+            environment_vars=["environment_var=value"],
+            threads=8,
+            type="GIT")
+        ```
 
         ## Import
 
@@ -471,9 +508,25 @@ class DbtProject(pulumi.CustomResource):
                  args: DbtProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource is in ALPHA state.
+        This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
 
         This resource allows you to add, manage and delete dbt Projects in your account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import footholdtech_fivetran as fivetran
+
+        project = fivetran.DbtProject("project",
+            group_id="group_id",
+            dbt_version="1.4.1",
+            default_schema="default_schema",
+            target_name="target_name",
+            environment_vars=["environment_var=value"],
+            threads=8,
+            type="GIT")
+        ```
 
         ## Import
 
@@ -521,10 +574,10 @@ class DbtProject(pulumi.CustomResource):
                  ensure_readiness: Optional[pulumi.Input[bool]] = None,
                  environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 project_config: Optional[pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']]] = None,
+                 project_config: Optional[pulumi.Input[Union['DbtProjectProjectConfigArgs', 'DbtProjectProjectConfigArgsDict']]] = None,
                  target_name: Optional[pulumi.Input[str]] = None,
                  threads: Optional[pulumi.Input[int]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['DbtProjectTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DbtProjectTimeoutsArgs', 'DbtProjectTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -573,13 +626,13 @@ class DbtProject(pulumi.CustomResource):
             ensure_readiness: Optional[pulumi.Input[bool]] = None,
             environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
-            models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbtProjectModelArgs']]]]] = None,
-            project_config: Optional[pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']]] = None,
+            models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbtProjectModelArgs', 'DbtProjectModelArgsDict']]]]] = None,
+            project_config: Optional[pulumi.Input[Union['DbtProjectProjectConfigArgs', 'DbtProjectProjectConfigArgsDict']]] = None,
             public_key: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             target_name: Optional[pulumi.Input[str]] = None,
             threads: Optional[pulumi.Input[int]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['DbtProjectTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['DbtProjectTimeoutsArgs', 'DbtProjectTimeoutsArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'DbtProject':
         """
         Get an existing DbtProject resource's state with the given name, id, and optional extra
@@ -656,6 +709,7 @@ class DbtProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ensureReadiness")
+    @_utilities.deprecated("""Deprecated attribute. Please migrate to the resource fivetran_dbt_git_project_config""")
     def ensure_readiness(self) -> pulumi.Output[bool]:
         """
         Should resource wait for project to finish initialization. Default value: true.
@@ -685,6 +739,7 @@ class DbtProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectConfig")
+    @_utilities.deprecated("""Deprecated block. The project_config block of the resource DbtProject is deprecated and will be removed. Please migrate to the resource fivetran_dbt_git_project_config""")
     def project_config(self) -> pulumi.Output[Optional['outputs.DbtProjectProjectConfig']]:
         return pulumi.get(self, "project_config")
 

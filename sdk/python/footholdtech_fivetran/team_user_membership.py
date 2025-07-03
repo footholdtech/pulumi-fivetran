@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -90,7 +95,7 @@ class TeamUserMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  team_id: Optional[pulumi.Input[str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamUserMembershipUserArgs']]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamUserMembershipUserArgs', 'TeamUserMembershipUserArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete user membership for teams
@@ -101,19 +106,18 @@ class TeamUserMembership(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        test_team_user_membership = fivetran.TeamUserMembership("testTeamUserMembership",
+        test_team_user_membership = fivetran.TeamUserMembership("test_team_user_membership",
             team_id="test_team",
             users=[
-                fivetran.TeamUserMembershipUserArgs(
-                    user_id="test_user",
-                    role="Connector Administrator",
-                ),
-                fivetran.TeamUserMembershipUserArgs(
-                    user_id="test_user",
-                    role="Connector Administrator",
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+                {
+                    "user_id": "test_user",
+                    "role": "Connector Administrator",
+                },
+                {
+                    "user_id": "test_user",
+                    "role": "Connector Administrator",
+                },
+            ])
         ```
 
         ## Import
@@ -161,19 +165,18 @@ class TeamUserMembership(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        test_team_user_membership = fivetran.TeamUserMembership("testTeamUserMembership",
+        test_team_user_membership = fivetran.TeamUserMembership("test_team_user_membership",
             team_id="test_team",
             users=[
-                fivetran.TeamUserMembershipUserArgs(
-                    user_id="test_user",
-                    role="Connector Administrator",
-                ),
-                fivetran.TeamUserMembershipUserArgs(
-                    user_id="test_user",
-                    role="Connector Administrator",
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+                {
+                    "user_id": "test_user",
+                    "role": "Connector Administrator",
+                },
+                {
+                    "user_id": "test_user",
+                    "role": "Connector Administrator",
+                },
+            ])
         ```
 
         ## Import
@@ -218,7 +221,7 @@ class TeamUserMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  team_id: Optional[pulumi.Input[str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamUserMembershipUserArgs']]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamUserMembershipUserArgs', 'TeamUserMembershipUserArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -243,7 +246,7 @@ class TeamUserMembership(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             team_id: Optional[pulumi.Input[str]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamUserMembershipUserArgs']]]]] = None) -> 'TeamUserMembership':
+            users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamUserMembershipUserArgs', 'TeamUserMembershipUserArgsDict']]]]] = None) -> 'TeamUserMembership':
         """
         Get an existing TeamUserMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

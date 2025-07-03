@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -81,11 +86,8 @@ def get_group_service_account(id: Optional[str] = None,
     return AwaitableGetGroupServiceAccountResult(
         id=pulumi.get(__ret__, 'id'),
         service_account=pulumi.get(__ret__, 'service_account'))
-
-
-@_utilities.lift_output_func(get_group_service_account)
 def get_group_service_account_output(id: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupServiceAccountResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupServiceAccountResult]:
     """
     This data source returns Fivetran service account associated with the group.
 
@@ -101,4 +103,10 @@ def get_group_service_account_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The unique identifier for the group within the Fivetran system.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getGroupServiceAccount:getGroupServiceAccount', __args__, opts=opts, typ=GetGroupServiceAccountResult)
+    return __ret__.apply(lambda __response__: GetGroupServiceAccountResult(
+        id=pulumi.get(__response__, 'id'),
+        service_account=pulumi.get(__response__, 'service_account')))

@@ -16,7 +16,8 @@ package main
 
 import (
 	fivetran "github.com/footholdtech/pulumi-fivetran/provider"
-    "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
+
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
 )
 
 func main() {

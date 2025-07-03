@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,7 +28,7 @@ class GetConnectorResult:
     """
     A collection of values returned by getConnector.
     """
-    def __init__(__self__, config=None, connected_by=None, created_at=None, daily_sync_time=None, destination_schema=None, failed_at=None, group_id=None, id=None, name=None, pause_after_trial=None, paused=None, schedule_type=None, service=None, service_version=None, status=None, succeeded_at=None, sync_frequency=None):
+    def __init__(__self__, config=None, connected_by=None, created_at=None, daily_sync_time=None, data_delay_sensitivity=None, data_delay_threshold=None, destination_schema=None, failed_at=None, group_id=None, hybrid_deployment_agent_id=None, id=None, name=None, networking_method=None, pause_after_trial=None, paused=None, private_link_id=None, proxy_agent_id=None, schedule_type=None, service=None, service_version=None, status=None, succeeded_at=None, sync_frequency=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -36,6 +41,12 @@ class GetConnectorResult:
         if daily_sync_time and not isinstance(daily_sync_time, str):
             raise TypeError("Expected argument 'daily_sync_time' to be a str")
         pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+        if data_delay_sensitivity and not isinstance(data_delay_sensitivity, str):
+            raise TypeError("Expected argument 'data_delay_sensitivity' to be a str")
+        pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
+        if data_delay_threshold and not isinstance(data_delay_threshold, int):
+            raise TypeError("Expected argument 'data_delay_threshold' to be a int")
+        pulumi.set(__self__, "data_delay_threshold", data_delay_threshold)
         if destination_schema and not isinstance(destination_schema, dict):
             raise TypeError("Expected argument 'destination_schema' to be a dict")
         pulumi.set(__self__, "destination_schema", destination_schema)
@@ -45,18 +56,30 @@ class GetConnectorResult:
         if group_id and not isinstance(group_id, str):
             raise TypeError("Expected argument 'group_id' to be a str")
         pulumi.set(__self__, "group_id", group_id)
+        if hybrid_deployment_agent_id and not isinstance(hybrid_deployment_agent_id, str):
+            raise TypeError("Expected argument 'hybrid_deployment_agent_id' to be a str")
+        pulumi.set(__self__, "hybrid_deployment_agent_id", hybrid_deployment_agent_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if networking_method and not isinstance(networking_method, str):
+            raise TypeError("Expected argument 'networking_method' to be a str")
+        pulumi.set(__self__, "networking_method", networking_method)
         if pause_after_trial and not isinstance(pause_after_trial, bool):
             raise TypeError("Expected argument 'pause_after_trial' to be a bool")
         pulumi.set(__self__, "pause_after_trial", pause_after_trial)
         if paused and not isinstance(paused, bool):
             raise TypeError("Expected argument 'paused' to be a bool")
         pulumi.set(__self__, "paused", paused)
+        if private_link_id and not isinstance(private_link_id, str):
+            raise TypeError("Expected argument 'private_link_id' to be a str")
+        pulumi.set(__self__, "private_link_id", private_link_id)
+        if proxy_agent_id and not isinstance(proxy_agent_id, str):
+            raise TypeError("Expected argument 'proxy_agent_id' to be a str")
+        pulumi.set(__self__, "proxy_agent_id", proxy_agent_id)
         if schedule_type and not isinstance(schedule_type, str):
             raise TypeError("Expected argument 'schedule_type' to be a str")
         pulumi.set(__self__, "schedule_type", schedule_type)
@@ -97,6 +120,16 @@ class GetConnectorResult:
         return pulumi.get(self, "daily_sync_time")
 
     @property
+    @pulumi.getter(name="dataDelaySensitivity")
+    def data_delay_sensitivity(self) -> str:
+        return pulumi.get(self, "data_delay_sensitivity")
+
+    @property
+    @pulumi.getter(name="dataDelayThreshold")
+    def data_delay_threshold(self) -> int:
+        return pulumi.get(self, "data_delay_threshold")
+
+    @property
     @pulumi.getter(name="destinationSchema")
     def destination_schema(self) -> Optional['outputs.GetConnectorDestinationSchemaResult']:
         return pulumi.get(self, "destination_schema")
@@ -112,6 +145,11 @@ class GetConnectorResult:
         return pulumi.get(self, "group_id")
 
     @property
+    @pulumi.getter(name="hybridDeploymentAgentId")
+    def hybrid_deployment_agent_id(self) -> str:
+        return pulumi.get(self, "hybrid_deployment_agent_id")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         return pulumi.get(self, "id")
@@ -122,6 +160,11 @@ class GetConnectorResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkingMethod")
+    def networking_method(self) -> str:
+        return pulumi.get(self, "networking_method")
+
+    @property
     @pulumi.getter(name="pauseAfterTrial")
     def pause_after_trial(self) -> bool:
         return pulumi.get(self, "pause_after_trial")
@@ -130,6 +173,16 @@ class GetConnectorResult:
     @pulumi.getter
     def paused(self) -> bool:
         return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter(name="privateLinkId")
+    def private_link_id(self) -> str:
+        return pulumi.get(self, "private_link_id")
+
+    @property
+    @pulumi.getter(name="proxyAgentId")
+    def proxy_agent_id(self) -> str:
+        return pulumi.get(self, "proxy_agent_id")
 
     @property
     @pulumi.getter(name="scheduleType")
@@ -172,13 +225,19 @@ class AwaitableGetConnectorResult(GetConnectorResult):
             connected_by=self.connected_by,
             created_at=self.created_at,
             daily_sync_time=self.daily_sync_time,
+            data_delay_sensitivity=self.data_delay_sensitivity,
+            data_delay_threshold=self.data_delay_threshold,
             destination_schema=self.destination_schema,
             failed_at=self.failed_at,
             group_id=self.group_id,
+            hybrid_deployment_agent_id=self.hybrid_deployment_agent_id,
             id=self.id,
             name=self.name,
+            networking_method=self.networking_method,
             pause_after_trial=self.pause_after_trial,
             paused=self.paused,
+            private_link_id=self.private_link_id,
+            proxy_agent_id=self.proxy_agent_id,
             schedule_type=self.schedule_type,
             service=self.service,
             service_version=self.service_version,
@@ -187,10 +246,10 @@ class AwaitableGetConnectorResult(GetConnectorResult):
             sync_frequency=self.sync_frequency)
 
 
-def get_connector(config: Optional[pulumi.InputType['GetConnectorConfigArgs']] = None,
-                  destination_schema: Optional[pulumi.InputType['GetConnectorDestinationSchemaArgs']] = None,
+def get_connector(config: Optional[Union['GetConnectorConfigArgs', 'GetConnectorConfigArgsDict']] = None,
+                  destination_schema: Optional[Union['GetConnectorDestinationSchemaArgs', 'GetConnectorDestinationSchemaArgsDict']] = None,
                   id: Optional[str] = None,
-                  status: Optional[pulumi.InputType['GetConnectorStatusArgs']] = None,
+                  status: Optional[Union['GetConnectorStatusArgs', 'GetConnectorStatusArgsDict']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorResult:
     """
     This data source returns a connector object.
@@ -217,27 +276,30 @@ def get_connector(config: Optional[pulumi.InputType['GetConnectorConfigArgs']] =
         connected_by=pulumi.get(__ret__, 'connected_by'),
         created_at=pulumi.get(__ret__, 'created_at'),
         daily_sync_time=pulumi.get(__ret__, 'daily_sync_time'),
+        data_delay_sensitivity=pulumi.get(__ret__, 'data_delay_sensitivity'),
+        data_delay_threshold=pulumi.get(__ret__, 'data_delay_threshold'),
         destination_schema=pulumi.get(__ret__, 'destination_schema'),
         failed_at=pulumi.get(__ret__, 'failed_at'),
         group_id=pulumi.get(__ret__, 'group_id'),
+        hybrid_deployment_agent_id=pulumi.get(__ret__, 'hybrid_deployment_agent_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        networking_method=pulumi.get(__ret__, 'networking_method'),
         pause_after_trial=pulumi.get(__ret__, 'pause_after_trial'),
         paused=pulumi.get(__ret__, 'paused'),
+        private_link_id=pulumi.get(__ret__, 'private_link_id'),
+        proxy_agent_id=pulumi.get(__ret__, 'proxy_agent_id'),
         schedule_type=pulumi.get(__ret__, 'schedule_type'),
         service=pulumi.get(__ret__, 'service'),
         service_version=pulumi.get(__ret__, 'service_version'),
         status=pulumi.get(__ret__, 'status'),
         succeeded_at=pulumi.get(__ret__, 'succeeded_at'),
         sync_frequency=pulumi.get(__ret__, 'sync_frequency'))
-
-
-@_utilities.lift_output_func(get_connector)
-def get_connector_output(config: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectorConfigArgs']]]] = None,
-                         destination_schema: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectorDestinationSchemaArgs']]]] = None,
+def get_connector_output(config: Optional[pulumi.Input[Optional[Union['GetConnectorConfigArgs', 'GetConnectorConfigArgsDict']]]] = None,
+                         destination_schema: Optional[pulumi.Input[Optional[Union['GetConnectorDestinationSchemaArgs', 'GetConnectorDestinationSchemaArgsDict']]]] = None,
                          id: Optional[pulumi.Input[str]] = None,
-                         status: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectorStatusArgs']]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorResult]:
+                         status: Optional[pulumi.Input[Optional[Union['GetConnectorStatusArgs', 'GetConnectorStatusArgsDict']]]] = None,
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorResult]:
     """
     This data source returns a connector object.
 
@@ -250,4 +312,34 @@ def get_connector_output(config: Optional[pulumi.Input[Optional[pulumi.InputType
     connector = fivetran.get_connector(id="anonymous_mystery")
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['config'] = config
+    __args__['destinationSchema'] = destination_schema
+    __args__['id'] = id
+    __args__['status'] = status
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getConnector:getConnector', __args__, opts=opts, typ=GetConnectorResult)
+    return __ret__.apply(lambda __response__: GetConnectorResult(
+        config=pulumi.get(__response__, 'config'),
+        connected_by=pulumi.get(__response__, 'connected_by'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        daily_sync_time=pulumi.get(__response__, 'daily_sync_time'),
+        data_delay_sensitivity=pulumi.get(__response__, 'data_delay_sensitivity'),
+        data_delay_threshold=pulumi.get(__response__, 'data_delay_threshold'),
+        destination_schema=pulumi.get(__response__, 'destination_schema'),
+        failed_at=pulumi.get(__response__, 'failed_at'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        hybrid_deployment_agent_id=pulumi.get(__response__, 'hybrid_deployment_agent_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        networking_method=pulumi.get(__response__, 'networking_method'),
+        pause_after_trial=pulumi.get(__response__, 'pause_after_trial'),
+        paused=pulumi.get(__response__, 'paused'),
+        private_link_id=pulumi.get(__response__, 'private_link_id'),
+        proxy_agent_id=pulumi.get(__response__, 'proxy_agent_id'),
+        schedule_type=pulumi.get(__response__, 'schedule_type'),
+        service=pulumi.get(__response__, 'service'),
+        service_version=pulumi.get(__response__, 'service_version'),
+        status=pulumi.get(__response__, 'status'),
+        succeeded_at=pulumi.get(__response__, 'succeeded_at'),
+        sync_frequency=pulumi.get(__response__, 'sync_frequency')))

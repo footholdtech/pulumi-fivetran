@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -292,11 +297,11 @@ class DbtTransformation(pulumi.CustomResource):
                  dbt_project_id: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['DbtTransformationTimeoutsArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['DbtTransformationScheduleArgs', 'DbtTransformationScheduleArgsDict']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DbtTransformationTimeoutsArgs', 'DbtTransformationTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Resource is in ALPHA state.
+        This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
 
         This resource allows you to add, manage and delete dbt Transformations for existing dbt Model.
         To retrieve available dbt Models use this [Retrieve dbt Project models](https://fivetran.com/docs/rest-api/dbt-transformation-management#retrievedbtprojectmodels) endpoint.
@@ -339,7 +344,7 @@ class DbtTransformation(pulumi.CustomResource):
                  args: DbtTransformationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource is in ALPHA state.
+        This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
 
         This resource allows you to add, manage and delete dbt Transformations for existing dbt Model.
         To retrieve available dbt Models use this [Retrieve dbt Project models](https://fivetran.com/docs/rest-api/dbt-transformation-management#retrievedbtprojectmodels) endpoint.
@@ -387,8 +392,8 @@ class DbtTransformation(pulumi.CustomResource):
                  dbt_project_id: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['DbtTransformationTimeoutsArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['DbtTransformationScheduleArgs', 'DbtTransformationScheduleArgsDict']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DbtTransformationTimeoutsArgs', 'DbtTransformationTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -432,8 +437,8 @@ class DbtTransformation(pulumi.CustomResource):
             output_model_name: Optional[pulumi.Input[str]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             run_tests: Optional[pulumi.Input[bool]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['DbtTransformationTimeoutsArgs']]] = None) -> 'DbtTransformation':
+            schedule: Optional[pulumi.Input[Union['DbtTransformationScheduleArgs', 'DbtTransformationScheduleArgsDict']]] = None,
+            timeouts: Optional[pulumi.Input[Union['DbtTransformationTimeoutsArgs', 'DbtTransformationTimeoutsArgsDict']]] = None) -> 'DbtTransformation':
         """
         Get an existing DbtTransformation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

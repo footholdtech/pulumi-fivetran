@@ -18,9 +18,11 @@ package main
 
 import (
 	"context"
+
 	_ "embed"
 
 	fivetran "github.com/footholdtech/pulumi-fivetran/provider"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 )
 

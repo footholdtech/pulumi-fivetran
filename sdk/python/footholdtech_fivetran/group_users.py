@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -102,7 +107,7 @@ class GroupUsers(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupUsersUserArgs']]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupUsersUserArgs', 'GroupUsersUserArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete user memberships in groups.
@@ -113,17 +118,17 @@ class GroupUsers(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        group_users = fivetran.GroupUsers("groupUsers",
-            group_id=fivetran_group["group"]["id"],
+        group_users = fivetran.GroupUsers("group_users",
+            group_id=group["id"],
             users=[
-                fivetran.GroupUsersUserArgs(
-                    email="mail@example.com",
-                    role="Destination Analyst",
-                ),
-                fivetran.GroupUsersUserArgs(
-                    email="another_mail@example.com",
-                    role="Destination Analyst",
-                ),
+                {
+                    "email": "mail@example.com",
+                    "role": "Destination Analyst",
+                },
+                {
+                    "email": "another_mail@example.com",
+                    "role": "Destination Analyst",
+                },
             ])
         ```
 
@@ -146,17 +151,17 @@ class GroupUsers(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        group_users = fivetran.GroupUsers("groupUsers",
-            group_id=fivetran_group["group"]["id"],
+        group_users = fivetran.GroupUsers("group_users",
+            group_id=group["id"],
             users=[
-                fivetran.GroupUsersUserArgs(
-                    email="mail@example.com",
-                    role="Destination Analyst",
-                ),
-                fivetran.GroupUsersUserArgs(
-                    email="another_mail@example.com",
-                    role="Destination Analyst",
-                ),
+                {
+                    "email": "mail@example.com",
+                    "role": "Destination Analyst",
+                },
+                {
+                    "email": "another_mail@example.com",
+                    "role": "Destination Analyst",
+                },
             ])
         ```
 
@@ -176,7 +181,7 @@ class GroupUsers(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupUsersUserArgs']]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupUsersUserArgs', 'GroupUsersUserArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -203,7 +208,7 @@ class GroupUsers(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupUsersUserArgs']]]]] = None) -> 'GroupUsers':
+            users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupUsersUserArgs', 'GroupUsersUserArgsDict']]]]] = None) -> 'GroupUsers':
         """
         Get an existing GroupUsers resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

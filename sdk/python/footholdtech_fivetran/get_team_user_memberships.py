@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -68,7 +73,7 @@ class AwaitableGetTeamUserMembershipsResult(GetTeamUserMembershipsResult):
 
 
 def get_team_user_memberships(team_id: Optional[str] = None,
-                              users: Optional[Sequence[pulumi.InputType['GetTeamUserMembershipsUserArgs']]] = None,
+                              users: Optional[Sequence[Union['GetTeamUserMembershipsUserArgs', 'GetTeamUserMembershipsUserArgsDict']]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTeamUserMembershipsResult:
     """
     This data source returns a list of user memberships within team object.
@@ -95,12 +100,9 @@ def get_team_user_memberships(team_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         team_id=pulumi.get(__ret__, 'team_id'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_team_user_memberships)
 def get_team_user_memberships_output(team_id: Optional[pulumi.Input[str]] = None,
-                                     users: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTeamUserMembershipsUserArgs']]]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamUserMembershipsResult]:
+                                     users: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamUserMembershipsUserArgs', 'GetTeamUserMembershipsUserArgsDict']]]]] = None,
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamUserMembershipsResult]:
     """
     This data source returns a list of user memberships within team object.
 
@@ -116,4 +118,12 @@ def get_team_user_memberships_output(team_id: Optional[pulumi.Input[str]] = None
 
     :param str team_id: The unique identifier for the team within your account.
     """
-    ...
+    __args__ = dict()
+    __args__['teamId'] = team_id
+    __args__['users'] = users
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getTeamUserMemberships:getTeamUserMemberships', __args__, opts=opts, typ=GetTeamUserMembershipsResult)
+    return __ret__.apply(lambda __response__: GetTeamUserMembershipsResult(
+        id=pulumi.get(__response__, 'id'),
+        team_id=pulumi.get(__response__, 'team_id'),
+        users=pulumi.get(__response__, 'users')))

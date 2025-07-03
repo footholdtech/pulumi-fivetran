@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -90,7 +95,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorFingerprintsFingerprintArgs']]]]] = None,
+                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorFingerprintsFingerprintArgs', 'ConnectorFingerprintsFingerprintArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to manage list of approved SSH fingerprints for a particular connector.
@@ -101,17 +106,17 @@ class ConnectorFingerprints(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        my_connector_approved_fingerprints = fivetran.ConnectorFingerprints("myConnectorApprovedFingerprints",
-            connector_id=fivetran_connector["my_connector"]["id"],
+        my_connector_approved_fingerprints = fivetran.ConnectorFingerprints("my_connector_approved_fingerprints",
+            connector_id=my_connector["id"],
             fingerprints=[
-                fivetran.ConnectorFingerprintsFingerprintArgs(
-                    hash="jhgfJfgrI6yy...",
-                    public_key="ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key",
-                ),
-                fivetran.ConnectorFingerprintsFingerprintArgs(
-                    hash="eUtPirI6yytWe...",
-                    public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
-                ),
+                {
+                    "hash": "jhgfJfgrI6yy...",
+                    "public_key": "ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key",
+                },
+                {
+                    "hash": "eUtPirI6yytWe...",
+                    "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
+                },
             ])
         ```
 
@@ -160,17 +165,17 @@ class ConnectorFingerprints(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        my_connector_approved_fingerprints = fivetran.ConnectorFingerprints("myConnectorApprovedFingerprints",
-            connector_id=fivetran_connector["my_connector"]["id"],
+        my_connector_approved_fingerprints = fivetran.ConnectorFingerprints("my_connector_approved_fingerprints",
+            connector_id=my_connector["id"],
             fingerprints=[
-                fivetran.ConnectorFingerprintsFingerprintArgs(
-                    hash="jhgfJfgrI6yy...",
-                    public_key="ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key",
-                ),
-                fivetran.ConnectorFingerprintsFingerprintArgs(
-                    hash="eUtPirI6yytWe...",
-                    public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
-                ),
+                {
+                    "hash": "jhgfJfgrI6yy...",
+                    "public_key": "ssh-rsa CCCCB3NzaC1yc2ECCASFWFWDFRWT5WAS ... fivetran user key",
+                },
+                {
+                    "hash": "eUtPirI6yytWe...",
+                    "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
+                },
             ])
         ```
 
@@ -216,7 +221,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorFingerprintsFingerprintArgs']]]]] = None,
+                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorFingerprintsFingerprintArgs', 'ConnectorFingerprintsFingerprintArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -241,7 +246,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connector_id: Optional[pulumi.Input[str]] = None,
-            fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorFingerprintsFingerprintArgs']]]]] = None) -> 'ConnectorFingerprints':
+            fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorFingerprintsFingerprintArgs', 'ConnectorFingerprintsFingerprintArgsDict']]]]] = None) -> 'ConnectorFingerprints':
         """
         Get an existing ConnectorFingerprints resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

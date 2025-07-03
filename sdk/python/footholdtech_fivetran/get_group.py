@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -107,11 +112,8 @@ def get_group(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         last_updated=pulumi.get(__ret__, 'last_updated'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_group)
 def get_group_output(id: Optional[pulumi.Input[str]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
     This data source returns a group object.
 
@@ -127,4 +129,12 @@ def get_group_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The unique identifier for the group within the Fivetran system.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
+    return __ret__.apply(lambda __response__: GetGroupResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        id=pulumi.get(__response__, 'id'),
+        last_updated=pulumi.get(__response__, 'last_updated'),
+        name=pulumi.get(__response__, 'name')))

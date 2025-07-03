@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['TeamArgs', 'Team']
@@ -140,10 +145,10 @@ class Team(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        test_team = fivetran.Team("testTeam",
+        test_team = fivetran.Team("test_team",
+            name="test_team",
             description="test_description",
-            role="Account Reviewer",
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+            role="Account Reviewer")
         ```
 
         ## Import
@@ -193,10 +198,10 @@ class Team(pulumi.CustomResource):
         import pulumi
         import footholdtech_fivetran as fivetran
 
-        test_team = fivetran.Team("testTeam",
+        test_team = fivetran.Team("test_team",
+            name="test_team",
             description="test_description",
-            role="Account Reviewer",
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+            role="Account Reviewer")
         ```
 
         ## Import

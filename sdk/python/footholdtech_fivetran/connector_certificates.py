@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -89,7 +94,7 @@ class ConnectorCertificates(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorCertificatesCertificateArgs']]]]] = None,
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCertificatesCertificateArgs', 'ConnectorCertificatesCertificateArgsDict']]]]] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -121,7 +126,7 @@ class ConnectorCertificates(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorCertificatesCertificateArgs']]]]] = None,
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCertificatesCertificateArgs', 'ConnectorCertificatesCertificateArgsDict']]]]] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -146,7 +151,7 @@ class ConnectorCertificates(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorCertificatesCertificateArgs']]]]] = None,
+            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCertificatesCertificateArgs', 'ConnectorCertificatesCertificateArgsDict']]]]] = None,
             connector_id: Optional[pulumi.Input[str]] = None) -> 'ConnectorCertificates':
         """
         Get an existing ConnectorCertificates resource's state with the given name, id, and optional extra

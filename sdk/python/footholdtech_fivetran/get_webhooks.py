@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -74,10 +79,7 @@ def get_webhooks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWeb
     return AwaitableGetWebhooksResult(
         id=pulumi.get(__ret__, 'id'),
         webhooks=pulumi.get(__ret__, 'webhooks'))
-
-
-@_utilities.lift_output_func(get_webhooks)
-def get_webhooks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebhooksResult]:
+def get_webhooks_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhooksResult]:
     """
     This data source returns a list of all webhooks within your Fivetran account.
 
@@ -90,4 +92,9 @@ def get_webhooks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
     webhooks = fivetran.get_webhooks()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult)
+    return __ret__.apply(lambda __response__: GetWebhooksResult(
+        id=pulumi.get(__response__, 'id'),
+        webhooks=pulumi.get(__response__, 'webhooks')))
