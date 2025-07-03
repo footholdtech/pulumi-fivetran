@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
-import * as xyz from "@pulumi/xyz";
+import * as fivetran from "@pulumi/fivetran";
 
-const resource = new xyz.Resource("Resource", { sampleAttribute: "attr" });
+const resource = new fivetran.Resource("Resource", { sampleAttribute: "attr" });
 
 export const sampleAttribute = resource.sampleAttribute;
