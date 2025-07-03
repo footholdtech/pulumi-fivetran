@@ -22,13 +22,13 @@ import (
 	_ "embed"
 
 	"github.com/fivetran/terraform-provider-fivetran/fivetran/framework"
-	"github.com/footholdtech/pulumi-fivetran/provider/pkg/version"
-
 	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+
+	"github.com/footholdtech/pulumi-fivetran/provider/pkg/version"
 )
 
 // all of the token components used below.
