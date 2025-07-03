@@ -28,6 +28,6 @@ import (
 var schema []byte
 
 func main() {
-    meta := tfbridge.ProviderMetadata{PackageSchema: schema}
+	meta := tfbridge.ProviderMetadata{PackageSchema: schema}
 	tfbridge.Main(context.Background(), "fivetran", fivetran.Provider(), meta)
 }
