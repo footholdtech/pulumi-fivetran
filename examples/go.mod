@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-fivetran/examples
+module github.com/footholdtech/pulumi-fivetran/examples
 
 go 1.22
 
