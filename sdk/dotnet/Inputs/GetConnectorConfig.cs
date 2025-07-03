@@ -156,10 +156,12 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `big_commerce`: API access token of your store.
         /// 	- Service `bitly`: Your Bitly access token.
         /// 	- Service `calabrio`: Your Calabrio access token.
+        /// 	- Service `coalesce`: Your Coalesce access token.
         /// 	- Service `coupa`: Your Coupa access token fetched using client_id and client_secret
         /// 	- Service `deputy`: Your Deputy API access token.
         /// 	- Service `getfeedback`: Your GetFeedback Access token.
         /// 	- Service `gocardless`: Your GoCardless API token.
+        /// 	- Service `higher_logic_vanilla`: Your Higher Logic Vanilla access token.
         /// 	- Service `ironclad`: Your Ironclad access token.
         /// 	- Service `khoros_marketing`: Your Khoros Marketing access token.
         /// 	- Service `kustomer`: Your Kustomer API key.
@@ -168,6 +170,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `leap_crm`: Your Leap CRM access token.
         /// 	- Service `nylas`: Your Nylas access_token.
         /// 	- Service `planhat`: Your Planhat access token.
+        /// 	- Service `poplar`: Your Poplar access token.
         /// 	- Service `rollbar`: Your Rollbar Access Token.
         /// 	- Service `samsara`: Your Samsara API token.
         /// 	- Service `slab`: Your Slab API key.
@@ -281,6 +284,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `fone_dynamics`: Your Fone Dynamics account SID.
+        /// 	- Service `impact_partner`: Your Impact Partner account SID
         /// </summary>
         [Input("accountSid", required: true)]
         public string AccountSid { get; set; } = null!;
@@ -307,7 +311,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `freightview`: Your Freightview Account Type.
+        /// 	- Service `freightview`: Your Freightview account type.
         /// </summary>
         [Input("accountType", required: true)]
         public string AccountType { get; set; } = null!;
@@ -407,6 +411,13 @@ namespace Footholdtech.Fivetran.Inputs
             get => _adminApiKey;
             set => _adminApiKey = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `brivo`: Your Brivo Admin username.
+        /// </summary>
+        [Input("adminUsername", required: true)]
+        public string AdminUsername { get; set; } = null!;
 
         [Input("adobeAnalyticsConfigurations", required: true)]
         private List<Inputs.GetConnectorConfigAdobeAnalyticsConfigurationArgs>? _adobeAnalyticsConfigurations;
@@ -618,6 +629,13 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `webhooks`: HMAC algorithm used for generating the HMAC signature. Supported algorithms  INFER_FROM_HEADER, MD5, SHA_1, SHA_224, SHA_256, SHA_384, SHA_512. Default: SHA_256
+        /// </summary>
+        [Input("algorithm", required: true)]
+        public string Algorithm { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `aurora`: Require TLS through Tunnel
         /// 	- Service `aurora_postgres`: Require TLS through Tunnel
         /// 	- Service `azure_cosmos_for_mongo`: Require TLS
@@ -678,6 +696,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `device_magic`: Your Device Magic API access token.
         /// 	- Service `flywheel_digital`: Your Flywheel Digital API access token.
         /// 	- Service `shopify`: API access token of your custom app.
         /// 	- Service `square`: The Square API access token of your application.
@@ -715,6 +734,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `affinity`: Your Affinity API key.
         /// 	- Service `airtable`: API key of the Airtable account.
         /// 	- Service `algolia`: Your Algolia API key.
+        /// 	- Service `alida`: Your Alida API key.
         /// 	- Service `anvyl`: Your Anvyl API key.
         /// 	- Service `appcues`: Your Appcues API key.
         /// 	- Service `ashby`: Your Ashby API key.
@@ -733,6 +753,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `brave_ads`: Your Brave Ads API key
         /// 	- Service `braze`: Your Braze API Key.
         /// 	- Service `brevo`: Your Brevo API key.
+        /// 	- Service `brivo`: Your Brivo API key.
         /// 	- Service `bubble`: Your Bubble API token.
         /// 	- Service `buildium`: Your Buildium private API key.
         /// 	- Service `callrail`: Your CallRail API key.
@@ -792,6 +813,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `fullstory`: Your Fullstory API key.
         /// 	- Service `gainsight_product_experience`: Your Gainsight Product Experience API key.
         /// 	- Service `gem`: Your Gem API key.
+        /// 	- Service `goldcast`: Your Goldcast API key.
         /// 	- Service `gorgias`: Your Gorgias API key.
         /// 	- Service `greenhouse`: Your Greenhouse API key.
         /// 	- Service `grepsr`: Your Grepsr API Key.
@@ -836,8 +858,10 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `okendo`: Your Okendo API key.
         /// 	- Service `ometria`: Your Ometria API Key.
         /// 	- Service `oncehub`: Your OnceHub API key.
+        /// 	- Service `ordergroove`: Your Ordergroove API key.
         /// 	- Service `ordway`: Your Ordway API key.
         /// 	- Service `ortto`: Your Ortto API key.
+        /// 	- Service `paddle`: Your Paddle API key.
         /// 	- Service `pagerduty`: Your PagerDuty API key.
         /// 	- Service `pandadoc`: Your PandaDoc API key.
         /// 	- Service `papershift`: Your Papershift API Key
@@ -907,6 +931,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `wicked_reports`: Your Wicked Reports API key.
         /// 	- Service `workleap_officevibe`: Your Workleap Officevibe API key.
         /// 	- Service `xsolla`: Your Xsolla API key.
+        /// 	- Service `yext`: Your Yext API key.
         /// 	- Service `yougov_sport`: Your Yougov Sport API key.
         /// 	- Service `zingtree`: Your Zingtree API key.
         /// 	- Service `zip`: Your Zip API key.
@@ -1031,7 +1056,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `aha`: Your Aha! API key.
-        /// 	- Service `aircall`: Your Aircall API Token.
+        /// 	- Service `aircall`: Your Aircall API token.
         /// 	- Service `appsflyer`: API Token for AppsFlyer's PULL API.
         /// 	- Service `awin`: Your Awin API Token.
         /// 	- Service `backbone_plm`: Your Backbone PLM API token.
@@ -1047,6 +1072,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `drip`: Your Drip API Token.
         /// 	- Service `factbird`: Your Factbird API token.
         /// 	- Service `fone_dynamics`: Your Fone Dynamics API token.
+        /// 	- Service `forethought`: Your Forethought API token.
         /// 	- Service `fountain`: Your Fountain API token.
         /// 	- Service `g2`: Your G2 API token.
         /// 	- Service `gladly`: Your Gladly API Token.
@@ -1065,6 +1091,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `pivotal_tracker`: Pivotal Tracker API token.
         /// 	- Service `postmark`: Your Postmark account API token.
         /// 	- Service `productive`: Your Productive API token.
+        /// 	- Service `pylon_support_platform`: Your Pylon Support Platform API token.
         /// 	- Service `qualtrics`: API token of the Qualtrics account.
         /// 	- Service `rakutenadvertising`: Your Rakuten Advertising API token.
         /// 	- Service `recharge`: The Recharge API token.
@@ -1206,6 +1233,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `loopio`: Your Loopio App Key.
         /// 	- Service `servicetitan`: Your ServiceTitan app key.
         /// 	- Service `yotpo`: Your Yotpo App Key
+        /// 	- Service `yotpo_app`: Your Yotpo App key.
         /// </summary>
         public string? AppKey
         {
@@ -1469,12 +1497,29 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `webhooks`: Set if you use HMAC/token-based auth methods. This is used to retrieve a key in headers
+        /// </summary>
+        [Input("authHeaderKey", required: true)]
+        public string AuthHeaderKey { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora`: Database authentication method
         /// 	- Service `aurora_postgres`: Database authentication method
         /// 	- Service `azure_postgres`: Database authentication method
         /// 	- Service `azure_sql_db`: Authentication Method.
         /// 	- Service `azure_sql_managed_db`: Authentication Method.
+        /// 	- Service `google_cloud_mysql`: Database authentication method
         /// 	- Service `google_cloud_postgresql`: Database authentication method
         /// 	- Service `heroku_postgres`: Database authentication method
+        /// 	- Service `magento_mysql`: Database authentication method
+        /// 	- Service `magento_mysql_rds`: Database authentication method
+        /// 	- Service `maria`: Database authentication method
+        /// 	- Service `maria_azure`: Database authentication method
+        /// 	- Service `maria_rds`: Database authentication method
+        /// 	- Service `mysql`: Database authentication method
+        /// 	- Service `mysql_azure`: Database authentication method
+        /// 	- Service `mysql_rds`: Database authentication method
         /// 	- Service `postgres`: Database authentication method
         /// 	- Service `postgres_rds`: Database authentication method
         /// 	- Service `sql_server_hva`: Authentication Method
@@ -1493,11 +1538,25 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("authMode", required: true)]
         public string AuthMode { get; set; } = null!;
 
+        [Input("authSecret", required: true)]
+        private string? _authSecret;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `webhooks`: The secret you want to use for HMAC/token-based auth methods
+        /// </summary>
+        public string? AuthSecret
+        {
+            get => _authSecret;
+            set => _authSecret = value;
+        }
+
         [Input("authToken", required: true)]
         private string? _authToken;
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `impact_partner`: Your Impact Partner auth token
         /// 	- Service `zonka_feedback`: Your Zonka Feedback auth token.
         /// </summary>
         public string? AuthToken
@@ -1565,10 +1624,18 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `zendesk`: Limit of the Historical Sync Time for selected tables
+        /// 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
+        /// 	- Service `zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD
         /// </summary>
         [Input("backwardSyncLimit", required: true)]
         public string BackwardSyncLimit { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+        /// </summary>
+        [Input("backwardSyncLimitDate", required: true)]
+        public string BackwardSyncLimitDate { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -1599,6 +1666,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `boostr`: Your Boostr base URL.
         /// 	- Service `brex`: Your Brex Base URL
         /// 	- Service `centra`: Your Centra base URL.
+        /// 	- Service `coalesce`: Your Coalesce base URL.
         /// 	- Service `cornerstone`: Your Cornerstone base URL.
         /// 	- Service `culture_amp`: Your Culture Amp base URL.
         /// 	- Service `datadog`: Your Datadog base url.
@@ -1607,6 +1675,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `financial_force`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
         /// 	- Service `freshsales`: Your Freshsales product.
         /// 	- Service `gongio`: Your Gong API Base URL.
+        /// 	- Service `higher_logic_vanilla`: Your Higher Logic Vanilla base URL.
         /// 	- Service `ironclad`: Your Ironclad base url.
         /// 	- Service `jotform`: Your Jotform base URL.
         /// 	- Service `mailgun`: Your Mailgun base URL.
@@ -1627,7 +1696,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `ada`: Your Ada API Access Token.
+        /// 	- Service `ada`: Your Ada API key.
         /// 	- Service `crowddev`: Your crowd.dev Auth Token.
         /// 	- Service `customerio`: Your Customer.io App API Key.
         /// 	- Service `freshchat`: Your Freshchat API Token.
@@ -1782,6 +1851,19 @@ namespace Footholdtech.Fivetran.Inputs
             set => _certificate = value;
         }
 
+        [Input("certificateId", required: true)]
+        private string? _certificateId;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `netsuite_suiteanalytics`: Certificate Id
+        /// </summary>
+        public string? CertificateId
+        {
+            get => _certificateId;
+            set => _certificateId = value;
+        }
+
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `facebook`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#clickattributionwindow).
@@ -1846,7 +1928,9 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `bing_webmaster_tools`: Your Bing Webmaster Tools client ID.
         /// 	- Service `brightcove`: Your Brightcove client ID.
         /// 	- Service `brightpearl`: Your Brightpearl client ID.
+        /// 	- Service `brivo`: Your Brivo client ID.
         /// 	- Service `buildium`: Your Buildium API client ID.
+        /// 	- Service `cabcharge`: Your Cabcharge client ID.
         /// 	- Service `canvas_by_instructure`: Your Canvas by Instructure client ID.
         /// 	- Service `canvas_data_2_by_instructure`: Your Canvas Data 2 by Instructure client ID.
         /// 	- Service `castor_edc`: Your Castor EDC client Id.
@@ -1871,6 +1955,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `genesys`: Your Genesys client ID.
         /// 	- Service `hana_sap_hva_ecc_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
         /// 	- Service `hana_sap_hva_s4_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
+        /// 	- Service `helpdesk`: Your HelpDesk client ID.
         /// 	- Service `hilti_ontrack`: Your Hilti On!Track client ID.
         /// 	- Service `ilevel`: Your iLevel Client ID.
         /// 	- Service `instructure`: Your Instructure client ID.
@@ -1879,12 +1964,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `jama_software`: Your Jama Software client ID.
         /// 	- Service `jibble`: Your Jibble client ID.
         /// 	- Service `khoros_communities`: Your Khoros Communities client ID.
+        /// 	- Service `learn_amp`: Your Learn Amp client ID.
         /// 	- Service `looker_source`: Your Looker Client ID.
         /// 	- Service `marketo`: Marketo REST API Client Id.
         /// 	- Service `medallia`: Medallia Client ID
         /// 	- Service `microsoft_entra_id`: Your Microsoft Entra ID Client ID.
         /// 	- Service `microsoft_power_bi`: Your Microsoft Power BI client ID.
-        /// 	- Service `microsoft_teams`: Your Microsoft Teams Client ID.
+        /// 	- Service `microsoft_teams`: Your Microsoft Teams client ID.
         /// 	- Service `navan`: Your Navan client ID.
         /// 	- Service `nice`: Your NICE client ID.
         /// 	- Service `on24`: Your ON24 client ID.
@@ -1909,6 +1995,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `servicetitan`: Your ServiceTitan client ID.
         /// 	- Service `sharetribe`: Your Sharetribe client ID.
         /// 	- Service `shipnetwork`: Your ShipNetwork client ID.
+        /// 	- Service `showpad`: Your Showpad client ID.
         /// 	- Service `sigma_computing_source`: Your Sigma Computing client ID.
         /// 	- Service `skillstx`: Your SkillsTX client ID.
         /// 	- Service `skimlinks`: Your Skimlinks client ID.
@@ -1926,18 +2013,21 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `tremendous`: Your Tremendous client ID.
         /// 	- Service `tymeshift`: Your Tymeshift email.
         /// 	- Service `udemy_business`: Your Udemy Business client ID.
+        /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management client ID.
         /// 	- Service `vimeo`: Your Vimeo client ID.
         /// 	- Service `visma`: Your Visma client ID.
         /// 	- Service `vonage_contact_center`: Your Vonage Contact Center client ID.
         /// 	- Service `walmart_marketplace`: Your Walmart Marketplace client ID.
         /// 	- Service `xero`: your clientId
         /// 	- Service `xray`: Your Xray Client ID.
+        /// 	- Service `yahoo_display_ads_on_yahoo_japan`: Your Yahoo Display Ads on Yahoo Japan client ID.
         /// 	- Service `yougov_sport`: Your Yougov Sport client ID.
         /// 	- Service `zendesk_chat`: Your Zendesk client ID.
         /// 	- Service `zoho_books`: Your Zoho Books Client ID.
         /// 	- Service `zoho_campaigns`: Your Zoho Campaigns Client ID.
         /// 	- Service `zoho_desk`: Your Zoho Desk Client Id.
         /// 	- Service `zoho_inventory`: Your Zoho Inventory client ID.
+        /// 	- Service `zoho_recruit`: Your Zoho Recruit client ID.
         /// 	- Service `zuora`: Zuora Client ID.
         /// 	- Service `zuora_sandbox`: Zuora Client ID.
         /// </summary>
@@ -1988,10 +2078,20 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `aurora`: Client Private Key in .pem format.
         /// 	- Service `aurora_postgres`: Client Private Key in .pem format.
         /// 	- Service `azure_postgres`: Client Private Key in .pem format.
+        /// 	- Service `google_cloud_mysql`: Client Private Key in .pem format.
         /// 	- Service `google_cloud_postgresql`: Client Private Key in .pem format.
         /// 	- Service `heroku_postgres`: Client Private Key in .pem format.
+        /// 	- Service `magento_mysql`: Client Private Key in .pem format.
+        /// 	- Service `magento_mysql_rds`: Client Private Key in .pem format.
+        /// 	- Service `maria`: Client Private Key in .pem format.
+        /// 	- Service `maria_azure`: Client Private Key in .pem format.
+        /// 	- Service `maria_rds`: Client Private Key in .pem format.
+        /// 	- Service `mysql`: Client Private Key in .pem format.
+        /// 	- Service `mysql_azure`: Client Private Key in .pem format.
+        /// 	- Service `mysql_rds`: Client Private Key in .pem format.
         /// 	- Service `postgres`: Client Private Key in .pem format.
         /// 	- Service `postgres_rds`: Client Private Key in .pem format.
         /// </summary>
@@ -2003,10 +2103,20 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `aurora`: Client Certificate in .pem format.
         /// 	- Service `aurora_postgres`: Client Certificate in .pem format.
         /// 	- Service `azure_postgres`: Client Certificate in .pem format.
+        /// 	- Service `google_cloud_mysql`: Client Certificate in .pem format.
         /// 	- Service `google_cloud_postgresql`: Client Certificate in .pem format.
         /// 	- Service `heroku_postgres`: Client Certificate in .pem format.
+        /// 	- Service `magento_mysql`: Client Certificate in .pem format.
+        /// 	- Service `magento_mysql_rds`: Client Certificate in .pem format.
+        /// 	- Service `maria`: Client Certificate in .pem format.
+        /// 	- Service `maria_azure`: Client Certificate in .pem format.
+        /// 	- Service `maria_rds`: Client Certificate in .pem format.
+        /// 	- Service `mysql`: Client Certificate in .pem format.
+        /// 	- Service `mysql_azure`: Client Certificate in .pem format.
+        /// 	- Service `mysql_rds`: Client Certificate in .pem format.
         /// 	- Service `postgres`: Client Certificate in .pem format.
         /// 	- Service `postgres_rds`: Client Certificate in .pem format.
         /// </summary>
@@ -2031,8 +2141,9 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `bing_webmaster_tools`: Your Bing Webmaster Tools client secret.
         /// 	- Service `brightcove`: Your Brightcove client secret.
         /// 	- Service `brightpearl`: Your Brightpearl client secret.
+        /// 	- Service `brivo`: Your Brivo client secret.
         /// 	- Service `canvas_by_instructure`: Your Canvas by Instructure client secret.
-        /// 	- Service `castor_edc`: Your Castor EDC Client Secret.
+        /// 	- Service `castor_edc`: Your Castor EDC client secret.
         /// 	- Service `clazar`: Your Clazar client secret.
         /// 	- Service `cloudbeds`: Your Cloudbeds client secret.
         /// 	- Service `commercetools`: Your commercetools client secret.
@@ -2052,6 +2163,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `flexport`: The Flexport API Secret.
         /// 	- Service `formstack`: Your Formstack client secret.
         /// 	- Service `genesys`: Your Genesys client secret.
+        /// 	- Service `helpdesk`: Your HelpDesk client secret.
         /// 	- Service `hilti_ontrack`: Your Hilti On!Track client secret.
         /// 	- Service `ilevel`: Your iLevel Client Secret.
         /// 	- Service `instructure`: Your Instructure client secret.
@@ -2059,12 +2171,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `ironclad`: Your Ironclad client secret.
         /// 	- Service `jama_software`: Your Jama Software client secret.
         /// 	- Service `jibble`: Your Jibble client secret.
+        /// 	- Service `learn_amp`: Your Learn Amp client secret.
         /// 	- Service `looker_source`: Your Looker Client Secret.
         /// 	- Service `marketo`: Marketo REST API Client Secret.
         /// 	- Service `medallia`: Medallia Client Secret key
         /// 	- Service `microsoft_entra_id`: Your Microsoft Entra ID Client Secret.
         /// 	- Service `microsoft_power_bi`: Your Microsoft Power BI client secret.
-        /// 	- Service `microsoft_teams`: Your Microsoft Teams Client Secret.
+        /// 	- Service `microsoft_teams`: Your Microsoft Teams client secret.
         /// 	- Service `navan`: Your Navan client secret.
         /// 	- Service `nice`: Your NICE client secret.
         /// 	- Service `paychex`: Your Paychex client secret.
@@ -2084,6 +2197,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `servicenow`: ServiceNow Client Secret.
         /// 	- Service `servicetitan`: Your ServiceTitan secret key.
         /// 	- Service `sharetribe`: Your Sharetribe client secret.
+        /// 	- Service `showpad`: Your Showpad client secret.
         /// 	- Service `sigma_computing_source`: Your Sigma Computing client secret.
         /// 	- Service `skillstx`: Your SkillsTX client secret.
         /// 	- Service `skimlinks`: Your Skimlinks client secret.
@@ -2102,17 +2216,20 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `tremendous`: Your Tremendous client secret.
         /// 	- Service `tymeshift`: Your Tymeshift password.
         /// 	- Service `udemy_business`: Your Udemy Business client secret.
+        /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management client secret.
         /// 	- Service `vimeo`: Your Vimeo client secret.
         /// 	- Service `visma`: Your Visma client secret.
         /// 	- Service `vonage_contact_center`: Your Vonage Contact Center client secret.
         /// 	- Service `walmart_marketplace`: Your Walmart Marketplace client secret.
         /// 	- Service `xero`: your clientSecret
         /// 	- Service `xray`: Your Xray Client Secret.
+        /// 	- Service `yahoo_display_ads_on_yahoo_japan`: Your Yahoo Display Ads on Yahoo Japan client secret.
         /// 	- Service `zendesk_chat`: Your Zendesk client secret.
         /// 	- Service `zoho_books`: Your Zoho Books Client Secret.
         /// 	- Service `zoho_campaigns`: Your Zoho Campaigns Client Secret.
         /// 	- Service `zoho_desk`: Your Zoho Desk Client secret.
         /// 	- Service `zoho_inventory`: Your Zoho Inventory client secret.
+        /// 	- Service `zoho_recruit`: Your Zoho Recruit client secret.
         /// 	- Service `zuora`: Zuora Client Secret.
         /// 	- Service `zuora_sandbox`: Zuora Client Secret.
         /// </summary>
@@ -2148,6 +2265,13 @@ namespace Footholdtech.Fivetran.Inputs
             get => _columns ?? (_columns = new List<string>());
             set => _columns = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `alida`: Your Alida community API key name.
+        /// </summary>
+        [Input("communityApiKeyName", required: true)]
+        public string CommunityApiKeyName { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -2432,6 +2556,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `netsuite_suiteanalytics`: Consumer Key
+        /// 	- Service `odoo`: Your Odoo consumer key.
         /// 	- Service `twitter`: API Key of your app
         /// 	- Service `twitter_ads`: The Twitter App consumer key.
         /// 	- Service `woocommerce`: Your WooCommerce Consumer key.
@@ -2455,6 +2580,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `netsuite_suiteanalytics`: Consumer Secret
+        /// 	- Service `odoo`: Your Odoo consumer secret.
         /// 	- Service `twitter`: API Secret of your app
         /// 	- Service `twitter_ads`: The Twitter App consumer secret.
         /// 	- Service `woocommerce`: Your WooCommerce Consumer secret.
@@ -2549,6 +2675,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `coalesce`: Your Coalesce Custom Base URL.
         /// 	- Service `datadog`: Your Datadog custom base url.
         /// 	- Service `deposco`: Your Deposco custom base URL.
         /// </summary>
@@ -2705,6 +2832,19 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("dataCenterId", required: true)]
         public string DataCenterId { get; set; } = null!;
+
+        [Input("dataModelPathAliasLists", required: true)]
+        private List<Inputs.GetConnectorConfigDataModelPathAliasListArgs>? _dataModelPathAliasLists;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `oracle_business_intelligence_publisher`: Data Model Paths (Optional)
+        /// </summary>
+        public List<Inputs.GetConnectorConfigDataModelPathAliasListArgs> DataModelPathAliasLists
+        {
+            get => _dataModelPathAliasLists ?? (_dataModelPathAliasLists = new List<Inputs.GetConnectorConfigDataModelPathAliasListArgs>());
+            set => _dataModelPathAliasLists = value;
+        }
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -2874,6 +3014,13 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `qualtrics`: Can be used to set the distributions fetch window for incremental sync. Fetch window cannot be lesser than 60 days.
+        /// </summary>
+        [Input("distributionIncrementalFetchWindowDays", required: true)]
+        public int DistributionIncrementalFetchWindowDays { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `auth0`: Your Auth0 domain.
         /// 	- Service `bubble`: Your Bubble app name or domain name.
         /// 	- Service `confluence`: Your Confluence domain.
@@ -2981,6 +3128,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `cabcharge`: Your Cabcharge email ID.
         /// 	- Service `ordway`: Your Ordway user email ID.
         /// 	- Service `planful`: Your Planful email ID.
         /// </summary>
@@ -3119,6 +3267,8 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `invoiced`: Your Invoiced environment.
         /// 	- Service `jibble`: Your Jibble environment.
         /// 	- Service `lucca`: Your Lucca environment.
+        /// 	- Service `ordergroove`: Your Ordergroove environment.
+        /// 	- Service `paddle`: Your Paddle environment.
         /// 	- Service `procore`: Your Procore account environment.
         /// 	- Service `reltio`: Your Reltio environment.
         /// 	- Service `servicetitan`: Your ServiceTitan environment.
@@ -3259,6 +3409,23 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("fileType", required: true)]
         public string FileType { get; set; } = null!;
+
+        [Input("files", required: true)]
+        private List<Inputs.GetConnectorConfigFileArgs>? _files;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `azure_blob_storage`: Mapped file name patterns to a destination table.
+        /// 	- Service `gcs`: Mapped file name patterns to a destination table.
+        /// 	- Service `google_drive`: Mapped file name patterns to a destination table.
+        /// 	- Service `s3`: Mapped file name patterns to a destination table.
+        /// 	- Service `sftp`: Mapped file name patterns to a destination table.
+        /// </summary>
+        public List<Inputs.GetConnectorConfigFileArgs> Files
+        {
+            get => _files ?? (_files = new List<Inputs.GetConnectorConfigFileArgs>());
+            set => _files = value;
+        }
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -3498,7 +3665,9 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `hubspot`: Used to configure Historical sync timeframe for selected tables
         /// 	- Service `rokt`: Your Rokt historical sync time frame.
+        /// 	- Service `shopify`: Used to configure Historical sync timeframe for selected tables
         /// 	- Service `skimlinks`: Your Skimlinks Historical sync time frame.
         /// 	- Service `vimeo`: Your Vimeo Historical sync time frame.
         /// 	- Service `zendesk`: Used to configure Historical sync timeframe for selected tables
@@ -3589,6 +3758,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `coassemble`: Your Coassemble Hostname.
         /// 	- Service `datadog`: Your Datadog host name.
+        /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management hostname.
         /// </summary>
         [Input("hostName", required: true)]
         public string HostName { get; set; } = null!;
@@ -4269,6 +4439,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adobe_analytics`: Organization ID from the Service Account (JWT) credentials of your Adobe Project.
+        /// 	- Service `device_magic`: Your Device Magic organization ID.
         /// 	- Service `integrate`: Your Integrate organization ID.
         /// 	- Service `megaphone`: Your Megaphone organization ID.
         /// 	- Service `productive`: Your Productive Organization ID.
@@ -4421,6 +4592,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `absorb_lms`: Your Absorb LMS password.
         /// 	- Service `adobe_commerce`: Your Adobe Commerce password.
         /// 	- Service `akeneo`: Your Akeneo password.
+        /// 	- Service `alida`: Your Alida client secret.
         /// 	- Service `anaplan`: Your Anaplan password. Must be populated if `auth_mode` is set to `Basic`.
         /// 	- Service `appfigures`: Your Appfigures Password.
         /// 	- Service `aurora`: The user's password.
@@ -4430,6 +4602,8 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `azure_sql_db`: The user's password.
         /// 	- Service `azure_sql_managed_db`: The user's password.
         /// 	- Service `boostr`: Your Boostr password.
+        /// 	- Service `brivo`: Your Brivo password.
+        /// 	- Service `cabcharge`: Your Cabcharge password.
         /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce Password.
         /// 	- Service `cin7`: Your Cin7 API Key.
         /// 	- Service `clarity`: The user's password.
@@ -4531,6 +4705,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `the_trade_desk`: The Trade Desk password. It is a part of the login credentials.
         /// 	- Service `toggl_track`: Your Toggl Track Password
         /// 	- Service `ukg_pro`: Your UKG Pro password.
+        /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management password.
         /// 	- Service `unicommerce`: Your uniware login password.
         /// 	- Service `upland`: Your Upland Software Password.
         /// 	- Service `veevavault`: Your Veeva Vault password.
@@ -4892,6 +5067,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `apple_search_ads`: The contents of your secret key file. Must be populated if `is_auth2_enabled` is set to `false`.
         /// 	- Service `braintree`: The contents of your secret key file.
         /// 	- Service `braintree_sandbox`: The contents of your secret key file.
+        /// 	- Service `netsuite_suiteanalytics`: Private Key
         /// 	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud private key.
         /// 	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud private key.
         /// 	- Service `oracle_fusion_cloud_apps_hcm`: The Oracle Fusion Cloud private key.
@@ -5220,6 +5396,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `algolia`: Your Algolia analytics region.
+        /// 	- Service `alida`: Your Alida region.
         /// 	- Service `amazon_ads`: The region used by the Amazon Ads profile.
         /// 	- Service `amazon_selling_partner`: The region used by the Amazon Selling Partner profile.
         /// 	- Service `anaplan`: Your Anaplan account region
@@ -5250,10 +5427,12 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `vonage_contact_center`: Your Vonage Contact Center region.
         /// 	- Service `wasabi_cloud_storage`: The Wasabi Cloud Storage bucket region. Required for connector creation. Default value: `US_EAST_1`.
         /// 	- Service `workday_strategic_sourcing`: Your Workday Strategic Sourcing Region.
+        /// 	- Service `xray`: Your Xray region.
         /// 	- Service `zoho_books`: Your Zoho Books application host region.
         /// 	- Service `zoho_campaigns`: Your Zoho Campaigns application host region.
         /// 	- Service `zoho_desk`: Your Zoho Desk domain.
         /// 	- Service `zoho_inventory`: Your Zoho Inventory application host region.
+        /// 	- Service `zoho_recruit`: Your Zoho Recruit region.
         /// </summary>
         [Input("region", required: true)]
         public string Region { get; set; } = null!;
@@ -6038,7 +6217,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `castor_edc`: Your Castor EDC Server.
+        /// 	- Service `castor_edc`: Your Castor EDC server.
         /// </summary>
         [Input("server", required: true)]
         public string Server { get; set; } = null!;
@@ -6280,6 +6459,13 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `webhooks`: This is used in HMAC auth method to decode and verify the signature. Supported encodings BASE64 and HEXA_DECIMAL. Default: BASE64
+        /// </summary>
+        [Input("signatureEncoding", required: true)]
+        public string SignatureEncoding { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `azure_blob_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         /// 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         /// 	- Service `gcs`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
@@ -6458,6 +6644,19 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("storeId", required: true)]
         public string StoreId { get; set; } = null!;
 
+        [Input("subCollections", required: true)]
+        private List<string>? _subCollections;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `firebase`: List of nested collections to sync. Only specified subCollections can be synced.
+        /// </summary>
+        public List<string> SubCollections
+        {
+            get => _subCollections ?? (_subCollections = new List<string>());
+            set => _subCollections = value;
+        }
+
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `absorb_lms`: Your Absorb LMS subdomain.
@@ -6493,6 +6692,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `gainsight_product_experience`: Your Gainsight Product Experience subdomain.
         /// 	- Service `genesys`: Your Genesys subdomain.
         /// 	- Service `green_power_monitor`: Your GreenPowerMonitor subdomain.
+        /// 	- Service `heartland_retail_pos`: Your Heartland Retail POS subdomain.
         /// 	- Service `infobip`: Your Infobip sub_domain.
         /// 	- Service `insightly`: Your company's Insightly subdomain name.
         /// 	- Service `instructure`: The Sub domain in which your Instructure account is hosted.
@@ -6507,6 +6707,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `myosh`: Your myosh subdomain.
         /// 	- Service `namely`: Your Namely subdomain.
         /// 	- Service `nylas`: Your Nylas subdomain.
+        /// 	- Service `odoo`: Your Odoo subdomain.
         /// 	- Service `okta`: Your Okta subdomain.
         /// 	- Service `picqer`: Your Picqer subdomain.
         /// 	- Service `pinpoint`: Your Pinpoint sub domain name.
@@ -6548,6 +6749,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `freshservice`: Your company's freshservice subdomain (usually **company**.freshservice.com).
         /// 	- Service `freshsuccess`: Your Freshsuccess subdomain.
         /// 	- Service `gorgias`: Your Gorgias subdomain.
+        /// 	- Service `hex`: Your Hex subdomain.
         /// 	- Service `jama_software`: Your Jama Software subdomain.
         /// 	- Service `klarna`: Your Klarna subdomain.
         /// 	- Service `learnupon`: Your Learnupon subdomain.
@@ -6556,11 +6758,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `packiyo`: Your Packiyo subdomain.
         /// 	- Service `qmatic_data_connect`: Your Qmatic Data Connect subdomain.
         /// 	- Service `sana`: Your Sana subdomain.
+        /// 	- Service `showpad`: Your Showpad subdomain.
         /// 	- Service `skillstx`: Your SkillsTX subdomain.
         /// 	- Service `smarthr`: Your SmartHR subdomain.
         /// 	- Service `sonarqube`: Your Sonarqube subdomain.
         /// 	- Service `toast`: Your Toast domain.
         /// 	- Service `vts`: Your VTS Subdomain.
+        /// 	- Service `yext`: Your Yext subdomain. 
         /// 	- Service `zendesk_chat`: Your Zendesk domain.
         /// </summary>
         [Input("subdomain", required: true)]
@@ -6585,6 +6789,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `cabcharge`: Your Cabcharge subscription key.
         /// 	- Service `dsv`: Your DSV subscription key.
         /// </summary>
         public string? SubscriptionKey
@@ -7555,7 +7760,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `coassemble`: Your Coassemble user ID.
-        /// 	- Service `gmail`: Your Gmail user ID.
+        /// 	- Service `gmail`: (DEPRECATED) Your Gmail user ID.
         /// 	- Service `hibob`: Your HiBob Service User Token.
         /// 	- Service `marketo`: Marketo SOAP API User Id.
         /// 	- Service `okendo`: Your Okendo user ID.
@@ -7617,6 +7822,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `absorb_lms`: Your Absorb LMS username.
         /// 	- Service `adobe_commerce`: Your Adobe Commerce username.
         /// 	- Service `akeneo`: Your Akeneo username.
+        /// 	- Service `alida`: Your Alida client ID.
         /// 	- Service `anaplan`: Your Anaplan user ID. Must be populated if `auth_mode` is set to `Basic`.
         /// 	- Service `appfigures`: Your Appfigures Username.
         /// 	- Service `aveva_pi`: Username for the user to authenticate as with the AF Server
@@ -7673,6 +7879,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `teamwork`: Your Teamwork username.
         /// 	- Service `testrail`: Your TestRail username.
         /// 	- Service `ukg_pro`: Your UKG Pro username.
+        /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management username.
         /// 	- Service `unicommerce`: Your uniware login username.
         /// 	- Service `upland`: Your Upland Software Username.
         /// 	- Service `veevavault`: Your Veeva Vault username.
@@ -7798,6 +8005,19 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("workspaceSchema", required: true)]
         public string WorkspaceSchema { get; set; } = null!;
+
+        [Input("workspaceToken", required: true)]
+        private string? _workspaceToken;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `hex`: Your Hex workspace token.
+        /// </summary>
+        public string? WorkspaceToken
+        {
+            get => _workspaceToken;
+            set => _workspaceToken = value;
+        }
 
         [Input("wsCertificate", required: true)]
         private string? _wsCertificate;

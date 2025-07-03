@@ -243,8 +243,18 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("databricksConnectionType")]
         public Input<string>? DatabricksConnectionType { get; set; }
 
+        [Input("enableExternalStorageForUnstructuredFiles")]
+        public Input<bool>? EnableExternalStorageForUnstructuredFiles { get; set; }
+
         [Input("enableRemoteExecution")]
         public Input<bool>? EnableRemoteExecution { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `confluent_cloud_wh`: Populate all tables in a single topic.
+        /// </summary>
+        [Input("enableSingleTopic")]
+        public Input<bool>? EnableSingleTopic { get; set; }
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -262,6 +272,15 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("externalLocation")]
         public Input<string>? ExternalLocation { get; set; }
+
+        [Input("externalStageStorageProvider")]
+        public Input<string>? ExternalStageStorageProvider { get; set; }
+
+        [Input("externalStorageIntegration")]
+        public Input<string>? ExternalStorageIntegration { get; set; }
+
+        [Input("externalStorageParentFolderUri")]
+        public Input<string>? ExternalStorageParentFolderUri { get; set; }
 
         [Input("fivetranGlueRoleArn")]
         public Input<string>? FivetranGlueRoleArn { get; set; }

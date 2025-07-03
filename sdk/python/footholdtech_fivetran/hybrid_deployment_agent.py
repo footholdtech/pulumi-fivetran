@@ -21,17 +21,20 @@ class HybridDeploymentAgentArgs:
     def __init__(__self__, *,
                  auth_type: pulumi.Input[str],
                  display_name: pulumi.Input[str],
+                 env_type: pulumi.Input[str],
                  group_id: pulumi.Input[str],
                  authentication_counter: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a HybridDeploymentAgent resource.
         :param pulumi.Input[str] auth_type: Type of authentification. Possible values `AUTO`,`MANUAL`
         :param pulumi.Input[str] display_name: The unique name for the hybrid deployment agent.
+        :param pulumi.Input[str] env_type: Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[int] authentication_counter: Determines whether re-authentication needs to be performed.
         """
         pulumi.set(__self__, "auth_type", auth_type)
         pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "env_type", env_type)
         pulumi.set(__self__, "group_id", group_id)
         if authentication_counter is not None:
             pulumi.set(__self__, "authentication_counter", authentication_counter)
@@ -59,6 +62,18 @@ class HybridDeploymentAgentArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="envType")
+    def env_type(self) -> pulumi.Input[str]:
+        """
+        Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+        """
+        return pulumi.get(self, "env_type")
+
+    @env_type.setter
+    def env_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "env_type", value)
 
     @property
     @pulumi.getter(name="groupId")
@@ -94,6 +109,7 @@ class _HybridDeploymentAgentState:
                  config_json: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  docker_compose_yaml: Optional[pulumi.Input[str]] = None,
+                 env_type: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  registered_at: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
@@ -105,6 +121,7 @@ class _HybridDeploymentAgentState:
         :param pulumi.Input[str] config_json: Base64-encoded content of the config.json file.
         :param pulumi.Input[str] display_name: The unique name for the hybrid deployment agent.
         :param pulumi.Input[str] docker_compose_yaml: Base64-encoded content of the compose file for the chosen containerization type.
+        :param pulumi.Input[str] env_type: Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[str] registered_at: The timestamp of the time the hybrid deployment agent was created in your account.
         :param pulumi.Input[str] token: Base64 encoded content of token.
@@ -121,6 +138,8 @@ class _HybridDeploymentAgentState:
             pulumi.set(__self__, "display_name", display_name)
         if docker_compose_yaml is not None:
             pulumi.set(__self__, "docker_compose_yaml", docker_compose_yaml)
+        if env_type is not None:
+            pulumi.set(__self__, "env_type", env_type)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if registered_at is not None:
@@ -201,6 +220,18 @@ class _HybridDeploymentAgentState:
         pulumi.set(self, "docker_compose_yaml", value)
 
     @property
+    @pulumi.getter(name="envType")
+    def env_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+        """
+        return pulumi.get(self, "env_type")
+
+    @env_type.setter
+    def env_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "env_type", value)
+
+    @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -245,6 +276,7 @@ class HybridDeploymentAgent(pulumi.CustomResource):
                  auth_type: Optional[pulumi.Input[str]] = None,
                  authentication_counter: Optional[pulumi.Input[int]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 env_type: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -267,6 +299,7 @@ class HybridDeploymentAgent(pulumi.CustomResource):
         :param pulumi.Input[str] auth_type: Type of authentification. Possible values `AUTO`,`MANUAL`
         :param pulumi.Input[int] authentication_counter: Determines whether re-authentication needs to be performed.
         :param pulumi.Input[str] display_name: The unique name for the hybrid deployment agent.
+        :param pulumi.Input[str] env_type: Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         """
         ...
@@ -308,6 +341,7 @@ class HybridDeploymentAgent(pulumi.CustomResource):
                  auth_type: Optional[pulumi.Input[str]] = None,
                  authentication_counter: Optional[pulumi.Input[int]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 env_type: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -325,6 +359,9 @@ class HybridDeploymentAgent(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if env_type is None and not opts.urn:
+                raise TypeError("Missing required property 'env_type'")
+            __props__.__dict__["env_type"] = env_type
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
@@ -349,6 +386,7 @@ class HybridDeploymentAgent(pulumi.CustomResource):
             config_json: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             docker_compose_yaml: Optional[pulumi.Input[str]] = None,
+            env_type: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             registered_at: Optional[pulumi.Input[str]] = None,
             token: Optional[pulumi.Input[str]] = None) -> 'HybridDeploymentAgent':
@@ -365,6 +403,7 @@ class HybridDeploymentAgent(pulumi.CustomResource):
         :param pulumi.Input[str] config_json: Base64-encoded content of the config.json file.
         :param pulumi.Input[str] display_name: The unique name for the hybrid deployment agent.
         :param pulumi.Input[str] docker_compose_yaml: Base64-encoded content of the compose file for the chosen containerization type.
+        :param pulumi.Input[str] env_type: Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[str] registered_at: The timestamp of the time the hybrid deployment agent was created in your account.
         :param pulumi.Input[str] token: Base64 encoded content of token.
@@ -379,6 +418,7 @@ class HybridDeploymentAgent(pulumi.CustomResource):
         __props__.__dict__["config_json"] = config_json
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["docker_compose_yaml"] = docker_compose_yaml
+        __props__.__dict__["env_type"] = env_type
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["registered_at"] = registered_at
         __props__.__dict__["token"] = token
@@ -431,6 +471,14 @@ class HybridDeploymentAgent(pulumi.CustomResource):
         Base64-encoded content of the compose file for the chosen containerization type.
         """
         return pulumi.get(self, "docker_compose_yaml")
+
+    @property
+    @pulumi.getter(name="envType")
+    def env_type(self) -> pulumi.Output[str]:
+        """
+        Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+        """
+        return pulumi.get(self, "env_type")
 
     @property
     @pulumi.getter(name="groupId")

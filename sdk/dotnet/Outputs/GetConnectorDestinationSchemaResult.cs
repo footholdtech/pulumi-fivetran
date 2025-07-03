@@ -26,6 +26,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// The table name unique within the schema to which connector will sync the data. Required for connector creation.
         /// </summary>
         public readonly string Table;
+        /// <summary>
+        /// Table group name.
+        /// </summary>
+        public readonly string TableGroupName;
 
         [OutputConstructor]
         private GetConnectorDestinationSchemaResult(
@@ -33,11 +37,14 @@ namespace Footholdtech.Fivetran.Outputs
 
             string prefix,
 
-            string table)
+            string table,
+
+            string tableGroupName)
         {
             Name = name;
             Prefix = prefix;
             Table = table;
+            TableGroupName = tableGroupName;
         }
     }
 }

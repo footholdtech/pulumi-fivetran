@@ -73,6 +73,12 @@ namespace Footholdtech.Fivetran
         public Output<string> DockerComposeYaml { get; private set; } = null!;
 
         /// <summary>
+        /// Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+        /// </summary>
+        [Output("envType")]
+        public Output<string> EnvType { get; private set; } = null!;
+
+        /// <summary>
         /// The unique identifier for the Group within the Fivetran system.
         /// </summary>
         [Output("groupId")]
@@ -156,6 +162,12 @@ namespace Footholdtech.Fivetran
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+        /// </summary>
+        [Input("envType", required: true)]
+        public Input<string> EnvType { get; set; } = null!;
+
+        /// <summary>
         /// The unique identifier for the Group within the Fivetran system.
         /// </summary>
         [Input("groupId", required: true)]
@@ -204,6 +216,12 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Input("dockerComposeYaml")]
         public Input<string>? DockerComposeYaml { get; set; }
+
+        /// <summary>
+        /// Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
+        /// </summary>
+        [Input("envType")]
+        public Input<string>? EnvType { get; set; }
 
         /// <summary>
         /// The unique identifier for the Group within the Fivetran system.

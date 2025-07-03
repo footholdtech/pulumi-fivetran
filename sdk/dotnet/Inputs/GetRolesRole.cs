@@ -20,16 +20,28 @@ namespace Footholdtech.Fivetran.Inputs
         public string Description { get; set; } = null!;
 
         /// <summary>
-        /// TypeBool
+        /// Defines whether the role is standard or custom
         /// </summary>
         [Input("isCustom", required: true)]
         public bool IsCustom { get; set; }
+
+        /// <summary>
+        /// Defines whether the role is deprecated
+        /// </summary>
+        [Input("isDeprecated", required: true)]
+        public bool IsDeprecated { get; set; }
 
         /// <summary>
         /// The role name
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the new role replacing the deprecated role
+        /// </summary>
+        [Input("replacementRoleName", required: true)]
+        public string ReplacementRoleName { get; set; } = null!;
 
         [Input("scopes", required: true)]
         private List<string>? _scopes;

@@ -30,21 +30,6 @@ export type ConnectorSchemaConfig = import("./connectorSchemaConfig").ConnectorS
 export const ConnectorSchemaConfig: typeof import("./connectorSchemaConfig").ConnectorSchemaConfig = null as any;
 utilities.lazyLoad(exports, ["ConnectorSchemaConfig"], () => require("./connectorSchemaConfig"));
 
-export { DbtGitProjectConfigArgs, DbtGitProjectConfigState } from "./dbtGitProjectConfig";
-export type DbtGitProjectConfig = import("./dbtGitProjectConfig").DbtGitProjectConfig;
-export const DbtGitProjectConfig: typeof import("./dbtGitProjectConfig").DbtGitProjectConfig = null as any;
-utilities.lazyLoad(exports, ["DbtGitProjectConfig"], () => require("./dbtGitProjectConfig"));
-
-export { DbtProjectArgs, DbtProjectState } from "./dbtProject";
-export type DbtProject = import("./dbtProject").DbtProject;
-export const DbtProject: typeof import("./dbtProject").DbtProject = null as any;
-utilities.lazyLoad(exports, ["DbtProject"], () => require("./dbtProject"));
-
-export { DbtTransformationArgs, DbtTransformationState } from "./dbtTransformation";
-export type DbtTransformation = import("./dbtTransformation").DbtTransformation;
-export const DbtTransformation: typeof import("./dbtTransformation").DbtTransformation = null as any;
-utilities.lazyLoad(exports, ["DbtTransformation"], () => require("./dbtTransformation"));
-
 export { DestinationArgs, DestinationState } from "./destination";
 export type Destination = import("./destination").Destination;
 export const Destination: typeof import("./destination").Destination = null as any;
@@ -64,6 +49,26 @@ export { ExternalLoggingArgs, ExternalLoggingState } from "./externalLogging";
 export type ExternalLogging = import("./externalLogging").ExternalLogging;
 export const ExternalLogging: typeof import("./externalLogging").ExternalLogging = null as any;
 utilities.lazyLoad(exports, ["ExternalLogging"], () => require("./externalLogging"));
+
+export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
+export const getConnection: typeof import("./getConnection").getConnection = null as any;
+export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
+
+export { GetConnectionCertificatesArgs, GetConnectionCertificatesResult, GetConnectionCertificatesOutputArgs } from "./getConnectionCertificates";
+export const getConnectionCertificates: typeof import("./getConnectionCertificates").getConnectionCertificates = null as any;
+export const getConnectionCertificatesOutput: typeof import("./getConnectionCertificates").getConnectionCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionCertificates","getConnectionCertificatesOutput"], () => require("./getConnectionCertificates"));
+
+export { GetConnectionFingerprintsArgs, GetConnectionFingerprintsResult, GetConnectionFingerprintsOutputArgs } from "./getConnectionFingerprints";
+export const getConnectionFingerprints: typeof import("./getConnectionFingerprints").getConnectionFingerprints = null as any;
+export const getConnectionFingerprintsOutput: typeof import("./getConnectionFingerprints").getConnectionFingerprintsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionFingerprints","getConnectionFingerprintsOutput"], () => require("./getConnectionFingerprints"));
+
+export { GetConnectionsArgs, GetConnectionsResult, GetConnectionsOutputArgs } from "./getConnections";
+export const getConnections: typeof import("./getConnections").getConnections = null as any;
+export const getConnectionsOutput: typeof import("./getConnections").getConnectionsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnections","getConnectionsOutput"], () => require("./getConnections"));
 
 export { GetConnectorArgs, GetConnectorResult, GetConnectorOutputArgs } from "./getConnector";
 export const getConnector: typeof import("./getConnector").getConnector = null as any;
@@ -89,26 +94,6 @@ export { GetConnectorsMetadataArgs, GetConnectorsMetadataResult, GetConnectorsMe
 export const getConnectorsMetadata: typeof import("./getConnectorsMetadata").getConnectorsMetadata = null as any;
 export const getConnectorsMetadataOutput: typeof import("./getConnectorsMetadata").getConnectorsMetadataOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectorsMetadata","getConnectorsMetadataOutput"], () => require("./getConnectorsMetadata"));
-
-export { GetDbtModelsArgs, GetDbtModelsResult, GetDbtModelsOutputArgs } from "./getDbtModels";
-export const getDbtModels: typeof import("./getDbtModels").getDbtModels = null as any;
-export const getDbtModelsOutput: typeof import("./getDbtModels").getDbtModelsOutput = null as any;
-utilities.lazyLoad(exports, ["getDbtModels","getDbtModelsOutput"], () => require("./getDbtModels"));
-
-export { GetDbtProjectArgs, GetDbtProjectResult, GetDbtProjectOutputArgs } from "./getDbtProject";
-export const getDbtProject: typeof import("./getDbtProject").getDbtProject = null as any;
-export const getDbtProjectOutput: typeof import("./getDbtProject").getDbtProjectOutput = null as any;
-utilities.lazyLoad(exports, ["getDbtProject","getDbtProjectOutput"], () => require("./getDbtProject"));
-
-export { GetDbtProjectsResult } from "./getDbtProjects";
-export const getDbtProjects: typeof import("./getDbtProjects").getDbtProjects = null as any;
-export const getDbtProjectsOutput: typeof import("./getDbtProjects").getDbtProjectsOutput = null as any;
-utilities.lazyLoad(exports, ["getDbtProjects","getDbtProjectsOutput"], () => require("./getDbtProjects"));
-
-export { GetDbtTransformationArgs, GetDbtTransformationResult, GetDbtTransformationOutputArgs } from "./getDbtTransformation";
-export const getDbtTransformation: typeof import("./getDbtTransformation").getDbtTransformation = null as any;
-export const getDbtTransformationOutput: typeof import("./getDbtTransformation").getDbtTransformationOutput = null as any;
-utilities.lazyLoad(exports, ["getDbtTransformation","getDbtTransformationOutput"], () => require("./getDbtTransformation"));
 
 export { GetDestinationArgs, GetDestinationResult, GetDestinationOutputArgs } from "./getDestination";
 export const getDestination: typeof import("./getDestination").getDestination = null as any;
@@ -144,6 +129,11 @@ export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
+
+export { GetGroupConnectionsArgs, GetGroupConnectionsResult, GetGroupConnectionsOutputArgs } from "./getGroupConnections";
+export const getGroupConnections: typeof import("./getGroupConnections").getGroupConnections = null as any;
+export const getGroupConnectionsOutput: typeof import("./getGroupConnections").getGroupConnectionsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupConnections","getGroupConnectionsOutput"], () => require("./getGroupConnections"));
 
 export { GetGroupConnectorsArgs, GetGroupConnectorsResult, GetGroupConnectorsOutputArgs } from "./getGroupConnectors";
 export const getGroupConnectors: typeof import("./getGroupConnectors").getGroupConnectors = null as any;
@@ -220,6 +210,11 @@ export const getTeam: typeof import("./getTeam").getTeam = null as any;
 export const getTeamOutput: typeof import("./getTeam").getTeamOutput = null as any;
 utilities.lazyLoad(exports, ["getTeam","getTeamOutput"], () => require("./getTeam"));
 
+export { GetTeamConnectionMembershipsArgs, GetTeamConnectionMembershipsResult, GetTeamConnectionMembershipsOutputArgs } from "./getTeamConnectionMemberships";
+export const getTeamConnectionMemberships: typeof import("./getTeamConnectionMemberships").getTeamConnectionMemberships = null as any;
+export const getTeamConnectionMembershipsOutput: typeof import("./getTeamConnectionMemberships").getTeamConnectionMembershipsOutput = null as any;
+utilities.lazyLoad(exports, ["getTeamConnectionMemberships","getTeamConnectionMembershipsOutput"], () => require("./getTeamConnectionMemberships"));
+
 export { GetTeamConnectorMembershipsArgs, GetTeamConnectorMembershipsResult, GetTeamConnectorMembershipsOutputArgs } from "./getTeamConnectorMemberships";
 export const getTeamConnectorMemberships: typeof import("./getTeamConnectorMemberships").getTeamConnectorMemberships = null as any;
 export const getTeamConnectorMembershipsOutput: typeof import("./getTeamConnectorMemberships").getTeamConnectorMembershipsOutput = null as any;
@@ -264,6 +259,11 @@ export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GetUserConnectionMembershipsArgs, GetUserConnectionMembershipsResult, GetUserConnectionMembershipsOutputArgs } from "./getUserConnectionMemberships";
+export const getUserConnectionMemberships: typeof import("./getUserConnectionMemberships").getUserConnectionMemberships = null as any;
+export const getUserConnectionMembershipsOutput: typeof import("./getUserConnectionMemberships").getUserConnectionMembershipsOutput = null as any;
+utilities.lazyLoad(exports, ["getUserConnectionMemberships","getUserConnectionMembershipsOutput"], () => require("./getUserConnectionMemberships"));
 
 export { GetUserConnectorMembershipsArgs, GetUserConnectorMembershipsResult, GetUserConnectorMembershipsOutputArgs } from "./getUserConnectorMemberships";
 export const getUserConnectorMemberships: typeof import("./getUserConnectorMemberships").getUserConnectorMemberships = null as any;
@@ -394,12 +394,6 @@ const _module = {
                 return new ConnectorSchedule(name, <any>undefined, { urn })
             case "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig":
                 return new ConnectorSchemaConfig(name, <any>undefined, { urn })
-            case "fivetran:index/dbtGitProjectConfig:DbtGitProjectConfig":
-                return new DbtGitProjectConfig(name, <any>undefined, { urn })
-            case "fivetran:index/dbtProject:DbtProject":
-                return new DbtProject(name, <any>undefined, { urn })
-            case "fivetran:index/dbtTransformation:DbtTransformation":
-                return new DbtTransformation(name, <any>undefined, { urn })
             case "fivetran:index/destination:Destination":
                 return new Destination(name, <any>undefined, { urn })
             case "fivetran:index/destinationCertificates:DestinationCertificates":
@@ -448,9 +442,6 @@ pulumi.runtime.registerResourceModule("fivetran", "index/connectorCertificates",
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorFingerprints", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchedule", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchemaConfig", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/dbtGitProjectConfig", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/dbtProject", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/dbtTransformation", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destination", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destinationCertificates", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destinationFingerprints", _module)
