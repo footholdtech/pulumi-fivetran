@@ -1,5 +1,0 @@
-{
-  "resource": true,
-  "name": "fivetran",
-  "server": "github://api.github.com/footholdtech/pulumi-fivetran"
-}
