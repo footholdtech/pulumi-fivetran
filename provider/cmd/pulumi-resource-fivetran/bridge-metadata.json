@@ -142,6 +142,9 @@
                             "dimensions": {
                                 "maxItemsOne": false
                             },
+                            "directories": {
+                                "maxItemsOne": false
+                            },
                             "ecommerce_stores": {
                                 "maxItemsOne": false
                             },
@@ -235,6 +238,9 @@
                                 "maxItemsOne": false,
                                 "elem": {
                                     "fields": {
+                                        "advertisers": {
+                                            "maxItemsOne": false
+                                        },
                                         "attributes": {
                                             "maxItemsOne": false
                                         },
@@ -245,6 +251,9 @@
                                             "maxItemsOne": false
                                         },
                                         "metrics": {
+                                            "maxItemsOne": false
+                                        },
+                                        "partners": {
                                             "maxItemsOne": false
                                         },
                                         "primary_keys": {
@@ -308,6 +317,9 @@
                                 "maxItemsOne": false
                             },
                             "user_profiles": {
+                                "maxItemsOne": false
+                            },
+                            "vendors_id": {
                                 "maxItemsOne": false
                             }
                         }
@@ -718,6 +730,9 @@
                             "dimensions": {
                                 "maxItemsOne": false
                             },
+                            "directories": {
+                                "maxItemsOne": false
+                            },
                             "ecommerce_stores": {
                                 "maxItemsOne": false
                             },
@@ -811,6 +826,9 @@
                                 "maxItemsOne": false,
                                 "elem": {
                                     "fields": {
+                                        "advertisers": {
+                                            "maxItemsOne": false
+                                        },
                                         "attributes": {
                                             "maxItemsOne": false
                                         },
@@ -821,6 +839,9 @@
                                             "maxItemsOne": false
                                         },
                                         "metrics": {
+                                            "maxItemsOne": false
+                                        },
+                                        "partners": {
                                             "maxItemsOne": false
                                         },
                                         "primary_keys": {
@@ -884,6 +905,9 @@
                                 "maxItemsOne": false
                             },
                             "user_profiles": {
+                                "maxItemsOne": false
+                            },
+                            "vendors_id": {
                                 "maxItemsOne": false
                             }
                         }
