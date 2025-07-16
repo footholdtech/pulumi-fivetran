@@ -6,6 +6,53 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * This resource allows you to create, update, and delete connector certificates.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@footholdtech/fivetran";
+ *
+ * const certificate = new fivetran.ConnectorCertificates("certificate", {certificates: [
+ *     {
+ *         hash: "jhgfJfgrI6yy...",
+ *         encodedCert: "encoded_cert",
+ *     },
+ *     {
+ *         hash: "jhgfJfgrI6yy...",
+ *         encodedCert: "encoded_cert",
+ *     },
+ * ]});
+ * ```
+ *
+ * ## Import
+ *
+ * 1. To import an existing `fivetran_connector_certificates` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+ *
+ * 2. Retrieve all connectors in a particular group using the [fivetran_connectors data source](/docs/data-sources/connectors)
+ *
+ * 3. Define an empty resource in your `.tf` configuration:
+ *
+ * hcl
+ *
+ * resource "fivetran_connector_certificates" "my_imported_connector_fingerprints" {
+ *
+ * }
+ *
+ * 4. Run the `pulumi import` command:
+ *
+ * ```sh
+ * $ pulumi import fivetran:index/connectorCertificates:ConnectorCertificates my_imported_connector_fingerprints {your Fivetran Connector ID}
+ * ```
+ *
+ * 5.  Use the `terraform state show` command to get the values from the state:
+ *
+ * terraform state show 'fivetran_connector_certificates.my_imported_connector_fingerprints'
+ *
+ * 6. Copy the values and paste them to your `.tf` configuration.
+ */
 export class ConnectorCertificates extends pulumi.CustomResource {
     /**
      * Get an existing ConnectorCertificates resource's state with the given name, ID, and optional extra

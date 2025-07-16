@@ -12,6 +12,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to create, update, and delete connector certificates.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewConnectorCertificates(ctx, "certificate", &fivetran.ConnectorCertificatesArgs{
+//				Certificates: fivetran.ConnectorCertificatesCertificateArray{
+//					&fivetran.ConnectorCertificatesCertificateArgs{
+//						Hash:        pulumi.String("jhgfJfgrI6yy..."),
+//						EncodedCert: pulumi.String("encoded_cert"),
+//					},
+//					&fivetran.ConnectorCertificatesCertificateArgs{
+//						Hash:        pulumi.String("jhgfJfgrI6yy..."),
+//						EncodedCert: pulumi.String("encoded_cert"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// 1. To import an existing `fivetran_connector_certificates` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+//
+// 2. Retrieve all connectors in a particular group using the [fivetran_connectors data source](/docs/data-sources/connectors)
+//
+// 3. Define an empty resource in your `.tf` configuration:
+//
+// hcl
+//
+// resource "fivetran_connector_certificates" "my_imported_connector_fingerprints" {
+//
+// }
+//
+// 4. Run the `pulumi import` command:
+//
+// ```sh
+// $ pulumi import fivetran:index/connectorCertificates:ConnectorCertificates my_imported_connector_fingerprints {your Fivetran Connector ID}
+// ```
+//
+// 5.  Use the `terraform state show` command to get the values from the state:
+//
+// terraform state show 'fivetran_connector_certificates.my_imported_connector_fingerprints'
+//
+// 6. Copy the values and paste them to your `.tf` configuration.
 type ConnectorCertificates struct {
 	pulumi.CustomResourceState
 

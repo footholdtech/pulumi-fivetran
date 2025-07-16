@@ -14,6 +14,8 @@ import (
 
 // This resource allows you to create, update, and delete proxy agent.
 //
+// > NOTE: Proxy Agents created after 2025-06-10 must be run using the Proxy Agent bundled in high-volume agent version 6.1.0/79 or later, else  connections will fail. EOL for versions bundled with eariler than 6.1.0/79 will occur on 2025-10-08.
+//
 // ## Example Usage
 //
 // ```go
@@ -43,18 +45,20 @@ import (
 type ProxyAgent struct {
 	pulumi.CustomResourceState
 
+	// Client certificate.
+	ClientCert pulumi.StringOutput `pulumi:"clientCert"`
+	// Client private key.
+	ClientPrivateKey pulumi.StringOutput `pulumi:"clientPrivateKey"`
 	// The actor who created the proxy agent.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Proxy agent name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	GroupRegion pulumi.StringOutput `pulumi:"groupRegion"`
-	// The proxy server URI.
-	ProxyServerUri pulumi.StringOutput `pulumi:"proxyServerUri"`
+	// Determines whether regenerarion secrets needs to be performed.
+	RegenerationCounter pulumi.IntOutput `pulumi:"regenerationCounter"`
 	// The timestamp of the time the proxy agent was created in your account.
 	RegistredAt pulumi.StringOutput `pulumi:"registredAt"`
-	// The salt.
-	Salt pulumi.StringOutput `pulumi:"salt"`
 	// The auth token.
 	Token pulumi.StringOutput `pulumi:"token"`
 }
@@ -95,35 +99,39 @@ func GetProxyAgent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProxyAgent resources.
 type proxyAgentState struct {
+	// Client certificate.
+	ClientCert *string `pulumi:"clientCert"`
+	// Client private key.
+	ClientPrivateKey *string `pulumi:"clientPrivateKey"`
 	// The actor who created the proxy agent.
 	CreatedBy *string `pulumi:"createdBy"`
 	// Proxy agent name.
 	DisplayName *string `pulumi:"displayName"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	GroupRegion *string `pulumi:"groupRegion"`
-	// The proxy server URI.
-	ProxyServerUri *string `pulumi:"proxyServerUri"`
+	// Determines whether regenerarion secrets needs to be performed.
+	RegenerationCounter *int `pulumi:"regenerationCounter"`
 	// The timestamp of the time the proxy agent was created in your account.
 	RegistredAt *string `pulumi:"registredAt"`
-	// The salt.
-	Salt *string `pulumi:"salt"`
 	// The auth token.
 	Token *string `pulumi:"token"`
 }
 
 type ProxyAgentState struct {
+	// Client certificate.
+	ClientCert pulumi.StringPtrInput
+	// Client private key.
+	ClientPrivateKey pulumi.StringPtrInput
 	// The actor who created the proxy agent.
 	CreatedBy pulumi.StringPtrInput
 	// Proxy agent name.
 	DisplayName pulumi.StringPtrInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	GroupRegion pulumi.StringPtrInput
-	// The proxy server URI.
-	ProxyServerUri pulumi.StringPtrInput
+	// Determines whether regenerarion secrets needs to be performed.
+	RegenerationCounter pulumi.IntPtrInput
 	// The timestamp of the time the proxy agent was created in your account.
 	RegistredAt pulumi.StringPtrInput
-	// The salt.
-	Salt pulumi.StringPtrInput
 	// The auth token.
 	Token pulumi.StringPtrInput
 }
@@ -137,6 +145,8 @@ type proxyAgentArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	GroupRegion string `pulumi:"groupRegion"`
+	// Determines whether regenerarion secrets needs to be performed.
+	RegenerationCounter *int `pulumi:"regenerationCounter"`
 }
 
 // The set of arguments for constructing a ProxyAgent resource.
@@ -145,6 +155,8 @@ type ProxyAgentArgs struct {
 	DisplayName pulumi.StringInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	GroupRegion pulumi.StringInput
+	// Determines whether regenerarion secrets needs to be performed.
+	RegenerationCounter pulumi.IntPtrInput
 }
 
 func (ProxyAgentArgs) ElementType() reflect.Type {
@@ -234,6 +246,16 @@ func (o ProxyAgentOutput) ToProxyAgentOutputWithContext(ctx context.Context) Pro
 	return o
 }
 
+// Client certificate.
+func (o ProxyAgentOutput) ClientCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProxyAgent) pulumi.StringOutput { return v.ClientCert }).(pulumi.StringOutput)
+}
+
+// Client private key.
+func (o ProxyAgentOutput) ClientPrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProxyAgent) pulumi.StringOutput { return v.ClientPrivateKey }).(pulumi.StringOutput)
+}
+
 // The actor who created the proxy agent.
 func (o ProxyAgentOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProxyAgent) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
@@ -249,19 +271,14 @@ func (o ProxyAgentOutput) GroupRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProxyAgent) pulumi.StringOutput { return v.GroupRegion }).(pulumi.StringOutput)
 }
 
-// The proxy server URI.
-func (o ProxyAgentOutput) ProxyServerUri() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProxyAgent) pulumi.StringOutput { return v.ProxyServerUri }).(pulumi.StringOutput)
+// Determines whether regenerarion secrets needs to be performed.
+func (o ProxyAgentOutput) RegenerationCounter() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProxyAgent) pulumi.IntOutput { return v.RegenerationCounter }).(pulumi.IntOutput)
 }
 
 // The timestamp of the time the proxy agent was created in your account.
 func (o ProxyAgentOutput) RegistredAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProxyAgent) pulumi.StringOutput { return v.RegistredAt }).(pulumi.StringOutput)
-}
-
-// The salt.
-func (o ProxyAgentOutput) Salt() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProxyAgent) pulumi.StringOutput { return v.Salt }).(pulumi.StringOutput)
 }
 
 // The auth token.

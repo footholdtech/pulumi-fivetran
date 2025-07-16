@@ -11,9 +11,9 @@ import * as utilities from "./utilities";
  *
  * 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
  *
- * To retrieve existing groups, use the [fivetran_groups data source](/providers/fivetran/fivetran/latest/docs/data-sources/groups).
+ * 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
  *
- * 2. Define an empty resource in your `.tf` configuration:
+ * 3. Define an empty resource in your `.tf` configuration:
  *
  * hcl
  *
@@ -21,17 +21,17 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * 3. Run the `pulumi import` command with the following parameters:
+ * 4. Run the `pulumi import` command with the following parameters:
  *
  * ```sh
  * $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
  * ```
  *
- * 4. Use the `terraform state show` command to get the values from the state:
+ * 5. Use the `terraform state show` command to get the values from the state:
  *
  * terraform state show 'fivetran_destination.my_imported_destination'
  *
- * 5. Copy the values and paste them to your `.tf` configuration.
+ * 6. Copy the values and paste them to your `.tf` configuration.
  *
  * -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
  */

@@ -13,6 +13,19 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class GetConnectorConfigReportInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("advertisers", required: true)]
+        private InputList<string>? _advertisers;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: The list of advertisers to include into a sync. This parameter only takes effect when `config_method` is set to `CREATE_NEW`.
+        /// </summary>
+        public InputList<string> Advertisers
+        {
+            get => _advertisers ?? (_advertisers = new InputList<string>());
+            set => _advertisers = value;
+        }
+
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `google_search_console`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
@@ -35,6 +48,13 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
+        /// </summary>
+        [Input("configMethod", required: true)]
+        public Input<string> ConfigMethod { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
         /// 	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
         /// </summary>
@@ -48,6 +68,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
         /// 	- Service `google_analytics_4`: The report dimensions to include into a sync.
+        /// 	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
         /// 	- Service `google_search_console`: The report dimensions included to sync.
         /// </summary>
         public InputList<string> Dimensions
@@ -121,12 +142,26 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics`: The report metrics to include into a sync.
         /// 	- Service `google_analytics_4`: The report metrics to include into a sync.
+        /// 	- Service `google_display_and_video_360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
         /// 	- Service `google_search_ads_360`: The report metrics included to sync.
         /// </summary>
         public InputList<string> Metrics
         {
             get => _metrics ?? (_metrics = new InputList<string>());
             set => _metrics = value;
+        }
+
+        [Input("partners", required: true)]
+        private InputList<string>? _partners;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: The list of partners to include into a sync. This parameter only takes effect when `config_method` is set to `CREATE_NEW`.
+        /// </summary>
+        public InputList<string> Partners
+        {
+            get => _partners ?? (_partners = new InputList<string>());
+            set => _partners = value;
         }
 
         /// <summary>
@@ -152,6 +187,13 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `config_method` is set to `REUSE_EXISTING`.
+        /// </summary>
+        [Input("queryId", required: true)]
+        public Input<string> QueryId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
         /// </summary>
         [Input("reportFormatType", required: true)]
@@ -160,6 +202,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `google_ads`: The name of the Google Ads report from which the connector will sync the data. [Possible report_type values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
+        /// 	- Service `google_display_and_video_360`: The type of the report to create. This is a required parameter when `config_method` is set to `CREATE_NEW`.
         /// 	- Service `google_search_ads_360`: The type of report
         /// 	- Service `google_search_console`: The type of report
         /// </summary>
@@ -257,10 +300,24 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: The table name within the schema to which connector will sync the data of the specific report.
+        /// </summary>
+        [Input("tableName", required: true)]
+        public Input<string> TableName { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics_4`: The report data aggregation time granularity.
         /// </summary>
         [Input("timeAggregationGranularity", required: true)]
         public Input<string> TimeAggregationGranularity { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `config_method` is set to `REUSE_EXISTING`. The default value is `true`.
+        /// </summary>
+        [Input("updateConfigOnEachSync", required: true)]
+        public Input<bool> UpdateConfigOnEachSync { get; set; } = null!;
 
         public GetConnectorConfigReportInputArgs()
         {

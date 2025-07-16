@@ -59,14 +59,6 @@ export interface GetProxyAgentResult {
      * The timestamp of the time the proxy agent was created in your account.
      */
     readonly registredAt: string;
-    /**
-     * The salt.
-     */
-    readonly salt: string;
-    /**
-     * The auth token.
-     */
-    readonly token: string;
 }
 /**
  * This data source returns a proxy agent object.

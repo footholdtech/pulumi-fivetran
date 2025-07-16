@@ -21,14 +21,18 @@ __all__ = ['ProxyAgentArgs', 'ProxyAgent']
 class ProxyAgentArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[builtins.str],
-                 group_region: pulumi.Input[builtins.str]):
+                 group_region: pulumi.Input[builtins.str],
+                 regeneration_counter: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a ProxyAgent resource.
         :param pulumi.Input[builtins.str] display_name: Proxy agent name.
         :param pulumi.Input[builtins.str] group_region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[builtins.int] regeneration_counter: Determines whether regenerarion secrets needs to be performed.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "group_region", group_region)
+        if regeneration_counter is not None:
+            pulumi.set(__self__, "regeneration_counter", regeneration_counter)
 
     @property
     @pulumi.getter(name="displayName")
@@ -54,41 +58,81 @@ class ProxyAgentArgs:
     def group_region(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "group_region", value)
 
+    @property
+    @pulumi.getter(name="regenerationCounter")
+    def regeneration_counter(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Determines whether regenerarion secrets needs to be performed.
+        """
+        return pulumi.get(self, "regeneration_counter")
+
+    @regeneration_counter.setter
+    def regeneration_counter(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "regeneration_counter", value)
+
 
 @pulumi.input_type
 class _ProxyAgentState:
     def __init__(__self__, *,
+                 client_cert: Optional[pulumi.Input[builtins.str]] = None,
+                 client_private_key: Optional[pulumi.Input[builtins.str]] = None,
                  created_by: Optional[pulumi.Input[builtins.str]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  group_region: Optional[pulumi.Input[builtins.str]] = None,
-                 proxy_server_uri: Optional[pulumi.Input[builtins.str]] = None,
+                 regeneration_counter: Optional[pulumi.Input[builtins.int]] = None,
                  registred_at: Optional[pulumi.Input[builtins.str]] = None,
-                 salt: Optional[pulumi.Input[builtins.str]] = None,
                  token: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProxyAgent resources.
+        :param pulumi.Input[builtins.str] client_cert: Client certificate.
+        :param pulumi.Input[builtins.str] client_private_key: Client private key.
         :param pulumi.Input[builtins.str] created_by: The actor who created the proxy agent.
         :param pulumi.Input[builtins.str] display_name: Proxy agent name.
         :param pulumi.Input[builtins.str] group_region: Data processing location. This is where Fivetran will operate and run computation on data.
-        :param pulumi.Input[builtins.str] proxy_server_uri: The proxy server URI.
+        :param pulumi.Input[builtins.int] regeneration_counter: Determines whether regenerarion secrets needs to be performed.
         :param pulumi.Input[builtins.str] registred_at: The timestamp of the time the proxy agent was created in your account.
-        :param pulumi.Input[builtins.str] salt: The salt.
         :param pulumi.Input[builtins.str] token: The auth token.
         """
+        if client_cert is not None:
+            pulumi.set(__self__, "client_cert", client_cert)
+        if client_private_key is not None:
+            pulumi.set(__self__, "client_private_key", client_private_key)
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if group_region is not None:
             pulumi.set(__self__, "group_region", group_region)
-        if proxy_server_uri is not None:
-            pulumi.set(__self__, "proxy_server_uri", proxy_server_uri)
+        if regeneration_counter is not None:
+            pulumi.set(__self__, "regeneration_counter", regeneration_counter)
         if registred_at is not None:
             pulumi.set(__self__, "registred_at", registred_at)
-        if salt is not None:
-            pulumi.set(__self__, "salt", salt)
         if token is not None:
             pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Client certificate.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @client_cert.setter
+    def client_cert(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "client_cert", value)
+
+    @property
+    @pulumi.getter(name="clientPrivateKey")
+    def client_private_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Client private key.
+        """
+        return pulumi.get(self, "client_private_key")
+
+    @client_private_key.setter
+    def client_private_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "client_private_key", value)
 
     @property
     @pulumi.getter(name="createdBy")
@@ -127,16 +171,16 @@ class _ProxyAgentState:
         pulumi.set(self, "group_region", value)
 
     @property
-    @pulumi.getter(name="proxyServerUri")
-    def proxy_server_uri(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="regenerationCounter")
+    def regeneration_counter(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The proxy server URI.
+        Determines whether regenerarion secrets needs to be performed.
         """
-        return pulumi.get(self, "proxy_server_uri")
+        return pulumi.get(self, "regeneration_counter")
 
-    @proxy_server_uri.setter
-    def proxy_server_uri(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "proxy_server_uri", value)
+    @regeneration_counter.setter
+    def regeneration_counter(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "regeneration_counter", value)
 
     @property
     @pulumi.getter(name="registredAt")
@@ -149,18 +193,6 @@ class _ProxyAgentState:
     @registred_at.setter
     def registred_at(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "registred_at", value)
-
-    @property
-    @pulumi.getter
-    def salt(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The salt.
-        """
-        return pulumi.get(self, "salt")
-
-    @salt.setter
-    def salt(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "salt", value)
 
     @property
     @pulumi.getter
@@ -183,9 +215,12 @@ class ProxyAgent(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  group_region: Optional[pulumi.Input[builtins.str]] = None,
+                 regeneration_counter: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete proxy agent.
+
+        > NOTE: Proxy Agents created after 2025-06-10 must be run using the Proxy Agent bundled in high-volume agent version 6.1.0/79 or later, else  connections will fail. EOL for versions bundled with eariler than 6.1.0/79 will occur on 2025-10-08.
 
         ## Example Usage
 
@@ -202,6 +237,7 @@ class ProxyAgent(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] display_name: Proxy agent name.
         :param pulumi.Input[builtins.str] group_region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[builtins.int] regeneration_counter: Determines whether regenerarion secrets needs to be performed.
         """
         ...
     @overload
@@ -211,6 +247,8 @@ class ProxyAgent(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to create, update, and delete proxy agent.
+
+        > NOTE: Proxy Agents created after 2025-06-10 must be run using the Proxy Agent bundled in high-volume agent version 6.1.0/79 or later, else  connections will fail. EOL for versions bundled with eariler than 6.1.0/79 will occur on 2025-10-08.
 
         ## Example Usage
 
@@ -240,6 +278,7 @@ class ProxyAgent(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  group_region: Optional[pulumi.Input[builtins.str]] = None,
+                 regeneration_counter: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -255,10 +294,11 @@ class ProxyAgent(pulumi.CustomResource):
             if group_region is None and not opts.urn:
                 raise TypeError("Missing required property 'group_region'")
             __props__.__dict__["group_region"] = group_region
+            __props__.__dict__["regeneration_counter"] = regeneration_counter
+            __props__.__dict__["client_cert"] = None
+            __props__.__dict__["client_private_key"] = None
             __props__.__dict__["created_by"] = None
-            __props__.__dict__["proxy_server_uri"] = None
             __props__.__dict__["registred_at"] = None
-            __props__.__dict__["salt"] = None
             __props__.__dict__["token"] = None
         super(ProxyAgent, __self__).__init__(
             'fivetran:index/proxyAgent:ProxyAgent',
@@ -270,12 +310,13 @@ class ProxyAgent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            client_cert: Optional[pulumi.Input[builtins.str]] = None,
+            client_private_key: Optional[pulumi.Input[builtins.str]] = None,
             created_by: Optional[pulumi.Input[builtins.str]] = None,
             display_name: Optional[pulumi.Input[builtins.str]] = None,
             group_region: Optional[pulumi.Input[builtins.str]] = None,
-            proxy_server_uri: Optional[pulumi.Input[builtins.str]] = None,
+            regeneration_counter: Optional[pulumi.Input[builtins.int]] = None,
             registred_at: Optional[pulumi.Input[builtins.str]] = None,
-            salt: Optional[pulumi.Input[builtins.str]] = None,
             token: Optional[pulumi.Input[builtins.str]] = None) -> 'ProxyAgent':
         """
         Get an existing ProxyAgent resource's state with the given name, id, and optional extra
@@ -284,26 +325,44 @@ class ProxyAgent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] client_cert: Client certificate.
+        :param pulumi.Input[builtins.str] client_private_key: Client private key.
         :param pulumi.Input[builtins.str] created_by: The actor who created the proxy agent.
         :param pulumi.Input[builtins.str] display_name: Proxy agent name.
         :param pulumi.Input[builtins.str] group_region: Data processing location. This is where Fivetran will operate and run computation on data.
-        :param pulumi.Input[builtins.str] proxy_server_uri: The proxy server URI.
+        :param pulumi.Input[builtins.int] regeneration_counter: Determines whether regenerarion secrets needs to be performed.
         :param pulumi.Input[builtins.str] registred_at: The timestamp of the time the proxy agent was created in your account.
-        :param pulumi.Input[builtins.str] salt: The salt.
         :param pulumi.Input[builtins.str] token: The auth token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ProxyAgentState.__new__(_ProxyAgentState)
 
+        __props__.__dict__["client_cert"] = client_cert
+        __props__.__dict__["client_private_key"] = client_private_key
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["group_region"] = group_region
-        __props__.__dict__["proxy_server_uri"] = proxy_server_uri
+        __props__.__dict__["regeneration_counter"] = regeneration_counter
         __props__.__dict__["registred_at"] = registred_at
-        __props__.__dict__["salt"] = salt
         __props__.__dict__["token"] = token
         return ProxyAgent(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> pulumi.Output[builtins.str]:
+        """
+        Client certificate.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @property
+    @pulumi.getter(name="clientPrivateKey")
+    def client_private_key(self) -> pulumi.Output[builtins.str]:
+        """
+        Client private key.
+        """
+        return pulumi.get(self, "client_private_key")
 
     @property
     @pulumi.getter(name="createdBy")
@@ -330,12 +389,12 @@ class ProxyAgent(pulumi.CustomResource):
         return pulumi.get(self, "group_region")
 
     @property
-    @pulumi.getter(name="proxyServerUri")
-    def proxy_server_uri(self) -> pulumi.Output[builtins.str]:
+    @pulumi.getter(name="regenerationCounter")
+    def regeneration_counter(self) -> pulumi.Output[builtins.int]:
         """
-        The proxy server URI.
+        Determines whether regenerarion secrets needs to be performed.
         """
-        return pulumi.get(self, "proxy_server_uri")
+        return pulumi.get(self, "regeneration_counter")
 
     @property
     @pulumi.getter(name="registredAt")
@@ -344,14 +403,6 @@ class ProxyAgent(pulumi.CustomResource):
         The timestamp of the time the proxy agent was created in your account.
         """
         return pulumi.get(self, "registred_at")
-
-    @property
-    @pulumi.getter
-    def salt(self) -> pulumi.Output[builtins.str]:
-        """
-        The salt.
-        """
-        return pulumi.get(self, "salt")
 
     @property
     @pulumi.getter

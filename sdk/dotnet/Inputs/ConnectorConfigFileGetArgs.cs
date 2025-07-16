@@ -15,11 +15,21 @@ namespace Footholdtech.Fivetran.Inputs
     {
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: All files in your search path matching this regular expression will be synced per table.
+        /// 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
+        /// </summary>
+        [Input("emailSubject")]
+        public Input<string>? EmailSubject { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `azure_blob_storage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `email`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `gcs`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `google_drive`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `s3`: All files in your search path matching this regular expression will be synced per table.
+        /// 	- Service `s3_compatible_storage`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `sftp`: All files in your search path matching this regular expression will be synced per table.
+        /// 	- Service `share_point`: All files in your search path matching this regular expression will be synced per table.
         /// </summary>
         [Input("filePattern")]
         public Input<string>? FilePattern { get; set; }
@@ -27,10 +37,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `azure_blob_storage`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `email`: All files matching the above pattern will be synced to this table.
         /// 	- Service `gcs`: All files matching the above pattern will be synced to this table.
         /// 	- Service `google_drive`: All files matching the above pattern will be synced to this table.
         /// 	- Service `s3`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `s3_compatible_storage`: All files matching the above pattern will be synced to this table.
         /// 	- Service `sftp`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `share_point`: All files matching the above pattern will be synced to this table.
         /// </summary>
         [Input("tableName")]
         public Input<string>? TableName { get; set; }

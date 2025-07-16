@@ -13,6 +13,8 @@ namespace Footholdtech.Fivetran
     /// <summary>
     /// This resource allows you to create, update, and delete proxy agent.
     /// 
+    /// &gt; NOTE: Proxy Agents created after 2025-06-10 must be run using the Proxy Agent bundled in high-volume agent version 6.1.0/79 or later, else  connections will fail. EOL for versions bundled with eariler than 6.1.0/79 will occur on 2025-10-08.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -36,6 +38,18 @@ namespace Footholdtech.Fivetran
     public partial class ProxyAgent : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Client certificate.
+        /// </summary>
+        [Output("clientCert")]
+        public Output<string> ClientCert { get; private set; } = null!;
+
+        /// <summary>
+        /// Client private key.
+        /// </summary>
+        [Output("clientPrivateKey")]
+        public Output<string> ClientPrivateKey { get; private set; } = null!;
+
+        /// <summary>
         /// The actor who created the proxy agent.
         /// </summary>
         [Output("createdBy")]
@@ -54,22 +68,16 @@ namespace Footholdtech.Fivetran
         public Output<string> GroupRegion { get; private set; } = null!;
 
         /// <summary>
-        /// The proxy server URI.
+        /// Determines whether regenerarion secrets needs to be performed.
         /// </summary>
-        [Output("proxyServerUri")]
-        public Output<string> ProxyServerUri { get; private set; } = null!;
+        [Output("regenerationCounter")]
+        public Output<int> RegenerationCounter { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp of the time the proxy agent was created in your account.
         /// </summary>
         [Output("registredAt")]
         public Output<string> RegistredAt { get; private set; } = null!;
-
-        /// <summary>
-        /// The salt.
-        /// </summary>
-        [Output("salt")]
-        public Output<string> Salt { get; private set; } = null!;
 
         /// <summary>
         /// The auth token.
@@ -136,6 +144,12 @@ namespace Footholdtech.Fivetran
         [Input("groupRegion", required: true)]
         public Input<string> GroupRegion { get; set; } = null!;
 
+        /// <summary>
+        /// Determines whether regenerarion secrets needs to be performed.
+        /// </summary>
+        [Input("regenerationCounter")]
+        public Input<int>? RegenerationCounter { get; set; }
+
         public ProxyAgentArgs()
         {
         }
@@ -144,6 +158,18 @@ namespace Footholdtech.Fivetran
 
     public sealed class ProxyAgentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Client certificate.
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// Client private key.
+        /// </summary>
+        [Input("clientPrivateKey")]
+        public Input<string>? ClientPrivateKey { get; set; }
+
         /// <summary>
         /// The actor who created the proxy agent.
         /// </summary>
@@ -163,22 +189,16 @@ namespace Footholdtech.Fivetran
         public Input<string>? GroupRegion { get; set; }
 
         /// <summary>
-        /// The proxy server URI.
+        /// Determines whether regenerarion secrets needs to be performed.
         /// </summary>
-        [Input("proxyServerUri")]
-        public Input<string>? ProxyServerUri { get; set; }
+        [Input("regenerationCounter")]
+        public Input<int>? RegenerationCounter { get; set; }
 
         /// <summary>
         /// The timestamp of the time the proxy agent was created in your account.
         /// </summary>
         [Input("registredAt")]
         public Input<string>? RegistredAt { get; set; }
-
-        /// <summary>
-        /// The salt.
-        /// </summary>
-        [Input("salt")]
-        public Input<string>? Salt { get; set; }
 
         /// <summary>
         /// The auth token.

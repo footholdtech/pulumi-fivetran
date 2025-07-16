@@ -10,6 +10,66 @@ using Pulumi;
 
 namespace Footholdtech.Fivetran
 {
+    /// <summary>
+    /// This resource allows you to manage list of approved SSH fingerprints for a particular destination.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Footholdtech.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myDestinationApprovedCertificates = new Fivetran.DestinationCertificates("my_destination_approved_certificates", new()
+    ///     {
+    ///         DestinationId = myDestination.Id,
+    ///         Certificates = new[]
+    ///         {
+    ///             new Fivetran.Inputs.DestinationCertificatesCertificateArgs
+    ///             {
+    ///                 Hash = "jhgfJfgrI6yy...",
+    ///                 EncodedCert = "encoded_cert",
+    ///             },
+    ///             new Fivetran.Inputs.DestinationCertificatesCertificateArgs
+    ///             {
+    ///                 Hash = "eUtPirI6yytWe...",
+    ///                 EncodedCert = "encoded_cert",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// 1. To import an existing `fivetran_destination_certificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+    /// 
+    /// 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+    /// 
+    /// 3. Define an empty resource in your `.tf` configuration:
+    /// 
+    /// hcl
+    /// 
+    /// resource "fivetran_destination_certificates" "my_imported_destination_certificates" {
+    /// 
+    /// }
+    /// 
+    /// 4. Run the `pulumi import` command:
+    /// 
+    /// ```sh
+    /// $ pulumi import fivetran:index/destinationCertificates:DestinationCertificates my_imported_destination_certificates {your Destination Group ID}
+    /// ```
+    /// 
+    /// 5.  Use the `terraform state show` command to get the values from the state:
+    /// 
+    /// terraform state show 'fivetran_destination_certificates.my_imported_destination_certificates'
+    /// 
+    /// 6. Copy the values and paste them to your `.tf` configuration.
+    /// </summary>
     [FivetranResourceType("fivetran:index/destinationCertificates:DestinationCertificates")]
     public partial class DestinationCertificates : global::Pulumi.CustomResource
     {

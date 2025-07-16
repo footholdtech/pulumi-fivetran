@@ -86,6 +86,13 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `ceridian_dayforce`: Your confirmation that you have granted Fivetran access to all the RESTful services and fields you want to sync. Possible values: `true`, `false`.
+        /// </summary>
+        [Input("accessConfirmation", required: true)]
+        public string AccessConfirmation { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `planful`: Your Planful access ID.
         /// </summary>
         [Input("accessId", required: true)]
@@ -119,6 +126,8 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `cloudtalk`: Your CloudTalk Access Key ID.
         /// 	- Service `nice`: Your NICE access key ID.
         /// 	- Service `s3`: Access Key ID
+        /// 	- Service `s3_compatible_storage`: Access Key ID
+        /// 	- Service `validio`: Your Validio access key ID.
         /// 	- Service `wasabi_cloud_storage`: Access Key ID
         /// </summary>
         public string? AccessKeyId
@@ -138,6 +147,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `gongio`: Your Gongio Access Key Secret.
         /// 	- Service `nice`: Your NICE access key secret.
         /// 	- Service `s3`: Access Key Secret
+        /// 	- Service `s3_compatible_storage`: Access Key Secret
         /// 	- Service `wasabi_cloud_storage`: Access Key Secret
         /// </summary>
         public string? AccessKeySecret
@@ -157,6 +167,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `bitly`: Your Bitly access token.
         /// 	- Service `calabrio`: Your Calabrio access token.
         /// 	- Service `coalesce`: Your Coalesce access token.
+        /// 	- Service `coheris`: Your Coheris access token.
         /// 	- Service `coupa`: Your Coupa access token fetched using client_id and client_secret
         /// 	- Service `deputy`: Your Deputy API access token.
         /// 	- Service `getfeedback`: Your GetFeedback Access token.
@@ -292,6 +303,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `itunes_connect`: Account Sync Mode
+        /// 	- Service `snapchat_ads`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
         /// </summary>
         [Input("accountSyncMode", required: true)]
         public string AccountSyncMode { get; set; } = null!;
@@ -333,6 +345,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `instagram_business`: Specific accounts to sync. Must be populated if `sync_mode` is set to `SpecificAccounts`.
         /// 	- Service `itunes_connect`: Accounts
         /// 	- Service `linkedin_ads`: Specific Account IDs to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
+        /// 	- Service `snapchat_ads`: Specific accounts IDs to sync. Must be populated if `accountSyncMode` is set to `SpecificAccounts`.
         /// 	- Service `spotify_ads`: The list of Ad Account IDs to sync. Must be populated if `sync_mode` is set to `SPECIFIC_ACCOUNTS`.
         /// 	- Service `tiktok_ads`: Specific accounts to sync.  Must be populated if `sync_mode` is set to `SpecificAccounts`.
         /// 	- Service `twilio`: Specific Accounts to sync.  Must be populated if `sync_mode` is set to `SpecificAccounts`.
@@ -638,6 +651,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `aurora`: Require TLS through Tunnel
         /// 	- Service `aurora_postgres`: Require TLS through Tunnel
+        /// 	- Service `aveva_pi`: Require TLS.
         /// 	- Service `azure_cosmos_for_mongo`: Require TLS
         /// 	- Service `azure_postgres`: Require TLS through Tunnel
         /// 	- Service `azure_sql_db`: Require TLS through Tunnel.
@@ -710,6 +724,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `afterpay`: Your Afterpay API environment.
+        /// 	- Service `tiktok_organic`: Your TikTok Organic API environment.
         /// </summary>
         [Input("apiEnvironment", required: true)]
         public string ApiEnvironment { get; set; } = null!;
@@ -736,6 +751,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `algolia`: Your Algolia API key.
         /// 	- Service `alida`: Your Alida API key.
         /// 	- Service `anvyl`: Your Anvyl API key.
+        /// 	- Service `apollo`: Your Apollo API key.
         /// 	- Service `appcues`: Your Appcues API key.
         /// 	- Service `ashby`: Your Ashby API key.
         /// 	- Service `assembled`: Your Assembled API key.
@@ -781,6 +797,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `contrast_security`: Your Contrast Security API Key.
         /// 	- Service `copper`: Your Copper API key.
         /// 	- Service `coupa`: Your Coupa API key.
+        /// 	- Service `crunchbase`: Your Crunchbase API key.
         /// 	- Service `datadog`: Your Datadog API key.
         /// 	- Service `dbt_cloud`: Your dbt Cloud service token.
         /// 	- Service `dcl_logistics`: Your DCL Logistics API key.
@@ -853,6 +870,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `mandrill`: Your Mandrill API key.
         /// 	- Service `maxio_chargify`: Enter Your API Key.
         /// 	- Service `messagebird`: Your MessageBird API key.
+        /// 	- Service `moloco`: Your Moloco api_key
         /// 	- Service `mountain`: Your MNTN API key.
         /// 	- Service `myosh`: Your myosh API key.
         /// 	- Service `okendo`: Your Okendo API key.
@@ -1058,6 +1076,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `aha`: Your Aha! API key.
         /// 	- Service `aircall`: Your Aircall API token.
         /// 	- Service `appsflyer`: API Token for AppsFlyer's PULL API.
+        /// 	- Service `aura_from_unity`: Your Aura from Unity API token.
         /// 	- Service `awin`: Your Awin API Token.
         /// 	- Service `backbone_plm`: Your Backbone PLM API token.
         /// 	- Service `brex`: Your Brex API token
@@ -1180,6 +1199,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `pardot`: API Version
+        /// 	- Service `pardot_sandbox`: API Version
         /// </summary>
         [Input("apiVersion", required: true)]
         public string ApiVersion { get; set; } = null!;
@@ -1192,6 +1212,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `churnkey`: Your Churnkey APP ID.
         /// 	- Service `open_exchange_rates`: Your Open Exchange Rates App Id.
         /// 	- Service `rokt`: Your Rokt app ID.
+        /// 	- Service `tiktok_organic`: Your Tiktok Organic app ID.
         /// </summary>
         public string? AppId
         {
@@ -1232,7 +1253,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `loopio`: Your Loopio App Key.
         /// 	- Service `servicetitan`: Your ServiceTitan app key.
-        /// 	- Service `yotpo`: Your Yotpo App Key
+        /// 	- Service `yotpo`: Your Yotpo app key.
         /// 	- Service `yotpo_app`: Your Yotpo App key.
         /// </summary>
         public string? AppKey
@@ -1295,11 +1316,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `azure_blob_storage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// 	- Service `box`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// 	- Service `dropbox`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `email`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// 	- Service `ftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// 	- Service `gcs`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// 	- Service `google_drive`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// 	- Service `kinesis`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// 	- Service `s3`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `s3_compatible_storage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// 	- Service `sftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// 	- Service `share_point`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// 	- Service `wasabi_cloud_storage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
@@ -1346,6 +1369,9 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `oracle_hva`: Archive log format.
+        /// 	- Service `oracle_sap_hva`: Archive log format.
+        /// 	- Service `oracle_sap_hva_netweaver`: Archive log format.
         /// 	- Service `sql_server_hva`: Format for archive log file names
         /// 	- Service `sql_server_sap_ecc_hva`: Format for archive log file names
         /// </summary>
@@ -1354,6 +1380,9 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `oracle_hva`: Archive log path.
+        /// 	- Service `oracle_sap_hva`: Archive log path.
+        /// 	- Service `oracle_sap_hva_netweaver`: Archive log path.
         /// 	- Service `sql_server_hva`: Directory where archive logs are located
         /// 	- Service `sql_server_sap_ecc_hva`: Directory where archive logs are located
         /// </summary>
@@ -1372,6 +1401,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: Files inside of compressed archives with filenames matching this regular expression will be synced.
         /// 	- Service `kinesis`: Optional. Files inside of compressed archives with filenames matching this regular expression will be synced.
         /// 	- Service `s3`: Files inside compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `s3_compatible_storage`: Files inside compressed archives with filenames matching this regular expression will be synced.
         /// 	- Service `sftp`: Files inside of compressed archives with filenames matching this regular expression will be synced.
         /// 	- Service `share_point`: Files inside of compressed archives with filenames matching this regular expression will be synced.
         /// 	- Service `wasabi_cloud_storage`: Files inside compressed archives with filenames matching this regular expression will be synced.
@@ -1534,6 +1564,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `anaplan`: The Anaplan authentication method.
         /// 	- Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
         /// 	- Service `github`: Authorization type.
+        /// 	- Service `workday`: Authentication Mode
         /// </summary>
         [Input("authMode", required: true)]
         public string AuthMode { get; set; } = null!;
@@ -1576,8 +1607,10 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `jira`: Authorization type.
         /// 	- Service `mixpanel`: Authentication Method
         /// 	- Service `pardot`: Authenticate using OAuth or HTTP Basic
+        /// 	- Service `pardot_sandbox`: Authenticate using OAuth or HTTP Basic
         /// 	- Service `qualtrics`: Type of authentication being used by connector
         /// 	- Service `s3`: Access approach
+        /// 	- Service `s3_compatible_storage`: Access approach
         /// 	- Service `wasabi_cloud_storage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
         /// </summary>
         [Input("authType", required: true)]
@@ -1611,6 +1644,14 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `tiktok_organic`: The authorization URL of the app registered in your TikTok developer account.
+        /// 	- Service `workday`: Authorization URL
+        /// </summary>
+        [Input("authorizationUrl", required: true)]
+        public string AuthorizationUrl { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `dynamodb`: The AWS region code for the DynamoDB instance, e.g. `us-east-1`.
         /// </summary>
         [Input("awsRegionCode", required: true)]
@@ -1625,6 +1666,8 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
+        /// 	- Service `stripe`: Limit of the Historical Sync Time for selected tables
+        /// 	- Service `stripe_test`: Limit of the Historical Sync Time for selected tables
         /// 	- Service `zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD
         /// </summary>
         [Input("backwardSyncLimit", required: true)]
@@ -1662,11 +1705,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `aha`: Your Aha! subdomain.
         /// 	- Service `akeneo`: Your Akeneo base URL.
+        /// 	- Service `bigmarker`: Your BigMarker base URL.
         /// 	- Service `billing_platform`: Your BillingPlatform subdomain.
         /// 	- Service `boostr`: Your Boostr base URL.
         /// 	- Service `brex`: Your Brex Base URL
         /// 	- Service `centra`: Your Centra base URL.
         /// 	- Service `coalesce`: Your Coalesce base URL.
+        /// 	- Service `coheris`: Your Coheris base URL.
         /// 	- Service `cornerstone`: Your Cornerstone base URL.
         /// 	- Service `culture_amp`: Your Culture Amp base URL.
         /// 	- Service `datadog`: Your Datadog base url.
@@ -1685,6 +1730,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
         /// 	- Service `salesforce_sandbox`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
         /// 	- Service `stickyio`: Your sticky.io base URL .
+        /// 	- Service `veeva_vault`: Base URL
         /// 	- Service `veevavault`: Your Veeva Vault base URL.
         /// 	- Service `vitally`: Your Vitally base URL.
         /// </summary>
@@ -1712,6 +1758,13 @@ namespace Footholdtech.Fivetran.Inputs
             get => _bearerToken;
             set => _bearerToken = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `sql_server`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
+        /// </summary>
+        [Input("binaryLogType", required: true)]
+        public string BinaryLogType { get; set; } = null!;
 
         [Input("blobSasUrl", required: true)]
         private string? _blobSasUrl;
@@ -1766,6 +1819,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `heap`: The S3 bucket name.
         /// 	- Service `kinesis`: The name of the Kinesis bucket.
         /// 	- Service `s3`: The S3 bucket name. Required for connector creation.
+        /// 	- Service `s3_compatible_storage`: The S3-Compatible Storage bucket name. Required for connector creation.
         /// 	- Service `segment`: The name of the Segment bucket. Must be populated if `sync_type` is set to `S3`.
         /// 	- Service `wasabi_cloud_storage`: The Wasabi Cloud Storage bucket name. Required for connector creation.
         /// </summary>
@@ -1824,6 +1878,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `pardot`: Business Unit Id
+        /// 	- Service `pardot_sandbox`: Business Unit Id
         /// </summary>
         [Input("businessUnitId", required: true)]
         public string BusinessUnitId { get; set; } = null!;
@@ -1905,7 +1960,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce Client Host.
+        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce client host.
         /// </summary>
         [Input("clientHost", required: true)]
         public string ClientHost { get; set; } = null!;
@@ -1952,6 +2007,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `fillout`: Your Fillout client ID.
         /// 	- Service `flexport`: The Flexport API Key.
         /// 	- Service `formstack`: Your Formstack client ID.
+        /// 	- Service `fortnox`: Your Fortnox client ID.
         /// 	- Service `genesys`: Your Genesys client ID.
         /// 	- Service `hana_sap_hva_ecc_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
         /// 	- Service `hana_sap_hva_s4_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
@@ -1974,6 +2030,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `navan`: Your Navan client ID.
         /// 	- Service `nice`: Your NICE client ID.
         /// 	- Service `on24`: Your ON24 client ID.
+        /// 	- Service `oracle_fusion_field_service`: Your Oracle Fusion Field Service client ID.
         /// 	- Service `oracle_sap_hva_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
         /// 	- Service `paychex`: Your Paychex client ID.
         /// 	- Service `paypal`: `Client ID` of your PayPal client application.
@@ -2068,7 +2125,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce Client Namespace.
+        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce client namespace.
         /// </summary>
         [Input("clientNamespace", required: true)]
         public string ClientNamespace { get; set; } = null!;
@@ -2162,6 +2219,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `fillout`: Your Fillout client secret
         /// 	- Service `flexport`: The Flexport API Secret.
         /// 	- Service `formstack`: Your Formstack client secret.
+        /// 	- Service `fortnox`: Your Fortnox client secret.
         /// 	- Service `genesys`: Your Genesys client secret.
         /// 	- Service `helpdesk`: Your HelpDesk client secret.
         /// 	- Service `hilti_ontrack`: Your Hilti On!Track client secret.
@@ -2180,6 +2238,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `microsoft_teams`: Your Microsoft Teams client secret.
         /// 	- Service `navan`: Your Navan client secret.
         /// 	- Service `nice`: Your NICE client secret.
+        /// 	- Service `oracle_fusion_field_service`: Your Oracle Fusion Field Service client secret.
         /// 	- Service `paychex`: Your Paychex client secret.
         /// 	- Service `personio`: Your Personio secret.
         /// 	- Service `piwik_pro`: Your Piwik PRO client secret.
@@ -2376,6 +2435,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
         /// 	- Service `kinesis`: If your files are compressed, but do not have extensions indicating the compression method, you can force them to be uncompressed according to the selected compression algorithm. Leave the value as infer if your files are saved with the correct compression extensions.
         /// 	- Service `s3`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+        /// 	- Service `s3_compatible_storage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
         /// 	- Service `sftp`: The secrets that should be passed to the function at runtime.
         /// 	- Service `share_point`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
         /// 	- Service `wasabi_cloud_storage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
@@ -2459,6 +2519,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `azure_service_bus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
         /// 	- Service `microsoft_dynamics_365_fno`: The blob storage container's connection string.
         /// 	- Service `microsoft_dynamics_365_fo`: The blob storage container connection string.
+        /// 	- Service `sql_server`: The Azure Blob Storage container connection string.
         /// </summary>
         public string? ConnectionString
         {
@@ -2470,6 +2531,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `aurora`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
         /// 	- Service `aurora_postgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `aveva_pi`: Possible values: `Directly`, `PrivateLink`
         /// 	- Service `aws_cost_report`: Connection method. Default value: `Directly`.
         /// 	- Service `aws_lambda`: Connection method. Default value: `Directly`.
         /// 	- Service `azure_blob_storage`: Connection method. Default value: `Directly`.
@@ -2598,14 +2660,21 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("containerAddress", required: true)]
         public string ContainerAddress { get; set; } = null!;
 
+        [Input("containerName", required: true)]
+        private string? _containerName;
+
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `azure_blob_storage`: The name of the blob container.
         /// 	- Service `microsoft_dynamics_365_fno`: The name of the blob container.
         /// 	- Service `microsoft_dynamics_365_fo`: The name of the blob container.
+        /// 	- Service `sql_server`: The name of the Azure Blob Storage container.
         /// </summary>
-        [Input("containerName", required: true)]
-        public string ContainerName { get; set; } = null!;
+        public string? ContainerName
+        {
+            get => _containerName;
+            set => _containerName = value;
+        }
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -2675,7 +2744,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `coalesce`: Your Coalesce Custom Base URL.
+        /// 	- Service `coalesce`: Your Coalesce custom base URL.
         /// 	- Service `datadog`: Your Datadog custom base url.
         /// 	- Service `deposco`: Your Deposco custom base URL.
         /// </summary>
@@ -2952,6 +3021,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
         /// 	- Service `kinesis`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
         /// 	- Service `s3`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `s3_compatible_storage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
         /// 	- Service `sftp`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
         /// 	- Service `share_point`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
         /// 	- Service `wasabi_cloud_storage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
@@ -3003,6 +3073,26 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("directCaptureMethod", required: true)]
         public string DirectCaptureMethod { get; set; } = null!;
+
+        [Input("directories", required: true)]
+        private List<string>? _directories;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `qualtrics`: Set of directories to be synced when syncMode is CUSTOM
+        /// </summary>
+        public List<string> Directories
+        {
+            get => _directories ?? (_directories = new List<string>());
+            set => _directories = value;
+        }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `qualtrics`: Sync mode to be used for fetching select directories. The Allowed Values are ALL and CUSTOM. If CUSTOM add the directories to be synced in the `directories` field.
+        /// </summary>
+        [Input("directorySyncMode", required: true)]
+        public string DirectorySyncMode { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -3105,12 +3195,14 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `appcues`: Your Appcues Email.
+        /// 	- Service `asset_panda`: Your Asset Panda email.
         /// 	- Service `boostr`: Your Boostr email.
         /// 	- Service `copper`: Your Copper email address.
         /// 	- Service `email`: Send your emails to this address.
         /// 	- Service `moloco`: Your Moloco account email.
         /// 	- Service `netsuite_suiteanalytics`: The NetSuite user's email address.
         /// 	- Service `pardot`: The email of the Pardot user.
+        /// 	- Service `pardot_sandbox`: The email of the Pardot user.
         /// 	- Service `skuvault`: Your SkuVault email.
         /// 	- Service `smadex`: Your Smadex account's email ID.
         /// 	- Service `zendesk`: Zendesk email.
@@ -3147,6 +3239,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
         /// 	- Service `kinesis`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
         /// 	- Service `s3`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column_0`, `column_1`, ... `column_n` to map the rows. Default value: `false`.
+        /// 	- Service `s3_compatible_storage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column_0`, `column_1`, ... `column_n` to map the rows. Default value: `false`.
         /// 	- Service `sftp`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
         /// 	- Service `share_point`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
         /// 	- Service `wasabi_cloud_storage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column_0`, `column_1`, ... `column_n` to map the rows. Default value: `false`.
@@ -3163,6 +3256,9 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `oracle_hva`: Default value: `false`. Set to `true` if you're using archive log only mode.
+        /// 	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using archive log only mode.
+        /// 	- Service `oracle_sap_hva_netweaver`: Default value: `false`. Set to `true` if you're using archive log only mode.
         /// 	- Service `sql_server_hva`: Use archive log only mode
         /// 	- Service `sql_server_sap_ecc_hva`: Use archive log only mode
         /// </summary>
@@ -3196,11 +3292,21 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `sql_server`: Use transparent data encryption (TDE)
         /// 	- Service `sql_server_hva`: Using Transparent Data Encryption (TDE)
         /// 	- Service `sql_server_sap_ecc_hva`: Using Transparent Data Encryption (TDE)
         /// </summary>
         [Input("enableTde", required: true)]
         public bool EnableTde { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `oracle_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+        /// 	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+        /// 	- Service `oracle_sap_hva_netweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
+        /// </summary>
+        [Input("enableTdeEncryption", required: true)]
+        public bool EnableTdeEncryption { get; set; }
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -3235,6 +3341,13 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `s3_compatible_storage`: S3-Compatible Storage Endpoint URL.
+        /// </summary>
+        [Input("endpointUrl", required: true)]
+        public string EndpointUrl { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `pinterest_ads`: The number of days to use as the conversion attribution window for an engagement (i.e. closeup or save) action.
         /// </summary>
         [Input("engagementAttributionWindow", required: true)]
@@ -3255,6 +3368,30 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("entityId", required: true)]
         public string EntityId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres`: Registered Application ID (for Entra ID authentication).
+        /// 	- Service `azure_postgres`: Registered Application ID (for Entra ID authentication).
+        /// 	- Service `google_cloud_postgresql`: Registered Application ID (for Entra ID authentication).
+        /// 	- Service `heroku_postgres`: Registered Application ID (for Entra ID authentication).
+        /// 	- Service `postgres`: Registered Application ID (for Entra ID authentication).
+        /// 	- Service `postgres_rds`: Registered Application ID (for Entra ID authentication).
+        /// </summary>
+        [Input("entraAppId", required: true)]
+        public string EntraAppId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `aurora_postgres`: Azure Tenant ID (for Entra ID authentication).
+        /// 	- Service `azure_postgres`: Azure Tenant ID (for Entra ID authentication).
+        /// 	- Service `google_cloud_postgresql`: Azure Tenant ID (for Entra ID authentication).
+        /// 	- Service `heroku_postgres`: Azure Tenant ID (for Entra ID authentication).
+        /// 	- Service `postgres`: Azure Tenant ID (for Entra ID authentication).
+        /// 	- Service `postgres_rds`: Azure Tenant ID (for Entra ID authentication).
+        /// </summary>
+        [Input("entraTenantId", required: true)]
+        public string EntraTenantId { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -3310,6 +3447,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
         /// 	- Service `kinesis`: Optional. If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
         /// 	- Service `s3`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `s3_compatible_storage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
         /// 	- Service `sftp`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
         /// 	- Service `share_point`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
         /// 	- Service `wasabi_cloud_storage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
@@ -3403,6 +3541,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: If your files are saved with improper extensions, you can force them to be synced as the selected filetype.
         /// 	- Service `kinesis`: If your files are saved with improper extensions, you can force them to by synced as the selected filetype. Leave the value as infer if your files have the correct extensions
         /// 	- Service `s3`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
+        /// 	- Service `s3_compatible_storage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
         /// 	- Service `sftp`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
         /// 	- Service `share_point`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
         /// 	- Service `wasabi_cloud_storage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
@@ -3416,10 +3555,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `azure_blob_storage`: Mapped file name patterns to a destination table.
+        /// 	- Service `email`: Mapped file name patterns to a destination table.
         /// 	- Service `gcs`: Mapped file name patterns to a destination table.
         /// 	- Service `google_drive`: Mapped file name patterns to a destination table.
         /// 	- Service `s3`: Mapped file name patterns to a destination table.
+        /// 	- Service `s3_compatible_storage`: Mapped file name patterns to a destination table.
         /// 	- Service `sftp`: Mapped file name patterns to a destination table.
+        /// 	- Service `share_point`: Mapped file name patterns to a destination table.
         /// </summary>
         public List<Inputs.GetConnectorConfigFileArgs> Files
         {
@@ -3656,19 +3798,52 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `braze`: Range of data in history you would like to include in the initial sync. Valid values are `ALL_TIME` and `DATE_LIMIT`
         /// 	- Service `concur`: Historical Sync Limit for the Sync
         /// 	- Service `eloqua`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
+        /// 	- Service `iterable`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `klaviyo`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `marketo`: The time range for which historical data should be synced. Default value: `All Time`.
         /// 	- Service `pardot`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `pardot_sandbox`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `sage_intacct`: Historical Sync Limit for the Sync
+        /// 	- Service `sailthru`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `salesforce_marketing_cloud`: The time range for which historical data should be synced. Default value: `All Time`.
         /// </summary>
         [Input("historicalSyncLimit", required: true)]
         public string HistoricalSyncLimit { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `braze`: The start date (in YYYY-MM-DD) from which to sync historical data. Only used when `historicalSyncLimit` is set to `DATE_LIMIT`.
+        /// 	- Service `iterable`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `klaviyo`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `marketo`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `pardot`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `pardot_sandbox`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `sailthru`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `salesforce_marketing_cloud`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// </summary>
+        [Input("historicalSyncLimitDate", required: true)]
+        public string HistoricalSyncLimitDate { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `pardot`: The options for time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `pardot_sandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
+        /// </summary>
+        [Input("historicalSyncLimitTimeFrame", required: true)]
+        public string HistoricalSyncLimitTimeFrame { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `ascend_by_partnerize`: Your Ascend by Partnerize Historical sync time frame
         /// 	- Service `hubspot`: Used to configure Historical sync timeframe for selected tables
         /// 	- Service `rokt`: Your Rokt historical sync time frame.
         /// 	- Service `shopify`: Used to configure Historical sync timeframe for selected tables
         /// 	- Service `skimlinks`: Your Skimlinks Historical sync time frame.
+        /// 	- Service `stripe`: Used to configure Historical sync timeframe for selected tables
+        /// 	- Service `stripe_test`: Used to configure Historical sync timeframe for selected tables
         /// 	- Service `vimeo`: Your Vimeo Historical sync time frame.
         /// 	- Service `zendesk`: Used to configure Historical sync timeframe for selected tables
         /// </summary>
@@ -3686,6 +3861,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `aurora`: DB instance host or IP address.
         /// 	- Service `aurora_postgres`: DB instance host or IP address.
+        /// 	- Service `aveva_pi`: IP address of the AF Server
         /// 	- Service `azure_postgres`: DB instance host or IP address.
         /// 	- Service `azure_sql_db`: DB instance host or IP address.
         /// 	- Service `azure_sql_managed_db`: DB instance host or IP address.
@@ -3905,6 +4081,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `pardot`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
+        /// 	- Service `pardot_sandbox`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
         /// </summary>
         [Input("isExternalActivitiesEndpointSelected", required: true)]
         public bool IsExternalActivitiesEndpointSelected { get; set; }
@@ -4019,6 +4196,13 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `itunes_connect`: Your Issuer ID
+        /// </summary>
+        [Input("issuerId", required: true)]
+        public string IssuerId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `aws_cost_report`: Control how your JSON data is delivered into your destination
         /// 	- Service `azure_blob_storage`: Control how your JSON data is delivered into your destination
         /// 	- Service `box`: Control how your JSON data is delivered into your destination
@@ -4029,6 +4213,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: Control how your JSON data is delivered into your destination
         /// 	- Service `kinesis`: Control how your JSON data is delivered into your destination
         /// 	- Service `s3`: Control how your JSON data is delivered into your destination
+        /// 	- Service `s3_compatible_storage`: Control how your JSON data is delivered into your destination
         /// 	- Service `sftp`: Control how your JSON data is delivered into your destination
         /// 	- Service `share_point`: Control how your JSON data is delivered into your destination
         /// 	- Service `wasabi_cloud_storage`: Specifies how Fivetran should handle your JSON data. Default value: `Packed`.
@@ -4048,6 +4233,13 @@ namespace Footholdtech.Fivetran.Inputs
             get => _key;
             set => _key = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `itunes_connect`: Your Key ID
+        /// </summary>
+        [Input("keyId", required: true)]
+        public string KeyId { get; set; } = null!;
 
         [Input("keyPassword", required: true)]
         private string? _keyPassword;
@@ -4111,6 +4303,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `pardot`: API limit for the external activities endpoint.
+        /// 	- Service `pardot_sandbox`: API limit for the external activities endpoint.
         /// </summary>
         [Input("limitForApiCallsToExternalActivitiesEndpoint", required: true)]
         public int LimitForApiCallsToExternalActivitiesEndpoint { get; set; }
@@ -4127,6 +4320,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
         /// 	- Service `kinesis`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
         /// 	- Service `s3`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `s3_compatible_storage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
         /// 	- Service `sftp`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
         /// 	- Service `share_point`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
         /// 	- Service `wasabi_cloud_storage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
@@ -4153,6 +4347,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `aws_cost_report`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
         /// 	- Service `kinesis`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
         /// 	- Service `s3`: The listing strategy you want to use. Default value: `complete_listing`.
+        /// 	- Service `s3_compatible_storage`: The listing strategy you want to use. Default value: `complete_listing`.
         /// </summary>
         [Input("listStrategy", required: true)]
         public string ListStrategy { get; set; } = null!;
@@ -4210,6 +4405,13 @@ namespace Footholdtech.Fivetran.Inputs
             get => _loginPassword;
             set => _loginPassword = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `sage_intacct`: Lookback window for GL Batch endpoint lookback sync
+        /// </summary>
+        [Input("lookBackWindowForGlBatchEndpoint", required: true)]
+        public int LookBackWindowForGlBatchEndpoint { get; set; }
 
         [Input("managerAccounts", required: true)]
         private List<string>? _managerAccounts;
@@ -4321,6 +4523,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: If your CSVs use a special value indicating null, you can specify it here.
         /// 	- Service `kinesis`: Optional. If your CSVs use a special value indicating null, you can specify it here.
         /// 	- Service `s3`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `s3_compatible_storage`: If your CSVs use a special value indicating null, you can specify it here.
         /// 	- Service `sftp`: If your CSVs use a special value indicating null, you can specify it here.
         /// 	- Service `share_point`: If your CSVs use a special value indicating null, you can specify it here.
         /// 	- Service `wasabi_cloud_storage`: If your CSVs use a special value indicating null, you can specify it here.
@@ -4407,6 +4610,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
         /// 	- Service `kinesis`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
         /// 	- Service `s3`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `s3_compatible_storage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
         /// 	- Service `sftp`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
         /// 	- Service `share_point`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
         /// 	- Service `wasabi_cloud_storage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
@@ -4595,6 +4799,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `alida`: Your Alida client secret.
         /// 	- Service `anaplan`: Your Anaplan password. Must be populated if `auth_mode` is set to `Basic`.
         /// 	- Service `appfigures`: Your Appfigures Password.
+        /// 	- Service `asset_panda`: Your Asset Panda password.
         /// 	- Service `aurora`: The user's password.
         /// 	- Service `aurora_postgres`: The user's password.
         /// 	- Service `azure_cosmos_for_mongo`: Password used for source database authentication.
@@ -4604,7 +4809,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `boostr`: Your Boostr password.
         /// 	- Service `brivo`: Your Brivo password.
         /// 	- Service `cabcharge`: Your Cabcharge password.
-        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce Password.
+        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce password.
         /// 	- Service `cin7`: Your Cin7 API Key.
         /// 	- Service `clarity`: The user's password.
         /// 	- Service `cockroachdb`: The user's password.
@@ -4633,7 +4838,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `hana_sap_hva_s4_netweaver`: The user's password.
         /// 	- Service `heroku_postgres`: The user's password.
         /// 	- Service `hilti_ontrack`: Your Hilti On!Track password.
-        /// 	- Service `impact`: Your Impact Account Token
+        /// 	- Service `impact`: Your Impact Brand Account Token
         /// 	- Service `integral_ad_science`: Your integral_ad_science password.
         /// 	- Service `itunes_connect`: Your password
         /// 	- Service `jamf`: Your Jamf password.
@@ -4671,6 +4876,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `oracle_sap_hva_netweaver`: The user's password.
         /// 	- Service `outbrain`: The Outbrain user's password.
         /// 	- Service `pardot`: The Pardot user's password.
+        /// 	- Service `pardot_sandbox`: The Pardot user's password.
         /// 	- Service `partnerize`: Your Partnerize account's password.
         /// 	- Service `podio`: Your Podio account password.
         /// 	- Service `postgres`: The user's password.
@@ -4708,6 +4914,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management password.
         /// 	- Service `unicommerce`: Your uniware login password.
         /// 	- Service `upland`: Your Upland Software Password.
+        /// 	- Service `veeva_vault`: Password
         /// 	- Service `veevavault`: Your Veeva Vault password.
         /// 	- Service `walmart_dsp`: Walmart DSP password. It is a part of the login credentials.
         /// 	- Service `when_i_work`: Your When I Work password.
@@ -4716,6 +4923,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `workday_financial_management`: Workday password.
         /// 	- Service `workday_hcm`: Workday password.
         /// 	- Service `xandr`: Your Xandr password.
+        /// 	- Service `yougov_brandindex`: Your YouGov BrandIndex password.
         /// 	- Service `younium`: Your Younium password.
         /// </summary>
         public string? Password
@@ -4783,13 +4991,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `azure_blob_storage`: All files in your search path matching this regular expression will be synced.
         /// 	- Service `box`: All files in your search path matching this regular expression will be synced.
         /// 	- Service `dropbox`: All files in your search path matching this regular expression will be synced.
-        /// 	- Service `email`: All files in your search path matching this regular expression will be synced.
+        /// 	- Service `email`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by Oct 31, 2025.
         /// 	- Service `ftp`: All files in your search path matching this regular expression will be synced.
-        /// 	- Service `gcs`: All files in your search path matching this regular expression will be synced.
-        /// 	- Service `google_drive`: All files in your search path matching this regular expression will be synced.
+        /// 	- Service `gcs`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `google_drive`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
         /// 	- Service `kinesis`: Optional. All files in your search path matching this regular expression will be synced. This parameter is optional.
-        /// 	- Service `s3`: All files in your search path matching this regular expression will be synced.
-        /// 	- Service `sftp`: All files in your search path matching this regular expression will be synced.
+        /// 	- Service `s3`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `sftp`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
         /// 	- Service `share_point`: All files in your search path matching this regular expression will be synced.
         /// 	- Service `wasabi_cloud_storage`: All files in your search path matching this regular expression will be synced.
         /// </summary>
@@ -4887,6 +5095,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         /// 	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         /// 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        /// 	- Service `s3_compatible_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         /// 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         /// 	- Service `wasabi_cloud_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
         /// </summary>
@@ -4905,6 +5114,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         /// 	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         /// 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        /// 	- Service `s3_compatible_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         /// 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         /// 	- Service `wasabi_cloud_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
         /// </summary>
@@ -4920,6 +5130,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("phoneNumber", required: true)]
         public string PhoneNumber { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `wrike`: Your Wrike Subscription Plan.
+        /// </summary>
+        [Input("plan", required: true)]
+        public string Plan { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -5021,6 +5238,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `marin`: Folder path to the Marin manifest file.
         /// 	- Service `microsoft_dynamics_365_fo`: Folder name in which the exported dynamics 365 data resides.
         /// 	- Service `s3`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `s3_compatible_storage`: All files and folders under this folder path will be searched for files to sync.
         /// 	- Service `segment`: Folder path to the Segment files within the bucket. Must be populated if `sync_type` is set to `S3`.
         /// 	- Service `sftp`: All files and folders under this folder path will be searched for files to sync.
         /// 	- Service `share_point`: All files and folders under this folder path link will be searched for files to sync. This can be any shared folder link.
@@ -5055,6 +5273,26 @@ namespace Footholdtech.Fivetran.Inputs
             set => _primaryKeys = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `marketo`: Use BULK for both LEAD and ACTIITIES
+        /// </summary>
+        [Input("prioritiseBulkExportOverRest", required: true)]
+        public bool PrioritiseBulkExportOverRest { get; set; }
+
+        [Input("privateAccessToken", required: true)]
+        private string? _privateAccessToken;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `purple_dot`: Your PurpleDot Private access token.
+        /// </summary>
+        public string? PrivateAccessToken
+        {
+            get => _privateAccessToken;
+            set => _privateAccessToken = value;
+        }
+
         [Input("privateKey", required: true)]
         private string? _privateKey;
 
@@ -5067,6 +5305,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `apple_search_ads`: The contents of your secret key file. Must be populated if `is_auth2_enabled` is set to `false`.
         /// 	- Service `braintree`: The contents of your secret key file.
         /// 	- Service `braintree_sandbox`: The contents of your secret key file.
+        /// 	- Service `itunes_connect`: Your Private Key
         /// 	- Service `netsuite_suiteanalytics`: Private Key
         /// 	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud private key.
         /// 	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud private key.
@@ -5119,7 +5358,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_dsp`: Comma-separated list of your Amazon DSP profiles.
+        /// 	- Service `amazon_dsp`: your Amazon DSP profiles pass it inside an Array list.
         /// </summary>
         [Input("profilesAmazonDsp", required: true)]
         public string ProfilesAmazonDsp { get; set; } = null!;
@@ -5345,9 +5584,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `azure_blob_storage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
+        /// 	- Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
+        /// 	- Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
+        /// 	- Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
         /// 	- Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
         /// 	- Service `google_drive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
         /// 	- Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
+        /// 	- Service `s3_compatible_storage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
         /// 	- Service `sftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
         /// 	- Service `share_point`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
         /// </summary>
@@ -5356,10 +5599,14 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `azure_blob_storage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as a quote character.
+        /// 	- Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// 	- Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// 	- Service `google_drive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// 	- Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `s3_compatible_storage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// 	- Service `sftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// 	- Service `share_point`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// </summary>
@@ -5606,6 +5853,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_ads`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
         /// 	- Service `google_analytics`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
         /// 	- Service `google_analytics_4`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+        /// 	- Service `google_display_and_video_360`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
         /// 	- Service `google_search_ads_360`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
         /// 	- Service `google_search_console`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
         /// 	- Service `workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
@@ -5665,6 +5913,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `pardot`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
+        /// 	- Service `pardot_sandbox`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
         /// </summary>
         [Input("restApiLimit", required: true)]
         public int RestApiLimit { get; set; }
@@ -5724,6 +5973,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("rollbackWindowSize", required: true)]
         public int RollbackWindowSize { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `oracle_fusion_field_service`: Your Oracle Fusion Field Service rootresourceId.
+        /// </summary>
+        [Input("rootResourceId", required: true)]
+        public string RootResourceId { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -5852,6 +6108,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `pardot`: The Pardot user's Salesforce SSO Account Security Token.
+        /// 	- Service `pardot_sandbox`: The Pardot user's Salesforce SSO Account Security Token.
         /// </summary>
         public string? SalesforceSecurityToken
         {
@@ -6049,6 +6306,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `cornerstone`: Your Cornerstone scopes.
+        /// 	- Service `fortnox`: Your Fortnox app scopes.
         /// </summary>
         [Input("scopes", required: true)]
         public string Scopes { get; set; } = null!;
@@ -6077,6 +6335,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `loopio`: Your Loopio Secret.
         /// 	- Service `mode`: Your Mode Secret.
         /// 	- Service `playvox_workforce_management`: Your Playvox Workforce Management client secret.
+        /// 	- Service `tiktok_organic`: The secret of the app registered in your TikTok developer account.
         /// 	- Service `twilio`: The Twilio API secret
         /// 	- Service `uservoice`: The UserVoice API secret.
         /// 	- Service `venminder`: Your Venminder secret.
@@ -6086,6 +6345,19 @@ namespace Footholdtech.Fivetran.Inputs
         {
             get => _secret;
             set => _secret = value;
+        }
+
+        [Input("secretAccessKey", required: true)]
+        private string? _secretAccessKey;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `validio`: Your Validio secret access key.
+        /// </summary>
+        public string? SecretAccessKey
+        {
+            get => _secretAccessKey;
+            set => _secretAccessKey = value;
         }
 
         [Input("secretKey", required: true)]
@@ -6445,6 +6717,13 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `netsuite_suiteanalytics`: Re-sync re-import tables during every sync
+        /// </summary>
+        [Input("shouldSyncReimportTables", required: true)]
+        public bool ShouldSyncReimportTables { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `apple_search_ads`: Turn the toggle on if you want the reports to also return records without metrics.
         /// </summary>
         [Input("showRecordsWithNoMetrics", required: true)]
@@ -6470,6 +6749,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         /// 	- Service `gcs`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         /// 	- Service `s3`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
+        /// 	- Service `s3_compatible_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         /// 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         /// 	- Service `wasabi_cloud_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
         /// </summary>
@@ -6524,6 +6804,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
         /// 	- Service `kinesis`: Enter 1 or greater
         /// 	- Service `s3`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
+        /// 	- Service `s3_compatible_storage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
         /// 	- Service `sftp`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
         /// 	- Service `share_point`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
         /// 	- Service `wasabi_cloud_storage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
@@ -6543,6 +6824,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `google_drive`: We will skip over the number of lines specified before syncing data.
         /// 	- Service `kinesis`: Enter 1 or greater
         /// 	- Service `s3`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `s3_compatible_storage`: We will skip over the number of lines specified before syncing data.
         /// 	- Service `sftp`: We will skip over the number of lines specified before syncing data.
         /// 	- Service `share_point`: We will skip over the number of lines specified before syncing data.
         /// 	- Service `wasabi_cloud_storage`: We will skip over the number of lines specified before syncing data.
@@ -6709,6 +6991,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `nylas`: Your Nylas subdomain.
         /// 	- Service `odoo`: Your Odoo subdomain.
         /// 	- Service `okta`: Your Okta subdomain.
+        /// 	- Service `oracle_fusion_field_service`: Your Oracle Fusion Field Service subDomain.
         /// 	- Service `picqer`: Your Picqer subdomain.
         /// 	- Service `pinpoint`: Your Pinpoint sub domain name.
         /// 	- Service `piwik_pro`: Your Piwik PRO subdomain.
@@ -6732,6 +7015,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `totango`: Your Totango Subdomain.
         /// 	- Service `tymeshift`: Your Tymeshift subdomain.
         /// 	- Service `upland`: Your Upland Software subDomain.
+        /// 	- Service `validio`: Your Validio subdomain.
         /// 	- Service `wordpress`: Your WordPress subdomain.
         /// 	- Service `workable`: Your Workable Subdomain.
         /// 	- Service `wrike`: Your Wrike Subdomain.
@@ -6876,7 +7160,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `dynamodb`: Which packed mode setting to use. Default value: `UsePackedModeOnly`.
         /// 	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
         /// 	- Service `facebook_ad_account`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-        /// 	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#syncmode).
+        /// 	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/connectors/applications/facebook-ads#syncmode).
         /// 	- Service `facebook_pages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
         /// 	- Service `github`: Whether to sync all repositories or specific repositories.
         /// 	- Service `google_ads`: Whether to sync all accounts or specific accounts.
@@ -7008,6 +7292,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `sql_server`: Certificate file path used to protect a database encryption key
         /// 	- Service `sql_server_hva`: Certificate used to protect a database encryption key
         /// 	- Service `sql_server_sap_ecc_hva`: Certificate used to protect a database encryption key
         /// </summary>
@@ -7030,6 +7315,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `sql_server`: Password of the TDE private key
         /// 	- Service `sql_server_hva`: Password of the TDE private key
         /// 	- Service `sql_server_sap_ecc_hva`: Password of the TDE private key
         /// </summary>
@@ -7044,6 +7330,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `sql_server`: Private key file path associated with the TDE certificate
         /// 	- Service `sql_server_hva`: Private key associated with the TDE certificate
         /// 	- Service `sql_server_sap_ecc_hva`: Private key associated with the TDE certificate
         /// </summary>
@@ -7051,6 +7338,21 @@ namespace Footholdtech.Fivetran.Inputs
         {
             get => _tdePrivateKey;
             set => _tdePrivateKey = value;
+        }
+
+        [Input("tdeWalletPassword", required: true)]
+        private string? _tdeWalletPassword;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `oracle_hva`: TDE wallet password. Required for password based wallet.
+        /// 	- Service `oracle_sap_hva`: TDE wallet password. Required for password based wallet.
+        /// 	- Service `oracle_sap_hva_netweaver`: TDE wallet password. Required for password based wallet.
+        /// </summary>
+        public string? TdeWalletPassword
+        {
+            get => _tdeWalletPassword;
+            set => _tdeWalletPassword = value;
         }
 
         /// <summary>
@@ -7166,6 +7468,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `pardot`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
+        /// 	- Service `pardot_sandbox`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
         /// </summary>
         [Input("timeZone", required: true)]
         public string TimeZone { get; set; } = null!;
@@ -7383,6 +7686,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `aurora`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// 	- Service `aurora_postgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `aveva_pi`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// 	- Service `azure_cosmos_for_mongo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// 	- Service `azure_postgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// 	- Service `azure_sql_db`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -7442,6 +7746,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `aurora`: SSH port, specify only to connect via an SSH tunnel.
         /// 	- Service `aurora_postgres`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `aveva_pi`: SSH port, specify only to connect via an SSH tunnel.
         /// 	- Service `azure_cosmos_for_mongo`: SSH port, specify only to connect via an SSH tunnel.
         /// 	- Service `azure_postgres`: SSH port, specify only to connect via an SSH tunnel.
         /// 	- Service `azure_sql_db`: SSH port, specify only to connect via an SSH tunnel.
@@ -7501,6 +7806,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `aurora`: SSH user, specify only to connect via an SSH tunnel.
         /// 	- Service `aurora_postgres`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `aveva_pi`: SSH user, specify only to connect via an SSH tunnel.
         /// 	- Service `azure_cosmos_for_mongo`: SSH user, specify only to connect via an SSH tunnel.
         /// 	- Service `azure_postgres`: SSH user, specify only to connect via an SSH tunnel.
         /// 	- Service `azure_sql_db`: SSH user, specify only to connect via an SSH tunnel.
@@ -7656,6 +7962,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
         /// 	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
         /// 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
+        /// 	- Service `s3_compatible_storage`: Set to `true` if files are encrypted using PGP in the S3-Compatible Storage bucket. Default value: `false`.
         /// 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
         /// 	- Service `wasabi_cloud_storage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
         /// </summary>
@@ -7696,6 +8003,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// Field usage depends on `service` value: 
         /// 	- Service `aurora`: The user name.
         /// 	- Service `aurora_postgres`: The user name.
+        /// 	- Service `aveva_pi`: Username for the user to authenticate as with the AF Server
         /// 	- Service `azure_cosmos_for_mongo`: Username for source database access.
         /// 	- Service `azure_postgres`: The user name.
         /// 	- Service `azure_sql_db`: The user name.  For Azure Databases, the format must be `user@domain`.
@@ -7826,7 +8134,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `anaplan`: Your Anaplan user ID. Must be populated if `auth_mode` is set to `Basic`.
         /// 	- Service `appfigures`: Your Appfigures Username.
         /// 	- Service `aveva_pi`: Username for the user to authenticate as with the AF Server
-        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce Username.
+        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce username.
         /// 	- Service `churnzero`: Your ChurnZero username.
         /// 	- Service `cin7`: Your Cin7 API Username.
         /// 	- Service `collibra`: Your collibra username.
@@ -7843,7 +8151,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `green_power_monitor`: Your GreenPowerMonitor username.
         /// 	- Service `guru`: Your Guru username.
         /// 	- Service `hilti_ontrack`: Your Hilti On!Track username.
-        /// 	- Service `impact`: Your Impact Account SID
+        /// 	- Service `impact`: Your Impact Brand Account SID
         /// 	- Service `integral_ad_science`: Your integral_ad_science username.
         /// 	- Service `itunes_connect`: Your Apple ID
         /// 	- Service `jamf`: Your Jamf username.
@@ -7882,18 +8190,33 @@ namespace Footholdtech.Fivetran.Inputs
         /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management username.
         /// 	- Service `unicommerce`: Your uniware login username.
         /// 	- Service `upland`: Your Upland Software Username.
+        /// 	- Service `veeva_vault`: Username
         /// 	- Service `veevavault`: Your Veeva Vault username.
         /// 	- Service `when_i_work`: Your When I Work username.
         /// 	- Service `wherefour`: Your Wherefour username.
         /// 	- Service `workday_financial_management`: Workday username.
         /// 	- Service `workday_hcm`: Username of your Workday Integration System User account
         /// 	- Service `xandr`: Your Xandr username.
+        /// 	- Service `yougov_brandindex`: Your YouGov BrandIndex username.
         /// 	- Service `younium`: Your Younium username.
         /// </summary>
         public string? Username
         {
             get => _username;
             set => _username = value;
+        }
+
+        [Input("vendorsIds", required: true)]
+        private List<string>? _vendorsIds;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `itunes_connect`: Your vendors id
+        /// </summary>
+        public List<string> VendorsIds
+        {
+            get => _vendorsIds ?? (_vendorsIds = new List<string>());
+            set => _vendorsIds = value;
         }
 
         /// <summary>

@@ -12,6 +12,69 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage list of approved SSH fingerprints for a particular destination.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/footholdtech/pulumi-fivetran/sdk/go/fivetran"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewDestinationCertificates(ctx, "my_destination_approved_certificates", &fivetran.DestinationCertificatesArgs{
+//				DestinationId: pulumi.Any(myDestination.Id),
+//				Certificates: fivetran.DestinationCertificatesCertificateArray{
+//					&fivetran.DestinationCertificatesCertificateArgs{
+//						Hash:        pulumi.String("jhgfJfgrI6yy..."),
+//						EncodedCert: pulumi.String("encoded_cert"),
+//					},
+//					&fivetran.DestinationCertificatesCertificateArgs{
+//						Hash:        pulumi.String("eUtPirI6yytWe..."),
+//						EncodedCert: pulumi.String("encoded_cert"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// 1. To import an existing `fivetran_destination_certificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+//
+// 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+//
+// 3. Define an empty resource in your `.tf` configuration:
+//
+// hcl
+//
+// resource "fivetran_destination_certificates" "my_imported_destination_certificates" {
+//
+// }
+//
+// 4. Run the `pulumi import` command:
+//
+// ```sh
+// $ pulumi import fivetran:index/destinationCertificates:DestinationCertificates my_imported_destination_certificates {your Destination Group ID}
+// ```
+//
+// 5.  Use the `terraform state show` command to get the values from the state:
+//
+// terraform state show 'fivetran_destination_certificates.my_imported_destination_certificates'
+//
+// 6. Copy the values and paste them to your `.tf` configuration.
 type DestinationCertificates struct {
 	pulumi.CustomResourceState
 

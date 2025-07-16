@@ -26,7 +26,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? Currency;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `config_type` is set to `CUSTOM`.
+        /// 	- Service `yahoo_dsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `config_type` is set to `CUSTOM`. PUBLISHER, DESKTOP_OS_DEPRECATED, LINE_TYPE, GOAL_TYPE, BID_REQUEST_AD_SIZE, CHANNEL_TYPE, SITE_NAME, and SITE_GROUP_NAME are deprecated dimension, and shouldn't be used anymore
         /// </summary>
         public readonly ImmutableArray<string> Dimensions;
         /// <summary>
@@ -36,7 +36,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? IntervalType;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `config_type` is set to `CUSTOM`.
+        /// 	- Service `yahoo_dsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `config_type` is set to `CUSTOM`. PUBLISHER_EARNINGS, PUBLISHER_EARNINGS_PERCENTAGE, INVENTORY_ECPM_DEPRECATED, SEAT_TECH_FEE, and SEAT_DATA_FEE are deprecated and shouldn't be used anymore
         /// </summary>
         public readonly ImmutableArray<string> Metrics;
         /// <summary>

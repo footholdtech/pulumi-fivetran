@@ -16,6 +16,11 @@ namespace Footholdtech.Fivetran.Outputs
     {
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: The list of advertisers to include into a sync. This parameter only takes effect when `config_method` is set to `CREATE_NEW`.
+        /// </summary>
+        public readonly ImmutableArray<string> Advertisers;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `google_search_console`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
         /// </summary>
         public readonly string? Aggregation;
@@ -26,6 +31,11 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> Attributes;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
+        /// </summary>
+        public readonly string? ConfigMethod;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
         /// 	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
         /// </summary>
@@ -34,6 +44,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
         /// 	- Service `google_analytics_4`: The report dimensions to include into a sync.
+        /// 	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
         /// 	- Service `google_search_console`: The report dimensions included to sync.
         /// </summary>
         public readonly ImmutableArray<string> Dimensions;
@@ -77,9 +88,15 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics`: The report metrics to include into a sync.
         /// 	- Service `google_analytics_4`: The report metrics to include into a sync.
+        /// 	- Service `google_display_and_video_360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
         /// 	- Service `google_search_ads_360`: The report metrics included to sync.
         /// </summary>
         public readonly ImmutableArray<string> Metrics;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: The list of partners to include into a sync. This parameter only takes effect when `config_method` is set to `CREATE_NEW`.
+        /// </summary>
+        public readonly ImmutableArray<string> Partners;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -93,12 +110,18 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> PrimaryKeys;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `config_method` is set to `REUSE_EXISTING`.
+        /// </summary>
+        public readonly string? QueryId;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
         /// </summary>
         public readonly string? ReportFormatType;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `google_ads`: The name of the Google Ads report from which the connector will sync the data. [Possible report_type values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
+        /// 	- Service `google_display_and_video_360`: The type of the report to create. This is a required parameter when `config_method` is set to `CREATE_NEW`.
         /// 	- Service `google_search_ads_360`: The type of report
         /// 	- Service `google_search_console`: The type of report
         /// </summary>
@@ -157,15 +180,29 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? Table;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: The table name within the schema to which connector will sync the data of the specific report.
+        /// </summary>
+        public readonly string? TableName;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics_4`: The report data aggregation time granularity.
         /// </summary>
         public readonly string? TimeAggregationGranularity;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `google_display_and_video_360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `config_method` is set to `REUSE_EXISTING`. The default value is `true`.
+        /// </summary>
+        public readonly bool? UpdateConfigOnEachSync;
 
         [OutputConstructor]
         private ConnectorConfigReport(
+            ImmutableArray<string> advertisers,
+
             string? aggregation,
 
             ImmutableArray<string> attributes,
+
+            string? configMethod,
 
             string? configType,
 
@@ -189,9 +226,13 @@ namespace Footholdtech.Fivetran.Outputs
 
             ImmutableArray<string> metrics,
 
+            ImmutableArray<string> partners,
+
             string? prebuiltReport,
 
             ImmutableArray<string> primaryKeys,
+
+            string? queryId,
 
             string? reportFormatType,
 
@@ -217,10 +258,16 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? table,
 
-            string? timeAggregationGranularity)
+            string? tableName,
+
+            string? timeAggregationGranularity,
+
+            bool? updateConfigOnEachSync)
         {
+            Advertisers = advertisers;
             Aggregation = aggregation;
             Attributes = attributes;
+            ConfigMethod = configMethod;
             ConfigType = configType;
             Dimensions = dimensions;
             DynamicParameterField = dynamicParameterField;
@@ -232,8 +279,10 @@ namespace Footholdtech.Fivetran.Outputs
             FilterValue = filterValue;
             GenerateFivetranPk = generateFivetranPk;
             Metrics = metrics;
+            Partners = partners;
             PrebuiltReport = prebuiltReport;
             PrimaryKeys = primaryKeys;
+            QueryId = queryId;
             ReportFormatType = reportFormatType;
             ReportType = reportType;
             ReportUrl = reportUrl;
@@ -246,7 +295,9 @@ namespace Footholdtech.Fivetran.Outputs
             SupportNestedColumns = supportNestedColumns;
             SyncStrategy = syncStrategy;
             Table = table;
+            TableName = tableName;
             TimeAggregationGranularity = timeAggregationGranularity;
+            UpdateConfigOnEachSync = updateConfigOnEachSync;
         }
     }
 }

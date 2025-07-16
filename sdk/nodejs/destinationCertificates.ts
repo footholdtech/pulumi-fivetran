@@ -6,6 +6,56 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * This resource allows you to manage list of approved SSH fingerprints for a particular destination.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@footholdtech/fivetran";
+ *
+ * const myDestinationApprovedCertificates = new fivetran.DestinationCertificates("my_destination_approved_certificates", {
+ *     destinationId: myDestination.id,
+ *     certificates: [
+ *         {
+ *             hash: "jhgfJfgrI6yy...",
+ *             encodedCert: "encoded_cert",
+ *         },
+ *         {
+ *             hash: "eUtPirI6yytWe...",
+ *             encodedCert: "encoded_cert",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * 1. To import an existing `fivetran_destination_certificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+ *
+ * 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+ *
+ * 3. Define an empty resource in your `.tf` configuration:
+ *
+ * hcl
+ *
+ * resource "fivetran_destination_certificates" "my_imported_destination_certificates" {
+ *
+ * }
+ *
+ * 4. Run the `pulumi import` command:
+ *
+ * ```sh
+ * $ pulumi import fivetran:index/destinationCertificates:DestinationCertificates my_imported_destination_certificates {your Destination Group ID}
+ * ```
+ *
+ * 5.  Use the `terraform state show` command to get the values from the state:
+ *
+ * terraform state show 'fivetran_destination_certificates.my_imported_destination_certificates'
+ *
+ * 6. Copy the values and paste them to your `.tf` configuration.
+ */
 export class DestinationCertificates extends pulumi.CustomResource {
     /**
      * Get an existing DestinationCertificates resource's state with the given name, ID, and optional extra
