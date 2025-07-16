@@ -27,7 +27,7 @@ class GetProxyAgentResult:
     """
     A collection of values returned by getProxyAgent.
     """
-    def __init__(__self__, created_by=None, display_name=None, group_region=None, id=None, registred_at=None, salt=None, token=None):
+    def __init__(__self__, created_by=None, display_name=None, group_region=None, id=None, registred_at=None):
         if created_by and not isinstance(created_by, str):
             raise TypeError("Expected argument 'created_by' to be a str")
         pulumi.set(__self__, "created_by", created_by)
@@ -43,12 +43,6 @@ class GetProxyAgentResult:
         if registred_at and not isinstance(registred_at, str):
             raise TypeError("Expected argument 'registred_at' to be a str")
         pulumi.set(__self__, "registred_at", registred_at)
-        if salt and not isinstance(salt, str):
-            raise TypeError("Expected argument 'salt' to be a str")
-        pulumi.set(__self__, "salt", salt)
-        if token and not isinstance(token, str):
-            raise TypeError("Expected argument 'token' to be a str")
-        pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter(name="createdBy")
@@ -90,22 +84,6 @@ class GetProxyAgentResult:
         """
         return pulumi.get(self, "registred_at")
 
-    @property
-    @pulumi.getter
-    def salt(self) -> builtins.str:
-        """
-        The salt.
-        """
-        return pulumi.get(self, "salt")
-
-    @property
-    @pulumi.getter
-    def token(self) -> builtins.str:
-        """
-        The auth token.
-        """
-        return pulumi.get(self, "token")
-
 
 class AwaitableGetProxyAgentResult(GetProxyAgentResult):
     # pylint: disable=using-constant-test
@@ -117,9 +95,7 @@ class AwaitableGetProxyAgentResult(GetProxyAgentResult):
             display_name=self.display_name,
             group_region=self.group_region,
             id=self.id,
-            registred_at=self.registred_at,
-            salt=self.salt,
-            token=self.token)
+            registred_at=self.registred_at)
 
 
 def get_proxy_agent(id: Optional[builtins.str] = None,
@@ -149,9 +125,7 @@ def get_proxy_agent(id: Optional[builtins.str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         group_region=pulumi.get(__ret__, 'group_region'),
         id=pulumi.get(__ret__, 'id'),
-        registred_at=pulumi.get(__ret__, 'registred_at'),
-        salt=pulumi.get(__ret__, 'salt'),
-        token=pulumi.get(__ret__, 'token'))
+        registred_at=pulumi.get(__ret__, 'registred_at'))
 def get_proxy_agent_output(id: Optional[pulumi.Input[builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProxyAgentResult]:
     """
@@ -178,6 +152,4 @@ def get_proxy_agent_output(id: Optional[pulumi.Input[builtins.str]] = None,
         display_name=pulumi.get(__response__, 'display_name'),
         group_region=pulumi.get(__response__, 'group_region'),
         id=pulumi.get(__response__, 'id'),
-        registred_at=pulumi.get(__response__, 'registred_at'),
-        salt=pulumi.get(__response__, 'salt'),
-        token=pulumi.get(__response__, 'token')))
+        registred_at=pulumi.get(__response__, 'registred_at')))

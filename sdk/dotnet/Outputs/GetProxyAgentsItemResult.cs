@@ -34,14 +34,6 @@ namespace Footholdtech.Fivetran.Outputs
         /// The timestamp of the time the proxy agent was created in your account.
         /// </summary>
         public readonly string RegistredAt;
-        /// <summary>
-        /// The salt.
-        /// </summary>
-        public readonly string Salt;
-        /// <summary>
-        /// The auth token.
-        /// </summary>
-        public readonly string Token;
 
         [OutputConstructor]
         private GetProxyAgentsItemResult(
@@ -53,19 +45,13 @@ namespace Footholdtech.Fivetran.Outputs
 
             string id,
 
-            string registredAt,
-
-            string salt,
-
-            string token)
+            string registredAt)
         {
             CreatedBy = createdBy;
             DisplayName = displayName;
             GroupRegion = groupRegion;
             Id = id;
             RegistredAt = registredAt;
-            Salt = salt;
-            Token = token;
         }
     }
 }

@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to create, update, and delete proxy agent.
  *
+ * > NOTE: Proxy Agents created after 2025-06-10 must be run using the Proxy Agent bundled in high-volume agent version 6.1.0/79 or later, else  connections will fail. EOL for versions bundled with eariler than 6.1.0/79 will occur on 2025-10-08.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -48,6 +50,14 @@ export class ProxyAgent extends pulumi.CustomResource {
     }
 
     /**
+     * Client certificate.
+     */
+    public /*out*/ readonly clientCert!: pulumi.Output<string>;
+    /**
+     * Client private key.
+     */
+    public /*out*/ readonly clientPrivateKey!: pulumi.Output<string>;
+    /**
      * The actor who created the proxy agent.
      */
     public /*out*/ readonly createdBy!: pulumi.Output<string>;
@@ -60,17 +70,13 @@ export class ProxyAgent extends pulumi.CustomResource {
      */
     public readonly groupRegion!: pulumi.Output<string>;
     /**
-     * The proxy server URI.
+     * Determines whether regenerarion secrets needs to be performed.
      */
-    public /*out*/ readonly proxyServerUri!: pulumi.Output<string>;
+    public readonly regenerationCounter!: pulumi.Output<number>;
     /**
      * The timestamp of the time the proxy agent was created in your account.
      */
     public /*out*/ readonly registredAt!: pulumi.Output<string>;
-    /**
-     * The salt.
-     */
-    public /*out*/ readonly salt!: pulumi.Output<string>;
     /**
      * The auth token.
      */
@@ -89,12 +95,13 @@ export class ProxyAgent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProxyAgentState | undefined;
+            resourceInputs["clientCert"] = state ? state.clientCert : undefined;
+            resourceInputs["clientPrivateKey"] = state ? state.clientPrivateKey : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["groupRegion"] = state ? state.groupRegion : undefined;
-            resourceInputs["proxyServerUri"] = state ? state.proxyServerUri : undefined;
+            resourceInputs["regenerationCounter"] = state ? state.regenerationCounter : undefined;
             resourceInputs["registredAt"] = state ? state.registredAt : undefined;
-            resourceInputs["salt"] = state ? state.salt : undefined;
             resourceInputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as ProxyAgentArgs | undefined;
@@ -106,10 +113,11 @@ export class ProxyAgent extends pulumi.CustomResource {
             }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["groupRegion"] = args ? args.groupRegion : undefined;
+            resourceInputs["regenerationCounter"] = args ? args.regenerationCounter : undefined;
+            resourceInputs["clientCert"] = undefined /*out*/;
+            resourceInputs["clientPrivateKey"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
-            resourceInputs["proxyServerUri"] = undefined /*out*/;
             resourceInputs["registredAt"] = undefined /*out*/;
-            resourceInputs["salt"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -121,6 +129,14 @@ export class ProxyAgent extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProxyAgent resources.
  */
 export interface ProxyAgentState {
+    /**
+     * Client certificate.
+     */
+    clientCert?: pulumi.Input<string>;
+    /**
+     * Client private key.
+     */
+    clientPrivateKey?: pulumi.Input<string>;
     /**
      * The actor who created the proxy agent.
      */
@@ -134,17 +150,13 @@ export interface ProxyAgentState {
      */
     groupRegion?: pulumi.Input<string>;
     /**
-     * The proxy server URI.
+     * Determines whether regenerarion secrets needs to be performed.
      */
-    proxyServerUri?: pulumi.Input<string>;
+    regenerationCounter?: pulumi.Input<number>;
     /**
      * The timestamp of the time the proxy agent was created in your account.
      */
     registredAt?: pulumi.Input<string>;
-    /**
-     * The salt.
-     */
-    salt?: pulumi.Input<string>;
     /**
      * The auth token.
      */
@@ -163,4 +175,8 @@ export interface ProxyAgentArgs {
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
     groupRegion: pulumi.Input<string>;
+    /**
+     * Determines whether regenerarion secrets needs to be performed.
+     */
+    regenerationCounter?: pulumi.Input<number>;
 }

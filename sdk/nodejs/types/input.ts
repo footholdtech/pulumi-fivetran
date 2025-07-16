@@ -419,6 +419,11 @@ export interface ConnectorConfig {
     academyId?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `ceridianDayforce`: Your confirmation that you have granted Fivetran access to all the RESTful services and fields you want to sync. Possible values: `true`, `false`.
+     */
+    accessConfirmation?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `planful`: Your Planful access ID.
      */
     accessId?: pulumi.Input<string>;
@@ -439,6 +444,8 @@ export interface ConnectorConfig {
      * 	- Service `cloudtalk`: Your CloudTalk Access Key ID.
      * 	- Service `nice`: Your NICE access key ID.
      * 	- Service `s3`: Access Key ID
+     * 	- Service `s3CompatibleStorage`: Access Key ID
+     * 	- Service `validio`: Your Validio access key ID.
      * 	- Service `wasabiCloudStorage`: Access Key ID
      */
     accessKeyId?: pulumi.Input<string>;
@@ -450,6 +457,7 @@ export interface ConnectorConfig {
      * 	- Service `gongio`: Your Gongio Access Key Secret.
      * 	- Service `nice`: Your NICE access key secret.
      * 	- Service `s3`: Access Key Secret
+     * 	- Service `s3CompatibleStorage`: Access Key Secret
      * 	- Service `wasabiCloudStorage`: Access Key Secret
      */
     accessKeySecret?: pulumi.Input<string>;
@@ -461,6 +469,7 @@ export interface ConnectorConfig {
      * 	- Service `bitly`: Your Bitly access token.
      * 	- Service `calabrio`: Your Calabrio access token.
      * 	- Service `coalesce`: Your Coalesce access token.
+     * 	- Service `coheris`: Your Coheris access token.
      * 	- Service `coupa`: Your Coupa access token fetched using clientId and clientSecret
      * 	- Service `deputy`: Your Deputy API access token.
      * 	- Service `getfeedback`: Your GetFeedback Access token.
@@ -553,6 +562,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Account Sync Mode
+     * 	- Service `snapchatAds`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
      */
     accountSyncMode?: pulumi.Input<string>;
     /**
@@ -579,6 +589,7 @@ export interface ConnectorConfig {
      * 	- Service `instagramBusiness`: Specific accounts to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `itunesConnect`: Accounts
      * 	- Service `linkedinAds`: Specific Account IDs to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
+     * 	- Service `snapchatAds`: Specific accounts IDs to sync. Must be populated if `accountSyncMode` is set to `SpecificAccounts`.
      * 	- Service `spotifyAds`: The list of Ad Account IDs to sync. Must be populated if `syncMode` is set to `SPECIFIC_ACCOUNTS`.
      * 	- Service `tiktokAds`: Specific accounts to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `twilio`: Specific Accounts to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
@@ -761,6 +772,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Require TLS through Tunnel
      * 	- Service `auroraPostgres`: Require TLS through Tunnel
+     * 	- Service `avevaPi`: Require TLS.
      * 	- Service `azureCosmosForMongo`: Require TLS
      * 	- Service `azurePostgres`: Require TLS through Tunnel
      * 	- Service `azureSqlDb`: Require TLS through Tunnel.
@@ -821,6 +833,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay API environment.
+     * 	- Service `tiktokOrganic`: Your TikTok Organic API environment.
      */
     apiEnvironment?: pulumi.Input<string>;
     /**
@@ -840,6 +853,7 @@ export interface ConnectorConfig {
      * 	- Service `algolia`: Your Algolia API key.
      * 	- Service `alida`: Your Alida API key.
      * 	- Service `anvyl`: Your Anvyl API key.
+     * 	- Service `apollo`: Your Apollo API key.
      * 	- Service `appcues`: Your Appcues API key.
      * 	- Service `ashby`: Your Ashby API key.
      * 	- Service `assembled`: Your Assembled API key.
@@ -885,6 +899,7 @@ export interface ConnectorConfig {
      * 	- Service `contrastSecurity`: Your Contrast Security API Key.
      * 	- Service `copper`: Your Copper API key.
      * 	- Service `coupa`: Your Coupa API key.
+     * 	- Service `crunchbase`: Your Crunchbase API key.
      * 	- Service `datadog`: Your Datadog API key.
      * 	- Service `dbtCloud`: Your dbt Cloud service token.
      * 	- Service `dclLogistics`: Your DCL Logistics API key.
@@ -957,6 +972,7 @@ export interface ConnectorConfig {
      * 	- Service `mandrill`: Your Mandrill API key.
      * 	- Service `maxioChargify`: Enter Your API Key.
      * 	- Service `messagebird`: Your MessageBird API key.
+     * 	- Service `moloco`: Your Moloco apiKey
      * 	- Service `mountain`: Your MNTN API key.
      * 	- Service `myosh`: Your myosh API key.
      * 	- Service `okendo`: Your Okendo API key.
@@ -1100,6 +1116,7 @@ export interface ConnectorConfig {
      * 	- Service `aha`: Your Aha! API key.
      * 	- Service `aircall`: Your Aircall API token.
      * 	- Service `appsflyer`: API Token for AppsFlyer's PULL API.
+     * 	- Service `auraFromUnity`: Your Aura from Unity API token.
      * 	- Service `awin`: Your Awin API Token.
      * 	- Service `backbonePlm`: Your Backbone PLM API token.
      * 	- Service `brex`: Your Brex API token
@@ -1191,6 +1208,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: API Version
+     * 	- Service `pardotSandbox`: API Version
      */
     apiVersion?: pulumi.Input<string>;
     /**
@@ -1198,6 +1216,7 @@ export interface ConnectorConfig {
      * 	- Service `churnkey`: Your Churnkey APP ID.
      * 	- Service `openExchangeRates`: Your Open Exchange Rates App Id.
      * 	- Service `rokt`: Your Rokt app ID.
+     * 	- Service `tiktokOrganic`: Your Tiktok Organic app ID.
      */
     appId?: pulumi.Input<string>;
     /**
@@ -1210,7 +1229,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `loopio`: Your Loopio App Key.
      * 	- Service `servicetitan`: Your ServiceTitan app key.
-     * 	- Service `yotpo`: Your Yotpo App Key
+     * 	- Service `yotpo`: Your Yotpo app key.
      * 	- Service `yotpoApp`: Your Yotpo App key.
      */
     appKey?: pulumi.Input<string>;
@@ -1241,11 +1260,13 @@ export interface ConnectorConfig {
      * 	- Service `azureBlobStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `box`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `dropbox`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+     * 	- Service `email`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `ftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `gcs`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `googleDrive`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `kinesis`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `s3`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+     * 	- Service `s3CompatibleStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `sftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `sharePoint`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `wasabiCloudStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
@@ -1272,12 +1293,18 @@ export interface ConnectorConfig {
     apps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Archive log format.
+     * 	- Service `oracleSapHva`: Archive log format.
+     * 	- Service `oracleSapHvaNetweaver`: Archive log format.
      * 	- Service `sqlServerHva`: Format for archive log file names
      * 	- Service `sqlServerSapEccHva`: Format for archive log file names
      */
     archiveLogFormat?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Archive log path.
+     * 	- Service `oracleSapHva`: Archive log path.
+     * 	- Service `oracleSapHvaNetweaver`: Archive log path.
      * 	- Service `sqlServerHva`: Directory where archive logs are located
      * 	- Service `sqlServerSapEccHva`: Directory where archive logs are located
      */
@@ -1294,6 +1321,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `kinesis`: Optional. Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `s3`: Files inside compressed archives with filenames matching this regular expression will be synced.
+     * 	- Service `s3CompatibleStorage`: Files inside compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `sftp`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `sharePoint`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `wasabiCloudStorage`: Files inside compressed archives with filenames matching this regular expression will be synced.
@@ -1406,6 +1434,7 @@ export interface ConnectorConfig {
      * 	- Service `anaplan`: The Anaplan authentication method.
      * 	- Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
      * 	- Service `github`: Authorization type.
+     * 	- Service `workday`: Authentication Mode
      */
     authMode?: pulumi.Input<string>;
     /**
@@ -1430,8 +1459,10 @@ export interface ConnectorConfig {
      * 	- Service `jira`: Authorization type.
      * 	- Service `mixpanel`: Authentication Method
      * 	- Service `pardot`: Authenticate using OAuth or HTTP Basic
+     * 	- Service `pardotSandbox`: Authenticate using OAuth or HTTP Basic
      * 	- Service `qualtrics`: Type of authentication being used by connector
      * 	- Service `s3`: Access approach
+     * 	- Service `s3CompatibleStorage`: Access approach
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
      */
     authType?: pulumi.Input<string>;
@@ -1457,6 +1488,12 @@ export interface ConnectorConfig {
     authorizationMethod?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `tiktokOrganic`: The authorization URL of the app registered in your TikTok developer account.
+     * 	- Service `workday`: Authorization URL
+     */
+    authorizationUrl?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `dynamodb`: The AWS region code for the DynamoDB instance, e.g. `us-east-1`.
      */
     awsRegionCode?: pulumi.Input<string>;
@@ -1465,6 +1502,8 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
+     * 	- Service `stripe`: Limit of the Historical Sync Time for selected tables
+     * 	- Service `stripeTest`: Limit of the Historical Sync Time for selected tables
      * 	- Service `zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD
      */
     backwardSyncLimit?: pulumi.Input<string>;
@@ -1492,11 +1531,13 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aha`: Your Aha! subdomain.
      * 	- Service `akeneo`: Your Akeneo base URL.
+     * 	- Service `bigmarker`: Your BigMarker base URL.
      * 	- Service `billingPlatform`: Your BillingPlatform subdomain.
      * 	- Service `boostr`: Your Boostr base URL.
      * 	- Service `brex`: Your Brex Base URL
      * 	- Service `centra`: Your Centra base URL.
      * 	- Service `coalesce`: Your Coalesce base URL.
+     * 	- Service `coheris`: Your Coheris base URL.
      * 	- Service `cornerstone`: Your Cornerstone base URL.
      * 	- Service `cultureAmp`: Your Culture Amp base URL.
      * 	- Service `datadog`: Your Datadog base url.
@@ -1515,6 +1556,7 @@ export interface ConnectorConfig {
      * 	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `salesforceSandbox`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `stickyio`: Your sticky.io base URL .
+     * 	- Service `veevaVault`: Base URL
      * 	- Service `veevavault`: Your Veeva Vault base URL.
      * 	- Service `vitally`: Your Vitally base URL.
      */
@@ -1533,6 +1575,11 @@ export interface ConnectorConfig {
      * 	- Service `zenefits`: Your Zenefits bearer token.
      */
     bearerToken?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
+     */
+    binaryLogType?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The blob SAS URL of your Azure container. Required if `bucketService` is set to `AZURE`.
@@ -1566,6 +1613,7 @@ export interface ConnectorConfig {
      * 	- Service `heap`: The S3 bucket name.
      * 	- Service `kinesis`: The name of the Kinesis bucket.
      * 	- Service `s3`: The S3 bucket name. Required for connector creation.
+     * 	- Service `s3CompatibleStorage`: The S3-Compatible Storage bucket name. Required for connector creation.
      * 	- Service `segment`: The name of the Segment bucket. Must be populated if `syncType` is set to `S3`.
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage bucket name. Required for connector creation.
      */
@@ -1600,6 +1648,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: Business Unit Id
+     * 	- Service `pardotSandbox`: Business Unit Id
      */
     businessUnitId?: pulumi.Input<string>;
     /**
@@ -1641,7 +1690,7 @@ export interface ConnectorConfig {
     clientCertKey?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Client Host.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce client host.
      */
     clientHost?: pulumi.Input<string>;
     /**
@@ -1683,6 +1732,7 @@ export interface ConnectorConfig {
      * 	- Service `fillout`: Your Fillout client ID.
      * 	- Service `flexport`: The Flexport API Key.
      * 	- Service `formstack`: Your Formstack client ID.
+     * 	- Service `fortnox`: Your Fortnox client ID.
      * 	- Service `genesys`: Your Genesys client ID.
      * 	- Service `hanaSapHvaEccNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
      * 	- Service `hanaSapHvaS4Netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
@@ -1705,6 +1755,7 @@ export interface ConnectorConfig {
      * 	- Service `navan`: Your Navan client ID.
      * 	- Service `nice`: Your NICE client ID.
      * 	- Service `on24`: Your ON24 client ID.
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service client ID.
      * 	- Service `oracleSapHvaNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
      * 	- Service `paychex`: Your Paychex client ID.
      * 	- Service `paypal`: `Client ID` of your PayPal client application.
@@ -1778,7 +1829,7 @@ export interface ConnectorConfig {
     clientName?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Client Namespace.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce client namespace.
      */
     clientNamespace?: pulumi.Input<string>;
     /**
@@ -1857,6 +1908,7 @@ export interface ConnectorConfig {
      * 	- Service `fillout`: Your Fillout client secret
      * 	- Service `flexport`: The Flexport API Secret.
      * 	- Service `formstack`: Your Formstack client secret.
+     * 	- Service `fortnox`: Your Fortnox client secret.
      * 	- Service `genesys`: Your Genesys client secret.
      * 	- Service `helpdesk`: Your HelpDesk client secret.
      * 	- Service `hiltiOntrack`: Your Hilti On!Track client secret.
@@ -1875,6 +1927,7 @@ export interface ConnectorConfig {
      * 	- Service `microsoftTeams`: Your Microsoft Teams client secret.
      * 	- Service `navan`: Your Navan client secret.
      * 	- Service `nice`: Your NICE client secret.
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service client secret.
      * 	- Service `paychex`: Your Paychex client secret.
      * 	- Service `personio`: Your Personio secret.
      * 	- Service `piwikPro`: Your Piwik PRO client secret.
@@ -2014,6 +2067,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `kinesis`: If your files are compressed, but do not have extensions indicating the compression method, you can force them to be uncompressed according to the selected compression algorithm. Leave the value as infer if your files are saved with the correct compression extensions.
      * 	- Service `s3`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+     * 	- Service `s3CompatibleStorage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `sftp`: The secrets that should be passed to the function at runtime.
      * 	- Service `sharePoint`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `wasabiCloudStorage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
@@ -2068,12 +2122,14 @@ export interface ConnectorConfig {
      * 	- Service `azureServiceBus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
      * 	- Service `microsoftDynamics365Fno`: The blob storage container's connection string.
      * 	- Service `microsoftDynamics365Fo`: The blob storage container connection string.
+     * 	- Service `sqlServer`: The Azure Blob Storage container connection string.
      */
     connectionString?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `auroraPostgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+     * 	- Service `avevaPi`: Possible values: `Directly`, `PrivateLink`
      * 	- Service `awsCostReport`: Connection method. Default value: `Directly`.
      * 	- Service `awsLambda`: Connection method. Default value: `Directly`.
      * 	- Service `azureBlobStorage`: Connection method. Default value: `Directly`.
@@ -2181,6 +2237,7 @@ export interface ConnectorConfig {
      * 	- Service `azureBlobStorage`: The name of the blob container.
      * 	- Service `microsoftDynamics365Fno`: The name of the blob container.
      * 	- Service `microsoftDynamics365Fo`: The name of the blob container.
+     * 	- Service `sqlServer`: The name of the Azure Blob Storage container.
      */
     containerName?: pulumi.Input<string>;
     /**
@@ -2227,7 +2284,7 @@ export interface ConnectorConfig {
     currency?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `coalesce`: Your Coalesce Custom Base URL.
+     * 	- Service `coalesce`: Your Coalesce custom base URL.
      * 	- Service `datadog`: Your Datadog custom base url.
      * 	- Service `deposco`: Your Deposco custom base URL.
      */
@@ -2388,6 +2445,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `kinesis`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
      * 	- Service `s3`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+     * 	- Service `s3CompatibleStorage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `sftp`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `sharePoint`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `wasabiCloudStorage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
@@ -2418,6 +2476,16 @@ export interface ConnectorConfig {
      * 	- Service `oracleSapHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
      */
     directCaptureMethod?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `qualtrics`: Set of directories to be synced when syncMode is CUSTOM
+     */
+    directories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `qualtrics`: Sync mode to be used for fetching select directories. The Allowed Values are ALL and CUSTOM. If CUSTOM add the directories to be synced in the `directories` field.
+     */
+    directorySyncMode?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
@@ -2476,12 +2544,14 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appcues`: Your Appcues Email.
+     * 	- Service `assetPanda`: Your Asset Panda email.
      * 	- Service `boostr`: Your Boostr email.
      * 	- Service `copper`: Your Copper email address.
      * 	- Service `email`: Send your emails to this address.
      * 	- Service `moloco`: Your Moloco account email.
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite user's email address.
      * 	- Service `pardot`: The email of the Pardot user.
+     * 	- Service `pardotSandbox`: The email of the Pardot user.
      * 	- Service `skuvault`: Your SkuVault email.
      * 	- Service `smadex`: Your Smadex account's email ID.
      * 	- Service `zendesk`: Zendesk email.
@@ -2512,6 +2582,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `kinesis`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `s3`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
+     * 	- Service `s3CompatibleStorage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
      * 	- Service `sftp`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `sharePoint`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `wasabiCloudStorage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
@@ -2524,6 +2595,9 @@ export interface ConnectorConfig {
     enableAllDimensionCombinations?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using archive log only mode.
+     * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using archive log only mode.
+     * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using archive log only mode.
      * 	- Service `sqlServerHva`: Use archive log only mode
      * 	- Service `sqlServerSapEccHva`: Use archive log only mode
      */
@@ -2547,10 +2621,18 @@ export interface ConnectorConfig {
     enableExports?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Use transparent data encryption (TDE)
      * 	- Service `sqlServerHva`: Using Transparent Data Encryption (TDE)
      * 	- Service `sqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
      */
     enableTde?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     */
+    enableTdeEncryption?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Use the public key to grant Fivetran access to Apple Search Ads api.
@@ -2572,6 +2654,11 @@ export interface ConnectorConfig {
     endpoint?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `s3CompatibleStorage`: S3-Compatible Storage Endpoint URL.
+     */
+    endpointUrl?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: The number of days to use as the conversion attribution window for an engagement (i.e. closeup or save) action.
      */
     engagementAttributionWindow?: pulumi.Input<string>;
@@ -2587,6 +2674,26 @@ export interface ConnectorConfig {
      * 	- Service `zuoraSandbox`: If `isMultiEntityFeatureEnabled` is `true`, then it's `EntityId`.
      */
     entityId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `auroraPostgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `azurePostgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `googleCloudPostgresql`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `herokuPostgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `postgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `postgresRds`: Registered Application ID (for Entra ID authentication).
+     */
+    entraAppId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `auroraPostgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `azurePostgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `googleCloudPostgresql`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `herokuPostgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `postgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `postgresRds`: Azure Tenant ID (for Entra ID authentication).
+     */
+    entraTenantId?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bazaarvoice`: Your Bazaarvoice environment.
@@ -2635,6 +2742,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `kinesis`: Optional. If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `s3`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+     * 	- Service `s3CompatibleStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `sftp`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `sharePoint`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `wasabiCloudStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
@@ -2700,6 +2808,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: If your files are saved with improper extensions, you can force them to be synced as the selected filetype.
      * 	- Service `kinesis`: If your files are saved with improper extensions, you can force them to by synced as the selected filetype. Leave the value as infer if your files have the correct extensions
      * 	- Service `s3`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
+     * 	- Service `s3CompatibleStorage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
      * 	- Service `sftp`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
      * 	- Service `sharePoint`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
      * 	- Service `wasabiCloudStorage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
@@ -2852,17 +2961,46 @@ export interface ConnectorConfig {
     historicSyncTimeFrame?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `braze`: Range of data in history you would like to include in the initial sync. Valid values are `ALL_TIME` and `DATE_LIMIT`
      * 	- Service `concur`: Historical Sync Limit for the Sync
      * 	- Service `eloqua`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
+     * 	- Service `iterable`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `klaviyo`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `marketo`: The time range for which historical data should be synced. Default value: `All Time`.
      * 	- Service `pardot`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `pardotSandbox`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `sageIntacct`: Historical Sync Limit for the Sync
+     * 	- Service `sailthru`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `salesforceMarketingCloud`: The time range for which historical data should be synced. Default value: `All Time`.
      */
     historicalSyncLimit?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `braze`: The start date (in YYYY-MM-DD) from which to sync historical data. Only used when `historicalSyncLimit` is set to `DATE_LIMIT`.
+     * 	- Service `iterable`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `klaviyo`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `marketo`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `pardot`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `pardotSandbox`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `sailthru`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `salesforceMarketingCloud`: The start date (YYYY-MM-DD) from which to sync historical data.
+     */
+    historicalSyncLimitDate?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `pardot`: The options for time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `pardotSandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
+     */
+    historicalSyncLimitTimeFrame?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
      * 	- Service `hubspot`: Used to configure Historical sync timeframe for selected tables
      * 	- Service `rokt`: Your Rokt historical sync time frame.
      * 	- Service `shopify`: Used to configure Historical sync timeframe for selected tables
      * 	- Service `skimlinks`: Your Skimlinks Historical sync time frame.
+     * 	- Service `stripe`: Used to configure Historical sync timeframe for selected tables
+     * 	- Service `stripeTest`: Used to configure Historical sync timeframe for selected tables
      * 	- Service `vimeo`: Your Vimeo Historical sync time frame.
      * 	- Service `zendesk`: Used to configure Historical sync timeframe for selected tables
      */
@@ -2876,6 +3014,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: DB instance host or IP address.
      * 	- Service `auroraPostgres`: DB instance host or IP address.
+     * 	- Service `avevaPi`: IP address of the AF Server
      * 	- Service `azurePostgres`: DB instance host or IP address.
      * 	- Service `azureSqlDb`: DB instance host or IP address.
      * 	- Service `azureSqlManagedDb`: DB instance host or IP address.
@@ -3045,6 +3184,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
+     * 	- Service `pardotSandbox`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
      */
     isExternalActivitiesEndpointSelected?: pulumi.Input<boolean>;
     /**
@@ -3129,6 +3269,11 @@ export interface ConnectorConfig {
     issuer?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `itunesConnect`: Your Issuer ID
+     */
+    issuerId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Control how your JSON data is delivered into your destination
      * 	- Service `azureBlobStorage`: Control how your JSON data is delivered into your destination
      * 	- Service `box`: Control how your JSON data is delivered into your destination
@@ -3139,6 +3284,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: Control how your JSON data is delivered into your destination
      * 	- Service `kinesis`: Control how your JSON data is delivered into your destination
      * 	- Service `s3`: Control how your JSON data is delivered into your destination
+     * 	- Service `s3CompatibleStorage`: Control how your JSON data is delivered into your destination
      * 	- Service `sftp`: Control how your JSON data is delivered into your destination
      * 	- Service `sharePoint`: Control how your JSON data is delivered into your destination
      * 	- Service `wasabiCloudStorage`: Specifies how Fivetran should handle your JSON data. Default value: `Packed`.
@@ -3149,6 +3295,11 @@ export interface ConnectorConfig {
      * 	- Service `uservoice`: The UserVoice API key.
      */
     key?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `itunesConnect`: Your Key ID
+     */
+    keyId?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, enter your `Key Password`.
@@ -3179,6 +3330,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: API limit for the external activities endpoint.
+     * 	- Service `pardotSandbox`: API limit for the external activities endpoint.
      */
     limitForApiCallsToExternalActivitiesEndpoint?: pulumi.Input<number>;
     /**
@@ -3193,6 +3345,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `kinesis`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `s3`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+     * 	- Service `s3CompatibleStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `sftp`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `sharePoint`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `wasabiCloudStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
@@ -3213,6 +3366,7 @@ export interface ConnectorConfig {
      * 	- Service `awsCostReport`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
      * 	- Service `kinesis`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
      * 	- Service `s3`: The listing strategy you want to use. Default value: `completeListing`.
+     * 	- Service `s3CompatibleStorage`: The listing strategy you want to use. Default value: `completeListing`.
      */
     listStrategy?: pulumi.Input<string>;
     /**
@@ -3251,6 +3405,11 @@ export interface ConnectorConfig {
      * 	- Service `sageIntacct`: The login password. It is a part of the login credentials.
      */
     loginPassword?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `sageIntacct`: Lookback window for GL Batch endpoint lookback sync
+     */
+    lookBackWindowForGlBatchEndpoint?: pulumi.Input<number>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The list of the Manager Account IDs whose clients will be synced. Must be populated if `syncMode` is set to `ManagerAccounts`.
@@ -3329,6 +3488,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `kinesis`: Optional. If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `s3`: If your CSVs use a special value indicating null, you can specify it here.
+     * 	- Service `s3CompatibleStorage`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `sftp`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `sharePoint`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `wasabiCloudStorage`: If your CSVs use a special value indicating null, you can specify it here.
@@ -3381,6 +3541,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `kinesis`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `s3`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
+     * 	- Service `s3CompatibleStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
      * 	- Service `sftp`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `sharePoint`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `wasabiCloudStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
@@ -3492,6 +3653,7 @@ export interface ConnectorConfig {
      * 	- Service `alida`: Your Alida client secret.
      * 	- Service `anaplan`: Your Anaplan password. Must be populated if `authMode` is set to `Basic`.
      * 	- Service `appfigures`: Your Appfigures Password.
+     * 	- Service `assetPanda`: Your Asset Panda password.
      * 	- Service `aurora`: The user's password.
      * 	- Service `auroraPostgres`: The user's password.
      * 	- Service `azureCosmosForMongo`: Password used for source database authentication.
@@ -3501,7 +3663,7 @@ export interface ConnectorConfig {
      * 	- Service `boostr`: Your Boostr password.
      * 	- Service `brivo`: Your Brivo password.
      * 	- Service `cabcharge`: Your Cabcharge password.
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Password.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce password.
      * 	- Service `cin7`: Your Cin7 API Key.
      * 	- Service `clarity`: The user's password.
      * 	- Service `cockroachdb`: The user's password.
@@ -3530,7 +3692,7 @@ export interface ConnectorConfig {
      * 	- Service `hanaSapHvaS4Netweaver`: The user's password.
      * 	- Service `herokuPostgres`: The user's password.
      * 	- Service `hiltiOntrack`: Your Hilti On!Track password.
-     * 	- Service `impact`: Your Impact Account Token
+     * 	- Service `impact`: Your Impact Brand Account Token
      * 	- Service `integralAdScience`: Your integralAdScience password.
      * 	- Service `itunesConnect`: Your password
      * 	- Service `jamf`: Your Jamf password.
@@ -3568,6 +3730,7 @@ export interface ConnectorConfig {
      * 	- Service `oracleSapHvaNetweaver`: The user's password.
      * 	- Service `outbrain`: The Outbrain user's password.
      * 	- Service `pardot`: The Pardot user's password.
+     * 	- Service `pardotSandbox`: The Pardot user's password.
      * 	- Service `partnerize`: Your Partnerize account's password.
      * 	- Service `podio`: Your Podio account password.
      * 	- Service `postgres`: The user's password.
@@ -3605,6 +3768,7 @@ export interface ConnectorConfig {
      * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
      * 	- Service `unicommerce`: Your uniware login password.
      * 	- Service `upland`: Your Upland Software Password.
+     * 	- Service `veevaVault`: Password
      * 	- Service `veevavault`: Your Veeva Vault password.
      * 	- Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
      * 	- Service `whenIWork`: Your When I Work password.
@@ -3613,6 +3777,7 @@ export interface ConnectorConfig {
      * 	- Service `workdayFinancialManagement`: Workday password.
      * 	- Service `workdayHcm`: Workday password.
      * 	- Service `xandr`: Your Xandr password.
+     * 	- Service `yougovBrandindex`: Your YouGov BrandIndex password.
      * 	- Service `younium`: Your Younium password.
      */
     password?: pulumi.Input<string>;
@@ -3647,13 +3812,13 @@ export interface ConnectorConfig {
      * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced.
      * 	- Service `box`: All files in your search path matching this regular expression will be synced.
      * 	- Service `dropbox`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `email`: All files in your search path matching this regular expression will be synced.
+     * 	- Service `email`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by Oct 31, 2025.
      * 	- Service `ftp`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `gcs`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced.
+     * 	- Service `gcs`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+     * 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
      * 	- Service `kinesis`: Optional. All files in your search path matching this regular expression will be synced. This parameter is optional.
-     * 	- Service `s3`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `sftp`: All files in your search path matching this regular expression will be synced.
+     * 	- Service `s3`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+     * 	- Service `sftp`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
      * 	- Service `sharePoint`: All files in your search path matching this regular expression will be synced.
      * 	- Service `wasabiCloudStorage`: All files in your search path matching this regular expression will be synced.
      */
@@ -3704,6 +3869,7 @@ export interface ConnectorConfig {
      * 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `s3CompatibleStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      */
@@ -3714,6 +3880,7 @@ export interface ConnectorConfig {
      * 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `s3CompatibleStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      */
@@ -3723,6 +3890,11 @@ export interface ConnectorConfig {
      * 	- Service `itunesConnect`: Register the number on AppleId Account Page for 2FA
      */
     phoneNumber?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `wrike`: Your Wrike Subscription Plan.
+     */
+    plan?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `justcall`: Your JustCall Plan Type.
@@ -3815,6 +3987,7 @@ export interface ConnectorConfig {
      * 	- Service `marin`: Folder path to the Marin manifest file.
      * 	- Service `microsoftDynamics365Fo`: Folder name in which the exported dynamics 365 data resides.
      * 	- Service `s3`: All files and folders under this folder path will be searched for files to sync.
+     * 	- Service `s3CompatibleStorage`: All files and folders under this folder path will be searched for files to sync.
      * 	- Service `segment`: Folder path to the Segment files within the bucket. Must be populated if `syncType` is set to `S3`.
      * 	- Service `sftp`: All files and folders under this folder path will be searched for files to sync.
      * 	- Service `sharePoint`: All files and folders under this folder path link will be searched for files to sync. This can be any shared folder link.
@@ -3833,6 +4006,16 @@ export interface ConnectorConfig {
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `marketo`: Use BULK for both LEAD and ACTIITIES
+     */
+    prioritiseBulkExportOverRest?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `purpleDot`: Your PurpleDot Private access token.
+     */
+    privateAccessToken?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS REST API private key.
      * 	- Service `adobeAnalytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
      * 	- Service `adpWorkforceNow`: Private Key.
@@ -3840,6 +4023,7 @@ export interface ConnectorConfig {
      * 	- Service `appleSearchAds`: The contents of your secret key file. Must be populated if `isAuth2Enabled` is set to `false`.
      * 	- Service `braintree`: The contents of your secret key file.
      * 	- Service `braintreeSandbox`: The contents of your secret key file.
+     * 	- Service `itunesConnect`: Your Private Key
      * 	- Service `netsuiteSuiteanalytics`: Private Key
      * 	- Service `oracleFusionCloudAppsCrm`: The Oracle Fusion Cloud private key.
      * 	- Service `oracleFusionCloudAppsFscm`: The Oracle Fusion Cloud private key.
@@ -3869,7 +4053,7 @@ export interface ConnectorConfig {
     profiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `amazonDsp`: Comma-separated list of your Amazon DSP profiles.
+     * 	- Service `amazonDsp`: your Amazon DSP profiles pass it inside an Array list.
      */
     profilesAmazonDsp?: pulumi.Input<string>;
     /**
@@ -4015,19 +4199,27 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `s3CompatibleStorage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `sftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `sharePoint`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      */
     quoteChar?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `azureBlobStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `azureBlobStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as a quote character.
+     * 	- Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `s3CompatibleStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `sftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `sharePoint`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      */
@@ -4203,6 +4395,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
+     * 	- Service `pardotSandbox`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
      */
     restApiLimit?: pulumi.Input<number>;
     /**
@@ -4245,6 +4438,11 @@ export interface ConnectorConfig {
      * 	- Service `bingads`: A period of time in days during which a conversion is recorded.
      */
     rollbackWindowSize?: pulumi.Input<number>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service rootresourceId.
+     */
+    rootResourceId?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The S3 bucket name. Required if `bucketService` is set to `S3`.
@@ -4319,6 +4517,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The Pardot user's Salesforce SSO Account Security Token.
+     * 	- Service `pardotSandbox`: The Pardot user's Salesforce SSO Account Security Token.
      */
     salesforceSecurityToken?: pulumi.Input<string>;
     /**
@@ -4425,6 +4624,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cornerstone`: Your Cornerstone scopes.
+     * 	- Service `fortnox`: Your Fortnox app scopes.
      */
     scopes?: pulumi.Input<string>;
     /**
@@ -4440,12 +4640,18 @@ export interface ConnectorConfig {
      * 	- Service `loopio`: Your Loopio Secret.
      * 	- Service `mode`: Your Mode Secret.
      * 	- Service `playvoxWorkforceManagement`: Your Playvox Workforce Management client secret.
+     * 	- Service `tiktokOrganic`: The secret of the app registered in your TikTok developer account.
      * 	- Service `twilio`: The Twilio API secret
      * 	- Service `uservoice`: The UserVoice API secret.
      * 	- Service `venminder`: Your Venminder secret.
      * 	- Service `vts`: Your VTS secret.
      */
     secret?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `validio`: Your Validio secret access key.
+     */
+    secretAccessKey?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay Secret Key.
@@ -4649,6 +4855,11 @@ export interface ConnectorConfig {
     shouldSyncEventsWithDeletedProfiles?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `netsuiteSuiteanalytics`: Re-sync re-import tables during every sync
+     */
+    shouldSyncReimportTables?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Turn the toggle on if you want the reports to also return records without metrics.
      */
     showRecordsWithNoMetrics?: pulumi.Input<boolean>;
@@ -4668,6 +4879,7 @@ export interface ConnectorConfig {
      * 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `gcs`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+     * 	- Service `s3CompatibleStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      */
@@ -4706,6 +4918,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `kinesis`: Enter 1 or greater
      * 	- Service `s3`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
+     * 	- Service `s3CompatibleStorage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
      * 	- Service `sftp`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `sharePoint`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
@@ -4723,6 +4936,7 @@ export interface ConnectorConfig {
      * 	- Service `googleDrive`: We will skip over the number of lines specified before syncing data.
      * 	- Service `kinesis`: Enter 1 or greater
      * 	- Service `s3`: We will skip over the number of lines specified before syncing data.
+     * 	- Service `s3CompatibleStorage`: We will skip over the number of lines specified before syncing data.
      * 	- Service `sftp`: We will skip over the number of lines specified before syncing data.
      * 	- Service `sharePoint`: We will skip over the number of lines specified before syncing data.
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified before syncing data.
@@ -4839,6 +5053,7 @@ export interface ConnectorConfig {
      * 	- Service `nylas`: Your Nylas subdomain.
      * 	- Service `odoo`: Your Odoo subdomain.
      * 	- Service `okta`: Your Okta subdomain.
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service subDomain.
      * 	- Service `picqer`: Your Picqer subdomain.
      * 	- Service `pinpoint`: Your Pinpoint sub domain name.
      * 	- Service `piwikPro`: Your Piwik PRO subdomain.
@@ -4862,6 +5077,7 @@ export interface ConnectorConfig {
      * 	- Service `totango`: Your Totango Subdomain.
      * 	- Service `tymeshift`: Your Tymeshift subdomain.
      * 	- Service `upland`: Your Upland Software subDomain.
+     * 	- Service `validio`: Your Validio subdomain.
      * 	- Service `wordpress`: Your WordPress subdomain.
      * 	- Service `workable`: Your Workable Subdomain.
      * 	- Service `wrike`: Your Wrike Subdomain.
@@ -4972,7 +5188,7 @@ export interface ConnectorConfig {
      * 	- Service `dynamodb`: Which packed mode setting to use. Default value: `UsePackedModeOnly`.
      * 	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
      * 	- Service `facebookAdAccount`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-     * 	- Service `facebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#syncmode).
+     * 	- Service `facebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/connectors/applications/facebook-ads#syncmode).
      * 	- Service `facebookPages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
      * 	- Service `github`: Whether to sync all repositories or specific repositories.
      * 	- Service `googleAds`: Whether to sync all accounts or specific accounts.
@@ -5073,6 +5289,7 @@ export interface ConnectorConfig {
     targetHost?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Certificate file path used to protect a database encryption key
      * 	- Service `sqlServerHva`: Certificate used to protect a database encryption key
      * 	- Service `sqlServerSapEccHva`: Certificate used to protect a database encryption key
      */
@@ -5085,16 +5302,25 @@ export interface ConnectorConfig {
     tdeCertificateName?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Password of the TDE private key
      * 	- Service `sqlServerHva`: Password of the TDE private key
      * 	- Service `sqlServerSapEccHva`: Password of the TDE private key
      */
     tdePassword?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Private key file path associated with the TDE certificate
      * 	- Service `sqlServerHva`: Private key associated with the TDE certificate
      * 	- Service `sqlServerSapEccHva`: Private key associated with the TDE certificate
      */
     tdePrivateKey?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleSapHva`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleSapHvaNetweaver`: TDE wallet password. Required for password based wallet.
+     */
+    tdeWalletPassword?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `asana`: Team ID
@@ -5164,6 +5390,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
+     * 	- Service `pardotSandbox`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
      */
     timeZone?: pulumi.Input<string>;
     /**
@@ -5297,6 +5524,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `auroraPostgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+     * 	- Service `avevaPi`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `azureCosmosForMongo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `azurePostgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `azureSqlDb`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -5354,6 +5582,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `auroraPostgres`: SSH port, specify only to connect via an SSH tunnel.
+     * 	- Service `avevaPi`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `azureCosmosForMongo`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `azurePostgres`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `azureSqlDb`: SSH port, specify only to connect via an SSH tunnel.
@@ -5411,6 +5640,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `auroraPostgres`: SSH user, specify only to connect via an SSH tunnel.
+     * 	- Service `avevaPi`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `azureCosmosForMongo`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `azurePostgres`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `azureSqlDb`: SSH user, specify only to connect via an SSH tunnel.
@@ -5546,6 +5776,7 @@ export interface ConnectorConfig {
      * 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
      * 	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
      * 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
+     * 	- Service `s3CompatibleStorage`: Set to `true` if files are encrypted using PGP in the S3-Compatible Storage bucket. Default value: `false`.
      * 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
      * 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
      */
@@ -5576,6 +5807,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The user name.
      * 	- Service `auroraPostgres`: The user name.
+     * 	- Service `avevaPi`: Username for the user to authenticate as with the AF Server
      * 	- Service `azureCosmosForMongo`: Username for source database access.
      * 	- Service `azurePostgres`: The user name.
      * 	- Service `azureSqlDb`: The user name.  For Azure Databases, the format must be `user@domain`.
@@ -5674,7 +5906,7 @@ export interface ConnectorConfig {
      * 	- Service `anaplan`: Your Anaplan user ID. Must be populated if `authMode` is set to `Basic`.
      * 	- Service `appfigures`: Your Appfigures Username.
      * 	- Service `avevaPi`: Username for the user to authenticate as with the AF Server
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Username.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce username.
      * 	- Service `churnzero`: Your ChurnZero username.
      * 	- Service `cin7`: Your Cin7 API Username.
      * 	- Service `collibra`: Your collibra username.
@@ -5691,7 +5923,7 @@ export interface ConnectorConfig {
      * 	- Service `greenPowerMonitor`: Your GreenPowerMonitor username.
      * 	- Service `guru`: Your Guru username.
      * 	- Service `hiltiOntrack`: Your Hilti On!Track username.
-     * 	- Service `impact`: Your Impact Account SID
+     * 	- Service `impact`: Your Impact Brand Account SID
      * 	- Service `integralAdScience`: Your integralAdScience username.
      * 	- Service `itunesConnect`: Your Apple ID
      * 	- Service `jamf`: Your Jamf username.
@@ -5730,15 +5962,22 @@ export interface ConnectorConfig {
      * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
      * 	- Service `unicommerce`: Your uniware login username.
      * 	- Service `upland`: Your Upland Software Username.
+     * 	- Service `veevaVault`: Username
      * 	- Service `veevavault`: Your Veeva Vault username.
      * 	- Service `whenIWork`: Your When I Work username.
      * 	- Service `wherefour`: Your Wherefour username.
      * 	- Service `workdayFinancialManagement`: Workday username.
      * 	- Service `workdayHcm`: Username of your Workday Integration System User account
      * 	- Service `xandr`: Your Xandr username.
+     * 	- Service `yougovBrandindex`: Your YouGov BrandIndex username.
      * 	- Service `younium`: Your Younium username.
      */
     username?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `itunesConnect`: Your vendors id
+     */
+    vendorsIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `criteoRetailMedia`: Your Criteo Retail Media version.
@@ -5926,6 +6165,11 @@ export interface ConnectorConfigCustomPayload {
 export interface ConnectorConfigCustomReport {
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snapchatAds`: [Determines if reports will be based on imression on coversion time](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports)
+     */
+    actionReportTime?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
      */
     addMetricVariants?: pulumi.Input<boolean>;
@@ -5976,7 +6220,7 @@ export interface ConnectorConfigCustomReport {
     eventNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
+     * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
      */
     granularity?: pulumi.Input<string>;
     /**
@@ -6035,32 +6279,32 @@ export interface ConnectorConfigCustomReport {
 export interface ConnectorConfigCustomTable {
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionbreakdowns).
+     * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionbreakdowns).
      */
     actionBreakdowns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionreporttime).
+     * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionreporttime).
      */
     actionReportTime?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#aggregation).
+     * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads#aggregation).
      */
     aggregation?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#breakdowns).
+     * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#breakdowns).
      */
     breakdowns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#clickattributionwindow).
+     * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#clickattributionwindow).
      */
     clickAttributionWindow?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
+     * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/connectors/applications/facebook-ads#configtype).
      */
     configType?: pulumi.Input<string>;
     /**
@@ -6070,13 +6314,13 @@ export interface ConnectorConfigCustomTable {
     engagedViewAttributionWindow?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#fields).
+     * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads#fields).
      */
     fields?: pulumi.Input<pulumi.Input<string>[]>;
     level?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#prebuiltreport).
+     * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads#prebuiltreport).
      */
     prebuiltReportName?: pulumi.Input<string>;
     /**
@@ -6087,7 +6331,7 @@ export interface ConnectorConfigCustomTable {
     useUnifiedAttributionSetting?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#viewattributionwindow).
+     * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#viewattributionwindow).
      */
     viewAttributionWindow?: pulumi.Input<string>;
 }
@@ -6108,20 +6352,31 @@ export interface ConnectorConfigDataModelPathAliasList {
 export interface ConnectorConfigFile {
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table.
+     * 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
+     */
+    emailSubject?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+     * 	- Service `email`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `gcs`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `s3`: All files in your search path matching this regular expression will be synced per table.
+     * 	- Service `s3CompatibleStorage`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `sftp`: All files in your search path matching this regular expression will be synced per table.
+     * 	- Service `sharePoint`: All files in your search path matching this regular expression will be synced per table.
      */
     filePattern?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
+     * 	- Service `email`: All files matching the above pattern will be synced to this table.
      * 	- Service `gcs`: All files matching the above pattern will be synced to this table.
      * 	- Service `googleDrive`: All files matching the above pattern will be synced to this table.
      * 	- Service `s3`: All files matching the above pattern will be synced to this table.
+     * 	- Service `s3CompatibleStorage`: All files matching the above pattern will be synced to this table.
      * 	- Service `sftp`: All files matching the above pattern will be synced to this table.
+     * 	- Service `sharePoint`: All files matching the above pattern will be synced to this table.
      */
     tableName?: pulumi.Input<string>;
 }
@@ -6147,6 +6402,11 @@ export interface ConnectorConfigProjectCredential {
 export interface ConnectorConfigReport {
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
+     */
+    advertisers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `googleSearchConsole`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
      */
     aggregation?: pulumi.Input<string>;
@@ -6157,6 +6417,11 @@ export interface ConnectorConfigReport {
     attributes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
+     */
+    configMethod?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      * 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
      */
@@ -6165,6 +6430,7 @@ export interface ConnectorConfigReport {
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleAnalytics4`: The report dimensions to include into a sync.
+     * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchConsole`: The report dimensions included to sync.
      */
     dimensions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -6208,9 +6474,15 @@ export interface ConnectorConfigReport {
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report metrics to include into a sync.
      * 	- Service `googleAnalytics4`: The report metrics to include into a sync.
+     * 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchAds360`: The report metrics included to sync.
      */
     metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
+     */
+    partners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -6224,12 +6496,18 @@ export interface ConnectorConfigReport {
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
+     */
+    queryId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
      */
     reportFormatType?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
+     * 	- Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchAds360`: The type of report
      * 	- Service `googleSearchConsole`: The type of report
      */
@@ -6288,9 +6566,19 @@ export interface ConnectorConfigReport {
     table?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The table name within the schema to which connector will sync the data of the specific report.
+     */
+    tableName?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The report data aggregation time granularity.
      */
     timeAggregationGranularity?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
+     */
+    updateConfigOnEachSync?: pulumi.Input<boolean>;
 }
 
 export interface ConnectorConfigReportConfig {
@@ -6306,7 +6594,7 @@ export interface ConnectorConfigReportConfig {
     currency?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `yahooDsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `configType` is set to `CUSTOM`.
+     * 	- Service `yahooDsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `configType` is set to `CUSTOM`. PUBLISHER, DESKTOP_OS_DEPRECATED, LINE_TYPE, GOAL_TYPE, BID_REQUEST_AD_SIZE, CHANNEL_TYPE, SITE_NAME, and SITE_GROUP_NAME are deprecated dimension, and shouldn't be used anymore
      */
     dimensions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -6316,7 +6604,7 @@ export interface ConnectorConfigReportConfig {
     intervalType?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `yahooDsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `configType` is set to `CUSTOM`.
+     * 	- Service `yahooDsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `configType` is set to `CUSTOM`. PUBLISHER_EARNINGS, PUBLISHER_EARNINGS_PERCENTAGE, INVENTORY_ECPM_DEPRECATED, SEAT_TECH_FEE, and SEAT_DATA_FEE are deprecated and shouldn't be used anymore
      */
     metrics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -6592,6 +6880,9 @@ export interface DestinationConfig {
      * 	- Service `mariaWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -6604,6 +6895,11 @@ export interface DestinationConfig {
     alwaysEncrypted?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Application ID of your app created in Azure
+     */
+    applicationId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Password-based or key-based authentication type
      */
     auth?: pulumi.Input<string>;
@@ -6611,6 +6907,7 @@ export interface DestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Authentication type
      * 	- Service `databricks`: Authentication type
+     * 	- Service `managedDataLake`: Authentication type
      * 	- Service `newS3Datalake`: Authentication type
      * 	- Service `onelake`: Authentication type
      * 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
@@ -6619,11 +6916,20 @@ export interface DestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
+     * 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
      */
     awsAccessKeyId?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+     */
+    awsBucketAuthType?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
+     * 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
      */
     awsSecretAccessKey?: pulumi.Input<string>;
     /**
@@ -6636,13 +6942,23 @@ export interface DestinationConfig {
      * 	- Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
      * 	- Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
      * 	- Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+     * 	- Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
      * 	- Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
+     * 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
      */
     bucket?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+     */
+    bucketRegion?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `adls`: Catalog name
      * 	- Service `databricks`: Catalog name
+     * 	- Service `managedDataLake`: Catalog name
      * 	- Service `newS3Datalake`: Catalog name
      * 	- Service `onelake`: Catalog name
      */
@@ -6650,6 +6966,7 @@ export interface DestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Client id of service principal
+     * 	- Service `managedDataLake`: Client id of service principal
      * 	- Service `onelake`: Client ID of service principal
      */
     clientId?: pulumi.Input<string>;
@@ -6683,10 +7000,14 @@ export interface DestinationConfig {
      * 	- Service `azureSqlDatabase`: Connection method. Default value: `Directly`.
      * 	- Service `azureSqlManagedDbWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `databricks`: Connection method. Default value: `Directly`.
+     * 	- Service `managedDataLake`: connection type
      * 	- Service `mariaRdsWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `mariaWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `mysqlRdsWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `mysqlWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `oracleRacWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `oracleRdsWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `oracleWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `panoply`: Connection method. Default value: `Directly`.
      * 	- Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
@@ -6701,6 +7022,7 @@ export interface DestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) Container to store delta table files
+     * 	- Service `managedDataLake`: (Immutable) Container to store delta table files
      * 	- Service `onelake`: Workspace name to store delta table files
      */
     containerName?: pulumi.Input<string>;
@@ -6734,6 +7056,9 @@ export interface DestinationConfig {
      * 	- Service `mariaWarehouse`: Database name
      * 	- Service `mysqlRdsWarehouse`: Database name
      * 	- Service `mysqlWarehouse`: Database name
+     * 	- Service `oracleRacWarehouse`: Database name
+     * 	- Service `oracleRdsWarehouse`: Database name
+     * 	- Service `oracleWarehouse`: Database name
      * 	- Service `panoply`: Database name
      * 	- Service `periscopeWarehouse`: Database name
      * 	- Service `postgresGcpWarehouse`: Database name
@@ -6748,10 +7073,20 @@ export interface DestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
+     * 	- Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
      * 	- Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
      * 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
      */
     databricksConnectionType?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Tenant ID of your app created in Azure
+     */
+    directoryId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Set to `true` if you want to enable external storage for unstructured files.
+     */
     enableExternalStorageForUnstructuredFiles?: pulumi.Input<boolean>;
     enableRemoteExecution?: pulumi.Input<boolean>;
     /**
@@ -6759,6 +7094,11 @@ export interface DestinationConfig {
      * 	- Service `confluentCloudWh`: Populate all tables in a single topic.
      */
     enableSingleTopic?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `redshift`: Enable to convert JSON data type to SUPER
+     */
+    enableSuperType?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMskWh`: Fivetran generated External ID
@@ -6772,16 +7112,39 @@ export interface DestinationConfig {
      * 	- Service `databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
      */
     externalLocation?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: External stage storage provider[Internal, S3, Azure,GCS]
+     */
     externalStageStorageProvider?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: The cloud service provider you want to use for staging data. Use this parameter only if you are using Hybrid Deployment.
+     */
+    externalStorageCloudProvider?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: External storage integration name
+     */
     externalStorageIntegration?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: External storage parent folder URL
+     */
     externalStorageParentFolderUri?: pulumi.Input<string>;
     fivetranGlueRoleArn?: pulumi.Input<string>;
     fivetranMskRoleArn?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
      * 	- Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
      */
     fivetranRoleArn?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+     */
+    gcsServiceAccountCredentialsPath?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Server name
@@ -6794,6 +7157,9 @@ export interface DestinationConfig {
      * 	- Service `mariaWarehouse`: Server name
      * 	- Service `mysqlRdsWarehouse`: Server name
      * 	- Service `mysqlWarehouse`: Server name
+     * 	- Service `oracleRacWarehouse`: Server name
+     * 	- Service `oracleRdsWarehouse`: Server name
+     * 	- Service `oracleWarehouse`: Server name
      * 	- Service `panoply`: Server name
      * 	- Service `periscopeWarehouse`: Server name
      * 	- Service `postgresGcpWarehouse`: Server name
@@ -6809,6 +7175,7 @@ export interface DestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: HTTP path
      * 	- Service `databricks`: HTTP path
+     * 	- Service `managedDataLake`: HTTP path
      * 	- Service `newS3Datalake`: HTTP path
      * 	- Service `onelake`: HTTP path
      */
@@ -6830,6 +7197,7 @@ export interface DestinationConfig {
     isRedshiftServerless?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) OneLake lakehouse GUID
      * 	- Service `onelake`: (Immutable) OneLake lakehouse GUID
      */
     lakehouseGuid?: pulumi.Input<string>;
@@ -6848,6 +7216,7 @@ export interface DestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: OAuth 2.0 client ID
      * 	- Service `databricks`: OAuth 2.0 client ID
+     * 	- Service `managedDataLake`: OAuth 2.0 client ID
      * 	- Service `newS3Datalake`: OAuth 2.0 client ID
      * 	- Service `onelake`: OAuth 2.0 client ID
      */
@@ -6856,6 +7225,7 @@ export interface DestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: OAuth 2.0 secret
      * 	- Service `databricks`: OAuth 2.0 secret
+     * 	- Service `managedDataLake`: OAuth 2.0 secret
      * 	- Service `newS3Datalake`: OAuth 2.0 secret
      * 	- Service `onelake`: OAuth 2.0 secret
      */
@@ -6877,6 +7247,9 @@ export interface DestinationConfig {
      * 	- Service `mariaWarehouse`: Database user password
      * 	- Service `mysqlRdsWarehouse`: Database user password
      * 	- Service `mysqlWarehouse`: Database user password
+     * 	- Service `oracleRacWarehouse`: Database user password
+     * 	- Service `oracleRdsWarehouse`: Database user password
+     * 	- Service `oracleWarehouse`: Database user password
      * 	- Service `panoply`: Database user password
      * 	- Service `periscopeWarehouse`: Database user password
      * 	- Service `postgresGcpWarehouse`: Database user password
@@ -6892,6 +7265,7 @@ export interface DestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Personal access token
      * 	- Service `databricks`: Personal access token
+     * 	- Service `managedDataLake`: Personal access token
      * 	- Service `newS3Datalake`: Personal access token
      * 	- Service `onelake`: Personal access token
      */
@@ -6906,12 +7280,16 @@ export interface DestinationConfig {
      * 	- Service `azureSqlDatabase`: Server port number
      * 	- Service `azureSqlManagedDbWarehouse`: Server port number
      * 	- Service `databricks`: Server port number
+     * 	- Service `managedDataLake`: Server port number
      * 	- Service `mariaRdsWarehouse`: Server port number
      * 	- Service `mariaWarehouse`: Server port number
      * 	- Service `mysqlRdsWarehouse`: Server port number
      * 	- Service `mysqlWarehouse`: Server port number
      * 	- Service `newS3Datalake`: Server port number
      * 	- Service `onelake`: Server port number
+     * 	- Service `oracleRacWarehouse`: Server port number
+     * 	- Service `oracleRdsWarehouse`: Server port number
+     * 	- Service `oracleWarehouse`: Server port number
      * 	- Service `panoply`: Server port number
      * 	- Service `periscopeWarehouse`: Server port number
      * 	- Service `postgresGcpWarehouse`: Server port number
@@ -6926,6 +7304,7 @@ export interface DestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) path/to/data within the container
+     * 	- Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
      * 	- Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
      * 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
      */
@@ -6964,6 +7343,7 @@ export interface DestinationConfig {
     publicKey?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
      * 	- Service `newS3Datalake`: Region of your AWS S3 bucket
      */
     region?: pulumi.Input<string>;
@@ -7054,6 +7434,7 @@ export interface DestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Secret value for service principal
+     * 	- Service `managedDataLake`: Secret value for service principal
      * 	- Service `onelake`: Secret value for service principal
      */
     secretValue?: pulumi.Input<string>;
@@ -7066,6 +7447,7 @@ export interface DestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Server Host name
      * 	- Service `databricks`: Server name
+     * 	- Service `managedDataLake`: Server host name
      * 	- Service `newS3Datalake`: Server host name
      * 	- Service `onelake`: Server Host name
      */
@@ -7073,13 +7455,20 @@ export interface DestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Should maintain tables in Databricks 
+     * 	- Service `managedDataLake`: Should maintain tables in Databricks 
      * 	- Service `newS3Datalake`: Should maintain tables in Databricks 
      * 	- Service `onelake`: Should maintain tables in Databricks
      */
     shouldMaintainTablesInDatabricks?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+     */
+    shouldMaintainTablesInGlue?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+     * 	- Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      * 	- Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      * 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      */
@@ -7088,10 +7477,24 @@ export interface DestinationConfig {
     snowflakeRegion?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
+     */
+    storageAccountKey?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+     * 	- Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
      * 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+     * 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
      */
     storageAccountName?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: Storage Provider
+     */
+    storageProvider?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
@@ -7100,6 +7503,7 @@ export interface DestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Tenant id of service principal
+     * 	- Service `managedDataLake`: Tenant id of service principal
      * 	- Service `onelake`: Tenant ID of service principal
      */
     tenantId?: pulumi.Input<string>;
@@ -7115,6 +7519,9 @@ export interface DestinationConfig {
      * 	- Service `mariaWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -7137,6 +7544,9 @@ export interface DestinationConfig {
      * 	- Service `mariaWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -7159,6 +7569,9 @@ export interface DestinationConfig {
      * 	- Service `mariaWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -7171,6 +7584,11 @@ export interface DestinationConfig {
     tunnelUser?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Set to `true` if you want to use an S3 bucket to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+     */
+    useCustomerStaging?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Database user name
      * 	- Service `auroraWarehouse`: Database user name
      * 	- Service `azurePostgresWarehouse`: Database user name
@@ -7181,6 +7599,9 @@ export interface DestinationConfig {
      * 	- Service `mariaWarehouse`: Database user name
      * 	- Service `mysqlRdsWarehouse`: Database user name
      * 	- Service `mysqlWarehouse`: Database user name
+     * 	- Service `oracleRacWarehouse`: Database user name
+     * 	- Service `oracleRdsWarehouse`: Database user name
+     * 	- Service `oracleWarehouse`: Database user name
      * 	- Service `panoply`: Database user name
      * 	- Service `periscopeWarehouse`: Database user name
      * 	- Service `postgresGcpWarehouse`: Database user name
@@ -7194,6 +7615,7 @@ export interface DestinationConfig {
     user?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) OneLake workspace GUID
      * 	- Service `onelake`: (Immutable) OneLake workspace GUID
      */
     workspaceGuid?: pulumi.Input<string>;
@@ -7827,6 +8249,11 @@ export interface GetConnectorConfig {
     academyId?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `ceridianDayforce`: Your confirmation that you have granted Fivetran access to all the RESTful services and fields you want to sync. Possible values: `true`, `false`.
+     */
+    accessConfirmation?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `planful`: Your Planful access ID.
      */
     accessId?: string;
@@ -7847,6 +8274,8 @@ export interface GetConnectorConfig {
      * 	- Service `cloudtalk`: Your CloudTalk Access Key ID.
      * 	- Service `nice`: Your NICE access key ID.
      * 	- Service `s3`: Access Key ID
+     * 	- Service `s3CompatibleStorage`: Access Key ID
+     * 	- Service `validio`: Your Validio access key ID.
      * 	- Service `wasabiCloudStorage`: Access Key ID
      */
     accessKeyId?: string;
@@ -7858,6 +8287,7 @@ export interface GetConnectorConfig {
      * 	- Service `gongio`: Your Gongio Access Key Secret.
      * 	- Service `nice`: Your NICE access key secret.
      * 	- Service `s3`: Access Key Secret
+     * 	- Service `s3CompatibleStorage`: Access Key Secret
      * 	- Service `wasabiCloudStorage`: Access Key Secret
      */
     accessKeySecret?: string;
@@ -7869,6 +8299,7 @@ export interface GetConnectorConfig {
      * 	- Service `bitly`: Your Bitly access token.
      * 	- Service `calabrio`: Your Calabrio access token.
      * 	- Service `coalesce`: Your Coalesce access token.
+     * 	- Service `coheris`: Your Coheris access token.
      * 	- Service `coupa`: Your Coupa access token fetched using clientId and clientSecret
      * 	- Service `deputy`: Your Deputy API access token.
      * 	- Service `getfeedback`: Your GetFeedback Access token.
@@ -7961,6 +8392,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Account Sync Mode
+     * 	- Service `snapchatAds`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
      */
     accountSyncMode?: string;
     /**
@@ -7987,6 +8419,7 @@ export interface GetConnectorConfig {
      * 	- Service `instagramBusiness`: Specific accounts to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `itunesConnect`: Accounts
      * 	- Service `linkedinAds`: Specific Account IDs to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
+     * 	- Service `snapchatAds`: Specific accounts IDs to sync. Must be populated if `accountSyncMode` is set to `SpecificAccounts`.
      * 	- Service `spotifyAds`: The list of Ad Account IDs to sync. Must be populated if `syncMode` is set to `SPECIFIC_ACCOUNTS`.
      * 	- Service `tiktokAds`: Specific accounts to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `twilio`: Specific Accounts to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
@@ -8177,6 +8610,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Require TLS through Tunnel
      * 	- Service `auroraPostgres`: Require TLS through Tunnel
+     * 	- Service `avevaPi`: Require TLS.
      * 	- Service `azureCosmosForMongo`: Require TLS
      * 	- Service `azurePostgres`: Require TLS through Tunnel
      * 	- Service `azureSqlDb`: Require TLS through Tunnel.
@@ -8237,6 +8671,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay API environment.
+     * 	- Service `tiktokOrganic`: Your TikTok Organic API environment.
      */
     apiEnvironment?: string;
     /**
@@ -8256,6 +8691,7 @@ export interface GetConnectorConfig {
      * 	- Service `algolia`: Your Algolia API key.
      * 	- Service `alida`: Your Alida API key.
      * 	- Service `anvyl`: Your Anvyl API key.
+     * 	- Service `apollo`: Your Apollo API key.
      * 	- Service `appcues`: Your Appcues API key.
      * 	- Service `ashby`: Your Ashby API key.
      * 	- Service `assembled`: Your Assembled API key.
@@ -8301,6 +8737,7 @@ export interface GetConnectorConfig {
      * 	- Service `contrastSecurity`: Your Contrast Security API Key.
      * 	- Service `copper`: Your Copper API key.
      * 	- Service `coupa`: Your Coupa API key.
+     * 	- Service `crunchbase`: Your Crunchbase API key.
      * 	- Service `datadog`: Your Datadog API key.
      * 	- Service `dbtCloud`: Your dbt Cloud service token.
      * 	- Service `dclLogistics`: Your DCL Logistics API key.
@@ -8373,6 +8810,7 @@ export interface GetConnectorConfig {
      * 	- Service `mandrill`: Your Mandrill API key.
      * 	- Service `maxioChargify`: Enter Your API Key.
      * 	- Service `messagebird`: Your MessageBird API key.
+     * 	- Service `moloco`: Your Moloco apiKey
      * 	- Service `mountain`: Your MNTN API key.
      * 	- Service `myosh`: Your myosh API key.
      * 	- Service `okendo`: Your Okendo API key.
@@ -8516,6 +8954,7 @@ export interface GetConnectorConfig {
      * 	- Service `aha`: Your Aha! API key.
      * 	- Service `aircall`: Your Aircall API token.
      * 	- Service `appsflyer`: API Token for AppsFlyer's PULL API.
+     * 	- Service `auraFromUnity`: Your Aura from Unity API token.
      * 	- Service `awin`: Your Awin API Token.
      * 	- Service `backbonePlm`: Your Backbone PLM API token.
      * 	- Service `brex`: Your Brex API token
@@ -8607,6 +9046,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: API Version
+     * 	- Service `pardotSandbox`: API Version
      */
     apiVersion?: string;
     /**
@@ -8614,6 +9054,7 @@ export interface GetConnectorConfig {
      * 	- Service `churnkey`: Your Churnkey APP ID.
      * 	- Service `openExchangeRates`: Your Open Exchange Rates App Id.
      * 	- Service `rokt`: Your Rokt app ID.
+     * 	- Service `tiktokOrganic`: Your Tiktok Organic app ID.
      */
     appId?: string;
     /**
@@ -8630,7 +9071,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `loopio`: Your Loopio App Key.
      * 	- Service `servicetitan`: Your ServiceTitan app key.
-     * 	- Service `yotpo`: Your Yotpo App Key
+     * 	- Service `yotpo`: Your Yotpo app key.
      * 	- Service `yotpoApp`: Your Yotpo App key.
      */
     appKey?: string;
@@ -8661,11 +9102,13 @@ export interface GetConnectorConfig {
      * 	- Service `azureBlobStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `box`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `dropbox`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+     * 	- Service `email`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `ftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `gcs`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `googleDrive`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `kinesis`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `s3`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+     * 	- Service `s3CompatibleStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `sftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `sharePoint`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `wasabiCloudStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
@@ -8692,12 +9135,18 @@ export interface GetConnectorConfig {
     apps?: string[];
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Archive log format.
+     * 	- Service `oracleSapHva`: Archive log format.
+     * 	- Service `oracleSapHvaNetweaver`: Archive log format.
      * 	- Service `sqlServerHva`: Format for archive log file names
      * 	- Service `sqlServerSapEccHva`: Format for archive log file names
      */
     archiveLogFormat?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Archive log path.
+     * 	- Service `oracleSapHva`: Archive log path.
+     * 	- Service `oracleSapHvaNetweaver`: Archive log path.
      * 	- Service `sqlServerHva`: Directory where archive logs are located
      * 	- Service `sqlServerSapEccHva`: Directory where archive logs are located
      */
@@ -8714,6 +9163,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `kinesis`: Optional. Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `s3`: Files inside compressed archives with filenames matching this regular expression will be synced.
+     * 	- Service `s3CompatibleStorage`: Files inside compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `sftp`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `sharePoint`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `wasabiCloudStorage`: Files inside compressed archives with filenames matching this regular expression will be synced.
@@ -8826,6 +9276,7 @@ export interface GetConnectorConfig {
      * 	- Service `anaplan`: The Anaplan authentication method.
      * 	- Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
      * 	- Service `github`: Authorization type.
+     * 	- Service `workday`: Authentication Mode
      */
     authMode?: string;
     /**
@@ -8850,8 +9301,10 @@ export interface GetConnectorConfig {
      * 	- Service `jira`: Authorization type.
      * 	- Service `mixpanel`: Authentication Method
      * 	- Service `pardot`: Authenticate using OAuth or HTTP Basic
+     * 	- Service `pardotSandbox`: Authenticate using OAuth or HTTP Basic
      * 	- Service `qualtrics`: Type of authentication being used by connector
      * 	- Service `s3`: Access approach
+     * 	- Service `s3CompatibleStorage`: Access approach
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
      */
     authType?: string;
@@ -8877,6 +9330,12 @@ export interface GetConnectorConfig {
     authorizationMethod?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `tiktokOrganic`: The authorization URL of the app registered in your TikTok developer account.
+     * 	- Service `workday`: Authorization URL
+     */
+    authorizationUrl?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `dynamodb`: The AWS region code for the DynamoDB instance, e.g. `us-east-1`.
      */
     awsRegionCode?: string;
@@ -8885,6 +9344,8 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
+     * 	- Service `stripe`: Limit of the Historical Sync Time for selected tables
+     * 	- Service `stripeTest`: Limit of the Historical Sync Time for selected tables
      * 	- Service `zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD
      */
     backwardSyncLimit?: string;
@@ -8912,11 +9373,13 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aha`: Your Aha! subdomain.
      * 	- Service `akeneo`: Your Akeneo base URL.
+     * 	- Service `bigmarker`: Your BigMarker base URL.
      * 	- Service `billingPlatform`: Your BillingPlatform subdomain.
      * 	- Service `boostr`: Your Boostr base URL.
      * 	- Service `brex`: Your Brex Base URL
      * 	- Service `centra`: Your Centra base URL.
      * 	- Service `coalesce`: Your Coalesce base URL.
+     * 	- Service `coheris`: Your Coheris base URL.
      * 	- Service `cornerstone`: Your Cornerstone base URL.
      * 	- Service `cultureAmp`: Your Culture Amp base URL.
      * 	- Service `datadog`: Your Datadog base url.
@@ -8935,6 +9398,7 @@ export interface GetConnectorConfig {
      * 	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `salesforceSandbox`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `stickyio`: Your sticky.io base URL .
+     * 	- Service `veevaVault`: Base URL
      * 	- Service `veevavault`: Your Veeva Vault base URL.
      * 	- Service `vitally`: Your Vitally base URL.
      */
@@ -8953,6 +9417,11 @@ export interface GetConnectorConfig {
      * 	- Service `zenefits`: Your Zenefits bearer token.
      */
     bearerToken?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
+     */
+    binaryLogType?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The blob SAS URL of your Azure container. Required if `bucketService` is set to `AZURE`.
@@ -8986,6 +9455,7 @@ export interface GetConnectorConfig {
      * 	- Service `heap`: The S3 bucket name.
      * 	- Service `kinesis`: The name of the Kinesis bucket.
      * 	- Service `s3`: The S3 bucket name. Required for connector creation.
+     * 	- Service `s3CompatibleStorage`: The S3-Compatible Storage bucket name. Required for connector creation.
      * 	- Service `segment`: The name of the Segment bucket. Must be populated if `syncType` is set to `S3`.
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage bucket name. Required for connector creation.
      */
@@ -9020,6 +9490,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: Business Unit Id
+     * 	- Service `pardotSandbox`: Business Unit Id
      */
     businessUnitId?: string;
     /**
@@ -9061,7 +9532,7 @@ export interface GetConnectorConfig {
     clientCertKey?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Client Host.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce client host.
      */
     clientHost?: string;
     /**
@@ -9103,6 +9574,7 @@ export interface GetConnectorConfig {
      * 	- Service `fillout`: Your Fillout client ID.
      * 	- Service `flexport`: The Flexport API Key.
      * 	- Service `formstack`: Your Formstack client ID.
+     * 	- Service `fortnox`: Your Fortnox client ID.
      * 	- Service `genesys`: Your Genesys client ID.
      * 	- Service `hanaSapHvaEccNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
      * 	- Service `hanaSapHvaS4Netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
@@ -9125,6 +9597,7 @@ export interface GetConnectorConfig {
      * 	- Service `navan`: Your Navan client ID.
      * 	- Service `nice`: Your NICE client ID.
      * 	- Service `on24`: Your ON24 client ID.
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service client ID.
      * 	- Service `oracleSapHvaNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
      * 	- Service `paychex`: Your Paychex client ID.
      * 	- Service `paypal`: `Client ID` of your PayPal client application.
@@ -9198,7 +9671,7 @@ export interface GetConnectorConfig {
     clientName?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Client Namespace.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce client namespace.
      */
     clientNamespace?: string;
     /**
@@ -9277,6 +9750,7 @@ export interface GetConnectorConfig {
      * 	- Service `fillout`: Your Fillout client secret
      * 	- Service `flexport`: The Flexport API Secret.
      * 	- Service `formstack`: Your Formstack client secret.
+     * 	- Service `fortnox`: Your Fortnox client secret.
      * 	- Service `genesys`: Your Genesys client secret.
      * 	- Service `helpdesk`: Your HelpDesk client secret.
      * 	- Service `hiltiOntrack`: Your Hilti On!Track client secret.
@@ -9295,6 +9769,7 @@ export interface GetConnectorConfig {
      * 	- Service `microsoftTeams`: Your Microsoft Teams client secret.
      * 	- Service `navan`: Your Navan client secret.
      * 	- Service `nice`: Your NICE client secret.
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service client secret.
      * 	- Service `paychex`: Your Paychex client secret.
      * 	- Service `personio`: Your Personio secret.
      * 	- Service `piwikPro`: Your Piwik PRO client secret.
@@ -9434,6 +9909,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `kinesis`: If your files are compressed, but do not have extensions indicating the compression method, you can force them to be uncompressed according to the selected compression algorithm. Leave the value as infer if your files are saved with the correct compression extensions.
      * 	- Service `s3`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+     * 	- Service `s3CompatibleStorage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `sftp`: The secrets that should be passed to the function at runtime.
      * 	- Service `sharePoint`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `wasabiCloudStorage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
@@ -9488,12 +9964,14 @@ export interface GetConnectorConfig {
      * 	- Service `azureServiceBus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
      * 	- Service `microsoftDynamics365Fno`: The blob storage container's connection string.
      * 	- Service `microsoftDynamics365Fo`: The blob storage container connection string.
+     * 	- Service `sqlServer`: The Azure Blob Storage container connection string.
      */
     connectionString?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `auroraPostgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+     * 	- Service `avevaPi`: Possible values: `Directly`, `PrivateLink`
      * 	- Service `awsCostReport`: Connection method. Default value: `Directly`.
      * 	- Service `awsLambda`: Connection method. Default value: `Directly`.
      * 	- Service `azureBlobStorage`: Connection method. Default value: `Directly`.
@@ -9601,6 +10079,7 @@ export interface GetConnectorConfig {
      * 	- Service `azureBlobStorage`: The name of the blob container.
      * 	- Service `microsoftDynamics365Fno`: The name of the blob container.
      * 	- Service `microsoftDynamics365Fo`: The name of the blob container.
+     * 	- Service `sqlServer`: The name of the Azure Blob Storage container.
      */
     containerName?: string;
     /**
@@ -9647,7 +10126,7 @@ export interface GetConnectorConfig {
     currency?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `coalesce`: Your Coalesce Custom Base URL.
+     * 	- Service `coalesce`: Your Coalesce custom base URL.
      * 	- Service `datadog`: Your Datadog custom base url.
      * 	- Service `deposco`: Your Deposco custom base URL.
      */
@@ -9828,6 +10307,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `kinesis`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
      * 	- Service `s3`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+     * 	- Service `s3CompatibleStorage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `sftp`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `sharePoint`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `wasabiCloudStorage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
@@ -9858,6 +10338,16 @@ export interface GetConnectorConfig {
      * 	- Service `oracleSapHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
      */
     directCaptureMethod?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `qualtrics`: Set of directories to be synced when syncMode is CUSTOM
+     */
+    directories?: string[];
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `qualtrics`: Sync mode to be used for fetching select directories. The Allowed Values are ALL and CUSTOM. If CUSTOM add the directories to be synced in the `directories` field.
+     */
+    directorySyncMode?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
@@ -9916,12 +10406,14 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appcues`: Your Appcues Email.
+     * 	- Service `assetPanda`: Your Asset Panda email.
      * 	- Service `boostr`: Your Boostr email.
      * 	- Service `copper`: Your Copper email address.
      * 	- Service `email`: Send your emails to this address.
      * 	- Service `moloco`: Your Moloco account email.
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite user's email address.
      * 	- Service `pardot`: The email of the Pardot user.
+     * 	- Service `pardotSandbox`: The email of the Pardot user.
      * 	- Service `skuvault`: Your SkuVault email.
      * 	- Service `smadex`: Your Smadex account's email ID.
      * 	- Service `zendesk`: Zendesk email.
@@ -9952,6 +10444,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `kinesis`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `s3`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
+     * 	- Service `s3CompatibleStorage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
      * 	- Service `sftp`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `sharePoint`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `wasabiCloudStorage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
@@ -9964,6 +10457,9 @@ export interface GetConnectorConfig {
     enableAllDimensionCombinations?: boolean;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using archive log only mode.
+     * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using archive log only mode.
+     * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using archive log only mode.
      * 	- Service `sqlServerHva`: Use archive log only mode
      * 	- Service `sqlServerSapEccHva`: Use archive log only mode
      */
@@ -9987,10 +10483,18 @@ export interface GetConnectorConfig {
     enableExports?: boolean;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Use transparent data encryption (TDE)
      * 	- Service `sqlServerHva`: Using Transparent Data Encryption (TDE)
      * 	- Service `sqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
      */
     enableTde?: boolean;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     */
+    enableTdeEncryption?: boolean;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Use the public key to grant Fivetran access to Apple Search Ads api.
@@ -10012,6 +10516,11 @@ export interface GetConnectorConfig {
     endpoint?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `s3CompatibleStorage`: S3-Compatible Storage Endpoint URL.
+     */
+    endpointUrl?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: The number of days to use as the conversion attribution window for an engagement (i.e. closeup or save) action.
      */
     engagementAttributionWindow?: string;
@@ -10027,6 +10536,26 @@ export interface GetConnectorConfig {
      * 	- Service `zuoraSandbox`: If `isMultiEntityFeatureEnabled` is `true`, then it's `EntityId`.
      */
     entityId?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `auroraPostgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `azurePostgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `googleCloudPostgresql`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `herokuPostgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `postgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `postgresRds`: Registered Application ID (for Entra ID authentication).
+     */
+    entraAppId?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `auroraPostgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `azurePostgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `googleCloudPostgresql`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `herokuPostgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `postgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `postgresRds`: Azure Tenant ID (for Entra ID authentication).
+     */
+    entraTenantId?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bazaarvoice`: Your Bazaarvoice environment.
@@ -10075,6 +10604,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `kinesis`: Optional. If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `s3`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+     * 	- Service `s3CompatibleStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `sftp`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `sharePoint`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `wasabiCloudStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
@@ -10140,6 +10670,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: If your files are saved with improper extensions, you can force them to be synced as the selected filetype.
      * 	- Service `kinesis`: If your files are saved with improper extensions, you can force them to by synced as the selected filetype. Leave the value as infer if your files have the correct extensions
      * 	- Service `s3`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
+     * 	- Service `s3CompatibleStorage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
      * 	- Service `sftp`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
      * 	- Service `sharePoint`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
      * 	- Service `wasabiCloudStorage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
@@ -10148,10 +10679,13 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Mapped file name patterns to a destination table.
+     * 	- Service `email`: Mapped file name patterns to a destination table.
      * 	- Service `gcs`: Mapped file name patterns to a destination table.
      * 	- Service `googleDrive`: Mapped file name patterns to a destination table.
      * 	- Service `s3`: Mapped file name patterns to a destination table.
+     * 	- Service `s3CompatibleStorage`: Mapped file name patterns to a destination table.
      * 	- Service `sftp`: Mapped file name patterns to a destination table.
+     * 	- Service `sharePoint`: Mapped file name patterns to a destination table.
      */
     files?: inputs.GetConnectorConfigFile[];
     /**
@@ -10300,17 +10834,46 @@ export interface GetConnectorConfig {
     historicSyncTimeFrame?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `braze`: Range of data in history you would like to include in the initial sync. Valid values are `ALL_TIME` and `DATE_LIMIT`
      * 	- Service `concur`: Historical Sync Limit for the Sync
      * 	- Service `eloqua`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
+     * 	- Service `iterable`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `klaviyo`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `marketo`: The time range for which historical data should be synced. Default value: `All Time`.
      * 	- Service `pardot`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `pardotSandbox`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `sageIntacct`: Historical Sync Limit for the Sync
+     * 	- Service `sailthru`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `salesforceMarketingCloud`: The time range for which historical data should be synced. Default value: `All Time`.
      */
     historicalSyncLimit?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `braze`: The start date (in YYYY-MM-DD) from which to sync historical data. Only used when `historicalSyncLimit` is set to `DATE_LIMIT`.
+     * 	- Service `iterable`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `klaviyo`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `marketo`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `pardot`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `pardotSandbox`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `sailthru`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `salesforceMarketingCloud`: The start date (YYYY-MM-DD) from which to sync historical data.
+     */
+    historicalSyncLimitDate?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `pardot`: The options for time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `pardotSandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
+     */
+    historicalSyncLimitTimeFrame?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
      * 	- Service `hubspot`: Used to configure Historical sync timeframe for selected tables
      * 	- Service `rokt`: Your Rokt historical sync time frame.
      * 	- Service `shopify`: Used to configure Historical sync timeframe for selected tables
      * 	- Service `skimlinks`: Your Skimlinks Historical sync time frame.
+     * 	- Service `stripe`: Used to configure Historical sync timeframe for selected tables
+     * 	- Service `stripeTest`: Used to configure Historical sync timeframe for selected tables
      * 	- Service `vimeo`: Your Vimeo Historical sync time frame.
      * 	- Service `zendesk`: Used to configure Historical sync timeframe for selected tables
      */
@@ -10324,6 +10887,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: DB instance host or IP address.
      * 	- Service `auroraPostgres`: DB instance host or IP address.
+     * 	- Service `avevaPi`: IP address of the AF Server
      * 	- Service `azurePostgres`: DB instance host or IP address.
      * 	- Service `azureSqlDb`: DB instance host or IP address.
      * 	- Service `azureSqlManagedDb`: DB instance host or IP address.
@@ -10493,6 +11057,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
+     * 	- Service `pardotSandbox`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
      */
     isExternalActivitiesEndpointSelected?: boolean;
     /**
@@ -10577,6 +11142,11 @@ export interface GetConnectorConfig {
     issuer?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `itunesConnect`: Your Issuer ID
+     */
+    issuerId?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Control how your JSON data is delivered into your destination
      * 	- Service `azureBlobStorage`: Control how your JSON data is delivered into your destination
      * 	- Service `box`: Control how your JSON data is delivered into your destination
@@ -10587,6 +11157,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: Control how your JSON data is delivered into your destination
      * 	- Service `kinesis`: Control how your JSON data is delivered into your destination
      * 	- Service `s3`: Control how your JSON data is delivered into your destination
+     * 	- Service `s3CompatibleStorage`: Control how your JSON data is delivered into your destination
      * 	- Service `sftp`: Control how your JSON data is delivered into your destination
      * 	- Service `sharePoint`: Control how your JSON data is delivered into your destination
      * 	- Service `wasabiCloudStorage`: Specifies how Fivetran should handle your JSON data. Default value: `Packed`.
@@ -10597,6 +11168,11 @@ export interface GetConnectorConfig {
      * 	- Service `uservoice`: The UserVoice API key.
      */
     key?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `itunesConnect`: Your Key ID
+     */
+    keyId?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, enter your `Key Password`.
@@ -10627,6 +11203,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: API limit for the external activities endpoint.
+     * 	- Service `pardotSandbox`: API limit for the external activities endpoint.
      */
     limitForApiCallsToExternalActivitiesEndpoint?: number;
     /**
@@ -10641,6 +11218,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `kinesis`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `s3`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+     * 	- Service `s3CompatibleStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `sftp`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `sharePoint`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `wasabiCloudStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
@@ -10661,6 +11239,7 @@ export interface GetConnectorConfig {
      * 	- Service `awsCostReport`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
      * 	- Service `kinesis`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
      * 	- Service `s3`: The listing strategy you want to use. Default value: `completeListing`.
+     * 	- Service `s3CompatibleStorage`: The listing strategy you want to use. Default value: `completeListing`.
      */
     listStrategy?: string;
     /**
@@ -10699,6 +11278,11 @@ export interface GetConnectorConfig {
      * 	- Service `sageIntacct`: The login password. It is a part of the login credentials.
      */
     loginPassword?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `sageIntacct`: Lookback window for GL Batch endpoint lookback sync
+     */
+    lookBackWindowForGlBatchEndpoint?: number;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The list of the Manager Account IDs whose clients will be synced. Must be populated if `syncMode` is set to `ManagerAccounts`.
@@ -10777,6 +11361,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `kinesis`: Optional. If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `s3`: If your CSVs use a special value indicating null, you can specify it here.
+     * 	- Service `s3CompatibleStorage`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `sftp`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `sharePoint`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `wasabiCloudStorage`: If your CSVs use a special value indicating null, you can specify it here.
@@ -10829,6 +11414,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `kinesis`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `s3`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
+     * 	- Service `s3CompatibleStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
      * 	- Service `sftp`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `sharePoint`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `wasabiCloudStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
@@ -10940,6 +11526,7 @@ export interface GetConnectorConfig {
      * 	- Service `alida`: Your Alida client secret.
      * 	- Service `anaplan`: Your Anaplan password. Must be populated if `authMode` is set to `Basic`.
      * 	- Service `appfigures`: Your Appfigures Password.
+     * 	- Service `assetPanda`: Your Asset Panda password.
      * 	- Service `aurora`: The user's password.
      * 	- Service `auroraPostgres`: The user's password.
      * 	- Service `azureCosmosForMongo`: Password used for source database authentication.
@@ -10949,7 +11536,7 @@ export interface GetConnectorConfig {
      * 	- Service `boostr`: Your Boostr password.
      * 	- Service `brivo`: Your Brivo password.
      * 	- Service `cabcharge`: Your Cabcharge password.
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Password.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce password.
      * 	- Service `cin7`: Your Cin7 API Key.
      * 	- Service `clarity`: The user's password.
      * 	- Service `cockroachdb`: The user's password.
@@ -10978,7 +11565,7 @@ export interface GetConnectorConfig {
      * 	- Service `hanaSapHvaS4Netweaver`: The user's password.
      * 	- Service `herokuPostgres`: The user's password.
      * 	- Service `hiltiOntrack`: Your Hilti On!Track password.
-     * 	- Service `impact`: Your Impact Account Token
+     * 	- Service `impact`: Your Impact Brand Account Token
      * 	- Service `integralAdScience`: Your integralAdScience password.
      * 	- Service `itunesConnect`: Your password
      * 	- Service `jamf`: Your Jamf password.
@@ -11016,6 +11603,7 @@ export interface GetConnectorConfig {
      * 	- Service `oracleSapHvaNetweaver`: The user's password.
      * 	- Service `outbrain`: The Outbrain user's password.
      * 	- Service `pardot`: The Pardot user's password.
+     * 	- Service `pardotSandbox`: The Pardot user's password.
      * 	- Service `partnerize`: Your Partnerize account's password.
      * 	- Service `podio`: Your Podio account password.
      * 	- Service `postgres`: The user's password.
@@ -11053,6 +11641,7 @@ export interface GetConnectorConfig {
      * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
      * 	- Service `unicommerce`: Your uniware login password.
      * 	- Service `upland`: Your Upland Software Password.
+     * 	- Service `veevaVault`: Password
      * 	- Service `veevavault`: Your Veeva Vault password.
      * 	- Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
      * 	- Service `whenIWork`: Your When I Work password.
@@ -11061,6 +11650,7 @@ export interface GetConnectorConfig {
      * 	- Service `workdayFinancialManagement`: Workday password.
      * 	- Service `workdayHcm`: Workday password.
      * 	- Service `xandr`: Your Xandr password.
+     * 	- Service `yougovBrandindex`: Your YouGov BrandIndex password.
      * 	- Service `younium`: Your Younium password.
      */
     password?: string;
@@ -11095,13 +11685,13 @@ export interface GetConnectorConfig {
      * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced.
      * 	- Service `box`: All files in your search path matching this regular expression will be synced.
      * 	- Service `dropbox`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `email`: All files in your search path matching this regular expression will be synced.
+     * 	- Service `email`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by Oct 31, 2025.
      * 	- Service `ftp`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `gcs`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced.
+     * 	- Service `gcs`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+     * 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
      * 	- Service `kinesis`: Optional. All files in your search path matching this regular expression will be synced. This parameter is optional.
-     * 	- Service `s3`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `sftp`: All files in your search path matching this regular expression will be synced.
+     * 	- Service `s3`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+     * 	- Service `sftp`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
      * 	- Service `sharePoint`: All files in your search path matching this regular expression will be synced.
      * 	- Service `wasabiCloudStorage`: All files in your search path matching this regular expression will be synced.
      */
@@ -11152,6 +11742,7 @@ export interface GetConnectorConfig {
      * 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `s3CompatibleStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      */
@@ -11162,6 +11753,7 @@ export interface GetConnectorConfig {
      * 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `s3CompatibleStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      */
@@ -11171,6 +11763,11 @@ export interface GetConnectorConfig {
      * 	- Service `itunesConnect`: Register the number on AppleId Account Page for 2FA
      */
     phoneNumber?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `wrike`: Your Wrike Subscription Plan.
+     */
+    plan?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `justcall`: Your JustCall Plan Type.
@@ -11263,6 +11860,7 @@ export interface GetConnectorConfig {
      * 	- Service `marin`: Folder path to the Marin manifest file.
      * 	- Service `microsoftDynamics365Fo`: Folder name in which the exported dynamics 365 data resides.
      * 	- Service `s3`: All files and folders under this folder path will be searched for files to sync.
+     * 	- Service `s3CompatibleStorage`: All files and folders under this folder path will be searched for files to sync.
      * 	- Service `segment`: Folder path to the Segment files within the bucket. Must be populated if `syncType` is set to `S3`.
      * 	- Service `sftp`: All files and folders under this folder path will be searched for files to sync.
      * 	- Service `sharePoint`: All files and folders under this folder path link will be searched for files to sync. This can be any shared folder link.
@@ -11281,6 +11879,16 @@ export interface GetConnectorConfig {
     primaryKeys?: string[];
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `marketo`: Use BULK for both LEAD and ACTIITIES
+     */
+    prioritiseBulkExportOverRest?: boolean;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `purpleDot`: Your PurpleDot Private access token.
+     */
+    privateAccessToken?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS REST API private key.
      * 	- Service `adobeAnalytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
      * 	- Service `adpWorkforceNow`: Private Key.
@@ -11288,6 +11896,7 @@ export interface GetConnectorConfig {
      * 	- Service `appleSearchAds`: The contents of your secret key file. Must be populated if `isAuth2Enabled` is set to `false`.
      * 	- Service `braintree`: The contents of your secret key file.
      * 	- Service `braintreeSandbox`: The contents of your secret key file.
+     * 	- Service `itunesConnect`: Your Private Key
      * 	- Service `netsuiteSuiteanalytics`: Private Key
      * 	- Service `oracleFusionCloudAppsCrm`: The Oracle Fusion Cloud private key.
      * 	- Service `oracleFusionCloudAppsFscm`: The Oracle Fusion Cloud private key.
@@ -11317,7 +11926,7 @@ export interface GetConnectorConfig {
     profiles?: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `amazonDsp`: Comma-separated list of your Amazon DSP profiles.
+     * 	- Service `amazonDsp`: your Amazon DSP profiles pass it inside an Array list.
      */
     profilesAmazonDsp?: string;
     /**
@@ -11467,19 +12076,27 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `s3CompatibleStorage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `sftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `sharePoint`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      */
     quoteChar?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `azureBlobStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `azureBlobStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as a quote character.
+     * 	- Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `s3CompatibleStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `sftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `sharePoint`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      */
@@ -11644,6 +12261,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
      * 	- Service `googleAnalytics`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
      * 	- Service `googleAnalytics4`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+     * 	- Service `googleDisplayAndVideo360`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
      * 	- Service `googleSearchAds360`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
      * 	- Service `googleSearchConsole`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
      * 	- Service `workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
@@ -11672,6 +12290,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
+     * 	- Service `pardotSandbox`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
      */
     restApiLimit?: number;
     /**
@@ -11714,6 +12333,11 @@ export interface GetConnectorConfig {
      * 	- Service `bingads`: A period of time in days during which a conversion is recorded.
      */
     rollbackWindowSize?: number;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service rootresourceId.
+     */
+    rootResourceId?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The S3 bucket name. Required if `bucketService` is set to `S3`.
@@ -11788,6 +12412,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The Pardot user's Salesforce SSO Account Security Token.
+     * 	- Service `pardotSandbox`: The Pardot user's Salesforce SSO Account Security Token.
      */
     salesforceSecurityToken?: string;
     /**
@@ -11894,6 +12519,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cornerstone`: Your Cornerstone scopes.
+     * 	- Service `fortnox`: Your Fortnox app scopes.
      */
     scopes?: string;
     /**
@@ -11909,12 +12535,18 @@ export interface GetConnectorConfig {
      * 	- Service `loopio`: Your Loopio Secret.
      * 	- Service `mode`: Your Mode Secret.
      * 	- Service `playvoxWorkforceManagement`: Your Playvox Workforce Management client secret.
+     * 	- Service `tiktokOrganic`: The secret of the app registered in your TikTok developer account.
      * 	- Service `twilio`: The Twilio API secret
      * 	- Service `uservoice`: The UserVoice API secret.
      * 	- Service `venminder`: Your Venminder secret.
      * 	- Service `vts`: Your VTS secret.
      */
     secret?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `validio`: Your Validio secret access key.
+     */
+    secretAccessKey?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay Secret Key.
@@ -12124,6 +12756,11 @@ export interface GetConnectorConfig {
     shouldSyncEventsWithDeletedProfiles?: boolean;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `netsuiteSuiteanalytics`: Re-sync re-import tables during every sync
+     */
+    shouldSyncReimportTables?: boolean;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Turn the toggle on if you want the reports to also return records without metrics.
      */
     showRecordsWithNoMetrics?: boolean;
@@ -12143,6 +12780,7 @@ export interface GetConnectorConfig {
      * 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `gcs`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+     * 	- Service `s3CompatibleStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      */
@@ -12181,6 +12819,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `kinesis`: Enter 1 or greater
      * 	- Service `s3`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
+     * 	- Service `s3CompatibleStorage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
      * 	- Service `sftp`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `sharePoint`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
@@ -12198,6 +12837,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleDrive`: We will skip over the number of lines specified before syncing data.
      * 	- Service `kinesis`: Enter 1 or greater
      * 	- Service `s3`: We will skip over the number of lines specified before syncing data.
+     * 	- Service `s3CompatibleStorage`: We will skip over the number of lines specified before syncing data.
      * 	- Service `sftp`: We will skip over the number of lines specified before syncing data.
      * 	- Service `sharePoint`: We will skip over the number of lines specified before syncing data.
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified before syncing data.
@@ -12314,6 +12954,7 @@ export interface GetConnectorConfig {
      * 	- Service `nylas`: Your Nylas subdomain.
      * 	- Service `odoo`: Your Odoo subdomain.
      * 	- Service `okta`: Your Okta subdomain.
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service subDomain.
      * 	- Service `picqer`: Your Picqer subdomain.
      * 	- Service `pinpoint`: Your Pinpoint sub domain name.
      * 	- Service `piwikPro`: Your Piwik PRO subdomain.
@@ -12337,6 +12978,7 @@ export interface GetConnectorConfig {
      * 	- Service `totango`: Your Totango Subdomain.
      * 	- Service `tymeshift`: Your Tymeshift subdomain.
      * 	- Service `upland`: Your Upland Software subDomain.
+     * 	- Service `validio`: Your Validio subdomain.
      * 	- Service `wordpress`: Your WordPress subdomain.
      * 	- Service `workable`: Your Workable Subdomain.
      * 	- Service `wrike`: Your Wrike Subdomain.
@@ -12447,7 +13089,7 @@ export interface GetConnectorConfig {
      * 	- Service `dynamodb`: Which packed mode setting to use. Default value: `UsePackedModeOnly`.
      * 	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
      * 	- Service `facebookAdAccount`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-     * 	- Service `facebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#syncmode).
+     * 	- Service `facebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/connectors/applications/facebook-ads#syncmode).
      * 	- Service `facebookPages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
      * 	- Service `github`: Whether to sync all repositories or specific repositories.
      * 	- Service `googleAds`: Whether to sync all accounts or specific accounts.
@@ -12548,6 +13190,7 @@ export interface GetConnectorConfig {
     targetHost?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Certificate file path used to protect a database encryption key
      * 	- Service `sqlServerHva`: Certificate used to protect a database encryption key
      * 	- Service `sqlServerSapEccHva`: Certificate used to protect a database encryption key
      */
@@ -12560,16 +13203,25 @@ export interface GetConnectorConfig {
     tdeCertificateName?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Password of the TDE private key
      * 	- Service `sqlServerHva`: Password of the TDE private key
      * 	- Service `sqlServerSapEccHva`: Password of the TDE private key
      */
     tdePassword?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Private key file path associated with the TDE certificate
      * 	- Service `sqlServerHva`: Private key associated with the TDE certificate
      * 	- Service `sqlServerSapEccHva`: Private key associated with the TDE certificate
      */
     tdePrivateKey?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleSapHva`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleSapHvaNetweaver`: TDE wallet password. Required for password based wallet.
+     */
+    tdeWalletPassword?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `asana`: Team ID
@@ -12643,6 +13295,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
+     * 	- Service `pardotSandbox`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
      */
     timeZone?: string;
     /**
@@ -12776,6 +13429,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `auroraPostgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+     * 	- Service `avevaPi`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `azureCosmosForMongo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `azurePostgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `azureSqlDb`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -12833,6 +13487,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `auroraPostgres`: SSH port, specify only to connect via an SSH tunnel.
+     * 	- Service `avevaPi`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `azureCosmosForMongo`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `azurePostgres`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `azureSqlDb`: SSH port, specify only to connect via an SSH tunnel.
@@ -12890,6 +13545,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `auroraPostgres`: SSH user, specify only to connect via an SSH tunnel.
+     * 	- Service `avevaPi`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `azureCosmosForMongo`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `azurePostgres`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `azureSqlDb`: SSH user, specify only to connect via an SSH tunnel.
@@ -13025,6 +13681,7 @@ export interface GetConnectorConfig {
      * 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
      * 	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
      * 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
+     * 	- Service `s3CompatibleStorage`: Set to `true` if files are encrypted using PGP in the S3-Compatible Storage bucket. Default value: `false`.
      * 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
      * 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
      */
@@ -13055,6 +13712,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The user name.
      * 	- Service `auroraPostgres`: The user name.
+     * 	- Service `avevaPi`: Username for the user to authenticate as with the AF Server
      * 	- Service `azureCosmosForMongo`: Username for source database access.
      * 	- Service `azurePostgres`: The user name.
      * 	- Service `azureSqlDb`: The user name.  For Azure Databases, the format must be `user@domain`.
@@ -13153,7 +13811,7 @@ export interface GetConnectorConfig {
      * 	- Service `anaplan`: Your Anaplan user ID. Must be populated if `authMode` is set to `Basic`.
      * 	- Service `appfigures`: Your Appfigures Username.
      * 	- Service `avevaPi`: Username for the user to authenticate as with the AF Server
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Username.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce username.
      * 	- Service `churnzero`: Your ChurnZero username.
      * 	- Service `cin7`: Your Cin7 API Username.
      * 	- Service `collibra`: Your collibra username.
@@ -13170,7 +13828,7 @@ export interface GetConnectorConfig {
      * 	- Service `greenPowerMonitor`: Your GreenPowerMonitor username.
      * 	- Service `guru`: Your Guru username.
      * 	- Service `hiltiOntrack`: Your Hilti On!Track username.
-     * 	- Service `impact`: Your Impact Account SID
+     * 	- Service `impact`: Your Impact Brand Account SID
      * 	- Service `integralAdScience`: Your integralAdScience username.
      * 	- Service `itunesConnect`: Your Apple ID
      * 	- Service `jamf`: Your Jamf username.
@@ -13209,15 +13867,22 @@ export interface GetConnectorConfig {
      * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
      * 	- Service `unicommerce`: Your uniware login username.
      * 	- Service `upland`: Your Upland Software Username.
+     * 	- Service `veevaVault`: Username
      * 	- Service `veevavault`: Your Veeva Vault username.
      * 	- Service `whenIWork`: Your When I Work username.
      * 	- Service `wherefour`: Your Wherefour username.
      * 	- Service `workdayFinancialManagement`: Workday username.
      * 	- Service `workdayHcm`: Username of your Workday Integration System User account
      * 	- Service `xandr`: Your Xandr username.
+     * 	- Service `yougovBrandindex`: Your YouGov BrandIndex username.
      * 	- Service `younium`: Your Younium username.
      */
     username?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `itunesConnect`: Your vendors id
+     */
+    vendorsIds?: string[];
     /**
      * Field usage depends on `service` value: 
      * 	- Service `criteoRetailMedia`: Your Criteo Retail Media version.
@@ -13381,6 +14046,11 @@ export interface GetConnectorConfigArgs {
     academyId?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `ceridianDayforce`: Your confirmation that you have granted Fivetran access to all the RESTful services and fields you want to sync. Possible values: `true`, `false`.
+     */
+    accessConfirmation?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `planful`: Your Planful access ID.
      */
     accessId?: pulumi.Input<string>;
@@ -13401,6 +14071,8 @@ export interface GetConnectorConfigArgs {
      * 	- Service `cloudtalk`: Your CloudTalk Access Key ID.
      * 	- Service `nice`: Your NICE access key ID.
      * 	- Service `s3`: Access Key ID
+     * 	- Service `s3CompatibleStorage`: Access Key ID
+     * 	- Service `validio`: Your Validio access key ID.
      * 	- Service `wasabiCloudStorage`: Access Key ID
      */
     accessKeyId?: pulumi.Input<string>;
@@ -13412,6 +14084,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `gongio`: Your Gongio Access Key Secret.
      * 	- Service `nice`: Your NICE access key secret.
      * 	- Service `s3`: Access Key Secret
+     * 	- Service `s3CompatibleStorage`: Access Key Secret
      * 	- Service `wasabiCloudStorage`: Access Key Secret
      */
     accessKeySecret?: pulumi.Input<string>;
@@ -13423,6 +14096,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `bitly`: Your Bitly access token.
      * 	- Service `calabrio`: Your Calabrio access token.
      * 	- Service `coalesce`: Your Coalesce access token.
+     * 	- Service `coheris`: Your Coheris access token.
      * 	- Service `coupa`: Your Coupa access token fetched using clientId and clientSecret
      * 	- Service `deputy`: Your Deputy API access token.
      * 	- Service `getfeedback`: Your GetFeedback Access token.
@@ -13515,6 +14189,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Account Sync Mode
+     * 	- Service `snapchatAds`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
      */
     accountSyncMode?: pulumi.Input<string>;
     /**
@@ -13541,6 +14216,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `instagramBusiness`: Specific accounts to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `itunesConnect`: Accounts
      * 	- Service `linkedinAds`: Specific Account IDs to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
+     * 	- Service `snapchatAds`: Specific accounts IDs to sync. Must be populated if `accountSyncMode` is set to `SpecificAccounts`.
      * 	- Service `spotifyAds`: The list of Ad Account IDs to sync. Must be populated if `syncMode` is set to `SPECIFIC_ACCOUNTS`.
      * 	- Service `tiktokAds`: Specific accounts to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `twilio`: Specific Accounts to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
@@ -13731,6 +14407,7 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Require TLS through Tunnel
      * 	- Service `auroraPostgres`: Require TLS through Tunnel
+     * 	- Service `avevaPi`: Require TLS.
      * 	- Service `azureCosmosForMongo`: Require TLS
      * 	- Service `azurePostgres`: Require TLS through Tunnel
      * 	- Service `azureSqlDb`: Require TLS through Tunnel.
@@ -13791,6 +14468,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay API environment.
+     * 	- Service `tiktokOrganic`: Your TikTok Organic API environment.
      */
     apiEnvironment?: pulumi.Input<string>;
     /**
@@ -13810,6 +14488,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `algolia`: Your Algolia API key.
      * 	- Service `alida`: Your Alida API key.
      * 	- Service `anvyl`: Your Anvyl API key.
+     * 	- Service `apollo`: Your Apollo API key.
      * 	- Service `appcues`: Your Appcues API key.
      * 	- Service `ashby`: Your Ashby API key.
      * 	- Service `assembled`: Your Assembled API key.
@@ -13855,6 +14534,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `contrastSecurity`: Your Contrast Security API Key.
      * 	- Service `copper`: Your Copper API key.
      * 	- Service `coupa`: Your Coupa API key.
+     * 	- Service `crunchbase`: Your Crunchbase API key.
      * 	- Service `datadog`: Your Datadog API key.
      * 	- Service `dbtCloud`: Your dbt Cloud service token.
      * 	- Service `dclLogistics`: Your DCL Logistics API key.
@@ -13927,6 +14607,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `mandrill`: Your Mandrill API key.
      * 	- Service `maxioChargify`: Enter Your API Key.
      * 	- Service `messagebird`: Your MessageBird API key.
+     * 	- Service `moloco`: Your Moloco apiKey
      * 	- Service `mountain`: Your MNTN API key.
      * 	- Service `myosh`: Your myosh API key.
      * 	- Service `okendo`: Your Okendo API key.
@@ -14070,6 +14751,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `aha`: Your Aha! API key.
      * 	- Service `aircall`: Your Aircall API token.
      * 	- Service `appsflyer`: API Token for AppsFlyer's PULL API.
+     * 	- Service `auraFromUnity`: Your Aura from Unity API token.
      * 	- Service `awin`: Your Awin API Token.
      * 	- Service `backbonePlm`: Your Backbone PLM API token.
      * 	- Service `brex`: Your Brex API token
@@ -14161,6 +14843,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: API Version
+     * 	- Service `pardotSandbox`: API Version
      */
     apiVersion?: pulumi.Input<string>;
     /**
@@ -14168,6 +14851,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `churnkey`: Your Churnkey APP ID.
      * 	- Service `openExchangeRates`: Your Open Exchange Rates App Id.
      * 	- Service `rokt`: Your Rokt app ID.
+     * 	- Service `tiktokOrganic`: Your Tiktok Organic app ID.
      */
     appId?: pulumi.Input<string>;
     /**
@@ -14184,7 +14868,7 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `loopio`: Your Loopio App Key.
      * 	- Service `servicetitan`: Your ServiceTitan app key.
-     * 	- Service `yotpo`: Your Yotpo App Key
+     * 	- Service `yotpo`: Your Yotpo app key.
      * 	- Service `yotpoApp`: Your Yotpo App key.
      */
     appKey?: pulumi.Input<string>;
@@ -14215,11 +14899,13 @@ export interface GetConnectorConfigArgs {
      * 	- Service `azureBlobStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `box`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `dropbox`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+     * 	- Service `email`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `ftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `gcs`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `googleDrive`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `kinesis`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `s3`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+     * 	- Service `s3CompatibleStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `sftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `sharePoint`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `wasabiCloudStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
@@ -14246,12 +14932,18 @@ export interface GetConnectorConfigArgs {
     apps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Archive log format.
+     * 	- Service `oracleSapHva`: Archive log format.
+     * 	- Service `oracleSapHvaNetweaver`: Archive log format.
      * 	- Service `sqlServerHva`: Format for archive log file names
      * 	- Service `sqlServerSapEccHva`: Format for archive log file names
      */
     archiveLogFormat?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Archive log path.
+     * 	- Service `oracleSapHva`: Archive log path.
+     * 	- Service `oracleSapHvaNetweaver`: Archive log path.
      * 	- Service `sqlServerHva`: Directory where archive logs are located
      * 	- Service `sqlServerSapEccHva`: Directory where archive logs are located
      */
@@ -14268,6 +14960,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `kinesis`: Optional. Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `s3`: Files inside compressed archives with filenames matching this regular expression will be synced.
+     * 	- Service `s3CompatibleStorage`: Files inside compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `sftp`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `sharePoint`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `wasabiCloudStorage`: Files inside compressed archives with filenames matching this regular expression will be synced.
@@ -14380,6 +15073,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `anaplan`: The Anaplan authentication method.
      * 	- Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
      * 	- Service `github`: Authorization type.
+     * 	- Service `workday`: Authentication Mode
      */
     authMode?: pulumi.Input<string>;
     /**
@@ -14404,8 +15098,10 @@ export interface GetConnectorConfigArgs {
      * 	- Service `jira`: Authorization type.
      * 	- Service `mixpanel`: Authentication Method
      * 	- Service `pardot`: Authenticate using OAuth or HTTP Basic
+     * 	- Service `pardotSandbox`: Authenticate using OAuth or HTTP Basic
      * 	- Service `qualtrics`: Type of authentication being used by connector
      * 	- Service `s3`: Access approach
+     * 	- Service `s3CompatibleStorage`: Access approach
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
      */
     authType?: pulumi.Input<string>;
@@ -14431,6 +15127,12 @@ export interface GetConnectorConfigArgs {
     authorizationMethod?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `tiktokOrganic`: The authorization URL of the app registered in your TikTok developer account.
+     * 	- Service `workday`: Authorization URL
+     */
+    authorizationUrl?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `dynamodb`: The AWS region code for the DynamoDB instance, e.g. `us-east-1`.
      */
     awsRegionCode?: pulumi.Input<string>;
@@ -14439,6 +15141,8 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
+     * 	- Service `stripe`: Limit of the Historical Sync Time for selected tables
+     * 	- Service `stripeTest`: Limit of the Historical Sync Time for selected tables
      * 	- Service `zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD
      */
     backwardSyncLimit?: pulumi.Input<string>;
@@ -14466,11 +15170,13 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `aha`: Your Aha! subdomain.
      * 	- Service `akeneo`: Your Akeneo base URL.
+     * 	- Service `bigmarker`: Your BigMarker base URL.
      * 	- Service `billingPlatform`: Your BillingPlatform subdomain.
      * 	- Service `boostr`: Your Boostr base URL.
      * 	- Service `brex`: Your Brex Base URL
      * 	- Service `centra`: Your Centra base URL.
      * 	- Service `coalesce`: Your Coalesce base URL.
+     * 	- Service `coheris`: Your Coheris base URL.
      * 	- Service `cornerstone`: Your Cornerstone base URL.
      * 	- Service `cultureAmp`: Your Culture Amp base URL.
      * 	- Service `datadog`: Your Datadog base url.
@@ -14489,6 +15195,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `salesforceSandbox`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `stickyio`: Your sticky.io base URL .
+     * 	- Service `veevaVault`: Base URL
      * 	- Service `veevavault`: Your Veeva Vault base URL.
      * 	- Service `vitally`: Your Vitally base URL.
      */
@@ -14507,6 +15214,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zenefits`: Your Zenefits bearer token.
      */
     bearerToken?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
+     */
+    binaryLogType?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The blob SAS URL of your Azure container. Required if `bucketService` is set to `AZURE`.
@@ -14540,6 +15252,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `heap`: The S3 bucket name.
      * 	- Service `kinesis`: The name of the Kinesis bucket.
      * 	- Service `s3`: The S3 bucket name. Required for connector creation.
+     * 	- Service `s3CompatibleStorage`: The S3-Compatible Storage bucket name. Required for connector creation.
      * 	- Service `segment`: The name of the Segment bucket. Must be populated if `syncType` is set to `S3`.
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage bucket name. Required for connector creation.
      */
@@ -14574,6 +15287,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: Business Unit Id
+     * 	- Service `pardotSandbox`: Business Unit Id
      */
     businessUnitId?: pulumi.Input<string>;
     /**
@@ -14615,7 +15329,7 @@ export interface GetConnectorConfigArgs {
     clientCertKey?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Client Host.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce client host.
      */
     clientHost?: pulumi.Input<string>;
     /**
@@ -14657,6 +15371,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `fillout`: Your Fillout client ID.
      * 	- Service `flexport`: The Flexport API Key.
      * 	- Service `formstack`: Your Formstack client ID.
+     * 	- Service `fortnox`: Your Fortnox client ID.
      * 	- Service `genesys`: Your Genesys client ID.
      * 	- Service `hanaSapHvaEccNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
      * 	- Service `hanaSapHvaS4Netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
@@ -14679,6 +15394,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `navan`: Your Navan client ID.
      * 	- Service `nice`: Your NICE client ID.
      * 	- Service `on24`: Your ON24 client ID.
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service client ID.
      * 	- Service `oracleSapHvaNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
      * 	- Service `paychex`: Your Paychex client ID.
      * 	- Service `paypal`: `Client ID` of your PayPal client application.
@@ -14752,7 +15468,7 @@ export interface GetConnectorConfigArgs {
     clientName?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Client Namespace.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce client namespace.
      */
     clientNamespace?: pulumi.Input<string>;
     /**
@@ -14831,6 +15547,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `fillout`: Your Fillout client secret
      * 	- Service `flexport`: The Flexport API Secret.
      * 	- Service `formstack`: Your Formstack client secret.
+     * 	- Service `fortnox`: Your Fortnox client secret.
      * 	- Service `genesys`: Your Genesys client secret.
      * 	- Service `helpdesk`: Your HelpDesk client secret.
      * 	- Service `hiltiOntrack`: Your Hilti On!Track client secret.
@@ -14849,6 +15566,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `microsoftTeams`: Your Microsoft Teams client secret.
      * 	- Service `navan`: Your Navan client secret.
      * 	- Service `nice`: Your NICE client secret.
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service client secret.
      * 	- Service `paychex`: Your Paychex client secret.
      * 	- Service `personio`: Your Personio secret.
      * 	- Service `piwikPro`: Your Piwik PRO client secret.
@@ -14988,6 +15706,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `kinesis`: If your files are compressed, but do not have extensions indicating the compression method, you can force them to be uncompressed according to the selected compression algorithm. Leave the value as infer if your files are saved with the correct compression extensions.
      * 	- Service `s3`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+     * 	- Service `s3CompatibleStorage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `sftp`: The secrets that should be passed to the function at runtime.
      * 	- Service `sharePoint`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `wasabiCloudStorage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
@@ -15042,12 +15761,14 @@ export interface GetConnectorConfigArgs {
      * 	- Service `azureServiceBus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
      * 	- Service `microsoftDynamics365Fno`: The blob storage container's connection string.
      * 	- Service `microsoftDynamics365Fo`: The blob storage container connection string.
+     * 	- Service `sqlServer`: The Azure Blob Storage container connection string.
      */
     connectionString?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `auroraPostgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+     * 	- Service `avevaPi`: Possible values: `Directly`, `PrivateLink`
      * 	- Service `awsCostReport`: Connection method. Default value: `Directly`.
      * 	- Service `awsLambda`: Connection method. Default value: `Directly`.
      * 	- Service `azureBlobStorage`: Connection method. Default value: `Directly`.
@@ -15155,6 +15876,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `azureBlobStorage`: The name of the blob container.
      * 	- Service `microsoftDynamics365Fno`: The name of the blob container.
      * 	- Service `microsoftDynamics365Fo`: The name of the blob container.
+     * 	- Service `sqlServer`: The name of the Azure Blob Storage container.
      */
     containerName?: pulumi.Input<string>;
     /**
@@ -15201,7 +15923,7 @@ export interface GetConnectorConfigArgs {
     currency?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `coalesce`: Your Coalesce Custom Base URL.
+     * 	- Service `coalesce`: Your Coalesce custom base URL.
      * 	- Service `datadog`: Your Datadog custom base url.
      * 	- Service `deposco`: Your Deposco custom base URL.
      */
@@ -15382,6 +16104,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `kinesis`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
      * 	- Service `s3`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+     * 	- Service `s3CompatibleStorage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `sftp`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `sharePoint`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `wasabiCloudStorage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
@@ -15412,6 +16135,16 @@ export interface GetConnectorConfigArgs {
      * 	- Service `oracleSapHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
      */
     directCaptureMethod?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `qualtrics`: Set of directories to be synced when syncMode is CUSTOM
+     */
+    directories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `qualtrics`: Sync mode to be used for fetching select directories. The Allowed Values are ALL and CUSTOM. If CUSTOM add the directories to be synced in the `directories` field.
+     */
+    directorySyncMode?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
@@ -15470,12 +16203,14 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appcues`: Your Appcues Email.
+     * 	- Service `assetPanda`: Your Asset Panda email.
      * 	- Service `boostr`: Your Boostr email.
      * 	- Service `copper`: Your Copper email address.
      * 	- Service `email`: Send your emails to this address.
      * 	- Service `moloco`: Your Moloco account email.
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite user's email address.
      * 	- Service `pardot`: The email of the Pardot user.
+     * 	- Service `pardotSandbox`: The email of the Pardot user.
      * 	- Service `skuvault`: Your SkuVault email.
      * 	- Service `smadex`: Your Smadex account's email ID.
      * 	- Service `zendesk`: Zendesk email.
@@ -15506,6 +16241,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `kinesis`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `s3`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
+     * 	- Service `s3CompatibleStorage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
      * 	- Service `sftp`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `sharePoint`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `wasabiCloudStorage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
@@ -15518,6 +16254,9 @@ export interface GetConnectorConfigArgs {
     enableAllDimensionCombinations?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using archive log only mode.
+     * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using archive log only mode.
+     * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using archive log only mode.
      * 	- Service `sqlServerHva`: Use archive log only mode
      * 	- Service `sqlServerSapEccHva`: Use archive log only mode
      */
@@ -15541,10 +16280,18 @@ export interface GetConnectorConfigArgs {
     enableExports?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Use transparent data encryption (TDE)
      * 	- Service `sqlServerHva`: Using Transparent Data Encryption (TDE)
      * 	- Service `sqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
      */
     enableTde?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     */
+    enableTdeEncryption?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Use the public key to grant Fivetran access to Apple Search Ads api.
@@ -15566,6 +16313,11 @@ export interface GetConnectorConfigArgs {
     endpoint?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `s3CompatibleStorage`: S3-Compatible Storage Endpoint URL.
+     */
+    endpointUrl?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: The number of days to use as the conversion attribution window for an engagement (i.e. closeup or save) action.
      */
     engagementAttributionWindow?: pulumi.Input<string>;
@@ -15581,6 +16333,26 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zuoraSandbox`: If `isMultiEntityFeatureEnabled` is `true`, then it's `EntityId`.
      */
     entityId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `auroraPostgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `azurePostgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `googleCloudPostgresql`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `herokuPostgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `postgres`: Registered Application ID (for Entra ID authentication).
+     * 	- Service `postgresRds`: Registered Application ID (for Entra ID authentication).
+     */
+    entraAppId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `auroraPostgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `azurePostgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `googleCloudPostgresql`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `herokuPostgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `postgres`: Azure Tenant ID (for Entra ID authentication).
+     * 	- Service `postgresRds`: Azure Tenant ID (for Entra ID authentication).
+     */
+    entraTenantId?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bazaarvoice`: Your Bazaarvoice environment.
@@ -15629,6 +16401,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `kinesis`: Optional. If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `s3`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+     * 	- Service `s3CompatibleStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `sftp`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `sharePoint`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `wasabiCloudStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
@@ -15694,6 +16467,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: If your files are saved with improper extensions, you can force them to be synced as the selected filetype.
      * 	- Service `kinesis`: If your files are saved with improper extensions, you can force them to by synced as the selected filetype. Leave the value as infer if your files have the correct extensions
      * 	- Service `s3`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
+     * 	- Service `s3CompatibleStorage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
      * 	- Service `sftp`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
      * 	- Service `sharePoint`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
      * 	- Service `wasabiCloudStorage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
@@ -15702,10 +16476,13 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Mapped file name patterns to a destination table.
+     * 	- Service `email`: Mapped file name patterns to a destination table.
      * 	- Service `gcs`: Mapped file name patterns to a destination table.
      * 	- Service `googleDrive`: Mapped file name patterns to a destination table.
      * 	- Service `s3`: Mapped file name patterns to a destination table.
+     * 	- Service `s3CompatibleStorage`: Mapped file name patterns to a destination table.
      * 	- Service `sftp`: Mapped file name patterns to a destination table.
+     * 	- Service `sharePoint`: Mapped file name patterns to a destination table.
      */
     files?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigFileArgs>[]>;
     /**
@@ -15854,17 +16631,46 @@ export interface GetConnectorConfigArgs {
     historicSyncTimeFrame?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `braze`: Range of data in history you would like to include in the initial sync. Valid values are `ALL_TIME` and `DATE_LIMIT`
      * 	- Service `concur`: Historical Sync Limit for the Sync
      * 	- Service `eloqua`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
+     * 	- Service `iterable`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `klaviyo`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `marketo`: The time range for which historical data should be synced. Default value: `All Time`.
      * 	- Service `pardot`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `pardotSandbox`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `sageIntacct`: Historical Sync Limit for the Sync
+     * 	- Service `sailthru`: The time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `salesforceMarketingCloud`: The time range for which historical data should be synced. Default value: `All Time`.
      */
     historicalSyncLimit?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `braze`: The start date (in YYYY-MM-DD) from which to sync historical data. Only used when `historicalSyncLimit` is set to `DATE_LIMIT`.
+     * 	- Service `iterable`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `klaviyo`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `marketo`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `pardot`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `pardotSandbox`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `sailthru`: The start date (YYYY-MM-DD) from which to sync historical data.
+     * 	- Service `salesforceMarketingCloud`: The start date (YYYY-MM-DD) from which to sync historical data.
+     */
+    historicalSyncLimitDate?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `pardot`: The options for time range for which historical data should be synced. Default value: `All Time`.
+     * 	- Service `pardotSandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
+     */
+    historicalSyncLimitTimeFrame?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
      * 	- Service `hubspot`: Used to configure Historical sync timeframe for selected tables
      * 	- Service `rokt`: Your Rokt historical sync time frame.
      * 	- Service `shopify`: Used to configure Historical sync timeframe for selected tables
      * 	- Service `skimlinks`: Your Skimlinks Historical sync time frame.
+     * 	- Service `stripe`: Used to configure Historical sync timeframe for selected tables
+     * 	- Service `stripeTest`: Used to configure Historical sync timeframe for selected tables
      * 	- Service `vimeo`: Your Vimeo Historical sync time frame.
      * 	- Service `zendesk`: Used to configure Historical sync timeframe for selected tables
      */
@@ -15878,6 +16684,7 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: DB instance host or IP address.
      * 	- Service `auroraPostgres`: DB instance host or IP address.
+     * 	- Service `avevaPi`: IP address of the AF Server
      * 	- Service `azurePostgres`: DB instance host or IP address.
      * 	- Service `azureSqlDb`: DB instance host or IP address.
      * 	- Service `azureSqlManagedDb`: DB instance host or IP address.
@@ -16047,6 +16854,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
+     * 	- Service `pardotSandbox`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
      */
     isExternalActivitiesEndpointSelected?: pulumi.Input<boolean>;
     /**
@@ -16131,6 +16939,11 @@ export interface GetConnectorConfigArgs {
     issuer?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `itunesConnect`: Your Issuer ID
+     */
+    issuerId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Control how your JSON data is delivered into your destination
      * 	- Service `azureBlobStorage`: Control how your JSON data is delivered into your destination
      * 	- Service `box`: Control how your JSON data is delivered into your destination
@@ -16141,6 +16954,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: Control how your JSON data is delivered into your destination
      * 	- Service `kinesis`: Control how your JSON data is delivered into your destination
      * 	- Service `s3`: Control how your JSON data is delivered into your destination
+     * 	- Service `s3CompatibleStorage`: Control how your JSON data is delivered into your destination
      * 	- Service `sftp`: Control how your JSON data is delivered into your destination
      * 	- Service `sharePoint`: Control how your JSON data is delivered into your destination
      * 	- Service `wasabiCloudStorage`: Specifies how Fivetran should handle your JSON data. Default value: `Packed`.
@@ -16151,6 +16965,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `uservoice`: The UserVoice API key.
      */
     key?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `itunesConnect`: Your Key ID
+     */
+    keyId?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, enter your `Key Password`.
@@ -16181,6 +17000,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: API limit for the external activities endpoint.
+     * 	- Service `pardotSandbox`: API limit for the external activities endpoint.
      */
     limitForApiCallsToExternalActivitiesEndpoint?: pulumi.Input<number>;
     /**
@@ -16195,6 +17015,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `kinesis`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `s3`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+     * 	- Service `s3CompatibleStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `sftp`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `sharePoint`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `wasabiCloudStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
@@ -16215,6 +17036,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `awsCostReport`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
      * 	- Service `kinesis`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
      * 	- Service `s3`: The listing strategy you want to use. Default value: `completeListing`.
+     * 	- Service `s3CompatibleStorage`: The listing strategy you want to use. Default value: `completeListing`.
      */
     listStrategy?: pulumi.Input<string>;
     /**
@@ -16253,6 +17075,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sageIntacct`: The login password. It is a part of the login credentials.
      */
     loginPassword?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `sageIntacct`: Lookback window for GL Batch endpoint lookback sync
+     */
+    lookBackWindowForGlBatchEndpoint?: pulumi.Input<number>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The list of the Manager Account IDs whose clients will be synced. Must be populated if `syncMode` is set to `ManagerAccounts`.
@@ -16331,6 +17158,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `kinesis`: Optional. If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `s3`: If your CSVs use a special value indicating null, you can specify it here.
+     * 	- Service `s3CompatibleStorage`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `sftp`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `sharePoint`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `wasabiCloudStorage`: If your CSVs use a special value indicating null, you can specify it here.
@@ -16383,6 +17211,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `kinesis`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `s3`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
+     * 	- Service `s3CompatibleStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
      * 	- Service `sftp`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `sharePoint`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `wasabiCloudStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
@@ -16494,6 +17323,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `alida`: Your Alida client secret.
      * 	- Service `anaplan`: Your Anaplan password. Must be populated if `authMode` is set to `Basic`.
      * 	- Service `appfigures`: Your Appfigures Password.
+     * 	- Service `assetPanda`: Your Asset Panda password.
      * 	- Service `aurora`: The user's password.
      * 	- Service `auroraPostgres`: The user's password.
      * 	- Service `azureCosmosForMongo`: Password used for source database authentication.
@@ -16503,7 +17333,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `boostr`: Your Boostr password.
      * 	- Service `brivo`: Your Brivo password.
      * 	- Service `cabcharge`: Your Cabcharge password.
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Password.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce password.
      * 	- Service `cin7`: Your Cin7 API Key.
      * 	- Service `clarity`: The user's password.
      * 	- Service `cockroachdb`: The user's password.
@@ -16532,7 +17362,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `hanaSapHvaS4Netweaver`: The user's password.
      * 	- Service `herokuPostgres`: The user's password.
      * 	- Service `hiltiOntrack`: Your Hilti On!Track password.
-     * 	- Service `impact`: Your Impact Account Token
+     * 	- Service `impact`: Your Impact Brand Account Token
      * 	- Service `integralAdScience`: Your integralAdScience password.
      * 	- Service `itunesConnect`: Your password
      * 	- Service `jamf`: Your Jamf password.
@@ -16570,6 +17400,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `oracleSapHvaNetweaver`: The user's password.
      * 	- Service `outbrain`: The Outbrain user's password.
      * 	- Service `pardot`: The Pardot user's password.
+     * 	- Service `pardotSandbox`: The Pardot user's password.
      * 	- Service `partnerize`: Your Partnerize account's password.
      * 	- Service `podio`: Your Podio account password.
      * 	- Service `postgres`: The user's password.
@@ -16607,6 +17438,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
      * 	- Service `unicommerce`: Your uniware login password.
      * 	- Service `upland`: Your Upland Software Password.
+     * 	- Service `veevaVault`: Password
      * 	- Service `veevavault`: Your Veeva Vault password.
      * 	- Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
      * 	- Service `whenIWork`: Your When I Work password.
@@ -16615,6 +17447,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `workdayFinancialManagement`: Workday password.
      * 	- Service `workdayHcm`: Workday password.
      * 	- Service `xandr`: Your Xandr password.
+     * 	- Service `yougovBrandindex`: Your YouGov BrandIndex password.
      * 	- Service `younium`: Your Younium password.
      */
     password?: pulumi.Input<string>;
@@ -16649,13 +17482,13 @@ export interface GetConnectorConfigArgs {
      * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced.
      * 	- Service `box`: All files in your search path matching this regular expression will be synced.
      * 	- Service `dropbox`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `email`: All files in your search path matching this regular expression will be synced.
+     * 	- Service `email`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by Oct 31, 2025.
      * 	- Service `ftp`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `gcs`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced.
+     * 	- Service `gcs`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+     * 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
      * 	- Service `kinesis`: Optional. All files in your search path matching this regular expression will be synced. This parameter is optional.
-     * 	- Service `s3`: All files in your search path matching this regular expression will be synced.
-     * 	- Service `sftp`: All files in your search path matching this regular expression will be synced.
+     * 	- Service `s3`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+     * 	- Service `sftp`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
      * 	- Service `sharePoint`: All files in your search path matching this regular expression will be synced.
      * 	- Service `wasabiCloudStorage`: All files in your search path matching this regular expression will be synced.
      */
@@ -16706,6 +17539,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `s3CompatibleStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      */
@@ -16716,6 +17550,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
+     * 	- Service `s3CompatibleStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      */
@@ -16725,6 +17560,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `itunesConnect`: Register the number on AppleId Account Page for 2FA
      */
     phoneNumber?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `wrike`: Your Wrike Subscription Plan.
+     */
+    plan?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `justcall`: Your JustCall Plan Type.
@@ -16817,6 +17657,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `marin`: Folder path to the Marin manifest file.
      * 	- Service `microsoftDynamics365Fo`: Folder name in which the exported dynamics 365 data resides.
      * 	- Service `s3`: All files and folders under this folder path will be searched for files to sync.
+     * 	- Service `s3CompatibleStorage`: All files and folders under this folder path will be searched for files to sync.
      * 	- Service `segment`: Folder path to the Segment files within the bucket. Must be populated if `syncType` is set to `S3`.
      * 	- Service `sftp`: All files and folders under this folder path will be searched for files to sync.
      * 	- Service `sharePoint`: All files and folders under this folder path link will be searched for files to sync. This can be any shared folder link.
@@ -16835,6 +17676,16 @@ export interface GetConnectorConfigArgs {
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `marketo`: Use BULK for both LEAD and ACTIITIES
+     */
+    prioritiseBulkExportOverRest?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `purpleDot`: Your PurpleDot Private access token.
+     */
+    privateAccessToken?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS REST API private key.
      * 	- Service `adobeAnalytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
      * 	- Service `adpWorkforceNow`: Private Key.
@@ -16842,6 +17693,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `appleSearchAds`: The contents of your secret key file. Must be populated if `isAuth2Enabled` is set to `false`.
      * 	- Service `braintree`: The contents of your secret key file.
      * 	- Service `braintreeSandbox`: The contents of your secret key file.
+     * 	- Service `itunesConnect`: Your Private Key
      * 	- Service `netsuiteSuiteanalytics`: Private Key
      * 	- Service `oracleFusionCloudAppsCrm`: The Oracle Fusion Cloud private key.
      * 	- Service `oracleFusionCloudAppsFscm`: The Oracle Fusion Cloud private key.
@@ -16871,7 +17723,7 @@ export interface GetConnectorConfigArgs {
     profiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `amazonDsp`: Comma-separated list of your Amazon DSP profiles.
+     * 	- Service `amazonDsp`: your Amazon DSP profiles pass it inside an Array list.
      */
     profilesAmazonDsp?: pulumi.Input<string>;
     /**
@@ -17021,19 +17873,27 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+     * 	- Service `s3CompatibleStorage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `sftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `sharePoint`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      */
     quoteChar?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `azureBlobStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `azureBlobStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as a quote character.
+     * 	- Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+     * 	- Service `s3CompatibleStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `sftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `sharePoint`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      */
@@ -17198,6 +18058,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
      * 	- Service `googleAnalytics`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
      * 	- Service `googleAnalytics4`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+     * 	- Service `googleDisplayAndVideo360`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
      * 	- Service `googleSearchAds360`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
      * 	- Service `googleSearchConsole`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
      * 	- Service `workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
@@ -17226,6 +18087,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
+     * 	- Service `pardotSandbox`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
      */
     restApiLimit?: pulumi.Input<number>;
     /**
@@ -17268,6 +18130,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `bingads`: A period of time in days during which a conversion is recorded.
      */
     rollbackWindowSize?: pulumi.Input<number>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service rootresourceId.
+     */
+    rootResourceId?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The S3 bucket name. Required if `bucketService` is set to `S3`.
@@ -17342,6 +18209,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The Pardot user's Salesforce SSO Account Security Token.
+     * 	- Service `pardotSandbox`: The Pardot user's Salesforce SSO Account Security Token.
      */
     salesforceSecurityToken?: pulumi.Input<string>;
     /**
@@ -17448,6 +18316,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cornerstone`: Your Cornerstone scopes.
+     * 	- Service `fortnox`: Your Fortnox app scopes.
      */
     scopes?: pulumi.Input<string>;
     /**
@@ -17463,12 +18332,18 @@ export interface GetConnectorConfigArgs {
      * 	- Service `loopio`: Your Loopio Secret.
      * 	- Service `mode`: Your Mode Secret.
      * 	- Service `playvoxWorkforceManagement`: Your Playvox Workforce Management client secret.
+     * 	- Service `tiktokOrganic`: The secret of the app registered in your TikTok developer account.
      * 	- Service `twilio`: The Twilio API secret
      * 	- Service `uservoice`: The UserVoice API secret.
      * 	- Service `venminder`: Your Venminder secret.
      * 	- Service `vts`: Your VTS secret.
      */
     secret?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `validio`: Your Validio secret access key.
+     */
+    secretAccessKey?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay Secret Key.
@@ -17678,6 +18553,11 @@ export interface GetConnectorConfigArgs {
     shouldSyncEventsWithDeletedProfiles?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `netsuiteSuiteanalytics`: Re-sync re-import tables during every sync
+     */
+    shouldSyncReimportTables?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Turn the toggle on if you want the reports to also return records without metrics.
      */
     showRecordsWithNoMetrics?: pulumi.Input<boolean>;
@@ -17697,6 +18577,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `gcs`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `s3`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
+     * 	- Service `s3CompatibleStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      */
@@ -17735,6 +18616,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `kinesis`: Enter 1 or greater
      * 	- Service `s3`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
+     * 	- Service `s3CompatibleStorage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
      * 	- Service `sftp`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `sharePoint`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
@@ -17752,6 +18634,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDrive`: We will skip over the number of lines specified before syncing data.
      * 	- Service `kinesis`: Enter 1 or greater
      * 	- Service `s3`: We will skip over the number of lines specified before syncing data.
+     * 	- Service `s3CompatibleStorage`: We will skip over the number of lines specified before syncing data.
      * 	- Service `sftp`: We will skip over the number of lines specified before syncing data.
      * 	- Service `sharePoint`: We will skip over the number of lines specified before syncing data.
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified before syncing data.
@@ -17868,6 +18751,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `nylas`: Your Nylas subdomain.
      * 	- Service `odoo`: Your Odoo subdomain.
      * 	- Service `okta`: Your Okta subdomain.
+     * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service subDomain.
      * 	- Service `picqer`: Your Picqer subdomain.
      * 	- Service `pinpoint`: Your Pinpoint sub domain name.
      * 	- Service `piwikPro`: Your Piwik PRO subdomain.
@@ -17891,6 +18775,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `totango`: Your Totango Subdomain.
      * 	- Service `tymeshift`: Your Tymeshift subdomain.
      * 	- Service `upland`: Your Upland Software subDomain.
+     * 	- Service `validio`: Your Validio subdomain.
      * 	- Service `wordpress`: Your WordPress subdomain.
      * 	- Service `workable`: Your Workable Subdomain.
      * 	- Service `wrike`: Your Wrike Subdomain.
@@ -18001,7 +18886,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `dynamodb`: Which packed mode setting to use. Default value: `UsePackedModeOnly`.
      * 	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
      * 	- Service `facebookAdAccount`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-     * 	- Service `facebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#syncmode).
+     * 	- Service `facebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible syncMode values](https://fivetran.com/docs/connectors/applications/facebook-ads#syncmode).
      * 	- Service `facebookPages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
      * 	- Service `github`: Whether to sync all repositories or specific repositories.
      * 	- Service `googleAds`: Whether to sync all accounts or specific accounts.
@@ -18102,6 +18987,7 @@ export interface GetConnectorConfigArgs {
     targetHost?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Certificate file path used to protect a database encryption key
      * 	- Service `sqlServerHva`: Certificate used to protect a database encryption key
      * 	- Service `sqlServerSapEccHva`: Certificate used to protect a database encryption key
      */
@@ -18114,16 +19000,25 @@ export interface GetConnectorConfigArgs {
     tdeCertificateName?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Password of the TDE private key
      * 	- Service `sqlServerHva`: Password of the TDE private key
      * 	- Service `sqlServerSapEccHva`: Password of the TDE private key
      */
     tdePassword?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `sqlServer`: Private key file path associated with the TDE certificate
      * 	- Service `sqlServerHva`: Private key associated with the TDE certificate
      * 	- Service `sqlServerSapEccHva`: Private key associated with the TDE certificate
      */
     tdePrivateKey?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `oracleHva`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleSapHva`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleSapHvaNetweaver`: TDE wallet password. Required for password based wallet.
+     */
+    tdeWalletPassword?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `asana`: Team ID
@@ -18197,6 +19092,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
+     * 	- Service `pardotSandbox`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
      */
     timeZone?: pulumi.Input<string>;
     /**
@@ -18330,6 +19226,7 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `auroraPostgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+     * 	- Service `avevaPi`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `azureCosmosForMongo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `azurePostgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `azureSqlDb`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -18387,6 +19284,7 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `auroraPostgres`: SSH port, specify only to connect via an SSH tunnel.
+     * 	- Service `avevaPi`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `azureCosmosForMongo`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `azurePostgres`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `azureSqlDb`: SSH port, specify only to connect via an SSH tunnel.
@@ -18444,6 +19342,7 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `auroraPostgres`: SSH user, specify only to connect via an SSH tunnel.
+     * 	- Service `avevaPi`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `azureCosmosForMongo`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `azurePostgres`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `azureSqlDb`: SSH user, specify only to connect via an SSH tunnel.
@@ -18579,6 +19478,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
      * 	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
      * 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
+     * 	- Service `s3CompatibleStorage`: Set to `true` if files are encrypted using PGP in the S3-Compatible Storage bucket. Default value: `false`.
      * 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
      * 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
      */
@@ -18609,6 +19509,7 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The user name.
      * 	- Service `auroraPostgres`: The user name.
+     * 	- Service `avevaPi`: Username for the user to authenticate as with the AF Server
      * 	- Service `azureCosmosForMongo`: Username for source database access.
      * 	- Service `azurePostgres`: The user name.
      * 	- Service `azureSqlDb`: The user name.  For Azure Databases, the format must be `user@domain`.
@@ -18707,7 +19608,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `anaplan`: Your Anaplan user ID. Must be populated if `authMode` is set to `Basic`.
      * 	- Service `appfigures`: Your Appfigures Username.
      * 	- Service `avevaPi`: Username for the user to authenticate as with the AF Server
-     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce Username.
+     * 	- Service `ceridianDayforce`: Your Ceridian Dayforce username.
      * 	- Service `churnzero`: Your ChurnZero username.
      * 	- Service `cin7`: Your Cin7 API Username.
      * 	- Service `collibra`: Your collibra username.
@@ -18724,7 +19625,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `greenPowerMonitor`: Your GreenPowerMonitor username.
      * 	- Service `guru`: Your Guru username.
      * 	- Service `hiltiOntrack`: Your Hilti On!Track username.
-     * 	- Service `impact`: Your Impact Account SID
+     * 	- Service `impact`: Your Impact Brand Account SID
      * 	- Service `integralAdScience`: Your integralAdScience username.
      * 	- Service `itunesConnect`: Your Apple ID
      * 	- Service `jamf`: Your Jamf username.
@@ -18763,15 +19664,22 @@ export interface GetConnectorConfigArgs {
      * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
      * 	- Service `unicommerce`: Your uniware login username.
      * 	- Service `upland`: Your Upland Software Username.
+     * 	- Service `veevaVault`: Username
      * 	- Service `veevavault`: Your Veeva Vault username.
      * 	- Service `whenIWork`: Your When I Work username.
      * 	- Service `wherefour`: Your Wherefour username.
      * 	- Service `workdayFinancialManagement`: Workday username.
      * 	- Service `workdayHcm`: Username of your Workday Integration System User account
      * 	- Service `xandr`: Your Xandr username.
+     * 	- Service `yougovBrandindex`: Your YouGov BrandIndex username.
      * 	- Service `younium`: Your Younium username.
      */
     username?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `itunesConnect`: Your vendors id
+     */
+    vendorsIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `criteoRetailMedia`: Your Criteo Retail Media version.
@@ -19030,6 +19938,11 @@ export interface GetConnectorConfigCustomPayloadArgs {
 export interface GetConnectorConfigCustomReport {
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snapchatAds`: [Determines if reports will be based on imression on coversion time](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports)
+     */
+    actionReportTime?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
      */
     addMetricVariants?: boolean;
@@ -19080,7 +19993,7 @@ export interface GetConnectorConfigCustomReport {
     eventNames?: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
+     * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
      */
     granularity?: string;
     /**
@@ -19139,6 +20052,11 @@ export interface GetConnectorConfigCustomReport {
 export interface GetConnectorConfigCustomReportArgs {
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snapchatAds`: [Determines if reports will be based on imression on coversion time](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports)
+     */
+    actionReportTime?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
      */
     addMetricVariants?: pulumi.Input<boolean>;
@@ -19189,7 +20107,7 @@ export interface GetConnectorConfigCustomReportArgs {
     eventNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
+     * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
      */
     granularity?: pulumi.Input<string>;
     /**
@@ -19248,32 +20166,32 @@ export interface GetConnectorConfigCustomReportArgs {
 export interface GetConnectorConfigCustomTable {
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionbreakdowns).
+     * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionbreakdowns).
      */
     actionBreakdowns?: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionreporttime).
+     * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionreporttime).
      */
     actionReportTime?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#aggregation).
+     * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads#aggregation).
      */
     aggregation?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#breakdowns).
+     * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#breakdowns).
      */
     breakdowns?: string[];
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#clickattributionwindow).
+     * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#clickattributionwindow).
      */
     clickAttributionWindow?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
+     * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/connectors/applications/facebook-ads#configtype).
      */
     configType?: string;
     /**
@@ -19283,13 +20201,13 @@ export interface GetConnectorConfigCustomTable {
     engagedViewAttributionWindow?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#fields).
+     * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads#fields).
      */
     fields?: string[];
     level?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#prebuiltreport).
+     * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads#prebuiltreport).
      */
     prebuiltReportName?: string;
     /**
@@ -19300,7 +20218,7 @@ export interface GetConnectorConfigCustomTable {
     useUnifiedAttributionSetting?: boolean;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#viewattributionwindow).
+     * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#viewattributionwindow).
      */
     viewAttributionWindow?: string;
 }
@@ -19308,32 +20226,32 @@ export interface GetConnectorConfigCustomTable {
 export interface GetConnectorConfigCustomTableArgs {
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionbreakdowns).
+     * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionbreakdowns).
      */
     actionBreakdowns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#actionreporttime).
+     * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionreporttime).
      */
     actionReportTime?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#aggregation).
+     * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads#aggregation).
      */
     aggregation?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#breakdowns).
+     * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#breakdowns).
      */
     breakdowns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#clickattributionwindow).
+     * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#clickattributionwindow).
      */
     clickAttributionWindow?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#configtype).
+     * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/connectors/applications/facebook-ads#configtype).
      */
     configType?: pulumi.Input<string>;
     /**
@@ -19343,13 +20261,13 @@ export interface GetConnectorConfigCustomTableArgs {
     engagedViewAttributionWindow?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#fields).
+     * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads#fields).
      */
     fields?: pulumi.Input<pulumi.Input<string>[]>;
     level?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#prebuiltreport).
+     * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads#prebuiltreport).
      */
     prebuiltReportName?: pulumi.Input<string>;
     /**
@@ -19360,7 +20278,7 @@ export interface GetConnectorConfigCustomTableArgs {
     useUnifiedAttributionSetting?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads-insights/api-config#viewattributionwindow).
+     * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#viewattributionwindow).
      */
     viewAttributionWindow?: pulumi.Input<string>;
 }
@@ -19394,20 +20312,31 @@ export interface GetConnectorConfigDataModelPathAliasListArgs {
 export interface GetConnectorConfigFile {
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table.
+     * 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
+     */
+    emailSubject?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+     * 	- Service `email`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `gcs`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `s3`: All files in your search path matching this regular expression will be synced per table.
+     * 	- Service `s3CompatibleStorage`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `sftp`: All files in your search path matching this regular expression will be synced per table.
+     * 	- Service `sharePoint`: All files in your search path matching this regular expression will be synced per table.
      */
     filePattern?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
+     * 	- Service `email`: All files matching the above pattern will be synced to this table.
      * 	- Service `gcs`: All files matching the above pattern will be synced to this table.
      * 	- Service `googleDrive`: All files matching the above pattern will be synced to this table.
      * 	- Service `s3`: All files matching the above pattern will be synced to this table.
+     * 	- Service `s3CompatibleStorage`: All files matching the above pattern will be synced to this table.
      * 	- Service `sftp`: All files matching the above pattern will be synced to this table.
+     * 	- Service `sharePoint`: All files matching the above pattern will be synced to this table.
      */
     tableName?: string;
 }
@@ -19415,20 +20344,31 @@ export interface GetConnectorConfigFile {
 export interface GetConnectorConfigFileArgs {
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table.
+     * 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
+     */
+    emailSubject?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+     * 	- Service `email`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `gcs`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `s3`: All files in your search path matching this regular expression will be synced per table.
+     * 	- Service `s3CompatibleStorage`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `sftp`: All files in your search path matching this regular expression will be synced per table.
+     * 	- Service `sharePoint`: All files in your search path matching this regular expression will be synced per table.
      */
     filePattern?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
+     * 	- Service `email`: All files matching the above pattern will be synced to this table.
      * 	- Service `gcs`: All files matching the above pattern will be synced to this table.
      * 	- Service `googleDrive`: All files matching the above pattern will be synced to this table.
      * 	- Service `s3`: All files matching the above pattern will be synced to this table.
+     * 	- Service `s3CompatibleStorage`: All files matching the above pattern will be synced to this table.
      * 	- Service `sftp`: All files matching the above pattern will be synced to this table.
+     * 	- Service `sharePoint`: All files matching the above pattern will be synced to this table.
      */
     tableName?: pulumi.Input<string>;
 }
@@ -19472,6 +20412,11 @@ export interface GetConnectorConfigProjectCredentialArgs {
 export interface GetConnectorConfigReport {
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
+     */
+    advertisers?: string[];
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `googleSearchConsole`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
      */
     aggregation?: string;
@@ -19482,6 +20427,11 @@ export interface GetConnectorConfigReport {
     attributes?: string[];
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
+     */
+    configMethod?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      * 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
      */
@@ -19490,6 +20440,7 @@ export interface GetConnectorConfigReport {
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleAnalytics4`: The report dimensions to include into a sync.
+     * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchConsole`: The report dimensions included to sync.
      */
     dimensions?: string[];
@@ -19533,9 +20484,15 @@ export interface GetConnectorConfigReport {
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report metrics to include into a sync.
      * 	- Service `googleAnalytics4`: The report metrics to include into a sync.
+     * 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchAds360`: The report metrics included to sync.
      */
     metrics?: string[];
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
+     */
+    partners?: string[];
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -19549,12 +20506,18 @@ export interface GetConnectorConfigReport {
     primaryKeys?: string[];
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
+     */
+    queryId?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
      */
     reportFormatType?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
+     * 	- Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchAds360`: The type of report
      * 	- Service `googleSearchConsole`: The type of report
      */
@@ -19613,12 +20576,27 @@ export interface GetConnectorConfigReport {
     table?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The table name within the schema to which connector will sync the data of the specific report.
+     */
+    tableName?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The report data aggregation time granularity.
      */
     timeAggregationGranularity?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
+     */
+    updateConfigOnEachSync?: boolean;
 }
 
 export interface GetConnectorConfigReportArgs {
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
+     */
+    advertisers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchConsole`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
@@ -19631,6 +20609,11 @@ export interface GetConnectorConfigReportArgs {
     attributes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
+     */
+    configMethod?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      * 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
      */
@@ -19639,6 +20622,7 @@ export interface GetConnectorConfigReportArgs {
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleAnalytics4`: The report dimensions to include into a sync.
+     * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchConsole`: The report dimensions included to sync.
      */
     dimensions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -19682,9 +20666,15 @@ export interface GetConnectorConfigReportArgs {
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report metrics to include into a sync.
      * 	- Service `googleAnalytics4`: The report metrics to include into a sync.
+     * 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchAds360`: The report metrics included to sync.
      */
     metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
+     */
+    partners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -19698,12 +20688,18 @@ export interface GetConnectorConfigReportArgs {
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
+     */
+    queryId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
      */
     reportFormatType?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
+     * 	- Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchAds360`: The type of report
      * 	- Service `googleSearchConsole`: The type of report
      */
@@ -19762,9 +20758,19 @@ export interface GetConnectorConfigReportArgs {
     table?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: The table name within the schema to which connector will sync the data of the specific report.
+     */
+    tableName?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The report data aggregation time granularity.
      */
     timeAggregationGranularity?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
+     */
+    updateConfigOnEachSync?: pulumi.Input<boolean>;
 }
 
 export interface GetConnectorConfigReportConfig {
@@ -19780,7 +20786,7 @@ export interface GetConnectorConfigReportConfig {
     currency?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `yahooDsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `configType` is set to `CUSTOM`.
+     * 	- Service `yahooDsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `configType` is set to `CUSTOM`. PUBLISHER, DESKTOP_OS_DEPRECATED, LINE_TYPE, GOAL_TYPE, BID_REQUEST_AD_SIZE, CHANNEL_TYPE, SITE_NAME, and SITE_GROUP_NAME are deprecated dimension, and shouldn't be used anymore
      */
     dimensions?: string[];
     /**
@@ -19790,7 +20796,7 @@ export interface GetConnectorConfigReportConfig {
     intervalType?: string;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `yahooDsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `configType` is set to `CUSTOM`.
+     * 	- Service `yahooDsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `configType` is set to `CUSTOM`. PUBLISHER_EARNINGS, PUBLISHER_EARNINGS_PERCENTAGE, INVENTORY_ECPM_DEPRECATED, SEAT_TECH_FEE, and SEAT_DATA_FEE are deprecated and shouldn't be used anymore
      */
     metrics?: string[];
     /**
@@ -19828,7 +20834,7 @@ export interface GetConnectorConfigReportConfigArgs {
     currency?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `yahooDsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `configType` is set to `CUSTOM`.
+     * 	- Service `yahooDsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `configType` is set to `CUSTOM`. PUBLISHER, DESKTOP_OS_DEPRECATED, LINE_TYPE, GOAL_TYPE, BID_REQUEST_AD_SIZE, CHANNEL_TYPE, SITE_NAME, and SITE_GROUP_NAME are deprecated dimension, and shouldn't be used anymore
      */
     dimensions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -19838,7 +20844,7 @@ export interface GetConnectorConfigReportConfigArgs {
     intervalType?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
-     * 	- Service `yahooDsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `configType` is set to `CUSTOM`.
+     * 	- Service `yahooDsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `configType` is set to `CUSTOM`. PUBLISHER_EARNINGS, PUBLISHER_EARNINGS_PERCENTAGE, INVENTORY_ECPM_DEPRECATED, SEAT_TECH_FEE, and SEAT_DATA_FEE are deprecated and shouldn't be used anymore
      */
     metrics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -20454,6 +21460,9 @@ export interface GetDestinationConfig {
      * 	- Service `mariaWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -20466,6 +21475,11 @@ export interface GetDestinationConfig {
     alwaysEncrypted?: boolean;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Application ID of your app created in Azure
+     */
+    applicationId?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Password-based or key-based authentication type
      */
     auth?: string;
@@ -20473,6 +21487,7 @@ export interface GetDestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Authentication type
      * 	- Service `databricks`: Authentication type
+     * 	- Service `managedDataLake`: Authentication type
      * 	- Service `newS3Datalake`: Authentication type
      * 	- Service `onelake`: Authentication type
      * 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
@@ -20481,11 +21496,20 @@ export interface GetDestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
+     * 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
      */
     awsAccessKeyId?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+     */
+    awsBucketAuthType?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
+     * 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
      */
     awsSecretAccessKey?: string;
     /**
@@ -20498,13 +21522,23 @@ export interface GetDestinationConfig {
      * 	- Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
      * 	- Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
      * 	- Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+     * 	- Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
      * 	- Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
+     * 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
      */
     bucket?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+     */
+    bucketRegion?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `adls`: Catalog name
      * 	- Service `databricks`: Catalog name
+     * 	- Service `managedDataLake`: Catalog name
      * 	- Service `newS3Datalake`: Catalog name
      * 	- Service `onelake`: Catalog name
      */
@@ -20512,6 +21546,7 @@ export interface GetDestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Client id of service principal
+     * 	- Service `managedDataLake`: Client id of service principal
      * 	- Service `onelake`: Client ID of service principal
      */
     clientId?: string;
@@ -20545,10 +21580,14 @@ export interface GetDestinationConfig {
      * 	- Service `azureSqlDatabase`: Connection method. Default value: `Directly`.
      * 	- Service `azureSqlManagedDbWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `databricks`: Connection method. Default value: `Directly`.
+     * 	- Service `managedDataLake`: connection type
      * 	- Service `mariaRdsWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `mariaWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `mysqlRdsWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `mysqlWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `oracleRacWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `oracleRdsWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `oracleWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `panoply`: Connection method. Default value: `Directly`.
      * 	- Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
@@ -20563,6 +21602,7 @@ export interface GetDestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) Container to store delta table files
+     * 	- Service `managedDataLake`: (Immutable) Container to store delta table files
      * 	- Service `onelake`: Workspace name to store delta table files
      */
     containerName?: string;
@@ -20596,6 +21636,9 @@ export interface GetDestinationConfig {
      * 	- Service `mariaWarehouse`: Database name
      * 	- Service `mysqlRdsWarehouse`: Database name
      * 	- Service `mysqlWarehouse`: Database name
+     * 	- Service `oracleRacWarehouse`: Database name
+     * 	- Service `oracleRdsWarehouse`: Database name
+     * 	- Service `oracleWarehouse`: Database name
      * 	- Service `panoply`: Database name
      * 	- Service `periscopeWarehouse`: Database name
      * 	- Service `postgresGcpWarehouse`: Database name
@@ -20610,10 +21653,20 @@ export interface GetDestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
+     * 	- Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
      * 	- Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
      * 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
      */
     databricksConnectionType?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Tenant ID of your app created in Azure
+     */
+    directoryId?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Set to `true` if you want to enable external storage for unstructured files.
+     */
     enableExternalStorageForUnstructuredFiles?: boolean;
     enableRemoteExecution?: boolean;
     /**
@@ -20621,6 +21674,11 @@ export interface GetDestinationConfig {
      * 	- Service `confluentCloudWh`: Populate all tables in a single topic.
      */
     enableSingleTopic?: boolean;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `redshift`: Enable to convert JSON data type to SUPER
+     */
+    enableSuperType?: boolean;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMskWh`: Fivetran generated External ID
@@ -20634,16 +21692,39 @@ export interface GetDestinationConfig {
      * 	- Service `databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
      */
     externalLocation?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: External stage storage provider[Internal, S3, Azure,GCS]
+     */
     externalStageStorageProvider?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: The cloud service provider you want to use for staging data. Use this parameter only if you are using Hybrid Deployment.
+     */
+    externalStorageCloudProvider?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: External storage integration name
+     */
     externalStorageIntegration?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: External storage parent folder URL
+     */
     externalStorageParentFolderUri?: string;
     fivetranGlueRoleArn?: string;
     fivetranMskRoleArn?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
      * 	- Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
      */
     fivetranRoleArn?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+     */
+    gcsServiceAccountCredentialsPath?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Server name
@@ -20656,6 +21737,9 @@ export interface GetDestinationConfig {
      * 	- Service `mariaWarehouse`: Server name
      * 	- Service `mysqlRdsWarehouse`: Server name
      * 	- Service `mysqlWarehouse`: Server name
+     * 	- Service `oracleRacWarehouse`: Server name
+     * 	- Service `oracleRdsWarehouse`: Server name
+     * 	- Service `oracleWarehouse`: Server name
      * 	- Service `panoply`: Server name
      * 	- Service `periscopeWarehouse`: Server name
      * 	- Service `postgresGcpWarehouse`: Server name
@@ -20671,6 +21755,7 @@ export interface GetDestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: HTTP path
      * 	- Service `databricks`: HTTP path
+     * 	- Service `managedDataLake`: HTTP path
      * 	- Service `newS3Datalake`: HTTP path
      * 	- Service `onelake`: HTTP path
      */
@@ -20692,6 +21777,7 @@ export interface GetDestinationConfig {
     isRedshiftServerless?: boolean;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) OneLake lakehouse GUID
      * 	- Service `onelake`: (Immutable) OneLake lakehouse GUID
      */
     lakehouseGuid?: string;
@@ -20710,6 +21796,7 @@ export interface GetDestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: OAuth 2.0 client ID
      * 	- Service `databricks`: OAuth 2.0 client ID
+     * 	- Service `managedDataLake`: OAuth 2.0 client ID
      * 	- Service `newS3Datalake`: OAuth 2.0 client ID
      * 	- Service `onelake`: OAuth 2.0 client ID
      */
@@ -20718,6 +21805,7 @@ export interface GetDestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: OAuth 2.0 secret
      * 	- Service `databricks`: OAuth 2.0 secret
+     * 	- Service `managedDataLake`: OAuth 2.0 secret
      * 	- Service `newS3Datalake`: OAuth 2.0 secret
      * 	- Service `onelake`: OAuth 2.0 secret
      */
@@ -20739,6 +21827,9 @@ export interface GetDestinationConfig {
      * 	- Service `mariaWarehouse`: Database user password
      * 	- Service `mysqlRdsWarehouse`: Database user password
      * 	- Service `mysqlWarehouse`: Database user password
+     * 	- Service `oracleRacWarehouse`: Database user password
+     * 	- Service `oracleRdsWarehouse`: Database user password
+     * 	- Service `oracleWarehouse`: Database user password
      * 	- Service `panoply`: Database user password
      * 	- Service `periscopeWarehouse`: Database user password
      * 	- Service `postgresGcpWarehouse`: Database user password
@@ -20754,6 +21845,7 @@ export interface GetDestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Personal access token
      * 	- Service `databricks`: Personal access token
+     * 	- Service `managedDataLake`: Personal access token
      * 	- Service `newS3Datalake`: Personal access token
      * 	- Service `onelake`: Personal access token
      */
@@ -20768,12 +21860,16 @@ export interface GetDestinationConfig {
      * 	- Service `azureSqlDatabase`: Server port number
      * 	- Service `azureSqlManagedDbWarehouse`: Server port number
      * 	- Service `databricks`: Server port number
+     * 	- Service `managedDataLake`: Server port number
      * 	- Service `mariaRdsWarehouse`: Server port number
      * 	- Service `mariaWarehouse`: Server port number
      * 	- Service `mysqlRdsWarehouse`: Server port number
      * 	- Service `mysqlWarehouse`: Server port number
      * 	- Service `newS3Datalake`: Server port number
      * 	- Service `onelake`: Server port number
+     * 	- Service `oracleRacWarehouse`: Server port number
+     * 	- Service `oracleRdsWarehouse`: Server port number
+     * 	- Service `oracleWarehouse`: Server port number
      * 	- Service `panoply`: Server port number
      * 	- Service `periscopeWarehouse`: Server port number
      * 	- Service `postgresGcpWarehouse`: Server port number
@@ -20788,6 +21884,7 @@ export interface GetDestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) path/to/data within the container
+     * 	- Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
      * 	- Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
      * 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
      */
@@ -20826,6 +21923,7 @@ export interface GetDestinationConfig {
     publicKey?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
      * 	- Service `newS3Datalake`: Region of your AWS S3 bucket
      */
     region?: string;
@@ -20916,6 +22014,7 @@ export interface GetDestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Secret value for service principal
+     * 	- Service `managedDataLake`: Secret value for service principal
      * 	- Service `onelake`: Secret value for service principal
      */
     secretValue?: string;
@@ -20928,6 +22027,7 @@ export interface GetDestinationConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Server Host name
      * 	- Service `databricks`: Server name
+     * 	- Service `managedDataLake`: Server host name
      * 	- Service `newS3Datalake`: Server host name
      * 	- Service `onelake`: Server Host name
      */
@@ -20935,13 +22035,20 @@ export interface GetDestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Should maintain tables in Databricks 
+     * 	- Service `managedDataLake`: Should maintain tables in Databricks 
      * 	- Service `newS3Datalake`: Should maintain tables in Databricks 
      * 	- Service `onelake`: Should maintain tables in Databricks
      */
     shouldMaintainTablesInDatabricks?: boolean;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+     */
+    shouldMaintainTablesInGlue?: boolean;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+     * 	- Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      * 	- Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      * 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      */
@@ -20950,10 +22057,24 @@ export interface GetDestinationConfig {
     snowflakeRegion?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
+     */
+    storageAccountKey?: string;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+     * 	- Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
      * 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+     * 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
      */
     storageAccountName?: string;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: Storage Provider
+     */
+    storageProvider?: string;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
@@ -20962,6 +22083,7 @@ export interface GetDestinationConfig {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Tenant id of service principal
+     * 	- Service `managedDataLake`: Tenant id of service principal
      * 	- Service `onelake`: Tenant ID of service principal
      */
     tenantId?: string;
@@ -20977,6 +22099,9 @@ export interface GetDestinationConfig {
      * 	- Service `mariaWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -20999,6 +22124,9 @@ export interface GetDestinationConfig {
      * 	- Service `mariaWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -21021,6 +22149,9 @@ export interface GetDestinationConfig {
      * 	- Service `mariaWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -21033,6 +22164,11 @@ export interface GetDestinationConfig {
     tunnelUser?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Set to `true` if you want to use an S3 bucket to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+     */
+    useCustomerStaging?: boolean;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Database user name
      * 	- Service `auroraWarehouse`: Database user name
      * 	- Service `azurePostgresWarehouse`: Database user name
@@ -21043,6 +22179,9 @@ export interface GetDestinationConfig {
      * 	- Service `mariaWarehouse`: Database user name
      * 	- Service `mysqlRdsWarehouse`: Database user name
      * 	- Service `mysqlWarehouse`: Database user name
+     * 	- Service `oracleRacWarehouse`: Database user name
+     * 	- Service `oracleRdsWarehouse`: Database user name
+     * 	- Service `oracleWarehouse`: Database user name
      * 	- Service `panoply`: Database user name
      * 	- Service `periscopeWarehouse`: Database user name
      * 	- Service `postgresGcpWarehouse`: Database user name
@@ -21056,6 +22195,7 @@ export interface GetDestinationConfig {
     user?: string;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) OneLake workspace GUID
      * 	- Service `onelake`: (Immutable) OneLake workspace GUID
      */
     workspaceGuid?: string;
@@ -21079,6 +22219,9 @@ export interface GetDestinationConfigArgs {
      * 	- Service `mariaWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -21091,6 +22234,11 @@ export interface GetDestinationConfigArgs {
     alwaysEncrypted?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Application ID of your app created in Azure
+     */
+    applicationId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Password-based or key-based authentication type
      */
     auth?: pulumi.Input<string>;
@@ -21098,6 +22246,7 @@ export interface GetDestinationConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Authentication type
      * 	- Service `databricks`: Authentication type
+     * 	- Service `managedDataLake`: Authentication type
      * 	- Service `newS3Datalake`: Authentication type
      * 	- Service `onelake`: Authentication type
      * 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
@@ -21106,11 +22255,20 @@ export interface GetDestinationConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
+     * 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
      */
     awsAccessKeyId?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+     */
+    awsBucketAuthType?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
+     * 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
      */
     awsSecretAccessKey?: pulumi.Input<string>;
     /**
@@ -21123,13 +22281,23 @@ export interface GetDestinationConfigArgs {
      * 	- Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
      * 	- Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
      * 	- Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+     * 	- Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
      * 	- Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
+     * 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
      */
     bucket?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+     */
+    bucketRegion?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `adls`: Catalog name
      * 	- Service `databricks`: Catalog name
+     * 	- Service `managedDataLake`: Catalog name
      * 	- Service `newS3Datalake`: Catalog name
      * 	- Service `onelake`: Catalog name
      */
@@ -21137,6 +22305,7 @@ export interface GetDestinationConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Client id of service principal
+     * 	- Service `managedDataLake`: Client id of service principal
      * 	- Service `onelake`: Client ID of service principal
      */
     clientId?: pulumi.Input<string>;
@@ -21170,10 +22339,14 @@ export interface GetDestinationConfigArgs {
      * 	- Service `azureSqlDatabase`: Connection method. Default value: `Directly`.
      * 	- Service `azureSqlManagedDbWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `databricks`: Connection method. Default value: `Directly`.
+     * 	- Service `managedDataLake`: connection type
      * 	- Service `mariaRdsWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `mariaWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `mysqlRdsWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `mysqlWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `oracleRacWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `oracleRdsWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `oracleWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `panoply`: Connection method. Default value: `Directly`.
      * 	- Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
@@ -21188,6 +22361,7 @@ export interface GetDestinationConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) Container to store delta table files
+     * 	- Service `managedDataLake`: (Immutable) Container to store delta table files
      * 	- Service `onelake`: Workspace name to store delta table files
      */
     containerName?: pulumi.Input<string>;
@@ -21221,6 +22395,9 @@ export interface GetDestinationConfigArgs {
      * 	- Service `mariaWarehouse`: Database name
      * 	- Service `mysqlRdsWarehouse`: Database name
      * 	- Service `mysqlWarehouse`: Database name
+     * 	- Service `oracleRacWarehouse`: Database name
+     * 	- Service `oracleRdsWarehouse`: Database name
+     * 	- Service `oracleWarehouse`: Database name
      * 	- Service `panoply`: Database name
      * 	- Service `periscopeWarehouse`: Database name
      * 	- Service `postgresGcpWarehouse`: Database name
@@ -21235,10 +22412,20 @@ export interface GetDestinationConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
+     * 	- Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
      * 	- Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
      * 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
      */
     databricksConnectionType?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Tenant ID of your app created in Azure
+     */
+    directoryId?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Set to `true` if you want to enable external storage for unstructured files.
+     */
     enableExternalStorageForUnstructuredFiles?: pulumi.Input<boolean>;
     enableRemoteExecution?: pulumi.Input<boolean>;
     /**
@@ -21246,6 +22433,11 @@ export interface GetDestinationConfigArgs {
      * 	- Service `confluentCloudWh`: Populate all tables in a single topic.
      */
     enableSingleTopic?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `redshift`: Enable to convert JSON data type to SUPER
+     */
+    enableSuperType?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMskWh`: Fivetran generated External ID
@@ -21259,16 +22451,39 @@ export interface GetDestinationConfigArgs {
      * 	- Service `databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
      */
     externalLocation?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: External stage storage provider[Internal, S3, Azure,GCS]
+     */
     externalStageStorageProvider?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: The cloud service provider you want to use for staging data. Use this parameter only if you are using Hybrid Deployment.
+     */
+    externalStorageCloudProvider?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: External storage integration name
+     */
     externalStorageIntegration?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: External storage parent folder URL
+     */
     externalStorageParentFolderUri?: pulumi.Input<string>;
     fivetranGlueRoleArn?: pulumi.Input<string>;
     fivetranMskRoleArn?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
      * 	- Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
      */
     fivetranRoleArn?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+     */
+    gcsServiceAccountCredentialsPath?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Server name
@@ -21281,6 +22496,9 @@ export interface GetDestinationConfigArgs {
      * 	- Service `mariaWarehouse`: Server name
      * 	- Service `mysqlRdsWarehouse`: Server name
      * 	- Service `mysqlWarehouse`: Server name
+     * 	- Service `oracleRacWarehouse`: Server name
+     * 	- Service `oracleRdsWarehouse`: Server name
+     * 	- Service `oracleWarehouse`: Server name
      * 	- Service `panoply`: Server name
      * 	- Service `periscopeWarehouse`: Server name
      * 	- Service `postgresGcpWarehouse`: Server name
@@ -21296,6 +22514,7 @@ export interface GetDestinationConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: HTTP path
      * 	- Service `databricks`: HTTP path
+     * 	- Service `managedDataLake`: HTTP path
      * 	- Service `newS3Datalake`: HTTP path
      * 	- Service `onelake`: HTTP path
      */
@@ -21317,6 +22536,7 @@ export interface GetDestinationConfigArgs {
     isRedshiftServerless?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) OneLake lakehouse GUID
      * 	- Service `onelake`: (Immutable) OneLake lakehouse GUID
      */
     lakehouseGuid?: pulumi.Input<string>;
@@ -21335,6 +22555,7 @@ export interface GetDestinationConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: OAuth 2.0 client ID
      * 	- Service `databricks`: OAuth 2.0 client ID
+     * 	- Service `managedDataLake`: OAuth 2.0 client ID
      * 	- Service `newS3Datalake`: OAuth 2.0 client ID
      * 	- Service `onelake`: OAuth 2.0 client ID
      */
@@ -21343,6 +22564,7 @@ export interface GetDestinationConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: OAuth 2.0 secret
      * 	- Service `databricks`: OAuth 2.0 secret
+     * 	- Service `managedDataLake`: OAuth 2.0 secret
      * 	- Service `newS3Datalake`: OAuth 2.0 secret
      * 	- Service `onelake`: OAuth 2.0 secret
      */
@@ -21364,6 +22586,9 @@ export interface GetDestinationConfigArgs {
      * 	- Service `mariaWarehouse`: Database user password
      * 	- Service `mysqlRdsWarehouse`: Database user password
      * 	- Service `mysqlWarehouse`: Database user password
+     * 	- Service `oracleRacWarehouse`: Database user password
+     * 	- Service `oracleRdsWarehouse`: Database user password
+     * 	- Service `oracleWarehouse`: Database user password
      * 	- Service `panoply`: Database user password
      * 	- Service `periscopeWarehouse`: Database user password
      * 	- Service `postgresGcpWarehouse`: Database user password
@@ -21379,6 +22604,7 @@ export interface GetDestinationConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Personal access token
      * 	- Service `databricks`: Personal access token
+     * 	- Service `managedDataLake`: Personal access token
      * 	- Service `newS3Datalake`: Personal access token
      * 	- Service `onelake`: Personal access token
      */
@@ -21393,12 +22619,16 @@ export interface GetDestinationConfigArgs {
      * 	- Service `azureSqlDatabase`: Server port number
      * 	- Service `azureSqlManagedDbWarehouse`: Server port number
      * 	- Service `databricks`: Server port number
+     * 	- Service `managedDataLake`: Server port number
      * 	- Service `mariaRdsWarehouse`: Server port number
      * 	- Service `mariaWarehouse`: Server port number
      * 	- Service `mysqlRdsWarehouse`: Server port number
      * 	- Service `mysqlWarehouse`: Server port number
      * 	- Service `newS3Datalake`: Server port number
      * 	- Service `onelake`: Server port number
+     * 	- Service `oracleRacWarehouse`: Server port number
+     * 	- Service `oracleRdsWarehouse`: Server port number
+     * 	- Service `oracleWarehouse`: Server port number
      * 	- Service `panoply`: Server port number
      * 	- Service `periscopeWarehouse`: Server port number
      * 	- Service `postgresGcpWarehouse`: Server port number
@@ -21413,6 +22643,7 @@ export interface GetDestinationConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) path/to/data within the container
+     * 	- Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
      * 	- Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
      * 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
      */
@@ -21451,6 +22682,7 @@ export interface GetDestinationConfigArgs {
     publicKey?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
      * 	- Service `newS3Datalake`: Region of your AWS S3 bucket
      */
     region?: pulumi.Input<string>;
@@ -21541,6 +22773,7 @@ export interface GetDestinationConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Secret value for service principal
+     * 	- Service `managedDataLake`: Secret value for service principal
      * 	- Service `onelake`: Secret value for service principal
      */
     secretValue?: pulumi.Input<string>;
@@ -21553,6 +22786,7 @@ export interface GetDestinationConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Server Host name
      * 	- Service `databricks`: Server name
+     * 	- Service `managedDataLake`: Server host name
      * 	- Service `newS3Datalake`: Server host name
      * 	- Service `onelake`: Server Host name
      */
@@ -21560,13 +22794,20 @@ export interface GetDestinationConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Should maintain tables in Databricks 
+     * 	- Service `managedDataLake`: Should maintain tables in Databricks 
      * 	- Service `newS3Datalake`: Should maintain tables in Databricks 
      * 	- Service `onelake`: Should maintain tables in Databricks
      */
     shouldMaintainTablesInDatabricks?: pulumi.Input<boolean>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+     */
+    shouldMaintainTablesInGlue?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+     * 	- Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      * 	- Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      * 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      */
@@ -21575,10 +22816,24 @@ export interface GetDestinationConfigArgs {
     snowflakeRegion?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
+     */
+    storageAccountKey?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+     * 	- Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+     * 	- Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
      * 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+     * 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
      */
     storageAccountName?: pulumi.Input<string>;
+    /**
+     * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: Storage Provider
+     */
+    storageProvider?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
@@ -21587,6 +22842,7 @@ export interface GetDestinationConfigArgs {
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Tenant id of service principal
+     * 	- Service `managedDataLake`: Tenant id of service principal
      * 	- Service `onelake`: Tenant ID of service principal
      */
     tenantId?: pulumi.Input<string>;
@@ -21602,6 +22858,9 @@ export interface GetDestinationConfigArgs {
      * 	- Service `mariaWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -21624,6 +22883,9 @@ export interface GetDestinationConfigArgs {
      * 	- Service `mariaWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -21646,6 +22908,9 @@ export interface GetDestinationConfigArgs {
      * 	- Service `mariaWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `mysqlWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRacWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -21658,6 +22923,11 @@ export interface GetDestinationConfigArgs {
     tunnelUser?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `snowflake`: Set to `true` if you want to use an S3 bucket to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+     */
+    useCustomerStaging?: pulumi.Input<boolean>;
+    /**
+     * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Database user name
      * 	- Service `auroraWarehouse`: Database user name
      * 	- Service `azurePostgresWarehouse`: Database user name
@@ -21668,6 +22938,9 @@ export interface GetDestinationConfigArgs {
      * 	- Service `mariaWarehouse`: Database user name
      * 	- Service `mysqlRdsWarehouse`: Database user name
      * 	- Service `mysqlWarehouse`: Database user name
+     * 	- Service `oracleRacWarehouse`: Database user name
+     * 	- Service `oracleRdsWarehouse`: Database user name
+     * 	- Service `oracleWarehouse`: Database user name
      * 	- Service `panoply`: Database user name
      * 	- Service `periscopeWarehouse`: Database user name
      * 	- Service `postgresGcpWarehouse`: Database user name
@@ -21681,6 +22954,7 @@ export interface GetDestinationConfigArgs {
     user?: pulumi.Input<string>;
     /**
      * Field usage depends on `service` value: 
+     * 	- Service `managedDataLake`: (Immutable) OneLake workspace GUID
      * 	- Service `onelake`: (Immutable) OneLake workspace GUID
      */
     workspaceGuid?: pulumi.Input<string>;
@@ -22606,14 +23880,6 @@ export interface GetProxyAgentsItem {
      * The timestamp of the time the proxy agent was created in your account.
      */
     registredAt?: string;
-    /**
-     * The salt.
-     */
-    salt?: string;
-    /**
-     * The auth token.
-     */
-    token?: string;
 }
 
 export interface GetProxyAgentsItemArgs {
@@ -22637,14 +23903,6 @@ export interface GetProxyAgentsItemArgs {
      * The timestamp of the time the proxy agent was created in your account.
      */
     registredAt?: pulumi.Input<string>;
-    /**
-     * The salt.
-     */
-    salt?: pulumi.Input<string>;
-    /**
-     * The auth token.
-     */
-    token?: pulumi.Input<string>;
 }
 
 export interface GetQuickstartPackagesPackage {

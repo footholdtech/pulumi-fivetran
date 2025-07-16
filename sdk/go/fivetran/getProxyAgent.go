@@ -66,10 +66,6 @@ type LookupProxyAgentResult struct {
 	Id string `pulumi:"id"`
 	// The timestamp of the time the proxy agent was created in your account.
 	RegistredAt string `pulumi:"registredAt"`
-	// The salt.
-	Salt string `pulumi:"salt"`
-	// The auth token.
-	Token string `pulumi:"token"`
 }
 
 func LookupProxyAgentOutput(ctx *pulumi.Context, args LookupProxyAgentOutputArgs, opts ...pulumi.InvokeOption) LookupProxyAgentResultOutput {
@@ -129,16 +125,6 @@ func (o LookupProxyAgentResultOutput) Id() pulumi.StringOutput {
 // The timestamp of the time the proxy agent was created in your account.
 func (o LookupProxyAgentResultOutput) RegistredAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProxyAgentResult) string { return v.RegistredAt }).(pulumi.StringOutput)
-}
-
-// The salt.
-func (o LookupProxyAgentResultOutput) Salt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProxyAgentResult) string { return v.Salt }).(pulumi.StringOutput)
-}
-
-// The auth token.
-func (o LookupProxyAgentResultOutput) Token() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProxyAgentResult) string { return v.Token }).(pulumi.StringOutput)
 }
 
 func init() {

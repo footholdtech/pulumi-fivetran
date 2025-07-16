@@ -43,18 +43,6 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("registredAt", required: true)]
         public Input<string> RegistredAt { get; set; } = null!;
 
-        /// <summary>
-        /// The salt.
-        /// </summary>
-        [Input("salt", required: true)]
-        public Input<string> Salt { get; set; } = null!;
-
-        /// <summary>
-        /// The auth token.
-        /// </summary>
-        [Input("token", required: true)]
-        public Input<string> Token { get; set; } = null!;
-
         public GetProxyAgentsItemInputArgs()
         {
         }

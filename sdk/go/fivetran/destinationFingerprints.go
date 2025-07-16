@@ -54,7 +54,7 @@ import (
 //
 // 1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
 //
-// 2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+// 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
 //
 // 3. Define an empty resource in your `.tf` configuration:
 //

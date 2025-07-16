@@ -10,6 +10,65 @@ using Pulumi;
 
 namespace Footholdtech.Fivetran
 {
+    /// <summary>
+    /// This resource allows you to create, update, and delete connector certificates.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Footholdtech.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var certificate = new Fivetran.ConnectorCertificates("certificate", new()
+    ///     {
+    ///         Certificates = new[]
+    ///         {
+    ///             new Fivetran.Inputs.ConnectorCertificatesCertificateArgs
+    ///             {
+    ///                 Hash = "jhgfJfgrI6yy...",
+    ///                 EncodedCert = "encoded_cert",
+    ///             },
+    ///             new Fivetran.Inputs.ConnectorCertificatesCertificateArgs
+    ///             {
+    ///                 Hash = "jhgfJfgrI6yy...",
+    ///                 EncodedCert = "encoded_cert",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// 1. To import an existing `fivetran_connector_certificates` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+    /// 
+    /// 2. Retrieve all connectors in a particular group using the [fivetran_connectors data source](/docs/data-sources/connectors)
+    /// 
+    /// 3. Define an empty resource in your `.tf` configuration:
+    /// 
+    /// hcl
+    /// 
+    /// resource "fivetran_connector_certificates" "my_imported_connector_fingerprints" {
+    /// 
+    /// }
+    /// 
+    /// 4. Run the `pulumi import` command:
+    /// 
+    /// ```sh
+    /// $ pulumi import fivetran:index/connectorCertificates:ConnectorCertificates my_imported_connector_fingerprints {your Fivetran Connector ID}
+    /// ```
+    /// 
+    /// 5.  Use the `terraform state show` command to get the values from the state:
+    /// 
+    /// terraform state show 'fivetran_connector_certificates.my_imported_connector_fingerprints'
+    /// 
+    /// 6. Copy the values and paste them to your `.tf` configuration.
+    /// </summary>
     [FivetranResourceType("fivetran:index/connectorCertificates:ConnectorCertificates")]
     public partial class ConnectorCertificates : global::Pulumi.CustomResource
     {

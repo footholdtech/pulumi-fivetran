@@ -100,7 +100,52 @@ class ConnectorCertificates(pulumi.CustomResource):
                  connector_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Create a ConnectorCertificates resource with the given unique name, props, and options.
+        This resource allows you to create, update, and delete connector certificates.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import footholdtech_fivetran as fivetran
+
+        certificate = fivetran.ConnectorCertificates("certificate", certificates=[
+            {
+                "hash": "jhgfJfgrI6yy...",
+                "encoded_cert": "encoded_cert",
+            },
+            {
+                "hash": "jhgfJfgrI6yy...",
+                "encoded_cert": "encoded_cert",
+            },
+        ])
+        ```
+
+        ## Import
+
+        1. To import an existing `fivetran_connector_certificates` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+
+        2. Retrieve all connectors in a particular group using the [fivetran_connectors data source](/docs/data-sources/connectors)
+
+        3. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_connector_certificates" "my_imported_connector_fingerprints" {
+
+        }
+
+        4. Run the `pulumi import` command:
+
+        ```sh
+        $ pulumi import fivetran:index/connectorCertificates:ConnectorCertificates my_imported_connector_fingerprints {your Fivetran Connector ID}
+        ```
+
+        5.  Use the `terraform state show` command to get the values from the state:
+
+        terraform state show 'fivetran_connector_certificates.my_imported_connector_fingerprints'
+
+        6. Copy the values and paste them to your `.tf` configuration.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] connector_id: The unique identifier for the target connection within the Fivetran system.
@@ -112,7 +157,52 @@ class ConnectorCertificates(pulumi.CustomResource):
                  args: ConnectorCertificatesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ConnectorCertificates resource with the given unique name, props, and options.
+        This resource allows you to create, update, and delete connector certificates.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import footholdtech_fivetran as fivetran
+
+        certificate = fivetran.ConnectorCertificates("certificate", certificates=[
+            {
+                "hash": "jhgfJfgrI6yy...",
+                "encoded_cert": "encoded_cert",
+            },
+            {
+                "hash": "jhgfJfgrI6yy...",
+                "encoded_cert": "encoded_cert",
+            },
+        ])
+        ```
+
+        ## Import
+
+        1. To import an existing `fivetran_connector_certificates` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+
+        2. Retrieve all connectors in a particular group using the [fivetran_connectors data source](/docs/data-sources/connectors)
+
+        3. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_connector_certificates" "my_imported_connector_fingerprints" {
+
+        }
+
+        4. Run the `pulumi import` command:
+
+        ```sh
+        $ pulumi import fivetran:index/connectorCertificates:ConnectorCertificates my_imported_connector_fingerprints {your Fivetran Connector ID}
+        ```
+
+        5.  Use the `terraform state show` command to get the values from the state:
+
+        terraform state show 'fivetran_connector_certificates.my_imported_connector_fingerprints'
+
+        6. Copy the values and paste them to your `.tf` configuration.
+
         :param str resource_name: The name of the resource.
         :param ConnectorCertificatesArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

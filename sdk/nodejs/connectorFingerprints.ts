@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *
  * 1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
  *
- * 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+ * 2. Retrieve all connectors in a particular group using the [fivetran_connectors data source](/docs/data-sources/connectors)
  *
  * 3. Define an empty resource in your `.tf` configuration:
  *

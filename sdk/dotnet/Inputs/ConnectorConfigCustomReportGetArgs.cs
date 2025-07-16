@@ -15,6 +15,13 @@ namespace Footholdtech.Fivetran.Inputs
     {
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [Determines if reports will be based on imression on coversion time](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports)
+        /// </summary>
+        [Input("actionReportTime")]
+        public Input<string>? ActionReportTime { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `snapchat_ads`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
         /// </summary>
         [Input("addMetricVariants")]
@@ -103,7 +110,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
+        /// 	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
         /// </summary>
         [Input("granularity")]
         public Input<string>? Granularity { get; set; }

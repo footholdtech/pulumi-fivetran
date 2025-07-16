@@ -16,29 +16,43 @@ namespace Footholdtech.Fivetran.Outputs
     {
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: All files in your search path matching this regular expression will be synced per table.
+        /// 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
+        /// </summary>
+        public readonly string? EmailSubject;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `azure_blob_storage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `email`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `gcs`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `google_drive`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `s3`: All files in your search path matching this regular expression will be synced per table.
+        /// 	- Service `s3_compatible_storage`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `sftp`: All files in your search path matching this regular expression will be synced per table.
+        /// 	- Service `share_point`: All files in your search path matching this regular expression will be synced per table.
         /// </summary>
         public readonly string? FilePattern;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `azure_blob_storage`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `email`: All files matching the above pattern will be synced to this table.
         /// 	- Service `gcs`: All files matching the above pattern will be synced to this table.
         /// 	- Service `google_drive`: All files matching the above pattern will be synced to this table.
         /// 	- Service `s3`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `s3_compatible_storage`: All files matching the above pattern will be synced to this table.
         /// 	- Service `sftp`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `share_point`: All files matching the above pattern will be synced to this table.
         /// </summary>
         public readonly string? TableName;
 
         [OutputConstructor]
         private ConnectorConfigFile(
+            string? emailSubject,
+
             string? filePattern,
 
             string? tableName)
         {
+            EmailSubject = emailSubject;
             FilePattern = filePattern;
             TableName = tableName;
         }

@@ -16,6 +16,11 @@ namespace Footholdtech.Fivetran.Outputs
     {
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `snapchat_ads`: [Determines if reports will be based on imression on coversion time](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports)
+        /// </summary>
+        public readonly string ActionReportTime;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `snapchat_ads`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
         /// </summary>
         public readonly bool AddMetricVariants;
@@ -66,7 +71,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly ImmutableArray<string> EventNames;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/customr-reports#granularity).
+        /// 	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
         /// </summary>
         public readonly string Granularity;
         /// <summary>
@@ -123,6 +128,8 @@ namespace Footholdtech.Fivetran.Outputs
 
         [OutputConstructor]
         private GetConnectorConfigCustomReportResult(
+            string actionReportTime,
+
             bool addMetricVariants,
 
             string aggregate,
@@ -165,6 +172,7 @@ namespace Footholdtech.Fivetran.Outputs
 
             string timeZoneMode)
         {
+            ActionReportTime = actionReportTime;
             AddMetricVariants = addMetricVariants;
             Aggregate = aggregate;
             BaseMetricsFields = baseMetricsFields;
