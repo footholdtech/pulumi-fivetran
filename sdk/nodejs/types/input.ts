@@ -23795,6 +23795,10 @@ export interface GetPrivateLinksItem {
      */
     createdBy?: string;
     /**
+     * The private link host.
+     */
+    host?: string;
+    /**
      * The unique identifier for the private link within the Fivetran system.
      */
     id?: string;
@@ -23833,6 +23837,10 @@ export interface GetPrivateLinksItemArgs {
      * The unique identifier for the User within the Fivetran system.
      */
     createdBy?: pulumi.Input<string>;
+    /**
+     * The private link host.
+     */
+    host?: pulumi.Input<string>;
     /**
      * The unique identifier for the private link within the Fivetran system.
      */

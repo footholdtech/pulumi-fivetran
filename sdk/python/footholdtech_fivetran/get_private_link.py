@@ -27,7 +27,7 @@ class GetPrivateLinkResult:
     """
     A collection of values returned by getPrivateLink.
     """
-    def __init__(__self__, cloud_provider=None, config_map=None, created_at=None, created_by=None, id=None, name=None, region=None, service=None, state=None, state_summary=None):
+    def __init__(__self__, cloud_provider=None, config_map=None, created_at=None, created_by=None, host=None, id=None, name=None, region=None, service=None, state=None, state_summary=None):
         if cloud_provider and not isinstance(cloud_provider, str):
             raise TypeError("Expected argument 'cloud_provider' to be a str")
         pulumi.set(__self__, "cloud_provider", cloud_provider)
@@ -40,6 +40,9 @@ class GetPrivateLinkResult:
         if created_by and not isinstance(created_by, str):
             raise TypeError("Expected argument 'created_by' to be a str")
         pulumi.set(__self__, "created_by", created_by)
+        if host and not isinstance(host, str):
+            raise TypeError("Expected argument 'host' to be a str")
+        pulumi.set(__self__, "host", host)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -90,6 +93,14 @@ class GetPrivateLinkResult:
         The unique identifier for the User within the Fivetran system.
         """
         return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def host(self) -> builtins.str:
+        """
+        The private link host.
+        """
+        return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
@@ -150,6 +161,7 @@ class AwaitableGetPrivateLinkResult(GetPrivateLinkResult):
             config_map=self.config_map,
             created_at=self.created_at,
             created_by=self.created_by,
+            host=self.host,
             id=self.id,
             name=self.name,
             region=self.region,
@@ -185,6 +197,7 @@ def get_private_link(id: Optional[builtins.str] = None,
         config_map=pulumi.get(__ret__, 'config_map'),
         created_at=pulumi.get(__ret__, 'created_at'),
         created_by=pulumi.get(__ret__, 'created_by'),
+        host=pulumi.get(__ret__, 'host'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
@@ -217,6 +230,7 @@ def get_private_link_output(id: Optional[pulumi.Input[builtins.str]] = None,
         config_map=pulumi.get(__response__, 'config_map'),
         created_at=pulumi.get(__response__, 'created_at'),
         created_by=pulumi.get(__response__, 'created_by'),
+        host=pulumi.get(__response__, 'host'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         region=pulumi.get(__response__, 'region'),

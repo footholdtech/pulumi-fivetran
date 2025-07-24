@@ -64290,6 +64290,10 @@ if not MYPY:
         """
         The unique identifier for the User within the Fivetran system.
         """
+        host: builtins.str
+        """
+        The private link host.
+        """
         id: builtins.str
         """
         The unique identifier for the private link within the Fivetran system.
@@ -64323,6 +64327,7 @@ class GetPrivateLinksItemArgs:
                  cloud_provider: builtins.str,
                  created_at: builtins.str,
                  created_by: builtins.str,
+                 host: builtins.str,
                  id: builtins.str,
                  name: builtins.str,
                  region: builtins.str,
@@ -64333,6 +64338,7 @@ class GetPrivateLinksItemArgs:
         :param builtins.str cloud_provider: The cloud provider name.
         :param builtins.str created_at: The date and time the membership was created.
         :param builtins.str created_by: The unique identifier for the User within the Fivetran system.
+        :param builtins.str host: The private link host.
         :param builtins.str id: The unique identifier for the private link within the Fivetran system.
         :param builtins.str name: The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         :param builtins.str region: Data processing location. This is where Fivetran will operate and run computation on data.
@@ -64343,6 +64349,7 @@ class GetPrivateLinksItemArgs:
         pulumi.set(__self__, "cloud_provider", cloud_provider)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region", region)
@@ -64385,6 +64392,18 @@ class GetPrivateLinksItemArgs:
     @created_by.setter
     def created_by(self, value: builtins.str):
         pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> builtins.str:
+        """
+        The private link host.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: builtins.str):
+        pulumi.set(self, "host", value)
 
     @property
     @pulumi.getter

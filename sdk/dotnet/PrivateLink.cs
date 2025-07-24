@@ -41,6 +41,12 @@ namespace Footholdtech.Fivetran
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
+        /// The private link host.
+        /// </summary>
+        [Output("host")]
+        public Output<string> Host { get; private set; } = null!;
+
+        /// <summary>
         /// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
         /// numbers, or underscores. Maximum size of name is 23 characters.
         /// </summary>
@@ -186,6 +192,12 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
+
+        /// <summary>
+        /// The private link host.
+        /// </summary>
+        [Input("host")]
+        public Input<string>? Host { get; set; }
 
         /// <summary>
         /// The private link name within the account. The name must start with a letter or underscore and can only contain letters,

@@ -52,6 +52,10 @@ export class PrivateLink extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdBy!: pulumi.Output<string>;
     /**
+     * The private link host.
+     */
+    public /*out*/ readonly host!: pulumi.Output<string>;
+    /**
      * The private link name within the account. The name must start with a letter or underscore and can only contain letters,
      * numbers, or underscores. Maximum size of name is 23 characters.
      */
@@ -90,6 +94,7 @@ export class PrivateLink extends pulumi.CustomResource {
             resourceInputs["configMap"] = state ? state.configMap : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
@@ -113,6 +118,7 @@ export class PrivateLink extends pulumi.CustomResource {
             resourceInputs["cloudProvider"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["host"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateSummary"] = undefined /*out*/;
         }
@@ -141,6 +147,10 @@ export interface PrivateLinkState {
      * The unique identifier for the User within the Fivetran system.
      */
     createdBy?: pulumi.Input<string>;
+    /**
+     * The private link host.
+     */
+    host?: pulumi.Input<string>;
     /**
      * The private link name within the account. The name must start with a letter or underscore and can only contain letters,
      * numbers, or underscores. Maximum size of name is 23 characters.

@@ -15783,6 +15783,10 @@ export interface GetPrivateLinksItem {
      */
     createdBy: string;
     /**
+     * The private link host.
+     */
+    host: string;
+    /**
      * The unique identifier for the private link within the Fivetran system.
      */
     id: string;

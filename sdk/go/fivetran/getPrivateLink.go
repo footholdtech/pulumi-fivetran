@@ -64,6 +64,8 @@ type LookupPrivateLinkResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The unique identifier for the User within the Fivetran system.
 	CreatedBy string `pulumi:"createdBy"`
+	// The private link host.
+	Host string `pulumi:"host"`
 	// The unique identifier for the private link within the Fivetran system.
 	Id string `pulumi:"id"`
 	// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
@@ -130,6 +132,11 @@ func (o LookupPrivateLinkResultOutput) CreatedAt() pulumi.StringOutput {
 // The unique identifier for the User within the Fivetran system.
 func (o LookupPrivateLinkResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkResult) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The private link host.
+func (o LookupPrivateLinkResultOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkResult) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the private link within the Fivetran system.
