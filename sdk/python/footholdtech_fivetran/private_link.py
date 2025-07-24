@@ -95,6 +95,7 @@ class _PrivateLinkState:
                  config_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  created_at: Optional[pulumi.Input[builtins.str]] = None,
                  created_by: Optional[pulumi.Input[builtins.str]] = None,
+                 host: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  service: Optional[pulumi.Input[builtins.str]] = None,
@@ -106,6 +107,7 @@ class _PrivateLinkState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config_map: Configuration.
         :param pulumi.Input[builtins.str] created_at: The date and time the membership was created.
         :param pulumi.Input[builtins.str] created_by: The unique identifier for the User within the Fivetran system.
+        :param pulumi.Input[builtins.str] host: The private link host.
         :param pulumi.Input[builtins.str] name: The private link name within the account. The name must start with a letter or underscore and can only contain letters,
                numbers, or underscores. Maximum size of name is 23 characters.
         :param pulumi.Input[builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
@@ -121,6 +123,8 @@ class _PrivateLinkState:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
@@ -179,6 +183,18 @@ class _PrivateLinkState:
     @created_by.setter
     def created_by(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The private link host.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "host", value)
 
     @property
     @pulumi.getter
@@ -314,6 +330,7 @@ class PrivateLink(pulumi.CustomResource):
             __props__.__dict__["cloud_provider"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
+            __props__.__dict__["host"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_summary"] = None
         super(PrivateLink, __self__).__init__(
@@ -330,6 +347,7 @@ class PrivateLink(pulumi.CustomResource):
             config_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             created_at: Optional[pulumi.Input[builtins.str]] = None,
             created_by: Optional[pulumi.Input[builtins.str]] = None,
+            host: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
             service: Optional[pulumi.Input[builtins.str]] = None,
@@ -346,6 +364,7 @@ class PrivateLink(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config_map: Configuration.
         :param pulumi.Input[builtins.str] created_at: The date and time the membership was created.
         :param pulumi.Input[builtins.str] created_by: The unique identifier for the User within the Fivetran system.
+        :param pulumi.Input[builtins.str] host: The private link host.
         :param pulumi.Input[builtins.str] name: The private link name within the account. The name must start with a letter or underscore and can only contain letters,
                numbers, or underscores. Maximum size of name is 23 characters.
         :param pulumi.Input[builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
@@ -361,6 +380,7 @@ class PrivateLink(pulumi.CustomResource):
         __props__.__dict__["config_map"] = config_map
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["host"] = host
         __props__.__dict__["name"] = name
         __props__.__dict__["region"] = region
         __props__.__dict__["service"] = service
@@ -399,6 +419,14 @@ class PrivateLink(pulumi.CustomResource):
         The unique identifier for the User within the Fivetran system.
         """
         return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Output[builtins.str]:
+        """
+        The private link host.
+        """
+        return pulumi.get(self, "host")
 
     @property
     @pulumi.getter

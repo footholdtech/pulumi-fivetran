@@ -32,6 +32,12 @@ namespace Footholdtech.Fivetran.Inputs
         public Input<string> CreatedBy { get; set; } = null!;
 
         /// <summary>
+        /// The private link host.
+        /// </summary>
+        [Input("host", required: true)]
+        public Input<string> Host { get; set; } = null!;
+
+        /// <summary>
         /// The unique identifier for the private link within the Fivetran system.
         /// </summary>
         [Input("id", required: true)]

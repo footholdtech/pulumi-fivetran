@@ -27,6 +27,10 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
+        /// The private link host.
+        /// </summary>
+        public readonly string Host;
+        /// <summary>
         /// The unique identifier for the private link within the Fivetran system.
         /// </summary>
         public readonly string Id;
@@ -59,6 +63,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string createdBy,
 
+            string host,
+
             string id,
 
             string name,
@@ -74,6 +80,7 @@ namespace Footholdtech.Fivetran.Outputs
             CloudProvider = cloudProvider;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
+            Host = host;
             Id = id;
             Name = name;
             Region = region;

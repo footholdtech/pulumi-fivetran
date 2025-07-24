@@ -11887,6 +11887,10 @@
                     "type": "string",
                     "description": "The unique identifier for the User within the Fivetran system.\n"
                 },
+                "host": {
+                    "type": "string",
+                    "description": "The private link host.\n"
+                },
                 "id": {
                     "type": "string",
                     "description": "The unique identifier for the private link within the Fivetran system.\n"
@@ -11917,6 +11921,7 @@
                 "cloudProvider",
                 "createdAt",
                 "createdBy",
+                "host",
                 "id",
                 "name",
                 "region",
@@ -14032,6 +14037,10 @@
                     "type": "string",
                     "description": "The unique identifier for the User within the Fivetran system.\n"
                 },
+                "host": {
+                    "type": "string",
+                    "description": "The private link host.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters,\nnumbers, or underscores. Maximum size of name is 23 characters.\n"
@@ -14058,6 +14067,7 @@
                 "configMap",
                 "createdAt",
                 "createdBy",
+                "host",
                 "name",
                 "region",
                 "service",
@@ -14111,6 +14121,10 @@
                     "createdBy": {
                         "type": "string",
                         "description": "The unique identifier for the User within the Fivetran system.\n"
+                    },
+                    "host": {
+                        "type": "string",
+                        "description": "The private link host.\n"
                     },
                     "name": {
                         "type": "string",
@@ -16240,6 +16254,10 @@
                         "description": "The unique identifier for the User within the Fivetran system.\n",
                         "type": "string"
                     },
+                    "host": {
+                        "description": "The private link host.\n",
+                        "type": "string"
+                    },
                     "id": {
                         "description": "The unique identifier for the private link within the Fivetran system.\n",
                         "type": "string"
@@ -16270,6 +16288,7 @@
                     "configMap",
                     "createdAt",
                     "createdBy",
+                    "host",
                     "id",
                     "name",
                     "region",

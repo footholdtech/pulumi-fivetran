@@ -56,6 +56,10 @@ export interface GetPrivateLinkResult {
      */
     readonly createdBy: string;
     /**
+     * The private link host.
+     */
+    readonly host: string;
+    /**
      * The unique identifier for the private link within the Fivetran system.
      */
     readonly id: string;

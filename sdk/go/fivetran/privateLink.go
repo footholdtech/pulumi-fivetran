@@ -24,6 +24,8 @@ type PrivateLink struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The unique identifier for the User within the Fivetran system.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	// The private link host.
+	Host pulumi.StringOutput `pulumi:"host"`
 	// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
 	// numbers, or underscores. Maximum size of name is 23 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -84,6 +86,8 @@ type privateLinkState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The unique identifier for the User within the Fivetran system.
 	CreatedBy *string `pulumi:"createdBy"`
+	// The private link host.
+	Host *string `pulumi:"host"`
 	// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
 	// numbers, or underscores. Maximum size of name is 23 characters.
 	Name *string `pulumi:"name"`
@@ -106,6 +110,8 @@ type PrivateLinkState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The unique identifier for the User within the Fivetran system.
 	CreatedBy pulumi.StringPtrInput
+	// The private link host.
+	Host pulumi.StringPtrInput
 	// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
 	// numbers, or underscores. Maximum size of name is 23 characters.
 	Name pulumi.StringPtrInput
@@ -253,6 +259,11 @@ func (o PrivateLinkOutput) CreatedAt() pulumi.StringOutput {
 // The unique identifier for the User within the Fivetran system.
 func (o PrivateLinkOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateLink) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The private link host.
+func (o PrivateLinkOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateLink) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
 // The private link name within the account. The name must start with a letter or underscore and can only contain letters,

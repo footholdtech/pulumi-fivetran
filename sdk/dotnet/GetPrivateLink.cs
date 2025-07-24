@@ -135,6 +135,10 @@ namespace Footholdtech.Fivetran
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
+        /// The private link host.
+        /// </summary>
+        public readonly string Host;
+        /// <summary>
         /// The unique identifier for the private link within the Fivetran system.
         /// </summary>
         public readonly string Id;
@@ -169,6 +173,8 @@ namespace Footholdtech.Fivetran
 
             string createdBy,
 
+            string host,
+
             string id,
 
             string name,
@@ -185,6 +191,7 @@ namespace Footholdtech.Fivetran
             ConfigMap = configMap;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
+            Host = host;
             Id = id;
             Name = name;
             Region = region;
