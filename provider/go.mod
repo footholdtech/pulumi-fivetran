@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.23.4
 
 require (
-	github.com/fivetran/terraform-provider-fivetran v1.9.2
+	github.com/fivetran/terraform-provider-fivetran v1.9.4
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.110.0
 	github.com/pulumi/pulumi/sdk/v3 v3.175.0
 )
