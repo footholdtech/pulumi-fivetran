@@ -16,13 +16,29 @@ namespace Footholdtech.Fivetran.Outputs
     {
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `azure_blob_storage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `box`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `email`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `ftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `gcs`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `google_drive`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `s3`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `s3_compatible_storage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `sftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `share_point`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// </summary>
+        public readonly string ArchivePattern;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
         /// </summary>
         public readonly string EmailSubject;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `azure_blob_storage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `box`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `email`: All files in your search path matching this regular expression will be synced per table.
+        /// 	- Service `ftp`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `gcs`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `google_drive`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `s3`: All files in your search path matching this regular expression will be synced per table.
@@ -34,7 +50,9 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `azure_blob_storage`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `box`: All files matching the above pattern will be synced to this table.
         /// 	- Service `email`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `ftp`: All files matching the above pattern will be synced to this table.
         /// 	- Service `gcs`: All files matching the above pattern will be synced to this table.
         /// 	- Service `google_drive`: All files matching the above pattern will be synced to this table.
         /// 	- Service `s3`: All files matching the above pattern will be synced to this table.
@@ -46,12 +64,15 @@ namespace Footholdtech.Fivetran.Outputs
 
         [OutputConstructor]
         private GetConnectorConfigFileResult(
+            string archivePattern,
+
             string emailSubject,
 
             string filePattern,
 
             string tableName)
         {
+            ArchivePattern = archivePattern;
             EmailSubject = emailSubject;
             FilePattern = filePattern;
             TableName = tableName;
