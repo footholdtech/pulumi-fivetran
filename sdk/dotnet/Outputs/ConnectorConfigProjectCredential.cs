@@ -26,6 +26,11 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? Project;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `amplitude`: The project ID you wish to use with Fivetran.
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `amplitude`: The secret key of the project.
         /// </summary>
         public readonly string? SecretKey;
@@ -36,10 +41,13 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? project,
 
+            string? projectId,
+
             string? secretKey)
         {
             ApiKey = apiKey;
             Project = project;
+            ProjectId = projectId;
             SecretKey = secretKey;
         }
     }

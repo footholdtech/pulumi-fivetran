@@ -2103,6 +2103,7 @@ type ConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: Require TLS through Tunnel.
 	// 	- Service `ehr`: Require TLS through Tunnel.
 	// 	- Service `elasticCloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+	// 	- Service `epicClarity`: Require TLS through Tunnel.
 	// 	- Service `esSelfHosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: Require TLS through Tunnel
 	// 	- Service `googleCloudPostgresql`: Require TLS through Tunnel
@@ -2163,6 +2164,7 @@ type ConnectorConfig struct {
 	// 	- Service `anvyl`: Your Anvyl API key.
 	// 	- Service `apollo`: Your Apollo API key.
 	// 	- Service `appcues`: Your Appcues API key.
+	// 	- Service `ascendByPartnerize`: Your Ascend by Partnerize API Key
 	// 	- Service `ashby`: Your Ashby API key.
 	// 	- Service `assembled`: Your Assembled API key.
 	// 	- Service `atlassianJiraAlign`: Your Jira Align API key.
@@ -2204,6 +2206,7 @@ type ConnectorConfig struct {
 	// 	- Service `column`: Your Column API key.
 	// 	- Service `concord`: Your Concord API key.
 	// 	- Service `confluentCloud`: API Key
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API key.
 	// 	- Service `contrastSecurity`: Your Contrast Security API Key.
 	// 	- Service `copper`: Your Copper API key.
 	// 	- Service `coupa`: Your Coupa API key.
@@ -2218,6 +2221,7 @@ type ConnectorConfig struct {
 	// 	- Service `drata`: Your Drata API Key.
 	// 	- Service `dropboxSign`: Your Dropbox Sign API key.
 	// 	- Service `duoplane`: Your Duoplane API key.
+	// 	- Service `dutchie`: Your Dutchie API key.
 	// 	- Service `easypost`: Your EasyPost API Key.
 	// 	- Service `electronicTenantSolutions`: Your Electronic Tenant Solutions API key.
 	// 	- Service `eventsforce`: Your Eventsforce API secret key.
@@ -2247,6 +2251,7 @@ type ConnectorConfig struct {
 	// 	- Service `grin`: Your Grin API key.
 	// 	- Service `happyfox`: Your HappyFox API key.
 	// 	- Service `height`: Your Height API key.
+	// 	- Service `helpjuice`: Your Helpjuice API key.
 	// 	- Service `helpshift`: Your Helpshift API Key.
 	// 	- Service `incidentio`: Your incident.io API key.
 	// 	- Service `infobip`: Your Infobip API key.
@@ -2268,6 +2273,7 @@ type ConnectorConfig struct {
 	// 	- Service `liftoff`: Your Liftoff API key.
 	// 	- Service `linear`: Your Linear API key.
 	// 	- Service `linksquares`: Your LinkSquares API key.
+	// 	- Service `listen360`: Your Listen360 API key.
 	// 	- Service `lob`: Your Lob API key.
 	// 	- Service `loop`: Your Loop API key.
 	// 	- Service `lucca`: Your Lucca API key.
@@ -2286,6 +2292,7 @@ type ConnectorConfig struct {
 	// 	- Service `okendo`: Your Okendo API key.
 	// 	- Service `ometria`: Your Ometria API Key.
 	// 	- Service `oncehub`: Your OnceHub API key.
+	// 	- Service `openai`: Your OpenAI API key.
 	// 	- Service `ordergroove`: Your Ordergroove API key.
 	// 	- Service `ordway`: Your Ordway API key.
 	// 	- Service `ortto`: Your Ortto API key.
@@ -2314,7 +2321,7 @@ type ConnectorConfig struct {
 	// 	- Service `revops`: Your RevOps bearer token.
 	// 	- Service `ricochet360`: Your Ricochet360 API key.
 	// 	- Service `ringover`: Your Ringover API key.
-	// 	- Service `rippling`: Your Rippling API key.
+	// 	- Service `rippling`: Your Rippling API token.
 	// 	- Service `rocketlane`: Your Rocketlane API key.
 	// 	- Service `rootly`: Your Rootly API key.
 	// 	- Service `ruddr`: Your Ruddr API key.
@@ -2383,7 +2390,12 @@ type ConnectorConfig struct {
 	// 	- Service `qualtrics`: Allowed number of API requests to Qualtrics per minute, the default value is 2000. Maximum allowed number is 3000 because brands may make up to 3000 API requests per minute across all of its API calls.
 	ApiRequestsPerMinute *int `pulumi:"apiRequestsPerMinute"`
 	// Field usage depends on `service` value:
+	// 	- Service `zuora`: The API role assigned to the integration user.
+	// 	- Service `zuoraSandbox`: The API role assigned to the integration user.
+	ApiRole *string `pulumi:"apiRole"`
+	// Field usage depends on `service` value:
 	// 	- Service `confluentCloud`: API Secret
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API secret.
 	// 	- Service `forjCommunity`: Your Forj Community API secret.
 	// 	- Service `friendbuy`: Your Friendbuy API secret.
 	// 	- Service `justcall`: Your JustCall API secret.
@@ -2460,6 +2472,7 @@ type ConnectorConfig struct {
 	// 	- Service `webScraper`: Your Web Scraper API token.
 	// 	- Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
 	// 	- Service `zendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management API token.
 	ApiToken *string `pulumi:"apiToken"`
 	ApiType  *string `pulumi:"apiType"`
 	// Field usage depends on `service` value:
@@ -2649,6 +2662,8 @@ type ConnectorConfig struct {
 	// 	- Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
 	// 	- Service `github`: Authorization type.
 	// 	- Service `workday`: Authentication Mode
+	// 	- Service `workdayFinancialManagement`: Authentication Mode
+	// 	- Service `workdayHcm`: Authentication Mode
 	AuthMode *string `pulumi:"authMode"`
 	// Field usage depends on `service` value:
 	// 	- Service `webhooks`: The secret you want to use for HMAC/token-based auth methods
@@ -2699,6 +2714,7 @@ type ConnectorConfig struct {
 	BackintConfigurationPath *string `pulumi:"backintConfigurationPath"`
 	BackintExecutablePath    *string `pulumi:"backintExecutablePath"`
 	// Field usage depends on `service` value:
+	// 	- Service `amazonSellingPartner`: The earliest date to sync data from, in YYYY-MM-DD format. Cannot be before 1994-01-01 or in the future.
 	// 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
 	// 	- Service `stripe`: Limit of the Historical Sync Time for selected tables
 	// 	- Service `stripeTest`: Limit of the Historical Sync Time for selected tables
@@ -2706,6 +2722,8 @@ type ConnectorConfig struct {
 	BackwardSyncLimit *string `pulumi:"backwardSyncLimit"`
 	// Field usage depends on `service` value:
 	// 	- Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+	// 	- Service `mixpanel`: Date from which data needs to be synced.
+	// 	- Service `pendo`: The start date (YYYY-MM-DD) from which to sync historical data.
 	BackwardSyncLimitDate *string `pulumi:"backwardSyncLimitDate"`
 	// Field usage depends on `service` value:
 	// 	- Service `openExchangeRates`: Your Open Exchange Rates Base Currency.
@@ -2763,6 +2781,11 @@ type ConnectorConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
 	BinaryLogType *string `pulumi:"binaryLogType"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureCosmosForMongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	// 	- Service `mongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	// 	- Service `mongoSharded`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	BinaryRepresentation *string `pulumi:"binaryRepresentation"`
 	// Field usage depends on `service` value:
 	// 	- Service `webhooks`: The blob SAS URL of your Azure container. Required if `bucketService` is set to `AZURE`.
 	BlobSasUrl *string `pulumi:"blobSasUrl"`
@@ -2842,7 +2865,7 @@ type ConnectorConfig struct {
 	ClientHost *string `pulumi:"clientHost"`
 	// Field usage depends on `service` value:
 	// 	- Service `acumatica`: Your Acumatica client ID.
-	// 	- Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+	// 	- Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server credentials of your Adobe Project.
 	// 	- Service `adobeWorkfront`: Your Adobe Workfront client ID.
 	// 	- Service `adpWorkforceNow`: Your ADP Client ID.
 	// 	- Service `akamai`: Your Akamai client ID.
@@ -2853,6 +2876,7 @@ type ConnectorConfig struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client ID.
 	// 	- Service `bingWebmasterTools`: Your Bing Webmaster Tools client ID.
 	// 	- Service `brightcove`: Your Brightcove client ID.
+	// 	- Service `brightflag`: Your Brightflag client ID.
 	// 	- Service `brightpearl`: Your Brightpearl client ID.
 	// 	- Service `brivo`: Your Brivo client ID.
 	// 	- Service `buildium`: Your Buildium API client ID.
@@ -2860,6 +2884,7 @@ type ConnectorConfig struct {
 	// 	- Service `canvasByInstructure`: Your Canvas by Instructure client ID.
 	// 	- Service `canvasData2ByInstructure`: Your Canvas Data 2 by Instructure client ID.
 	// 	- Service `castorEdc`: Your Castor EDC client Id.
+	// 	- Service `classy`: Your Classy client ID.
 	// 	- Service `clazar`: Your Clazar client ID.
 	// 	- Service `cloudbeds`: Your Cloudbeds client ID.
 	// 	- Service `commercetools`: Your commercetools client ID.
@@ -2869,6 +2894,8 @@ type ConnectorConfig struct {
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo Client ID.
 	// 	- Service `criteoRetailMedia`: Your Criteo Retail Media client ID.
+	// 	- Service `cube`: Your Cube Client ID.
+	// 	- Service `cubeSoftware`: Your Cube Software Client ID.
 	// 	- Service `cultureAmp`: Your Culture Amp client ID.
 	// 	- Service `cvent`: Your Cvent client ID.
 	// 	- Service `d2lBrightspace`: Your D2L Brightspace client ID.
@@ -2967,6 +2994,8 @@ type ConnectorConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `destini`: Your Destini Client Name.
 	// 	- Service `medallia`: Medallia company name
+	// 	- Service `zuora`: The name of your organization as registered with Zuora Revenue.
+	// 	- Service `zuoraSandbox`: The name of your organization as registered with Zuora Revenue.
 	ClientName *string `pulumi:"clientName"`
 	// Field usage depends on `service` value:
 	// 	- Service `ceridianDayforce`: Your Ceridian Dayforce client namespace.
@@ -3009,7 +3038,7 @@ type ConnectorConfig struct {
 	ClientPublicCertificate *string `pulumi:"clientPublicCertificate"`
 	// Field usage depends on `service` value:
 	// 	- Service `acumatica`: Your Acumatica client secret.
-	// 	- Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+	// 	- Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server credentials of your Adobe Project.
 	// 	- Service `adobeWorkfront`: Your Adobe Workfront client secret.
 	// 	- Service `adpWorkforceNow`: Your ADP Client Secret.
 	// 	- Service `akamai`: Your Akamai client secret.
@@ -3020,10 +3049,12 @@ type ConnectorConfig struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client secret.
 	// 	- Service `bingWebmasterTools`: Your Bing Webmaster Tools client secret.
 	// 	- Service `brightcove`: Your Brightcove client secret.
+	// 	- Service `brightflag`: Your Brightflag client secret.
 	// 	- Service `brightpearl`: Your Brightpearl client secret.
 	// 	- Service `brivo`: Your Brivo client secret.
 	// 	- Service `canvasByInstructure`: Your Canvas by Instructure client secret.
 	// 	- Service `castorEdc`: Your Castor EDC client secret.
+	// 	- Service `classy`: Your Classy client secret.
 	// 	- Service `clazar`: Your Clazar client secret.
 	// 	- Service `cloudbeds`: Your Cloudbeds client secret.
 	// 	- Service `commercetools`: Your commercetools client secret.
@@ -3033,6 +3064,8 @@ type ConnectorConfig struct {
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo client secret key.
 	// 	- Service `criteoRetailMedia`: Your Criteo Retail Media client secret.
+	// 	- Service `cube`: Your Cube Client Secret.
+	// 	- Service `cubeSoftware`: Your Cube Software Client Secret.
 	// 	- Service `cultureAmp`: Your Culture Amp client secret.
 	// 	- Service `cvent`: Your Cvent client secret.
 	// 	- Service `d2lBrightspace`: Your D2L Brightspace client secret.
@@ -3141,6 +3174,8 @@ type ConnectorConfig struct {
 	Company *string `pulumi:"company"`
 	// Field usage depends on `service` value:
 	// 	- Service `360learning`: Your 360Learning Company ID.
+	// 	- Service `cube`: Your Cube Company ID.
+	// 	- Service `cubeSoftware`: Your Cube Software Company ID.
 	// 	- Service `sageIntacct`: Company ID
 	// 	- Service `sapSuccessFactors`: Your SAP SuccessFactors Company ID.
 	CompanyId *string `pulumi:"companyId"`
@@ -3233,6 +3268,7 @@ type ConnectorConfig struct {
 	// 	- Service `ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `elasticCloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `email`: Connection method. Default value: `Directly`.
+	// 	- Service `epicClarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `esSelfHosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -3343,6 +3379,9 @@ type ConnectorConfig struct {
 	// 	- Service `deposco`: Your Deposco custom base URL.
 	CustomBaseUrl *string `pulumi:"customBaseUrl"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+	CustomDimensionKeyIds []string `pulumi:"customDimensionKeyIds"`
+	// Field usage depends on `service` value:
 	// 	- Service `iterable`: Custom Events Sync Mode.
 	CustomEventSyncMode *string `pulumi:"customEventSyncMode"`
 	// Field usage depends on `service` value:
@@ -3355,8 +3394,11 @@ type ConnectorConfig struct {
 	// 	- Service `doubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
 	CustomFloodlightVariables []string                       `pulumi:"customFloodlightVariables"`
 	CustomPayloads            []ConnectorConfigCustomPayload `pulumi:"customPayloads"`
-	CustomReports             []ConnectorConfigCustomReport  `pulumi:"customReports"`
-	CustomTables              []ConnectorConfigCustomTable   `pulumi:"customTables"`
+	// Field usage depends on `service` value:
+	// 	- Service `togglTrack`: Your Toggl Track custom rate limit. Supports only numeric characters (0-9).
+	CustomRateLimit *string                       `pulumi:"customRateLimit"`
+	CustomReports   []ConnectorConfigCustomReport `pulumi:"customReports"`
+	CustomTables    []ConnectorConfigCustomTable  `pulumi:"customTables"`
 	// Field usage depends on `service` value:
 	// 	- Service `dbtCloud`: Your dbt Cloud access url.
 	// 	- Service `factbird`: Your Factbird custom base url.
@@ -3400,6 +3442,7 @@ type ConnectorConfig struct {
 	// 	- Service `db2iSapHva`: The database name.
 	// 	- Service `dynamics365Fo`: The database name.
 	// 	- Service `ehr`: The database name.
+	// 	- Service `epicClarity`: The database name.
 	// 	- Service `googleCloudMysql`: The database name.
 	// 	- Service `googleCloudPostgresql`: The database name.
 	// 	- Service `googleCloudSqlserver`: The database name.
@@ -3534,6 +3577,7 @@ type ConnectorConfig struct {
 	// 	- Service `appcues`: Your Appcues Email.
 	// 	- Service `assetPanda`: Your Asset Panda email.
 	// 	- Service `boostr`: Your Boostr email.
+	// 	- Service `consensusDemoAutomationPlatform`: The email address of the Consensus Demo Automation Platform account you want Fivetran to use to access your data.
 	// 	- Service `copper`: Your Copper email address.
 	// 	- Service `email`: Send your emails to this address.
 	// 	- Service `moloco`: Your Moloco account email.
@@ -3552,6 +3596,7 @@ type ConnectorConfig struct {
 	// 	- Service `cabcharge`: Your Cabcharge email ID.
 	// 	- Service `ordway`: Your Ordway user email ID.
 	// 	- Service `planful`: Your Planful email ID.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management email ID.
 	EmailId *string `pulumi:"emailId"`
 	// Field usage depends on `service` value:
 	// 	- Service `awsCostReport`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
@@ -3604,7 +3649,7 @@ type ConnectorConfig struct {
 	// 	- Service `appleSearchAds`: Use the public key to grant Fivetran access to Apple Search Ads api.
 	EncodedPublicKey *string `pulumi:"encodedPublicKey"`
 	// Field usage depends on `service` value:
-	// 	- Service `marketo`: Marketo SOAP API Encryption Key.
+	// 	- Service `marketo`: Marketo SOAP API Encryption Key (Discontinued).
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `branch`: Webhook Endpoint
@@ -3702,6 +3747,7 @@ type ConnectorConfig struct {
 	Events []string `pulumi:"events"`
 	// Field usage depends on `service` value:
 	// 	- Service `adjust`: Your cloud storage.
+	// 	- Service `amplitude`: Your cloud storage type
 	// 	- Service `braze`: Export Storage. Required if `enableExports` is `true`
 	ExportStorageType *string `pulumi:"exportStorageType"`
 	// Field usage depends on `service` value:
@@ -3860,8 +3906,11 @@ type ConnectorConfig struct {
 	// 	- Service `pardotSandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
 	HistoricalSyncLimitTimeFrame *string `pulumi:"historicalSyncLimitTimeFrame"`
 	// Field usage depends on `service` value:
+	// 	- Service `amazonSellingPartner`: The time frame for historical data synchronization. Default value: `ALL_TIME`.
 	// 	- Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
 	// 	- Service `hubspot`: Used to configure Historical sync timeframe for selected tables
+	// 	- Service `mixpanel`: Should sync all data or adhere to `backwardSyncLimitDate`
+	// 	- Service `pendo`: The time range for which historical data should be synced. Default value: `All Time`.
 	// 	- Service `rokt`: Your Rokt historical sync time frame.
 	// 	- Service `shopify`: Used to configure Historical sync timeframe for selected tables
 	// 	- Service `skimlinks`: Your Skimlinks Historical sync time frame.
@@ -3890,6 +3939,7 @@ type ConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: DB instance host or IP address.
 	// 	- Service `ehr`: DB instance host or IP address.
 	// 	- Service `elasticCloud`: DB instance host or IP address.
+	// 	- Service `epicClarity`: DB instance host or IP address.
 	// 	- Service `esSelfHosted`: DB instance host or IP address.
 	// 	- Service `ftp`: FTP host address.
 	// 	- Service `googleCloudMysql`: DB instance host or IP address.
@@ -3942,6 +3992,8 @@ type ConnectorConfig struct {
 	// 	- Service `coassemble`: Your Coassemble Hostname.
 	// 	- Service `datadog`: Your Datadog host name.
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
+	// 	- Service `zuora`: The domain or URL of your Zuora Revenue instance.
+	// 	- Service `zuoraSandbox`: The domain or URL of your Zuora Revenue instance.
 	HostName *string `pulumi:"hostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adobeCommerce`: Your Adobe Commerce host url.
@@ -3980,6 +4032,9 @@ type ConnectorConfig struct {
 	// 	- Service `salesforceMarketingCloud`: The Salesforce Marketing Cloud instance ID
 	// 	- Service `servicenow`: ServiceNow Instance ID.
 	Instance *string `pulumi:"instance"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Instance code for Workday Adaptive Planning
+	InstanceCode *string `pulumi:"instanceCode"`
 	// Field usage depends on `service` value:
 	// 	- Service `hanaSapHvaB1`: Two-digit number (00-97) of the SAP instance within its host.
 	// 	- Service `hanaSapHvaEcc`: Two-digit number (00-97) of the SAP instance within its host.
@@ -4155,6 +4210,7 @@ type ConnectorConfig struct {
 	// 	- Service `reboundReturns`: Your ReBound Returns login.
 	// 	- Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
 	// 	- Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
+	// 	- Service `workdayAdaptive`: User email address
 	Login *string `pulumi:"login"`
 	// Field usage depends on `service` value:
 	// 	- Service `concur`: The SAP Concur password.
@@ -4363,6 +4419,7 @@ type ConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: The user's password.
 	// 	- Service `ehr`: The user's password.
 	// 	- Service `elasticCloud`: The user's password.
+	// 	- Service `epicClarity`: The user's password.
 	// 	- Service `esSelfHosted`: The user's password.
 	// 	- Service `ftp`: FTP password.
 	// 	- Service `globalmeet`: Your GlobalMeet Password.
@@ -4454,17 +4511,21 @@ type ConnectorConfig struct {
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
 	// 	- Service `unicommerce`: Your uniware login password.
 	// 	- Service `upland`: Your Upland Software Password.
+	// 	- Service `uptempo`: Your Uptempo password.
 	// 	- Service `veevaVault`: Password
 	// 	- Service `veevavault`: Your Veeva Vault password.
 	// 	- Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
 	// 	- Service `whenIWork`: Your When I Work password.
 	// 	- Service `wherefour`: Your Wherefour password.
 	// 	- Service `workday`: Workday password.
+	// 	- Service `workdayAdaptive`: User password
 	// 	- Service `workdayFinancialManagement`: Workday password.
 	// 	- Service `workdayHcm`: Workday password.
 	// 	- Service `xandr`: Your Xandr password.
 	// 	- Service `yougovBrandindex`: Your YouGov BrandIndex password.
 	// 	- Service `younium`: Your Younium password.
+	// 	- Service `zuora`: The corresponding password for the API user.
+	// 	- Service `zuoraSandbox`: The corresponding password for the API user.
 	Password *string `pulumi:"password"`
 	// Field usage depends on `service` value:
 	// 	- Service `github`: The `Personal Access Token` generated in Github.
@@ -4567,6 +4628,7 @@ type ConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: The port number.
 	// 	- Service `ehr`: The port number.
 	// 	- Service `elasticCloud`: The port number.
+	// 	- Service `epicClarity`: The port number.
 	// 	- Service `esSelfHosted`: The port number.
 	// 	- Service `ftp`: FTP port.
 	// 	- Service `googleCloudMysql`: The port number.
@@ -4798,6 +4860,7 @@ type ConnectorConfig struct {
 	// 	- Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+	// 	- Service `ftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
@@ -4810,6 +4873,7 @@ type ConnectorConfig struct {
 	// 	- Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+	// 	- Service `ftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
@@ -4818,6 +4882,7 @@ type ConnectorConfig struct {
 	// 	- Service `sharePoint`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	QuoteCharacterEnabled *bool `pulumi:"quoteCharacterEnabled"`
 	// Field usage depends on `service` value:
+	// 	- Service `togglTrack`: Your Toggl Track plan type.
 	// 	- Service `vimeo`: Your Vimeo rate limit plan.
 	RateLimitPlan *string `pulumi:"rateLimitPlan"`
 	// Field usage depends on `service` value:
@@ -4836,6 +4901,7 @@ type ConnectorConfig struct {
 	// 	- Service `awin`: Your Awin Region.
 	// 	- Service `awsLambda`: The AWS region code for the DynamoDB instance.
 	// 	- Service `biginByZohoCrm`: Your Bigin by Zoho CRM Region
+	// 	- Service `brightflag`: Your Brightflag region.
 	// 	- Service `concur`: The region.
 	// 	- Service `cvent`: Your Cvent region.
 	// 	- Service `everflow`: Your Everflow region.
@@ -5343,7 +5409,7 @@ type ConnectorConfig struct {
 	SncPartnerName *string `pulumi:"sncPartnerName"`
 	SncSourceName  *string `pulumi:"sncSourceName"`
 	// Field usage depends on `service` value:
-	// 	- Service `marketo`: Marketo SOAP API Endpoint.
+	// 	- Service `marketo`: Marketo SOAP API Endpoint (Discontinued).
 	SoapUri *string `pulumi:"soapUri"`
 	// Field usage depends on `service` value:
 	// 	- Service `linkedinCompanyPages`: The social data (UGCPosts, Shares, Comments) sync time frame in months. Default value: `SIX` .
@@ -5351,6 +5417,9 @@ type ConnectorConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adobeAnalyticsDataFeed`: The data source.
 	Source *string `pulumi:"source"`
+	// Field usage depends on `service` value:
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform source name.
+	SourceName *string `pulumi:"sourceName"`
 	// Field usage depends on `service` value:
 	// 	- Service `bigCommerce`: The BigCommerce store hash.
 	StoreHash *string `pulumi:"storeHash"`
@@ -5463,9 +5532,11 @@ type ConnectorConfig struct {
 	// 	- Service `smarthr`: Your SmartHR subdomain.
 	// 	- Service `sonarqube`: Your Sonarqube subdomain.
 	// 	- Service `toast`: Your Toast domain.
+	// 	- Service `uptempo`: Your Uptempo subdomain.
 	// 	- Service `vts`: Your VTS Subdomain.
 	// 	- Service `yext`: Your Yext subdomain.
 	// 	- Service `zendeskChat`: Your Zendesk domain.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management subdomain.
 	Subdomain *string `pulumi:"subdomain"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetranSubSchema`
@@ -5775,6 +5846,7 @@ type ConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `elasticCloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+	// 	- Service `epicClarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `esSelfHosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
 	// 	- Service `googleCloudMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `googleCloudPostgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -5831,6 +5903,7 @@ type ConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `ehr`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `elasticCloud`: SSH port, specify only to connect using an SSH tunnel.
+	// 	- Service `epicClarity`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `esSelfHosted`: SSH port, specify only to connect using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `googleCloudPostgresql`: SSH port, specify only to connect via an SSH tunnel.
@@ -5887,6 +5960,7 @@ type ConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `ehr`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `elasticCloud`: SSH user, specify only to connect using an SSH tunnel.
+	// 	- Service `epicClarity`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `esSelfHosted`: SSH user, specify only to connect using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `googleCloudPostgresql`: SSH user, specify only to connect via an SSH tunnel.
@@ -5944,6 +6018,7 @@ type ConnectorConfig struct {
 	// 	- Service `clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 	// 	- Service `dynamics365Fo`: Update Method
 	// 	- Service `ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
+	// 	- Service `epicClarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 	// 	- Service `googleCloudMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 	// 	- Service `googleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 	// 	- Service `googleCloudSqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
@@ -5980,6 +6055,9 @@ type ConnectorConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `mandrill`: Whether to use multiple API keys for interaction.
 	UseApiKeys *bool `pulumi:"useApiKeys"`
+	// Field usage depends on `service` value:
+	// 	- Service `amplitude`: Sync events from cloud storage
+	UseCloudStorage *bool `pulumi:"useCloudStorage"`
 	// Field usage depends on `service` value:
 	// 	- Service `appsflyer`: Use Custom Bucket. Set it to 'true' if the data is being synced to your S3 bucket instead of an AppsFlyer-managed bucket.
 	UseCustomerBucket *bool `pulumi:"useCustomerBucket"`
@@ -6026,6 +6104,7 @@ type ConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: The user name. The format must be `user@domain`.
 	// 	- Service `ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
 	// 	- Service `elasticCloud`: The user name.
+	// 	- Service `epicClarity`: The user name.  For Azure Databases, the format must be `user@domain`.
 	// 	- Service `esSelfHosted`: The user name.
 	// 	- Service `ftp`: FTP user.
 	// 	- Service `googleCloudMysql`: The user name.
@@ -6076,7 +6155,7 @@ type ConnectorConfig struct {
 	// 	- Service `coassemble`: Your Coassemble user ID.
 	// 	- Service `gmail`: (DEPRECATED) Your Gmail user ID.
 	// 	- Service `hibob`: Your HiBob Service User Token.
-	// 	- Service `marketo`: Marketo SOAP API User Id.
+	// 	- Service `marketo`: Marketo SOAP API User Id (Discontinued).
 	// 	- Service `okendo`: Your Okendo user ID.
 	// 	- Service `playvox`: Your Playvox User ID.
 	// 	- Service `sageIntacct`: User ID
@@ -6158,6 +6237,7 @@ type ConnectorConfig struct {
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
 	// 	- Service `unicommerce`: Your uniware login username.
 	// 	- Service `upland`: Your Upland Software Username.
+	// 	- Service `uptempo`: Your Uptempo username.
 	// 	- Service `veevaVault`: Username
 	// 	- Service `veevavault`: Your Veeva Vault username.
 	// 	- Service `whenIWork`: Your When I Work username.
@@ -6167,6 +6247,8 @@ type ConnectorConfig struct {
 	// 	- Service `xandr`: Your Xandr username.
 	// 	- Service `yougovBrandindex`: Your YouGov BrandIndex username.
 	// 	- Service `younium`: Your Younium username.
+	// 	- Service `zuora`: The API username with the necessary access permissions.
+	// 	- Service `zuoraSandbox`: The API username with the necessary access permissions.
 	Username *string `pulumi:"username"`
 	// Field usage depends on `service` value:
 	// 	- Service `itunesConnect`: Your vendors id
@@ -6566,6 +6648,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: Require TLS through Tunnel.
 	// 	- Service `ehr`: Require TLS through Tunnel.
 	// 	- Service `elasticCloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+	// 	- Service `epicClarity`: Require TLS through Tunnel.
 	// 	- Service `esSelfHosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: Require TLS through Tunnel
 	// 	- Service `googleCloudPostgresql`: Require TLS through Tunnel
@@ -6626,6 +6709,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `anvyl`: Your Anvyl API key.
 	// 	- Service `apollo`: Your Apollo API key.
 	// 	- Service `appcues`: Your Appcues API key.
+	// 	- Service `ascendByPartnerize`: Your Ascend by Partnerize API Key
 	// 	- Service `ashby`: Your Ashby API key.
 	// 	- Service `assembled`: Your Assembled API key.
 	// 	- Service `atlassianJiraAlign`: Your Jira Align API key.
@@ -6667,6 +6751,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `column`: Your Column API key.
 	// 	- Service `concord`: Your Concord API key.
 	// 	- Service `confluentCloud`: API Key
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API key.
 	// 	- Service `contrastSecurity`: Your Contrast Security API Key.
 	// 	- Service `copper`: Your Copper API key.
 	// 	- Service `coupa`: Your Coupa API key.
@@ -6681,6 +6766,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `drata`: Your Drata API Key.
 	// 	- Service `dropboxSign`: Your Dropbox Sign API key.
 	// 	- Service `duoplane`: Your Duoplane API key.
+	// 	- Service `dutchie`: Your Dutchie API key.
 	// 	- Service `easypost`: Your EasyPost API Key.
 	// 	- Service `electronicTenantSolutions`: Your Electronic Tenant Solutions API key.
 	// 	- Service `eventsforce`: Your Eventsforce API secret key.
@@ -6710,6 +6796,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `grin`: Your Grin API key.
 	// 	- Service `happyfox`: Your HappyFox API key.
 	// 	- Service `height`: Your Height API key.
+	// 	- Service `helpjuice`: Your Helpjuice API key.
 	// 	- Service `helpshift`: Your Helpshift API Key.
 	// 	- Service `incidentio`: Your incident.io API key.
 	// 	- Service `infobip`: Your Infobip API key.
@@ -6731,6 +6818,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `liftoff`: Your Liftoff API key.
 	// 	- Service `linear`: Your Linear API key.
 	// 	- Service `linksquares`: Your LinkSquares API key.
+	// 	- Service `listen360`: Your Listen360 API key.
 	// 	- Service `lob`: Your Lob API key.
 	// 	- Service `loop`: Your Loop API key.
 	// 	- Service `lucca`: Your Lucca API key.
@@ -6749,6 +6837,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `okendo`: Your Okendo API key.
 	// 	- Service `ometria`: Your Ometria API Key.
 	// 	- Service `oncehub`: Your OnceHub API key.
+	// 	- Service `openai`: Your OpenAI API key.
 	// 	- Service `ordergroove`: Your Ordergroove API key.
 	// 	- Service `ordway`: Your Ordway API key.
 	// 	- Service `ortto`: Your Ortto API key.
@@ -6777,7 +6866,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `revops`: Your RevOps bearer token.
 	// 	- Service `ricochet360`: Your Ricochet360 API key.
 	// 	- Service `ringover`: Your Ringover API key.
-	// 	- Service `rippling`: Your Rippling API key.
+	// 	- Service `rippling`: Your Rippling API token.
 	// 	- Service `rocketlane`: Your Rocketlane API key.
 	// 	- Service `rootly`: Your Rootly API key.
 	// 	- Service `ruddr`: Your Ruddr API key.
@@ -6846,7 +6935,12 @@ type ConnectorConfigArgs struct {
 	// 	- Service `qualtrics`: Allowed number of API requests to Qualtrics per minute, the default value is 2000. Maximum allowed number is 3000 because brands may make up to 3000 API requests per minute across all of its API calls.
 	ApiRequestsPerMinute pulumi.IntPtrInput `pulumi:"apiRequestsPerMinute"`
 	// Field usage depends on `service` value:
+	// 	- Service `zuora`: The API role assigned to the integration user.
+	// 	- Service `zuoraSandbox`: The API role assigned to the integration user.
+	ApiRole pulumi.StringPtrInput `pulumi:"apiRole"`
+	// Field usage depends on `service` value:
 	// 	- Service `confluentCloud`: API Secret
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API secret.
 	// 	- Service `forjCommunity`: Your Forj Community API secret.
 	// 	- Service `friendbuy`: Your Friendbuy API secret.
 	// 	- Service `justcall`: Your JustCall API secret.
@@ -6923,6 +7017,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `webScraper`: Your Web Scraper API token.
 	// 	- Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
 	// 	- Service `zendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management API token.
 	ApiToken pulumi.StringPtrInput `pulumi:"apiToken"`
 	ApiType  pulumi.StringPtrInput `pulumi:"apiType"`
 	// Field usage depends on `service` value:
@@ -7112,6 +7207,8 @@ type ConnectorConfigArgs struct {
 	// 	- Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
 	// 	- Service `github`: Authorization type.
 	// 	- Service `workday`: Authentication Mode
+	// 	- Service `workdayFinancialManagement`: Authentication Mode
+	// 	- Service `workdayHcm`: Authentication Mode
 	AuthMode pulumi.StringPtrInput `pulumi:"authMode"`
 	// Field usage depends on `service` value:
 	// 	- Service `webhooks`: The secret you want to use for HMAC/token-based auth methods
@@ -7162,6 +7259,7 @@ type ConnectorConfigArgs struct {
 	BackintConfigurationPath pulumi.StringPtrInput `pulumi:"backintConfigurationPath"`
 	BackintExecutablePath    pulumi.StringPtrInput `pulumi:"backintExecutablePath"`
 	// Field usage depends on `service` value:
+	// 	- Service `amazonSellingPartner`: The earliest date to sync data from, in YYYY-MM-DD format. Cannot be before 1994-01-01 or in the future.
 	// 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
 	// 	- Service `stripe`: Limit of the Historical Sync Time for selected tables
 	// 	- Service `stripeTest`: Limit of the Historical Sync Time for selected tables
@@ -7169,6 +7267,8 @@ type ConnectorConfigArgs struct {
 	BackwardSyncLimit pulumi.StringPtrInput `pulumi:"backwardSyncLimit"`
 	// Field usage depends on `service` value:
 	// 	- Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+	// 	- Service `mixpanel`: Date from which data needs to be synced.
+	// 	- Service `pendo`: The start date (YYYY-MM-DD) from which to sync historical data.
 	BackwardSyncLimitDate pulumi.StringPtrInput `pulumi:"backwardSyncLimitDate"`
 	// Field usage depends on `service` value:
 	// 	- Service `openExchangeRates`: Your Open Exchange Rates Base Currency.
@@ -7226,6 +7326,11 @@ type ConnectorConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
 	BinaryLogType pulumi.StringPtrInput `pulumi:"binaryLogType"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureCosmosForMongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	// 	- Service `mongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	// 	- Service `mongoSharded`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	BinaryRepresentation pulumi.StringPtrInput `pulumi:"binaryRepresentation"`
 	// Field usage depends on `service` value:
 	// 	- Service `webhooks`: The blob SAS URL of your Azure container. Required if `bucketService` is set to `AZURE`.
 	BlobSasUrl pulumi.StringPtrInput `pulumi:"blobSasUrl"`
@@ -7305,7 +7410,7 @@ type ConnectorConfigArgs struct {
 	ClientHost pulumi.StringPtrInput `pulumi:"clientHost"`
 	// Field usage depends on `service` value:
 	// 	- Service `acumatica`: Your Acumatica client ID.
-	// 	- Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+	// 	- Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server credentials of your Adobe Project.
 	// 	- Service `adobeWorkfront`: Your Adobe Workfront client ID.
 	// 	- Service `adpWorkforceNow`: Your ADP Client ID.
 	// 	- Service `akamai`: Your Akamai client ID.
@@ -7316,6 +7421,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client ID.
 	// 	- Service `bingWebmasterTools`: Your Bing Webmaster Tools client ID.
 	// 	- Service `brightcove`: Your Brightcove client ID.
+	// 	- Service `brightflag`: Your Brightflag client ID.
 	// 	- Service `brightpearl`: Your Brightpearl client ID.
 	// 	- Service `brivo`: Your Brivo client ID.
 	// 	- Service `buildium`: Your Buildium API client ID.
@@ -7323,6 +7429,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `canvasByInstructure`: Your Canvas by Instructure client ID.
 	// 	- Service `canvasData2ByInstructure`: Your Canvas Data 2 by Instructure client ID.
 	// 	- Service `castorEdc`: Your Castor EDC client Id.
+	// 	- Service `classy`: Your Classy client ID.
 	// 	- Service `clazar`: Your Clazar client ID.
 	// 	- Service `cloudbeds`: Your Cloudbeds client ID.
 	// 	- Service `commercetools`: Your commercetools client ID.
@@ -7332,6 +7439,8 @@ type ConnectorConfigArgs struct {
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo Client ID.
 	// 	- Service `criteoRetailMedia`: Your Criteo Retail Media client ID.
+	// 	- Service `cube`: Your Cube Client ID.
+	// 	- Service `cubeSoftware`: Your Cube Software Client ID.
 	// 	- Service `cultureAmp`: Your Culture Amp client ID.
 	// 	- Service `cvent`: Your Cvent client ID.
 	// 	- Service `d2lBrightspace`: Your D2L Brightspace client ID.
@@ -7430,6 +7539,8 @@ type ConnectorConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `destini`: Your Destini Client Name.
 	// 	- Service `medallia`: Medallia company name
+	// 	- Service `zuora`: The name of your organization as registered with Zuora Revenue.
+	// 	- Service `zuoraSandbox`: The name of your organization as registered with Zuora Revenue.
 	ClientName pulumi.StringPtrInput `pulumi:"clientName"`
 	// Field usage depends on `service` value:
 	// 	- Service `ceridianDayforce`: Your Ceridian Dayforce client namespace.
@@ -7472,7 +7583,7 @@ type ConnectorConfigArgs struct {
 	ClientPublicCertificate pulumi.StringPtrInput `pulumi:"clientPublicCertificate"`
 	// Field usage depends on `service` value:
 	// 	- Service `acumatica`: Your Acumatica client secret.
-	// 	- Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+	// 	- Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server credentials of your Adobe Project.
 	// 	- Service `adobeWorkfront`: Your Adobe Workfront client secret.
 	// 	- Service `adpWorkforceNow`: Your ADP Client Secret.
 	// 	- Service `akamai`: Your Akamai client secret.
@@ -7483,10 +7594,12 @@ type ConnectorConfigArgs struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client secret.
 	// 	- Service `bingWebmasterTools`: Your Bing Webmaster Tools client secret.
 	// 	- Service `brightcove`: Your Brightcove client secret.
+	// 	- Service `brightflag`: Your Brightflag client secret.
 	// 	- Service `brightpearl`: Your Brightpearl client secret.
 	// 	- Service `brivo`: Your Brivo client secret.
 	// 	- Service `canvasByInstructure`: Your Canvas by Instructure client secret.
 	// 	- Service `castorEdc`: Your Castor EDC client secret.
+	// 	- Service `classy`: Your Classy client secret.
 	// 	- Service `clazar`: Your Clazar client secret.
 	// 	- Service `cloudbeds`: Your Cloudbeds client secret.
 	// 	- Service `commercetools`: Your commercetools client secret.
@@ -7496,6 +7609,8 @@ type ConnectorConfigArgs struct {
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo client secret key.
 	// 	- Service `criteoRetailMedia`: Your Criteo Retail Media client secret.
+	// 	- Service `cube`: Your Cube Client Secret.
+	// 	- Service `cubeSoftware`: Your Cube Software Client Secret.
 	// 	- Service `cultureAmp`: Your Culture Amp client secret.
 	// 	- Service `cvent`: Your Cvent client secret.
 	// 	- Service `d2lBrightspace`: Your D2L Brightspace client secret.
@@ -7604,6 +7719,8 @@ type ConnectorConfigArgs struct {
 	Company pulumi.StringPtrInput `pulumi:"company"`
 	// Field usage depends on `service` value:
 	// 	- Service `360learning`: Your 360Learning Company ID.
+	// 	- Service `cube`: Your Cube Company ID.
+	// 	- Service `cubeSoftware`: Your Cube Software Company ID.
 	// 	- Service `sageIntacct`: Company ID
 	// 	- Service `sapSuccessFactors`: Your SAP SuccessFactors Company ID.
 	CompanyId pulumi.StringPtrInput `pulumi:"companyId"`
@@ -7696,6 +7813,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `elasticCloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `email`: Connection method. Default value: `Directly`.
+	// 	- Service `epicClarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `esSelfHosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -7806,6 +7924,9 @@ type ConnectorConfigArgs struct {
 	// 	- Service `deposco`: Your Deposco custom base URL.
 	CustomBaseUrl pulumi.StringPtrInput `pulumi:"customBaseUrl"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+	CustomDimensionKeyIds pulumi.StringArrayInput `pulumi:"customDimensionKeyIds"`
+	// Field usage depends on `service` value:
 	// 	- Service `iterable`: Custom Events Sync Mode.
 	CustomEventSyncMode pulumi.StringPtrInput `pulumi:"customEventSyncMode"`
 	// Field usage depends on `service` value:
@@ -7818,8 +7939,11 @@ type ConnectorConfigArgs struct {
 	// 	- Service `doubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
 	CustomFloodlightVariables pulumi.StringArrayInput                `pulumi:"customFloodlightVariables"`
 	CustomPayloads            ConnectorConfigCustomPayloadArrayInput `pulumi:"customPayloads"`
-	CustomReports             ConnectorConfigCustomReportArrayInput  `pulumi:"customReports"`
-	CustomTables              ConnectorConfigCustomTableArrayInput   `pulumi:"customTables"`
+	// Field usage depends on `service` value:
+	// 	- Service `togglTrack`: Your Toggl Track custom rate limit. Supports only numeric characters (0-9).
+	CustomRateLimit pulumi.StringPtrInput                 `pulumi:"customRateLimit"`
+	CustomReports   ConnectorConfigCustomReportArrayInput `pulumi:"customReports"`
+	CustomTables    ConnectorConfigCustomTableArrayInput  `pulumi:"customTables"`
 	// Field usage depends on `service` value:
 	// 	- Service `dbtCloud`: Your dbt Cloud access url.
 	// 	- Service `factbird`: Your Factbird custom base url.
@@ -7863,6 +7987,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `db2iSapHva`: The database name.
 	// 	- Service `dynamics365Fo`: The database name.
 	// 	- Service `ehr`: The database name.
+	// 	- Service `epicClarity`: The database name.
 	// 	- Service `googleCloudMysql`: The database name.
 	// 	- Service `googleCloudPostgresql`: The database name.
 	// 	- Service `googleCloudSqlserver`: The database name.
@@ -7997,6 +8122,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `appcues`: Your Appcues Email.
 	// 	- Service `assetPanda`: Your Asset Panda email.
 	// 	- Service `boostr`: Your Boostr email.
+	// 	- Service `consensusDemoAutomationPlatform`: The email address of the Consensus Demo Automation Platform account you want Fivetran to use to access your data.
 	// 	- Service `copper`: Your Copper email address.
 	// 	- Service `email`: Send your emails to this address.
 	// 	- Service `moloco`: Your Moloco account email.
@@ -8015,6 +8141,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `cabcharge`: Your Cabcharge email ID.
 	// 	- Service `ordway`: Your Ordway user email ID.
 	// 	- Service `planful`: Your Planful email ID.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management email ID.
 	EmailId pulumi.StringPtrInput `pulumi:"emailId"`
 	// Field usage depends on `service` value:
 	// 	- Service `awsCostReport`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
@@ -8067,7 +8194,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `appleSearchAds`: Use the public key to grant Fivetran access to Apple Search Ads api.
 	EncodedPublicKey pulumi.StringPtrInput `pulumi:"encodedPublicKey"`
 	// Field usage depends on `service` value:
-	// 	- Service `marketo`: Marketo SOAP API Encryption Key.
+	// 	- Service `marketo`: Marketo SOAP API Encryption Key (Discontinued).
 	EncryptionKey pulumi.StringPtrInput `pulumi:"encryptionKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `branch`: Webhook Endpoint
@@ -8165,6 +8292,7 @@ type ConnectorConfigArgs struct {
 	Events pulumi.StringArrayInput `pulumi:"events"`
 	// Field usage depends on `service` value:
 	// 	- Service `adjust`: Your cloud storage.
+	// 	- Service `amplitude`: Your cloud storage type
 	// 	- Service `braze`: Export Storage. Required if `enableExports` is `true`
 	ExportStorageType pulumi.StringPtrInput `pulumi:"exportStorageType"`
 	// Field usage depends on `service` value:
@@ -8323,8 +8451,11 @@ type ConnectorConfigArgs struct {
 	// 	- Service `pardotSandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
 	HistoricalSyncLimitTimeFrame pulumi.StringPtrInput `pulumi:"historicalSyncLimitTimeFrame"`
 	// Field usage depends on `service` value:
+	// 	- Service `amazonSellingPartner`: The time frame for historical data synchronization. Default value: `ALL_TIME`.
 	// 	- Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
 	// 	- Service `hubspot`: Used to configure Historical sync timeframe for selected tables
+	// 	- Service `mixpanel`: Should sync all data or adhere to `backwardSyncLimitDate`
+	// 	- Service `pendo`: The time range for which historical data should be synced. Default value: `All Time`.
 	// 	- Service `rokt`: Your Rokt historical sync time frame.
 	// 	- Service `shopify`: Used to configure Historical sync timeframe for selected tables
 	// 	- Service `skimlinks`: Your Skimlinks Historical sync time frame.
@@ -8353,6 +8484,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: DB instance host or IP address.
 	// 	- Service `ehr`: DB instance host or IP address.
 	// 	- Service `elasticCloud`: DB instance host or IP address.
+	// 	- Service `epicClarity`: DB instance host or IP address.
 	// 	- Service `esSelfHosted`: DB instance host or IP address.
 	// 	- Service `ftp`: FTP host address.
 	// 	- Service `googleCloudMysql`: DB instance host or IP address.
@@ -8405,6 +8537,8 @@ type ConnectorConfigArgs struct {
 	// 	- Service `coassemble`: Your Coassemble Hostname.
 	// 	- Service `datadog`: Your Datadog host name.
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
+	// 	- Service `zuora`: The domain or URL of your Zuora Revenue instance.
+	// 	- Service `zuoraSandbox`: The domain or URL of your Zuora Revenue instance.
 	HostName pulumi.StringPtrInput `pulumi:"hostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adobeCommerce`: Your Adobe Commerce host url.
@@ -8443,6 +8577,9 @@ type ConnectorConfigArgs struct {
 	// 	- Service `salesforceMarketingCloud`: The Salesforce Marketing Cloud instance ID
 	// 	- Service `servicenow`: ServiceNow Instance ID.
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Instance code for Workday Adaptive Planning
+	InstanceCode pulumi.StringPtrInput `pulumi:"instanceCode"`
 	// Field usage depends on `service` value:
 	// 	- Service `hanaSapHvaB1`: Two-digit number (00-97) of the SAP instance within its host.
 	// 	- Service `hanaSapHvaEcc`: Two-digit number (00-97) of the SAP instance within its host.
@@ -8618,6 +8755,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `reboundReturns`: Your ReBound Returns login.
 	// 	- Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
 	// 	- Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
+	// 	- Service `workdayAdaptive`: User email address
 	Login pulumi.StringPtrInput `pulumi:"login"`
 	// Field usage depends on `service` value:
 	// 	- Service `concur`: The SAP Concur password.
@@ -8826,6 +8964,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: The user's password.
 	// 	- Service `ehr`: The user's password.
 	// 	- Service `elasticCloud`: The user's password.
+	// 	- Service `epicClarity`: The user's password.
 	// 	- Service `esSelfHosted`: The user's password.
 	// 	- Service `ftp`: FTP password.
 	// 	- Service `globalmeet`: Your GlobalMeet Password.
@@ -8917,17 +9056,21 @@ type ConnectorConfigArgs struct {
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
 	// 	- Service `unicommerce`: Your uniware login password.
 	// 	- Service `upland`: Your Upland Software Password.
+	// 	- Service `uptempo`: Your Uptempo password.
 	// 	- Service `veevaVault`: Password
 	// 	- Service `veevavault`: Your Veeva Vault password.
 	// 	- Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
 	// 	- Service `whenIWork`: Your When I Work password.
 	// 	- Service `wherefour`: Your Wherefour password.
 	// 	- Service `workday`: Workday password.
+	// 	- Service `workdayAdaptive`: User password
 	// 	- Service `workdayFinancialManagement`: Workday password.
 	// 	- Service `workdayHcm`: Workday password.
 	// 	- Service `xandr`: Your Xandr password.
 	// 	- Service `yougovBrandindex`: Your YouGov BrandIndex password.
 	// 	- Service `younium`: Your Younium password.
+	// 	- Service `zuora`: The corresponding password for the API user.
+	// 	- Service `zuoraSandbox`: The corresponding password for the API user.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Field usage depends on `service` value:
 	// 	- Service `github`: The `Personal Access Token` generated in Github.
@@ -9030,6 +9173,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: The port number.
 	// 	- Service `ehr`: The port number.
 	// 	- Service `elasticCloud`: The port number.
+	// 	- Service `epicClarity`: The port number.
 	// 	- Service `esSelfHosted`: The port number.
 	// 	- Service `ftp`: FTP port.
 	// 	- Service `googleCloudMysql`: The port number.
@@ -9261,6 +9405,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+	// 	- Service `ftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
@@ -9273,6 +9418,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+	// 	- Service `ftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
@@ -9281,6 +9427,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `sharePoint`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	QuoteCharacterEnabled pulumi.BoolPtrInput `pulumi:"quoteCharacterEnabled"`
 	// Field usage depends on `service` value:
+	// 	- Service `togglTrack`: Your Toggl Track plan type.
 	// 	- Service `vimeo`: Your Vimeo rate limit plan.
 	RateLimitPlan pulumi.StringPtrInput `pulumi:"rateLimitPlan"`
 	// Field usage depends on `service` value:
@@ -9299,6 +9446,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `awin`: Your Awin Region.
 	// 	- Service `awsLambda`: The AWS region code for the DynamoDB instance.
 	// 	- Service `biginByZohoCrm`: Your Bigin by Zoho CRM Region
+	// 	- Service `brightflag`: Your Brightflag region.
 	// 	- Service `concur`: The region.
 	// 	- Service `cvent`: Your Cvent region.
 	// 	- Service `everflow`: Your Everflow region.
@@ -9806,7 +9954,7 @@ type ConnectorConfigArgs struct {
 	SncPartnerName pulumi.StringPtrInput `pulumi:"sncPartnerName"`
 	SncSourceName  pulumi.StringPtrInput `pulumi:"sncSourceName"`
 	// Field usage depends on `service` value:
-	// 	- Service `marketo`: Marketo SOAP API Endpoint.
+	// 	- Service `marketo`: Marketo SOAP API Endpoint (Discontinued).
 	SoapUri pulumi.StringPtrInput `pulumi:"soapUri"`
 	// Field usage depends on `service` value:
 	// 	- Service `linkedinCompanyPages`: The social data (UGCPosts, Shares, Comments) sync time frame in months. Default value: `SIX` .
@@ -9814,6 +9962,9 @@ type ConnectorConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adobeAnalyticsDataFeed`: The data source.
 	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Field usage depends on `service` value:
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform source name.
+	SourceName pulumi.StringPtrInput `pulumi:"sourceName"`
 	// Field usage depends on `service` value:
 	// 	- Service `bigCommerce`: The BigCommerce store hash.
 	StoreHash pulumi.StringPtrInput `pulumi:"storeHash"`
@@ -9926,9 +10077,11 @@ type ConnectorConfigArgs struct {
 	// 	- Service `smarthr`: Your SmartHR subdomain.
 	// 	- Service `sonarqube`: Your Sonarqube subdomain.
 	// 	- Service `toast`: Your Toast domain.
+	// 	- Service `uptempo`: Your Uptempo subdomain.
 	// 	- Service `vts`: Your VTS Subdomain.
 	// 	- Service `yext`: Your Yext subdomain.
 	// 	- Service `zendeskChat`: Your Zendesk domain.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management subdomain.
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetranSubSchema`
@@ -10238,6 +10391,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `elasticCloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+	// 	- Service `epicClarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `esSelfHosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
 	// 	- Service `googleCloudMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `googleCloudPostgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -10294,6 +10448,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `ehr`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `elasticCloud`: SSH port, specify only to connect using an SSH tunnel.
+	// 	- Service `epicClarity`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `esSelfHosted`: SSH port, specify only to connect using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `googleCloudPostgresql`: SSH port, specify only to connect via an SSH tunnel.
@@ -10350,6 +10505,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `ehr`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `elasticCloud`: SSH user, specify only to connect using an SSH tunnel.
+	// 	- Service `epicClarity`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `esSelfHosted`: SSH user, specify only to connect using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `googleCloudPostgresql`: SSH user, specify only to connect via an SSH tunnel.
@@ -10407,6 +10563,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 	// 	- Service `dynamics365Fo`: Update Method
 	// 	- Service `ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
+	// 	- Service `epicClarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 	// 	- Service `googleCloudMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 	// 	- Service `googleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 	// 	- Service `googleCloudSqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
@@ -10443,6 +10600,9 @@ type ConnectorConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `mandrill`: Whether to use multiple API keys for interaction.
 	UseApiKeys pulumi.BoolPtrInput `pulumi:"useApiKeys"`
+	// Field usage depends on `service` value:
+	// 	- Service `amplitude`: Sync events from cloud storage
+	UseCloudStorage pulumi.BoolPtrInput `pulumi:"useCloudStorage"`
 	// Field usage depends on `service` value:
 	// 	- Service `appsflyer`: Use Custom Bucket. Set it to 'true' if the data is being synced to your S3 bucket instead of an AppsFlyer-managed bucket.
 	UseCustomerBucket pulumi.BoolPtrInput `pulumi:"useCustomerBucket"`
@@ -10489,6 +10649,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: The user name. The format must be `user@domain`.
 	// 	- Service `ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
 	// 	- Service `elasticCloud`: The user name.
+	// 	- Service `epicClarity`: The user name.  For Azure Databases, the format must be `user@domain`.
 	// 	- Service `esSelfHosted`: The user name.
 	// 	- Service `ftp`: FTP user.
 	// 	- Service `googleCloudMysql`: The user name.
@@ -10539,7 +10700,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `coassemble`: Your Coassemble user ID.
 	// 	- Service `gmail`: (DEPRECATED) Your Gmail user ID.
 	// 	- Service `hibob`: Your HiBob Service User Token.
-	// 	- Service `marketo`: Marketo SOAP API User Id.
+	// 	- Service `marketo`: Marketo SOAP API User Id (Discontinued).
 	// 	- Service `okendo`: Your Okendo user ID.
 	// 	- Service `playvox`: Your Playvox User ID.
 	// 	- Service `sageIntacct`: User ID
@@ -10621,6 +10782,7 @@ type ConnectorConfigArgs struct {
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
 	// 	- Service `unicommerce`: Your uniware login username.
 	// 	- Service `upland`: Your Upland Software Username.
+	// 	- Service `uptempo`: Your Uptempo username.
 	// 	- Service `veevaVault`: Username
 	// 	- Service `veevavault`: Your Veeva Vault username.
 	// 	- Service `whenIWork`: Your When I Work username.
@@ -10630,6 +10792,8 @@ type ConnectorConfigArgs struct {
 	// 	- Service `xandr`: Your Xandr username.
 	// 	- Service `yougovBrandindex`: Your YouGov BrandIndex username.
 	// 	- Service `younium`: Your Younium username.
+	// 	- Service `zuora`: The API username with the necessary access permissions.
+	// 	- Service `zuoraSandbox`: The API username with the necessary access permissions.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 	// Field usage depends on `service` value:
 	// 	- Service `itunesConnect`: Your vendors id
@@ -11258,6 +11422,7 @@ func (o ConnectorConfigOutput) Algorithm() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: Require TLS through Tunnel.
 //   - Service `ehr`: Require TLS through Tunnel.
 //   - Service `elasticCloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+//   - Service `epicClarity`: Require TLS through Tunnel.
 //   - Service `esSelfHosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
 //   - Service `googleCloudMysql`: Require TLS through Tunnel
 //   - Service `googleCloudPostgresql`: Require TLS through Tunnel
@@ -11333,6 +11498,7 @@ func (o ConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `anvyl`: Your Anvyl API key.
 //   - Service `apollo`: Your Apollo API key.
 //   - Service `appcues`: Your Appcues API key.
+//   - Service `ascendByPartnerize`: Your Ascend by Partnerize API Key
 //   - Service `ashby`: Your Ashby API key.
 //   - Service `assembled`: Your Assembled API key.
 //   - Service `atlassianJiraAlign`: Your Jira Align API key.
@@ -11374,6 +11540,7 @@ func (o ConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `column`: Your Column API key.
 //   - Service `concord`: Your Concord API key.
 //   - Service `confluentCloud`: API Key
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API key.
 //   - Service `contrastSecurity`: Your Contrast Security API Key.
 //   - Service `copper`: Your Copper API key.
 //   - Service `coupa`: Your Coupa API key.
@@ -11388,6 +11555,7 @@ func (o ConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `drata`: Your Drata API Key.
 //   - Service `dropboxSign`: Your Dropbox Sign API key.
 //   - Service `duoplane`: Your Duoplane API key.
+//   - Service `dutchie`: Your Dutchie API key.
 //   - Service `easypost`: Your EasyPost API Key.
 //   - Service `electronicTenantSolutions`: Your Electronic Tenant Solutions API key.
 //   - Service `eventsforce`: Your Eventsforce API secret key.
@@ -11417,6 +11585,7 @@ func (o ConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `grin`: Your Grin API key.
 //   - Service `happyfox`: Your HappyFox API key.
 //   - Service `height`: Your Height API key.
+//   - Service `helpjuice`: Your Helpjuice API key.
 //   - Service `helpshift`: Your Helpshift API Key.
 //   - Service `incidentio`: Your incident.io API key.
 //   - Service `infobip`: Your Infobip API key.
@@ -11438,6 +11607,7 @@ func (o ConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `liftoff`: Your Liftoff API key.
 //   - Service `linear`: Your Linear API key.
 //   - Service `linksquares`: Your LinkSquares API key.
+//   - Service `listen360`: Your Listen360 API key.
 //   - Service `lob`: Your Lob API key.
 //   - Service `loop`: Your Loop API key.
 //   - Service `lucca`: Your Lucca API key.
@@ -11456,6 +11626,7 @@ func (o ConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `okendo`: Your Okendo API key.
 //   - Service `ometria`: Your Ometria API Key.
 //   - Service `oncehub`: Your OnceHub API key.
+//   - Service `openai`: Your OpenAI API key.
 //   - Service `ordergroove`: Your Ordergroove API key.
 //   - Service `ordway`: Your Ordway API key.
 //   - Service `ortto`: Your Ortto API key.
@@ -11484,7 +11655,7 @@ func (o ConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `revops`: Your RevOps bearer token.
 //   - Service `ricochet360`: Your Ricochet360 API key.
 //   - Service `ringover`: Your Ringover API key.
-//   - Service `rippling`: Your Rippling API key.
+//   - Service `rippling`: Your Rippling API token.
 //   - Service `rocketlane`: Your Rocketlane API key.
 //   - Service `rootly`: Your Rootly API key.
 //   - Service `ruddr`: Your Ruddr API key.
@@ -11574,7 +11745,15 @@ func (o ConnectorConfigOutput) ApiRequestsPerMinute() pulumi.IntPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `zuora`: The API role assigned to the integration user.
+//   - Service `zuoraSandbox`: The API role assigned to the integration user.
+func (o ConnectorConfigOutput) ApiRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiRole }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `confluentCloud`: API Secret
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API secret.
 //   - Service `forjCommunity`: Your Forj Community API secret.
 //   - Service `friendbuy`: Your Friendbuy API secret.
 //   - Service `justcall`: Your JustCall API secret.
@@ -11660,6 +11839,7 @@ func (o ConnectorConfigOutput) ApiServer() pulumi.StringPtrOutput {
 //   - Service `webScraper`: Your Web Scraper API token.
 //   - Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
 //   - Service `zendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management API token.
 func (o ConnectorConfigOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
@@ -11969,6 +12149,8 @@ func (o ConnectorConfigOutput) AuthMethod() pulumi.StringPtrOutput {
 //   - Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
 //   - Service `github`: Authorization type.
 //   - Service `workday`: Authentication Mode
+//   - Service `workdayFinancialManagement`: Authentication Mode
+//   - Service `workdayHcm`: Authentication Mode
 func (o ConnectorConfigOutput) AuthMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
 }
@@ -12052,6 +12234,7 @@ func (o ConnectorConfigOutput) BackintExecutablePath() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `amazonSellingPartner`: The earliest date to sync data from, in YYYY-MM-DD format. Cannot be before 1994-01-01 or in the future.
 //   - Service `shopify`: Limit of the Historical Sync Time for selected tables
 //   - Service `stripe`: Limit of the Historical Sync Time for selected tables
 //   - Service `stripeTest`: Limit of the Historical Sync Time for selected tables
@@ -12062,6 +12245,8 @@ func (o ConnectorConfigOutput) BackwardSyncLimit() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+//   - Service `mixpanel`: Date from which data needs to be synced.
+//   - Service `pendo`: The start date (YYYY-MM-DD) from which to sync historical data.
 func (o ConnectorConfigOutput) BackwardSyncLimitDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.BackwardSyncLimitDate }).(pulumi.StringPtrOutput)
 }
@@ -12138,6 +12323,14 @@ func (o ConnectorConfigOutput) BearerToken() pulumi.StringPtrOutput {
 //   - Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
 func (o ConnectorConfigOutput) BinaryLogType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.BinaryLogType }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureCosmosForMongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+//   - Service `mongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+//   - Service `mongoSharded`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+func (o ConnectorConfigOutput) BinaryRepresentation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BinaryRepresentation }).(pulumi.StringPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -12276,7 +12469,7 @@ func (o ConnectorConfigOutput) ClientHost() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `acumatica`: Your Acumatica client ID.
-//   - Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+//   - Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server credentials of your Adobe Project.
 //   - Service `adobeWorkfront`: Your Adobe Workfront client ID.
 //   - Service `adpWorkforceNow`: Your ADP Client ID.
 //   - Service `akamai`: Your Akamai client ID.
@@ -12287,6 +12480,7 @@ func (o ConnectorConfigOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `billingPlatform`: Your BillingPlatform client ID.
 //   - Service `bingWebmasterTools`: Your Bing Webmaster Tools client ID.
 //   - Service `brightcove`: Your Brightcove client ID.
+//   - Service `brightflag`: Your Brightflag client ID.
 //   - Service `brightpearl`: Your Brightpearl client ID.
 //   - Service `brivo`: Your Brivo client ID.
 //   - Service `buildium`: Your Buildium API client ID.
@@ -12294,6 +12488,7 @@ func (o ConnectorConfigOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `canvasByInstructure`: Your Canvas by Instructure client ID.
 //   - Service `canvasData2ByInstructure`: Your Canvas Data 2 by Instructure client ID.
 //   - Service `castorEdc`: Your Castor EDC client Id.
+//   - Service `classy`: Your Classy client ID.
 //   - Service `clazar`: Your Clazar client ID.
 //   - Service `cloudbeds`: Your Cloudbeds client ID.
 //   - Service `commercetools`: Your commercetools client ID.
@@ -12303,6 +12498,8 @@ func (o ConnectorConfigOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo Client ID.
 //   - Service `criteoRetailMedia`: Your Criteo Retail Media client ID.
+//   - Service `cube`: Your Cube Client ID.
+//   - Service `cubeSoftware`: Your Cube Software Client ID.
 //   - Service `cultureAmp`: Your Culture Amp client ID.
 //   - Service `cvent`: Your Cvent client ID.
 //   - Service `d2lBrightspace`: Your D2L Brightspace client ID.
@@ -12407,6 +12604,8 @@ func (o ConnectorConfigOutput) ClientKey() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `destini`: Your Destini Client Name.
 //   - Service `medallia`: Medallia company name
+//   - Service `zuora`: The name of your organization as registered with Zuora Revenue.
+//   - Service `zuoraSandbox`: The name of your organization as registered with Zuora Revenue.
 func (o ConnectorConfigOutput) ClientName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ClientName }).(pulumi.StringPtrOutput)
 }
@@ -12461,7 +12660,7 @@ func (o ConnectorConfigOutput) ClientPublicCertificate() pulumi.StringPtrOutput 
 
 // Field usage depends on `service` value:
 //   - Service `acumatica`: Your Acumatica client secret.
-//   - Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+//   - Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server credentials of your Adobe Project.
 //   - Service `adobeWorkfront`: Your Adobe Workfront client secret.
 //   - Service `adpWorkforceNow`: Your ADP Client Secret.
 //   - Service `akamai`: Your Akamai client secret.
@@ -12472,10 +12671,12 @@ func (o ConnectorConfigOutput) ClientPublicCertificate() pulumi.StringPtrOutput 
 //   - Service `billingPlatform`: Your BillingPlatform client secret.
 //   - Service `bingWebmasterTools`: Your Bing Webmaster Tools client secret.
 //   - Service `brightcove`: Your Brightcove client secret.
+//   - Service `brightflag`: Your Brightflag client secret.
 //   - Service `brightpearl`: Your Brightpearl client secret.
 //   - Service `brivo`: Your Brivo client secret.
 //   - Service `canvasByInstructure`: Your Canvas by Instructure client secret.
 //   - Service `castorEdc`: Your Castor EDC client secret.
+//   - Service `classy`: Your Classy client secret.
 //   - Service `clazar`: Your Clazar client secret.
 //   - Service `cloudbeds`: Your Cloudbeds client secret.
 //   - Service `commercetools`: Your commercetools client secret.
@@ -12485,6 +12686,8 @@ func (o ConnectorConfigOutput) ClientPublicCertificate() pulumi.StringPtrOutput 
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo client secret key.
 //   - Service `criteoRetailMedia`: Your Criteo Retail Media client secret.
+//   - Service `cube`: Your Cube Client Secret.
+//   - Service `cubeSoftware`: Your Cube Software Client Secret.
 //   - Service `cultureAmp`: Your Culture Amp client secret.
 //   - Service `cvent`: Your Cvent client secret.
 //   - Service `d2lBrightspace`: Your D2L Brightspace client secret.
@@ -12620,6 +12823,8 @@ func (o ConnectorConfigOutput) Company() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `360learning`: Your 360Learning Company ID.
+//   - Service `cube`: Your Cube Company ID.
+//   - Service `cubeSoftware`: Your Cube Software Company ID.
 //   - Service `sageIntacct`: Company ID
 //   - Service `sapSuccessFactors`: Your SAP SuccessFactors Company ID.
 func (o ConnectorConfigOutput) CompanyId() pulumi.StringPtrOutput {
@@ -12763,6 +12968,7 @@ func (o ConnectorConfigOutput) ConnectionString() pulumi.StringPtrOutput {
 //   - Service `ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `elasticCloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `email`: Connection method. Default value: `Directly`.
+//   - Service `epicClarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `esSelfHosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -12927,6 +13133,12 @@ func (o ConnectorConfigOutput) CustomBaseUrl() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+func (o ConnectorConfigOutput) CustomDimensionKeyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.CustomDimensionKeyIds }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `iterable`: Custom Events Sync Mode.
 func (o ConnectorConfigOutput) CustomEventSyncMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.CustomEventSyncMode }).(pulumi.StringPtrOutput)
@@ -12952,6 +13164,12 @@ func (o ConnectorConfigOutput) CustomFloodlightVariables() pulumi.StringArrayOut
 
 func (o ConnectorConfigOutput) CustomPayloads() ConnectorConfigCustomPayloadArrayOutput {
 	return o.ApplyT(func(v ConnectorConfig) []ConnectorConfigCustomPayload { return v.CustomPayloads }).(ConnectorConfigCustomPayloadArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `togglTrack`: Your Toggl Track custom rate limit. Supports only numeric characters (0-9).
+func (o ConnectorConfigOutput) CustomRateLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.CustomRateLimit }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigOutput) CustomReports() ConnectorConfigCustomReportArrayOutput {
@@ -13035,6 +13253,7 @@ func (o ConnectorConfigOutput) DataSetName() pulumi.StringPtrOutput {
 //   - Service `db2iSapHva`: The database name.
 //   - Service `dynamics365Fo`: The database name.
 //   - Service `ehr`: The database name.
+//   - Service `epicClarity`: The database name.
 //   - Service `googleCloudMysql`: The database name.
 //   - Service `googleCloudPostgresql`: The database name.
 //   - Service `googleCloudSqlserver`: The database name.
@@ -13241,6 +13460,7 @@ func (o ConnectorConfigOutput) Elements() pulumi.StringArrayOutput {
 //   - Service `appcues`: Your Appcues Email.
 //   - Service `assetPanda`: Your Asset Panda email.
 //   - Service `boostr`: Your Boostr email.
+//   - Service `consensusDemoAutomationPlatform`: The email address of the Consensus Demo Automation Platform account you want Fivetran to use to access your data.
 //   - Service `copper`: Your Copper email address.
 //   - Service `email`: Send your emails to this address.
 //   - Service `moloco`: Your Moloco account email.
@@ -13265,6 +13485,7 @@ func (o ConnectorConfigOutput) EmailAddress() pulumi.StringPtrOutput {
 //   - Service `cabcharge`: Your Cabcharge email ID.
 //   - Service `ordway`: Your Ordway user email ID.
 //   - Service `planful`: Your Planful email ID.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management email ID.
 func (o ConnectorConfigOutput) EmailId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.EmailId }).(pulumi.StringPtrOutput)
 }
@@ -13350,7 +13571,7 @@ func (o ConnectorConfigOutput) EncodedPublicKey() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `marketo`: Marketo SOAP API Encryption Key.
+//   - Service `marketo`: Marketo SOAP API Encryption Key (Discontinued).
 func (o ConnectorConfigOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
@@ -13493,6 +13714,7 @@ func (o ConnectorConfigOutput) Events() pulumi.StringArrayOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adjust`: Your cloud storage.
+//   - Service `amplitude`: Your cloud storage type
 //   - Service `braze`: Export Storage. Required if `enableExports` is `true`
 func (o ConnectorConfigOutput) ExportStorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.ExportStorageType }).(pulumi.StringPtrOutput)
@@ -13759,8 +13981,11 @@ func (o ConnectorConfigOutput) HistoricalSyncLimitTimeFrame() pulumi.StringPtrOu
 }
 
 // Field usage depends on `service` value:
+//   - Service `amazonSellingPartner`: The time frame for historical data synchronization. Default value: `ALL_TIME`.
 //   - Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
 //   - Service `hubspot`: Used to configure Historical sync timeframe for selected tables
+//   - Service `mixpanel`: Should sync all data or adhere to `backwardSyncLimitDate`
+//   - Service `pendo`: The time range for which historical data should be synced. Default value: `All Time`.
 //   - Service `rokt`: Your Rokt historical sync time frame.
 //   - Service `shopify`: Used to configure Historical sync timeframe for selected tables
 //   - Service `skimlinks`: Your Skimlinks Historical sync time frame.
@@ -13795,6 +14020,7 @@ func (o ConnectorConfigOutput) HomeFolder() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: DB instance host or IP address.
 //   - Service `ehr`: DB instance host or IP address.
 //   - Service `elasticCloud`: DB instance host or IP address.
+//   - Service `epicClarity`: DB instance host or IP address.
 //   - Service `esSelfHosted`: DB instance host or IP address.
 //   - Service `ftp`: FTP host address.
 //   - Service `googleCloudMysql`: DB instance host or IP address.
@@ -13853,6 +14079,8 @@ func (o ConnectorConfigOutput) HostIp() pulumi.StringPtrOutput {
 //   - Service `coassemble`: Your Coassemble Hostname.
 //   - Service `datadog`: Your Datadog host name.
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
+//   - Service `zuora`: The domain or URL of your Zuora Revenue instance.
+//   - Service `zuoraSandbox`: The domain or URL of your Zuora Revenue instance.
 func (o ConnectorConfigOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.HostName }).(pulumi.StringPtrOutput)
 }
@@ -13919,6 +14147,12 @@ func (o ConnectorConfigOutput) IncludeOcapiEndpoints() pulumi.BoolPtrOutput {
 //   - Service `servicenow`: ServiceNow Instance ID.
 func (o ConnectorConfigOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Instance }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Instance code for Workday Adaptive Planning
+func (o ConnectorConfigOutput) InstanceCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.InstanceCode }).(pulumi.StringPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -14222,6 +14456,7 @@ func (o ConnectorConfigOutput) LogOnGroup() pulumi.StringPtrOutput {
 //   - Service `reboundReturns`: Your ReBound Returns login.
 //   - Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
 //   - Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
+//   - Service `workdayAdaptive`: User email address
 func (o ConnectorConfigOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
@@ -14544,6 +14779,7 @@ func (o ConnectorConfigOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: The user's password.
 //   - Service `ehr`: The user's password.
 //   - Service `elasticCloud`: The user's password.
+//   - Service `epicClarity`: The user's password.
 //   - Service `esSelfHosted`: The user's password.
 //   - Service `ftp`: FTP password.
 //   - Service `globalmeet`: Your GlobalMeet Password.
@@ -14635,17 +14871,21 @@ func (o ConnectorConfigOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
 //   - Service `unicommerce`: Your uniware login password.
 //   - Service `upland`: Your Upland Software Password.
+//   - Service `uptempo`: Your Uptempo password.
 //   - Service `veevaVault`: Password
 //   - Service `veevavault`: Your Veeva Vault password.
 //   - Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
 //   - Service `whenIWork`: Your When I Work password.
 //   - Service `wherefour`: Your Wherefour password.
 //   - Service `workday`: Workday password.
+//   - Service `workdayAdaptive`: User password
 //   - Service `workdayFinancialManagement`: Workday password.
 //   - Service `workdayHcm`: Workday password.
 //   - Service `xandr`: Your Xandr password.
 //   - Service `yougovBrandindex`: Your YouGov BrandIndex password.
 //   - Service `younium`: Your Younium password.
+//   - Service `zuora`: The corresponding password for the API user.
+//   - Service `zuoraSandbox`: The corresponding password for the API user.
 func (o ConnectorConfigOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -14802,6 +15042,7 @@ func (o ConnectorConfigOutput) PlanType() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: The port number.
 //   - Service `ehr`: The port number.
 //   - Service `elasticCloud`: The port number.
+//   - Service `epicClarity`: The port number.
 //   - Service `esSelfHosted`: The port number.
 //   - Service `ftp`: FTP port.
 //   - Service `googleCloudMysql`: The port number.
@@ -15120,6 +15361,7 @@ func (o ConnectorConfigOutput) QuotaProjectId() pulumi.StringPtrOutput {
 //   - Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+//   - Service `ftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
@@ -15135,6 +15377,7 @@ func (o ConnectorConfigOutput) QuoteChar() pulumi.StringPtrOutput {
 //   - Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+//   - Service `ftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
@@ -15146,6 +15389,7 @@ func (o ConnectorConfigOutput) QuoteCharacterEnabled() pulumi.BoolPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `togglTrack`: Your Toggl Track plan type.
 //   - Service `vimeo`: Your Vimeo rate limit plan.
 func (o ConnectorConfigOutput) RateLimitPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.RateLimitPlan }).(pulumi.StringPtrOutput)
@@ -15173,6 +15417,7 @@ func (o ConnectorConfigOutput) RefreshTokenExpiresAt() pulumi.StringPtrOutput {
 //   - Service `awin`: Your Awin Region.
 //   - Service `awsLambda`: The AWS region code for the DynamoDB instance.
 //   - Service `biginByZohoCrm`: Your Bigin by Zoho CRM Region
+//   - Service `brightflag`: Your Brightflag region.
 //   - Service `concur`: The region.
 //   - Service `cvent`: Your Cvent region.
 //   - Service `everflow`: Your Everflow region.
@@ -16040,7 +16285,7 @@ func (o ConnectorConfigOutput) SncSourceName() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `marketo`: Marketo SOAP API Endpoint.
+//   - Service `marketo`: Marketo SOAP API Endpoint (Discontinued).
 func (o ConnectorConfigOutput) SoapUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.SoapUri }).(pulumi.StringPtrOutput)
 }
@@ -16055,6 +16300,12 @@ func (o ConnectorConfigOutput) SocialDataSyncTimeframe() pulumi.StringPtrOutput 
 //   - Service `adobeAnalyticsDataFeed`: The data source.
 func (o ConnectorConfigOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform source name.
+func (o ConnectorConfigOutput) SourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SourceName }).(pulumi.StringPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -16181,9 +16432,11 @@ func (o ConnectorConfigOutput) SubDomain() pulumi.StringPtrOutput {
 //   - Service `smarthr`: Your SmartHR subdomain.
 //   - Service `sonarqube`: Your Sonarqube subdomain.
 //   - Service `toast`: Your Toast domain.
+//   - Service `uptempo`: Your Uptempo subdomain.
 //   - Service `vts`: Your VTS Subdomain.
 //   - Service `yext`: Your Yext subdomain.
 //   - Service `zendeskChat`: Your Zendesk domain.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management subdomain.
 func (o ConnectorConfigOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
 }
@@ -16676,6 +16929,7 @@ func (o ConnectorConfigOutput) Truststore() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `elasticCloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+//   - Service `epicClarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `esSelfHosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
 //   - Service `googleCloudMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `googleCloudPostgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -16735,6 +16989,7 @@ func (o ConnectorConfigOutput) TunnelHost() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `ehr`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `elasticCloud`: SSH port, specify only to connect using an SSH tunnel.
+//   - Service `epicClarity`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `esSelfHosted`: SSH port, specify only to connect using an SSH tunnel.
 //   - Service `googleCloudMysql`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `googleCloudPostgresql`: SSH port, specify only to connect via an SSH tunnel.
@@ -16794,6 +17049,7 @@ func (o ConnectorConfigOutput) TunnelPort() pulumi.IntPtrOutput {
 //   - Service `dynamics365Fo`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `ehr`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `elasticCloud`: SSH user, specify only to connect using an SSH tunnel.
+//   - Service `epicClarity`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `esSelfHosted`: SSH user, specify only to connect using an SSH tunnel.
 //   - Service `googleCloudMysql`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `googleCloudPostgresql`: SSH user, specify only to connect via an SSH tunnel.
@@ -16863,6 +17119,7 @@ func (o ConnectorConfigOutput) UpdateConfigOnEachSync() pulumi.BoolPtrOutput {
 //   - Service `clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 //   - Service `dynamics365Fo`: Update Method
 //   - Service `ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
+//   - Service `epicClarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 //   - Service `googleCloudMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 //   - Service `googleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 //   - Service `googleCloudSqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
@@ -16909,6 +17166,12 @@ func (o ConnectorConfigOutput) UrlFormat() pulumi.StringPtrOutput {
 //   - Service `mandrill`: Whether to use multiple API keys for interaction.
 func (o ConnectorConfigOutput) UseApiKeys() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *bool { return v.UseApiKeys }).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `amplitude`: Sync events from cloud storage
+func (o ConnectorConfigOutput) UseCloudStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *bool { return v.UseCloudStorage }).(pulumi.BoolPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -16978,6 +17241,7 @@ func (o ConnectorConfigOutput) UseWorkspace() pulumi.BoolPtrOutput {
 //   - Service `dynamics365Fo`: The user name. The format must be `user@domain`.
 //   - Service `ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
 //   - Service `elasticCloud`: The user name.
+//   - Service `epicClarity`: The user name.  For Azure Databases, the format must be `user@domain`.
 //   - Service `esSelfHosted`: The user name.
 //   - Service `ftp`: FTP user.
 //   - Service `googleCloudMysql`: The user name.
@@ -17031,7 +17295,7 @@ func (o ConnectorConfigOutput) User() pulumi.StringPtrOutput {
 //   - Service `coassemble`: Your Coassemble user ID.
 //   - Service `gmail`: (DEPRECATED) Your Gmail user ID.
 //   - Service `hibob`: Your HiBob Service User Token.
-//   - Service `marketo`: Marketo SOAP API User Id.
+//   - Service `marketo`: Marketo SOAP API User Id (Discontinued).
 //   - Service `okendo`: Your Okendo user ID.
 //   - Service `playvox`: Your Playvox User ID.
 //   - Service `sageIntacct`: User ID
@@ -17128,6 +17392,7 @@ func (o ConnectorConfigOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
 //   - Service `unicommerce`: Your uniware login username.
 //   - Service `upland`: Your Upland Software Username.
+//   - Service `uptempo`: Your Uptempo username.
 //   - Service `veevaVault`: Username
 //   - Service `veevavault`: Your Veeva Vault username.
 //   - Service `whenIWork`: Your When I Work username.
@@ -17137,6 +17402,8 @@ func (o ConnectorConfigOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `xandr`: Your Xandr username.
 //   - Service `yougovBrandindex`: Your YouGov BrandIndex username.
 //   - Service `younium`: Your Younium username.
+//   - Service `zuora`: The API username with the necessary access permissions.
+//   - Service `zuoraSandbox`: The API username with the necessary access permissions.
 func (o ConnectorConfigOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -18047,6 +18314,7 @@ func (o ConnectorConfigPtrOutput) Algorithm() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: Require TLS through Tunnel.
 //   - Service `ehr`: Require TLS through Tunnel.
 //   - Service `elasticCloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+//   - Service `epicClarity`: Require TLS through Tunnel.
 //   - Service `esSelfHosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
 //   - Service `googleCloudMysql`: Require TLS through Tunnel
 //   - Service `googleCloudPostgresql`: Require TLS through Tunnel
@@ -18147,6 +18415,7 @@ func (o ConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `anvyl`: Your Anvyl API key.
 //   - Service `apollo`: Your Apollo API key.
 //   - Service `appcues`: Your Appcues API key.
+//   - Service `ascendByPartnerize`: Your Ascend by Partnerize API Key
 //   - Service `ashby`: Your Ashby API key.
 //   - Service `assembled`: Your Assembled API key.
 //   - Service `atlassianJiraAlign`: Your Jira Align API key.
@@ -18188,6 +18457,7 @@ func (o ConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `column`: Your Column API key.
 //   - Service `concord`: Your Concord API key.
 //   - Service `confluentCloud`: API Key
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API key.
 //   - Service `contrastSecurity`: Your Contrast Security API Key.
 //   - Service `copper`: Your Copper API key.
 //   - Service `coupa`: Your Coupa API key.
@@ -18202,6 +18472,7 @@ func (o ConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `drata`: Your Drata API Key.
 //   - Service `dropboxSign`: Your Dropbox Sign API key.
 //   - Service `duoplane`: Your Duoplane API key.
+//   - Service `dutchie`: Your Dutchie API key.
 //   - Service `easypost`: Your EasyPost API Key.
 //   - Service `electronicTenantSolutions`: Your Electronic Tenant Solutions API key.
 //   - Service `eventsforce`: Your Eventsforce API secret key.
@@ -18231,6 +18502,7 @@ func (o ConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `grin`: Your Grin API key.
 //   - Service `happyfox`: Your HappyFox API key.
 //   - Service `height`: Your Height API key.
+//   - Service `helpjuice`: Your Helpjuice API key.
 //   - Service `helpshift`: Your Helpshift API Key.
 //   - Service `incidentio`: Your incident.io API key.
 //   - Service `infobip`: Your Infobip API key.
@@ -18252,6 +18524,7 @@ func (o ConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `liftoff`: Your Liftoff API key.
 //   - Service `linear`: Your Linear API key.
 //   - Service `linksquares`: Your LinkSquares API key.
+//   - Service `listen360`: Your Listen360 API key.
 //   - Service `lob`: Your Lob API key.
 //   - Service `loop`: Your Loop API key.
 //   - Service `lucca`: Your Lucca API key.
@@ -18270,6 +18543,7 @@ func (o ConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `okendo`: Your Okendo API key.
 //   - Service `ometria`: Your Ometria API Key.
 //   - Service `oncehub`: Your OnceHub API key.
+//   - Service `openai`: Your OpenAI API key.
 //   - Service `ordergroove`: Your Ordergroove API key.
 //   - Service `ordway`: Your Ordway API key.
 //   - Service `ortto`: Your Ortto API key.
@@ -18298,7 +18572,7 @@ func (o ConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `revops`: Your RevOps bearer token.
 //   - Service `ricochet360`: Your Ricochet360 API key.
 //   - Service `ringover`: Your Ringover API key.
-//   - Service `rippling`: Your Rippling API key.
+//   - Service `rippling`: Your Rippling API token.
 //   - Service `rocketlane`: Your Rocketlane API key.
 //   - Service `rootly`: Your Rootly API key.
 //   - Service `ruddr`: Your Ruddr API key.
@@ -18423,7 +18697,20 @@ func (o ConnectorConfigPtrOutput) ApiRequestsPerMinute() pulumi.IntPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `zuora`: The API role assigned to the integration user.
+//   - Service `zuoraSandbox`: The API role assigned to the integration user.
+func (o ConnectorConfigPtrOutput) ApiRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `confluentCloud`: API Secret
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API secret.
 //   - Service `forjCommunity`: Your Forj Community API secret.
 //   - Service `friendbuy`: Your Friendbuy API secret.
 //   - Service `justcall`: Your JustCall API secret.
@@ -18524,6 +18811,7 @@ func (o ConnectorConfigPtrOutput) ApiServer() pulumi.StringPtrOutput {
 //   - Service `webScraper`: Your Web Scraper API token.
 //   - Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
 //   - Service `zendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management API token.
 func (o ConnectorConfigPtrOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -19033,6 +19321,8 @@ func (o ConnectorConfigPtrOutput) AuthMethod() pulumi.StringPtrOutput {
 //   - Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
 //   - Service `github`: Authorization type.
 //   - Service `workday`: Authentication Mode
+//   - Service `workdayFinancialManagement`: Authentication Mode
+//   - Service `workdayHcm`: Authentication Mode
 func (o ConnectorConfigPtrOutput) AuthMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -19171,6 +19461,7 @@ func (o ConnectorConfigPtrOutput) BackintExecutablePath() pulumi.StringPtrOutput
 }
 
 // Field usage depends on `service` value:
+//   - Service `amazonSellingPartner`: The earliest date to sync data from, in YYYY-MM-DD format. Cannot be before 1994-01-01 or in the future.
 //   - Service `shopify`: Limit of the Historical Sync Time for selected tables
 //   - Service `stripe`: Limit of the Historical Sync Time for selected tables
 //   - Service `stripeTest`: Limit of the Historical Sync Time for selected tables
@@ -19186,6 +19477,8 @@ func (o ConnectorConfigPtrOutput) BackwardSyncLimit() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+//   - Service `mixpanel`: Date from which data needs to be synced.
+//   - Service `pendo`: The start date (YYYY-MM-DD) from which to sync historical data.
 func (o ConnectorConfigPtrOutput) BackwardSyncLimitDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -19296,6 +19589,19 @@ func (o ConnectorConfigPtrOutput) BinaryLogType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.BinaryLogType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureCosmosForMongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+//   - Service `mongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+//   - Service `mongoSharded`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+func (o ConnectorConfigPtrOutput) BinaryRepresentation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BinaryRepresentation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19530,7 +19836,7 @@ func (o ConnectorConfigPtrOutput) ClientHost() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `acumatica`: Your Acumatica client ID.
-//   - Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+//   - Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server credentials of your Adobe Project.
 //   - Service `adobeWorkfront`: Your Adobe Workfront client ID.
 //   - Service `adpWorkforceNow`: Your ADP Client ID.
 //   - Service `akamai`: Your Akamai client ID.
@@ -19541,6 +19847,7 @@ func (o ConnectorConfigPtrOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `billingPlatform`: Your BillingPlatform client ID.
 //   - Service `bingWebmasterTools`: Your Bing Webmaster Tools client ID.
 //   - Service `brightcove`: Your Brightcove client ID.
+//   - Service `brightflag`: Your Brightflag client ID.
 //   - Service `brightpearl`: Your Brightpearl client ID.
 //   - Service `brivo`: Your Brivo client ID.
 //   - Service `buildium`: Your Buildium API client ID.
@@ -19548,6 +19855,7 @@ func (o ConnectorConfigPtrOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `canvasByInstructure`: Your Canvas by Instructure client ID.
 //   - Service `canvasData2ByInstructure`: Your Canvas Data 2 by Instructure client ID.
 //   - Service `castorEdc`: Your Castor EDC client Id.
+//   - Service `classy`: Your Classy client ID.
 //   - Service `clazar`: Your Clazar client ID.
 //   - Service `cloudbeds`: Your Cloudbeds client ID.
 //   - Service `commercetools`: Your commercetools client ID.
@@ -19557,6 +19865,8 @@ func (o ConnectorConfigPtrOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo Client ID.
 //   - Service `criteoRetailMedia`: Your Criteo Retail Media client ID.
+//   - Service `cube`: Your Cube Client ID.
+//   - Service `cubeSoftware`: Your Cube Software Client ID.
 //   - Service `cultureAmp`: Your Culture Amp client ID.
 //   - Service `cvent`: Your Cvent client ID.
 //   - Service `d2lBrightspace`: Your D2L Brightspace client ID.
@@ -19671,6 +19981,8 @@ func (o ConnectorConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `destini`: Your Destini Client Name.
 //   - Service `medallia`: Medallia company name
+//   - Service `zuora`: The name of your organization as registered with Zuora Revenue.
+//   - Service `zuoraSandbox`: The name of your organization as registered with Zuora Revenue.
 func (o ConnectorConfigPtrOutput) ClientName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -19745,7 +20057,7 @@ func (o ConnectorConfigPtrOutput) ClientPublicCertificate() pulumi.StringPtrOutp
 
 // Field usage depends on `service` value:
 //   - Service `acumatica`: Your Acumatica client secret.
-//   - Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+//   - Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server credentials of your Adobe Project.
 //   - Service `adobeWorkfront`: Your Adobe Workfront client secret.
 //   - Service `adpWorkforceNow`: Your ADP Client Secret.
 //   - Service `akamai`: Your Akamai client secret.
@@ -19756,10 +20068,12 @@ func (o ConnectorConfigPtrOutput) ClientPublicCertificate() pulumi.StringPtrOutp
 //   - Service `billingPlatform`: Your BillingPlatform client secret.
 //   - Service `bingWebmasterTools`: Your Bing Webmaster Tools client secret.
 //   - Service `brightcove`: Your Brightcove client secret.
+//   - Service `brightflag`: Your Brightflag client secret.
 //   - Service `brightpearl`: Your Brightpearl client secret.
 //   - Service `brivo`: Your Brivo client secret.
 //   - Service `canvasByInstructure`: Your Canvas by Instructure client secret.
 //   - Service `castorEdc`: Your Castor EDC client secret.
+//   - Service `classy`: Your Classy client secret.
 //   - Service `clazar`: Your Clazar client secret.
 //   - Service `cloudbeds`: Your Cloudbeds client secret.
 //   - Service `commercetools`: Your commercetools client secret.
@@ -19769,6 +20083,8 @@ func (o ConnectorConfigPtrOutput) ClientPublicCertificate() pulumi.StringPtrOutp
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo client secret key.
 //   - Service `criteoRetailMedia`: Your Criteo Retail Media client secret.
+//   - Service `cube`: Your Cube Client Secret.
+//   - Service `cubeSoftware`: Your Cube Software Client Secret.
 //   - Service `cultureAmp`: Your Culture Amp client secret.
 //   - Service `cvent`: Your Cvent client secret.
 //   - Service `d2lBrightspace`: Your D2L Brightspace client secret.
@@ -19949,6 +20265,8 @@ func (o ConnectorConfigPtrOutput) Company() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `360learning`: Your 360Learning Company ID.
+//   - Service `cube`: Your Cube Company ID.
+//   - Service `cubeSoftware`: Your Cube Software Company ID.
 //   - Service `sageIntacct`: Company ID
 //   - Service `sapSuccessFactors`: Your SAP SuccessFactors Company ID.
 func (o ConnectorConfigPtrOutput) CompanyId() pulumi.StringPtrOutput {
@@ -20177,6 +20495,7 @@ func (o ConnectorConfigPtrOutput) ConnectionString() pulumi.StringPtrOutput {
 //   - Service `ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `elasticCloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `email`: Connection method. Default value: `Directly`.
+//   - Service `epicClarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `esSelfHosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -20431,6 +20750,17 @@ func (o ConnectorConfigPtrOutput) CustomBaseUrl() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+func (o ConnectorConfigPtrOutput) CustomDimensionKeyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDimensionKeyIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `iterable`: Custom Events Sync Mode.
 func (o ConnectorConfigPtrOutput) CustomEventSyncMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
@@ -20481,6 +20811,17 @@ func (o ConnectorConfigPtrOutput) CustomPayloads() ConnectorConfigCustomPayloadA
 		}
 		return v.CustomPayloads
 	}).(ConnectorConfigCustomPayloadArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `togglTrack`: Your Toggl Track custom rate limit. Supports only numeric characters (0-9).
+func (o ConnectorConfigPtrOutput) CustomRateLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRateLimit
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectorConfigPtrOutput) CustomReports() ConnectorConfigCustomReportArrayOutput {
@@ -20624,6 +20965,7 @@ func (o ConnectorConfigPtrOutput) DataSetName() pulumi.StringPtrOutput {
 //   - Service `db2iSapHva`: The database name.
 //   - Service `dynamics365Fo`: The database name.
 //   - Service `ehr`: The database name.
+//   - Service `epicClarity`: The database name.
 //   - Service `googleCloudMysql`: The database name.
 //   - Service `googleCloudPostgresql`: The database name.
 //   - Service `googleCloudSqlserver`: The database name.
@@ -20950,6 +21292,7 @@ func (o ConnectorConfigPtrOutput) Elements() pulumi.StringArrayOutput {
 //   - Service `appcues`: Your Appcues Email.
 //   - Service `assetPanda`: Your Asset Panda email.
 //   - Service `boostr`: Your Boostr email.
+//   - Service `consensusDemoAutomationPlatform`: The email address of the Consensus Demo Automation Platform account you want Fivetran to use to access your data.
 //   - Service `copper`: Your Copper email address.
 //   - Service `email`: Send your emails to this address.
 //   - Service `moloco`: Your Moloco account email.
@@ -20984,6 +21327,7 @@ func (o ConnectorConfigPtrOutput) EmailAddress() pulumi.StringPtrOutput {
 //   - Service `cabcharge`: Your Cabcharge email ID.
 //   - Service `ordway`: Your Ordway user email ID.
 //   - Service `planful`: Your Planful email ID.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management email ID.
 func (o ConnectorConfigPtrOutput) EmailId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -21124,7 +21468,7 @@ func (o ConnectorConfigPtrOutput) EncodedPublicKey() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `marketo`: Marketo SOAP API Encryption Key.
+//   - Service `marketo`: Marketo SOAP API Encryption Key (Discontinued).
 func (o ConnectorConfigPtrOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -21342,6 +21686,7 @@ func (o ConnectorConfigPtrOutput) Events() pulumi.StringArrayOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adjust`: Your cloud storage.
+//   - Service `amplitude`: Your cloud storage type
 //   - Service `braze`: Export Storage. Required if `enableExports` is `true`
 func (o ConnectorConfigPtrOutput) ExportStorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
@@ -21788,8 +22133,11 @@ func (o ConnectorConfigPtrOutput) HistoricalSyncLimitTimeFrame() pulumi.StringPt
 }
 
 // Field usage depends on `service` value:
+//   - Service `amazonSellingPartner`: The time frame for historical data synchronization. Default value: `ALL_TIME`.
 //   - Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
 //   - Service `hubspot`: Used to configure Historical sync timeframe for selected tables
+//   - Service `mixpanel`: Should sync all data or adhere to `backwardSyncLimitDate`
+//   - Service `pendo`: The time range for which historical data should be synced. Default value: `All Time`.
 //   - Service `rokt`: Your Rokt historical sync time frame.
 //   - Service `shopify`: Used to configure Historical sync timeframe for selected tables
 //   - Service `skimlinks`: Your Skimlinks Historical sync time frame.
@@ -21834,6 +22182,7 @@ func (o ConnectorConfigPtrOutput) HomeFolder() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: DB instance host or IP address.
 //   - Service `ehr`: DB instance host or IP address.
 //   - Service `elasticCloud`: DB instance host or IP address.
+//   - Service `epicClarity`: DB instance host or IP address.
 //   - Service `esSelfHosted`: DB instance host or IP address.
 //   - Service `ftp`: FTP host address.
 //   - Service `googleCloudMysql`: DB instance host or IP address.
@@ -21902,6 +22251,8 @@ func (o ConnectorConfigPtrOutput) HostIp() pulumi.StringPtrOutput {
 //   - Service `coassemble`: Your Coassemble Hostname.
 //   - Service `datadog`: Your Datadog host name.
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
+//   - Service `zuora`: The domain or URL of your Zuora Revenue instance.
+//   - Service `zuoraSandbox`: The domain or URL of your Zuora Revenue instance.
 func (o ConnectorConfigPtrOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -22017,6 +22368,17 @@ func (o ConnectorConfigPtrOutput) Instance() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Instance
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Instance code for Workday Adaptive Planning
+func (o ConnectorConfigPtrOutput) InstanceCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceCode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22531,6 +22893,7 @@ func (o ConnectorConfigPtrOutput) LogOnGroup() pulumi.StringPtrOutput {
 //   - Service `reboundReturns`: Your ReBound Returns login.
 //   - Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
 //   - Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
+//   - Service `workdayAdaptive`: User email address
 func (o ConnectorConfigPtrOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -23043,6 +23406,7 @@ func (o ConnectorConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: The user's password.
 //   - Service `ehr`: The user's password.
 //   - Service `elasticCloud`: The user's password.
+//   - Service `epicClarity`: The user's password.
 //   - Service `esSelfHosted`: The user's password.
 //   - Service `ftp`: FTP password.
 //   - Service `globalmeet`: Your GlobalMeet Password.
@@ -23134,17 +23498,21 @@ func (o ConnectorConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
 //   - Service `unicommerce`: Your uniware login password.
 //   - Service `upland`: Your Upland Software Password.
+//   - Service `uptempo`: Your Uptempo password.
 //   - Service `veevaVault`: Password
 //   - Service `veevavault`: Your Veeva Vault password.
 //   - Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
 //   - Service `whenIWork`: Your When I Work password.
 //   - Service `wherefour`: Your Wherefour password.
 //   - Service `workday`: Workday password.
+//   - Service `workdayAdaptive`: User password
 //   - Service `workdayFinancialManagement`: Workday password.
 //   - Service `workdayHcm`: Workday password.
 //   - Service `xandr`: Your Xandr password.
 //   - Service `yougovBrandindex`: Your YouGov BrandIndex password.
 //   - Service `younium`: Your Younium password.
+//   - Service `zuora`: The corresponding password for the API user.
+//   - Service `zuoraSandbox`: The corresponding password for the API user.
 func (o ConnectorConfigPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -23391,6 +23759,7 @@ func (o ConnectorConfigPtrOutput) PlanType() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: The port number.
 //   - Service `ehr`: The port number.
 //   - Service `elasticCloud`: The port number.
+//   - Service `epicClarity`: The port number.
 //   - Service `esSelfHosted`: The port number.
 //   - Service `ftp`: FTP port.
 //   - Service `googleCloudMysql`: The port number.
@@ -23854,6 +24223,7 @@ func (o ConnectorConfigPtrOutput) QuotaProjectId() pulumi.StringPtrOutput {
 //   - Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+//   - Service `ftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
@@ -23874,6 +24244,7 @@ func (o ConnectorConfigPtrOutput) QuoteChar() pulumi.StringPtrOutput {
 //   - Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+//   - Service `ftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
@@ -23890,6 +24261,7 @@ func (o ConnectorConfigPtrOutput) QuoteCharacterEnabled() pulumi.BoolPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `togglTrack`: Your Toggl Track plan type.
 //   - Service `vimeo`: Your Vimeo rate limit plan.
 func (o ConnectorConfigPtrOutput) RateLimitPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
@@ -23932,6 +24304,7 @@ func (o ConnectorConfigPtrOutput) RefreshTokenExpiresAt() pulumi.StringPtrOutput
 //   - Service `awin`: Your Awin Region.
 //   - Service `awsLambda`: The AWS region code for the DynamoDB instance.
 //   - Service `biginByZohoCrm`: Your Bigin by Zoho CRM Region
+//   - Service `brightflag`: Your Brightflag region.
 //   - Service `concur`: The region.
 //   - Service `cvent`: Your Cvent region.
 //   - Service `everflow`: Your Everflow region.
@@ -25399,7 +25772,7 @@ func (o ConnectorConfigPtrOutput) SncSourceName() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `marketo`: Marketo SOAP API Endpoint.
+//   - Service `marketo`: Marketo SOAP API Endpoint (Discontinued).
 func (o ConnectorConfigPtrOutput) SoapUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -25428,6 +25801,17 @@ func (o ConnectorConfigPtrOutput) Source() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform source name.
+func (o ConnectorConfigPtrOutput) SourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25575,9 +25959,11 @@ func (o ConnectorConfigPtrOutput) SubDomain() pulumi.StringPtrOutput {
 //   - Service `smarthr`: Your SmartHR subdomain.
 //   - Service `sonarqube`: Your Sonarqube subdomain.
 //   - Service `toast`: Your Toast domain.
+//   - Service `uptempo`: Your Uptempo subdomain.
 //   - Service `vts`: Your VTS Subdomain.
 //   - Service `yext`: Your Yext subdomain.
 //   - Service `zendeskChat`: Your Zendesk domain.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management subdomain.
 func (o ConnectorConfigPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -26375,6 +26761,7 @@ func (o ConnectorConfigPtrOutput) Truststore() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `elasticCloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+//   - Service `epicClarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `esSelfHosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
 //   - Service `googleCloudMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `googleCloudPostgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -26439,6 +26826,7 @@ func (o ConnectorConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `ehr`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `elasticCloud`: SSH port, specify only to connect using an SSH tunnel.
+//   - Service `epicClarity`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `esSelfHosted`: SSH port, specify only to connect using an SSH tunnel.
 //   - Service `googleCloudMysql`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `googleCloudPostgresql`: SSH port, specify only to connect via an SSH tunnel.
@@ -26503,6 +26891,7 @@ func (o ConnectorConfigPtrOutput) TunnelPort() pulumi.IntPtrOutput {
 //   - Service `dynamics365Fo`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `ehr`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `elasticCloud`: SSH user, specify only to connect using an SSH tunnel.
+//   - Service `epicClarity`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `esSelfHosted`: SSH user, specify only to connect using an SSH tunnel.
 //   - Service `googleCloudMysql`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `googleCloudPostgresql`: SSH user, specify only to connect via an SSH tunnel.
@@ -26592,6 +26981,7 @@ func (o ConnectorConfigPtrOutput) UpdateConfigOnEachSync() pulumi.BoolPtrOutput 
 //   - Service `clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 //   - Service `dynamics365Fo`: Update Method
 //   - Service `ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
+//   - Service `epicClarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 //   - Service `googleCloudMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 //   - Service `googleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 //   - Service `googleCloudSqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
@@ -26657,6 +27047,17 @@ func (o ConnectorConfigPtrOutput) UseApiKeys() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.UseApiKeys
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `amplitude`: Sync events from cloud storage
+func (o ConnectorConfigPtrOutput) UseCloudStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseCloudStorage
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -26762,6 +27163,7 @@ func (o ConnectorConfigPtrOutput) UseWorkspace() pulumi.BoolPtrOutput {
 //   - Service `dynamics365Fo`: The user name. The format must be `user@domain`.
 //   - Service `ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
 //   - Service `elasticCloud`: The user name.
+//   - Service `epicClarity`: The user name.  For Azure Databases, the format must be `user@domain`.
 //   - Service `esSelfHosted`: The user name.
 //   - Service `ftp`: FTP user.
 //   - Service `googleCloudMysql`: The user name.
@@ -26820,7 +27222,7 @@ func (o ConnectorConfigPtrOutput) User() pulumi.StringPtrOutput {
 //   - Service `coassemble`: Your Coassemble user ID.
 //   - Service `gmail`: (DEPRECATED) Your Gmail user ID.
 //   - Service `hibob`: Your HiBob Service User Token.
-//   - Service `marketo`: Marketo SOAP API User Id.
+//   - Service `marketo`: Marketo SOAP API User Id (Discontinued).
 //   - Service `okendo`: Your Okendo user ID.
 //   - Service `playvox`: Your Playvox User ID.
 //   - Service `sageIntacct`: User ID
@@ -26942,6 +27344,7 @@ func (o ConnectorConfigPtrOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
 //   - Service `unicommerce`: Your uniware login username.
 //   - Service `upland`: Your Upland Software Username.
+//   - Service `uptempo`: Your Uptempo username.
 //   - Service `veevaVault`: Username
 //   - Service `veevavault`: Your Veeva Vault username.
 //   - Service `whenIWork`: Your When I Work username.
@@ -26951,6 +27354,8 @@ func (o ConnectorConfigPtrOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `xandr`: Your Xandr username.
 //   - Service `yougovBrandindex`: Your YouGov BrandIndex username.
 //   - Service `younium`: Your Younium username.
+//   - Service `zuora`: The API username with the necessary access permissions.
+//   - Service `zuoraSandbox`: The API username with the necessary access permissions.
 func (o ConnectorConfigPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
@@ -28405,11 +28810,27 @@ func (o ConnectorConfigDataModelPathAliasListArrayOutput) Index(i pulumi.IntInpu
 
 type ConnectorConfigFile struct {
 	// Field usage depends on `service` value:
+	// 	- Service `azureBlobStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `box`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `dropbox`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `email`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `ftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `gcs`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `googleDrive`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `s3`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `s3CompatibleStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `sftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `sharePoint`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	ArchivePattern *string `pulumi:"archivePattern"`
+	// Field usage depends on `service` value:
 	// 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
 	EmailSubject *string `pulumi:"emailSubject"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+	// 	- Service `box`: All files in your search path matching this regular expression will be synced per table.
+	// 	- Service `dropbox`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `email`: All files in your search path matching this regular expression will be synced per table.
+	// 	- Service `ftp`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `gcs`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `s3`: All files in your search path matching this regular expression will be synced per table.
@@ -28419,7 +28840,10 @@ type ConnectorConfigFile struct {
 	FilePattern *string `pulumi:"filePattern"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
+	// 	- Service `box`: All files matching the above pattern will be synced to this table.
+	// 	- Service `dropbox`: All files matching the above pattern will be synced to this table.
 	// 	- Service `email`: All files matching the above pattern will be synced to this table.
+	// 	- Service `ftp`: All files matching the above pattern will be synced to this table.
 	// 	- Service `gcs`: All files matching the above pattern will be synced to this table.
 	// 	- Service `googleDrive`: All files matching the above pattern will be synced to this table.
 	// 	- Service `s3`: All files matching the above pattern will be synced to this table.
@@ -28442,11 +28866,27 @@ type ConnectorConfigFileInput interface {
 
 type ConnectorConfigFileArgs struct {
 	// Field usage depends on `service` value:
+	// 	- Service `azureBlobStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `box`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `dropbox`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `email`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `ftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `gcs`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `googleDrive`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `s3`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `s3CompatibleStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `sftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `sharePoint`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	ArchivePattern pulumi.StringPtrInput `pulumi:"archivePattern"`
+	// Field usage depends on `service` value:
 	// 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
 	EmailSubject pulumi.StringPtrInput `pulumi:"emailSubject"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+	// 	- Service `box`: All files in your search path matching this regular expression will be synced per table.
+	// 	- Service `dropbox`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `email`: All files in your search path matching this regular expression will be synced per table.
+	// 	- Service `ftp`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `gcs`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `s3`: All files in your search path matching this regular expression will be synced per table.
@@ -28456,7 +28896,10 @@ type ConnectorConfigFileArgs struct {
 	FilePattern pulumi.StringPtrInput `pulumi:"filePattern"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
+	// 	- Service `box`: All files matching the above pattern will be synced to this table.
+	// 	- Service `dropbox`: All files matching the above pattern will be synced to this table.
 	// 	- Service `email`: All files matching the above pattern will be synced to this table.
+	// 	- Service `ftp`: All files matching the above pattern will be synced to this table.
 	// 	- Service `gcs`: All files matching the above pattern will be synced to this table.
 	// 	- Service `googleDrive`: All files matching the above pattern will be synced to this table.
 	// 	- Service `s3`: All files matching the above pattern will be synced to this table.
@@ -28518,6 +28961,22 @@ func (o ConnectorConfigFileOutput) ToConnectorConfigFileOutputWithContext(ctx co
 }
 
 // Field usage depends on `service` value:
+//   - Service `azureBlobStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `box`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `dropbox`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `email`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `ftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `gcs`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `googleDrive`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `s3`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `s3CompatibleStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `sftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `sharePoint`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+func (o ConnectorConfigFileOutput) ArchivePattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigFile) *string { return v.ArchivePattern }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
 func (o ConnectorConfigFileOutput) EmailSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigFile) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
@@ -28525,7 +28984,10 @@ func (o ConnectorConfigFileOutput) EmailSubject() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+//   - Service `box`: All files in your search path matching this regular expression will be synced per table.
+//   - Service `dropbox`: All files in your search path matching this regular expression will be synced per table.
 //   - Service `email`: All files in your search path matching this regular expression will be synced per table.
+//   - Service `ftp`: All files in your search path matching this regular expression will be synced per table.
 //   - Service `gcs`: All files in your search path matching this regular expression will be synced per table.
 //   - Service `googleDrive`: All files in your search path matching this regular expression will be synced per table.
 //   - Service `s3`: All files in your search path matching this regular expression will be synced per table.
@@ -28538,7 +29000,10 @@ func (o ConnectorConfigFileOutput) FilePattern() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
+//   - Service `box`: All files matching the above pattern will be synced to this table.
+//   - Service `dropbox`: All files matching the above pattern will be synced to this table.
 //   - Service `email`: All files matching the above pattern will be synced to this table.
+//   - Service `ftp`: All files matching the above pattern will be synced to this table.
 //   - Service `gcs`: All files matching the above pattern will be synced to this table.
 //   - Service `googleDrive`: All files matching the above pattern will be synced to this table.
 //   - Service `s3`: All files matching the above pattern will be synced to this table.
@@ -28577,6 +29042,9 @@ type ConnectorConfigProjectCredential struct {
 	// 	- Service `amplitude`: The project name you wish to use with Fivetran.
 	Project *string `pulumi:"project"`
 	// Field usage depends on `service` value:
+	// 	- Service `amplitude`: The project ID you wish to use with Fivetran.
+	ProjectId *string `pulumi:"projectId"`
+	// Field usage depends on `service` value:
 	// 	- Service `amplitude`: The secret key of the project.
 	SecretKey *string `pulumi:"secretKey"`
 }
@@ -28599,6 +29067,9 @@ type ConnectorConfigProjectCredentialArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `amplitude`: The project name you wish to use with Fivetran.
 	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Field usage depends on `service` value:
+	// 	- Service `amplitude`: The project ID you wish to use with Fivetran.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Field usage depends on `service` value:
 	// 	- Service `amplitude`: The secret key of the project.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
@@ -28668,6 +29139,12 @@ func (o ConnectorConfigProjectCredentialOutput) Project() pulumi.StringPtrOutput
 }
 
 // Field usage depends on `service` value:
+//   - Service `amplitude`: The project ID you wish to use with Fivetran.
+func (o ConnectorConfigProjectCredentialOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigProjectCredential) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `amplitude`: The secret key of the project.
 func (o ConnectorConfigProjectCredentialOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigProjectCredential) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
@@ -28694,6 +29171,10 @@ func (o ConnectorConfigProjectCredentialArrayOutput) Index(i pulumi.IntInput) Co
 }
 
 type ConnectorConfigReport struct {
+	Accounts []ConnectorConfigReportAccount `pulumi:"accounts"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Ad unit view for the report.
+	AdUnitView *string `pulumi:"adUnitView"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 	Advertisers []string `pulumi:"advertisers"`
@@ -28704,6 +29185,9 @@ type ConnectorConfigReport struct {
 	// 	- Service `googleSearchAds360`: The report attributes included to sync.
 	Attributes []string `pulumi:"attributes"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Columns provide all trafficking statistics and revenue information available for the chosen dimensions.
+	Columns []string `pulumi:"columns"`
+	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
 	ConfigMethod *string `pulumi:"configMethod"`
 	// Field usage depends on `service` value:
@@ -28711,14 +29195,38 @@ type ConnectorConfigReport struct {
 	// 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
 	ConfigType *string `pulumi:"configType"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Conversion Dimensions.
+	ConversionDimensions []string `pulumi:"conversionDimensions"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of currencies to sync for the table, if applicable
+	Currency *string `pulumi:"currency"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+	CustomDimensionKeyIds []string `pulumi:"customDimensionKeyIds"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
+	CustomFieldIds []string `pulumi:"customFieldIds"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
+	CustomFloodlightVariables []string `pulumi:"customFloodlightVariables"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Dimension attributes provide additional fields associated with a dimension. Dimension attributes can only be selected with their corresponding dimensions.
+	DimensionAttributes []string `pulumi:"dimensionAttributes"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Report dimensions to include in a sync. The `date` dimension is mandatory for all report types. The `advertiser` dimension is mandatory for the `REACH` report type
+	// 	- Service `doubleClickPublishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
 	// 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
 	// 	- Service `googleAnalytics4`: The report dimensions to include into a sync.
 	// 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 	// 	- Service `googleSearchConsole`: The report dimensions included to sync.
+	// 	- Service `workdayAdaptive`: List of dimensions to sync for the table, if applicable
 	Dimensions []string `pulumi:"dimensions"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Dynamic parameter field name
 	DynamicParameterField *string `pulumi:"dynamicParameterField"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Specifies whether to enable all reach dimension combinations in the report. Default value: `false`
+	EnableAllDimensionCombinations *bool `pulumi:"enableAllDimensionCombinations"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Select this option to enable dynamic report parameters.
 	EnableDynamicParameters *bool `pulumi:"enableDynamicParameters"`
@@ -28739,6 +29247,11 @@ type ConnectorConfigReport struct {
 	// 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
 	GenerateFivetranPk *bool `pulumi:"generateFivetranPk"`
 	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Include zero rows in the table sync
+	IncludeZeroRows *bool                        `pulumi:"includeZeroRows"`
+	Levels          []ConnectorConfigReportLevel `pulumi:"levels"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Report metrics to include into a sync.
 	// 	- Service `googleAnalytics`: The report metrics to include into a sync.
 	// 	- Service `googleAnalytics4`: The report metrics to include into a sync.
 	// 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
@@ -28747,6 +29260,9 @@ type ConnectorConfigReport struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 	Partners []string `pulumi:"partners"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Per Interaction Dimensions.
+	PerInteractionDimensions []string `pulumi:"perInteractionDimensions"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
 	// 	- Service `googleAnalytics4`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -28758,9 +29274,13 @@ type ConnectorConfigReport struct {
 	// 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
 	QueryId *string `pulumi:"queryId"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: You can select only one Floodlight Configuration ID per account.
+	ReportConfigurationIds []string `pulumi:"reportConfigurationIds"`
+	// Field usage depends on `service` value:
 	// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
 	ReportFormatType *string `pulumi:"reportFormatType"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Type of reporting data to sync. Default value: `STANDARD`.
 	// 	- Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
 	// 	- Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 	// 	- Service `googleSearchAds360`: The type of report
@@ -28771,6 +29291,7 @@ type ConnectorConfigReport struct {
 	ReportUrl *string `pulumi:"reportUrl"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics4`: The custom window size for rollback syncs.
+	// 	- Service `googleSearchAds360`: The custom window size for rollback syncs (between 2 and 90).
 	RollbackWindow *int `pulumi:"rollbackWindow"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleSearchConsole`: Search types included to sync. Supported only for the `SEARCH_RESULTS` report type
@@ -28787,18 +29308,27 @@ type ConnectorConfigReport struct {
 	// 	- Service `workday`: Start date parameter field name
 	StartDateParameterField *string `pulumi:"startDateParameterField"`
 	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Start month for the table sync, in MM format
+	StartMonth *string `pulumi:"startMonth"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Start year for the table sync, in YYYY format
+	StartYear *string `pulumi:"startYear"`
+	// Field usage depends on `service` value:
 	// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
 	SupportNestedColumns *bool `pulumi:"supportNestedColumns"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Dynamic report parameters sync strategy
 	SyncStrategy *string `pulumi:"syncStrategy"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Destination table name. It must be unique within this connection and must comply with Fivetran's naming conventions.
+	// 	- Service `doubleClickPublishers`: The name of the table within the schema storing the data for a given report.
 	// 	- Service `googleAds`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleAnalytics`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleAnalytics4`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleSearchAds360`: The name of a table within the schema to which connector syncs the data of a given report.
 	// 	- Service `googleSearchConsole`: The name of a table within the schema to which connector syncs the data of a given report.
 	// 	- Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
+	// 	- Service `workdayAdaptive`: Table name to be synced
 	Table *string `pulumi:"table"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The table name within the schema to which connector will sync the data of the specific report.
@@ -28809,6 +29339,12 @@ type ConnectorConfigReport struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
 	UpdateConfigOnEachSync *bool `pulumi:"updateConfigOnEachSync"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Version sync strategy for the table, SYNC_ALL_AND_NEW_VERSIONS or SYNC_SELECT_VERSIONS
+	VersionSyncStrategy *string `pulumi:"versionSyncStrategy"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of versions to sync for the table, if versionSyncStrategy is SYNC_SELECT_VERSIONS
+	Versions []string `pulumi:"versions"`
 }
 
 // ConnectorConfigReportInput is an input type that accepts ConnectorConfigReportArgs and ConnectorConfigReportOutput values.
@@ -28823,6 +29359,10 @@ type ConnectorConfigReportInput interface {
 }
 
 type ConnectorConfigReportArgs struct {
+	Accounts ConnectorConfigReportAccountArrayInput `pulumi:"accounts"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Ad unit view for the report.
+	AdUnitView pulumi.StringPtrInput `pulumi:"adUnitView"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 	Advertisers pulumi.StringArrayInput `pulumi:"advertisers"`
@@ -28833,6 +29373,9 @@ type ConnectorConfigReportArgs struct {
 	// 	- Service `googleSearchAds360`: The report attributes included to sync.
 	Attributes pulumi.StringArrayInput `pulumi:"attributes"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Columns provide all trafficking statistics and revenue information available for the chosen dimensions.
+	Columns pulumi.StringArrayInput `pulumi:"columns"`
+	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
 	ConfigMethod pulumi.StringPtrInput `pulumi:"configMethod"`
 	// Field usage depends on `service` value:
@@ -28840,14 +29383,38 @@ type ConnectorConfigReportArgs struct {
 	// 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
 	ConfigType pulumi.StringPtrInput `pulumi:"configType"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Conversion Dimensions.
+	ConversionDimensions pulumi.StringArrayInput `pulumi:"conversionDimensions"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of currencies to sync for the table, if applicable
+	Currency pulumi.StringPtrInput `pulumi:"currency"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+	CustomDimensionKeyIds pulumi.StringArrayInput `pulumi:"customDimensionKeyIds"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
+	CustomFieldIds pulumi.StringArrayInput `pulumi:"customFieldIds"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
+	CustomFloodlightVariables pulumi.StringArrayInput `pulumi:"customFloodlightVariables"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Dimension attributes provide additional fields associated with a dimension. Dimension attributes can only be selected with their corresponding dimensions.
+	DimensionAttributes pulumi.StringArrayInput `pulumi:"dimensionAttributes"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Report dimensions to include in a sync. The `date` dimension is mandatory for all report types. The `advertiser` dimension is mandatory for the `REACH` report type
+	// 	- Service `doubleClickPublishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
 	// 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
 	// 	- Service `googleAnalytics4`: The report dimensions to include into a sync.
 	// 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 	// 	- Service `googleSearchConsole`: The report dimensions included to sync.
+	// 	- Service `workdayAdaptive`: List of dimensions to sync for the table, if applicable
 	Dimensions pulumi.StringArrayInput `pulumi:"dimensions"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Dynamic parameter field name
 	DynamicParameterField pulumi.StringPtrInput `pulumi:"dynamicParameterField"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Specifies whether to enable all reach dimension combinations in the report. Default value: `false`
+	EnableAllDimensionCombinations pulumi.BoolPtrInput `pulumi:"enableAllDimensionCombinations"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Select this option to enable dynamic report parameters.
 	EnableDynamicParameters pulumi.BoolPtrInput `pulumi:"enableDynamicParameters"`
@@ -28868,6 +29435,11 @@ type ConnectorConfigReportArgs struct {
 	// 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
 	GenerateFivetranPk pulumi.BoolPtrInput `pulumi:"generateFivetranPk"`
 	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Include zero rows in the table sync
+	IncludeZeroRows pulumi.BoolPtrInput                  `pulumi:"includeZeroRows"`
+	Levels          ConnectorConfigReportLevelArrayInput `pulumi:"levels"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Report metrics to include into a sync.
 	// 	- Service `googleAnalytics`: The report metrics to include into a sync.
 	// 	- Service `googleAnalytics4`: The report metrics to include into a sync.
 	// 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
@@ -28876,6 +29448,9 @@ type ConnectorConfigReportArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 	Partners pulumi.StringArrayInput `pulumi:"partners"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Per Interaction Dimensions.
+	PerInteractionDimensions pulumi.StringArrayInput `pulumi:"perInteractionDimensions"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
 	// 	- Service `googleAnalytics4`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -28887,9 +29462,13 @@ type ConnectorConfigReportArgs struct {
 	// 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
 	QueryId pulumi.StringPtrInput `pulumi:"queryId"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: You can select only one Floodlight Configuration ID per account.
+	ReportConfigurationIds pulumi.StringArrayInput `pulumi:"reportConfigurationIds"`
+	// Field usage depends on `service` value:
 	// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
 	ReportFormatType pulumi.StringPtrInput `pulumi:"reportFormatType"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Type of reporting data to sync. Default value: `STANDARD`.
 	// 	- Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
 	// 	- Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 	// 	- Service `googleSearchAds360`: The type of report
@@ -28900,6 +29479,7 @@ type ConnectorConfigReportArgs struct {
 	ReportUrl pulumi.StringPtrInput `pulumi:"reportUrl"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics4`: The custom window size for rollback syncs.
+	// 	- Service `googleSearchAds360`: The custom window size for rollback syncs (between 2 and 90).
 	RollbackWindow pulumi.IntPtrInput `pulumi:"rollbackWindow"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleSearchConsole`: Search types included to sync. Supported only for the `SEARCH_RESULTS` report type
@@ -28916,18 +29496,27 @@ type ConnectorConfigReportArgs struct {
 	// 	- Service `workday`: Start date parameter field name
 	StartDateParameterField pulumi.StringPtrInput `pulumi:"startDateParameterField"`
 	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Start month for the table sync, in MM format
+	StartMonth pulumi.StringPtrInput `pulumi:"startMonth"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Start year for the table sync, in YYYY format
+	StartYear pulumi.StringPtrInput `pulumi:"startYear"`
+	// Field usage depends on `service` value:
 	// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
 	SupportNestedColumns pulumi.BoolPtrInput `pulumi:"supportNestedColumns"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Dynamic report parameters sync strategy
 	SyncStrategy pulumi.StringPtrInput `pulumi:"syncStrategy"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Destination table name. It must be unique within this connection and must comply with Fivetran's naming conventions.
+	// 	- Service `doubleClickPublishers`: The name of the table within the schema storing the data for a given report.
 	// 	- Service `googleAds`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleAnalytics`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleAnalytics4`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleSearchAds360`: The name of a table within the schema to which connector syncs the data of a given report.
 	// 	- Service `googleSearchConsole`: The name of a table within the schema to which connector syncs the data of a given report.
 	// 	- Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
+	// 	- Service `workdayAdaptive`: Table name to be synced
 	Table pulumi.StringPtrInput `pulumi:"table"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The table name within the schema to which connector will sync the data of the specific report.
@@ -28938,6 +29527,12 @@ type ConnectorConfigReportArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
 	UpdateConfigOnEachSync pulumi.BoolPtrInput `pulumi:"updateConfigOnEachSync"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Version sync strategy for the table, SYNC_ALL_AND_NEW_VERSIONS or SYNC_SELECT_VERSIONS
+	VersionSyncStrategy pulumi.StringPtrInput `pulumi:"versionSyncStrategy"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of versions to sync for the table, if versionSyncStrategy is SYNC_SELECT_VERSIONS
+	Versions pulumi.StringArrayInput `pulumi:"versions"`
 }
 
 func (ConnectorConfigReportArgs) ElementType() reflect.Type {
@@ -28991,6 +29586,16 @@ func (o ConnectorConfigReportOutput) ToConnectorConfigReportOutputWithContext(ct
 	return o
 }
 
+func (o ConnectorConfigReportOutput) Accounts() ConnectorConfigReportAccountArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []ConnectorConfigReportAccount { return v.Accounts }).(ConnectorConfigReportAccountArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: Ad unit view for the report.
+func (o ConnectorConfigReportOutput) AdUnitView() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.AdUnitView }).(pulumi.StringPtrOutput)
+}
+
 // Field usage depends on `service` value:
 //   - Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 func (o ConnectorConfigReportOutput) Advertisers() pulumi.StringArrayOutput {
@@ -29010,6 +29615,12 @@ func (o ConnectorConfigReportOutput) Attributes() pulumi.StringArrayOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: Columns provide all trafficking statistics and revenue information available for the chosen dimensions.
+func (o ConnectorConfigReportOutput) Columns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Columns }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
 func (o ConnectorConfigReportOutput) ConfigMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.ConfigMethod }).(pulumi.StringPtrOutput)
@@ -29023,10 +29634,49 @@ func (o ConnectorConfigReportOutput) ConfigType() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Conversion Dimensions.
+func (o ConnectorConfigReportOutput) ConversionDimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.ConversionDimensions }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: List of currencies to sync for the table, if applicable
+func (o ConnectorConfigReportOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+func (o ConnectorConfigReportOutput) CustomDimensionKeyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.CustomDimensionKeyIds }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
+func (o ConnectorConfigReportOutput) CustomFieldIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.CustomFieldIds }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
+func (o ConnectorConfigReportOutput) CustomFloodlightVariables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.CustomFloodlightVariables }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: Dimension attributes provide additional fields associated with a dimension. Dimension attributes can only be selected with their corresponding dimensions.
+func (o ConnectorConfigReportOutput) DimensionAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.DimensionAttributes }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Report dimensions to include in a sync. The `date` dimension is mandatory for all report types. The `advertiser` dimension is mandatory for the `REACH` report type
+//   - Service `doubleClickPublishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
 //   - Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
 //   - Service `googleAnalytics4`: The report dimensions to include into a sync.
 //   - Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 //   - Service `googleSearchConsole`: The report dimensions included to sync.
+//   - Service `workdayAdaptive`: List of dimensions to sync for the table, if applicable
 func (o ConnectorConfigReportOutput) Dimensions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
 }
@@ -29035,6 +29685,12 @@ func (o ConnectorConfigReportOutput) Dimensions() pulumi.StringArrayOutput {
 //   - Service `workday`: Dynamic parameter field name
 func (o ConnectorConfigReportOutput) DynamicParameterField() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.DynamicParameterField }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Specifies whether to enable all reach dimension combinations in the report. Default value: `false`
+func (o ConnectorConfigReportOutput) EnableAllDimensionCombinations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *bool { return v.EnableAllDimensionCombinations }).(pulumi.BoolPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -29078,6 +29734,17 @@ func (o ConnectorConfigReportOutput) GenerateFivetranPk() pulumi.BoolPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Include zero rows in the table sync
+func (o ConnectorConfigReportOutput) IncludeZeroRows() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *bool { return v.IncludeZeroRows }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConnectorConfigReportOutput) Levels() ConnectorConfigReportLevelArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []ConnectorConfigReportLevel { return v.Levels }).(ConnectorConfigReportLevelArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Report metrics to include into a sync.
 //   - Service `googleAnalytics`: The report metrics to include into a sync.
 //   - Service `googleAnalytics4`: The report metrics to include into a sync.
 //   - Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
@@ -29090,6 +29757,12 @@ func (o ConnectorConfigReportOutput) Metrics() pulumi.StringArrayOutput {
 //   - Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 func (o ConnectorConfigReportOutput) Partners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Partners }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Per Interaction Dimensions.
+func (o ConnectorConfigReportOutput) PerInteractionDimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.PerInteractionDimensions }).(pulumi.StringArrayOutput)
 }
 
 // Field usage depends on `service` value:
@@ -29112,12 +29785,19 @@ func (o ConnectorConfigReportOutput) QueryId() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: You can select only one Floodlight Configuration ID per account.
+func (o ConnectorConfigReportOutput) ReportConfigurationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.ReportConfigurationIds }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
 func (o ConnectorConfigReportOutput) ReportFormatType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.ReportFormatType }).(pulumi.StringPtrOutput)
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Type of reporting data to sync. Default value: `STANDARD`.
 //   - Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
 //   - Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 //   - Service `googleSearchAds360`: The type of report
@@ -29134,6 +29814,7 @@ func (o ConnectorConfigReportOutput) ReportUrl() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `googleAnalytics4`: The custom window size for rollback syncs.
+//   - Service `googleSearchAds360`: The custom window size for rollback syncs (between 2 and 90).
 func (o ConnectorConfigReportOutput) RollbackWindow() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) *int { return v.RollbackWindow }).(pulumi.IntPtrOutput)
 }
@@ -29168,6 +29849,18 @@ func (o ConnectorConfigReportOutput) StartDateParameterField() pulumi.StringPtrO
 }
 
 // Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Start month for the table sync, in MM format
+func (o ConnectorConfigReportOutput) StartMonth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.StartMonth }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Start year for the table sync, in YYYY format
+func (o ConnectorConfigReportOutput) StartYear() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.StartYear }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
 func (o ConnectorConfigReportOutput) SupportNestedColumns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) *bool { return v.SupportNestedColumns }).(pulumi.BoolPtrOutput)
@@ -29180,12 +29873,15 @@ func (o ConnectorConfigReportOutput) SyncStrategy() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Destination table name. It must be unique within this connection and must comply with Fivetran's naming conventions.
+//   - Service `doubleClickPublishers`: The name of the table within the schema storing the data for a given report.
 //   - Service `googleAds`: The table name within the schema to which connector will sync the data of the specific report.
 //   - Service `googleAnalytics`: The table name within the schema to which connector will sync the data of the specific report.
 //   - Service `googleAnalytics4`: The table name within the schema to which connector will sync the data of the specific report.
 //   - Service `googleSearchAds360`: The name of a table within the schema to which connector syncs the data of a given report.
 //   - Service `googleSearchConsole`: The name of a table within the schema to which connector syncs the data of a given report.
 //   - Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
+//   - Service `workdayAdaptive`: Table name to be synced
 func (o ConnectorConfigReportOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
@@ -29208,6 +29904,18 @@ func (o ConnectorConfigReportOutput) UpdateConfigOnEachSync() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v ConnectorConfigReport) *bool { return v.UpdateConfigOnEachSync }).(pulumi.BoolPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Version sync strategy for the table, SYNC_ALL_AND_NEW_VERSIONS or SYNC_SELECT_VERSIONS
+func (o ConnectorConfigReportOutput) VersionSyncStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.VersionSyncStrategy }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: List of versions to sync for the table, if versionSyncStrategy is SYNC_SELECT_VERSIONS
+func (o ConnectorConfigReportOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Versions }).(pulumi.StringArrayOutput)
+}
+
 type ConnectorConfigReportArrayOutput struct{ *pulumi.OutputState }
 
 func (ConnectorConfigReportArrayOutput) ElementType() reflect.Type {
@@ -29226,6 +29934,130 @@ func (o ConnectorConfigReportArrayOutput) Index(i pulumi.IntInput) ConnectorConf
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigReport {
 		return vs[0].([]ConnectorConfigReport)[vs[1].(int)]
 	}).(ConnectorConfigReportOutput)
+}
+
+type ConnectorConfigReportAccount struct {
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	Flag *bool `pulumi:"flag"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Account ID to sync
+	Id *string `pulumi:"id"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	IncludeDescendants *bool `pulumi:"includeDescendants"`
+}
+
+// ConnectorConfigReportAccountInput is an input type that accepts ConnectorConfigReportAccountArgs and ConnectorConfigReportAccountOutput values.
+// You can construct a concrete instance of `ConnectorConfigReportAccountInput` via:
+//
+//	ConnectorConfigReportAccountArgs{...}
+type ConnectorConfigReportAccountInput interface {
+	pulumi.Input
+
+	ToConnectorConfigReportAccountOutput() ConnectorConfigReportAccountOutput
+	ToConnectorConfigReportAccountOutputWithContext(context.Context) ConnectorConfigReportAccountOutput
+}
+
+type ConnectorConfigReportAccountArgs struct {
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	Flag pulumi.BoolPtrInput `pulumi:"flag"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Account ID to sync
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	IncludeDescendants pulumi.BoolPtrInput `pulumi:"includeDescendants"`
+}
+
+func (ConnectorConfigReportAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigReportAccount)(nil)).Elem()
+}
+
+func (i ConnectorConfigReportAccountArgs) ToConnectorConfigReportAccountOutput() ConnectorConfigReportAccountOutput {
+	return i.ToConnectorConfigReportAccountOutputWithContext(context.Background())
+}
+
+func (i ConnectorConfigReportAccountArgs) ToConnectorConfigReportAccountOutputWithContext(ctx context.Context) ConnectorConfigReportAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigReportAccountOutput)
+}
+
+// ConnectorConfigReportAccountArrayInput is an input type that accepts ConnectorConfigReportAccountArray and ConnectorConfigReportAccountArrayOutput values.
+// You can construct a concrete instance of `ConnectorConfigReportAccountArrayInput` via:
+//
+//	ConnectorConfigReportAccountArray{ ConnectorConfigReportAccountArgs{...} }
+type ConnectorConfigReportAccountArrayInput interface {
+	pulumi.Input
+
+	ToConnectorConfigReportAccountArrayOutput() ConnectorConfigReportAccountArrayOutput
+	ToConnectorConfigReportAccountArrayOutputWithContext(context.Context) ConnectorConfigReportAccountArrayOutput
+}
+
+type ConnectorConfigReportAccountArray []ConnectorConfigReportAccountInput
+
+func (ConnectorConfigReportAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigReportAccount)(nil)).Elem()
+}
+
+func (i ConnectorConfigReportAccountArray) ToConnectorConfigReportAccountArrayOutput() ConnectorConfigReportAccountArrayOutput {
+	return i.ToConnectorConfigReportAccountArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorConfigReportAccountArray) ToConnectorConfigReportAccountArrayOutputWithContext(ctx context.Context) ConnectorConfigReportAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigReportAccountArrayOutput)
+}
+
+type ConnectorConfigReportAccountOutput struct{ *pulumi.OutputState }
+
+func (ConnectorConfigReportAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigReportAccount)(nil)).Elem()
+}
+
+func (o ConnectorConfigReportAccountOutput) ToConnectorConfigReportAccountOutput() ConnectorConfigReportAccountOutput {
+	return o
+}
+
+func (o ConnectorConfigReportAccountOutput) ToConnectorConfigReportAccountOutputWithContext(ctx context.Context) ConnectorConfigReportAccountOutput {
+	return o
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+func (o ConnectorConfigReportAccountOutput) Flag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReportAccount) *bool { return v.Flag }).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Account ID to sync
+func (o ConnectorConfigReportAccountOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReportAccount) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+func (o ConnectorConfigReportAccountOutput) IncludeDescendants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReportAccount) *bool { return v.IncludeDescendants }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectorConfigReportAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorConfigReportAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigReportAccount)(nil)).Elem()
+}
+
+func (o ConnectorConfigReportAccountArrayOutput) ToConnectorConfigReportAccountArrayOutput() ConnectorConfigReportAccountArrayOutput {
+	return o
+}
+
+func (o ConnectorConfigReportAccountArrayOutput) ToConnectorConfigReportAccountArrayOutputWithContext(ctx context.Context) ConnectorConfigReportAccountArrayOutput {
+	return o
+}
+
+func (o ConnectorConfigReportAccountArrayOutput) Index(i pulumi.IntInput) ConnectorConfigReportAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigReportAccount {
+		return vs[0].([]ConnectorConfigReportAccount)[vs[1].(int)]
+	}).(ConnectorConfigReportAccountOutput)
 }
 
 type ConnectorConfigReportConfig struct {
@@ -29422,6 +30254,130 @@ func (o ConnectorConfigReportConfigArrayOutput) Index(i pulumi.IntInput) Connect
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigReportConfig {
 		return vs[0].([]ConnectorConfigReportConfig)[vs[1].(int)]
 	}).(ConnectorConfigReportConfigOutput)
+}
+
+type ConnectorConfigReportLevel struct {
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	Flag *bool `pulumi:"flag"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Level ID to sync
+	Id *string `pulumi:"id"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	IncludeDescendants *bool `pulumi:"includeDescendants"`
+}
+
+// ConnectorConfigReportLevelInput is an input type that accepts ConnectorConfigReportLevelArgs and ConnectorConfigReportLevelOutput values.
+// You can construct a concrete instance of `ConnectorConfigReportLevelInput` via:
+//
+//	ConnectorConfigReportLevelArgs{...}
+type ConnectorConfigReportLevelInput interface {
+	pulumi.Input
+
+	ToConnectorConfigReportLevelOutput() ConnectorConfigReportLevelOutput
+	ToConnectorConfigReportLevelOutputWithContext(context.Context) ConnectorConfigReportLevelOutput
+}
+
+type ConnectorConfigReportLevelArgs struct {
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	Flag pulumi.BoolPtrInput `pulumi:"flag"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Level ID to sync
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	IncludeDescendants pulumi.BoolPtrInput `pulumi:"includeDescendants"`
+}
+
+func (ConnectorConfigReportLevelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigReportLevel)(nil)).Elem()
+}
+
+func (i ConnectorConfigReportLevelArgs) ToConnectorConfigReportLevelOutput() ConnectorConfigReportLevelOutput {
+	return i.ToConnectorConfigReportLevelOutputWithContext(context.Background())
+}
+
+func (i ConnectorConfigReportLevelArgs) ToConnectorConfigReportLevelOutputWithContext(ctx context.Context) ConnectorConfigReportLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigReportLevelOutput)
+}
+
+// ConnectorConfigReportLevelArrayInput is an input type that accepts ConnectorConfigReportLevelArray and ConnectorConfigReportLevelArrayOutput values.
+// You can construct a concrete instance of `ConnectorConfigReportLevelArrayInput` via:
+//
+//	ConnectorConfigReportLevelArray{ ConnectorConfigReportLevelArgs{...} }
+type ConnectorConfigReportLevelArrayInput interface {
+	pulumi.Input
+
+	ToConnectorConfigReportLevelArrayOutput() ConnectorConfigReportLevelArrayOutput
+	ToConnectorConfigReportLevelArrayOutputWithContext(context.Context) ConnectorConfigReportLevelArrayOutput
+}
+
+type ConnectorConfigReportLevelArray []ConnectorConfigReportLevelInput
+
+func (ConnectorConfigReportLevelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigReportLevel)(nil)).Elem()
+}
+
+func (i ConnectorConfigReportLevelArray) ToConnectorConfigReportLevelArrayOutput() ConnectorConfigReportLevelArrayOutput {
+	return i.ToConnectorConfigReportLevelArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorConfigReportLevelArray) ToConnectorConfigReportLevelArrayOutputWithContext(ctx context.Context) ConnectorConfigReportLevelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigReportLevelArrayOutput)
+}
+
+type ConnectorConfigReportLevelOutput struct{ *pulumi.OutputState }
+
+func (ConnectorConfigReportLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigReportLevel)(nil)).Elem()
+}
+
+func (o ConnectorConfigReportLevelOutput) ToConnectorConfigReportLevelOutput() ConnectorConfigReportLevelOutput {
+	return o
+}
+
+func (o ConnectorConfigReportLevelOutput) ToConnectorConfigReportLevelOutputWithContext(ctx context.Context) ConnectorConfigReportLevelOutput {
+	return o
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+func (o ConnectorConfigReportLevelOutput) Flag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReportLevel) *bool { return v.Flag }).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Level ID to sync
+func (o ConnectorConfigReportLevelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReportLevel) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+func (o ConnectorConfigReportLevelOutput) IncludeDescendants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReportLevel) *bool { return v.IncludeDescendants }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectorConfigReportLevelArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorConfigReportLevelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigReportLevel)(nil)).Elem()
+}
+
+func (o ConnectorConfigReportLevelArrayOutput) ToConnectorConfigReportLevelArrayOutput() ConnectorConfigReportLevelArrayOutput {
+	return o
+}
+
+func (o ConnectorConfigReportLevelArrayOutput) ToConnectorConfigReportLevelArrayOutputWithContext(ctx context.Context) ConnectorConfigReportLevelArrayOutput {
+	return o
+}
+
+func (o ConnectorConfigReportLevelArrayOutput) Index(i pulumi.IntInput) ConnectorConfigReportLevelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigReportLevel {
+		return vs[0].([]ConnectorConfigReportLevel)[vs[1].(int)]
+	}).(ConnectorConfigReportLevelOutput)
 }
 
 type ConnectorConfigReportList struct {
@@ -31320,6 +32276,7 @@ type DestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -31336,12 +32293,13 @@ type DestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Authentication type
 	// 	- Service `databricks`: Authentication type
-	// 	- Service `managedDataLake`: Authentication type
+	// 	- Service `managedDataLake`: Specifies the authentication types for Fivetran to connect to Databricks. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: Authentication type
 	// 	- Service `onelake`: Authentication type
 	// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
 	AuthType *string `pulumi:"authType"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your user's access key ID
 	// 	- Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
 	// 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -31350,36 +32308,42 @@ type DestinationConfig struct {
 	// 	- Service `snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 	AwsBucketAuthType *string `pulumi:"awsBucketAuthType"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your user's secret access key
 	// 	- Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
 	// 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
 	AwsSecretAccessKey *string `pulumi:"awsSecretAccessKey"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+	AzureStorageAccountAuthType *string `pulumi:"azureStorageAccountAuthType"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
 	BootstrapServers []string `pulumi:"bootstrapServers"`
 	// Field usage depends on `service` value:
 	// 	- Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
 	// 	- Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+	// 	- Service `databricks`: Your bucket
 	// 	- Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-	// 	- Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
+	// 	- Service `managedDataLake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
 	// 	- Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
 	// 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
 	Bucket *string `pulumi:"bucket"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your bucket's region
 	// 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 	BucketRegion *string `pulumi:"bucketRegion"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Catalog name
 	// 	- Service `databricks`: Catalog name
-	// 	- Service `managedDataLake`: Catalog name
+	// 	- Service `managedDataLake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables. Use this parameter only if you want to use Unity Catalog with your data lake.
 	// 	- Service `newS3Datalake`: Catalog name
 	// 	- Service `onelake`: Catalog name
 	Catalog *string `pulumi:"catalog"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Client id of service principal
-	// 	- Service `managedDataLake`: Client id of service principal
+	// 	- Service `managedDataLake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Client ID of service principal
 	ClientId *string `pulumi:"clientId"`
 	// Field usage depends on `service` value:
@@ -31415,6 +32379,7 @@ type DestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `panoply`: Connection method. Default value: `Directly`.
 	// 	- Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
+	// 	- Service `postgresDatabricksWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresWarehouse`: Connection method. Default value: `Directly`.
@@ -31425,13 +32390,16 @@ type DestinationConfig struct {
 	ConnectionType *string `pulumi:"connectionType"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) Container to store delta table files
-	// 	- Service `managedDataLake`: (Immutable) Container to store delta table files
+	// 	- Service `managedDataLake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Workspace name to store delta table files
 	ContainerName *string `pulumi:"containerName"`
 	ControllerId  *string `pulumi:"controllerId"`
 	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Whether to create external tables
 	CreateExternalTables *bool `pulumi:"createExternalTables"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Specifies whether you want Fivetran to create external volumes for unstructured data files.
+	CreateExternalVolumes *bool `pulumi:"createExternalVolumes"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Confluent Cloud message format.
 	DataFormat *string `pulumi:"dataFormat"`
@@ -31456,6 +32424,7 @@ type DestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Database name
 	// 	- Service `panoply`: Database name
 	// 	- Service `periscopeWarehouse`: Database name
+	// 	- Service `postgresDatabricksWarehouse`: Database name
 	// 	- Service `postgresGcpWarehouse`: Database name
 	// 	- Service `postgresRdsWarehouse`: Database name
 	// 	- Service `postgresWarehouse`: Database name
@@ -31466,7 +32435,7 @@ type DestinationConfig struct {
 	Database *string `pulumi:"database"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
-	// 	- Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
+	// 	- Service `managedDataLake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`. Use this parameter only if you want to use Unity Catalog with your data lake.
 	// 	- Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
 	// 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
 	DatabricksConnectionType *string `pulumi:"databricksConnectionType"`
@@ -31504,10 +32473,13 @@ type DestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `snowflake`: External storage parent folder URL
 	ExternalStorageParentFolderUri *string `pulumi:"externalStorageParentFolderUri"`
-	FivetranGlueRoleArn            *string `pulumi:"fivetranGlueRoleArn"`
-	FivetranMskRoleArn             *string `pulumi:"fivetranMskRoleArn"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
+	// 	- Service `databricks`: Specifies the external volume path where you want Fivetran to create the unstructured files.
+	ExternalVolumeLocation *string `pulumi:"externalVolumeLocation"`
+	FivetranGlueRoleArn    *string `pulumi:"fivetranGlueRoleArn"`
+	FivetranMskRoleArn     *string `pulumi:"fivetranMskRoleArn"`
+	// Field usage depends on `service` value:
+	// 	- Service `managedDataLake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
 	// 	- Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
 	FivetranRoleArn *string `pulumi:"fivetranRoleArn"`
 	// Field usage depends on `service` value:
@@ -31529,6 +32501,7 @@ type DestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Server name
 	// 	- Service `panoply`: Server name
 	// 	- Service `periscopeWarehouse`: Server name
+	// 	- Service `postgresDatabricksWarehouse`: Server name
 	// 	- Service `postgresGcpWarehouse`: Server name
 	// 	- Service `postgresRdsWarehouse`: Server name
 	// 	- Service `postgresWarehouse`: Server name
@@ -31540,7 +32513,7 @@ type DestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: HTTP path
 	// 	- Service `databricks`: HTTP path
-	// 	- Service `managedDataLake`: HTTP path
+	// 	- Service `managedDataLake`: HTTP path of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: HTTP path
 	// 	- Service `onelake`: HTTP path
 	HttpPath *string `pulumi:"httpPath"`
@@ -31567,14 +32540,14 @@ type DestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: OAuth 2.0 client ID
 	// 	- Service `databricks`: OAuth 2.0 client ID
-	// 	- Service `managedDataLake`: OAuth 2.0 client ID
+	// 	- Service `managedDataLake`: The OAuth 2.0 client ID you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: OAuth 2.0 client ID
 	// 	- Service `onelake`: OAuth 2.0 client ID
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: OAuth 2.0 secret
 	// 	- Service `databricks`: OAuth 2.0 secret
-	// 	- Service `managedDataLake`: OAuth 2.0 secret
+	// 	- Service `managedDataLake`: OAuth 2.0 secret you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: OAuth 2.0 secret
 	// 	- Service `onelake`: OAuth 2.0 secret
 	Oauth2Secret *string `pulumi:"oauth2Secret"`
@@ -31597,6 +32570,7 @@ type DestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Database user password
 	// 	- Service `panoply`: Database user password
 	// 	- Service `periscopeWarehouse`: Database user password
+	// 	- Service `postgresDatabricksWarehouse`: Database user password
 	// 	- Service `postgresGcpWarehouse`: Database user password
 	// 	- Service `postgresRdsWarehouse`: Database user password
 	// 	- Service `postgresWarehouse`: Database user password
@@ -31608,7 +32582,7 @@ type DestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Personal access token
 	// 	- Service `databricks`: Personal access token
-	// 	- Service `managedDataLake`: Personal access token
+	// 	- Service `managedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: Personal access token
 	// 	- Service `onelake`: Personal access token
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
@@ -31621,7 +32595,7 @@ type DestinationConfig struct {
 	// 	- Service `azureSqlDatabase`: Server port number
 	// 	- Service `azureSqlManagedDbWarehouse`: Server port number
 	// 	- Service `databricks`: Server port number
-	// 	- Service `managedDataLake`: Server port number
+	// 	- Service `managedDataLake`: Server port number of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `mariaRdsWarehouse`: Server port number
 	// 	- Service `mariaWarehouse`: Server port number
 	// 	- Service `mysqlRdsWarehouse`: Server port number
@@ -31633,6 +32607,7 @@ type DestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Server port number
 	// 	- Service `panoply`: Server port number
 	// 	- Service `periscopeWarehouse`: Server port number
+	// 	- Service `postgresDatabricksWarehouse`: Server port number
 	// 	- Service `postgresGcpWarehouse`: Server port number
 	// 	- Service `postgresRdsWarehouse`: Server port number
 	// 	- Service `postgresWarehouse`: Server port number
@@ -31643,7 +32618,7 @@ type DestinationConfig struct {
 	Port *int `pulumi:"port"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) path/to/data within the container
-	// 	- Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+	// 	- Service `managedDataLake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
 	// 	- Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
 	// 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
 	PrefixPath *string `pulumi:"prefixPath"`
@@ -31674,7 +32649,7 @@ type DestinationConfig struct {
 	// 	- Service `sqlServerWarehouse`: Public Key
 	PublicKey *string `pulumi:"publicKey"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
+	// 	- Service `managedDataLake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
 	// 	- Service `newS3Datalake`: Region of your AWS S3 bucket
 	Region            *string `pulumi:"region"`
 	RegistryName      *string `pulumi:"registryName"`
@@ -31711,6 +32686,9 @@ type DestinationConfig struct {
 	// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 	RoleArn *string `pulumi:"roleArn"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
+	S3BucketAuthType *string `pulumi:"s3BucketAuthType"`
+	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Security protocol for Confluent Cloud interaction.
 	SaslMechanism *string `pulumi:"saslMechanism"`
 	// Field usage depends on `service` value:
@@ -31739,7 +32717,7 @@ type DestinationConfig struct {
 	SecretKey *string `pulumi:"secretKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Secret value for service principal
-	// 	- Service `managedDataLake`: Secret value for service principal
+	// 	- Service `managedDataLake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Secret value for service principal
 	SecretValue *string `pulumi:"secretValue"`
 	// Field usage depends on `service` value:
@@ -31748,22 +32726,22 @@ type DestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Server Host name
 	// 	- Service `databricks`: Server name
-	// 	- Service `managedDataLake`: Server host name
+	// 	- Service `managedDataLake`: Server host name of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: Server host name
 	// 	- Service `onelake`: Server Host name
 	ServerHostName *string `pulumi:"serverHostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Should maintain tables in Databricks
-	// 	- Service `managedDataLake`: Should maintain tables in Databricks
+	// 	- Service `managedDataLake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
 	// 	- Service `newS3Datalake`: Should maintain tables in Databricks
 	// 	- Service `onelake`: Should maintain tables in Databricks
 	ShouldMaintainTablesInDatabricks *bool `pulumi:"shouldMaintainTablesInDatabricks"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+	// 	- Service `managedDataLake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
 	ShouldMaintainTablesInGlue *bool `pulumi:"shouldMaintainTablesInGlue"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-	// 	- Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+	// 	- Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 	// 	- Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	// 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	SnapshotRetentionPeriod *string `pulumi:"snapshotRetentionPeriod"`
@@ -31771,24 +32749,31 @@ type DestinationConfig struct {
 	SnowflakeRegion         *string `pulumi:"snowflakeRegion"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+	// 	- Service `databricks`: Your storage account key
 	// 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 	StorageAccountKey *string `pulumi:"storageAccountKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 	// 	- Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-	// 	- Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+	// 	- Service `databricks`: Your storage account name
+	// 	- Service `managedDataLake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 	// 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 	StorageAccountName *string `pulumi:"storageAccountName"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: Storage Provider
+	// 	- Service `managedDataLake`: The cloud storage provider you want to use for your data lake.
 	StorageProvider *string `pulumi:"storageProvider"`
+	// Field usage depends on `service` value:
+	// 	- Service `bigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	// 	- Service `bigQueryDts`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	// 	- Service `managedBigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	SupportJsonType *bool `pulumi:"supportJsonType"`
 	// Field usage depends on `service` value:
 	// 	- Service `newS3Datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
 	TableFormat *string `pulumi:"tableFormat"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Tenant id of service principal
-	// 	- Service `managedDataLake`: Tenant id of service principal
+	// 	- Service `managedDataLake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Tenant ID of service principal
 	TenantId *string `pulumi:"tenantId"`
 	// Field usage depends on `service` value:
@@ -31807,6 +32792,7 @@ type DestinationConfig struct {
 	// 	- Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -31830,6 +32816,7 @@ type DestinationConfig struct {
 	// 	- Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -31853,6 +32840,7 @@ type DestinationConfig struct {
 	// 	- Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -31879,6 +32867,7 @@ type DestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Database user name
 	// 	- Service `panoply`: Database user name
 	// 	- Service `periscopeWarehouse`: Database user name
+	// 	- Service `postgresDatabricksWarehouse`: Database user name
 	// 	- Service `postgresGcpWarehouse`: Database user name
 	// 	- Service `postgresRdsWarehouse`: Database user name
 	// 	- Service `postgresWarehouse`: Database user name
@@ -31924,6 +32913,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -31940,12 +32930,13 @@ type DestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Authentication type
 	// 	- Service `databricks`: Authentication type
-	// 	- Service `managedDataLake`: Authentication type
+	// 	- Service `managedDataLake`: Specifies the authentication types for Fivetran to connect to Databricks. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: Authentication type
 	// 	- Service `onelake`: Authentication type
 	// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your user's access key ID
 	// 	- Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
 	// 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -31954,36 +32945,42 @@ type DestinationConfigArgs struct {
 	// 	- Service `snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 	AwsBucketAuthType pulumi.StringPtrInput `pulumi:"awsBucketAuthType"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your user's secret access key
 	// 	- Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
 	// 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
 	AwsSecretAccessKey pulumi.StringPtrInput `pulumi:"awsSecretAccessKey"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+	AzureStorageAccountAuthType pulumi.StringPtrInput `pulumi:"azureStorageAccountAuthType"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
 	BootstrapServers pulumi.StringArrayInput `pulumi:"bootstrapServers"`
 	// Field usage depends on `service` value:
 	// 	- Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
 	// 	- Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+	// 	- Service `databricks`: Your bucket
 	// 	- Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-	// 	- Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
+	// 	- Service `managedDataLake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
 	// 	- Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
 	// 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your bucket's region
 	// 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 	BucketRegion pulumi.StringPtrInput `pulumi:"bucketRegion"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Catalog name
 	// 	- Service `databricks`: Catalog name
-	// 	- Service `managedDataLake`: Catalog name
+	// 	- Service `managedDataLake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables. Use this parameter only if you want to use Unity Catalog with your data lake.
 	// 	- Service `newS3Datalake`: Catalog name
 	// 	- Service `onelake`: Catalog name
 	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Client id of service principal
-	// 	- Service `managedDataLake`: Client id of service principal
+	// 	- Service `managedDataLake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Client ID of service principal
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Field usage depends on `service` value:
@@ -32019,6 +33016,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `panoply`: Connection method. Default value: `Directly`.
 	// 	- Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
+	// 	- Service `postgresDatabricksWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresWarehouse`: Connection method. Default value: `Directly`.
@@ -32029,13 +33027,16 @@ type DestinationConfigArgs struct {
 	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) Container to store delta table files
-	// 	- Service `managedDataLake`: (Immutable) Container to store delta table files
+	// 	- Service `managedDataLake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Workspace name to store delta table files
 	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
 	ControllerId  pulumi.StringPtrInput `pulumi:"controllerId"`
 	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Whether to create external tables
 	CreateExternalTables pulumi.BoolPtrInput `pulumi:"createExternalTables"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Specifies whether you want Fivetran to create external volumes for unstructured data files.
+	CreateExternalVolumes pulumi.BoolPtrInput `pulumi:"createExternalVolumes"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Confluent Cloud message format.
 	DataFormat pulumi.StringPtrInput `pulumi:"dataFormat"`
@@ -32060,6 +33061,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Database name
 	// 	- Service `panoply`: Database name
 	// 	- Service `periscopeWarehouse`: Database name
+	// 	- Service `postgresDatabricksWarehouse`: Database name
 	// 	- Service `postgresGcpWarehouse`: Database name
 	// 	- Service `postgresRdsWarehouse`: Database name
 	// 	- Service `postgresWarehouse`: Database name
@@ -32070,7 +33072,7 @@ type DestinationConfigArgs struct {
 	Database pulumi.StringPtrInput `pulumi:"database"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
-	// 	- Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
+	// 	- Service `managedDataLake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`. Use this parameter only if you want to use Unity Catalog with your data lake.
 	// 	- Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
 	// 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
 	DatabricksConnectionType pulumi.StringPtrInput `pulumi:"databricksConnectionType"`
@@ -32108,10 +33110,13 @@ type DestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `snowflake`: External storage parent folder URL
 	ExternalStorageParentFolderUri pulumi.StringPtrInput `pulumi:"externalStorageParentFolderUri"`
-	FivetranGlueRoleArn            pulumi.StringPtrInput `pulumi:"fivetranGlueRoleArn"`
-	FivetranMskRoleArn             pulumi.StringPtrInput `pulumi:"fivetranMskRoleArn"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
+	// 	- Service `databricks`: Specifies the external volume path where you want Fivetran to create the unstructured files.
+	ExternalVolumeLocation pulumi.StringPtrInput `pulumi:"externalVolumeLocation"`
+	FivetranGlueRoleArn    pulumi.StringPtrInput `pulumi:"fivetranGlueRoleArn"`
+	FivetranMskRoleArn     pulumi.StringPtrInput `pulumi:"fivetranMskRoleArn"`
+	// Field usage depends on `service` value:
+	// 	- Service `managedDataLake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
 	// 	- Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
 	FivetranRoleArn pulumi.StringPtrInput `pulumi:"fivetranRoleArn"`
 	// Field usage depends on `service` value:
@@ -32133,6 +33138,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Server name
 	// 	- Service `panoply`: Server name
 	// 	- Service `periscopeWarehouse`: Server name
+	// 	- Service `postgresDatabricksWarehouse`: Server name
 	// 	- Service `postgresGcpWarehouse`: Server name
 	// 	- Service `postgresRdsWarehouse`: Server name
 	// 	- Service `postgresWarehouse`: Server name
@@ -32144,7 +33150,7 @@ type DestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: HTTP path
 	// 	- Service `databricks`: HTTP path
-	// 	- Service `managedDataLake`: HTTP path
+	// 	- Service `managedDataLake`: HTTP path of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: HTTP path
 	// 	- Service `onelake`: HTTP path
 	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
@@ -32171,14 +33177,14 @@ type DestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: OAuth 2.0 client ID
 	// 	- Service `databricks`: OAuth 2.0 client ID
-	// 	- Service `managedDataLake`: OAuth 2.0 client ID
+	// 	- Service `managedDataLake`: The OAuth 2.0 client ID you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: OAuth 2.0 client ID
 	// 	- Service `onelake`: OAuth 2.0 client ID
 	Oauth2ClientId pulumi.StringPtrInput `pulumi:"oauth2ClientId"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: OAuth 2.0 secret
 	// 	- Service `databricks`: OAuth 2.0 secret
-	// 	- Service `managedDataLake`: OAuth 2.0 secret
+	// 	- Service `managedDataLake`: OAuth 2.0 secret you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: OAuth 2.0 secret
 	// 	- Service `onelake`: OAuth 2.0 secret
 	Oauth2Secret pulumi.StringPtrInput `pulumi:"oauth2Secret"`
@@ -32201,6 +33207,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Database user password
 	// 	- Service `panoply`: Database user password
 	// 	- Service `periscopeWarehouse`: Database user password
+	// 	- Service `postgresDatabricksWarehouse`: Database user password
 	// 	- Service `postgresGcpWarehouse`: Database user password
 	// 	- Service `postgresRdsWarehouse`: Database user password
 	// 	- Service `postgresWarehouse`: Database user password
@@ -32212,7 +33219,7 @@ type DestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Personal access token
 	// 	- Service `databricks`: Personal access token
-	// 	- Service `managedDataLake`: Personal access token
+	// 	- Service `managedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: Personal access token
 	// 	- Service `onelake`: Personal access token
 	PersonalAccessToken pulumi.StringPtrInput `pulumi:"personalAccessToken"`
@@ -32225,7 +33232,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `azureSqlDatabase`: Server port number
 	// 	- Service `azureSqlManagedDbWarehouse`: Server port number
 	// 	- Service `databricks`: Server port number
-	// 	- Service `managedDataLake`: Server port number
+	// 	- Service `managedDataLake`: Server port number of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `mariaRdsWarehouse`: Server port number
 	// 	- Service `mariaWarehouse`: Server port number
 	// 	- Service `mysqlRdsWarehouse`: Server port number
@@ -32237,6 +33244,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Server port number
 	// 	- Service `panoply`: Server port number
 	// 	- Service `periscopeWarehouse`: Server port number
+	// 	- Service `postgresDatabricksWarehouse`: Server port number
 	// 	- Service `postgresGcpWarehouse`: Server port number
 	// 	- Service `postgresRdsWarehouse`: Server port number
 	// 	- Service `postgresWarehouse`: Server port number
@@ -32247,7 +33255,7 @@ type DestinationConfigArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) path/to/data within the container
-	// 	- Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+	// 	- Service `managedDataLake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
 	// 	- Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
 	// 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
 	PrefixPath pulumi.StringPtrInput `pulumi:"prefixPath"`
@@ -32278,7 +33286,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `sqlServerWarehouse`: Public Key
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
+	// 	- Service `managedDataLake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
 	// 	- Service `newS3Datalake`: Region of your AWS S3 bucket
 	Region            pulumi.StringPtrInput `pulumi:"region"`
 	RegistryName      pulumi.StringPtrInput `pulumi:"registryName"`
@@ -32315,6 +33323,9 @@ type DestinationConfigArgs struct {
 	// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
+	S3BucketAuthType pulumi.StringPtrInput `pulumi:"s3BucketAuthType"`
+	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Security protocol for Confluent Cloud interaction.
 	SaslMechanism pulumi.StringPtrInput `pulumi:"saslMechanism"`
 	// Field usage depends on `service` value:
@@ -32343,7 +33354,7 @@ type DestinationConfigArgs struct {
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Secret value for service principal
-	// 	- Service `managedDataLake`: Secret value for service principal
+	// 	- Service `managedDataLake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Secret value for service principal
 	SecretValue pulumi.StringPtrInput `pulumi:"secretValue"`
 	// Field usage depends on `service` value:
@@ -32352,22 +33363,22 @@ type DestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Server Host name
 	// 	- Service `databricks`: Server name
-	// 	- Service `managedDataLake`: Server host name
+	// 	- Service `managedDataLake`: Server host name of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: Server host name
 	// 	- Service `onelake`: Server Host name
 	ServerHostName pulumi.StringPtrInput `pulumi:"serverHostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Should maintain tables in Databricks
-	// 	- Service `managedDataLake`: Should maintain tables in Databricks
+	// 	- Service `managedDataLake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
 	// 	- Service `newS3Datalake`: Should maintain tables in Databricks
 	// 	- Service `onelake`: Should maintain tables in Databricks
 	ShouldMaintainTablesInDatabricks pulumi.BoolPtrInput `pulumi:"shouldMaintainTablesInDatabricks"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+	// 	- Service `managedDataLake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
 	ShouldMaintainTablesInGlue pulumi.BoolPtrInput `pulumi:"shouldMaintainTablesInGlue"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-	// 	- Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+	// 	- Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 	// 	- Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	// 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	SnapshotRetentionPeriod pulumi.StringPtrInput `pulumi:"snapshotRetentionPeriod"`
@@ -32375,24 +33386,31 @@ type DestinationConfigArgs struct {
 	SnowflakeRegion         pulumi.StringPtrInput `pulumi:"snowflakeRegion"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+	// 	- Service `databricks`: Your storage account key
 	// 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 	StorageAccountKey pulumi.StringPtrInput `pulumi:"storageAccountKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 	// 	- Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-	// 	- Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+	// 	- Service `databricks`: Your storage account name
+	// 	- Service `managedDataLake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 	// 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: Storage Provider
+	// 	- Service `managedDataLake`: The cloud storage provider you want to use for your data lake.
 	StorageProvider pulumi.StringPtrInput `pulumi:"storageProvider"`
+	// Field usage depends on `service` value:
+	// 	- Service `bigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	// 	- Service `bigQueryDts`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	// 	- Service `managedBigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	SupportJsonType pulumi.BoolPtrInput `pulumi:"supportJsonType"`
 	// Field usage depends on `service` value:
 	// 	- Service `newS3Datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
 	TableFormat pulumi.StringPtrInput `pulumi:"tableFormat"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Tenant id of service principal
-	// 	- Service `managedDataLake`: Tenant id of service principal
+	// 	- Service `managedDataLake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Tenant ID of service principal
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 	// Field usage depends on `service` value:
@@ -32411,6 +33429,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -32434,6 +33453,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -32457,6 +33477,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -32483,6 +33504,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Database user name
 	// 	- Service `panoply`: Database user name
 	// 	- Service `periscopeWarehouse`: Database user name
+	// 	- Service `postgresDatabricksWarehouse`: Database user name
 	// 	- Service `postgresGcpWarehouse`: Database user name
 	// 	- Service `postgresRdsWarehouse`: Database user name
 	// 	- Service `postgresWarehouse`: Database user name
@@ -32593,6 +33615,7 @@ func (o DestinationConfigOutput) ToDestinationConfigPtrOutputWithContext(ctx con
 //   - Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -32618,7 +33641,7 @@ func (o DestinationConfigOutput) Auth() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Authentication type
 //   - Service `databricks`: Authentication type
-//   - Service `managedDataLake`: Authentication type
+//   - Service `managedDataLake`: Specifies the authentication types for Fivetran to connect to Databricks. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: Authentication type
 //   - Service `onelake`: Authentication type
 //   - Service `redshift`: Authentication type. Default value: `PASSWORD`.
@@ -32627,6 +33650,7 @@ func (o DestinationConfigOutput) AuthType() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your user's access key ID
 //   - Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
 //   - Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -32641,11 +33665,18 @@ func (o DestinationConfigOutput) AwsBucketAuthType() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your user's secret access key
 //   - Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
 //   - Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
 func (o DestinationConfigOutput) AwsSecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.AwsSecretAccessKey }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+func (o DestinationConfigOutput) AzureStorageAccountAuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.AzureStorageAccountAuthType }).(pulumi.StringPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -32657,8 +33688,9 @@ func (o DestinationConfigOutput) BootstrapServers() pulumi.StringArrayOutput {
 // Field usage depends on `service` value:
 //   - Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
 //   - Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+//   - Service `databricks`: Your bucket
 //   - Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-//   - Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
+//   - Service `managedDataLake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
 //   - Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
 //   - Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
@@ -32667,6 +33699,7 @@ func (o DestinationConfigOutput) Bucket() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your bucket's region
 //   - Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 func (o DestinationConfigOutput) BucketRegion() pulumi.StringPtrOutput {
@@ -32676,7 +33709,7 @@ func (o DestinationConfigOutput) BucketRegion() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Catalog name
 //   - Service `databricks`: Catalog name
-//   - Service `managedDataLake`: Catalog name
+//   - Service `managedDataLake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables. Use this parameter only if you want to use Unity Catalog with your data lake.
 //   - Service `newS3Datalake`: Catalog name
 //   - Service `onelake`: Catalog name
 func (o DestinationConfigOutput) Catalog() pulumi.StringPtrOutput {
@@ -32685,7 +33718,7 @@ func (o DestinationConfigOutput) Catalog() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Client id of service principal
-//   - Service `managedDataLake`: Client id of service principal
+//   - Service `managedDataLake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Client ID of service principal
 func (o DestinationConfigOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -32736,6 +33769,7 @@ func (o DestinationConfigOutput) ConnectionMethod() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `panoply`: Connection method. Default value: `Directly`.
 //   - Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
+//   - Service `postgresDatabricksWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresWarehouse`: Connection method. Default value: `Directly`.
@@ -32749,7 +33783,7 @@ func (o DestinationConfigOutput) ConnectionType() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) Container to store delta table files
-//   - Service `managedDataLake`: (Immutable) Container to store delta table files
+//   - Service `managedDataLake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Workspace name to store delta table files
 func (o DestinationConfigOutput) ContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
@@ -32763,6 +33797,12 @@ func (o DestinationConfigOutput) ControllerId() pulumi.StringPtrOutput {
 //   - Service `databricks`: Whether to create external tables
 func (o DestinationConfigOutput) CreateExternalTables() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *bool { return v.CreateExternalTables }).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Specifies whether you want Fivetran to create external volumes for unstructured data files.
+func (o DestinationConfigOutput) CreateExternalVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *bool { return v.CreateExternalVolumes }).(pulumi.BoolPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -32795,6 +33835,7 @@ func (o DestinationConfigOutput) DataSetLocation() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: Database name
 //   - Service `panoply`: Database name
 //   - Service `periscopeWarehouse`: Database name
+//   - Service `postgresDatabricksWarehouse`: Database name
 //   - Service `postgresGcpWarehouse`: Database name
 //   - Service `postgresRdsWarehouse`: Database name
 //   - Service `postgresWarehouse`: Database name
@@ -32808,7 +33849,7 @@ func (o DestinationConfigOutput) Database() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Databricks Connection method. Default value: `Directly`.
-//   - Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
+//   - Service `managedDataLake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`. Use this parameter only if you want to use Unity Catalog with your data lake.
 //   - Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
 //   - Service `onelake`: Databricks Connection method. Default value: `Directly`.
 func (o DestinationConfigOutput) DatabricksConnectionType() pulumi.StringPtrOutput {
@@ -32882,6 +33923,12 @@ func (o DestinationConfigOutput) ExternalStorageParentFolderUri() pulumi.StringP
 	return o.ApplyT(func(v DestinationConfig) *string { return v.ExternalStorageParentFolderUri }).(pulumi.StringPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `databricks`: Specifies the external volume path where you want Fivetran to create the unstructured files.
+func (o DestinationConfigOutput) ExternalVolumeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.ExternalVolumeLocation }).(pulumi.StringPtrOutput)
+}
+
 func (o DestinationConfigOutput) FivetranGlueRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.FivetranGlueRoleArn }).(pulumi.StringPtrOutput)
 }
@@ -32891,7 +33938,7 @@ func (o DestinationConfigOutput) FivetranMskRoleArn() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
+//   - Service `managedDataLake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
 //   - Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
 func (o DestinationConfigOutput) FivetranRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.FivetranRoleArn }).(pulumi.StringPtrOutput)
@@ -32919,6 +33966,7 @@ func (o DestinationConfigOutput) GcsServiceAccountCredentialsPath() pulumi.Strin
 //   - Service `oracleWarehouse`: Server name
 //   - Service `panoply`: Server name
 //   - Service `periscopeWarehouse`: Server name
+//   - Service `postgresDatabricksWarehouse`: Server name
 //   - Service `postgresGcpWarehouse`: Server name
 //   - Service `postgresRdsWarehouse`: Server name
 //   - Service `postgresWarehouse`: Server name
@@ -32933,7 +33981,7 @@ func (o DestinationConfigOutput) Host() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: HTTP path
 //   - Service `databricks`: HTTP path
-//   - Service `managedDataLake`: HTTP path
+//   - Service `managedDataLake`: HTTP path of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: HTTP path
 //   - Service `onelake`: HTTP path
 func (o DestinationConfigOutput) HttpPath() pulumi.StringPtrOutput {
@@ -32984,7 +34032,7 @@ func (o DestinationConfigOutput) NumOfPartitions() pulumi.IntPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: OAuth 2.0 client ID
 //   - Service `databricks`: OAuth 2.0 client ID
-//   - Service `managedDataLake`: OAuth 2.0 client ID
+//   - Service `managedDataLake`: The OAuth 2.0 client ID you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: OAuth 2.0 client ID
 //   - Service `onelake`: OAuth 2.0 client ID
 func (o DestinationConfigOutput) Oauth2ClientId() pulumi.StringPtrOutput {
@@ -32994,7 +34042,7 @@ func (o DestinationConfigOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: OAuth 2.0 secret
 //   - Service `databricks`: OAuth 2.0 secret
-//   - Service `managedDataLake`: OAuth 2.0 secret
+//   - Service `managedDataLake`: OAuth 2.0 secret you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: OAuth 2.0 secret
 //   - Service `onelake`: OAuth 2.0 secret
 func (o DestinationConfigOutput) Oauth2Secret() pulumi.StringPtrOutput {
@@ -33023,6 +34071,7 @@ func (o DestinationConfigOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: Database user password
 //   - Service `panoply`: Database user password
 //   - Service `periscopeWarehouse`: Database user password
+//   - Service `postgresDatabricksWarehouse`: Database user password
 //   - Service `postgresGcpWarehouse`: Database user password
 //   - Service `postgresRdsWarehouse`: Database user password
 //   - Service `postgresWarehouse`: Database user password
@@ -33037,7 +34086,7 @@ func (o DestinationConfigOutput) Password() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Personal access token
 //   - Service `databricks`: Personal access token
-//   - Service `managedDataLake`: Personal access token
+//   - Service `managedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: Personal access token
 //   - Service `onelake`: Personal access token
 func (o DestinationConfigOutput) PersonalAccessToken() pulumi.StringPtrOutput {
@@ -33053,7 +34102,7 @@ func (o DestinationConfigOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 //   - Service `azureSqlDatabase`: Server port number
 //   - Service `azureSqlManagedDbWarehouse`: Server port number
 //   - Service `databricks`: Server port number
-//   - Service `managedDataLake`: Server port number
+//   - Service `managedDataLake`: Server port number of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `mariaRdsWarehouse`: Server port number
 //   - Service `mariaWarehouse`: Server port number
 //   - Service `mysqlRdsWarehouse`: Server port number
@@ -33065,6 +34114,7 @@ func (o DestinationConfigOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: Server port number
 //   - Service `panoply`: Server port number
 //   - Service `periscopeWarehouse`: Server port number
+//   - Service `postgresDatabricksWarehouse`: Server port number
 //   - Service `postgresGcpWarehouse`: Server port number
 //   - Service `postgresRdsWarehouse`: Server port number
 //   - Service `postgresWarehouse`: Server port number
@@ -33078,7 +34128,7 @@ func (o DestinationConfigOutput) Port() pulumi.IntPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) path/to/data within the container
-//   - Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+//   - Service `managedDataLake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
 //   - Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
 //   - Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
 func (o DestinationConfigOutput) PrefixPath() pulumi.StringPtrOutput {
@@ -33121,7 +34171,7 @@ func (o DestinationConfigOutput) PublicKey() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
+//   - Service `managedDataLake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
 //   - Service `newS3Datalake`: Region of your AWS S3 bucket
 func (o DestinationConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -33176,6 +34226,12 @@ func (o DestinationConfigOutput) Role() pulumi.StringPtrOutput {
 //   - Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 func (o DestinationConfigOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
+func (o DestinationConfigOutput) S3BucketAuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.S3BucketAuthType }).(pulumi.StringPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -33234,7 +34290,7 @@ func (o DestinationConfigOutput) SecretKey() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Secret value for service principal
-//   - Service `managedDataLake`: Secret value for service principal
+//   - Service `managedDataLake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Secret value for service principal
 func (o DestinationConfigOutput) SecretValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.SecretValue }).(pulumi.StringPtrOutput)
@@ -33249,7 +34305,7 @@ func (o DestinationConfigOutput) SecurityProtocol() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Server Host name
 //   - Service `databricks`: Server name
-//   - Service `managedDataLake`: Server host name
+//   - Service `managedDataLake`: Server host name of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: Server host name
 //   - Service `onelake`: Server Host name
 func (o DestinationConfigOutput) ServerHostName() pulumi.StringPtrOutput {
@@ -33258,7 +34314,7 @@ func (o DestinationConfigOutput) ServerHostName() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Should maintain tables in Databricks
-//   - Service `managedDataLake`: Should maintain tables in Databricks
+//   - Service `managedDataLake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
 //   - Service `newS3Datalake`: Should maintain tables in Databricks
 //   - Service `onelake`: Should maintain tables in Databricks
 func (o DestinationConfigOutput) ShouldMaintainTablesInDatabricks() pulumi.BoolPtrOutput {
@@ -33266,14 +34322,14 @@ func (o DestinationConfigOutput) ShouldMaintainTablesInDatabricks() pulumi.BoolP
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+//   - Service `managedDataLake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
 func (o DestinationConfigOutput) ShouldMaintainTablesInGlue() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *bool { return v.ShouldMaintainTablesInGlue }).(pulumi.BoolPtrOutput)
 }
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-//   - Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+//   - Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 //   - Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 //   - Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 func (o DestinationConfigOutput) SnapshotRetentionPeriod() pulumi.StringPtrOutput {
@@ -33290,6 +34346,7 @@ func (o DestinationConfigOutput) SnowflakeRegion() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+//   - Service `databricks`: Your storage account key
 //   - Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 func (o DestinationConfigOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
@@ -33298,7 +34355,8 @@ func (o DestinationConfigOutput) StorageAccountKey() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 //   - Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-//   - Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+//   - Service `databricks`: Your storage account name
+//   - Service `managedDataLake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 //   - Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 func (o DestinationConfigOutput) StorageAccountName() pulumi.StringPtrOutput {
@@ -33306,9 +34364,17 @@ func (o DestinationConfigOutput) StorageAccountName() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: Storage Provider
+//   - Service `managedDataLake`: The cloud storage provider you want to use for your data lake.
 func (o DestinationConfigOutput) StorageProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.StorageProvider }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `bigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+//   - Service `bigQueryDts`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+//   - Service `managedBigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+func (o DestinationConfigOutput) SupportJsonType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *bool { return v.SupportJsonType }).(pulumi.BoolPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -33319,7 +34385,7 @@ func (o DestinationConfigOutput) TableFormat() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Tenant id of service principal
-//   - Service `managedDataLake`: Tenant id of service principal
+//   - Service `managedDataLake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Tenant ID of service principal
 func (o DestinationConfigOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.TenantId }).(pulumi.StringPtrOutput)
@@ -33341,6 +34407,7 @@ func (o DestinationConfigOutput) TenantId() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -33367,6 +34434,7 @@ func (o DestinationConfigOutput) TunnelHost() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -33393,6 +34461,7 @@ func (o DestinationConfigOutput) TunnelPort() pulumi.IntPtrOutput {
 //   - Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -33425,6 +34494,7 @@ func (o DestinationConfigOutput) UseCustomerStaging() pulumi.BoolPtrOutput {
 //   - Service `oracleWarehouse`: Database user name
 //   - Service `panoply`: Database user name
 //   - Service `periscopeWarehouse`: Database user name
+//   - Service `postgresDatabricksWarehouse`: Database user name
 //   - Service `postgresGcpWarehouse`: Database user name
 //   - Service `postgresRdsWarehouse`: Database user name
 //   - Service `postgresWarehouse`: Database user name
@@ -33489,6 +34559,7 @@ func (o DestinationConfigPtrOutput) Elem() DestinationConfigOutput {
 //   - Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -33529,7 +34600,7 @@ func (o DestinationConfigPtrOutput) Auth() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Authentication type
 //   - Service `databricks`: Authentication type
-//   - Service `managedDataLake`: Authentication type
+//   - Service `managedDataLake`: Specifies the authentication types for Fivetran to connect to Databricks. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: Authentication type
 //   - Service `onelake`: Authentication type
 //   - Service `redshift`: Authentication type. Default value: `PASSWORD`.
@@ -33543,6 +34614,7 @@ func (o DestinationConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your user's access key ID
 //   - Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
 //   - Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -33567,6 +34639,7 @@ func (o DestinationConfigPtrOutput) AwsBucketAuthType() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your user's secret access key
 //   - Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
 //   - Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -33576,6 +34649,17 @@ func (o DestinationConfigPtrOutput) AwsSecretAccessKey() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.AwsSecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+func (o DestinationConfigPtrOutput) AzureStorageAccountAuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureStorageAccountAuthType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33593,8 +34677,9 @@ func (o DestinationConfigPtrOutput) BootstrapServers() pulumi.StringArrayOutput 
 // Field usage depends on `service` value:
 //   - Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
 //   - Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+//   - Service `databricks`: Your bucket
 //   - Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-//   - Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
+//   - Service `managedDataLake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
 //   - Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
 //   - Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
@@ -33608,6 +34693,7 @@ func (o DestinationConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your bucket's region
 //   - Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 func (o DestinationConfigPtrOutput) BucketRegion() pulumi.StringPtrOutput {
@@ -33622,7 +34708,7 @@ func (o DestinationConfigPtrOutput) BucketRegion() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Catalog name
 //   - Service `databricks`: Catalog name
-//   - Service `managedDataLake`: Catalog name
+//   - Service `managedDataLake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables. Use this parameter only if you want to use Unity Catalog with your data lake.
 //   - Service `newS3Datalake`: Catalog name
 //   - Service `onelake`: Catalog name
 func (o DestinationConfigPtrOutput) Catalog() pulumi.StringPtrOutput {
@@ -33636,7 +34722,7 @@ func (o DestinationConfigPtrOutput) Catalog() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Client id of service principal
-//   - Service `managedDataLake`: Client id of service principal
+//   - Service `managedDataLake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Client ID of service principal
 func (o DestinationConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -33712,6 +34798,7 @@ func (o DestinationConfigPtrOutput) ConnectionMethod() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `panoply`: Connection method. Default value: `Directly`.
 //   - Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
+//   - Service `postgresDatabricksWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresWarehouse`: Connection method. Default value: `Directly`.
@@ -33730,7 +34817,7 @@ func (o DestinationConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) Container to store delta table files
-//   - Service `managedDataLake`: (Immutable) Container to store delta table files
+//   - Service `managedDataLake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Workspace name to store delta table files
 func (o DestinationConfigPtrOutput) ContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -33758,6 +34845,17 @@ func (o DestinationConfigPtrOutput) CreateExternalTables() pulumi.BoolPtrOutput 
 			return nil
 		}
 		return v.CreateExternalTables
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Specifies whether you want Fivetran to create external volumes for unstructured data files.
+func (o DestinationConfigPtrOutput) CreateExternalVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreateExternalVolumes
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -33801,6 +34899,7 @@ func (o DestinationConfigPtrOutput) DataSetLocation() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: Database name
 //   - Service `panoply`: Database name
 //   - Service `periscopeWarehouse`: Database name
+//   - Service `postgresDatabricksWarehouse`: Database name
 //   - Service `postgresGcpWarehouse`: Database name
 //   - Service `postgresRdsWarehouse`: Database name
 //   - Service `postgresWarehouse`: Database name
@@ -33819,7 +34918,7 @@ func (o DestinationConfigPtrOutput) Database() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Databricks Connection method. Default value: `Directly`.
-//   - Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
+//   - Service `managedDataLake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`. Use this parameter only if you want to use Unity Catalog with your data lake.
 //   - Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
 //   - Service `onelake`: Databricks Connection method. Default value: `Directly`.
 func (o DestinationConfigPtrOutput) DatabricksConnectionType() pulumi.StringPtrOutput {
@@ -33953,6 +35052,17 @@ func (o DestinationConfigPtrOutput) ExternalStorageParentFolderUri() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `databricks`: Specifies the external volume path where you want Fivetran to create the unstructured files.
+func (o DestinationConfigPtrOutput) ExternalVolumeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalVolumeLocation
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o DestinationConfigPtrOutput) FivetranGlueRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
@@ -33972,7 +35082,7 @@ func (o DestinationConfigPtrOutput) FivetranMskRoleArn() pulumi.StringPtrOutput 
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
+//   - Service `managedDataLake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
 //   - Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
 func (o DestinationConfigPtrOutput) FivetranRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -34010,6 +35120,7 @@ func (o DestinationConfigPtrOutput) GcsServiceAccountCredentialsPath() pulumi.St
 //   - Service `oracleWarehouse`: Server name
 //   - Service `panoply`: Server name
 //   - Service `periscopeWarehouse`: Server name
+//   - Service `postgresDatabricksWarehouse`: Server name
 //   - Service `postgresGcpWarehouse`: Server name
 //   - Service `postgresRdsWarehouse`: Server name
 //   - Service `postgresWarehouse`: Server name
@@ -34029,7 +35140,7 @@ func (o DestinationConfigPtrOutput) Host() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: HTTP path
 //   - Service `databricks`: HTTP path
-//   - Service `managedDataLake`: HTTP path
+//   - Service `managedDataLake`: HTTP path of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: HTTP path
 //   - Service `onelake`: HTTP path
 func (o DestinationConfigPtrOutput) HttpPath() pulumi.StringPtrOutput {
@@ -34120,7 +35231,7 @@ func (o DestinationConfigPtrOutput) NumOfPartitions() pulumi.IntPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: OAuth 2.0 client ID
 //   - Service `databricks`: OAuth 2.0 client ID
-//   - Service `managedDataLake`: OAuth 2.0 client ID
+//   - Service `managedDataLake`: The OAuth 2.0 client ID you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: OAuth 2.0 client ID
 //   - Service `onelake`: OAuth 2.0 client ID
 func (o DestinationConfigPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
@@ -34135,7 +35246,7 @@ func (o DestinationConfigPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: OAuth 2.0 secret
 //   - Service `databricks`: OAuth 2.0 secret
-//   - Service `managedDataLake`: OAuth 2.0 secret
+//   - Service `managedDataLake`: OAuth 2.0 secret you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: OAuth 2.0 secret
 //   - Service `onelake`: OAuth 2.0 secret
 func (o DestinationConfigPtrOutput) Oauth2Secret() pulumi.StringPtrOutput {
@@ -34174,6 +35285,7 @@ func (o DestinationConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: Database user password
 //   - Service `panoply`: Database user password
 //   - Service `periscopeWarehouse`: Database user password
+//   - Service `postgresDatabricksWarehouse`: Database user password
 //   - Service `postgresGcpWarehouse`: Database user password
 //   - Service `postgresRdsWarehouse`: Database user password
 //   - Service `postgresWarehouse`: Database user password
@@ -34193,7 +35305,7 @@ func (o DestinationConfigPtrOutput) Password() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Personal access token
 //   - Service `databricks`: Personal access token
-//   - Service `managedDataLake`: Personal access token
+//   - Service `managedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: Personal access token
 //   - Service `onelake`: Personal access token
 func (o DestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput {
@@ -34214,7 +35326,7 @@ func (o DestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput
 //   - Service `azureSqlDatabase`: Server port number
 //   - Service `azureSqlManagedDbWarehouse`: Server port number
 //   - Service `databricks`: Server port number
-//   - Service `managedDataLake`: Server port number
+//   - Service `managedDataLake`: Server port number of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `mariaRdsWarehouse`: Server port number
 //   - Service `mariaWarehouse`: Server port number
 //   - Service `mysqlRdsWarehouse`: Server port number
@@ -34226,6 +35338,7 @@ func (o DestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput
 //   - Service `oracleWarehouse`: Server port number
 //   - Service `panoply`: Server port number
 //   - Service `periscopeWarehouse`: Server port number
+//   - Service `postgresDatabricksWarehouse`: Server port number
 //   - Service `postgresGcpWarehouse`: Server port number
 //   - Service `postgresRdsWarehouse`: Server port number
 //   - Service `postgresWarehouse`: Server port number
@@ -34244,7 +35357,7 @@ func (o DestinationConfigPtrOutput) Port() pulumi.IntPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) path/to/data within the container
-//   - Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+//   - Service `managedDataLake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
 //   - Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
 //   - Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
 func (o DestinationConfigPtrOutput) PrefixPath() pulumi.StringPtrOutput {
@@ -34307,7 +35420,7 @@ func (o DestinationConfigPtrOutput) PublicKey() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
+//   - Service `managedDataLake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
 //   - Service `newS3Datalake`: Region of your AWS S3 bucket
 func (o DestinationConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -34396,6 +35509,17 @@ func (o DestinationConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
+func (o DestinationConfigPtrOutput) S3BucketAuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.S3BucketAuthType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -34500,7 +35624,7 @@ func (o DestinationConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Secret value for service principal
-//   - Service `managedDataLake`: Secret value for service principal
+//   - Service `managedDataLake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Secret value for service principal
 func (o DestinationConfigPtrOutput) SecretValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -34525,7 +35649,7 @@ func (o DestinationConfigPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Server Host name
 //   - Service `databricks`: Server name
-//   - Service `managedDataLake`: Server host name
+//   - Service `managedDataLake`: Server host name of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: Server host name
 //   - Service `onelake`: Server Host name
 func (o DestinationConfigPtrOutput) ServerHostName() pulumi.StringPtrOutput {
@@ -34539,7 +35663,7 @@ func (o DestinationConfigPtrOutput) ServerHostName() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Should maintain tables in Databricks
-//   - Service `managedDataLake`: Should maintain tables in Databricks
+//   - Service `managedDataLake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
 //   - Service `newS3Datalake`: Should maintain tables in Databricks
 //   - Service `onelake`: Should maintain tables in Databricks
 func (o DestinationConfigPtrOutput) ShouldMaintainTablesInDatabricks() pulumi.BoolPtrOutput {
@@ -34552,7 +35676,7 @@ func (o DestinationConfigPtrOutput) ShouldMaintainTablesInDatabricks() pulumi.Bo
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+//   - Service `managedDataLake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
 func (o DestinationConfigPtrOutput) ShouldMaintainTablesInGlue() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *bool {
 		if v == nil {
@@ -34564,7 +35688,7 @@ func (o DestinationConfigPtrOutput) ShouldMaintainTablesInGlue() pulumi.BoolPtrO
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-//   - Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+//   - Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 //   - Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 //   - Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 func (o DestinationConfigPtrOutput) SnapshotRetentionPeriod() pulumi.StringPtrOutput {
@@ -34596,6 +35720,7 @@ func (o DestinationConfigPtrOutput) SnowflakeRegion() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+//   - Service `databricks`: Your storage account key
 //   - Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 func (o DestinationConfigPtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -34609,7 +35734,8 @@ func (o DestinationConfigPtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 //   - Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-//   - Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+//   - Service `databricks`: Your storage account name
+//   - Service `managedDataLake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 //   - Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 func (o DestinationConfigPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
@@ -34622,7 +35748,7 @@ func (o DestinationConfigPtrOutput) StorageAccountName() pulumi.StringPtrOutput 
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: Storage Provider
+//   - Service `managedDataLake`: The cloud storage provider you want to use for your data lake.
 func (o DestinationConfigPtrOutput) StorageProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
@@ -34630,6 +35756,19 @@ func (o DestinationConfigPtrOutput) StorageProvider() pulumi.StringPtrOutput {
 		}
 		return v.StorageProvider
 	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `bigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+//   - Service `bigQueryDts`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+//   - Service `managedBigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+func (o DestinationConfigPtrOutput) SupportJsonType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SupportJsonType
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -34645,7 +35784,7 @@ func (o DestinationConfigPtrOutput) TableFormat() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Tenant id of service principal
-//   - Service `managedDataLake`: Tenant id of service principal
+//   - Service `managedDataLake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Tenant ID of service principal
 func (o DestinationConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -34672,6 +35811,7 @@ func (o DestinationConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -34703,6 +35843,7 @@ func (o DestinationConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -34734,6 +35875,7 @@ func (o DestinationConfigPtrOutput) TunnelPort() pulumi.IntPtrOutput {
 //   - Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -34776,6 +35918,7 @@ func (o DestinationConfigPtrOutput) UseCustomerStaging() pulumi.BoolPtrOutput {
 //   - Service `oracleWarehouse`: Database user name
 //   - Service `panoply`: Database user name
 //   - Service `periscopeWarehouse`: Database user name
+//   - Service `postgresDatabricksWarehouse`: Database user name
 //   - Service `postgresGcpWarehouse`: Database user name
 //   - Service `postgresRdsWarehouse`: Database user name
 //   - Service `postgresWarehouse`: Database user name
@@ -38739,6 +39882,7 @@ type GetConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: Require TLS through Tunnel.
 	// 	- Service `ehr`: Require TLS through Tunnel.
 	// 	- Service `elasticCloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+	// 	- Service `epicClarity`: Require TLS through Tunnel.
 	// 	- Service `esSelfHosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: Require TLS through Tunnel
 	// 	- Service `googleCloudPostgresql`: Require TLS through Tunnel
@@ -38799,6 +39943,7 @@ type GetConnectorConfig struct {
 	// 	- Service `anvyl`: Your Anvyl API key.
 	// 	- Service `apollo`: Your Apollo API key.
 	// 	- Service `appcues`: Your Appcues API key.
+	// 	- Service `ascendByPartnerize`: Your Ascend by Partnerize API Key
 	// 	- Service `ashby`: Your Ashby API key.
 	// 	- Service `assembled`: Your Assembled API key.
 	// 	- Service `atlassianJiraAlign`: Your Jira Align API key.
@@ -38840,6 +39985,7 @@ type GetConnectorConfig struct {
 	// 	- Service `column`: Your Column API key.
 	// 	- Service `concord`: Your Concord API key.
 	// 	- Service `confluentCloud`: API Key
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API key.
 	// 	- Service `contrastSecurity`: Your Contrast Security API Key.
 	// 	- Service `copper`: Your Copper API key.
 	// 	- Service `coupa`: Your Coupa API key.
@@ -38854,6 +40000,7 @@ type GetConnectorConfig struct {
 	// 	- Service `drata`: Your Drata API Key.
 	// 	- Service `dropboxSign`: Your Dropbox Sign API key.
 	// 	- Service `duoplane`: Your Duoplane API key.
+	// 	- Service `dutchie`: Your Dutchie API key.
 	// 	- Service `easypost`: Your EasyPost API Key.
 	// 	- Service `electronicTenantSolutions`: Your Electronic Tenant Solutions API key.
 	// 	- Service `eventsforce`: Your Eventsforce API secret key.
@@ -38883,6 +40030,7 @@ type GetConnectorConfig struct {
 	// 	- Service `grin`: Your Grin API key.
 	// 	- Service `happyfox`: Your HappyFox API key.
 	// 	- Service `height`: Your Height API key.
+	// 	- Service `helpjuice`: Your Helpjuice API key.
 	// 	- Service `helpshift`: Your Helpshift API Key.
 	// 	- Service `incidentio`: Your incident.io API key.
 	// 	- Service `infobip`: Your Infobip API key.
@@ -38904,6 +40052,7 @@ type GetConnectorConfig struct {
 	// 	- Service `liftoff`: Your Liftoff API key.
 	// 	- Service `linear`: Your Linear API key.
 	// 	- Service `linksquares`: Your LinkSquares API key.
+	// 	- Service `listen360`: Your Listen360 API key.
 	// 	- Service `lob`: Your Lob API key.
 	// 	- Service `loop`: Your Loop API key.
 	// 	- Service `lucca`: Your Lucca API key.
@@ -38922,6 +40071,7 @@ type GetConnectorConfig struct {
 	// 	- Service `okendo`: Your Okendo API key.
 	// 	- Service `ometria`: Your Ometria API Key.
 	// 	- Service `oncehub`: Your OnceHub API key.
+	// 	- Service `openai`: Your OpenAI API key.
 	// 	- Service `ordergroove`: Your Ordergroove API key.
 	// 	- Service `ordway`: Your Ordway API key.
 	// 	- Service `ortto`: Your Ortto API key.
@@ -38950,7 +40100,7 @@ type GetConnectorConfig struct {
 	// 	- Service `revops`: Your RevOps bearer token.
 	// 	- Service `ricochet360`: Your Ricochet360 API key.
 	// 	- Service `ringover`: Your Ringover API key.
-	// 	- Service `rippling`: Your Rippling API key.
+	// 	- Service `rippling`: Your Rippling API token.
 	// 	- Service `rocketlane`: Your Rocketlane API key.
 	// 	- Service `rootly`: Your Rootly API key.
 	// 	- Service `ruddr`: Your Ruddr API key.
@@ -39019,7 +40169,12 @@ type GetConnectorConfig struct {
 	// 	- Service `qualtrics`: Allowed number of API requests to Qualtrics per minute, the default value is 2000. Maximum allowed number is 3000 because brands may make up to 3000 API requests per minute across all of its API calls.
 	ApiRequestsPerMinute int `pulumi:"apiRequestsPerMinute"`
 	// Field usage depends on `service` value:
+	// 	- Service `zuora`: The API role assigned to the integration user.
+	// 	- Service `zuoraSandbox`: The API role assigned to the integration user.
+	ApiRole string `pulumi:"apiRole"`
+	// Field usage depends on `service` value:
 	// 	- Service `confluentCloud`: API Secret
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API secret.
 	// 	- Service `forjCommunity`: Your Forj Community API secret.
 	// 	- Service `friendbuy`: Your Friendbuy API secret.
 	// 	- Service `justcall`: Your JustCall API secret.
@@ -39096,6 +40251,7 @@ type GetConnectorConfig struct {
 	// 	- Service `webScraper`: Your Web Scraper API token.
 	// 	- Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
 	// 	- Service `zendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management API token.
 	ApiToken string `pulumi:"apiToken"`
 	ApiType  string `pulumi:"apiType"`
 	// Field usage depends on `service` value:
@@ -39287,6 +40443,8 @@ type GetConnectorConfig struct {
 	// 	- Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
 	// 	- Service `github`: Authorization type.
 	// 	- Service `workday`: Authentication Mode
+	// 	- Service `workdayFinancialManagement`: Authentication Mode
+	// 	- Service `workdayHcm`: Authentication Mode
 	AuthMode string `pulumi:"authMode"`
 	// Field usage depends on `service` value:
 	// 	- Service `webhooks`: The secret you want to use for HMAC/token-based auth methods
@@ -39337,6 +40495,7 @@ type GetConnectorConfig struct {
 	BackintConfigurationPath string `pulumi:"backintConfigurationPath"`
 	BackintExecutablePath    string `pulumi:"backintExecutablePath"`
 	// Field usage depends on `service` value:
+	// 	- Service `amazonSellingPartner`: The earliest date to sync data from, in YYYY-MM-DD format. Cannot be before 1994-01-01 or in the future.
 	// 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
 	// 	- Service `stripe`: Limit of the Historical Sync Time for selected tables
 	// 	- Service `stripeTest`: Limit of the Historical Sync Time for selected tables
@@ -39344,6 +40503,8 @@ type GetConnectorConfig struct {
 	BackwardSyncLimit string `pulumi:"backwardSyncLimit"`
 	// Field usage depends on `service` value:
 	// 	- Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+	// 	- Service `mixpanel`: Date from which data needs to be synced.
+	// 	- Service `pendo`: The start date (YYYY-MM-DD) from which to sync historical data.
 	BackwardSyncLimitDate string `pulumi:"backwardSyncLimitDate"`
 	// Field usage depends on `service` value:
 	// 	- Service `openExchangeRates`: Your Open Exchange Rates Base Currency.
@@ -39401,6 +40562,11 @@ type GetConnectorConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
 	BinaryLogType string `pulumi:"binaryLogType"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureCosmosForMongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	// 	- Service `mongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	// 	- Service `mongoSharded`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	BinaryRepresentation string `pulumi:"binaryRepresentation"`
 	// Field usage depends on `service` value:
 	// 	- Service `webhooks`: The blob SAS URL of your Azure container. Required if `bucketService` is set to `AZURE`.
 	BlobSasUrl string `pulumi:"blobSasUrl"`
@@ -39480,7 +40646,7 @@ type GetConnectorConfig struct {
 	ClientHost string `pulumi:"clientHost"`
 	// Field usage depends on `service` value:
 	// 	- Service `acumatica`: Your Acumatica client ID.
-	// 	- Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+	// 	- Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server credentials of your Adobe Project.
 	// 	- Service `adobeWorkfront`: Your Adobe Workfront client ID.
 	// 	- Service `adpWorkforceNow`: Your ADP Client ID.
 	// 	- Service `akamai`: Your Akamai client ID.
@@ -39491,6 +40657,7 @@ type GetConnectorConfig struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client ID.
 	// 	- Service `bingWebmasterTools`: Your Bing Webmaster Tools client ID.
 	// 	- Service `brightcove`: Your Brightcove client ID.
+	// 	- Service `brightflag`: Your Brightflag client ID.
 	// 	- Service `brightpearl`: Your Brightpearl client ID.
 	// 	- Service `brivo`: Your Brivo client ID.
 	// 	- Service `buildium`: Your Buildium API client ID.
@@ -39498,6 +40665,7 @@ type GetConnectorConfig struct {
 	// 	- Service `canvasByInstructure`: Your Canvas by Instructure client ID.
 	// 	- Service `canvasData2ByInstructure`: Your Canvas Data 2 by Instructure client ID.
 	// 	- Service `castorEdc`: Your Castor EDC client Id.
+	// 	- Service `classy`: Your Classy client ID.
 	// 	- Service `clazar`: Your Clazar client ID.
 	// 	- Service `cloudbeds`: Your Cloudbeds client ID.
 	// 	- Service `commercetools`: Your commercetools client ID.
@@ -39507,6 +40675,8 @@ type GetConnectorConfig struct {
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo Client ID.
 	// 	- Service `criteoRetailMedia`: Your Criteo Retail Media client ID.
+	// 	- Service `cube`: Your Cube Client ID.
+	// 	- Service `cubeSoftware`: Your Cube Software Client ID.
 	// 	- Service `cultureAmp`: Your Culture Amp client ID.
 	// 	- Service `cvent`: Your Cvent client ID.
 	// 	- Service `d2lBrightspace`: Your D2L Brightspace client ID.
@@ -39605,6 +40775,8 @@ type GetConnectorConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `destini`: Your Destini Client Name.
 	// 	- Service `medallia`: Medallia company name
+	// 	- Service `zuora`: The name of your organization as registered with Zuora Revenue.
+	// 	- Service `zuoraSandbox`: The name of your organization as registered with Zuora Revenue.
 	ClientName string `pulumi:"clientName"`
 	// Field usage depends on `service` value:
 	// 	- Service `ceridianDayforce`: Your Ceridian Dayforce client namespace.
@@ -39647,7 +40819,7 @@ type GetConnectorConfig struct {
 	ClientPublicCertificate string `pulumi:"clientPublicCertificate"`
 	// Field usage depends on `service` value:
 	// 	- Service `acumatica`: Your Acumatica client secret.
-	// 	- Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+	// 	- Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server credentials of your Adobe Project.
 	// 	- Service `adobeWorkfront`: Your Adobe Workfront client secret.
 	// 	- Service `adpWorkforceNow`: Your ADP Client Secret.
 	// 	- Service `akamai`: Your Akamai client secret.
@@ -39658,10 +40830,12 @@ type GetConnectorConfig struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client secret.
 	// 	- Service `bingWebmasterTools`: Your Bing Webmaster Tools client secret.
 	// 	- Service `brightcove`: Your Brightcove client secret.
+	// 	- Service `brightflag`: Your Brightflag client secret.
 	// 	- Service `brightpearl`: Your Brightpearl client secret.
 	// 	- Service `brivo`: Your Brivo client secret.
 	// 	- Service `canvasByInstructure`: Your Canvas by Instructure client secret.
 	// 	- Service `castorEdc`: Your Castor EDC client secret.
+	// 	- Service `classy`: Your Classy client secret.
 	// 	- Service `clazar`: Your Clazar client secret.
 	// 	- Service `cloudbeds`: Your Cloudbeds client secret.
 	// 	- Service `commercetools`: Your commercetools client secret.
@@ -39671,6 +40845,8 @@ type GetConnectorConfig struct {
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo client secret key.
 	// 	- Service `criteoRetailMedia`: Your Criteo Retail Media client secret.
+	// 	- Service `cube`: Your Cube Client Secret.
+	// 	- Service `cubeSoftware`: Your Cube Software Client Secret.
 	// 	- Service `cultureAmp`: Your Culture Amp client secret.
 	// 	- Service `cvent`: Your Cvent client secret.
 	// 	- Service `d2lBrightspace`: Your D2L Brightspace client secret.
@@ -39779,6 +40955,8 @@ type GetConnectorConfig struct {
 	Company string `pulumi:"company"`
 	// Field usage depends on `service` value:
 	// 	- Service `360learning`: Your 360Learning Company ID.
+	// 	- Service `cube`: Your Cube Company ID.
+	// 	- Service `cubeSoftware`: Your Cube Software Company ID.
 	// 	- Service `sageIntacct`: Company ID
 	// 	- Service `sapSuccessFactors`: Your SAP SuccessFactors Company ID.
 	CompanyId string `pulumi:"companyId"`
@@ -39871,6 +41049,7 @@ type GetConnectorConfig struct {
 	// 	- Service `ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `elasticCloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `email`: Connection method. Default value: `Directly`.
+	// 	- Service `epicClarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `esSelfHosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -39981,6 +41160,9 @@ type GetConnectorConfig struct {
 	// 	- Service `deposco`: Your Deposco custom base URL.
 	CustomBaseUrl string `pulumi:"customBaseUrl"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+	CustomDimensionKeyIds []string `pulumi:"customDimensionKeyIds"`
+	// Field usage depends on `service` value:
 	// 	- Service `iterable`: Custom Events Sync Mode.
 	CustomEventSyncMode string `pulumi:"customEventSyncMode"`
 	// Field usage depends on `service` value:
@@ -39997,6 +41179,9 @@ type GetConnectorConfig struct {
 	// 	- Service `azureFunction`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
 	// 	- Service `googleCloudFunction`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
 	CustomPayloads []GetConnectorConfigCustomPayload `pulumi:"customPayloads"`
+	// Field usage depends on `service` value:
+	// 	- Service `togglTrack`: Your Toggl Track custom rate limit. Supports only numeric characters (0-9).
+	CustomRateLimit string `pulumi:"customRateLimit"`
 	// Field usage depends on `service` value:
 	// 	- Service `redditAds`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
 	// 	- Service `snapchatAds`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
@@ -40050,6 +41235,7 @@ type GetConnectorConfig struct {
 	// 	- Service `db2iSapHva`: The database name.
 	// 	- Service `dynamics365Fo`: The database name.
 	// 	- Service `ehr`: The database name.
+	// 	- Service `epicClarity`: The database name.
 	// 	- Service `googleCloudMysql`: The database name.
 	// 	- Service `googleCloudPostgresql`: The database name.
 	// 	- Service `googleCloudSqlserver`: The database name.
@@ -40184,6 +41370,7 @@ type GetConnectorConfig struct {
 	// 	- Service `appcues`: Your Appcues Email.
 	// 	- Service `assetPanda`: Your Asset Panda email.
 	// 	- Service `boostr`: Your Boostr email.
+	// 	- Service `consensusDemoAutomationPlatform`: The email address of the Consensus Demo Automation Platform account you want Fivetran to use to access your data.
 	// 	- Service `copper`: Your Copper email address.
 	// 	- Service `email`: Send your emails to this address.
 	// 	- Service `moloco`: Your Moloco account email.
@@ -40202,6 +41389,7 @@ type GetConnectorConfig struct {
 	// 	- Service `cabcharge`: Your Cabcharge email ID.
 	// 	- Service `ordway`: Your Ordway user email ID.
 	// 	- Service `planful`: Your Planful email ID.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management email ID.
 	EmailId string `pulumi:"emailId"`
 	// Field usage depends on `service` value:
 	// 	- Service `awsCostReport`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
@@ -40254,7 +41442,7 @@ type GetConnectorConfig struct {
 	// 	- Service `appleSearchAds`: Use the public key to grant Fivetran access to Apple Search Ads api.
 	EncodedPublicKey string `pulumi:"encodedPublicKey"`
 	// Field usage depends on `service` value:
-	// 	- Service `marketo`: Marketo SOAP API Encryption Key.
+	// 	- Service `marketo`: Marketo SOAP API Encryption Key (Discontinued).
 	EncryptionKey string `pulumi:"encryptionKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `branch`: Webhook Endpoint
@@ -40352,6 +41540,7 @@ type GetConnectorConfig struct {
 	Events []string `pulumi:"events"`
 	// Field usage depends on `service` value:
 	// 	- Service `adjust`: Your cloud storage.
+	// 	- Service `amplitude`: Your cloud storage type
 	// 	- Service `braze`: Export Storage. Required if `enableExports` is `true`
 	ExportStorageType string `pulumi:"exportStorageType"`
 	// Field usage depends on `service` value:
@@ -40391,7 +41580,10 @@ type GetConnectorConfig struct {
 	FileType string `pulumi:"fileType"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: Mapped file name patterns to a destination table.
+	// 	- Service `box`: Mapped file name patterns to a destination table.
+	// 	- Service `dropbox`: Mapped file name patterns to a destination table.
 	// 	- Service `email`: Mapped file name patterns to a destination table.
+	// 	- Service `ftp`: Mapped file name patterns to a destination table.
 	// 	- Service `gcs`: Mapped file name patterns to a destination table.
 	// 	- Service `googleDrive`: Mapped file name patterns to a destination table.
 	// 	- Service `s3`: Mapped file name patterns to a destination table.
@@ -40519,8 +41711,11 @@ type GetConnectorConfig struct {
 	// 	- Service `pardotSandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
 	HistoricalSyncLimitTimeFrame string `pulumi:"historicalSyncLimitTimeFrame"`
 	// Field usage depends on `service` value:
+	// 	- Service `amazonSellingPartner`: The time frame for historical data synchronization. Default value: `ALL_TIME`.
 	// 	- Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
 	// 	- Service `hubspot`: Used to configure Historical sync timeframe for selected tables
+	// 	- Service `mixpanel`: Should sync all data or adhere to `backwardSyncLimitDate`
+	// 	- Service `pendo`: The time range for which historical data should be synced. Default value: `All Time`.
 	// 	- Service `rokt`: Your Rokt historical sync time frame.
 	// 	- Service `shopify`: Used to configure Historical sync timeframe for selected tables
 	// 	- Service `skimlinks`: Your Skimlinks Historical sync time frame.
@@ -40549,6 +41744,7 @@ type GetConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: DB instance host or IP address.
 	// 	- Service `ehr`: DB instance host or IP address.
 	// 	- Service `elasticCloud`: DB instance host or IP address.
+	// 	- Service `epicClarity`: DB instance host or IP address.
 	// 	- Service `esSelfHosted`: DB instance host or IP address.
 	// 	- Service `ftp`: FTP host address.
 	// 	- Service `googleCloudMysql`: DB instance host or IP address.
@@ -40601,6 +41797,8 @@ type GetConnectorConfig struct {
 	// 	- Service `coassemble`: Your Coassemble Hostname.
 	// 	- Service `datadog`: Your Datadog host name.
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
+	// 	- Service `zuora`: The domain or URL of your Zuora Revenue instance.
+	// 	- Service `zuoraSandbox`: The domain or URL of your Zuora Revenue instance.
 	HostName string `pulumi:"hostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adobeCommerce`: Your Adobe Commerce host url.
@@ -40639,6 +41837,9 @@ type GetConnectorConfig struct {
 	// 	- Service `salesforceMarketingCloud`: The Salesforce Marketing Cloud instance ID
 	// 	- Service `servicenow`: ServiceNow Instance ID.
 	Instance string `pulumi:"instance"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Instance code for Workday Adaptive Planning
+	InstanceCode string `pulumi:"instanceCode"`
 	// Field usage depends on `service` value:
 	// 	- Service `hanaSapHvaB1`: Two-digit number (00-97) of the SAP instance within its host.
 	// 	- Service `hanaSapHvaEcc`: Two-digit number (00-97) of the SAP instance within its host.
@@ -40814,6 +42015,7 @@ type GetConnectorConfig struct {
 	// 	- Service `reboundReturns`: Your ReBound Returns login.
 	// 	- Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
 	// 	- Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
+	// 	- Service `workdayAdaptive`: User email address
 	Login string `pulumi:"login"`
 	// Field usage depends on `service` value:
 	// 	- Service `concur`: The SAP Concur password.
@@ -41022,6 +42224,7 @@ type GetConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: The user's password.
 	// 	- Service `ehr`: The user's password.
 	// 	- Service `elasticCloud`: The user's password.
+	// 	- Service `epicClarity`: The user's password.
 	// 	- Service `esSelfHosted`: The user's password.
 	// 	- Service `ftp`: FTP password.
 	// 	- Service `globalmeet`: Your GlobalMeet Password.
@@ -41113,17 +42316,21 @@ type GetConnectorConfig struct {
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
 	// 	- Service `unicommerce`: Your uniware login password.
 	// 	- Service `upland`: Your Upland Software Password.
+	// 	- Service `uptempo`: Your Uptempo password.
 	// 	- Service `veevaVault`: Password
 	// 	- Service `veevavault`: Your Veeva Vault password.
 	// 	- Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
 	// 	- Service `whenIWork`: Your When I Work password.
 	// 	- Service `wherefour`: Your Wherefour password.
 	// 	- Service `workday`: Workday password.
+	// 	- Service `workdayAdaptive`: User password
 	// 	- Service `workdayFinancialManagement`: Workday password.
 	// 	- Service `workdayHcm`: Workday password.
 	// 	- Service `xandr`: Your Xandr password.
 	// 	- Service `yougovBrandindex`: Your YouGov BrandIndex password.
 	// 	- Service `younium`: Your Younium password.
+	// 	- Service `zuora`: The corresponding password for the API user.
+	// 	- Service `zuoraSandbox`: The corresponding password for the API user.
 	Password string `pulumi:"password"`
 	// Field usage depends on `service` value:
 	// 	- Service `github`: The `Personal Access Token` generated in Github.
@@ -41226,6 +42433,7 @@ type GetConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: The port number.
 	// 	- Service `ehr`: The port number.
 	// 	- Service `elasticCloud`: The port number.
+	// 	- Service `epicClarity`: The port number.
 	// 	- Service `esSelfHosted`: The port number.
 	// 	- Service `ftp`: FTP port.
 	// 	- Service `googleCloudMysql`: The port number.
@@ -41459,6 +42667,7 @@ type GetConnectorConfig struct {
 	// 	- Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+	// 	- Service `ftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
@@ -41471,6 +42680,7 @@ type GetConnectorConfig struct {
 	// 	- Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+	// 	- Service `ftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
@@ -41479,6 +42689,7 @@ type GetConnectorConfig struct {
 	// 	- Service `sharePoint`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	QuoteCharacterEnabled bool `pulumi:"quoteCharacterEnabled"`
 	// Field usage depends on `service` value:
+	// 	- Service `togglTrack`: Your Toggl Track plan type.
 	// 	- Service `vimeo`: Your Vimeo rate limit plan.
 	RateLimitPlan string `pulumi:"rateLimitPlan"`
 	// Field usage depends on `service` value:
@@ -41497,6 +42708,7 @@ type GetConnectorConfig struct {
 	// 	- Service `awin`: Your Awin Region.
 	// 	- Service `awsLambda`: The AWS region code for the DynamoDB instance.
 	// 	- Service `biginByZohoCrm`: Your Bigin by Zoho CRM Region
+	// 	- Service `brightflag`: Your Brightflag region.
 	// 	- Service `concur`: The region.
 	// 	- Service `cvent`: Your Cvent region.
 	// 	- Service `everflow`: Your Everflow region.
@@ -41594,6 +42806,8 @@ type GetConnectorConfig struct {
 	// 	- Service `workday`: URL for a live custom report.
 	ReportUrl string `pulumi:"reportUrl"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: List of reports
+	// 	- Service `doubleClickPublishers`: The list of reports. We create a table within the schema for each report.
 	// 	- Service `googleAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
 	// 	- Service `googleAnalytics`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
 	// 	- Service `googleAnalytics4`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
@@ -41601,6 +42815,7 @@ type GetConnectorConfig struct {
 	// 	- Service `googleSearchAds360`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
 	// 	- Service `googleSearchConsole`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
 	// 	- Service `workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+	// 	- Service `workdayAdaptive`: Custom Report
 	Reports []GetConnectorConfigReport `pulumi:"reports"`
 	// Field usage depends on `service` value:
 	// 	- Service `linkedinAds`: Specific analytics reports to sync. Must be populated if adAnalytics is set to 'SpecificReports'.
@@ -42020,7 +43235,7 @@ type GetConnectorConfig struct {
 	SncPartnerName string `pulumi:"sncPartnerName"`
 	SncSourceName  string `pulumi:"sncSourceName"`
 	// Field usage depends on `service` value:
-	// 	- Service `marketo`: Marketo SOAP API Endpoint.
+	// 	- Service `marketo`: Marketo SOAP API Endpoint (Discontinued).
 	SoapUri string `pulumi:"soapUri"`
 	// Field usage depends on `service` value:
 	// 	- Service `linkedinCompanyPages`: The social data (UGCPosts, Shares, Comments) sync time frame in months. Default value: `SIX` .
@@ -42028,6 +43243,9 @@ type GetConnectorConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adobeAnalyticsDataFeed`: The data source.
 	Source string `pulumi:"source"`
+	// Field usage depends on `service` value:
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform source name.
+	SourceName string `pulumi:"sourceName"`
 	// Field usage depends on `service` value:
 	// 	- Service `bigCommerce`: The BigCommerce store hash.
 	StoreHash string `pulumi:"storeHash"`
@@ -42140,9 +43358,11 @@ type GetConnectorConfig struct {
 	// 	- Service `smarthr`: Your SmartHR subdomain.
 	// 	- Service `sonarqube`: Your Sonarqube subdomain.
 	// 	- Service `toast`: Your Toast domain.
+	// 	- Service `uptempo`: Your Uptempo subdomain.
 	// 	- Service `vts`: Your VTS Subdomain.
 	// 	- Service `yext`: Your Yext subdomain.
 	// 	- Service `zendeskChat`: Your Zendesk domain.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management subdomain.
 	Subdomain string `pulumi:"subdomain"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetranSubSchema`
@@ -42454,6 +43674,7 @@ type GetConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `elasticCloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+	// 	- Service `epicClarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `esSelfHosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
 	// 	- Service `googleCloudMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `googleCloudPostgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -42510,6 +43731,7 @@ type GetConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `ehr`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `elasticCloud`: SSH port, specify only to connect using an SSH tunnel.
+	// 	- Service `epicClarity`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `esSelfHosted`: SSH port, specify only to connect using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `googleCloudPostgresql`: SSH port, specify only to connect via an SSH tunnel.
@@ -42566,6 +43788,7 @@ type GetConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `ehr`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `elasticCloud`: SSH user, specify only to connect using an SSH tunnel.
+	// 	- Service `epicClarity`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `esSelfHosted`: SSH user, specify only to connect using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `googleCloudPostgresql`: SSH user, specify only to connect via an SSH tunnel.
@@ -42623,6 +43846,7 @@ type GetConnectorConfig struct {
 	// 	- Service `clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 	// 	- Service `dynamics365Fo`: Update Method
 	// 	- Service `ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
+	// 	- Service `epicClarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 	// 	- Service `googleCloudMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 	// 	- Service `googleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 	// 	- Service `googleCloudSqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
@@ -42659,6 +43883,9 @@ type GetConnectorConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `mandrill`: Whether to use multiple API keys for interaction.
 	UseApiKeys bool `pulumi:"useApiKeys"`
+	// Field usage depends on `service` value:
+	// 	- Service `amplitude`: Sync events from cloud storage
+	UseCloudStorage bool `pulumi:"useCloudStorage"`
 	// Field usage depends on `service` value:
 	// 	- Service `appsflyer`: Use Custom Bucket. Set it to 'true' if the data is being synced to your S3 bucket instead of an AppsFlyer-managed bucket.
 	UseCustomerBucket bool `pulumi:"useCustomerBucket"`
@@ -42705,6 +43932,7 @@ type GetConnectorConfig struct {
 	// 	- Service `dynamics365Fo`: The user name. The format must be `user@domain`.
 	// 	- Service `ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
 	// 	- Service `elasticCloud`: The user name.
+	// 	- Service `epicClarity`: The user name.  For Azure Databases, the format must be `user@domain`.
 	// 	- Service `esSelfHosted`: The user name.
 	// 	- Service `ftp`: FTP user.
 	// 	- Service `googleCloudMysql`: The user name.
@@ -42755,7 +43983,7 @@ type GetConnectorConfig struct {
 	// 	- Service `coassemble`: Your Coassemble user ID.
 	// 	- Service `gmail`: (DEPRECATED) Your Gmail user ID.
 	// 	- Service `hibob`: Your HiBob Service User Token.
-	// 	- Service `marketo`: Marketo SOAP API User Id.
+	// 	- Service `marketo`: Marketo SOAP API User Id (Discontinued).
 	// 	- Service `okendo`: Your Okendo user ID.
 	// 	- Service `playvox`: Your Playvox User ID.
 	// 	- Service `sageIntacct`: User ID
@@ -42837,6 +44065,7 @@ type GetConnectorConfig struct {
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
 	// 	- Service `unicommerce`: Your uniware login username.
 	// 	- Service `upland`: Your Upland Software Username.
+	// 	- Service `uptempo`: Your Uptempo username.
 	// 	- Service `veevaVault`: Username
 	// 	- Service `veevavault`: Your Veeva Vault username.
 	// 	- Service `whenIWork`: Your When I Work username.
@@ -42846,6 +44075,8 @@ type GetConnectorConfig struct {
 	// 	- Service `xandr`: Your Xandr username.
 	// 	- Service `yougovBrandindex`: Your YouGov BrandIndex username.
 	// 	- Service `younium`: Your Younium username.
+	// 	- Service `zuora`: The API username with the necessary access permissions.
+	// 	- Service `zuoraSandbox`: The API username with the necessary access permissions.
 	Username string `pulumi:"username"`
 	// Field usage depends on `service` value:
 	// 	- Service `itunesConnect`: Your vendors id
@@ -43249,6 +44480,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: Require TLS through Tunnel.
 	// 	- Service `ehr`: Require TLS through Tunnel.
 	// 	- Service `elasticCloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+	// 	- Service `epicClarity`: Require TLS through Tunnel.
 	// 	- Service `esSelfHosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: Require TLS through Tunnel
 	// 	- Service `googleCloudPostgresql`: Require TLS through Tunnel
@@ -43309,6 +44541,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `anvyl`: Your Anvyl API key.
 	// 	- Service `apollo`: Your Apollo API key.
 	// 	- Service `appcues`: Your Appcues API key.
+	// 	- Service `ascendByPartnerize`: Your Ascend by Partnerize API Key
 	// 	- Service `ashby`: Your Ashby API key.
 	// 	- Service `assembled`: Your Assembled API key.
 	// 	- Service `atlassianJiraAlign`: Your Jira Align API key.
@@ -43350,6 +44583,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `column`: Your Column API key.
 	// 	- Service `concord`: Your Concord API key.
 	// 	- Service `confluentCloud`: API Key
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API key.
 	// 	- Service `contrastSecurity`: Your Contrast Security API Key.
 	// 	- Service `copper`: Your Copper API key.
 	// 	- Service `coupa`: Your Coupa API key.
@@ -43364,6 +44598,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `drata`: Your Drata API Key.
 	// 	- Service `dropboxSign`: Your Dropbox Sign API key.
 	// 	- Service `duoplane`: Your Duoplane API key.
+	// 	- Service `dutchie`: Your Dutchie API key.
 	// 	- Service `easypost`: Your EasyPost API Key.
 	// 	- Service `electronicTenantSolutions`: Your Electronic Tenant Solutions API key.
 	// 	- Service `eventsforce`: Your Eventsforce API secret key.
@@ -43393,6 +44628,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `grin`: Your Grin API key.
 	// 	- Service `happyfox`: Your HappyFox API key.
 	// 	- Service `height`: Your Height API key.
+	// 	- Service `helpjuice`: Your Helpjuice API key.
 	// 	- Service `helpshift`: Your Helpshift API Key.
 	// 	- Service `incidentio`: Your incident.io API key.
 	// 	- Service `infobip`: Your Infobip API key.
@@ -43414,6 +44650,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `liftoff`: Your Liftoff API key.
 	// 	- Service `linear`: Your Linear API key.
 	// 	- Service `linksquares`: Your LinkSquares API key.
+	// 	- Service `listen360`: Your Listen360 API key.
 	// 	- Service `lob`: Your Lob API key.
 	// 	- Service `loop`: Your Loop API key.
 	// 	- Service `lucca`: Your Lucca API key.
@@ -43432,6 +44669,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `okendo`: Your Okendo API key.
 	// 	- Service `ometria`: Your Ometria API Key.
 	// 	- Service `oncehub`: Your OnceHub API key.
+	// 	- Service `openai`: Your OpenAI API key.
 	// 	- Service `ordergroove`: Your Ordergroove API key.
 	// 	- Service `ordway`: Your Ordway API key.
 	// 	- Service `ortto`: Your Ortto API key.
@@ -43460,7 +44698,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `revops`: Your RevOps bearer token.
 	// 	- Service `ricochet360`: Your Ricochet360 API key.
 	// 	- Service `ringover`: Your Ringover API key.
-	// 	- Service `rippling`: Your Rippling API key.
+	// 	- Service `rippling`: Your Rippling API token.
 	// 	- Service `rocketlane`: Your Rocketlane API key.
 	// 	- Service `rootly`: Your Rootly API key.
 	// 	- Service `ruddr`: Your Ruddr API key.
@@ -43529,7 +44767,12 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `qualtrics`: Allowed number of API requests to Qualtrics per minute, the default value is 2000. Maximum allowed number is 3000 because brands may make up to 3000 API requests per minute across all of its API calls.
 	ApiRequestsPerMinute pulumi.IntInput `pulumi:"apiRequestsPerMinute"`
 	// Field usage depends on `service` value:
+	// 	- Service `zuora`: The API role assigned to the integration user.
+	// 	- Service `zuoraSandbox`: The API role assigned to the integration user.
+	ApiRole pulumi.StringInput `pulumi:"apiRole"`
+	// Field usage depends on `service` value:
 	// 	- Service `confluentCloud`: API Secret
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API secret.
 	// 	- Service `forjCommunity`: Your Forj Community API secret.
 	// 	- Service `friendbuy`: Your Friendbuy API secret.
 	// 	- Service `justcall`: Your JustCall API secret.
@@ -43606,6 +44849,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `webScraper`: Your Web Scraper API token.
 	// 	- Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
 	// 	- Service `zendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management API token.
 	ApiToken pulumi.StringInput `pulumi:"apiToken"`
 	ApiType  pulumi.StringInput `pulumi:"apiType"`
 	// Field usage depends on `service` value:
@@ -43797,6 +45041,8 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
 	// 	- Service `github`: Authorization type.
 	// 	- Service `workday`: Authentication Mode
+	// 	- Service `workdayFinancialManagement`: Authentication Mode
+	// 	- Service `workdayHcm`: Authentication Mode
 	AuthMode pulumi.StringInput `pulumi:"authMode"`
 	// Field usage depends on `service` value:
 	// 	- Service `webhooks`: The secret you want to use for HMAC/token-based auth methods
@@ -43847,6 +45093,7 @@ type GetConnectorConfigArgs struct {
 	BackintConfigurationPath pulumi.StringInput `pulumi:"backintConfigurationPath"`
 	BackintExecutablePath    pulumi.StringInput `pulumi:"backintExecutablePath"`
 	// Field usage depends on `service` value:
+	// 	- Service `amazonSellingPartner`: The earliest date to sync data from, in YYYY-MM-DD format. Cannot be before 1994-01-01 or in the future.
 	// 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
 	// 	- Service `stripe`: Limit of the Historical Sync Time for selected tables
 	// 	- Service `stripeTest`: Limit of the Historical Sync Time for selected tables
@@ -43854,6 +45101,8 @@ type GetConnectorConfigArgs struct {
 	BackwardSyncLimit pulumi.StringInput `pulumi:"backwardSyncLimit"`
 	// Field usage depends on `service` value:
 	// 	- Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+	// 	- Service `mixpanel`: Date from which data needs to be synced.
+	// 	- Service `pendo`: The start date (YYYY-MM-DD) from which to sync historical data.
 	BackwardSyncLimitDate pulumi.StringInput `pulumi:"backwardSyncLimitDate"`
 	// Field usage depends on `service` value:
 	// 	- Service `openExchangeRates`: Your Open Exchange Rates Base Currency.
@@ -43911,6 +45160,11 @@ type GetConnectorConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
 	BinaryLogType pulumi.StringInput `pulumi:"binaryLogType"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureCosmosForMongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	// 	- Service `mongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	// 	- Service `mongoSharded`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+	BinaryRepresentation pulumi.StringInput `pulumi:"binaryRepresentation"`
 	// Field usage depends on `service` value:
 	// 	- Service `webhooks`: The blob SAS URL of your Azure container. Required if `bucketService` is set to `AZURE`.
 	BlobSasUrl pulumi.StringInput `pulumi:"blobSasUrl"`
@@ -43990,7 +45244,7 @@ type GetConnectorConfigArgs struct {
 	ClientHost pulumi.StringInput `pulumi:"clientHost"`
 	// Field usage depends on `service` value:
 	// 	- Service `acumatica`: Your Acumatica client ID.
-	// 	- Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+	// 	- Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server credentials of your Adobe Project.
 	// 	- Service `adobeWorkfront`: Your Adobe Workfront client ID.
 	// 	- Service `adpWorkforceNow`: Your ADP Client ID.
 	// 	- Service `akamai`: Your Akamai client ID.
@@ -44001,6 +45255,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client ID.
 	// 	- Service `bingWebmasterTools`: Your Bing Webmaster Tools client ID.
 	// 	- Service `brightcove`: Your Brightcove client ID.
+	// 	- Service `brightflag`: Your Brightflag client ID.
 	// 	- Service `brightpearl`: Your Brightpearl client ID.
 	// 	- Service `brivo`: Your Brivo client ID.
 	// 	- Service `buildium`: Your Buildium API client ID.
@@ -44008,6 +45263,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `canvasByInstructure`: Your Canvas by Instructure client ID.
 	// 	- Service `canvasData2ByInstructure`: Your Canvas Data 2 by Instructure client ID.
 	// 	- Service `castorEdc`: Your Castor EDC client Id.
+	// 	- Service `classy`: Your Classy client ID.
 	// 	- Service `clazar`: Your Clazar client ID.
 	// 	- Service `cloudbeds`: Your Cloudbeds client ID.
 	// 	- Service `commercetools`: Your commercetools client ID.
@@ -44017,6 +45273,8 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo Client ID.
 	// 	- Service `criteoRetailMedia`: Your Criteo Retail Media client ID.
+	// 	- Service `cube`: Your Cube Client ID.
+	// 	- Service `cubeSoftware`: Your Cube Software Client ID.
 	// 	- Service `cultureAmp`: Your Culture Amp client ID.
 	// 	- Service `cvent`: Your Cvent client ID.
 	// 	- Service `d2lBrightspace`: Your D2L Brightspace client ID.
@@ -44115,6 +45373,8 @@ type GetConnectorConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `destini`: Your Destini Client Name.
 	// 	- Service `medallia`: Medallia company name
+	// 	- Service `zuora`: The name of your organization as registered with Zuora Revenue.
+	// 	- Service `zuoraSandbox`: The name of your organization as registered with Zuora Revenue.
 	ClientName pulumi.StringInput `pulumi:"clientName"`
 	// Field usage depends on `service` value:
 	// 	- Service `ceridianDayforce`: Your Ceridian Dayforce client namespace.
@@ -44157,7 +45417,7 @@ type GetConnectorConfigArgs struct {
 	ClientPublicCertificate pulumi.StringInput `pulumi:"clientPublicCertificate"`
 	// Field usage depends on `service` value:
 	// 	- Service `acumatica`: Your Acumatica client secret.
-	// 	- Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+	// 	- Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server credentials of your Adobe Project.
 	// 	- Service `adobeWorkfront`: Your Adobe Workfront client secret.
 	// 	- Service `adpWorkforceNow`: Your ADP Client Secret.
 	// 	- Service `akamai`: Your Akamai client secret.
@@ -44168,10 +45428,12 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `billingPlatform`: Your BillingPlatform client secret.
 	// 	- Service `bingWebmasterTools`: Your Bing Webmaster Tools client secret.
 	// 	- Service `brightcove`: Your Brightcove client secret.
+	// 	- Service `brightflag`: Your Brightflag client secret.
 	// 	- Service `brightpearl`: Your Brightpearl client secret.
 	// 	- Service `brivo`: Your Brivo client secret.
 	// 	- Service `canvasByInstructure`: Your Canvas by Instructure client secret.
 	// 	- Service `castorEdc`: Your Castor EDC client secret.
+	// 	- Service `classy`: Your Classy client secret.
 	// 	- Service `clazar`: Your Clazar client secret.
 	// 	- Service `cloudbeds`: Your Cloudbeds client secret.
 	// 	- Service `commercetools`: Your commercetools client secret.
@@ -44181,6 +45443,8 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `coupa`: Your Coupa clientId
 	// 	- Service `criteo`: Your Criteo client secret key.
 	// 	- Service `criteoRetailMedia`: Your Criteo Retail Media client secret.
+	// 	- Service `cube`: Your Cube Client Secret.
+	// 	- Service `cubeSoftware`: Your Cube Software Client Secret.
 	// 	- Service `cultureAmp`: Your Culture Amp client secret.
 	// 	- Service `cvent`: Your Cvent client secret.
 	// 	- Service `d2lBrightspace`: Your D2L Brightspace client secret.
@@ -44289,6 +45553,8 @@ type GetConnectorConfigArgs struct {
 	Company pulumi.StringInput `pulumi:"company"`
 	// Field usage depends on `service` value:
 	// 	- Service `360learning`: Your 360Learning Company ID.
+	// 	- Service `cube`: Your Cube Company ID.
+	// 	- Service `cubeSoftware`: Your Cube Software Company ID.
 	// 	- Service `sageIntacct`: Company ID
 	// 	- Service `sapSuccessFactors`: Your SAP SuccessFactors Company ID.
 	CompanyId pulumi.StringInput `pulumi:"companyId"`
@@ -44381,6 +45647,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `elasticCloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `email`: Connection method. Default value: `Directly`.
+	// 	- Service `epicClarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `esSelfHosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 	// 	- Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -44491,6 +45758,9 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `deposco`: Your Deposco custom base URL.
 	CustomBaseUrl pulumi.StringInput `pulumi:"customBaseUrl"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+	CustomDimensionKeyIds pulumi.StringArrayInput `pulumi:"customDimensionKeyIds"`
+	// Field usage depends on `service` value:
 	// 	- Service `iterable`: Custom Events Sync Mode.
 	CustomEventSyncMode pulumi.StringInput `pulumi:"customEventSyncMode"`
 	// Field usage depends on `service` value:
@@ -44507,6 +45777,9 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `azureFunction`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
 	// 	- Service `googleCloudFunction`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
 	CustomPayloads GetConnectorConfigCustomPayloadArrayInput `pulumi:"customPayloads"`
+	// Field usage depends on `service` value:
+	// 	- Service `togglTrack`: Your Toggl Track custom rate limit. Supports only numeric characters (0-9).
+	CustomRateLimit pulumi.StringInput `pulumi:"customRateLimit"`
 	// Field usage depends on `service` value:
 	// 	- Service `redditAds`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
 	// 	- Service `snapchatAds`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
@@ -44560,6 +45833,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `db2iSapHva`: The database name.
 	// 	- Service `dynamics365Fo`: The database name.
 	// 	- Service `ehr`: The database name.
+	// 	- Service `epicClarity`: The database name.
 	// 	- Service `googleCloudMysql`: The database name.
 	// 	- Service `googleCloudPostgresql`: The database name.
 	// 	- Service `googleCloudSqlserver`: The database name.
@@ -44694,6 +45968,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `appcues`: Your Appcues Email.
 	// 	- Service `assetPanda`: Your Asset Panda email.
 	// 	- Service `boostr`: Your Boostr email.
+	// 	- Service `consensusDemoAutomationPlatform`: The email address of the Consensus Demo Automation Platform account you want Fivetran to use to access your data.
 	// 	- Service `copper`: Your Copper email address.
 	// 	- Service `email`: Send your emails to this address.
 	// 	- Service `moloco`: Your Moloco account email.
@@ -44712,6 +45987,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `cabcharge`: Your Cabcharge email ID.
 	// 	- Service `ordway`: Your Ordway user email ID.
 	// 	- Service `planful`: Your Planful email ID.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management email ID.
 	EmailId pulumi.StringInput `pulumi:"emailId"`
 	// Field usage depends on `service` value:
 	// 	- Service `awsCostReport`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
@@ -44764,7 +46040,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `appleSearchAds`: Use the public key to grant Fivetran access to Apple Search Ads api.
 	EncodedPublicKey pulumi.StringInput `pulumi:"encodedPublicKey"`
 	// Field usage depends on `service` value:
-	// 	- Service `marketo`: Marketo SOAP API Encryption Key.
+	// 	- Service `marketo`: Marketo SOAP API Encryption Key (Discontinued).
 	EncryptionKey pulumi.StringInput `pulumi:"encryptionKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `branch`: Webhook Endpoint
@@ -44862,6 +46138,7 @@ type GetConnectorConfigArgs struct {
 	Events pulumi.StringArrayInput `pulumi:"events"`
 	// Field usage depends on `service` value:
 	// 	- Service `adjust`: Your cloud storage.
+	// 	- Service `amplitude`: Your cloud storage type
 	// 	- Service `braze`: Export Storage. Required if `enableExports` is `true`
 	ExportStorageType pulumi.StringInput `pulumi:"exportStorageType"`
 	// Field usage depends on `service` value:
@@ -44901,7 +46178,10 @@ type GetConnectorConfigArgs struct {
 	FileType pulumi.StringInput `pulumi:"fileType"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: Mapped file name patterns to a destination table.
+	// 	- Service `box`: Mapped file name patterns to a destination table.
+	// 	- Service `dropbox`: Mapped file name patterns to a destination table.
 	// 	- Service `email`: Mapped file name patterns to a destination table.
+	// 	- Service `ftp`: Mapped file name patterns to a destination table.
 	// 	- Service `gcs`: Mapped file name patterns to a destination table.
 	// 	- Service `googleDrive`: Mapped file name patterns to a destination table.
 	// 	- Service `s3`: Mapped file name patterns to a destination table.
@@ -45029,8 +46309,11 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `pardotSandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
 	HistoricalSyncLimitTimeFrame pulumi.StringInput `pulumi:"historicalSyncLimitTimeFrame"`
 	// Field usage depends on `service` value:
+	// 	- Service `amazonSellingPartner`: The time frame for historical data synchronization. Default value: `ALL_TIME`.
 	// 	- Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
 	// 	- Service `hubspot`: Used to configure Historical sync timeframe for selected tables
+	// 	- Service `mixpanel`: Should sync all data or adhere to `backwardSyncLimitDate`
+	// 	- Service `pendo`: The time range for which historical data should be synced. Default value: `All Time`.
 	// 	- Service `rokt`: Your Rokt historical sync time frame.
 	// 	- Service `shopify`: Used to configure Historical sync timeframe for selected tables
 	// 	- Service `skimlinks`: Your Skimlinks Historical sync time frame.
@@ -45059,6 +46342,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: DB instance host or IP address.
 	// 	- Service `ehr`: DB instance host or IP address.
 	// 	- Service `elasticCloud`: DB instance host or IP address.
+	// 	- Service `epicClarity`: DB instance host or IP address.
 	// 	- Service `esSelfHosted`: DB instance host or IP address.
 	// 	- Service `ftp`: FTP host address.
 	// 	- Service `googleCloudMysql`: DB instance host or IP address.
@@ -45111,6 +46395,8 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `coassemble`: Your Coassemble Hostname.
 	// 	- Service `datadog`: Your Datadog host name.
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
+	// 	- Service `zuora`: The domain or URL of your Zuora Revenue instance.
+	// 	- Service `zuoraSandbox`: The domain or URL of your Zuora Revenue instance.
 	HostName pulumi.StringInput `pulumi:"hostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adobeCommerce`: Your Adobe Commerce host url.
@@ -45149,6 +46435,9 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `salesforceMarketingCloud`: The Salesforce Marketing Cloud instance ID
 	// 	- Service `servicenow`: ServiceNow Instance ID.
 	Instance pulumi.StringInput `pulumi:"instance"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Instance code for Workday Adaptive Planning
+	InstanceCode pulumi.StringInput `pulumi:"instanceCode"`
 	// Field usage depends on `service` value:
 	// 	- Service `hanaSapHvaB1`: Two-digit number (00-97) of the SAP instance within its host.
 	// 	- Service `hanaSapHvaEcc`: Two-digit number (00-97) of the SAP instance within its host.
@@ -45324,6 +46613,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `reboundReturns`: Your ReBound Returns login.
 	// 	- Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
 	// 	- Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
+	// 	- Service `workdayAdaptive`: User email address
 	Login pulumi.StringInput `pulumi:"login"`
 	// Field usage depends on `service` value:
 	// 	- Service `concur`: The SAP Concur password.
@@ -45532,6 +46822,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: The user's password.
 	// 	- Service `ehr`: The user's password.
 	// 	- Service `elasticCloud`: The user's password.
+	// 	- Service `epicClarity`: The user's password.
 	// 	- Service `esSelfHosted`: The user's password.
 	// 	- Service `ftp`: FTP password.
 	// 	- Service `globalmeet`: Your GlobalMeet Password.
@@ -45623,17 +46914,21 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
 	// 	- Service `unicommerce`: Your uniware login password.
 	// 	- Service `upland`: Your Upland Software Password.
+	// 	- Service `uptempo`: Your Uptempo password.
 	// 	- Service `veevaVault`: Password
 	// 	- Service `veevavault`: Your Veeva Vault password.
 	// 	- Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
 	// 	- Service `whenIWork`: Your When I Work password.
 	// 	- Service `wherefour`: Your Wherefour password.
 	// 	- Service `workday`: Workday password.
+	// 	- Service `workdayAdaptive`: User password
 	// 	- Service `workdayFinancialManagement`: Workday password.
 	// 	- Service `workdayHcm`: Workday password.
 	// 	- Service `xandr`: Your Xandr password.
 	// 	- Service `yougovBrandindex`: Your YouGov BrandIndex password.
 	// 	- Service `younium`: Your Younium password.
+	// 	- Service `zuora`: The corresponding password for the API user.
+	// 	- Service `zuoraSandbox`: The corresponding password for the API user.
 	Password pulumi.StringInput `pulumi:"password"`
 	// Field usage depends on `service` value:
 	// 	- Service `github`: The `Personal Access Token` generated in Github.
@@ -45736,6 +47031,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: The port number.
 	// 	- Service `ehr`: The port number.
 	// 	- Service `elasticCloud`: The port number.
+	// 	- Service `epicClarity`: The port number.
 	// 	- Service `esSelfHosted`: The port number.
 	// 	- Service `ftp`: FTP port.
 	// 	- Service `googleCloudMysql`: The port number.
@@ -45969,6 +47265,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+	// 	- Service `ftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 	// 	- Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
@@ -45981,6 +47278,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+	// 	- Service `ftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	// 	- Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
@@ -45989,6 +47287,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `sharePoint`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 	QuoteCharacterEnabled pulumi.BoolInput `pulumi:"quoteCharacterEnabled"`
 	// Field usage depends on `service` value:
+	// 	- Service `togglTrack`: Your Toggl Track plan type.
 	// 	- Service `vimeo`: Your Vimeo rate limit plan.
 	RateLimitPlan pulumi.StringInput `pulumi:"rateLimitPlan"`
 	// Field usage depends on `service` value:
@@ -46007,6 +47306,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `awin`: Your Awin Region.
 	// 	- Service `awsLambda`: The AWS region code for the DynamoDB instance.
 	// 	- Service `biginByZohoCrm`: Your Bigin by Zoho CRM Region
+	// 	- Service `brightflag`: Your Brightflag region.
 	// 	- Service `concur`: The region.
 	// 	- Service `cvent`: Your Cvent region.
 	// 	- Service `everflow`: Your Everflow region.
@@ -46104,6 +47404,8 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `workday`: URL for a live custom report.
 	ReportUrl pulumi.StringInput `pulumi:"reportUrl"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: List of reports
+	// 	- Service `doubleClickPublishers`: The list of reports. We create a table within the schema for each report.
 	// 	- Service `googleAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
 	// 	- Service `googleAnalytics`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
 	// 	- Service `googleAnalytics4`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
@@ -46111,6 +47413,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `googleSearchAds360`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
 	// 	- Service `googleSearchConsole`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
 	// 	- Service `workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+	// 	- Service `workdayAdaptive`: Custom Report
 	Reports GetConnectorConfigReportArrayInput `pulumi:"reports"`
 	// Field usage depends on `service` value:
 	// 	- Service `linkedinAds`: Specific analytics reports to sync. Must be populated if adAnalytics is set to 'SpecificReports'.
@@ -46530,7 +47833,7 @@ type GetConnectorConfigArgs struct {
 	SncPartnerName pulumi.StringInput `pulumi:"sncPartnerName"`
 	SncSourceName  pulumi.StringInput `pulumi:"sncSourceName"`
 	// Field usage depends on `service` value:
-	// 	- Service `marketo`: Marketo SOAP API Endpoint.
+	// 	- Service `marketo`: Marketo SOAP API Endpoint (Discontinued).
 	SoapUri pulumi.StringInput `pulumi:"soapUri"`
 	// Field usage depends on `service` value:
 	// 	- Service `linkedinCompanyPages`: The social data (UGCPosts, Shares, Comments) sync time frame in months. Default value: `SIX` .
@@ -46538,6 +47841,9 @@ type GetConnectorConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adobeAnalyticsDataFeed`: The data source.
 	Source pulumi.StringInput `pulumi:"source"`
+	// Field usage depends on `service` value:
+	// 	- Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform source name.
+	SourceName pulumi.StringInput `pulumi:"sourceName"`
 	// Field usage depends on `service` value:
 	// 	- Service `bigCommerce`: The BigCommerce store hash.
 	StoreHash pulumi.StringInput `pulumi:"storeHash"`
@@ -46650,9 +47956,11 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `smarthr`: Your SmartHR subdomain.
 	// 	- Service `sonarqube`: Your Sonarqube subdomain.
 	// 	- Service `toast`: Your Toast domain.
+	// 	- Service `uptempo`: Your Uptempo subdomain.
 	// 	- Service `vts`: Your VTS Subdomain.
 	// 	- Service `yext`: Your Yext subdomain.
 	// 	- Service `zendeskChat`: Your Zendesk domain.
+	// 	- Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management subdomain.
 	Subdomain pulumi.StringInput `pulumi:"subdomain"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetranSubSchema`
@@ -46964,6 +48272,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `elasticCloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+	// 	- Service `epicClarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `esSelfHosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
 	// 	- Service `googleCloudMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 	// 	- Service `googleCloudPostgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -47020,6 +48329,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `ehr`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `elasticCloud`: SSH port, specify only to connect using an SSH tunnel.
+	// 	- Service `epicClarity`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `esSelfHosted`: SSH port, specify only to connect using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: SSH port, specify only to connect via an SSH tunnel.
 	// 	- Service `googleCloudPostgresql`: SSH port, specify only to connect via an SSH tunnel.
@@ -47076,6 +48386,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `ehr`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `elasticCloud`: SSH user, specify only to connect using an SSH tunnel.
+	// 	- Service `epicClarity`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `esSelfHosted`: SSH user, specify only to connect using an SSH tunnel.
 	// 	- Service `googleCloudMysql`: SSH user, specify only to connect via an SSH tunnel.
 	// 	- Service `googleCloudPostgresql`: SSH user, specify only to connect via an SSH tunnel.
@@ -47133,6 +48444,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 	// 	- Service `dynamics365Fo`: Update Method
 	// 	- Service `ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
+	// 	- Service `epicClarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 	// 	- Service `googleCloudMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 	// 	- Service `googleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 	// 	- Service `googleCloudSqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
@@ -47169,6 +48481,9 @@ type GetConnectorConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `mandrill`: Whether to use multiple API keys for interaction.
 	UseApiKeys pulumi.BoolInput `pulumi:"useApiKeys"`
+	// Field usage depends on `service` value:
+	// 	- Service `amplitude`: Sync events from cloud storage
+	UseCloudStorage pulumi.BoolInput `pulumi:"useCloudStorage"`
 	// Field usage depends on `service` value:
 	// 	- Service `appsflyer`: Use Custom Bucket. Set it to 'true' if the data is being synced to your S3 bucket instead of an AppsFlyer-managed bucket.
 	UseCustomerBucket pulumi.BoolInput `pulumi:"useCustomerBucket"`
@@ -47215,6 +48530,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `dynamics365Fo`: The user name. The format must be `user@domain`.
 	// 	- Service `ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
 	// 	- Service `elasticCloud`: The user name.
+	// 	- Service `epicClarity`: The user name.  For Azure Databases, the format must be `user@domain`.
 	// 	- Service `esSelfHosted`: The user name.
 	// 	- Service `ftp`: FTP user.
 	// 	- Service `googleCloudMysql`: The user name.
@@ -47265,7 +48581,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `coassemble`: Your Coassemble user ID.
 	// 	- Service `gmail`: (DEPRECATED) Your Gmail user ID.
 	// 	- Service `hibob`: Your HiBob Service User Token.
-	// 	- Service `marketo`: Marketo SOAP API User Id.
+	// 	- Service `marketo`: Marketo SOAP API User Id (Discontinued).
 	// 	- Service `okendo`: Your Okendo user ID.
 	// 	- Service `playvox`: Your Playvox User ID.
 	// 	- Service `sageIntacct`: User ID
@@ -47347,6 +48663,7 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
 	// 	- Service `unicommerce`: Your uniware login username.
 	// 	- Service `upland`: Your Upland Software Username.
+	// 	- Service `uptempo`: Your Uptempo username.
 	// 	- Service `veevaVault`: Username
 	// 	- Service `veevavault`: Your Veeva Vault username.
 	// 	- Service `whenIWork`: Your When I Work username.
@@ -47356,6 +48673,8 @@ type GetConnectorConfigArgs struct {
 	// 	- Service `xandr`: Your Xandr username.
 	// 	- Service `yougovBrandindex`: Your YouGov BrandIndex username.
 	// 	- Service `younium`: Your Younium username.
+	// 	- Service `zuora`: The API username with the necessary access permissions.
+	// 	- Service `zuoraSandbox`: The API username with the necessary access permissions.
 	Username pulumi.StringInput `pulumi:"username"`
 	// Field usage depends on `service` value:
 	// 	- Service `itunesConnect`: Your vendors id
@@ -47988,6 +49307,7 @@ func (o GetConnectorConfigOutput) Algorithm() pulumi.StringOutput {
 //   - Service `dynamics365Fo`: Require TLS through Tunnel.
 //   - Service `ehr`: Require TLS through Tunnel.
 //   - Service `elasticCloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+//   - Service `epicClarity`: Require TLS through Tunnel.
 //   - Service `esSelfHosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
 //   - Service `googleCloudMysql`: Require TLS through Tunnel
 //   - Service `googleCloudPostgresql`: Require TLS through Tunnel
@@ -48063,6 +49383,7 @@ func (o GetConnectorConfigOutput) ApiId() pulumi.StringOutput {
 //   - Service `anvyl`: Your Anvyl API key.
 //   - Service `apollo`: Your Apollo API key.
 //   - Service `appcues`: Your Appcues API key.
+//   - Service `ascendByPartnerize`: Your Ascend by Partnerize API Key
 //   - Service `ashby`: Your Ashby API key.
 //   - Service `assembled`: Your Assembled API key.
 //   - Service `atlassianJiraAlign`: Your Jira Align API key.
@@ -48104,6 +49425,7 @@ func (o GetConnectorConfigOutput) ApiId() pulumi.StringOutput {
 //   - Service `column`: Your Column API key.
 //   - Service `concord`: Your Concord API key.
 //   - Service `confluentCloud`: API Key
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API key.
 //   - Service `contrastSecurity`: Your Contrast Security API Key.
 //   - Service `copper`: Your Copper API key.
 //   - Service `coupa`: Your Coupa API key.
@@ -48118,6 +49440,7 @@ func (o GetConnectorConfigOutput) ApiId() pulumi.StringOutput {
 //   - Service `drata`: Your Drata API Key.
 //   - Service `dropboxSign`: Your Dropbox Sign API key.
 //   - Service `duoplane`: Your Duoplane API key.
+//   - Service `dutchie`: Your Dutchie API key.
 //   - Service `easypost`: Your EasyPost API Key.
 //   - Service `electronicTenantSolutions`: Your Electronic Tenant Solutions API key.
 //   - Service `eventsforce`: Your Eventsforce API secret key.
@@ -48147,6 +49470,7 @@ func (o GetConnectorConfigOutput) ApiId() pulumi.StringOutput {
 //   - Service `grin`: Your Grin API key.
 //   - Service `happyfox`: Your HappyFox API key.
 //   - Service `height`: Your Height API key.
+//   - Service `helpjuice`: Your Helpjuice API key.
 //   - Service `helpshift`: Your Helpshift API Key.
 //   - Service `incidentio`: Your incident.io API key.
 //   - Service `infobip`: Your Infobip API key.
@@ -48168,6 +49492,7 @@ func (o GetConnectorConfigOutput) ApiId() pulumi.StringOutput {
 //   - Service `liftoff`: Your Liftoff API key.
 //   - Service `linear`: Your Linear API key.
 //   - Service `linksquares`: Your LinkSquares API key.
+//   - Service `listen360`: Your Listen360 API key.
 //   - Service `lob`: Your Lob API key.
 //   - Service `loop`: Your Loop API key.
 //   - Service `lucca`: Your Lucca API key.
@@ -48186,6 +49511,7 @@ func (o GetConnectorConfigOutput) ApiId() pulumi.StringOutput {
 //   - Service `okendo`: Your Okendo API key.
 //   - Service `ometria`: Your Ometria API Key.
 //   - Service `oncehub`: Your OnceHub API key.
+//   - Service `openai`: Your OpenAI API key.
 //   - Service `ordergroove`: Your Ordergroove API key.
 //   - Service `ordway`: Your Ordway API key.
 //   - Service `ortto`: Your Ortto API key.
@@ -48214,7 +49540,7 @@ func (o GetConnectorConfigOutput) ApiId() pulumi.StringOutput {
 //   - Service `revops`: Your RevOps bearer token.
 //   - Service `ricochet360`: Your Ricochet360 API key.
 //   - Service `ringover`: Your Ringover API key.
-//   - Service `rippling`: Your Rippling API key.
+//   - Service `rippling`: Your Rippling API token.
 //   - Service `rocketlane`: Your Rocketlane API key.
 //   - Service `rootly`: Your Rootly API key.
 //   - Service `ruddr`: Your Ruddr API key.
@@ -48304,7 +49630,15 @@ func (o GetConnectorConfigOutput) ApiRequestsPerMinute() pulumi.IntOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `zuora`: The API role assigned to the integration user.
+//   - Service `zuoraSandbox`: The API role assigned to the integration user.
+func (o GetConnectorConfigOutput) ApiRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.ApiRole }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `confluentCloud`: API Secret
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API secret.
 //   - Service `forjCommunity`: Your Forj Community API secret.
 //   - Service `friendbuy`: Your Friendbuy API secret.
 //   - Service `justcall`: Your JustCall API secret.
@@ -48390,6 +49724,7 @@ func (o GetConnectorConfigOutput) ApiServer() pulumi.StringOutput {
 //   - Service `webScraper`: Your Web Scraper API token.
 //   - Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
 //   - Service `zendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management API token.
 func (o GetConnectorConfigOutput) ApiToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ApiToken }).(pulumi.StringOutput)
 }
@@ -48701,6 +50036,8 @@ func (o GetConnectorConfigOutput) AuthMethod() pulumi.StringOutput {
 //   - Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
 //   - Service `github`: Authorization type.
 //   - Service `workday`: Authentication Mode
+//   - Service `workdayFinancialManagement`: Authentication Mode
+//   - Service `workdayHcm`: Authentication Mode
 func (o GetConnectorConfigOutput) AuthMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.AuthMode }).(pulumi.StringOutput)
 }
@@ -48784,6 +50121,7 @@ func (o GetConnectorConfigOutput) BackintExecutablePath() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `amazonSellingPartner`: The earliest date to sync data from, in YYYY-MM-DD format. Cannot be before 1994-01-01 or in the future.
 //   - Service `shopify`: Limit of the Historical Sync Time for selected tables
 //   - Service `stripe`: Limit of the Historical Sync Time for selected tables
 //   - Service `stripeTest`: Limit of the Historical Sync Time for selected tables
@@ -48794,6 +50132,8 @@ func (o GetConnectorConfigOutput) BackwardSyncLimit() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+//   - Service `mixpanel`: Date from which data needs to be synced.
+//   - Service `pendo`: The start date (YYYY-MM-DD) from which to sync historical data.
 func (o GetConnectorConfigOutput) BackwardSyncLimitDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.BackwardSyncLimitDate }).(pulumi.StringOutput)
 }
@@ -48870,6 +50210,14 @@ func (o GetConnectorConfigOutput) BearerToken() pulumi.StringOutput {
 //   - Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
 func (o GetConnectorConfigOutput) BinaryLogType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.BinaryLogType }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureCosmosForMongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+//   - Service `mongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+//   - Service `mongoSharded`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+func (o GetConnectorConfigOutput) BinaryRepresentation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.BinaryRepresentation }).(pulumi.StringOutput)
 }
 
 // Field usage depends on `service` value:
@@ -49008,7 +50356,7 @@ func (o GetConnectorConfigOutput) ClientHost() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `acumatica`: Your Acumatica client ID.
-//   - Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+//   - Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server credentials of your Adobe Project.
 //   - Service `adobeWorkfront`: Your Adobe Workfront client ID.
 //   - Service `adpWorkforceNow`: Your ADP Client ID.
 //   - Service `akamai`: Your Akamai client ID.
@@ -49019,6 +50367,7 @@ func (o GetConnectorConfigOutput) ClientHost() pulumi.StringOutput {
 //   - Service `billingPlatform`: Your BillingPlatform client ID.
 //   - Service `bingWebmasterTools`: Your Bing Webmaster Tools client ID.
 //   - Service `brightcove`: Your Brightcove client ID.
+//   - Service `brightflag`: Your Brightflag client ID.
 //   - Service `brightpearl`: Your Brightpearl client ID.
 //   - Service `brivo`: Your Brivo client ID.
 //   - Service `buildium`: Your Buildium API client ID.
@@ -49026,6 +50375,7 @@ func (o GetConnectorConfigOutput) ClientHost() pulumi.StringOutput {
 //   - Service `canvasByInstructure`: Your Canvas by Instructure client ID.
 //   - Service `canvasData2ByInstructure`: Your Canvas Data 2 by Instructure client ID.
 //   - Service `castorEdc`: Your Castor EDC client Id.
+//   - Service `classy`: Your Classy client ID.
 //   - Service `clazar`: Your Clazar client ID.
 //   - Service `cloudbeds`: Your Cloudbeds client ID.
 //   - Service `commercetools`: Your commercetools client ID.
@@ -49035,6 +50385,8 @@ func (o GetConnectorConfigOutput) ClientHost() pulumi.StringOutput {
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo Client ID.
 //   - Service `criteoRetailMedia`: Your Criteo Retail Media client ID.
+//   - Service `cube`: Your Cube Client ID.
+//   - Service `cubeSoftware`: Your Cube Software Client ID.
 //   - Service `cultureAmp`: Your Culture Amp client ID.
 //   - Service `cvent`: Your Cvent client ID.
 //   - Service `d2lBrightspace`: Your D2L Brightspace client ID.
@@ -49139,6 +50491,8 @@ func (o GetConnectorConfigOutput) ClientKey() pulumi.StringOutput {
 // Field usage depends on `service` value:
 //   - Service `destini`: Your Destini Client Name.
 //   - Service `medallia`: Medallia company name
+//   - Service `zuora`: The name of your organization as registered with Zuora Revenue.
+//   - Service `zuoraSandbox`: The name of your organization as registered with Zuora Revenue.
 func (o GetConnectorConfigOutput) ClientName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ClientName }).(pulumi.StringOutput)
 }
@@ -49193,7 +50547,7 @@ func (o GetConnectorConfigOutput) ClientPublicCertificate() pulumi.StringOutput 
 
 // Field usage depends on `service` value:
 //   - Service `acumatica`: Your Acumatica client secret.
-//   - Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+//   - Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server credentials of your Adobe Project.
 //   - Service `adobeWorkfront`: Your Adobe Workfront client secret.
 //   - Service `adpWorkforceNow`: Your ADP Client Secret.
 //   - Service `akamai`: Your Akamai client secret.
@@ -49204,10 +50558,12 @@ func (o GetConnectorConfigOutput) ClientPublicCertificate() pulumi.StringOutput 
 //   - Service `billingPlatform`: Your BillingPlatform client secret.
 //   - Service `bingWebmasterTools`: Your Bing Webmaster Tools client secret.
 //   - Service `brightcove`: Your Brightcove client secret.
+//   - Service `brightflag`: Your Brightflag client secret.
 //   - Service `brightpearl`: Your Brightpearl client secret.
 //   - Service `brivo`: Your Brivo client secret.
 //   - Service `canvasByInstructure`: Your Canvas by Instructure client secret.
 //   - Service `castorEdc`: Your Castor EDC client secret.
+//   - Service `classy`: Your Classy client secret.
 //   - Service `clazar`: Your Clazar client secret.
 //   - Service `cloudbeds`: Your Cloudbeds client secret.
 //   - Service `commercetools`: Your commercetools client secret.
@@ -49217,6 +50573,8 @@ func (o GetConnectorConfigOutput) ClientPublicCertificate() pulumi.StringOutput 
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo client secret key.
 //   - Service `criteoRetailMedia`: Your Criteo Retail Media client secret.
+//   - Service `cube`: Your Cube Client Secret.
+//   - Service `cubeSoftware`: Your Cube Software Client Secret.
 //   - Service `cultureAmp`: Your Culture Amp client secret.
 //   - Service `cvent`: Your Cvent client secret.
 //   - Service `d2lBrightspace`: Your D2L Brightspace client secret.
@@ -49352,6 +50710,8 @@ func (o GetConnectorConfigOutput) Company() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `360learning`: Your 360Learning Company ID.
+//   - Service `cube`: Your Cube Company ID.
+//   - Service `cubeSoftware`: Your Cube Software Company ID.
 //   - Service `sageIntacct`: Company ID
 //   - Service `sapSuccessFactors`: Your SAP SuccessFactors Company ID.
 func (o GetConnectorConfigOutput) CompanyId() pulumi.StringOutput {
@@ -49495,6 +50855,7 @@ func (o GetConnectorConfigOutput) ConnectionString() pulumi.StringOutput {
 //   - Service `ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `elasticCloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `email`: Connection method. Default value: `Directly`.
+//   - Service `epicClarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `esSelfHosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -49659,6 +51020,12 @@ func (o GetConnectorConfigOutput) CustomBaseUrl() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+func (o GetConnectorConfigOutput) CustomDimensionKeyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfig) []string { return v.CustomDimensionKeyIds }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `iterable`: Custom Events Sync Mode.
 func (o GetConnectorConfigOutput) CustomEventSyncMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.CustomEventSyncMode }).(pulumi.StringOutput)
@@ -49688,6 +51055,12 @@ func (o GetConnectorConfigOutput) CustomFloodlightVariables() pulumi.StringArray
 //   - Service `googleCloudFunction`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
 func (o GetConnectorConfigOutput) CustomPayloads() GetConnectorConfigCustomPayloadArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfig) []GetConnectorConfigCustomPayload { return v.CustomPayloads }).(GetConnectorConfigCustomPayloadArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `togglTrack`: Your Toggl Track custom rate limit. Supports only numeric characters (0-9).
+func (o GetConnectorConfigOutput) CustomRateLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.CustomRateLimit }).(pulumi.StringOutput)
 }
 
 // Field usage depends on `service` value:
@@ -49781,6 +51154,7 @@ func (o GetConnectorConfigOutput) DataSetName() pulumi.StringOutput {
 //   - Service `db2iSapHva`: The database name.
 //   - Service `dynamics365Fo`: The database name.
 //   - Service `ehr`: The database name.
+//   - Service `epicClarity`: The database name.
 //   - Service `googleCloudMysql`: The database name.
 //   - Service `googleCloudPostgresql`: The database name.
 //   - Service `googleCloudSqlserver`: The database name.
@@ -49987,6 +51361,7 @@ func (o GetConnectorConfigOutput) Elements() pulumi.StringArrayOutput {
 //   - Service `appcues`: Your Appcues Email.
 //   - Service `assetPanda`: Your Asset Panda email.
 //   - Service `boostr`: Your Boostr email.
+//   - Service `consensusDemoAutomationPlatform`: The email address of the Consensus Demo Automation Platform account you want Fivetran to use to access your data.
 //   - Service `copper`: Your Copper email address.
 //   - Service `email`: Send your emails to this address.
 //   - Service `moloco`: Your Moloco account email.
@@ -50011,6 +51386,7 @@ func (o GetConnectorConfigOutput) EmailAddress() pulumi.StringOutput {
 //   - Service `cabcharge`: Your Cabcharge email ID.
 //   - Service `ordway`: Your Ordway user email ID.
 //   - Service `planful`: Your Planful email ID.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management email ID.
 func (o GetConnectorConfigOutput) EmailId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.EmailId }).(pulumi.StringOutput)
 }
@@ -50096,7 +51472,7 @@ func (o GetConnectorConfigOutput) EncodedPublicKey() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `marketo`: Marketo SOAP API Encryption Key.
+//   - Service `marketo`: Marketo SOAP API Encryption Key (Discontinued).
 func (o GetConnectorConfigOutput) EncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.EncryptionKey }).(pulumi.StringOutput)
 }
@@ -50239,6 +51615,7 @@ func (o GetConnectorConfigOutput) Events() pulumi.StringArrayOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adjust`: Your cloud storage.
+//   - Service `amplitude`: Your cloud storage type
 //   - Service `braze`: Export Storage. Required if `enableExports` is `true`
 func (o GetConnectorConfigOutput) ExportStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.ExportStorageType }).(pulumi.StringOutput)
@@ -50293,7 +51670,10 @@ func (o GetConnectorConfigOutput) FileType() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: Mapped file name patterns to a destination table.
+//   - Service `box`: Mapped file name patterns to a destination table.
+//   - Service `dropbox`: Mapped file name patterns to a destination table.
 //   - Service `email`: Mapped file name patterns to a destination table.
+//   - Service `ftp`: Mapped file name patterns to a destination table.
 //   - Service `gcs`: Mapped file name patterns to a destination table.
 //   - Service `googleDrive`: Mapped file name patterns to a destination table.
 //   - Service `s3`: Mapped file name patterns to a destination table.
@@ -50514,8 +51894,11 @@ func (o GetConnectorConfigOutput) HistoricalSyncLimitTimeFrame() pulumi.StringOu
 }
 
 // Field usage depends on `service` value:
+//   - Service `amazonSellingPartner`: The time frame for historical data synchronization. Default value: `ALL_TIME`.
 //   - Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
 //   - Service `hubspot`: Used to configure Historical sync timeframe for selected tables
+//   - Service `mixpanel`: Should sync all data or adhere to `backwardSyncLimitDate`
+//   - Service `pendo`: The time range for which historical data should be synced. Default value: `All Time`.
 //   - Service `rokt`: Your Rokt historical sync time frame.
 //   - Service `shopify`: Used to configure Historical sync timeframe for selected tables
 //   - Service `skimlinks`: Your Skimlinks Historical sync time frame.
@@ -50550,6 +51933,7 @@ func (o GetConnectorConfigOutput) HomeFolder() pulumi.StringOutput {
 //   - Service `dynamics365Fo`: DB instance host or IP address.
 //   - Service `ehr`: DB instance host or IP address.
 //   - Service `elasticCloud`: DB instance host or IP address.
+//   - Service `epicClarity`: DB instance host or IP address.
 //   - Service `esSelfHosted`: DB instance host or IP address.
 //   - Service `ftp`: FTP host address.
 //   - Service `googleCloudMysql`: DB instance host or IP address.
@@ -50608,6 +51992,8 @@ func (o GetConnectorConfigOutput) HostIp() pulumi.StringOutput {
 //   - Service `coassemble`: Your Coassemble Hostname.
 //   - Service `datadog`: Your Datadog host name.
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
+//   - Service `zuora`: The domain or URL of your Zuora Revenue instance.
+//   - Service `zuoraSandbox`: The domain or URL of your Zuora Revenue instance.
 func (o GetConnectorConfigOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.HostName }).(pulumi.StringOutput)
 }
@@ -50674,6 +52060,12 @@ func (o GetConnectorConfigOutput) IncludeOcapiEndpoints() pulumi.BoolOutput {
 //   - Service `servicenow`: ServiceNow Instance ID.
 func (o GetConnectorConfigOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Instance code for Workday Adaptive Planning
+func (o GetConnectorConfigOutput) InstanceCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.InstanceCode }).(pulumi.StringOutput)
 }
 
 // Field usage depends on `service` value:
@@ -50977,6 +52369,7 @@ func (o GetConnectorConfigOutput) LogOnGroup() pulumi.StringOutput {
 //   - Service `reboundReturns`: Your ReBound Returns login.
 //   - Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
 //   - Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
+//   - Service `workdayAdaptive`: User email address
 func (o GetConnectorConfigOutput) Login() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Login }).(pulumi.StringOutput)
 }
@@ -51299,6 +52692,7 @@ func (o GetConnectorConfigOutput) Passphrase() pulumi.StringOutput {
 //   - Service `dynamics365Fo`: The user's password.
 //   - Service `ehr`: The user's password.
 //   - Service `elasticCloud`: The user's password.
+//   - Service `epicClarity`: The user's password.
 //   - Service `esSelfHosted`: The user's password.
 //   - Service `ftp`: FTP password.
 //   - Service `globalmeet`: Your GlobalMeet Password.
@@ -51390,17 +52784,21 @@ func (o GetConnectorConfigOutput) Passphrase() pulumi.StringOutput {
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
 //   - Service `unicommerce`: Your uniware login password.
 //   - Service `upland`: Your Upland Software Password.
+//   - Service `uptempo`: Your Uptempo password.
 //   - Service `veevaVault`: Password
 //   - Service `veevavault`: Your Veeva Vault password.
 //   - Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
 //   - Service `whenIWork`: Your When I Work password.
 //   - Service `wherefour`: Your Wherefour password.
 //   - Service `workday`: Workday password.
+//   - Service `workdayAdaptive`: User password
 //   - Service `workdayFinancialManagement`: Workday password.
 //   - Service `workdayHcm`: Workday password.
 //   - Service `xandr`: Your Xandr password.
 //   - Service `yougovBrandindex`: Your YouGov BrandIndex password.
 //   - Service `younium`: Your Younium password.
+//   - Service `zuora`: The corresponding password for the API user.
+//   - Service `zuoraSandbox`: The corresponding password for the API user.
 func (o GetConnectorConfigOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -51557,6 +52955,7 @@ func (o GetConnectorConfigOutput) PlanType() pulumi.StringOutput {
 //   - Service `dynamics365Fo`: The port number.
 //   - Service `ehr`: The port number.
 //   - Service `elasticCloud`: The port number.
+//   - Service `epicClarity`: The port number.
 //   - Service `esSelfHosted`: The port number.
 //   - Service `ftp`: FTP port.
 //   - Service `googleCloudMysql`: The port number.
@@ -51877,6 +53276,7 @@ func (o GetConnectorConfigOutput) QuotaProjectId() pulumi.StringOutput {
 //   - Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+//   - Service `ftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
@@ -51892,6 +53292,7 @@ func (o GetConnectorConfigOutput) QuoteChar() pulumi.StringOutput {
 //   - Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+//   - Service `ftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
@@ -51903,6 +53304,7 @@ func (o GetConnectorConfigOutput) QuoteCharacterEnabled() pulumi.BoolOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `togglTrack`: Your Toggl Track plan type.
 //   - Service `vimeo`: Your Vimeo rate limit plan.
 func (o GetConnectorConfigOutput) RateLimitPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.RateLimitPlan }).(pulumi.StringOutput)
@@ -51930,6 +53332,7 @@ func (o GetConnectorConfigOutput) RefreshTokenExpiresAt() pulumi.StringOutput {
 //   - Service `awin`: Your Awin Region.
 //   - Service `awsLambda`: The AWS region code for the DynamoDB instance.
 //   - Service `biginByZohoCrm`: Your Bigin by Zoho CRM Region
+//   - Service `brightflag`: Your Brightflag region.
 //   - Service `concur`: The region.
 //   - Service `cvent`: Your Cvent region.
 //   - Service `everflow`: Your Everflow region.
@@ -52081,6 +53484,8 @@ func (o GetConnectorConfigOutput) ReportUrl() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: List of reports
+//   - Service `doubleClickPublishers`: The list of reports. We create a table within the schema for each report.
 //   - Service `googleAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
 //   - Service `googleAnalytics`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
 //   - Service `googleAnalytics4`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
@@ -52088,6 +53493,7 @@ func (o GetConnectorConfigOutput) ReportUrl() pulumi.StringOutput {
 //   - Service `googleSearchAds360`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
 //   - Service `googleSearchConsole`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
 //   - Service `workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+//   - Service `workdayAdaptive`: Custom Report
 func (o GetConnectorConfigOutput) Reports() GetConnectorConfigReportArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfig) []GetConnectorConfigReport { return v.Reports }).(GetConnectorConfigReportArrayOutput)
 }
@@ -52813,7 +54219,7 @@ func (o GetConnectorConfigOutput) SncSourceName() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `marketo`: Marketo SOAP API Endpoint.
+//   - Service `marketo`: Marketo SOAP API Endpoint (Discontinued).
 func (o GetConnectorConfigOutput) SoapUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.SoapUri }).(pulumi.StringOutput)
 }
@@ -52828,6 +54234,12 @@ func (o GetConnectorConfigOutput) SocialDataSyncTimeframe() pulumi.StringOutput 
 //   - Service `adobeAnalyticsDataFeed`: The data source.
 func (o GetConnectorConfigOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform source name.
+func (o GetConnectorConfigOutput) SourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfig) string { return v.SourceName }).(pulumi.StringOutput)
 }
 
 // Field usage depends on `service` value:
@@ -52954,9 +54366,11 @@ func (o GetConnectorConfigOutput) SubDomain() pulumi.StringOutput {
 //   - Service `smarthr`: Your SmartHR subdomain.
 //   - Service `sonarqube`: Your Sonarqube subdomain.
 //   - Service `toast`: Your Toast domain.
+//   - Service `uptempo`: Your Uptempo subdomain.
 //   - Service `vts`: Your VTS Subdomain.
 //   - Service `yext`: Your Yext subdomain.
 //   - Service `zendeskChat`: Your Zendesk domain.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management subdomain.
 func (o GetConnectorConfigOutput) Subdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Subdomain }).(pulumi.StringOutput)
 }
@@ -53451,6 +54865,7 @@ func (o GetConnectorConfigOutput) Truststore() pulumi.StringOutput {
 //   - Service `dynamics365Fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `elasticCloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+//   - Service `epicClarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `esSelfHosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
 //   - Service `googleCloudMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `googleCloudPostgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -53510,6 +54925,7 @@ func (o GetConnectorConfigOutput) TunnelHost() pulumi.StringOutput {
 //   - Service `dynamics365Fo`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `ehr`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `elasticCloud`: SSH port, specify only to connect using an SSH tunnel.
+//   - Service `epicClarity`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `esSelfHosted`: SSH port, specify only to connect using an SSH tunnel.
 //   - Service `googleCloudMysql`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `googleCloudPostgresql`: SSH port, specify only to connect via an SSH tunnel.
@@ -53569,6 +54985,7 @@ func (o GetConnectorConfigOutput) TunnelPort() pulumi.IntOutput {
 //   - Service `dynamics365Fo`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `ehr`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `elasticCloud`: SSH user, specify only to connect using an SSH tunnel.
+//   - Service `epicClarity`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `esSelfHosted`: SSH user, specify only to connect using an SSH tunnel.
 //   - Service `googleCloudMysql`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `googleCloudPostgresql`: SSH user, specify only to connect via an SSH tunnel.
@@ -53638,6 +55055,7 @@ func (o GetConnectorConfigOutput) UpdateConfigOnEachSync() pulumi.BoolOutput {
 //   - Service `clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 //   - Service `dynamics365Fo`: Update Method
 //   - Service `ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
+//   - Service `epicClarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 //   - Service `googleCloudMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 //   - Service `googleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 //   - Service `googleCloudSqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
@@ -53684,6 +55102,12 @@ func (o GetConnectorConfigOutput) UrlFormat() pulumi.StringOutput {
 //   - Service `mandrill`: Whether to use multiple API keys for interaction.
 func (o GetConnectorConfigOutput) UseApiKeys() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectorConfig) bool { return v.UseApiKeys }).(pulumi.BoolOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `amplitude`: Sync events from cloud storage
+func (o GetConnectorConfigOutput) UseCloudStorage() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectorConfig) bool { return v.UseCloudStorage }).(pulumi.BoolOutput)
 }
 
 // Field usage depends on `service` value:
@@ -53753,6 +55177,7 @@ func (o GetConnectorConfigOutput) UseWorkspace() pulumi.BoolOutput {
 //   - Service `dynamics365Fo`: The user name. The format must be `user@domain`.
 //   - Service `ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
 //   - Service `elasticCloud`: The user name.
+//   - Service `epicClarity`: The user name.  For Azure Databases, the format must be `user@domain`.
 //   - Service `esSelfHosted`: The user name.
 //   - Service `ftp`: FTP user.
 //   - Service `googleCloudMysql`: The user name.
@@ -53806,7 +55231,7 @@ func (o GetConnectorConfigOutput) User() pulumi.StringOutput {
 //   - Service `coassemble`: Your Coassemble user ID.
 //   - Service `gmail`: (DEPRECATED) Your Gmail user ID.
 //   - Service `hibob`: Your HiBob Service User Token.
-//   - Service `marketo`: Marketo SOAP API User Id.
+//   - Service `marketo`: Marketo SOAP API User Id (Discontinued).
 //   - Service `okendo`: Your Okendo user ID.
 //   - Service `playvox`: Your Playvox User ID.
 //   - Service `sageIntacct`: User ID
@@ -53903,6 +55328,7 @@ func (o GetConnectorConfigOutput) UserToken() pulumi.StringOutput {
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
 //   - Service `unicommerce`: Your uniware login username.
 //   - Service `upland`: Your Upland Software Username.
+//   - Service `uptempo`: Your Uptempo username.
 //   - Service `veevaVault`: Username
 //   - Service `veevavault`: Your Veeva Vault username.
 //   - Service `whenIWork`: Your When I Work username.
@@ -53912,6 +55338,8 @@ func (o GetConnectorConfigOutput) UserToken() pulumi.StringOutput {
 //   - Service `xandr`: Your Xandr username.
 //   - Service `yougovBrandindex`: Your YouGov BrandIndex username.
 //   - Service `younium`: Your Younium username.
+//   - Service `zuora`: The API username with the necessary access permissions.
+//   - Service `zuoraSandbox`: The API username with the necessary access permissions.
 func (o GetConnectorConfigOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfig) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -54826,6 +56254,7 @@ func (o GetConnectorConfigPtrOutput) Algorithm() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: Require TLS through Tunnel.
 //   - Service `ehr`: Require TLS through Tunnel.
 //   - Service `elasticCloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+//   - Service `epicClarity`: Require TLS through Tunnel.
 //   - Service `esSelfHosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
 //   - Service `googleCloudMysql`: Require TLS through Tunnel
 //   - Service `googleCloudPostgresql`: Require TLS through Tunnel
@@ -54926,6 +56355,7 @@ func (o GetConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `anvyl`: Your Anvyl API key.
 //   - Service `apollo`: Your Apollo API key.
 //   - Service `appcues`: Your Appcues API key.
+//   - Service `ascendByPartnerize`: Your Ascend by Partnerize API Key
 //   - Service `ashby`: Your Ashby API key.
 //   - Service `assembled`: Your Assembled API key.
 //   - Service `atlassianJiraAlign`: Your Jira Align API key.
@@ -54967,6 +56397,7 @@ func (o GetConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `column`: Your Column API key.
 //   - Service `concord`: Your Concord API key.
 //   - Service `confluentCloud`: API Key
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API key.
 //   - Service `contrastSecurity`: Your Contrast Security API Key.
 //   - Service `copper`: Your Copper API key.
 //   - Service `coupa`: Your Coupa API key.
@@ -54981,6 +56412,7 @@ func (o GetConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `drata`: Your Drata API Key.
 //   - Service `dropboxSign`: Your Dropbox Sign API key.
 //   - Service `duoplane`: Your Duoplane API key.
+//   - Service `dutchie`: Your Dutchie API key.
 //   - Service `easypost`: Your EasyPost API Key.
 //   - Service `electronicTenantSolutions`: Your Electronic Tenant Solutions API key.
 //   - Service `eventsforce`: Your Eventsforce API secret key.
@@ -55010,6 +56442,7 @@ func (o GetConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `grin`: Your Grin API key.
 //   - Service `happyfox`: Your HappyFox API key.
 //   - Service `height`: Your Height API key.
+//   - Service `helpjuice`: Your Helpjuice API key.
 //   - Service `helpshift`: Your Helpshift API Key.
 //   - Service `incidentio`: Your incident.io API key.
 //   - Service `infobip`: Your Infobip API key.
@@ -55031,6 +56464,7 @@ func (o GetConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `liftoff`: Your Liftoff API key.
 //   - Service `linear`: Your Linear API key.
 //   - Service `linksquares`: Your LinkSquares API key.
+//   - Service `listen360`: Your Listen360 API key.
 //   - Service `lob`: Your Lob API key.
 //   - Service `loop`: Your Loop API key.
 //   - Service `lucca`: Your Lucca API key.
@@ -55049,6 +56483,7 @@ func (o GetConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `okendo`: Your Okendo API key.
 //   - Service `ometria`: Your Ometria API Key.
 //   - Service `oncehub`: Your OnceHub API key.
+//   - Service `openai`: Your OpenAI API key.
 //   - Service `ordergroove`: Your Ordergroove API key.
 //   - Service `ordway`: Your Ordway API key.
 //   - Service `ortto`: Your Ortto API key.
@@ -55077,7 +56512,7 @@ func (o GetConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 //   - Service `revops`: Your RevOps bearer token.
 //   - Service `ricochet360`: Your Ricochet360 API key.
 //   - Service `ringover`: Your Ringover API key.
-//   - Service `rippling`: Your Rippling API key.
+//   - Service `rippling`: Your Rippling API token.
 //   - Service `rocketlane`: Your Rocketlane API key.
 //   - Service `rootly`: Your Rootly API key.
 //   - Service `ruddr`: Your Ruddr API key.
@@ -55202,7 +56637,20 @@ func (o GetConnectorConfigPtrOutput) ApiRequestsPerMinute() pulumi.IntPtrOutput 
 }
 
 // Field usage depends on `service` value:
+//   - Service `zuora`: The API role assigned to the integration user.
+//   - Service `zuoraSandbox`: The API role assigned to the integration user.
+func (o GetConnectorConfigPtrOutput) ApiRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `confluentCloud`: API Secret
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API secret.
 //   - Service `forjCommunity`: Your Forj Community API secret.
 //   - Service `friendbuy`: Your Friendbuy API secret.
 //   - Service `justcall`: Your JustCall API secret.
@@ -55303,6 +56751,7 @@ func (o GetConnectorConfigPtrOutput) ApiServer() pulumi.StringPtrOutput {
 //   - Service `webScraper`: Your Web Scraper API token.
 //   - Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
 //   - Service `zendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management API token.
 func (o GetConnectorConfigPtrOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -55814,6 +57263,8 @@ func (o GetConnectorConfigPtrOutput) AuthMethod() pulumi.StringPtrOutput {
 //   - Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
 //   - Service `github`: Authorization type.
 //   - Service `workday`: Authentication Mode
+//   - Service `workdayFinancialManagement`: Authentication Mode
+//   - Service `workdayHcm`: Authentication Mode
 func (o GetConnectorConfigPtrOutput) AuthMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -55952,6 +57403,7 @@ func (o GetConnectorConfigPtrOutput) BackintExecutablePath() pulumi.StringPtrOut
 }
 
 // Field usage depends on `service` value:
+//   - Service `amazonSellingPartner`: The earliest date to sync data from, in YYYY-MM-DD format. Cannot be before 1994-01-01 or in the future.
 //   - Service `shopify`: Limit of the Historical Sync Time for selected tables
 //   - Service `stripe`: Limit of the Historical Sync Time for selected tables
 //   - Service `stripeTest`: Limit of the Historical Sync Time for selected tables
@@ -55967,6 +57419,8 @@ func (o GetConnectorConfigPtrOutput) BackwardSyncLimit() pulumi.StringPtrOutput 
 
 // Field usage depends on `service` value:
 //   - Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+//   - Service `mixpanel`: Date from which data needs to be synced.
+//   - Service `pendo`: The start date (YYYY-MM-DD) from which to sync historical data.
 func (o GetConnectorConfigPtrOutput) BackwardSyncLimitDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -56077,6 +57531,19 @@ func (o GetConnectorConfigPtrOutput) BinaryLogType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.BinaryLogType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureCosmosForMongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+//   - Service `mongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+//   - Service `mongoSharded`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+func (o GetConnectorConfigPtrOutput) BinaryRepresentation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BinaryRepresentation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -56311,7 +57778,7 @@ func (o GetConnectorConfigPtrOutput) ClientHost() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `acumatica`: Your Acumatica client ID.
-//   - Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+//   - Service `adobeAnalytics`: Client ID from the OAuth Server-to-Server credentials of your Adobe Project.
 //   - Service `adobeWorkfront`: Your Adobe Workfront client ID.
 //   - Service `adpWorkforceNow`: Your ADP Client ID.
 //   - Service `akamai`: Your Akamai client ID.
@@ -56322,6 +57789,7 @@ func (o GetConnectorConfigPtrOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `billingPlatform`: Your BillingPlatform client ID.
 //   - Service `bingWebmasterTools`: Your Bing Webmaster Tools client ID.
 //   - Service `brightcove`: Your Brightcove client ID.
+//   - Service `brightflag`: Your Brightflag client ID.
 //   - Service `brightpearl`: Your Brightpearl client ID.
 //   - Service `brivo`: Your Brivo client ID.
 //   - Service `buildium`: Your Buildium API client ID.
@@ -56329,6 +57797,7 @@ func (o GetConnectorConfigPtrOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `canvasByInstructure`: Your Canvas by Instructure client ID.
 //   - Service `canvasData2ByInstructure`: Your Canvas Data 2 by Instructure client ID.
 //   - Service `castorEdc`: Your Castor EDC client Id.
+//   - Service `classy`: Your Classy client ID.
 //   - Service `clazar`: Your Clazar client ID.
 //   - Service `cloudbeds`: Your Cloudbeds client ID.
 //   - Service `commercetools`: Your commercetools client ID.
@@ -56338,6 +57807,8 @@ func (o GetConnectorConfigPtrOutput) ClientHost() pulumi.StringPtrOutput {
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo Client ID.
 //   - Service `criteoRetailMedia`: Your Criteo Retail Media client ID.
+//   - Service `cube`: Your Cube Client ID.
+//   - Service `cubeSoftware`: Your Cube Software Client ID.
 //   - Service `cultureAmp`: Your Culture Amp client ID.
 //   - Service `cvent`: Your Cvent client ID.
 //   - Service `d2lBrightspace`: Your D2L Brightspace client ID.
@@ -56452,6 +57923,8 @@ func (o GetConnectorConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `destini`: Your Destini Client Name.
 //   - Service `medallia`: Medallia company name
+//   - Service `zuora`: The name of your organization as registered with Zuora Revenue.
+//   - Service `zuoraSandbox`: The name of your organization as registered with Zuora Revenue.
 func (o GetConnectorConfigPtrOutput) ClientName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -56526,7 +57999,7 @@ func (o GetConnectorConfigPtrOutput) ClientPublicCertificate() pulumi.StringPtrO
 
 // Field usage depends on `service` value:
 //   - Service `acumatica`: Your Acumatica client secret.
-//   - Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+//   - Service `adobeAnalytics`: Client Secret from the OAuth Server-to-Server credentials of your Adobe Project.
 //   - Service `adobeWorkfront`: Your Adobe Workfront client secret.
 //   - Service `adpWorkforceNow`: Your ADP Client Secret.
 //   - Service `akamai`: Your Akamai client secret.
@@ -56537,10 +58010,12 @@ func (o GetConnectorConfigPtrOutput) ClientPublicCertificate() pulumi.StringPtrO
 //   - Service `billingPlatform`: Your BillingPlatform client secret.
 //   - Service `bingWebmasterTools`: Your Bing Webmaster Tools client secret.
 //   - Service `brightcove`: Your Brightcove client secret.
+//   - Service `brightflag`: Your Brightflag client secret.
 //   - Service `brightpearl`: Your Brightpearl client secret.
 //   - Service `brivo`: Your Brivo client secret.
 //   - Service `canvasByInstructure`: Your Canvas by Instructure client secret.
 //   - Service `castorEdc`: Your Castor EDC client secret.
+//   - Service `classy`: Your Classy client secret.
 //   - Service `clazar`: Your Clazar client secret.
 //   - Service `cloudbeds`: Your Cloudbeds client secret.
 //   - Service `commercetools`: Your commercetools client secret.
@@ -56550,6 +58025,8 @@ func (o GetConnectorConfigPtrOutput) ClientPublicCertificate() pulumi.StringPtrO
 //   - Service `coupa`: Your Coupa clientId
 //   - Service `criteo`: Your Criteo client secret key.
 //   - Service `criteoRetailMedia`: Your Criteo Retail Media client secret.
+//   - Service `cube`: Your Cube Client Secret.
+//   - Service `cubeSoftware`: Your Cube Software Client Secret.
 //   - Service `cultureAmp`: Your Culture Amp client secret.
 //   - Service `cvent`: Your Cvent client secret.
 //   - Service `d2lBrightspace`: Your D2L Brightspace client secret.
@@ -56730,6 +58207,8 @@ func (o GetConnectorConfigPtrOutput) Company() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `360learning`: Your 360Learning Company ID.
+//   - Service `cube`: Your Cube Company ID.
+//   - Service `cubeSoftware`: Your Cube Software Company ID.
 //   - Service `sageIntacct`: Company ID
 //   - Service `sapSuccessFactors`: Your SAP SuccessFactors Company ID.
 func (o GetConnectorConfigPtrOutput) CompanyId() pulumi.StringPtrOutput {
@@ -56958,6 +58437,7 @@ func (o GetConnectorConfigPtrOutput) ConnectionString() pulumi.StringPtrOutput {
 //   - Service `ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `elasticCloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `email`: Connection method. Default value: `Directly`.
+//   - Service `epicClarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `esSelfHosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
 //   - Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -57212,6 +58692,17 @@ func (o GetConnectorConfigPtrOutput) CustomBaseUrl() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+func (o GetConnectorConfigPtrOutput) CustomDimensionKeyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetConnectorConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDimensionKeyIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `iterable`: Custom Events Sync Mode.
 func (o GetConnectorConfigPtrOutput) CustomEventSyncMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
@@ -57266,6 +58757,17 @@ func (o GetConnectorConfigPtrOutput) CustomPayloads() GetConnectorConfigCustomPa
 		}
 		return v.CustomPayloads
 	}).(GetConnectorConfigCustomPayloadArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `togglTrack`: Your Toggl Track custom rate limit. Supports only numeric characters (0-9).
+func (o GetConnectorConfigPtrOutput) CustomRateLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomRateLimit
+	}).(pulumi.StringPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -57417,6 +58919,7 @@ func (o GetConnectorConfigPtrOutput) DataSetName() pulumi.StringPtrOutput {
 //   - Service `db2iSapHva`: The database name.
 //   - Service `dynamics365Fo`: The database name.
 //   - Service `ehr`: The database name.
+//   - Service `epicClarity`: The database name.
 //   - Service `googleCloudMysql`: The database name.
 //   - Service `googleCloudPostgresql`: The database name.
 //   - Service `googleCloudSqlserver`: The database name.
@@ -57743,6 +59246,7 @@ func (o GetConnectorConfigPtrOutput) Elements() pulumi.StringArrayOutput {
 //   - Service `appcues`: Your Appcues Email.
 //   - Service `assetPanda`: Your Asset Panda email.
 //   - Service `boostr`: Your Boostr email.
+//   - Service `consensusDemoAutomationPlatform`: The email address of the Consensus Demo Automation Platform account you want Fivetran to use to access your data.
 //   - Service `copper`: Your Copper email address.
 //   - Service `email`: Send your emails to this address.
 //   - Service `moloco`: Your Moloco account email.
@@ -57777,6 +59281,7 @@ func (o GetConnectorConfigPtrOutput) EmailAddress() pulumi.StringPtrOutput {
 //   - Service `cabcharge`: Your Cabcharge email ID.
 //   - Service `ordway`: Your Ordway user email ID.
 //   - Service `planful`: Your Planful email ID.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management email ID.
 func (o GetConnectorConfigPtrOutput) EmailId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -57917,7 +59422,7 @@ func (o GetConnectorConfigPtrOutput) EncodedPublicKey() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `marketo`: Marketo SOAP API Encryption Key.
+//   - Service `marketo`: Marketo SOAP API Encryption Key (Discontinued).
 func (o GetConnectorConfigPtrOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -58135,6 +59640,7 @@ func (o GetConnectorConfigPtrOutput) Events() pulumi.StringArrayOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adjust`: Your cloud storage.
+//   - Service `amplitude`: Your cloud storage type
 //   - Service `braze`: Export Storage. Required if `enableExports` is `true`
 func (o GetConnectorConfigPtrOutput) ExportStorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
@@ -58214,7 +59720,10 @@ func (o GetConnectorConfigPtrOutput) FileType() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: Mapped file name patterns to a destination table.
+//   - Service `box`: Mapped file name patterns to a destination table.
+//   - Service `dropbox`: Mapped file name patterns to a destination table.
 //   - Service `email`: Mapped file name patterns to a destination table.
+//   - Service `ftp`: Mapped file name patterns to a destination table.
 //   - Service `gcs`: Mapped file name patterns to a destination table.
 //   - Service `googleDrive`: Mapped file name patterns to a destination table.
 //   - Service `s3`: Mapped file name patterns to a destination table.
@@ -58590,8 +60099,11 @@ func (o GetConnectorConfigPtrOutput) HistoricalSyncLimitTimeFrame() pulumi.Strin
 }
 
 // Field usage depends on `service` value:
+//   - Service `amazonSellingPartner`: The time frame for historical data synchronization. Default value: `ALL_TIME`.
 //   - Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
 //   - Service `hubspot`: Used to configure Historical sync timeframe for selected tables
+//   - Service `mixpanel`: Should sync all data or adhere to `backwardSyncLimitDate`
+//   - Service `pendo`: The time range for which historical data should be synced. Default value: `All Time`.
 //   - Service `rokt`: Your Rokt historical sync time frame.
 //   - Service `shopify`: Used to configure Historical sync timeframe for selected tables
 //   - Service `skimlinks`: Your Skimlinks Historical sync time frame.
@@ -58636,6 +60148,7 @@ func (o GetConnectorConfigPtrOutput) HomeFolder() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: DB instance host or IP address.
 //   - Service `ehr`: DB instance host or IP address.
 //   - Service `elasticCloud`: DB instance host or IP address.
+//   - Service `epicClarity`: DB instance host or IP address.
 //   - Service `esSelfHosted`: DB instance host or IP address.
 //   - Service `ftp`: FTP host address.
 //   - Service `googleCloudMysql`: DB instance host or IP address.
@@ -58704,6 +60217,8 @@ func (o GetConnectorConfigPtrOutput) HostIp() pulumi.StringPtrOutput {
 //   - Service `coassemble`: Your Coassemble Hostname.
 //   - Service `datadog`: Your Datadog host name.
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
+//   - Service `zuora`: The domain or URL of your Zuora Revenue instance.
+//   - Service `zuoraSandbox`: The domain or URL of your Zuora Revenue instance.
 func (o GetConnectorConfigPtrOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -58819,6 +60334,17 @@ func (o GetConnectorConfigPtrOutput) Instance() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Instance
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Instance code for Workday Adaptive Planning
+func (o GetConnectorConfigPtrOutput) InstanceCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceCode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -59333,6 +60859,7 @@ func (o GetConnectorConfigPtrOutput) LogOnGroup() pulumi.StringPtrOutput {
 //   - Service `reboundReturns`: Your ReBound Returns login.
 //   - Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
 //   - Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
+//   - Service `workdayAdaptive`: User email address
 func (o GetConnectorConfigPtrOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -59845,6 +61372,7 @@ func (o GetConnectorConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: The user's password.
 //   - Service `ehr`: The user's password.
 //   - Service `elasticCloud`: The user's password.
+//   - Service `epicClarity`: The user's password.
 //   - Service `esSelfHosted`: The user's password.
 //   - Service `ftp`: FTP password.
 //   - Service `globalmeet`: Your GlobalMeet Password.
@@ -59936,17 +61464,21 @@ func (o GetConnectorConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management password.
 //   - Service `unicommerce`: Your uniware login password.
 //   - Service `upland`: Your Upland Software Password.
+//   - Service `uptempo`: Your Uptempo password.
 //   - Service `veevaVault`: Password
 //   - Service `veevavault`: Your Veeva Vault password.
 //   - Service `walmartDsp`: Walmart DSP password. It is a part of the login credentials.
 //   - Service `whenIWork`: Your When I Work password.
 //   - Service `wherefour`: Your Wherefour password.
 //   - Service `workday`: Workday password.
+//   - Service `workdayAdaptive`: User password
 //   - Service `workdayFinancialManagement`: Workday password.
 //   - Service `workdayHcm`: Workday password.
 //   - Service `xandr`: Your Xandr password.
 //   - Service `yougovBrandindex`: Your YouGov BrandIndex password.
 //   - Service `younium`: Your Younium password.
+//   - Service `zuora`: The corresponding password for the API user.
+//   - Service `zuoraSandbox`: The corresponding password for the API user.
 func (o GetConnectorConfigPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -60193,6 +61725,7 @@ func (o GetConnectorConfigPtrOutput) PlanType() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: The port number.
 //   - Service `ehr`: The port number.
 //   - Service `elasticCloud`: The port number.
+//   - Service `epicClarity`: The port number.
 //   - Service `esSelfHosted`: The port number.
 //   - Service `ftp`: FTP port.
 //   - Service `googleCloudMysql`: The port number.
@@ -60658,6 +62191,7 @@ func (o GetConnectorConfigPtrOutput) QuotaProjectId() pulumi.StringPtrOutput {
 //   - Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
+//   - Service `ftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `googleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
 //   - Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
@@ -60678,6 +62212,7 @@ func (o GetConnectorConfigPtrOutput) QuoteChar() pulumi.StringPtrOutput {
 //   - Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+//   - Service `ftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `googleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
 //   - Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
@@ -60694,6 +62229,7 @@ func (o GetConnectorConfigPtrOutput) QuoteCharacterEnabled() pulumi.BoolPtrOutpu
 }
 
 // Field usage depends on `service` value:
+//   - Service `togglTrack`: Your Toggl Track plan type.
 //   - Service `vimeo`: Your Vimeo rate limit plan.
 func (o GetConnectorConfigPtrOutput) RateLimitPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
@@ -60736,6 +62272,7 @@ func (o GetConnectorConfigPtrOutput) RefreshTokenExpiresAt() pulumi.StringPtrOut
 //   - Service `awin`: Your Awin Region.
 //   - Service `awsLambda`: The AWS region code for the DynamoDB instance.
 //   - Service `biginByZohoCrm`: Your Bigin by Zoho CRM Region
+//   - Service `brightflag`: Your Brightflag region.
 //   - Service `concur`: The region.
 //   - Service `cvent`: Your Cvent region.
 //   - Service `everflow`: Your Everflow region.
@@ -60977,6 +62514,8 @@ func (o GetConnectorConfigPtrOutput) ReportUrl() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: List of reports
+//   - Service `doubleClickPublishers`: The list of reports. We create a table within the schema for each report.
 //   - Service `googleAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
 //   - Service `googleAnalytics`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
 //   - Service `googleAnalytics4`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
@@ -60984,6 +62523,7 @@ func (o GetConnectorConfigPtrOutput) ReportUrl() pulumi.StringPtrOutput {
 //   - Service `googleSearchAds360`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
 //   - Service `googleSearchConsole`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
 //   - Service `workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+//   - Service `workdayAdaptive`: Custom Report
 func (o GetConnectorConfigPtrOutput) Reports() GetConnectorConfigReportArrayOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) []GetConnectorConfigReport {
 		if v == nil {
@@ -62219,7 +63759,7 @@ func (o GetConnectorConfigPtrOutput) SncSourceName() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `marketo`: Marketo SOAP API Endpoint.
+//   - Service `marketo`: Marketo SOAP API Endpoint (Discontinued).
 func (o GetConnectorConfigPtrOutput) SoapUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -62248,6 +63788,17 @@ func (o GetConnectorConfigPtrOutput) Source() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `consensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform source name.
+func (o GetConnectorConfigPtrOutput) SourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -62395,9 +63946,11 @@ func (o GetConnectorConfigPtrOutput) SubDomain() pulumi.StringPtrOutput {
 //   - Service `smarthr`: Your SmartHR subdomain.
 //   - Service `sonarqube`: Your Sonarqube subdomain.
 //   - Service `toast`: Your Toast domain.
+//   - Service `uptempo`: Your Uptempo subdomain.
 //   - Service `vts`: Your VTS Subdomain.
 //   - Service `yext`: Your Yext subdomain.
 //   - Service `zendeskChat`: Your Zendesk domain.
+//   - Service `zendeskWorkforceManagement`: Your Zendesk Workforce Management subdomain.
 func (o GetConnectorConfigPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -63197,6 +64750,7 @@ func (o GetConnectorConfigPtrOutput) Truststore() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `elasticCloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+//   - Service `epicClarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `esSelfHosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
 //   - Service `googleCloudMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
 //   - Service `googleCloudPostgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -63261,6 +64815,7 @@ func (o GetConnectorConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
 //   - Service `dynamics365Fo`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `ehr`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `elasticCloud`: SSH port, specify only to connect using an SSH tunnel.
+//   - Service `epicClarity`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `esSelfHosted`: SSH port, specify only to connect using an SSH tunnel.
 //   - Service `googleCloudMysql`: SSH port, specify only to connect via an SSH tunnel.
 //   - Service `googleCloudPostgresql`: SSH port, specify only to connect via an SSH tunnel.
@@ -63325,6 +64880,7 @@ func (o GetConnectorConfigPtrOutput) TunnelPort() pulumi.IntPtrOutput {
 //   - Service `dynamics365Fo`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `ehr`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `elasticCloud`: SSH user, specify only to connect using an SSH tunnel.
+//   - Service `epicClarity`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `esSelfHosted`: SSH user, specify only to connect using an SSH tunnel.
 //   - Service `googleCloudMysql`: SSH user, specify only to connect via an SSH tunnel.
 //   - Service `googleCloudPostgresql`: SSH user, specify only to connect via an SSH tunnel.
@@ -63414,6 +64970,7 @@ func (o GetConnectorConfigPtrOutput) UpdateConfigOnEachSync() pulumi.BoolPtrOutp
 //   - Service `clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 //   - Service `dynamics365Fo`: Update Method
 //   - Service `ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
+//   - Service `epicClarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
 //   - Service `googleCloudMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 //   - Service `googleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
 //   - Service `googleCloudSqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
@@ -63479,6 +65036,17 @@ func (o GetConnectorConfigPtrOutput) UseApiKeys() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return &v.UseApiKeys
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `amplitude`: Sync events from cloud storage
+func (o GetConnectorConfigPtrOutput) UseCloudStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetConnectorConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseCloudStorage
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -63584,6 +65152,7 @@ func (o GetConnectorConfigPtrOutput) UseWorkspace() pulumi.BoolPtrOutput {
 //   - Service `dynamics365Fo`: The user name. The format must be `user@domain`.
 //   - Service `ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
 //   - Service `elasticCloud`: The user name.
+//   - Service `epicClarity`: The user name.  For Azure Databases, the format must be `user@domain`.
 //   - Service `esSelfHosted`: The user name.
 //   - Service `ftp`: FTP user.
 //   - Service `googleCloudMysql`: The user name.
@@ -63642,7 +65211,7 @@ func (o GetConnectorConfigPtrOutput) User() pulumi.StringPtrOutput {
 //   - Service `coassemble`: Your Coassemble user ID.
 //   - Service `gmail`: (DEPRECATED) Your Gmail user ID.
 //   - Service `hibob`: Your HiBob Service User Token.
-//   - Service `marketo`: Marketo SOAP API User Id.
+//   - Service `marketo`: Marketo SOAP API User Id (Discontinued).
 //   - Service `okendo`: Your Okendo user ID.
 //   - Service `playvox`: Your Playvox User ID.
 //   - Service `sageIntacct`: User ID
@@ -63764,6 +65333,7 @@ func (o GetConnectorConfigPtrOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management username.
 //   - Service `unicommerce`: Your uniware login username.
 //   - Service `upland`: Your Upland Software Username.
+//   - Service `uptempo`: Your Uptempo username.
 //   - Service `veevaVault`: Username
 //   - Service `veevavault`: Your Veeva Vault username.
 //   - Service `whenIWork`: Your When I Work username.
@@ -63773,6 +65343,8 @@ func (o GetConnectorConfigPtrOutput) UserToken() pulumi.StringPtrOutput {
 //   - Service `xandr`: Your Xandr username.
 //   - Service `yougovBrandindex`: Your YouGov BrandIndex username.
 //   - Service `younium`: Your Younium username.
+//   - Service `zuora`: The API username with the necessary access permissions.
+//   - Service `zuoraSandbox`: The API username with the necessary access permissions.
 func (o GetConnectorConfigPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectorConfig) *string {
 		if v == nil {
@@ -65227,11 +66799,27 @@ func (o GetConnectorConfigDataModelPathAliasListArrayOutput) Index(i pulumi.IntI
 
 type GetConnectorConfigFile struct {
 	// Field usage depends on `service` value:
+	// 	- Service `azureBlobStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `box`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `dropbox`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `email`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `ftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `gcs`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `googleDrive`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `s3`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `s3CompatibleStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `sftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `sharePoint`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	ArchivePattern string `pulumi:"archivePattern"`
+	// Field usage depends on `service` value:
 	// 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
 	EmailSubject string `pulumi:"emailSubject"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+	// 	- Service `box`: All files in your search path matching this regular expression will be synced per table.
+	// 	- Service `dropbox`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `email`: All files in your search path matching this regular expression will be synced per table.
+	// 	- Service `ftp`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `gcs`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `s3`: All files in your search path matching this regular expression will be synced per table.
@@ -65241,7 +66829,10 @@ type GetConnectorConfigFile struct {
 	FilePattern string `pulumi:"filePattern"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
+	// 	- Service `box`: All files matching the above pattern will be synced to this table.
+	// 	- Service `dropbox`: All files matching the above pattern will be synced to this table.
 	// 	- Service `email`: All files matching the above pattern will be synced to this table.
+	// 	- Service `ftp`: All files matching the above pattern will be synced to this table.
 	// 	- Service `gcs`: All files matching the above pattern will be synced to this table.
 	// 	- Service `googleDrive`: All files matching the above pattern will be synced to this table.
 	// 	- Service `s3`: All files matching the above pattern will be synced to this table.
@@ -65264,11 +66855,27 @@ type GetConnectorConfigFileInput interface {
 
 type GetConnectorConfigFileArgs struct {
 	// Field usage depends on `service` value:
+	// 	- Service `azureBlobStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `box`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `dropbox`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `email`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `ftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `gcs`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `googleDrive`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `s3`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `s3CompatibleStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `sftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	// 	- Service `sharePoint`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+	ArchivePattern pulumi.StringInput `pulumi:"archivePattern"`
+	// Field usage depends on `service` value:
 	// 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
 	EmailSubject pulumi.StringInput `pulumi:"emailSubject"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+	// 	- Service `box`: All files in your search path matching this regular expression will be synced per table.
+	// 	- Service `dropbox`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `email`: All files in your search path matching this regular expression will be synced per table.
+	// 	- Service `ftp`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `gcs`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `googleDrive`: All files in your search path matching this regular expression will be synced per table.
 	// 	- Service `s3`: All files in your search path matching this regular expression will be synced per table.
@@ -65278,7 +66885,10 @@ type GetConnectorConfigFileArgs struct {
 	FilePattern pulumi.StringInput `pulumi:"filePattern"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
+	// 	- Service `box`: All files matching the above pattern will be synced to this table.
+	// 	- Service `dropbox`: All files matching the above pattern will be synced to this table.
 	// 	- Service `email`: All files matching the above pattern will be synced to this table.
+	// 	- Service `ftp`: All files matching the above pattern will be synced to this table.
 	// 	- Service `gcs`: All files matching the above pattern will be synced to this table.
 	// 	- Service `googleDrive`: All files matching the above pattern will be synced to this table.
 	// 	- Service `s3`: All files matching the above pattern will be synced to this table.
@@ -65340,6 +66950,22 @@ func (o GetConnectorConfigFileOutput) ToGetConnectorConfigFileOutputWithContext(
 }
 
 // Field usage depends on `service` value:
+//   - Service `azureBlobStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `box`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `dropbox`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `email`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `ftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `gcs`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `googleDrive`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `s3`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `s3CompatibleStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `sftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+//   - Service `sharePoint`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+func (o GetConnectorConfigFileOutput) ArchivePattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigFile) string { return v.ArchivePattern }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
 func (o GetConnectorConfigFileOutput) EmailSubject() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigFile) string { return v.EmailSubject }).(pulumi.StringOutput)
@@ -65347,7 +66973,10 @@ func (o GetConnectorConfigFileOutput) EmailSubject() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+//   - Service `box`: All files in your search path matching this regular expression will be synced per table.
+//   - Service `dropbox`: All files in your search path matching this regular expression will be synced per table.
 //   - Service `email`: All files in your search path matching this regular expression will be synced per table.
+//   - Service `ftp`: All files in your search path matching this regular expression will be synced per table.
 //   - Service `gcs`: All files in your search path matching this regular expression will be synced per table.
 //   - Service `googleDrive`: All files in your search path matching this regular expression will be synced per table.
 //   - Service `s3`: All files in your search path matching this regular expression will be synced per table.
@@ -65360,7 +66989,10 @@ func (o GetConnectorConfigFileOutput) FilePattern() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
+//   - Service `box`: All files matching the above pattern will be synced to this table.
+//   - Service `dropbox`: All files matching the above pattern will be synced to this table.
 //   - Service `email`: All files matching the above pattern will be synced to this table.
+//   - Service `ftp`: All files matching the above pattern will be synced to this table.
 //   - Service `gcs`: All files matching the above pattern will be synced to this table.
 //   - Service `googleDrive`: All files matching the above pattern will be synced to this table.
 //   - Service `s3`: All files matching the above pattern will be synced to this table.
@@ -65399,6 +67031,9 @@ type GetConnectorConfigProjectCredential struct {
 	// 	- Service `amplitude`: The project name you wish to use with Fivetran.
 	Project string `pulumi:"project"`
 	// Field usage depends on `service` value:
+	// 	- Service `amplitude`: The project ID you wish to use with Fivetran.
+	ProjectId string `pulumi:"projectId"`
+	// Field usage depends on `service` value:
 	// 	- Service `amplitude`: The secret key of the project.
 	SecretKey string `pulumi:"secretKey"`
 }
@@ -65421,6 +67056,9 @@ type GetConnectorConfigProjectCredentialArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `amplitude`: The project name you wish to use with Fivetran.
 	Project pulumi.StringInput `pulumi:"project"`
+	// Field usage depends on `service` value:
+	// 	- Service `amplitude`: The project ID you wish to use with Fivetran.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Field usage depends on `service` value:
 	// 	- Service `amplitude`: The secret key of the project.
 	SecretKey pulumi.StringInput `pulumi:"secretKey"`
@@ -65490,6 +67128,12 @@ func (o GetConnectorConfigProjectCredentialOutput) Project() pulumi.StringOutput
 }
 
 // Field usage depends on `service` value:
+//   - Service `amplitude`: The project ID you wish to use with Fivetran.
+func (o GetConnectorConfigProjectCredentialOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigProjectCredential) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `amplitude`: The secret key of the project.
 func (o GetConnectorConfigProjectCredentialOutput) SecretKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigProjectCredential) string { return v.SecretKey }).(pulumi.StringOutput)
@@ -65517,6 +67161,12 @@ func (o GetConnectorConfigProjectCredentialArrayOutput) Index(i pulumi.IntInput)
 
 type GetConnectorConfigReport struct {
 	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of accounts to sync for the table, if applicable
+	Accounts []GetConnectorConfigReportAccount `pulumi:"accounts"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Ad unit view for the report.
+	AdUnitView string `pulumi:"adUnitView"`
+	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 	Advertisers []string `pulumi:"advertisers"`
 	// Field usage depends on `service` value:
@@ -65526,6 +67176,9 @@ type GetConnectorConfigReport struct {
 	// 	- Service `googleSearchAds360`: The report attributes included to sync.
 	Attributes []string `pulumi:"attributes"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Columns provide all trafficking statistics and revenue information available for the chosen dimensions.
+	Columns []string `pulumi:"columns"`
+	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
 	ConfigMethod string `pulumi:"configMethod"`
 	// Field usage depends on `service` value:
@@ -65533,14 +67186,38 @@ type GetConnectorConfigReport struct {
 	// 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
 	ConfigType string `pulumi:"configType"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Conversion Dimensions.
+	ConversionDimensions []string `pulumi:"conversionDimensions"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of currencies to sync for the table, if applicable
+	Currency string `pulumi:"currency"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+	CustomDimensionKeyIds []string `pulumi:"customDimensionKeyIds"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
+	CustomFieldIds []string `pulumi:"customFieldIds"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
+	CustomFloodlightVariables []string `pulumi:"customFloodlightVariables"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Dimension attributes provide additional fields associated with a dimension. Dimension attributes can only be selected with their corresponding dimensions.
+	DimensionAttributes []string `pulumi:"dimensionAttributes"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Report dimensions to include in a sync. The `date` dimension is mandatory for all report types. The `advertiser` dimension is mandatory for the `REACH` report type
+	// 	- Service `doubleClickPublishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
 	// 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
 	// 	- Service `googleAnalytics4`: The report dimensions to include into a sync.
 	// 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 	// 	- Service `googleSearchConsole`: The report dimensions included to sync.
+	// 	- Service `workdayAdaptive`: List of dimensions to sync for the table, if applicable
 	Dimensions []string `pulumi:"dimensions"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Dynamic parameter field name
 	DynamicParameterField string `pulumi:"dynamicParameterField"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Specifies whether to enable all reach dimension combinations in the report. Default value: `false`
+	EnableAllDimensionCombinations bool `pulumi:"enableAllDimensionCombinations"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Select this option to enable dynamic report parameters.
 	EnableDynamicParameters bool `pulumi:"enableDynamicParameters"`
@@ -65561,6 +67238,13 @@ type GetConnectorConfigReport struct {
 	// 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
 	GenerateFivetranPk bool `pulumi:"generateFivetranPk"`
 	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Include zero rows in the table sync
+	IncludeZeroRows bool `pulumi:"includeZeroRows"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of levels to sync for the table, if applicable
+	Levels []GetConnectorConfigReportLevel `pulumi:"levels"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Report metrics to include into a sync.
 	// 	- Service `googleAnalytics`: The report metrics to include into a sync.
 	// 	- Service `googleAnalytics4`: The report metrics to include into a sync.
 	// 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
@@ -65569,6 +67253,9 @@ type GetConnectorConfigReport struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 	Partners []string `pulumi:"partners"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Per Interaction Dimensions.
+	PerInteractionDimensions []string `pulumi:"perInteractionDimensions"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
 	// 	- Service `googleAnalytics4`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -65580,9 +67267,13 @@ type GetConnectorConfigReport struct {
 	// 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
 	QueryId string `pulumi:"queryId"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: You can select only one Floodlight Configuration ID per account.
+	ReportConfigurationIds []string `pulumi:"reportConfigurationIds"`
+	// Field usage depends on `service` value:
 	// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
 	ReportFormatType string `pulumi:"reportFormatType"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Type of reporting data to sync. Default value: `STANDARD`.
 	// 	- Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
 	// 	- Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 	// 	- Service `googleSearchAds360`: The type of report
@@ -65593,6 +67284,7 @@ type GetConnectorConfigReport struct {
 	ReportUrl string `pulumi:"reportUrl"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics4`: The custom window size for rollback syncs.
+	// 	- Service `googleSearchAds360`: The custom window size for rollback syncs (between 2 and 90).
 	RollbackWindow int `pulumi:"rollbackWindow"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleSearchConsole`: Search types included to sync. Supported only for the `SEARCH_RESULTS` report type
@@ -65609,18 +67301,27 @@ type GetConnectorConfigReport struct {
 	// 	- Service `workday`: Start date parameter field name
 	StartDateParameterField string `pulumi:"startDateParameterField"`
 	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Start month for the table sync, in MM format
+	StartMonth string `pulumi:"startMonth"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Start year for the table sync, in YYYY format
+	StartYear string `pulumi:"startYear"`
+	// Field usage depends on `service` value:
 	// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
 	SupportNestedColumns bool `pulumi:"supportNestedColumns"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Dynamic report parameters sync strategy
 	SyncStrategy string `pulumi:"syncStrategy"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Destination table name. It must be unique within this connection and must comply with Fivetran's naming conventions.
+	// 	- Service `doubleClickPublishers`: The name of the table within the schema storing the data for a given report.
 	// 	- Service `googleAds`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleAnalytics`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleAnalytics4`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleSearchAds360`: The name of a table within the schema to which connector syncs the data of a given report.
 	// 	- Service `googleSearchConsole`: The name of a table within the schema to which connector syncs the data of a given report.
 	// 	- Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
+	// 	- Service `workdayAdaptive`: Table name to be synced
 	Table string `pulumi:"table"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The table name within the schema to which connector will sync the data of the specific report.
@@ -65631,6 +67332,12 @@ type GetConnectorConfigReport struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
 	UpdateConfigOnEachSync bool `pulumi:"updateConfigOnEachSync"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Version sync strategy for the table, SYNC_ALL_AND_NEW_VERSIONS or SYNC_SELECT_VERSIONS
+	VersionSyncStrategy string `pulumi:"versionSyncStrategy"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of versions to sync for the table, if versionSyncStrategy is SYNC_SELECT_VERSIONS
+	Versions []string `pulumi:"versions"`
 }
 
 // GetConnectorConfigReportInput is an input type that accepts GetConnectorConfigReportArgs and GetConnectorConfigReportOutput values.
@@ -65646,6 +67353,12 @@ type GetConnectorConfigReportInput interface {
 
 type GetConnectorConfigReportArgs struct {
 	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of accounts to sync for the table, if applicable
+	Accounts GetConnectorConfigReportAccountArrayInput `pulumi:"accounts"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Ad unit view for the report.
+	AdUnitView pulumi.StringInput `pulumi:"adUnitView"`
+	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 	Advertisers pulumi.StringArrayInput `pulumi:"advertisers"`
 	// Field usage depends on `service` value:
@@ -65655,6 +67368,9 @@ type GetConnectorConfigReportArgs struct {
 	// 	- Service `googleSearchAds360`: The report attributes included to sync.
 	Attributes pulumi.StringArrayInput `pulumi:"attributes"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Columns provide all trafficking statistics and revenue information available for the chosen dimensions.
+	Columns pulumi.StringArrayInput `pulumi:"columns"`
+	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
 	ConfigMethod pulumi.StringInput `pulumi:"configMethod"`
 	// Field usage depends on `service` value:
@@ -65662,14 +67378,38 @@ type GetConnectorConfigReportArgs struct {
 	// 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
 	ConfigType pulumi.StringInput `pulumi:"configType"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Conversion Dimensions.
+	ConversionDimensions pulumi.StringArrayInput `pulumi:"conversionDimensions"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of currencies to sync for the table, if applicable
+	Currency pulumi.StringInput `pulumi:"currency"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+	CustomDimensionKeyIds pulumi.StringArrayInput `pulumi:"customDimensionKeyIds"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
+	CustomFieldIds pulumi.StringArrayInput `pulumi:"customFieldIds"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
+	CustomFloodlightVariables pulumi.StringArrayInput `pulumi:"customFloodlightVariables"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickPublishers`: Dimension attributes provide additional fields associated with a dimension. Dimension attributes can only be selected with their corresponding dimensions.
+	DimensionAttributes pulumi.StringArrayInput `pulumi:"dimensionAttributes"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Report dimensions to include in a sync. The `date` dimension is mandatory for all report types. The `advertiser` dimension is mandatory for the `REACH` report type
+	// 	- Service `doubleClickPublishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
 	// 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
 	// 	- Service `googleAnalytics4`: The report dimensions to include into a sync.
 	// 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 	// 	- Service `googleSearchConsole`: The report dimensions included to sync.
+	// 	- Service `workdayAdaptive`: List of dimensions to sync for the table, if applicable
 	Dimensions pulumi.StringArrayInput `pulumi:"dimensions"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Dynamic parameter field name
 	DynamicParameterField pulumi.StringInput `pulumi:"dynamicParameterField"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Specifies whether to enable all reach dimension combinations in the report. Default value: `false`
+	EnableAllDimensionCombinations pulumi.BoolInput `pulumi:"enableAllDimensionCombinations"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Select this option to enable dynamic report parameters.
 	EnableDynamicParameters pulumi.BoolInput `pulumi:"enableDynamicParameters"`
@@ -65690,6 +67430,13 @@ type GetConnectorConfigReportArgs struct {
 	// 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
 	GenerateFivetranPk pulumi.BoolInput `pulumi:"generateFivetranPk"`
 	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Include zero rows in the table sync
+	IncludeZeroRows pulumi.BoolInput `pulumi:"includeZeroRows"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of levels to sync for the table, if applicable
+	Levels GetConnectorConfigReportLevelArrayInput `pulumi:"levels"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Report metrics to include into a sync.
 	// 	- Service `googleAnalytics`: The report metrics to include into a sync.
 	// 	- Service `googleAnalytics4`: The report metrics to include into a sync.
 	// 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
@@ -65698,6 +67445,9 @@ type GetConnectorConfigReportArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 	Partners pulumi.StringArrayInput `pulumi:"partners"`
+	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Per Interaction Dimensions.
+	PerInteractionDimensions pulumi.StringArrayInput `pulumi:"perInteractionDimensions"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
 	// 	- Service `googleAnalytics4`: The name of the Prebuilt Report from which the connector will sync the data.
@@ -65709,9 +67459,13 @@ type GetConnectorConfigReportArgs struct {
 	// 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
 	QueryId pulumi.StringInput `pulumi:"queryId"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: You can select only one Floodlight Configuration ID per account.
+	ReportConfigurationIds pulumi.StringArrayInput `pulumi:"reportConfigurationIds"`
+	// Field usage depends on `service` value:
 	// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
 	ReportFormatType pulumi.StringInput `pulumi:"reportFormatType"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Type of reporting data to sync. Default value: `STANDARD`.
 	// 	- Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
 	// 	- Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 	// 	- Service `googleSearchAds360`: The type of report
@@ -65722,6 +67476,7 @@ type GetConnectorConfigReportArgs struct {
 	ReportUrl pulumi.StringInput `pulumi:"reportUrl"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleAnalytics4`: The custom window size for rollback syncs.
+	// 	- Service `googleSearchAds360`: The custom window size for rollback syncs (between 2 and 90).
 	RollbackWindow pulumi.IntInput `pulumi:"rollbackWindow"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleSearchConsole`: Search types included to sync. Supported only for the `SEARCH_RESULTS` report type
@@ -65738,18 +67493,27 @@ type GetConnectorConfigReportArgs struct {
 	// 	- Service `workday`: Start date parameter field name
 	StartDateParameterField pulumi.StringInput `pulumi:"startDateParameterField"`
 	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Start month for the table sync, in MM format
+	StartMonth pulumi.StringInput `pulumi:"startMonth"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Start year for the table sync, in YYYY format
+	StartYear pulumi.StringInput `pulumi:"startYear"`
+	// Field usage depends on `service` value:
 	// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
 	SupportNestedColumns pulumi.BoolInput `pulumi:"supportNestedColumns"`
 	// Field usage depends on `service` value:
 	// 	- Service `workday`: Dynamic report parameters sync strategy
 	SyncStrategy pulumi.StringInput `pulumi:"syncStrategy"`
 	// Field usage depends on `service` value:
+	// 	- Service `doubleClickCampaignManager`: Destination table name. It must be unique within this connection and must comply with Fivetran's naming conventions.
+	// 	- Service `doubleClickPublishers`: The name of the table within the schema storing the data for a given report.
 	// 	- Service `googleAds`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleAnalytics`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleAnalytics4`: The table name within the schema to which connector will sync the data of the specific report.
 	// 	- Service `googleSearchAds360`: The name of a table within the schema to which connector syncs the data of a given report.
 	// 	- Service `googleSearchConsole`: The name of a table within the schema to which connector syncs the data of a given report.
 	// 	- Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
+	// 	- Service `workdayAdaptive`: Table name to be synced
 	Table pulumi.StringInput `pulumi:"table"`
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: The table name within the schema to which connector will sync the data of the specific report.
@@ -65760,6 +67524,12 @@ type GetConnectorConfigReportArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
 	UpdateConfigOnEachSync pulumi.BoolInput `pulumi:"updateConfigOnEachSync"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Version sync strategy for the table, SYNC_ALL_AND_NEW_VERSIONS or SYNC_SELECT_VERSIONS
+	VersionSyncStrategy pulumi.StringInput `pulumi:"versionSyncStrategy"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: List of versions to sync for the table, if versionSyncStrategy is SYNC_SELECT_VERSIONS
+	Versions pulumi.StringArrayInput `pulumi:"versions"`
 }
 
 func (GetConnectorConfigReportArgs) ElementType() reflect.Type {
@@ -65814,6 +67584,18 @@ func (o GetConnectorConfigReportOutput) ToGetConnectorConfigReportOutputWithCont
 }
 
 // Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: List of accounts to sync for the table, if applicable
+func (o GetConnectorConfigReportOutput) Accounts() GetConnectorConfigReportAccountArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []GetConnectorConfigReportAccount { return v.Accounts }).(GetConnectorConfigReportAccountArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: Ad unit view for the report.
+func (o GetConnectorConfigReportOutput) AdUnitView() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.AdUnitView }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 func (o GetConnectorConfigReportOutput) Advertisers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.Advertisers }).(pulumi.StringArrayOutput)
@@ -65832,6 +67614,12 @@ func (o GetConnectorConfigReportOutput) Attributes() pulumi.StringArrayOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: Columns provide all trafficking statistics and revenue information available for the chosen dimensions.
+func (o GetConnectorConfigReportOutput) Columns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.Columns }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
 func (o GetConnectorConfigReportOutput) ConfigMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.ConfigMethod }).(pulumi.StringOutput)
@@ -65845,10 +67633,49 @@ func (o GetConnectorConfigReportOutput) ConfigType() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Conversion Dimensions.
+func (o GetConnectorConfigReportOutput) ConversionDimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.ConversionDimensions }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: List of currencies to sync for the table, if applicable
+func (o GetConnectorConfigReportOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.Currency }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+func (o GetConnectorConfigReportOutput) CustomDimensionKeyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.CustomDimensionKeyIds }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
+func (o GetConnectorConfigReportOutput) CustomFieldIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.CustomFieldIds }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
+func (o GetConnectorConfigReportOutput) CustomFloodlightVariables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.CustomFloodlightVariables }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickPublishers`: Dimension attributes provide additional fields associated with a dimension. Dimension attributes can only be selected with their corresponding dimensions.
+func (o GetConnectorConfigReportOutput) DimensionAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.DimensionAttributes }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Report dimensions to include in a sync. The `date` dimension is mandatory for all report types. The `advertiser` dimension is mandatory for the `REACH` report type
+//   - Service `doubleClickPublishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
 //   - Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
 //   - Service `googleAnalytics4`: The report dimensions to include into a sync.
 //   - Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 //   - Service `googleSearchConsole`: The report dimensions included to sync.
+//   - Service `workdayAdaptive`: List of dimensions to sync for the table, if applicable
 func (o GetConnectorConfigReportOutput) Dimensions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
 }
@@ -65857,6 +67684,12 @@ func (o GetConnectorConfigReportOutput) Dimensions() pulumi.StringArrayOutput {
 //   - Service `workday`: Dynamic parameter field name
 func (o GetConnectorConfigReportOutput) DynamicParameterField() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.DynamicParameterField }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Specifies whether to enable all reach dimension combinations in the report. Default value: `false`
+func (o GetConnectorConfigReportOutput) EnableAllDimensionCombinations() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) bool { return v.EnableAllDimensionCombinations }).(pulumi.BoolOutput)
 }
 
 // Field usage depends on `service` value:
@@ -65900,6 +67733,19 @@ func (o GetConnectorConfigReportOutput) GenerateFivetranPk() pulumi.BoolOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Include zero rows in the table sync
+func (o GetConnectorConfigReportOutput) IncludeZeroRows() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) bool { return v.IncludeZeroRows }).(pulumi.BoolOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: List of levels to sync for the table, if applicable
+func (o GetConnectorConfigReportOutput) Levels() GetConnectorConfigReportLevelArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []GetConnectorConfigReportLevel { return v.Levels }).(GetConnectorConfigReportLevelArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Report metrics to include into a sync.
 //   - Service `googleAnalytics`: The report metrics to include into a sync.
 //   - Service `googleAnalytics4`: The report metrics to include into a sync.
 //   - Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
@@ -65912,6 +67758,12 @@ func (o GetConnectorConfigReportOutput) Metrics() pulumi.StringArrayOutput {
 //   - Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
 func (o GetConnectorConfigReportOutput) Partners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.Partners }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Per Interaction Dimensions.
+func (o GetConnectorConfigReportOutput) PerInteractionDimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.PerInteractionDimensions }).(pulumi.StringArrayOutput)
 }
 
 // Field usage depends on `service` value:
@@ -65934,12 +67786,19 @@ func (o GetConnectorConfigReportOutput) QueryId() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: You can select only one Floodlight Configuration ID per account.
+func (o GetConnectorConfigReportOutput) ReportConfigurationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.ReportConfigurationIds }).(pulumi.StringArrayOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
 func (o GetConnectorConfigReportOutput) ReportFormatType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.ReportFormatType }).(pulumi.StringOutput)
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Type of reporting data to sync. Default value: `STANDARD`.
 //   - Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
 //   - Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
 //   - Service `googleSearchAds360`: The type of report
@@ -65956,6 +67815,7 @@ func (o GetConnectorConfigReportOutput) ReportUrl() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `googleAnalytics4`: The custom window size for rollback syncs.
+//   - Service `googleSearchAds360`: The custom window size for rollback syncs (between 2 and 90).
 func (o GetConnectorConfigReportOutput) RollbackWindow() pulumi.IntOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) int { return v.RollbackWindow }).(pulumi.IntOutput)
 }
@@ -65990,6 +67850,18 @@ func (o GetConnectorConfigReportOutput) StartDateParameterField() pulumi.StringO
 }
 
 // Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Start month for the table sync, in MM format
+func (o GetConnectorConfigReportOutput) StartMonth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.StartMonth }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Start year for the table sync, in YYYY format
+func (o GetConnectorConfigReportOutput) StartYear() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.StartYear }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
 func (o GetConnectorConfigReportOutput) SupportNestedColumns() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) bool { return v.SupportNestedColumns }).(pulumi.BoolOutput)
@@ -66002,12 +67874,15 @@ func (o GetConnectorConfigReportOutput) SyncStrategy() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `doubleClickCampaignManager`: Destination table name. It must be unique within this connection and must comply with Fivetran's naming conventions.
+//   - Service `doubleClickPublishers`: The name of the table within the schema storing the data for a given report.
 //   - Service `googleAds`: The table name within the schema to which connector will sync the data of the specific report.
 //   - Service `googleAnalytics`: The table name within the schema to which connector will sync the data of the specific report.
 //   - Service `googleAnalytics4`: The table name within the schema to which connector will sync the data of the specific report.
 //   - Service `googleSearchAds360`: The name of a table within the schema to which connector syncs the data of a given report.
 //   - Service `googleSearchConsole`: The name of a table within the schema to which connector syncs the data of a given report.
 //   - Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
+//   - Service `workdayAdaptive`: Table name to be synced
 func (o GetConnectorConfigReportOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.Table }).(pulumi.StringOutput)
 }
@@ -66030,6 +67905,18 @@ func (o GetConnectorConfigReportOutput) UpdateConfigOnEachSync() pulumi.BoolOutp
 	return o.ApplyT(func(v GetConnectorConfigReport) bool { return v.UpdateConfigOnEachSync }).(pulumi.BoolOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Version sync strategy for the table, SYNC_ALL_AND_NEW_VERSIONS or SYNC_SELECT_VERSIONS
+func (o GetConnectorConfigReportOutput) VersionSyncStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) string { return v.VersionSyncStrategy }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: List of versions to sync for the table, if versionSyncStrategy is SYNC_SELECT_VERSIONS
+func (o GetConnectorConfigReportOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorConfigReport) []string { return v.Versions }).(pulumi.StringArrayOutput)
+}
+
 type GetConnectorConfigReportArrayOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorConfigReportArrayOutput) ElementType() reflect.Type {
@@ -66048,6 +67935,130 @@ func (o GetConnectorConfigReportArrayOutput) Index(i pulumi.IntInput) GetConnect
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorConfigReport {
 		return vs[0].([]GetConnectorConfigReport)[vs[1].(int)]
 	}).(GetConnectorConfigReportOutput)
+}
+
+type GetConnectorConfigReportAccount struct {
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	Flag bool `pulumi:"flag"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Account ID to sync
+	Id string `pulumi:"id"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	IncludeDescendants bool `pulumi:"includeDescendants"`
+}
+
+// GetConnectorConfigReportAccountInput is an input type that accepts GetConnectorConfigReportAccountArgs and GetConnectorConfigReportAccountOutput values.
+// You can construct a concrete instance of `GetConnectorConfigReportAccountInput` via:
+//
+//	GetConnectorConfigReportAccountArgs{...}
+type GetConnectorConfigReportAccountInput interface {
+	pulumi.Input
+
+	ToGetConnectorConfigReportAccountOutput() GetConnectorConfigReportAccountOutput
+	ToGetConnectorConfigReportAccountOutputWithContext(context.Context) GetConnectorConfigReportAccountOutput
+}
+
+type GetConnectorConfigReportAccountArgs struct {
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	Flag pulumi.BoolInput `pulumi:"flag"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Account ID to sync
+	Id pulumi.StringInput `pulumi:"id"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	IncludeDescendants pulumi.BoolInput `pulumi:"includeDescendants"`
+}
+
+func (GetConnectorConfigReportAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorConfigReportAccount)(nil)).Elem()
+}
+
+func (i GetConnectorConfigReportAccountArgs) ToGetConnectorConfigReportAccountOutput() GetConnectorConfigReportAccountOutput {
+	return i.ToGetConnectorConfigReportAccountOutputWithContext(context.Background())
+}
+
+func (i GetConnectorConfigReportAccountArgs) ToGetConnectorConfigReportAccountOutputWithContext(ctx context.Context) GetConnectorConfigReportAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigReportAccountOutput)
+}
+
+// GetConnectorConfigReportAccountArrayInput is an input type that accepts GetConnectorConfigReportAccountArray and GetConnectorConfigReportAccountArrayOutput values.
+// You can construct a concrete instance of `GetConnectorConfigReportAccountArrayInput` via:
+//
+//	GetConnectorConfigReportAccountArray{ GetConnectorConfigReportAccountArgs{...} }
+type GetConnectorConfigReportAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorConfigReportAccountArrayOutput() GetConnectorConfigReportAccountArrayOutput
+	ToGetConnectorConfigReportAccountArrayOutputWithContext(context.Context) GetConnectorConfigReportAccountArrayOutput
+}
+
+type GetConnectorConfigReportAccountArray []GetConnectorConfigReportAccountInput
+
+func (GetConnectorConfigReportAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorConfigReportAccount)(nil)).Elem()
+}
+
+func (i GetConnectorConfigReportAccountArray) ToGetConnectorConfigReportAccountArrayOutput() GetConnectorConfigReportAccountArrayOutput {
+	return i.ToGetConnectorConfigReportAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorConfigReportAccountArray) ToGetConnectorConfigReportAccountArrayOutputWithContext(ctx context.Context) GetConnectorConfigReportAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigReportAccountArrayOutput)
+}
+
+type GetConnectorConfigReportAccountOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorConfigReportAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorConfigReportAccount)(nil)).Elem()
+}
+
+func (o GetConnectorConfigReportAccountOutput) ToGetConnectorConfigReportAccountOutput() GetConnectorConfigReportAccountOutput {
+	return o
+}
+
+func (o GetConnectorConfigReportAccountOutput) ToGetConnectorConfigReportAccountOutputWithContext(ctx context.Context) GetConnectorConfigReportAccountOutput {
+	return o
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+func (o GetConnectorConfigReportAccountOutput) Flag() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectorConfigReportAccount) bool { return v.Flag }).(pulumi.BoolOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Account ID to sync
+func (o GetConnectorConfigReportAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigReportAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+func (o GetConnectorConfigReportAccountOutput) IncludeDescendants() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectorConfigReportAccount) bool { return v.IncludeDescendants }).(pulumi.BoolOutput)
+}
+
+type GetConnectorConfigReportAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorConfigReportAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorConfigReportAccount)(nil)).Elem()
+}
+
+func (o GetConnectorConfigReportAccountArrayOutput) ToGetConnectorConfigReportAccountArrayOutput() GetConnectorConfigReportAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectorConfigReportAccountArrayOutput) ToGetConnectorConfigReportAccountArrayOutputWithContext(ctx context.Context) GetConnectorConfigReportAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectorConfigReportAccountArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigReportAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorConfigReportAccount {
+		return vs[0].([]GetConnectorConfigReportAccount)[vs[1].(int)]
+	}).(GetConnectorConfigReportAccountOutput)
 }
 
 type GetConnectorConfigReportConfig struct {
@@ -66244,6 +68255,130 @@ func (o GetConnectorConfigReportConfigArrayOutput) Index(i pulumi.IntInput) GetC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorConfigReportConfig {
 		return vs[0].([]GetConnectorConfigReportConfig)[vs[1].(int)]
 	}).(GetConnectorConfigReportConfigOutput)
+}
+
+type GetConnectorConfigReportLevel struct {
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	Flag bool `pulumi:"flag"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Level ID to sync
+	Id string `pulumi:"id"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	IncludeDescendants bool `pulumi:"includeDescendants"`
+}
+
+// GetConnectorConfigReportLevelInput is an input type that accepts GetConnectorConfigReportLevelArgs and GetConnectorConfigReportLevelOutput values.
+// You can construct a concrete instance of `GetConnectorConfigReportLevelInput` via:
+//
+//	GetConnectorConfigReportLevelArgs{...}
+type GetConnectorConfigReportLevelInput interface {
+	pulumi.Input
+
+	ToGetConnectorConfigReportLevelOutput() GetConnectorConfigReportLevelOutput
+	ToGetConnectorConfigReportLevelOutputWithContext(context.Context) GetConnectorConfigReportLevelOutput
+}
+
+type GetConnectorConfigReportLevelArgs struct {
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	Flag pulumi.BoolInput `pulumi:"flag"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Level ID to sync
+	Id pulumi.StringInput `pulumi:"id"`
+	// Field usage depends on `service` value:
+	// 	- Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+	IncludeDescendants pulumi.BoolInput `pulumi:"includeDescendants"`
+}
+
+func (GetConnectorConfigReportLevelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorConfigReportLevel)(nil)).Elem()
+}
+
+func (i GetConnectorConfigReportLevelArgs) ToGetConnectorConfigReportLevelOutput() GetConnectorConfigReportLevelOutput {
+	return i.ToGetConnectorConfigReportLevelOutputWithContext(context.Background())
+}
+
+func (i GetConnectorConfigReportLevelArgs) ToGetConnectorConfigReportLevelOutputWithContext(ctx context.Context) GetConnectorConfigReportLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigReportLevelOutput)
+}
+
+// GetConnectorConfigReportLevelArrayInput is an input type that accepts GetConnectorConfigReportLevelArray and GetConnectorConfigReportLevelArrayOutput values.
+// You can construct a concrete instance of `GetConnectorConfigReportLevelArrayInput` via:
+//
+//	GetConnectorConfigReportLevelArray{ GetConnectorConfigReportLevelArgs{...} }
+type GetConnectorConfigReportLevelArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorConfigReportLevelArrayOutput() GetConnectorConfigReportLevelArrayOutput
+	ToGetConnectorConfigReportLevelArrayOutputWithContext(context.Context) GetConnectorConfigReportLevelArrayOutput
+}
+
+type GetConnectorConfigReportLevelArray []GetConnectorConfigReportLevelInput
+
+func (GetConnectorConfigReportLevelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorConfigReportLevel)(nil)).Elem()
+}
+
+func (i GetConnectorConfigReportLevelArray) ToGetConnectorConfigReportLevelArrayOutput() GetConnectorConfigReportLevelArrayOutput {
+	return i.ToGetConnectorConfigReportLevelArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorConfigReportLevelArray) ToGetConnectorConfigReportLevelArrayOutputWithContext(ctx context.Context) GetConnectorConfigReportLevelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorConfigReportLevelArrayOutput)
+}
+
+type GetConnectorConfigReportLevelOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorConfigReportLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorConfigReportLevel)(nil)).Elem()
+}
+
+func (o GetConnectorConfigReportLevelOutput) ToGetConnectorConfigReportLevelOutput() GetConnectorConfigReportLevelOutput {
+	return o
+}
+
+func (o GetConnectorConfigReportLevelOutput) ToGetConnectorConfigReportLevelOutputWithContext(ctx context.Context) GetConnectorConfigReportLevelOutput {
+	return o
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+func (o GetConnectorConfigReportLevelOutput) Flag() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectorConfigReportLevel) bool { return v.Flag }).(pulumi.BoolOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Level ID to sync
+func (o GetConnectorConfigReportLevelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorConfigReportLevel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `workdayAdaptive`: Flag to indicate if descendants are included or not
+func (o GetConnectorConfigReportLevelOutput) IncludeDescendants() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectorConfigReportLevel) bool { return v.IncludeDescendants }).(pulumi.BoolOutput)
+}
+
+type GetConnectorConfigReportLevelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorConfigReportLevelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorConfigReportLevel)(nil)).Elem()
+}
+
+func (o GetConnectorConfigReportLevelArrayOutput) ToGetConnectorConfigReportLevelArrayOutput() GetConnectorConfigReportLevelArrayOutput {
+	return o
+}
+
+func (o GetConnectorConfigReportLevelArrayOutput) ToGetConnectorConfigReportLevelArrayOutputWithContext(ctx context.Context) GetConnectorConfigReportLevelArrayOutput {
+	return o
+}
+
+func (o GetConnectorConfigReportLevelArrayOutput) Index(i pulumi.IntInput) GetConnectorConfigReportLevelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorConfigReportLevel {
+		return vs[0].([]GetConnectorConfigReportLevel)[vs[1].(int)]
+	}).(GetConnectorConfigReportLevelOutput)
 }
 
 type GetConnectorConfigReportList struct {
@@ -67401,7 +69536,7 @@ type GetConnectorsConnector struct {
 	Id string `pulumi:"id"`
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
 	Name string `pulumi:"name"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod string `pulumi:"networkingMethod"`
 	// Specifies whether the connector should be paused after the free trial period has ended.
 	PauseAfterTrial bool `pulumi:"pauseAfterTrial"`
@@ -67455,7 +69590,7 @@ type GetConnectorsConnectorArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod pulumi.StringInput `pulumi:"networkingMethod"`
 	// Specifies whether the connector should be paused after the free trial period has ended.
 	PauseAfterTrial pulumi.BoolInput `pulumi:"pauseAfterTrial"`
@@ -67578,7 +69713,7 @@ func (o GetConnectorsConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorsConnector) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Possible values: Directly, SshTunnel, ProxyAgent.
+// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 func (o GetConnectorsConnectorOutput) NetworkingMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorsConnector) string { return v.NetworkingMethod }).(pulumi.StringOutput)
 }
@@ -67976,6 +70111,7 @@ type GetDestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -67992,12 +70128,13 @@ type GetDestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Authentication type
 	// 	- Service `databricks`: Authentication type
-	// 	- Service `managedDataLake`: Authentication type
+	// 	- Service `managedDataLake`: Specifies the authentication types for Fivetran to connect to Databricks. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: Authentication type
 	// 	- Service `onelake`: Authentication type
 	// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
 	AuthType string `pulumi:"authType"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your user's access key ID
 	// 	- Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
 	// 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -68006,36 +70143,42 @@ type GetDestinationConfig struct {
 	// 	- Service `snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 	AwsBucketAuthType string `pulumi:"awsBucketAuthType"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your user's secret access key
 	// 	- Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
 	// 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
 	AwsSecretAccessKey string `pulumi:"awsSecretAccessKey"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+	AzureStorageAccountAuthType string `pulumi:"azureStorageAccountAuthType"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
 	BootstrapServers []string `pulumi:"bootstrapServers"`
 	// Field usage depends on `service` value:
 	// 	- Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
 	// 	- Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+	// 	- Service `databricks`: Your bucket
 	// 	- Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-	// 	- Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
+	// 	- Service `managedDataLake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
 	// 	- Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
 	// 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
 	Bucket string `pulumi:"bucket"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your bucket's region
 	// 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 	BucketRegion string `pulumi:"bucketRegion"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Catalog name
 	// 	- Service `databricks`: Catalog name
-	// 	- Service `managedDataLake`: Catalog name
+	// 	- Service `managedDataLake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables. Use this parameter only if you want to use Unity Catalog with your data lake.
 	// 	- Service `newS3Datalake`: Catalog name
 	// 	- Service `onelake`: Catalog name
 	Catalog string `pulumi:"catalog"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Client id of service principal
-	// 	- Service `managedDataLake`: Client id of service principal
+	// 	- Service `managedDataLake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Client ID of service principal
 	ClientId string `pulumi:"clientId"`
 	// Field usage depends on `service` value:
@@ -68071,6 +70214,7 @@ type GetDestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `panoply`: Connection method. Default value: `Directly`.
 	// 	- Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
+	// 	- Service `postgresDatabricksWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresWarehouse`: Connection method. Default value: `Directly`.
@@ -68081,13 +70225,16 @@ type GetDestinationConfig struct {
 	ConnectionType string `pulumi:"connectionType"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) Container to store delta table files
-	// 	- Service `managedDataLake`: (Immutable) Container to store delta table files
+	// 	- Service `managedDataLake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Workspace name to store delta table files
 	ContainerName string `pulumi:"containerName"`
 	ControllerId  string `pulumi:"controllerId"`
 	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Whether to create external tables
 	CreateExternalTables bool `pulumi:"createExternalTables"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Specifies whether you want Fivetran to create external volumes for unstructured data files.
+	CreateExternalVolumes bool `pulumi:"createExternalVolumes"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Confluent Cloud message format.
 	DataFormat string `pulumi:"dataFormat"`
@@ -68112,6 +70259,7 @@ type GetDestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Database name
 	// 	- Service `panoply`: Database name
 	// 	- Service `periscopeWarehouse`: Database name
+	// 	- Service `postgresDatabricksWarehouse`: Database name
 	// 	- Service `postgresGcpWarehouse`: Database name
 	// 	- Service `postgresRdsWarehouse`: Database name
 	// 	- Service `postgresWarehouse`: Database name
@@ -68122,7 +70270,7 @@ type GetDestinationConfig struct {
 	Database string `pulumi:"database"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
-	// 	- Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
+	// 	- Service `managedDataLake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`. Use this parameter only if you want to use Unity Catalog with your data lake.
 	// 	- Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
 	// 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
 	DatabricksConnectionType string `pulumi:"databricksConnectionType"`
@@ -68160,10 +70308,13 @@ type GetDestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `snowflake`: External storage parent folder URL
 	ExternalStorageParentFolderUri string `pulumi:"externalStorageParentFolderUri"`
-	FivetranGlueRoleArn            string `pulumi:"fivetranGlueRoleArn"`
-	FivetranMskRoleArn             string `pulumi:"fivetranMskRoleArn"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
+	// 	- Service `databricks`: Specifies the external volume path where you want Fivetran to create the unstructured files.
+	ExternalVolumeLocation string `pulumi:"externalVolumeLocation"`
+	FivetranGlueRoleArn    string `pulumi:"fivetranGlueRoleArn"`
+	FivetranMskRoleArn     string `pulumi:"fivetranMskRoleArn"`
+	// Field usage depends on `service` value:
+	// 	- Service `managedDataLake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
 	// 	- Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
 	FivetranRoleArn string `pulumi:"fivetranRoleArn"`
 	// Field usage depends on `service` value:
@@ -68185,6 +70336,7 @@ type GetDestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Server name
 	// 	- Service `panoply`: Server name
 	// 	- Service `periscopeWarehouse`: Server name
+	// 	- Service `postgresDatabricksWarehouse`: Server name
 	// 	- Service `postgresGcpWarehouse`: Server name
 	// 	- Service `postgresRdsWarehouse`: Server name
 	// 	- Service `postgresWarehouse`: Server name
@@ -68196,7 +70348,7 @@ type GetDestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: HTTP path
 	// 	- Service `databricks`: HTTP path
-	// 	- Service `managedDataLake`: HTTP path
+	// 	- Service `managedDataLake`: HTTP path of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: HTTP path
 	// 	- Service `onelake`: HTTP path
 	HttpPath string `pulumi:"httpPath"`
@@ -68223,14 +70375,14 @@ type GetDestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: OAuth 2.0 client ID
 	// 	- Service `databricks`: OAuth 2.0 client ID
-	// 	- Service `managedDataLake`: OAuth 2.0 client ID
+	// 	- Service `managedDataLake`: The OAuth 2.0 client ID you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: OAuth 2.0 client ID
 	// 	- Service `onelake`: OAuth 2.0 client ID
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: OAuth 2.0 secret
 	// 	- Service `databricks`: OAuth 2.0 secret
-	// 	- Service `managedDataLake`: OAuth 2.0 secret
+	// 	- Service `managedDataLake`: OAuth 2.0 secret you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: OAuth 2.0 secret
 	// 	- Service `onelake`: OAuth 2.0 secret
 	Oauth2Secret string `pulumi:"oauth2Secret"`
@@ -68253,6 +70405,7 @@ type GetDestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Database user password
 	// 	- Service `panoply`: Database user password
 	// 	- Service `periscopeWarehouse`: Database user password
+	// 	- Service `postgresDatabricksWarehouse`: Database user password
 	// 	- Service `postgresGcpWarehouse`: Database user password
 	// 	- Service `postgresRdsWarehouse`: Database user password
 	// 	- Service `postgresWarehouse`: Database user password
@@ -68264,7 +70417,7 @@ type GetDestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Personal access token
 	// 	- Service `databricks`: Personal access token
-	// 	- Service `managedDataLake`: Personal access token
+	// 	- Service `managedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: Personal access token
 	// 	- Service `onelake`: Personal access token
 	PersonalAccessToken string `pulumi:"personalAccessToken"`
@@ -68277,7 +70430,7 @@ type GetDestinationConfig struct {
 	// 	- Service `azureSqlDatabase`: Server port number
 	// 	- Service `azureSqlManagedDbWarehouse`: Server port number
 	// 	- Service `databricks`: Server port number
-	// 	- Service `managedDataLake`: Server port number
+	// 	- Service `managedDataLake`: Server port number of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `mariaRdsWarehouse`: Server port number
 	// 	- Service `mariaWarehouse`: Server port number
 	// 	- Service `mysqlRdsWarehouse`: Server port number
@@ -68289,6 +70442,7 @@ type GetDestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Server port number
 	// 	- Service `panoply`: Server port number
 	// 	- Service `periscopeWarehouse`: Server port number
+	// 	- Service `postgresDatabricksWarehouse`: Server port number
 	// 	- Service `postgresGcpWarehouse`: Server port number
 	// 	- Service `postgresRdsWarehouse`: Server port number
 	// 	- Service `postgresWarehouse`: Server port number
@@ -68299,7 +70453,7 @@ type GetDestinationConfig struct {
 	Port int `pulumi:"port"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) path/to/data within the container
-	// 	- Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+	// 	- Service `managedDataLake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
 	// 	- Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
 	// 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
 	PrefixPath string `pulumi:"prefixPath"`
@@ -68330,7 +70484,7 @@ type GetDestinationConfig struct {
 	// 	- Service `sqlServerWarehouse`: Public Key
 	PublicKey string `pulumi:"publicKey"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
+	// 	- Service `managedDataLake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
 	// 	- Service `newS3Datalake`: Region of your AWS S3 bucket
 	Region            string `pulumi:"region"`
 	RegistryName      string `pulumi:"registryName"`
@@ -68367,6 +70521,9 @@ type GetDestinationConfig struct {
 	// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 	RoleArn string `pulumi:"roleArn"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
+	S3BucketAuthType string `pulumi:"s3BucketAuthType"`
+	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Security protocol for Confluent Cloud interaction.
 	SaslMechanism string `pulumi:"saslMechanism"`
 	// Field usage depends on `service` value:
@@ -68395,7 +70552,7 @@ type GetDestinationConfig struct {
 	SecretKey string `pulumi:"secretKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Secret value for service principal
-	// 	- Service `managedDataLake`: Secret value for service principal
+	// 	- Service `managedDataLake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Secret value for service principal
 	SecretValue string `pulumi:"secretValue"`
 	// Field usage depends on `service` value:
@@ -68404,22 +70561,22 @@ type GetDestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Server Host name
 	// 	- Service `databricks`: Server name
-	// 	- Service `managedDataLake`: Server host name
+	// 	- Service `managedDataLake`: Server host name of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: Server host name
 	// 	- Service `onelake`: Server Host name
 	ServerHostName string `pulumi:"serverHostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Should maintain tables in Databricks
-	// 	- Service `managedDataLake`: Should maintain tables in Databricks
+	// 	- Service `managedDataLake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
 	// 	- Service `newS3Datalake`: Should maintain tables in Databricks
 	// 	- Service `onelake`: Should maintain tables in Databricks
 	ShouldMaintainTablesInDatabricks bool `pulumi:"shouldMaintainTablesInDatabricks"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+	// 	- Service `managedDataLake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
 	ShouldMaintainTablesInGlue bool `pulumi:"shouldMaintainTablesInGlue"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-	// 	- Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+	// 	- Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 	// 	- Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	// 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	SnapshotRetentionPeriod string `pulumi:"snapshotRetentionPeriod"`
@@ -68427,24 +70584,31 @@ type GetDestinationConfig struct {
 	SnowflakeRegion         string `pulumi:"snowflakeRegion"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+	// 	- Service `databricks`: Your storage account key
 	// 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 	StorageAccountKey string `pulumi:"storageAccountKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 	// 	- Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-	// 	- Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+	// 	- Service `databricks`: Your storage account name
+	// 	- Service `managedDataLake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 	// 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 	StorageAccountName string `pulumi:"storageAccountName"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: Storage Provider
+	// 	- Service `managedDataLake`: The cloud storage provider you want to use for your data lake.
 	StorageProvider string `pulumi:"storageProvider"`
+	// Field usage depends on `service` value:
+	// 	- Service `bigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	// 	- Service `bigQueryDts`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	// 	- Service `managedBigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	SupportJsonType bool `pulumi:"supportJsonType"`
 	// Field usage depends on `service` value:
 	// 	- Service `newS3Datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
 	TableFormat string `pulumi:"tableFormat"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Tenant id of service principal
-	// 	- Service `managedDataLake`: Tenant id of service principal
+	// 	- Service `managedDataLake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Tenant ID of service principal
 	TenantId string `pulumi:"tenantId"`
 	// Field usage depends on `service` value:
@@ -68463,6 +70627,7 @@ type GetDestinationConfig struct {
 	// 	- Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -68486,6 +70651,7 @@ type GetDestinationConfig struct {
 	// 	- Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -68509,6 +70675,7 @@ type GetDestinationConfig struct {
 	// 	- Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -68535,6 +70702,7 @@ type GetDestinationConfig struct {
 	// 	- Service `oracleWarehouse`: Database user name
 	// 	- Service `panoply`: Database user name
 	// 	- Service `periscopeWarehouse`: Database user name
+	// 	- Service `postgresDatabricksWarehouse`: Database user name
 	// 	- Service `postgresGcpWarehouse`: Database user name
 	// 	- Service `postgresRdsWarehouse`: Database user name
 	// 	- Service `postgresWarehouse`: Database user name
@@ -68580,6 +70748,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -68596,12 +70765,13 @@ type GetDestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Authentication type
 	// 	- Service `databricks`: Authentication type
-	// 	- Service `managedDataLake`: Authentication type
+	// 	- Service `managedDataLake`: Specifies the authentication types for Fivetran to connect to Databricks. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: Authentication type
 	// 	- Service `onelake`: Authentication type
 	// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your user's access key ID
 	// 	- Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
 	// 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -68610,36 +70780,42 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 	AwsBucketAuthType pulumi.StringInput `pulumi:"awsBucketAuthType"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your user's secret access key
 	// 	- Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
 	// 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
 	AwsSecretAccessKey pulumi.StringInput `pulumi:"awsSecretAccessKey"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+	AzureStorageAccountAuthType pulumi.StringInput `pulumi:"azureStorageAccountAuthType"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
 	BootstrapServers pulumi.StringArrayInput `pulumi:"bootstrapServers"`
 	// Field usage depends on `service` value:
 	// 	- Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
 	// 	- Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+	// 	- Service `databricks`: Your bucket
 	// 	- Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-	// 	- Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
+	// 	- Service `managedDataLake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
 	// 	- Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
 	// 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your bucket's region
 	// 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 	// 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 	BucketRegion pulumi.StringInput `pulumi:"bucketRegion"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Catalog name
 	// 	- Service `databricks`: Catalog name
-	// 	- Service `managedDataLake`: Catalog name
+	// 	- Service `managedDataLake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables. Use this parameter only if you want to use Unity Catalog with your data lake.
 	// 	- Service `newS3Datalake`: Catalog name
 	// 	- Service `onelake`: Catalog name
 	Catalog pulumi.StringInput `pulumi:"catalog"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Client id of service principal
-	// 	- Service `managedDataLake`: Client id of service principal
+	// 	- Service `managedDataLake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Client ID of service principal
 	ClientId pulumi.StringInput `pulumi:"clientId"`
 	// Field usage depends on `service` value:
@@ -68675,6 +70851,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `panoply`: Connection method. Default value: `Directly`.
 	// 	- Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
+	// 	- Service `postgresDatabricksWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresWarehouse`: Connection method. Default value: `Directly`.
@@ -68685,13 +70862,16 @@ type GetDestinationConfigArgs struct {
 	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) Container to store delta table files
-	// 	- Service `managedDataLake`: (Immutable) Container to store delta table files
+	// 	- Service `managedDataLake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Workspace name to store delta table files
 	ContainerName pulumi.StringInput `pulumi:"containerName"`
 	ControllerId  pulumi.StringInput `pulumi:"controllerId"`
 	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Whether to create external tables
 	CreateExternalTables pulumi.BoolInput `pulumi:"createExternalTables"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Specifies whether you want Fivetran to create external volumes for unstructured data files.
+	CreateExternalVolumes pulumi.BoolInput `pulumi:"createExternalVolumes"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Confluent Cloud message format.
 	DataFormat pulumi.StringInput `pulumi:"dataFormat"`
@@ -68716,6 +70896,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Database name
 	// 	- Service `panoply`: Database name
 	// 	- Service `periscopeWarehouse`: Database name
+	// 	- Service `postgresDatabricksWarehouse`: Database name
 	// 	- Service `postgresGcpWarehouse`: Database name
 	// 	- Service `postgresRdsWarehouse`: Database name
 	// 	- Service `postgresWarehouse`: Database name
@@ -68726,7 +70907,7 @@ type GetDestinationConfigArgs struct {
 	Database pulumi.StringInput `pulumi:"database"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
-	// 	- Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
+	// 	- Service `managedDataLake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`. Use this parameter only if you want to use Unity Catalog with your data lake.
 	// 	- Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
 	// 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
 	DatabricksConnectionType pulumi.StringInput `pulumi:"databricksConnectionType"`
@@ -68764,10 +70945,13 @@ type GetDestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `snowflake`: External storage parent folder URL
 	ExternalStorageParentFolderUri pulumi.StringInput `pulumi:"externalStorageParentFolderUri"`
-	FivetranGlueRoleArn            pulumi.StringInput `pulumi:"fivetranGlueRoleArn"`
-	FivetranMskRoleArn             pulumi.StringInput `pulumi:"fivetranMskRoleArn"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
+	// 	- Service `databricks`: Specifies the external volume path where you want Fivetran to create the unstructured files.
+	ExternalVolumeLocation pulumi.StringInput `pulumi:"externalVolumeLocation"`
+	FivetranGlueRoleArn    pulumi.StringInput `pulumi:"fivetranGlueRoleArn"`
+	FivetranMskRoleArn     pulumi.StringInput `pulumi:"fivetranMskRoleArn"`
+	// Field usage depends on `service` value:
+	// 	- Service `managedDataLake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
 	// 	- Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
 	FivetranRoleArn pulumi.StringInput `pulumi:"fivetranRoleArn"`
 	// Field usage depends on `service` value:
@@ -68789,6 +70973,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Server name
 	// 	- Service `panoply`: Server name
 	// 	- Service `periscopeWarehouse`: Server name
+	// 	- Service `postgresDatabricksWarehouse`: Server name
 	// 	- Service `postgresGcpWarehouse`: Server name
 	// 	- Service `postgresRdsWarehouse`: Server name
 	// 	- Service `postgresWarehouse`: Server name
@@ -68800,7 +70985,7 @@ type GetDestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: HTTP path
 	// 	- Service `databricks`: HTTP path
-	// 	- Service `managedDataLake`: HTTP path
+	// 	- Service `managedDataLake`: HTTP path of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: HTTP path
 	// 	- Service `onelake`: HTTP path
 	HttpPath pulumi.StringInput `pulumi:"httpPath"`
@@ -68827,14 +71012,14 @@ type GetDestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: OAuth 2.0 client ID
 	// 	- Service `databricks`: OAuth 2.0 client ID
-	// 	- Service `managedDataLake`: OAuth 2.0 client ID
+	// 	- Service `managedDataLake`: The OAuth 2.0 client ID you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: OAuth 2.0 client ID
 	// 	- Service `onelake`: OAuth 2.0 client ID
 	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: OAuth 2.0 secret
 	// 	- Service `databricks`: OAuth 2.0 secret
-	// 	- Service `managedDataLake`: OAuth 2.0 secret
+	// 	- Service `managedDataLake`: OAuth 2.0 secret you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: OAuth 2.0 secret
 	// 	- Service `onelake`: OAuth 2.0 secret
 	Oauth2Secret pulumi.StringInput `pulumi:"oauth2Secret"`
@@ -68857,6 +71042,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Database user password
 	// 	- Service `panoply`: Database user password
 	// 	- Service `periscopeWarehouse`: Database user password
+	// 	- Service `postgresDatabricksWarehouse`: Database user password
 	// 	- Service `postgresGcpWarehouse`: Database user password
 	// 	- Service `postgresRdsWarehouse`: Database user password
 	// 	- Service `postgresWarehouse`: Database user password
@@ -68868,7 +71054,7 @@ type GetDestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Personal access token
 	// 	- Service `databricks`: Personal access token
-	// 	- Service `managedDataLake`: Personal access token
+	// 	- Service `managedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: Personal access token
 	// 	- Service `onelake`: Personal access token
 	PersonalAccessToken pulumi.StringInput `pulumi:"personalAccessToken"`
@@ -68881,7 +71067,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `azureSqlDatabase`: Server port number
 	// 	- Service `azureSqlManagedDbWarehouse`: Server port number
 	// 	- Service `databricks`: Server port number
-	// 	- Service `managedDataLake`: Server port number
+	// 	- Service `managedDataLake`: Server port number of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `mariaRdsWarehouse`: Server port number
 	// 	- Service `mariaWarehouse`: Server port number
 	// 	- Service `mysqlRdsWarehouse`: Server port number
@@ -68893,6 +71079,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Server port number
 	// 	- Service `panoply`: Server port number
 	// 	- Service `periscopeWarehouse`: Server port number
+	// 	- Service `postgresDatabricksWarehouse`: Server port number
 	// 	- Service `postgresGcpWarehouse`: Server port number
 	// 	- Service `postgresRdsWarehouse`: Server port number
 	// 	- Service `postgresWarehouse`: Server port number
@@ -68903,7 +71090,7 @@ type GetDestinationConfigArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) path/to/data within the container
-	// 	- Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+	// 	- Service `managedDataLake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
 	// 	- Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
 	// 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
 	PrefixPath pulumi.StringInput `pulumi:"prefixPath"`
@@ -68934,7 +71121,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `sqlServerWarehouse`: Public Key
 	PublicKey pulumi.StringInput `pulumi:"publicKey"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
+	// 	- Service `managedDataLake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
 	// 	- Service `newS3Datalake`: Region of your AWS S3 bucket
 	Region            pulumi.StringInput `pulumi:"region"`
 	RegistryName      pulumi.StringInput `pulumi:"registryName"`
@@ -68971,6 +71158,9 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
+	S3BucketAuthType pulumi.StringInput `pulumi:"s3BucketAuthType"`
+	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Security protocol for Confluent Cloud interaction.
 	SaslMechanism pulumi.StringInput `pulumi:"saslMechanism"`
 	// Field usage depends on `service` value:
@@ -68999,7 +71189,7 @@ type GetDestinationConfigArgs struct {
 	SecretKey pulumi.StringInput `pulumi:"secretKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Secret value for service principal
-	// 	- Service `managedDataLake`: Secret value for service principal
+	// 	- Service `managedDataLake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Secret value for service principal
 	SecretValue pulumi.StringInput `pulumi:"secretValue"`
 	// Field usage depends on `service` value:
@@ -69008,22 +71198,22 @@ type GetDestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Server Host name
 	// 	- Service `databricks`: Server name
-	// 	- Service `managedDataLake`: Server host name
+	// 	- Service `managedDataLake`: Server host name of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 	// 	- Service `newS3Datalake`: Server host name
 	// 	- Service `onelake`: Server Host name
 	ServerHostName pulumi.StringInput `pulumi:"serverHostName"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Should maintain tables in Databricks
-	// 	- Service `managedDataLake`: Should maintain tables in Databricks
+	// 	- Service `managedDataLake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
 	// 	- Service `newS3Datalake`: Should maintain tables in Databricks
 	// 	- Service `onelake`: Should maintain tables in Databricks
 	ShouldMaintainTablesInDatabricks pulumi.BoolInput `pulumi:"shouldMaintainTablesInDatabricks"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+	// 	- Service `managedDataLake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
 	ShouldMaintainTablesInGlue pulumi.BoolInput `pulumi:"shouldMaintainTablesInGlue"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-	// 	- Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+	// 	- Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 	// 	- Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	// 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	SnapshotRetentionPeriod pulumi.StringInput `pulumi:"snapshotRetentionPeriod"`
@@ -69031,24 +71221,31 @@ type GetDestinationConfigArgs struct {
 	SnowflakeRegion         pulumi.StringInput `pulumi:"snowflakeRegion"`
 	// Field usage depends on `service` value:
 	// 	- Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+	// 	- Service `databricks`: Your storage account key
 	// 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 	StorageAccountKey pulumi.StringInput `pulumi:"storageAccountKey"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 	// 	- Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-	// 	- Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+	// 	- Service `databricks`: Your storage account name
+	// 	- Service `managedDataLake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 	// 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 	StorageAccountName pulumi.StringInput `pulumi:"storageAccountName"`
 	// Field usage depends on `service` value:
-	// 	- Service `managedDataLake`: Storage Provider
+	// 	- Service `managedDataLake`: The cloud storage provider you want to use for your data lake.
 	StorageProvider pulumi.StringInput `pulumi:"storageProvider"`
+	// Field usage depends on `service` value:
+	// 	- Service `bigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	// 	- Service `bigQueryDts`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	// 	- Service `managedBigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+	SupportJsonType pulumi.BoolInput `pulumi:"supportJsonType"`
 	// Field usage depends on `service` value:
 	// 	- Service `newS3Datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
 	TableFormat pulumi.StringInput `pulumi:"tableFormat"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Tenant id of service principal
-	// 	- Service `managedDataLake`: Tenant id of service principal
+	// 	- Service `managedDataLake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 	// 	- Service `onelake`: Tenant ID of service principal
 	TenantId pulumi.StringInput `pulumi:"tenantId"`
 	// Field usage depends on `service` value:
@@ -69067,6 +71264,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -69090,6 +71288,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -69113,6 +71312,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresDatabricksWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -69139,6 +71339,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `oracleWarehouse`: Database user name
 	// 	- Service `panoply`: Database user name
 	// 	- Service `periscopeWarehouse`: Database user name
+	// 	- Service `postgresDatabricksWarehouse`: Database user name
 	// 	- Service `postgresGcpWarehouse`: Database user name
 	// 	- Service `postgresRdsWarehouse`: Database user name
 	// 	- Service `postgresWarehouse`: Database user name
@@ -69249,6 +71450,7 @@ func (o GetDestinationConfigOutput) ToGetDestinationConfigPtrOutputWithContext(c
 //   - Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -69274,7 +71476,7 @@ func (o GetDestinationConfigOutput) Auth() pulumi.StringOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Authentication type
 //   - Service `databricks`: Authentication type
-//   - Service `managedDataLake`: Authentication type
+//   - Service `managedDataLake`: Specifies the authentication types for Fivetran to connect to Databricks. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: Authentication type
 //   - Service `onelake`: Authentication type
 //   - Service `redshift`: Authentication type. Default value: `PASSWORD`.
@@ -69283,6 +71485,7 @@ func (o GetDestinationConfigOutput) AuthType() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your user's access key ID
 //   - Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
 //   - Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -69297,11 +71500,18 @@ func (o GetDestinationConfigOutput) AwsBucketAuthType() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your user's secret access key
 //   - Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
 //   - Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
 func (o GetDestinationConfigOutput) AwsSecretAccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.AwsSecretAccessKey }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+func (o GetDestinationConfigOutput) AzureStorageAccountAuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationConfig) string { return v.AzureStorageAccountAuthType }).(pulumi.StringOutput)
 }
 
 // Field usage depends on `service` value:
@@ -69313,8 +71523,9 @@ func (o GetDestinationConfigOutput) BootstrapServers() pulumi.StringArrayOutput 
 // Field usage depends on `service` value:
 //   - Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
 //   - Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+//   - Service `databricks`: Your bucket
 //   - Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-//   - Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
+//   - Service `managedDataLake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
 //   - Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
 //   - Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
@@ -69323,6 +71534,7 @@ func (o GetDestinationConfigOutput) Bucket() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your bucket's region
 //   - Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 func (o GetDestinationConfigOutput) BucketRegion() pulumi.StringOutput {
@@ -69332,7 +71544,7 @@ func (o GetDestinationConfigOutput) BucketRegion() pulumi.StringOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Catalog name
 //   - Service `databricks`: Catalog name
-//   - Service `managedDataLake`: Catalog name
+//   - Service `managedDataLake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables. Use this parameter only if you want to use Unity Catalog with your data lake.
 //   - Service `newS3Datalake`: Catalog name
 //   - Service `onelake`: Catalog name
 func (o GetDestinationConfigOutput) Catalog() pulumi.StringOutput {
@@ -69341,7 +71553,7 @@ func (o GetDestinationConfigOutput) Catalog() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Client id of service principal
-//   - Service `managedDataLake`: Client id of service principal
+//   - Service `managedDataLake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Client ID of service principal
 func (o GetDestinationConfigOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.ClientId }).(pulumi.StringOutput)
@@ -69392,6 +71604,7 @@ func (o GetDestinationConfigOutput) ConnectionMethod() pulumi.StringOutput {
 //   - Service `oracleWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `panoply`: Connection method. Default value: `Directly`.
 //   - Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
+//   - Service `postgresDatabricksWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresWarehouse`: Connection method. Default value: `Directly`.
@@ -69405,7 +71618,7 @@ func (o GetDestinationConfigOutput) ConnectionType() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) Container to store delta table files
-//   - Service `managedDataLake`: (Immutable) Container to store delta table files
+//   - Service `managedDataLake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Workspace name to store delta table files
 func (o GetDestinationConfigOutput) ContainerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.ContainerName }).(pulumi.StringOutput)
@@ -69419,6 +71632,12 @@ func (o GetDestinationConfigOutput) ControllerId() pulumi.StringOutput {
 //   - Service `databricks`: Whether to create external tables
 func (o GetDestinationConfigOutput) CreateExternalTables() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDestinationConfig) bool { return v.CreateExternalTables }).(pulumi.BoolOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Specifies whether you want Fivetran to create external volumes for unstructured data files.
+func (o GetDestinationConfigOutput) CreateExternalVolumes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDestinationConfig) bool { return v.CreateExternalVolumes }).(pulumi.BoolOutput)
 }
 
 // Field usage depends on `service` value:
@@ -69451,6 +71670,7 @@ func (o GetDestinationConfigOutput) DataSetLocation() pulumi.StringOutput {
 //   - Service `oracleWarehouse`: Database name
 //   - Service `panoply`: Database name
 //   - Service `periscopeWarehouse`: Database name
+//   - Service `postgresDatabricksWarehouse`: Database name
 //   - Service `postgresGcpWarehouse`: Database name
 //   - Service `postgresRdsWarehouse`: Database name
 //   - Service `postgresWarehouse`: Database name
@@ -69464,7 +71684,7 @@ func (o GetDestinationConfigOutput) Database() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Databricks Connection method. Default value: `Directly`.
-//   - Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
+//   - Service `managedDataLake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`. Use this parameter only if you want to use Unity Catalog with your data lake.
 //   - Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
 //   - Service `onelake`: Databricks Connection method. Default value: `Directly`.
 func (o GetDestinationConfigOutput) DatabricksConnectionType() pulumi.StringOutput {
@@ -69538,6 +71758,12 @@ func (o GetDestinationConfigOutput) ExternalStorageParentFolderUri() pulumi.Stri
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.ExternalStorageParentFolderUri }).(pulumi.StringOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `databricks`: Specifies the external volume path where you want Fivetran to create the unstructured files.
+func (o GetDestinationConfigOutput) ExternalVolumeLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationConfig) string { return v.ExternalVolumeLocation }).(pulumi.StringOutput)
+}
+
 func (o GetDestinationConfigOutput) FivetranGlueRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.FivetranGlueRoleArn }).(pulumi.StringOutput)
 }
@@ -69547,7 +71773,7 @@ func (o GetDestinationConfigOutput) FivetranMskRoleArn() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
+//   - Service `managedDataLake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
 //   - Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
 func (o GetDestinationConfigOutput) FivetranRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.FivetranRoleArn }).(pulumi.StringOutput)
@@ -69575,6 +71801,7 @@ func (o GetDestinationConfigOutput) GcsServiceAccountCredentialsPath() pulumi.St
 //   - Service `oracleWarehouse`: Server name
 //   - Service `panoply`: Server name
 //   - Service `periscopeWarehouse`: Server name
+//   - Service `postgresDatabricksWarehouse`: Server name
 //   - Service `postgresGcpWarehouse`: Server name
 //   - Service `postgresRdsWarehouse`: Server name
 //   - Service `postgresWarehouse`: Server name
@@ -69589,7 +71816,7 @@ func (o GetDestinationConfigOutput) Host() pulumi.StringOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: HTTP path
 //   - Service `databricks`: HTTP path
-//   - Service `managedDataLake`: HTTP path
+//   - Service `managedDataLake`: HTTP path of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: HTTP path
 //   - Service `onelake`: HTTP path
 func (o GetDestinationConfigOutput) HttpPath() pulumi.StringOutput {
@@ -69640,7 +71867,7 @@ func (o GetDestinationConfigOutput) NumOfPartitions() pulumi.IntOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: OAuth 2.0 client ID
 //   - Service `databricks`: OAuth 2.0 client ID
-//   - Service `managedDataLake`: OAuth 2.0 client ID
+//   - Service `managedDataLake`: The OAuth 2.0 client ID you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: OAuth 2.0 client ID
 //   - Service `onelake`: OAuth 2.0 client ID
 func (o GetDestinationConfigOutput) Oauth2ClientId() pulumi.StringOutput {
@@ -69650,7 +71877,7 @@ func (o GetDestinationConfigOutput) Oauth2ClientId() pulumi.StringOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: OAuth 2.0 secret
 //   - Service `databricks`: OAuth 2.0 secret
-//   - Service `managedDataLake`: OAuth 2.0 secret
+//   - Service `managedDataLake`: OAuth 2.0 secret you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: OAuth 2.0 secret
 //   - Service `onelake`: OAuth 2.0 secret
 func (o GetDestinationConfigOutput) Oauth2Secret() pulumi.StringOutput {
@@ -69679,6 +71906,7 @@ func (o GetDestinationConfigOutput) Passphrase() pulumi.StringOutput {
 //   - Service `oracleWarehouse`: Database user password
 //   - Service `panoply`: Database user password
 //   - Service `periscopeWarehouse`: Database user password
+//   - Service `postgresDatabricksWarehouse`: Database user password
 //   - Service `postgresGcpWarehouse`: Database user password
 //   - Service `postgresRdsWarehouse`: Database user password
 //   - Service `postgresWarehouse`: Database user password
@@ -69693,7 +71921,7 @@ func (o GetDestinationConfigOutput) Password() pulumi.StringOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Personal access token
 //   - Service `databricks`: Personal access token
-//   - Service `managedDataLake`: Personal access token
+//   - Service `managedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: Personal access token
 //   - Service `onelake`: Personal access token
 func (o GetDestinationConfigOutput) PersonalAccessToken() pulumi.StringOutput {
@@ -69709,7 +71937,7 @@ func (o GetDestinationConfigOutput) PersonalAccessToken() pulumi.StringOutput {
 //   - Service `azureSqlDatabase`: Server port number
 //   - Service `azureSqlManagedDbWarehouse`: Server port number
 //   - Service `databricks`: Server port number
-//   - Service `managedDataLake`: Server port number
+//   - Service `managedDataLake`: Server port number of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `mariaRdsWarehouse`: Server port number
 //   - Service `mariaWarehouse`: Server port number
 //   - Service `mysqlRdsWarehouse`: Server port number
@@ -69721,6 +71949,7 @@ func (o GetDestinationConfigOutput) PersonalAccessToken() pulumi.StringOutput {
 //   - Service `oracleWarehouse`: Server port number
 //   - Service `panoply`: Server port number
 //   - Service `periscopeWarehouse`: Server port number
+//   - Service `postgresDatabricksWarehouse`: Server port number
 //   - Service `postgresGcpWarehouse`: Server port number
 //   - Service `postgresRdsWarehouse`: Server port number
 //   - Service `postgresWarehouse`: Server port number
@@ -69734,7 +71963,7 @@ func (o GetDestinationConfigOutput) Port() pulumi.IntOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) path/to/data within the container
-//   - Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+//   - Service `managedDataLake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
 //   - Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
 //   - Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
 func (o GetDestinationConfigOutput) PrefixPath() pulumi.StringOutput {
@@ -69777,7 +72006,7 @@ func (o GetDestinationConfigOutput) PublicKey() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
+//   - Service `managedDataLake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
 //   - Service `newS3Datalake`: Region of your AWS S3 bucket
 func (o GetDestinationConfigOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.Region }).(pulumi.StringOutput)
@@ -69832,6 +72061,12 @@ func (o GetDestinationConfigOutput) Role() pulumi.StringOutput {
 //   - Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 func (o GetDestinationConfigOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
+func (o GetDestinationConfigOutput) S3BucketAuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationConfig) string { return v.S3BucketAuthType }).(pulumi.StringOutput)
 }
 
 // Field usage depends on `service` value:
@@ -69890,7 +72125,7 @@ func (o GetDestinationConfigOutput) SecretKey() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Secret value for service principal
-//   - Service `managedDataLake`: Secret value for service principal
+//   - Service `managedDataLake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Secret value for service principal
 func (o GetDestinationConfigOutput) SecretValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.SecretValue }).(pulumi.StringOutput)
@@ -69905,7 +72140,7 @@ func (o GetDestinationConfigOutput) SecurityProtocol() pulumi.StringOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Server Host name
 //   - Service `databricks`: Server name
-//   - Service `managedDataLake`: Server host name
+//   - Service `managedDataLake`: Server host name of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: Server host name
 //   - Service `onelake`: Server Host name
 func (o GetDestinationConfigOutput) ServerHostName() pulumi.StringOutput {
@@ -69914,7 +72149,7 @@ func (o GetDestinationConfigOutput) ServerHostName() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Should maintain tables in Databricks
-//   - Service `managedDataLake`: Should maintain tables in Databricks
+//   - Service `managedDataLake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
 //   - Service `newS3Datalake`: Should maintain tables in Databricks
 //   - Service `onelake`: Should maintain tables in Databricks
 func (o GetDestinationConfigOutput) ShouldMaintainTablesInDatabricks() pulumi.BoolOutput {
@@ -69922,14 +72157,14 @@ func (o GetDestinationConfigOutput) ShouldMaintainTablesInDatabricks() pulumi.Bo
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+//   - Service `managedDataLake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
 func (o GetDestinationConfigOutput) ShouldMaintainTablesInGlue() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDestinationConfig) bool { return v.ShouldMaintainTablesInGlue }).(pulumi.BoolOutput)
 }
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-//   - Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+//   - Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 //   - Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 //   - Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 func (o GetDestinationConfigOutput) SnapshotRetentionPeriod() pulumi.StringOutput {
@@ -69946,6 +72181,7 @@ func (o GetDestinationConfigOutput) SnowflakeRegion() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+//   - Service `databricks`: Your storage account key
 //   - Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 func (o GetDestinationConfigOutput) StorageAccountKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.StorageAccountKey }).(pulumi.StringOutput)
@@ -69954,7 +72190,8 @@ func (o GetDestinationConfigOutput) StorageAccountKey() pulumi.StringOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 //   - Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-//   - Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+//   - Service `databricks`: Your storage account name
+//   - Service `managedDataLake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 //   - Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 func (o GetDestinationConfigOutput) StorageAccountName() pulumi.StringOutput {
@@ -69962,9 +72199,17 @@ func (o GetDestinationConfigOutput) StorageAccountName() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: Storage Provider
+//   - Service `managedDataLake`: The cloud storage provider you want to use for your data lake.
 func (o GetDestinationConfigOutput) StorageProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.StorageProvider }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `bigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+//   - Service `bigQueryDts`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+//   - Service `managedBigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+func (o GetDestinationConfigOutput) SupportJsonType() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDestinationConfig) bool { return v.SupportJsonType }).(pulumi.BoolOutput)
 }
 
 // Field usage depends on `service` value:
@@ -69975,7 +72220,7 @@ func (o GetDestinationConfigOutput) TableFormat() pulumi.StringOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Tenant id of service principal
-//   - Service `managedDataLake`: Tenant id of service principal
+//   - Service `managedDataLake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Tenant ID of service principal
 func (o GetDestinationConfigOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.TenantId }).(pulumi.StringOutput)
@@ -69997,6 +72242,7 @@ func (o GetDestinationConfigOutput) TenantId() pulumi.StringOutput {
 //   - Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -70023,6 +72269,7 @@ func (o GetDestinationConfigOutput) TunnelHost() pulumi.StringOutput {
 //   - Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -70049,6 +72296,7 @@ func (o GetDestinationConfigOutput) TunnelPort() pulumi.IntOutput {
 //   - Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -70081,6 +72329,7 @@ func (o GetDestinationConfigOutput) UseCustomerStaging() pulumi.BoolOutput {
 //   - Service `oracleWarehouse`: Database user name
 //   - Service `panoply`: Database user name
 //   - Service `periscopeWarehouse`: Database user name
+//   - Service `postgresDatabricksWarehouse`: Database user name
 //   - Service `postgresGcpWarehouse`: Database user name
 //   - Service `postgresRdsWarehouse`: Database user name
 //   - Service `postgresWarehouse`: Database user name
@@ -70145,6 +72394,7 @@ func (o GetDestinationConfigPtrOutput) Elem() GetDestinationConfigOutput {
 //   - Service `oracleWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -70185,7 +72435,7 @@ func (o GetDestinationConfigPtrOutput) Auth() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Authentication type
 //   - Service `databricks`: Authentication type
-//   - Service `managedDataLake`: Authentication type
+//   - Service `managedDataLake`: Specifies the authentication types for Fivetran to connect to Databricks. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: Authentication type
 //   - Service `onelake`: Authentication type
 //   - Service `redshift`: Authentication type. Default value: `PASSWORD`.
@@ -70199,6 +72449,7 @@ func (o GetDestinationConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your user's access key ID
 //   - Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
 //   - Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -70223,6 +72474,7 @@ func (o GetDestinationConfigPtrOutput) AwsBucketAuthType() pulumi.StringPtrOutpu
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your user's secret access key
 //   - Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
 //   - Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -70232,6 +72484,17 @@ func (o GetDestinationConfigPtrOutput) AwsSecretAccessKey() pulumi.StringPtrOutp
 			return nil
 		}
 		return &v.AwsSecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+func (o GetDestinationConfigPtrOutput) AzureStorageAccountAuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureStorageAccountAuthType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -70249,8 +72512,9 @@ func (o GetDestinationConfigPtrOutput) BootstrapServers() pulumi.StringArrayOutp
 // Field usage depends on `service` value:
 //   - Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
 //   - Service `bigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+//   - Service `databricks`: Your bucket
 //   - Service `managedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-//   - Service `managedDataLake`: (Immutable) The name of the bucket to be used as destination
+//   - Service `managedDataLake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
 //   - Service `newS3Datalake`: (Immutable) The name of the bucket to be used as destination
 //   - Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
@@ -70264,6 +72528,7 @@ func (o GetDestinationConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your bucket's region
 //   - Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
 //   - Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
 func (o GetDestinationConfigPtrOutput) BucketRegion() pulumi.StringPtrOutput {
@@ -70278,7 +72543,7 @@ func (o GetDestinationConfigPtrOutput) BucketRegion() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Catalog name
 //   - Service `databricks`: Catalog name
-//   - Service `managedDataLake`: Catalog name
+//   - Service `managedDataLake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables. Use this parameter only if you want to use Unity Catalog with your data lake.
 //   - Service `newS3Datalake`: Catalog name
 //   - Service `onelake`: Catalog name
 func (o GetDestinationConfigPtrOutput) Catalog() pulumi.StringPtrOutput {
@@ -70292,7 +72557,7 @@ func (o GetDestinationConfigPtrOutput) Catalog() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Client id of service principal
-//   - Service `managedDataLake`: Client id of service principal
+//   - Service `managedDataLake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Client ID of service principal
 func (o GetDestinationConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -70368,6 +72633,7 @@ func (o GetDestinationConfigPtrOutput) ConnectionMethod() pulumi.StringPtrOutput
 //   - Service `oracleWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `panoply`: Connection method. Default value: `Directly`.
 //   - Service `periscopeWarehouse`: Connection method. Default value: `Directly`.
+//   - Service `postgresDatabricksWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresWarehouse`: Connection method. Default value: `Directly`.
@@ -70386,7 +72652,7 @@ func (o GetDestinationConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) Container to store delta table files
-//   - Service `managedDataLake`: (Immutable) Container to store delta table files
+//   - Service `managedDataLake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Workspace name to store delta table files
 func (o GetDestinationConfigPtrOutput) ContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -70414,6 +72680,17 @@ func (o GetDestinationConfigPtrOutput) CreateExternalTables() pulumi.BoolPtrOutp
 			return nil
 		}
 		return &v.CreateExternalTables
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Specifies whether you want Fivetran to create external volumes for unstructured data files.
+func (o GetDestinationConfigPtrOutput) CreateExternalVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CreateExternalVolumes
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -70457,6 +72734,7 @@ func (o GetDestinationConfigPtrOutput) DataSetLocation() pulumi.StringPtrOutput 
 //   - Service `oracleWarehouse`: Database name
 //   - Service `panoply`: Database name
 //   - Service `periscopeWarehouse`: Database name
+//   - Service `postgresDatabricksWarehouse`: Database name
 //   - Service `postgresGcpWarehouse`: Database name
 //   - Service `postgresRdsWarehouse`: Database name
 //   - Service `postgresWarehouse`: Database name
@@ -70475,7 +72753,7 @@ func (o GetDestinationConfigPtrOutput) Database() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Databricks Connection method. Default value: `Directly`.
-//   - Service `managedDataLake`: Databricks Connection method. Default value: `Directly`.
+//   - Service `managedDataLake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`. Use this parameter only if you want to use Unity Catalog with your data lake.
 //   - Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
 //   - Service `onelake`: Databricks Connection method. Default value: `Directly`.
 func (o GetDestinationConfigPtrOutput) DatabricksConnectionType() pulumi.StringPtrOutput {
@@ -70609,6 +72887,17 @@ func (o GetDestinationConfigPtrOutput) ExternalStorageParentFolderUri() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `databricks`: Specifies the external volume path where you want Fivetran to create the unstructured files.
+func (o GetDestinationConfigPtrOutput) ExternalVolumeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExternalVolumeLocation
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetDestinationConfigPtrOutput) FivetranGlueRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
 		if v == nil {
@@ -70628,7 +72917,7 @@ func (o GetDestinationConfigPtrOutput) FivetranMskRoleArn() pulumi.StringPtrOutp
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
+//   - Service `managedDataLake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
 //   - Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
 func (o GetDestinationConfigPtrOutput) FivetranRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -70666,6 +72955,7 @@ func (o GetDestinationConfigPtrOutput) GcsServiceAccountCredentialsPath() pulumi
 //   - Service `oracleWarehouse`: Server name
 //   - Service `panoply`: Server name
 //   - Service `periscopeWarehouse`: Server name
+//   - Service `postgresDatabricksWarehouse`: Server name
 //   - Service `postgresGcpWarehouse`: Server name
 //   - Service `postgresRdsWarehouse`: Server name
 //   - Service `postgresWarehouse`: Server name
@@ -70685,7 +72975,7 @@ func (o GetDestinationConfigPtrOutput) Host() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: HTTP path
 //   - Service `databricks`: HTTP path
-//   - Service `managedDataLake`: HTTP path
+//   - Service `managedDataLake`: HTTP path of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: HTTP path
 //   - Service `onelake`: HTTP path
 func (o GetDestinationConfigPtrOutput) HttpPath() pulumi.StringPtrOutput {
@@ -70776,7 +73066,7 @@ func (o GetDestinationConfigPtrOutput) NumOfPartitions() pulumi.IntPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: OAuth 2.0 client ID
 //   - Service `databricks`: OAuth 2.0 client ID
-//   - Service `managedDataLake`: OAuth 2.0 client ID
+//   - Service `managedDataLake`: The OAuth 2.0 client ID you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: OAuth 2.0 client ID
 //   - Service `onelake`: OAuth 2.0 client ID
 func (o GetDestinationConfigPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
@@ -70791,7 +73081,7 @@ func (o GetDestinationConfigPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: OAuth 2.0 secret
 //   - Service `databricks`: OAuth 2.0 secret
-//   - Service `managedDataLake`: OAuth 2.0 secret
+//   - Service `managedDataLake`: OAuth 2.0 secret you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: OAuth 2.0 secret
 //   - Service `onelake`: OAuth 2.0 secret
 func (o GetDestinationConfigPtrOutput) Oauth2Secret() pulumi.StringPtrOutput {
@@ -70830,6 +73120,7 @@ func (o GetDestinationConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: Database user password
 //   - Service `panoply`: Database user password
 //   - Service `periscopeWarehouse`: Database user password
+//   - Service `postgresDatabricksWarehouse`: Database user password
 //   - Service `postgresGcpWarehouse`: Database user password
 //   - Service `postgresRdsWarehouse`: Database user password
 //   - Service `postgresWarehouse`: Database user password
@@ -70849,7 +73140,7 @@ func (o GetDestinationConfigPtrOutput) Password() pulumi.StringPtrOutput {
 // Field usage depends on `service` value:
 //   - Service `adls`: Personal access token
 //   - Service `databricks`: Personal access token
-//   - Service `managedDataLake`: Personal access token
+//   - Service `managedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
 //   - Service `newS3Datalake`: Personal access token
 //   - Service `onelake`: Personal access token
 func (o GetDestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput {
@@ -70870,7 +73161,7 @@ func (o GetDestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOut
 //   - Service `azureSqlDatabase`: Server port number
 //   - Service `azureSqlManagedDbWarehouse`: Server port number
 //   - Service `databricks`: Server port number
-//   - Service `managedDataLake`: Server port number
+//   - Service `managedDataLake`: Server port number of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `mariaRdsWarehouse`: Server port number
 //   - Service `mariaWarehouse`: Server port number
 //   - Service `mysqlRdsWarehouse`: Server port number
@@ -70882,6 +73173,7 @@ func (o GetDestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOut
 //   - Service `oracleWarehouse`: Server port number
 //   - Service `panoply`: Server port number
 //   - Service `periscopeWarehouse`: Server port number
+//   - Service `postgresDatabricksWarehouse`: Server port number
 //   - Service `postgresGcpWarehouse`: Server port number
 //   - Service `postgresRdsWarehouse`: Server port number
 //   - Service `postgresWarehouse`: Server port number
@@ -70900,7 +73192,7 @@ func (o GetDestinationConfigPtrOutput) Port() pulumi.IntPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) path/to/data within the container
-//   - Service `managedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+//   - Service `managedDataLake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
 //   - Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
 //   - Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
 func (o GetDestinationConfigPtrOutput) PrefixPath() pulumi.StringPtrOutput {
@@ -70963,7 +73255,7 @@ func (o GetDestinationConfigPtrOutput) PublicKey() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
+//   - Service `managedDataLake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
 //   - Service `newS3Datalake`: Region of your AWS S3 bucket
 func (o GetDestinationConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -71052,6 +73344,17 @@ func (o GetDestinationConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
+func (o GetDestinationConfigPtrOutput) S3BucketAuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.S3BucketAuthType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -71156,7 +73459,7 @@ func (o GetDestinationConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Secret value for service principal
-//   - Service `managedDataLake`: Secret value for service principal
+//   - Service `managedDataLake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Secret value for service principal
 func (o GetDestinationConfigPtrOutput) SecretValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -71181,7 +73484,7 @@ func (o GetDestinationConfigPtrOutput) SecurityProtocol() pulumi.StringPtrOutput
 // Field usage depends on `service` value:
 //   - Service `adls`: Server Host name
 //   - Service `databricks`: Server name
-//   - Service `managedDataLake`: Server host name
+//   - Service `managedDataLake`: Server host name of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
 //   - Service `newS3Datalake`: Server host name
 //   - Service `onelake`: Server Host name
 func (o GetDestinationConfigPtrOutput) ServerHostName() pulumi.StringPtrOutput {
@@ -71195,7 +73498,7 @@ func (o GetDestinationConfigPtrOutput) ServerHostName() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Should maintain tables in Databricks
-//   - Service `managedDataLake`: Should maintain tables in Databricks
+//   - Service `managedDataLake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
 //   - Service `newS3Datalake`: Should maintain tables in Databricks
 //   - Service `onelake`: Should maintain tables in Databricks
 func (o GetDestinationConfigPtrOutput) ShouldMaintainTablesInDatabricks() pulumi.BoolPtrOutput {
@@ -71208,7 +73511,7 @@ func (o GetDestinationConfigPtrOutput) ShouldMaintainTablesInDatabricks() pulumi
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+//   - Service `managedDataLake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
 func (o GetDestinationConfigPtrOutput) ShouldMaintainTablesInGlue() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *bool {
 		if v == nil {
@@ -71220,7 +73523,7 @@ func (o GetDestinationConfigPtrOutput) ShouldMaintainTablesInGlue() pulumi.BoolP
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-//   - Service `managedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+//   - Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 //   - Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 //   - Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 func (o GetDestinationConfigPtrOutput) SnapshotRetentionPeriod() pulumi.StringPtrOutput {
@@ -71252,6 +73555,7 @@ func (o GetDestinationConfigPtrOutput) SnowflakeRegion() pulumi.StringPtrOutput 
 
 // Field usage depends on `service` value:
 //   - Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+//   - Service `databricks`: Your storage account key
 //   - Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 func (o GetDestinationConfigPtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -71265,7 +73569,8 @@ func (o GetDestinationConfigPtrOutput) StorageAccountKey() pulumi.StringPtrOutpu
 // Field usage depends on `service` value:
 //   - Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 //   - Service `azureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-//   - Service `managedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+//   - Service `databricks`: Your storage account name
+//   - Service `managedDataLake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
 //   - Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
 func (o GetDestinationConfigPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
@@ -71278,7 +73583,7 @@ func (o GetDestinationConfigPtrOutput) StorageAccountName() pulumi.StringPtrOutp
 }
 
 // Field usage depends on `service` value:
-//   - Service `managedDataLake`: Storage Provider
+//   - Service `managedDataLake`: The cloud storage provider you want to use for your data lake.
 func (o GetDestinationConfigPtrOutput) StorageProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
 		if v == nil {
@@ -71286,6 +73591,19 @@ func (o GetDestinationConfigPtrOutput) StorageProvider() pulumi.StringPtrOutput 
 		}
 		return &v.StorageProvider
 	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `bigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+//   - Service `bigQueryDts`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+//   - Service `managedBigQuery`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+func (o GetDestinationConfigPtrOutput) SupportJsonType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SupportJsonType
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -71301,7 +73619,7 @@ func (o GetDestinationConfigPtrOutput) TableFormat() pulumi.StringPtrOutput {
 
 // Field usage depends on `service` value:
 //   - Service `adls`: Tenant id of service principal
-//   - Service `managedDataLake`: Tenant id of service principal
+//   - Service `managedDataLake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
 //   - Service `onelake`: Tenant ID of service principal
 func (o GetDestinationConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -71328,6 +73646,7 @@ func (o GetDestinationConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -71359,6 +73678,7 @@ func (o GetDestinationConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
 //   - Service `oracleWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -71390,6 +73710,7 @@ func (o GetDestinationConfigPtrOutput) TunnelPort() pulumi.IntPtrOutput {
 //   - Service `oracleWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `panoply`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `periscopeWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresDatabricksWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -71432,6 +73753,7 @@ func (o GetDestinationConfigPtrOutput) UseCustomerStaging() pulumi.BoolPtrOutput
 //   - Service `oracleWarehouse`: Database user name
 //   - Service `panoply`: Database user name
 //   - Service `periscopeWarehouse`: Database user name
+//   - Service `postgresDatabricksWarehouse`: Database user name
 //   - Service `postgresGcpWarehouse`: Database user name
 //   - Service `postgresRdsWarehouse`: Database user name
 //   - Service `postgresWarehouse`: Database user name
@@ -71604,7 +73926,7 @@ type GetDestinationsDestination struct {
 	HybridDeploymentAgentId string `pulumi:"hybridDeploymentAgentId"`
 	// The unique identifier for the destination within the Fivetran system.
 	Id string `pulumi:"id"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod string `pulumi:"networkingMethod"`
 	// The private link ID.
 	PrivateLinkId string `pulumi:"privateLinkId"`
@@ -71638,7 +73960,7 @@ type GetDestinationsDestinationArgs struct {
 	HybridDeploymentAgentId pulumi.StringInput `pulumi:"hybridDeploymentAgentId"`
 	// The unique identifier for the destination within the Fivetran system.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod pulumi.StringInput `pulumi:"networkingMethod"`
 	// The private link ID.
 	PrivateLinkId pulumi.StringInput `pulumi:"privateLinkId"`
@@ -71723,7 +74045,7 @@ func (o GetDestinationsDestinationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationsDestination) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Possible values: Directly, SshTunnel, ProxyAgent.
+// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 func (o GetDestinationsDestinationOutput) NetworkingMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationsDestination) string { return v.NetworkingMethod }).(pulumi.StringOutput)
 }
@@ -73606,7 +75928,7 @@ type GetGroupUsersUser struct {
 	Phone string `pulumi:"phone"`
 	// The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
 	Picture string `pulumi:"picture"`
-	// The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
+	// The group role that you would like to assign this new user to. Supported group roles: ‘Manage Destination‘, ‘View Destination‘, ‘Edit Destination‘, ‘Create Connection‘, or a custom destination role
 	Role string `pulumi:"role"`
 	// The field indicates whether the user has verified their email address in the account creation process.
 	Verified bool `pulumi:"verified"`
@@ -73642,7 +75964,7 @@ type GetGroupUsersUserArgs struct {
 	Phone pulumi.StringInput `pulumi:"phone"`
 	// The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
 	Picture pulumi.StringInput `pulumi:"picture"`
-	// The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
+	// The group role that you would like to assign this new user to. Supported group roles: ‘Manage Destination‘, ‘View Destination‘, ‘Edit Destination‘, ‘Create Connection‘, or a custom destination role
 	Role pulumi.StringInput `pulumi:"role"`
 	// The field indicates whether the user has verified their email address in the account creation process.
 	Verified pulumi.BoolInput `pulumi:"verified"`
@@ -73744,7 +76066,7 @@ func (o GetGroupUsersUserOutput) Picture() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupUsersUser) string { return v.Picture }).(pulumi.StringOutput)
 }
 
-// The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
+// The group role that you would like to assign this new user to. Supported group roles: ‘Manage Destination‘, ‘View Destination‘, ‘Edit Destination‘, ‘Create Connection‘, or a custom destination role
 func (o GetGroupUsersUserOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupUsersUser) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -77712,8 +80034,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigProjectCredentialArrayInput)(nil)).Elem(), ConnectorConfigProjectCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportInput)(nil)).Elem(), ConnectorConfigReportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportArrayInput)(nil)).Elem(), ConnectorConfigReportArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportAccountInput)(nil)).Elem(), ConnectorConfigReportAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportAccountArrayInput)(nil)).Elem(), ConnectorConfigReportAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportConfigInput)(nil)).Elem(), ConnectorConfigReportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportConfigArrayInput)(nil)).Elem(), ConnectorConfigReportConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportLevelInput)(nil)).Elem(), ConnectorConfigReportLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportLevelArrayInput)(nil)).Elem(), ConnectorConfigReportLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportListInput)(nil)).Elem(), ConnectorConfigReportListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportListArrayInput)(nil)).Elem(), ConnectorConfigReportListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigSecretsListInput)(nil)).Elem(), ConnectorConfigSecretsListArgs{})
@@ -77808,8 +80134,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigProjectCredentialArrayInput)(nil)).Elem(), GetConnectorConfigProjectCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigReportInput)(nil)).Elem(), GetConnectorConfigReportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigReportArrayInput)(nil)).Elem(), GetConnectorConfigReportArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigReportAccountInput)(nil)).Elem(), GetConnectorConfigReportAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigReportAccountArrayInput)(nil)).Elem(), GetConnectorConfigReportAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigReportConfigInput)(nil)).Elem(), GetConnectorConfigReportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigReportConfigArrayInput)(nil)).Elem(), GetConnectorConfigReportConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigReportLevelInput)(nil)).Elem(), GetConnectorConfigReportLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigReportLevelArrayInput)(nil)).Elem(), GetConnectorConfigReportLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigReportListInput)(nil)).Elem(), GetConnectorConfigReportListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigReportListArrayInput)(nil)).Elem(), GetConnectorConfigReportListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigSecretsListInput)(nil)).Elem(), GetConnectorConfigSecretsListArgs{})
@@ -77938,8 +80268,12 @@ func init() {
 	pulumi.RegisterOutputType(ConnectorConfigProjectCredentialArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorConfigReportOutput{})
 	pulumi.RegisterOutputType(ConnectorConfigReportArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigReportAccountOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigReportAccountArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorConfigReportConfigOutput{})
 	pulumi.RegisterOutputType(ConnectorConfigReportConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigReportLevelOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigReportLevelArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorConfigReportListOutput{})
 	pulumi.RegisterOutputType(ConnectorConfigReportListArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorConfigSecretsListOutput{})
@@ -78034,8 +80368,12 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorConfigProjectCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigReportOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigReportArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorConfigReportAccountOutput{})
+	pulumi.RegisterOutputType(GetConnectorConfigReportAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigReportConfigOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigReportConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorConfigReportLevelOutput{})
+	pulumi.RegisterOutputType(GetConnectorConfigReportLevelArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigReportListOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigReportListArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigSecretsListOutput{})

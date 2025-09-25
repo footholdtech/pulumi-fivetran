@@ -20,8 +20,10 @@ __all__ = ['ConnectorScheduleArgs', 'ConnectorSchedule']
 @pulumi.input_type
 class ConnectorScheduleArgs:
     def __init__(__self__, *,
-                 connector_id: pulumi.Input[builtins.str],
+                 connector_id: Optional[pulumi.Input[builtins.str]] = None,
+                 connector_name: Optional[pulumi.Input[builtins.str]] = None,
                  daily_sync_time: Optional[pulumi.Input[builtins.str]] = None,
+                 group_id: Optional[pulumi.Input[builtins.str]] = None,
                  pause_after_trial: Optional[pulumi.Input[builtins.str]] = None,
                  paused: Optional[pulumi.Input[builtins.str]] = None,
                  schedule_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -29,15 +31,22 @@ class ConnectorScheduleArgs:
         """
         The set of arguments for constructing a ConnectorSchedule resource.
         :param pulumi.Input[builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[builtins.str] connector_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
         :param pulumi.Input[builtins.str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+        :param pulumi.Input[builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[builtins.str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended.
         :param pulumi.Input[builtins.str] paused: Specifies whether the connector is paused.
         :param pulumi.Input[builtins.str] schedule_type: The connector schedule configuration type. Supported values: auto, manual.
         :param pulumi.Input[builtins.str] sync_frequency: The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
-        pulumi.set(__self__, "connector_id", connector_id)
+        if connector_id is not None:
+            pulumi.set(__self__, "connector_id", connector_id)
+        if connector_name is not None:
+            pulumi.set(__self__, "connector_name", connector_name)
         if daily_sync_time is not None:
             pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
         if pause_after_trial is not None:
             pulumi.set(__self__, "pause_after_trial", pause_after_trial)
         if paused is not None:
@@ -49,15 +58,27 @@ class ConnectorScheduleArgs:
 
     @property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> pulumi.Input[builtins.str]:
+    def connector_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The unique identifier for the connector within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: pulumi.Input[builtins.str]):
+    def connector_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "connector_id", value)
+
+    @property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        """
+        return pulumi.get(self, "connector_name")
+
+    @connector_name.setter
+    def connector_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "connector_name", value)
 
     @property
     @pulumi.getter(name="dailySyncTime")
@@ -70,6 +91,18 @@ class ConnectorScheduleArgs:
     @daily_sync_time.setter
     def daily_sync_time(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "daily_sync_time", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The unique identifier for the Group (Destination) within the Fivetran system.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "group_id", value)
 
     @property
     @pulumi.getter(name="pauseAfterTrial")
@@ -124,7 +157,9 @@ class ConnectorScheduleArgs:
 class _ConnectorScheduleState:
     def __init__(__self__, *,
                  connector_id: Optional[pulumi.Input[builtins.str]] = None,
+                 connector_name: Optional[pulumi.Input[builtins.str]] = None,
                  daily_sync_time: Optional[pulumi.Input[builtins.str]] = None,
+                 group_id: Optional[pulumi.Input[builtins.str]] = None,
                  pause_after_trial: Optional[pulumi.Input[builtins.str]] = None,
                  paused: Optional[pulumi.Input[builtins.str]] = None,
                  schedule_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -132,7 +167,9 @@ class _ConnectorScheduleState:
         """
         Input properties used for looking up and filtering ConnectorSchedule resources.
         :param pulumi.Input[builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[builtins.str] connector_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
         :param pulumi.Input[builtins.str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+        :param pulumi.Input[builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[builtins.str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended.
         :param pulumi.Input[builtins.str] paused: Specifies whether the connector is paused.
         :param pulumi.Input[builtins.str] schedule_type: The connector schedule configuration type. Supported values: auto, manual.
@@ -140,8 +177,12 @@ class _ConnectorScheduleState:
         """
         if connector_id is not None:
             pulumi.set(__self__, "connector_id", connector_id)
+        if connector_name is not None:
+            pulumi.set(__self__, "connector_name", connector_name)
         if daily_sync_time is not None:
             pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
         if pause_after_trial is not None:
             pulumi.set(__self__, "pause_after_trial", pause_after_trial)
         if paused is not None:
@@ -164,6 +205,18 @@ class _ConnectorScheduleState:
         pulumi.set(self, "connector_id", value)
 
     @property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        """
+        return pulumi.get(self, "connector_name")
+
+    @connector_name.setter
+    def connector_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "connector_name", value)
+
+    @property
     @pulumi.getter(name="dailySyncTime")
     def daily_sync_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -174,6 +227,18 @@ class _ConnectorScheduleState:
     @daily_sync_time.setter
     def daily_sync_time(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "daily_sync_time", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The unique identifier for the Group (Destination) within the Fivetran system.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "group_id", value)
 
     @property
     @pulumi.getter(name="pauseAfterTrial")
@@ -231,7 +296,9 @@ class ConnectorSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[builtins.str]] = None,
+                 connector_name: Optional[pulumi.Input[builtins.str]] = None,
                  daily_sync_time: Optional[pulumi.Input[builtins.str]] = None,
+                 group_id: Optional[pulumi.Input[builtins.str]] = None,
                  pause_after_trial: Optional[pulumi.Input[builtins.str]] = None,
                  paused: Optional[pulumi.Input[builtins.str]] = None,
                  schedule_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -300,7 +367,9 @@ class ConnectorSchedule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[builtins.str] connector_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
         :param pulumi.Input[builtins.str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+        :param pulumi.Input[builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[builtins.str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended.
         :param pulumi.Input[builtins.str] paused: Specifies whether the connector is paused.
         :param pulumi.Input[builtins.str] schedule_type: The connector schedule configuration type. Supported values: auto, manual.
@@ -310,7 +379,7 @@ class ConnectorSchedule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectorScheduleArgs,
+                 args: Optional[ConnectorScheduleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         -This resource allows you to manage connectors schedule: pause/unpause connector, set daily_sync_time and sync_frequency.
@@ -388,7 +457,9 @@ class ConnectorSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[builtins.str]] = None,
+                 connector_name: Optional[pulumi.Input[builtins.str]] = None,
                  daily_sync_time: Optional[pulumi.Input[builtins.str]] = None,
+                 group_id: Optional[pulumi.Input[builtins.str]] = None,
                  pause_after_trial: Optional[pulumi.Input[builtins.str]] = None,
                  paused: Optional[pulumi.Input[builtins.str]] = None,
                  schedule_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -402,10 +473,10 @@ class ConnectorSchedule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectorScheduleArgs.__new__(ConnectorScheduleArgs)
 
-            if connector_id is None and not opts.urn:
-                raise TypeError("Missing required property 'connector_id'")
             __props__.__dict__["connector_id"] = connector_id
+            __props__.__dict__["connector_name"] = connector_name
             __props__.__dict__["daily_sync_time"] = daily_sync_time
+            __props__.__dict__["group_id"] = group_id
             __props__.__dict__["pause_after_trial"] = pause_after_trial
             __props__.__dict__["paused"] = paused
             __props__.__dict__["schedule_type"] = schedule_type
@@ -421,7 +492,9 @@ class ConnectorSchedule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connector_id: Optional[pulumi.Input[builtins.str]] = None,
+            connector_name: Optional[pulumi.Input[builtins.str]] = None,
             daily_sync_time: Optional[pulumi.Input[builtins.str]] = None,
+            group_id: Optional[pulumi.Input[builtins.str]] = None,
             pause_after_trial: Optional[pulumi.Input[builtins.str]] = None,
             paused: Optional[pulumi.Input[builtins.str]] = None,
             schedule_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -434,7 +507,9 @@ class ConnectorSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[builtins.str] connector_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
         :param pulumi.Input[builtins.str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+        :param pulumi.Input[builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[builtins.str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended.
         :param pulumi.Input[builtins.str] paused: Specifies whether the connector is paused.
         :param pulumi.Input[builtins.str] schedule_type: The connector schedule configuration type. Supported values: auto, manual.
@@ -445,7 +520,9 @@ class ConnectorSchedule(pulumi.CustomResource):
         __props__ = _ConnectorScheduleState.__new__(_ConnectorScheduleState)
 
         __props__.__dict__["connector_id"] = connector_id
+        __props__.__dict__["connector_name"] = connector_name
         __props__.__dict__["daily_sync_time"] = daily_sync_time
+        __props__.__dict__["group_id"] = group_id
         __props__.__dict__["pause_after_trial"] = pause_after_trial
         __props__.__dict__["paused"] = paused
         __props__.__dict__["schedule_type"] = schedule_type
@@ -461,12 +538,28 @@ class ConnectorSchedule(pulumi.CustomResource):
         return pulumi.get(self, "connector_id")
 
     @property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        """
+        return pulumi.get(self, "connector_name")
+
+    @property
     @pulumi.getter(name="dailySyncTime")
     def daily_sync_time(self) -> pulumi.Output[builtins.str]:
         """
         The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         """
         return pulumi.get(self, "daily_sync_time")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The unique identifier for the Group (Destination) within the Fivetran system.
+        """
+        return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="pauseAfterTrial")

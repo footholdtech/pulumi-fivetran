@@ -20,11 +20,11 @@ import * as utilities from "./utilities";
  *     users: [
  *         {
  *             userId: "test_user",
- *             role: "Connector Administrator",
+ *             role: "Manage Connection",
  *         },
  *         {
  *             userId: "test_user",
- *             role: "Connector Administrator",
+ *             role: "Manage Connection",
  *         },
  *     ],
  * });
