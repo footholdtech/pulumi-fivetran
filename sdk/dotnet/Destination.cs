@@ -65,7 +65,7 @@ namespace Footholdtech.Fivetran
         public Output<string?> HybridDeploymentAgentId { get; private set; } = null!;
 
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         /// </summary>
         [Output("networkingMethod")]
         public Output<string> NetworkingMethod { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Footholdtech.Fivetran
         public Input<string>? HybridDeploymentAgentId { get; set; }
 
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         /// </summary>
         [Input("networkingMethod")]
         public Input<string>? NetworkingMethod { get; set; }
@@ -280,7 +280,7 @@ namespace Footholdtech.Fivetran
         public Input<string>? HybridDeploymentAgentId { get; set; }
 
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         /// </summary>
         [Input("networkingMethod")]
         public Input<string>? NetworkingMethod { get; set; }

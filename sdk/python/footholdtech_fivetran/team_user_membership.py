@@ -113,11 +113,11 @@ class TeamUserMembership(pulumi.CustomResource):
             users=[
                 {
                     "user_id": "test_user",
-                    "role": "Connector Administrator",
+                    "role": "Manage Connection",
                 },
                 {
                     "user_id": "test_user",
-                    "role": "Connector Administrator",
+                    "role": "Manage Connection",
                 },
             ])
         ```
@@ -172,11 +172,11 @@ class TeamUserMembership(pulumi.CustomResource):
             users=[
                 {
                     "user_id": "test_user",
-                    "role": "Connector Administrator",
+                    "role": "Manage Connection",
                 },
                 {
                     "user_id": "test_user",
-                    "role": "Connector Administrator",
+                    "role": "Manage Connection",
                 },
             ])
         ```

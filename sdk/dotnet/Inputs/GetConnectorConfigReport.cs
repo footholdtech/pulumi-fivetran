@@ -13,6 +13,26 @@ namespace Footholdtech.Fivetran.Inputs
 
     public sealed class GetConnectorConfigReportArgs : global::Pulumi.InvokeArgs
     {
+        [Input("accounts", required: true)]
+        private List<Inputs.GetConnectorConfigReportAccountArgs>? _accounts;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday_adaptive`: List of accounts to sync for the table, if applicable
+        /// </summary>
+        public List<Inputs.GetConnectorConfigReportAccountArgs> Accounts
+        {
+            get => _accounts ?? (_accounts = new List<Inputs.GetConnectorConfigReportAccountArgs>());
+            set => _accounts = value;
+        }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_publishers`: Ad unit view for the report.
+        /// </summary>
+        [Input("adUnitView", required: true)]
+        public string AdUnitView { get; set; } = null!;
+
         [Input("advertisers", required: true)]
         private List<string>? _advertisers;
 
@@ -46,6 +66,19 @@ namespace Footholdtech.Fivetran.Inputs
             set => _attributes = value;
         }
 
+        [Input("columns", required: true)]
+        private List<string>? _columns;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_publishers`: Columns provide all trafficking statistics and revenue information available for the chosen dimensions.
+        /// </summary>
+        public List<string> Columns
+        {
+            get => _columns ?? (_columns = new List<string>());
+            set => _columns = value;
+        }
+
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `google_display_and_video_360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
@@ -61,15 +94,90 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("configType", required: true)]
         public string ConfigType { get; set; } = null!;
 
+        [Input("conversionDimensions", required: true)]
+        private List<string>? _conversionDimensions;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_campaign_manager`: Conversion Dimensions.
+        /// </summary>
+        public List<string> ConversionDimensions
+        {
+            get => _conversionDimensions ?? (_conversionDimensions = new List<string>());
+            set => _conversionDimensions = value;
+        }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday_adaptive`: List of currencies to sync for the table, if applicable
+        /// </summary>
+        [Input("currency", required: true)]
+        public string Currency { get; set; } = null!;
+
+        [Input("customDimensionKeyIds", required: true)]
+        private List<string>? _customDimensionKeyIds;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_publishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+        /// </summary>
+        public List<string> CustomDimensionKeyIds
+        {
+            get => _customDimensionKeyIds ?? (_customDimensionKeyIds = new List<string>());
+            set => _customDimensionKeyIds = value;
+        }
+
+        [Input("customFieldIds", required: true)]
+        private List<string>? _customFieldIds;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_publishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
+        /// </summary>
+        public List<string> CustomFieldIds
+        {
+            get => _customFieldIds ?? (_customFieldIds = new List<string>());
+            set => _customFieldIds = value;
+        }
+
+        [Input("customFloodlightVariables", required: true)]
+        private List<string>? _customFloodlightVariables;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_campaign_manager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
+        /// </summary>
+        public List<string> CustomFloodlightVariables
+        {
+            get => _customFloodlightVariables ?? (_customFloodlightVariables = new List<string>());
+            set => _customFloodlightVariables = value;
+        }
+
+        [Input("dimensionAttributes", required: true)]
+        private List<string>? _dimensionAttributes;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_publishers`: Dimension attributes provide additional fields associated with a dimension. Dimension attributes can only be selected with their corresponding dimensions.
+        /// </summary>
+        public List<string> DimensionAttributes
+        {
+            get => _dimensionAttributes ?? (_dimensionAttributes = new List<string>());
+            set => _dimensionAttributes = value;
+        }
+
         [Input("dimensions", required: true)]
         private List<string>? _dimensions;
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_campaign_manager`: Report dimensions to include in a sync. The `date` dimension is mandatory for all report types. The `advertiser` dimension is mandatory for the `REACH` report type
+        /// 	- Service `double_click_publishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
         /// 	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
         /// 	- Service `google_analytics_4`: The report dimensions to include into a sync.
         /// 	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
         /// 	- Service `google_search_console`: The report dimensions included to sync.
+        /// 	- Service `workday_adaptive`: List of dimensions to sync for the table, if applicable
         /// </summary>
         public List<string> Dimensions
         {
@@ -83,6 +191,13 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("dynamicParameterField", required: true)]
         public string DynamicParameterField { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_campaign_manager`: Specifies whether to enable all reach dimension combinations in the report. Default value: `false`
+        /// </summary>
+        [Input("enableAllDimensionCombinations", required: true)]
+        public bool EnableAllDimensionCombinations { get; set; }
 
         /// <summary>
         /// Field usage depends on `service` value: 
@@ -135,11 +250,32 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("generateFivetranPk", required: true)]
         public bool GenerateFivetranPk { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday_adaptive`: Include zero rows in the table sync
+        /// </summary>
+        [Input("includeZeroRows", required: true)]
+        public bool IncludeZeroRows { get; set; }
+
+        [Input("levels", required: true)]
+        private List<Inputs.GetConnectorConfigReportLevelArgs>? _levels;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday_adaptive`: List of levels to sync for the table, if applicable
+        /// </summary>
+        public List<Inputs.GetConnectorConfigReportLevelArgs> Levels
+        {
+            get => _levels ?? (_levels = new List<Inputs.GetConnectorConfigReportLevelArgs>());
+            set => _levels = value;
+        }
+
         [Input("metrics", required: true)]
         private List<string>? _metrics;
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_campaign_manager`: Report metrics to include into a sync.
         /// 	- Service `google_analytics`: The report metrics to include into a sync.
         /// 	- Service `google_analytics_4`: The report metrics to include into a sync.
         /// 	- Service `google_display_and_video_360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
@@ -162,6 +298,19 @@ namespace Footholdtech.Fivetran.Inputs
         {
             get => _partners ?? (_partners = new List<string>());
             set => _partners = value;
+        }
+
+        [Input("perInteractionDimensions", required: true)]
+        private List<string>? _perInteractionDimensions;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_campaign_manager`: Per Interaction Dimensions.
+        /// </summary>
+        public List<string> PerInteractionDimensions
+        {
+            get => _perInteractionDimensions ?? (_perInteractionDimensions = new List<string>());
+            set => _perInteractionDimensions = value;
         }
 
         /// <summary>
@@ -192,6 +341,19 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("queryId", required: true)]
         public string QueryId { get; set; } = null!;
 
+        [Input("reportConfigurationIds", required: true)]
+        private List<string>? _reportConfigurationIds;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_campaign_manager`: You can select only one Floodlight Configuration ID per account.
+        /// </summary>
+        public List<string> ReportConfigurationIds
+        {
+            get => _reportConfigurationIds ?? (_reportConfigurationIds = new List<string>());
+            set => _reportConfigurationIds = value;
+        }
+
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
@@ -201,6 +363,7 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_campaign_manager`: Type of reporting data to sync. Default value: `STANDARD`.
         /// 	- Service `google_ads`: The name of the Google Ads report from which the connector will sync the data. [Possible report_type values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
         /// 	- Service `google_display_and_video_360`: The type of the report to create. This is a required parameter when `config_method` is set to `CREATE_NEW`.
         /// 	- Service `google_search_ads_360`: The type of report
@@ -219,6 +382,7 @@ namespace Footholdtech.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `google_analytics_4`: The custom window size for rollback syncs.
+        /// 	- Service `google_search_ads_360`: The custom window size for rollback syncs (between 2 and 90).
         /// </summary>
         [Input("rollbackWindow", required: true)]
         public int RollbackWindow { get; set; }
@@ -274,6 +438,20 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `workday_adaptive`: Start month for the table sync, in MM format
+        /// </summary>
+        [Input("startMonth", required: true)]
+        public string StartMonth { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday_adaptive`: Start year for the table sync, in YYYY format
+        /// </summary>
+        [Input("startYear", required: true)]
+        public string StartYear { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
         /// </summary>
         [Input("supportNestedColumns", required: true)]
@@ -288,12 +466,15 @@ namespace Footholdtech.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `double_click_campaign_manager`: Destination table name. It must be unique within this connection and must comply with Fivetran's naming conventions.
+        /// 	- Service `double_click_publishers`: The name of the table within the schema storing the data for a given report.
         /// 	- Service `google_ads`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `google_analytics`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `google_analytics_4`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `google_search_ads_360`: The name of a table within the schema to which connector syncs the data of a given report.
         /// 	- Service `google_search_console`: The name of a table within the schema to which connector syncs the data of a given report.
         /// 	- Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `workday_adaptive`: Table name to be synced
         /// </summary>
         [Input("table", required: true)]
         public string Table { get; set; } = null!;
@@ -318,6 +499,26 @@ namespace Footholdtech.Fivetran.Inputs
         /// </summary>
         [Input("updateConfigOnEachSync", required: true)]
         public bool UpdateConfigOnEachSync { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday_adaptive`: Version sync strategy for the table, SYNC_ALL_AND_NEW_VERSIONS or SYNC_SELECT_VERSIONS
+        /// </summary>
+        [Input("versionSyncStrategy", required: true)]
+        public string VersionSyncStrategy { get; set; } = null!;
+
+        [Input("versions", required: true)]
+        private List<string>? _versions;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `workday_adaptive`: List of versions to sync for the table, if versionSyncStrategy is SYNC_SELECT_VERSIONS
+        /// </summary>
+        public List<string> Versions
+        {
+            get => _versions ?? (_versions = new List<string>());
+            set => _versions = value;
+        }
 
         public GetConnectorConfigReportArgs()
         {

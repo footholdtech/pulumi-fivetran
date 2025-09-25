@@ -80,6 +80,9 @@
                             "conversion_dimensions": {
                                 "maxItemsOne": false
                             },
+                            "custom_dimension_key_ids": {
+                                "maxItemsOne": false
+                            },
                             "custom_events": {
                                 "maxItemsOne": false
                             },
@@ -238,10 +241,31 @@
                                 "maxItemsOne": false,
                                 "elem": {
                                     "fields": {
+                                        "accounts": {
+                                            "maxItemsOne": false
+                                        },
                                         "advertisers": {
                                             "maxItemsOne": false
                                         },
                                         "attributes": {
+                                            "maxItemsOne": false
+                                        },
+                                        "columns": {
+                                            "maxItemsOne": false
+                                        },
+                                        "conversion_dimensions": {
+                                            "maxItemsOne": false
+                                        },
+                                        "custom_dimension_key_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "custom_field_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "custom_floodlight_variables": {
+                                            "maxItemsOne": false
+                                        },
+                                        "dimension_attributes": {
                                             "maxItemsOne": false
                                         },
                                         "dimensions": {
@@ -250,13 +274,22 @@
                                         "fields": {
                                             "maxItemsOne": false
                                         },
+                                        "levels": {
+                                            "maxItemsOne": false
+                                        },
                                         "metrics": {
                                             "maxItemsOne": false
                                         },
                                         "partners": {
                                             "maxItemsOne": false
                                         },
+                                        "per_interaction_dimensions": {
+                                            "maxItemsOne": false
+                                        },
                                         "primary_keys": {
+                                            "maxItemsOne": false
+                                        },
+                                        "report_configuration_ids": {
                                             "maxItemsOne": false
                                         },
                                         "search_types": {
@@ -266,6 +299,9 @@
                                             "maxItemsOne": false
                                         },
                                         "segments": {
+                                            "maxItemsOne": false
+                                        },
+                                        "versions": {
                                             "maxItemsOne": false
                                         }
                                     }
@@ -668,6 +704,9 @@
                             "conversion_dimensions": {
                                 "maxItemsOne": false
                             },
+                            "custom_dimension_key_ids": {
+                                "maxItemsOne": false
+                            },
                             "custom_events": {
                                 "maxItemsOne": false
                             },
@@ -826,10 +865,31 @@
                                 "maxItemsOne": false,
                                 "elem": {
                                     "fields": {
+                                        "accounts": {
+                                            "maxItemsOne": false
+                                        },
                                         "advertisers": {
                                             "maxItemsOne": false
                                         },
                                         "attributes": {
+                                            "maxItemsOne": false
+                                        },
+                                        "columns": {
+                                            "maxItemsOne": false
+                                        },
+                                        "conversion_dimensions": {
+                                            "maxItemsOne": false
+                                        },
+                                        "custom_dimension_key_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "custom_field_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "custom_floodlight_variables": {
+                                            "maxItemsOne": false
+                                        },
+                                        "dimension_attributes": {
                                             "maxItemsOne": false
                                         },
                                         "dimensions": {
@@ -838,13 +898,22 @@
                                         "fields": {
                                             "maxItemsOne": false
                                         },
+                                        "levels": {
+                                            "maxItemsOne": false
+                                        },
                                         "metrics": {
                                             "maxItemsOne": false
                                         },
                                         "partners": {
                                             "maxItemsOne": false
                                         },
+                                        "per_interaction_dimensions": {
+                                            "maxItemsOne": false
+                                        },
                                         "primary_keys": {
+                                            "maxItemsOne": false
+                                        },
+                                        "report_configuration_ids": {
                                             "maxItemsOne": false
                                         },
                                         "search_types": {
@@ -854,6 +923,9 @@
                                             "maxItemsOne": false
                                         },
                                         "segments": {
+                                            "maxItemsOne": false
+                                        },
+                                        "versions": {
                                             "maxItemsOne": false
                                         }
                                     }

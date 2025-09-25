@@ -29,18 +29,32 @@ class GetConnectionsResult:
     """
     A collection of values returned by getConnections.
     """
-    def __init__(__self__, connections=None, id=None):
+    def __init__(__self__, connections=None, group_id=None, id=None, schema_name=None):
         if connections and not isinstance(connections, list):
             raise TypeError("Expected argument 'connections' to be a list")
         pulumi.set(__self__, "connections", connections)
+        if group_id and not isinstance(group_id, str):
+            raise TypeError("Expected argument 'group_id' to be a str")
+        pulumi.set(__self__, "group_id", group_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if schema_name and not isinstance(schema_name, str):
+            raise TypeError("Expected argument 'schema_name' to be a str")
+        pulumi.set(__self__, "schema_name", schema_name)
 
     @property
     @pulumi.getter
     def connections(self) -> Optional[Sequence['outputs.GetConnectionsConnectionResult']]:
         return pulumi.get(self, "connections")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the group (destination) to filter connections by.
+        """
+        return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter
@@ -50,6 +64,14 @@ class GetConnectionsResult:
         """
         return pulumi.get(self, "id")
 
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[builtins.str]:
+        """
+        The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        """
+        return pulumi.get(self, "schema_name")
+
 
 class AwaitableGetConnectionsResult(GetConnectionsResult):
     # pylint: disable=using-constant-test
@@ -58,31 +80,53 @@ class AwaitableGetConnectionsResult(GetConnectionsResult):
             yield self
         return GetConnectionsResult(
             connections=self.connections,
-            id=self.id)
+            group_id=self.group_id,
+            id=self.id,
+            schema_name=self.schema_name)
 
 
 def get_connections(connections: Optional[Sequence[Union['GetConnectionsConnectionArgs', 'GetConnectionsConnectionArgsDict']]] = None,
+                    group_id: Optional[builtins.str] = None,
+                    schema_name: Optional[builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionsResult:
     """
     This data source returns list of connection objects.
+
+
+    :param builtins.str group_id: The ID of the group (destination) to filter connections by.
+    :param builtins.str schema_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
     """
     __args__ = dict()
     __args__['connections'] = connections
+    __args__['groupId'] = group_id
+    __args__['schemaName'] = schema_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('fivetran:index/getConnections:getConnections', __args__, opts=opts, typ=GetConnectionsResult).value
 
     return AwaitableGetConnectionsResult(
         connections=pulumi.get(__ret__, 'connections'),
-        id=pulumi.get(__ret__, 'id'))
+        group_id=pulumi.get(__ret__, 'group_id'),
+        id=pulumi.get(__ret__, 'id'),
+        schema_name=pulumi.get(__ret__, 'schema_name'))
 def get_connections_output(connections: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectionsConnectionArgs', 'GetConnectionsConnectionArgsDict']]]]] = None,
+                           group_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                           schema_name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionsResult]:
     """
     This data source returns list of connection objects.
+
+
+    :param builtins.str group_id: The ID of the group (destination) to filter connections by.
+    :param builtins.str schema_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
     """
     __args__ = dict()
     __args__['connections'] = connections
+    __args__['groupId'] = group_id
+    __args__['schemaName'] = schema_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getConnections:getConnections', __args__, opts=opts, typ=GetConnectionsResult)
     return __ret__.apply(lambda __response__: GetConnectionsResult(
         connections=pulumi.get(__response__, 'connections'),
-        id=pulumi.get(__response__, 'id')))
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        schema_name=pulumi.get(__response__, 'schema_name')))

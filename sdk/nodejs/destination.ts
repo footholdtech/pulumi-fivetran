@@ -78,7 +78,7 @@ export class Destination extends pulumi.CustomResource {
      */
     public readonly hybridDeploymentAgentId!: pulumi.Output<string | undefined>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     public readonly networkingMethod!: pulumi.Output<string>;
     /**
@@ -199,7 +199,7 @@ export interface DestinationState {
      */
     hybridDeploymentAgentId?: pulumi.Input<string>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     networkingMethod?: pulumi.Input<string>;
     /**
@@ -260,7 +260,7 @@ export interface DestinationArgs {
      */
     hybridDeploymentAgentId?: pulumi.Input<string>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     networkingMethod?: pulumi.Input<string>;
     /**
