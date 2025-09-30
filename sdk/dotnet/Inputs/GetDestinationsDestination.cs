@@ -38,7 +38,7 @@ namespace Footholdtech.Fivetran.Inputs
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         /// </summary>
         [Input("networkingMethod", required: true)]
         public string NetworkingMethod { get; set; } = null!;

@@ -14,6 +14,8 @@ export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getConnections:getConnections", {
         "connections": args.connections,
+        "groupId": args.groupId,
+        "schemaName": args.schemaName,
     }, opts);
 }
 
@@ -22,6 +24,14 @@ export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOp
  */
 export interface GetConnectionsArgs {
     connections?: inputs.GetConnectionsConnection[];
+    /**
+     * The ID of the group (destination) to filter connections by.
+     */
+    groupId?: string;
+    /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     */
+    schemaName?: string;
 }
 
 /**
@@ -30,9 +40,17 @@ export interface GetConnectionsArgs {
 export interface GetConnectionsResult {
     readonly connections?: outputs.GetConnectionsConnection[];
     /**
+     * The ID of the group (destination) to filter connections by.
+     */
+    readonly groupId?: string;
+    /**
      * The ID of this resource.
      */
     readonly id: string;
+    /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     */
+    readonly schemaName?: string;
 }
 /**
  * This data source returns list of connection objects.
@@ -42,6 +60,8 @@ export function getConnectionsOutput(args?: GetConnectionsOutputArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getConnections:getConnections", {
         "connections": args.connections,
+        "groupId": args.groupId,
+        "schemaName": args.schemaName,
     }, opts);
 }
 
@@ -50,4 +70,12 @@ export function getConnectionsOutput(args?: GetConnectionsOutputArgs, opts?: pul
  */
 export interface GetConnectionsOutputArgs {
     connections?: pulumi.Input<pulumi.Input<inputs.GetConnectionsConnectionArgs>[]>;
+    /**
+     * The ID of the group (destination) to filter connections by.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     */
+    schemaName?: pulumi.Input<string>;
 }

@@ -31,13 +31,13 @@ namespace Footholdtech.Fivetran
     ///             new Fivetran.Inputs.TeamConnectorMembershipConnectorArgs
     ///             {
     ///                 ConnectorId = "test_connector",
-    ///                 Role = "Connector Administrator",
+    ///                 Role = "Manage Connection",
     ///                 CreatedAt = "2020-05-25T15:26:47.306509Z",
     ///             },
     ///             new Fivetran.Inputs.TeamConnectorMembershipConnectorArgs
     ///             {
     ///                 ConnectorId = "test_connector",
-    ///                 Role = "Connector Administrator",
+    ///                 Role = "Manage Connection",
     ///                 CreatedAt = "2020-05-25T15:26:47.306509Z",
     ///             },
     ///         },

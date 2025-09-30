@@ -33,11 +33,11 @@ import (
 //				Users: fivetran.TeamUserMembershipUserArray{
 //					&fivetran.TeamUserMembershipUserArgs{
 //						UserId: pulumi.String("test_user"),
-//						Role:   pulumi.String("Connector Administrator"),
+//						Role:   pulumi.String("Manage Connection"),
 //					},
 //					&fivetran.TeamUserMembershipUserArgs{
 //						UserId: pulumi.String("test_user"),
-//						Role:   pulumi.String("Connector Administrator"),
+//						Role:   pulumi.String("Manage Connection"),
 //					},
 //				},
 //			})

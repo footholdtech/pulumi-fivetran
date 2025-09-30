@@ -31,12 +31,12 @@ namespace Footholdtech.Fivetran
     ///             new Fivetran.Inputs.TeamUserMembershipUserArgs
     ///             {
     ///                 UserId = "test_user",
-    ///                 Role = "Connector Administrator",
+    ///                 Role = "Manage Connection",
     ///             },
     ///             new Fivetran.Inputs.TeamUserMembershipUserArgs
     ///             {
     ///                 UserId = "test_user",
-    ///                 Role = "Connector Administrator",
+    ///                 Role = "Manage Connection",
     ///             },
     ///         },
     ///     });
