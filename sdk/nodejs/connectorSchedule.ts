@@ -98,9 +98,17 @@ export class ConnectorSchedule extends pulumi.CustomResource {
      */
     public readonly connectorId!: pulumi.Output<string>;
     /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     */
+    public readonly connectorName!: pulumi.Output<string | undefined>;
+    /**
      * The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
      */
     public readonly dailySyncTime!: pulumi.Output<string>;
+    /**
+     * The unique identifier for the Group (Destination) within the Fivetran system.
+     */
+    public readonly groupId!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the connector should be paused after the free trial period has ended.
      */
@@ -125,25 +133,26 @@ export class ConnectorSchedule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ConnectorScheduleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ConnectorScheduleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectorScheduleArgs | ConnectorScheduleState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorScheduleState | undefined;
             resourceInputs["connectorId"] = state ? state.connectorId : undefined;
+            resourceInputs["connectorName"] = state ? state.connectorName : undefined;
             resourceInputs["dailySyncTime"] = state ? state.dailySyncTime : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["pauseAfterTrial"] = state ? state.pauseAfterTrial : undefined;
             resourceInputs["paused"] = state ? state.paused : undefined;
             resourceInputs["scheduleType"] = state ? state.scheduleType : undefined;
             resourceInputs["syncFrequency"] = state ? state.syncFrequency : undefined;
         } else {
             const args = argsOrState as ConnectorScheduleArgs | undefined;
-            if ((!args || args.connectorId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'connectorId'");
-            }
             resourceInputs["connectorId"] = args ? args.connectorId : undefined;
+            resourceInputs["connectorName"] = args ? args.connectorName : undefined;
             resourceInputs["dailySyncTime"] = args ? args.dailySyncTime : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["pauseAfterTrial"] = args ? args.pauseAfterTrial : undefined;
             resourceInputs["paused"] = args ? args.paused : undefined;
             resourceInputs["scheduleType"] = args ? args.scheduleType : undefined;
@@ -163,9 +172,17 @@ export interface ConnectorScheduleState {
      */
     connectorId?: pulumi.Input<string>;
     /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     */
+    connectorName?: pulumi.Input<string>;
+    /**
      * The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
      */
     dailySyncTime?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the Group (Destination) within the Fivetran system.
+     */
+    groupId?: pulumi.Input<string>;
     /**
      * Specifies whether the connector should be paused after the free trial period has ended.
      */
@@ -191,11 +208,19 @@ export interface ConnectorScheduleArgs {
     /**
      * The unique identifier for the connector within the Fivetran system.
      */
-    connectorId: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string>;
+    /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     */
+    connectorName?: pulumi.Input<string>;
     /**
      * The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
      */
     dailySyncTime?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the Group (Destination) within the Fivetran system.
+     */
+    groupId?: pulumi.Input<string>;
     /**
      * Specifies whether the connector should be paused after the free trial period has ended.
      */

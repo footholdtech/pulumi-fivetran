@@ -47,7 +47,7 @@ class ConnectorArgs:
                data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         :param pulumi.Input[builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
@@ -181,7 +181,7 @@ class ConnectorArgs:
     @pulumi.getter(name="networkingMethod")
     def networking_method(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Possible values: Directly, SshTunnel, ProxyAgent.
+        Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         """
         return pulumi.get(self, "networking_method")
 
@@ -297,7 +297,7 @@ class _ConnectorState:
                value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[builtins.str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your
                destination.
-        :param pulumi.Input[builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         :param pulumi.Input[builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
@@ -465,7 +465,7 @@ class _ConnectorState:
     @pulumi.getter(name="networkingMethod")
     def networking_method(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Possible values: Directly, SshTunnel, ProxyAgent.
+        Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         """
         return pulumi.get(self, "networking_method")
 
@@ -595,7 +595,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         :param pulumi.Input[builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
@@ -725,7 +725,7 @@ class Connector(pulumi.CustomResource):
                value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[builtins.str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your
                destination.
-        :param pulumi.Input[builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         :param pulumi.Input[builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
@@ -840,7 +840,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="networkingMethod")
     def networking_method(self) -> pulumi.Output[builtins.str]:
         """
-        Possible values: Directly, SshTunnel, ProxyAgent.
+        Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         """
         return pulumi.get(self, "networking_method")
 

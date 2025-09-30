@@ -31,6 +31,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `oracle_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `panoply`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `periscope_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_databricks_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_gcp_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -53,7 +54,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Authentication type
         /// 	- Service `databricks`: Authentication type
-        /// 	- Service `managed_data_lake`: Authentication type
+        /// 	- Service `managed_data_lake`: Specifies the authentication types for Fivetran to connect to Databricks. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
         /// 	- Service `new_s3_datalake`: Authentication type
         /// 	- Service `onelake`: Authentication type
         /// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
@@ -61,6 +62,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? AuthType;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Your user's access key ID
         /// 	- Service `new_s3_datalake`: AWS access key to access the S3 bucket and AWS Glue
         /// 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
         /// 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
@@ -73,11 +75,17 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? AwsBucketAuthType;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Your user's secret access key
         /// 	- Service `new_s3_datalake`: AWS secret access key to access the S3 bucket and AWS Glue
         /// 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
         /// 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
         /// </summary>
         public readonly string? AwsSecretAccessKey;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+        /// </summary>
+        public readonly string? AzureStorageAccountAuthType;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `confluent_cloud_wh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
@@ -87,8 +95,9 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `big_query`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
         /// 	- Service `big_query_dts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+        /// 	- Service `databricks`: Your bucket
         /// 	- Service `managed_big_query`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-        /// 	- Service `managed_data_lake`: (Immutable) The name of the bucket to be used as destination
+        /// 	- Service `managed_data_lake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
         /// 	- Service `new_s3_datalake`: (Immutable) The name of the bucket to be used as destination
         /// 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
         /// 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
@@ -96,6 +105,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? Bucket;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Your bucket's region
         /// 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
         /// 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
         /// </summary>
@@ -104,7 +114,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Catalog name
         /// 	- Service `databricks`: Catalog name
-        /// 	- Service `managed_data_lake`: Catalog name
+        /// 	- Service `managed_data_lake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables. Use this parameter only if you want to use Unity Catalog with your data lake.
         /// 	- Service `new_s3_datalake`: Catalog name
         /// 	- Service `onelake`: Catalog name
         /// </summary>
@@ -112,7 +122,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Client id of service principal
-        /// 	- Service `managed_data_lake`: Client id of service principal
+        /// 	- Service `managed_data_lake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `onelake`: Client ID of service principal
         /// </summary>
         public readonly string? ClientId;
@@ -156,6 +166,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `oracle_warehouse`: Connection method. Default value: `Directly`.
         /// 	- Service `panoply`: Connection method. Default value: `Directly`.
         /// 	- Service `periscope_warehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `postgres_databricks_warehouse`: Connection method. Default value: `Directly`.
         /// 	- Service `postgres_gcp_warehouse`: Connection method. Default value: `Directly`.
         /// 	- Service `postgres_rds_warehouse`: Connection method. Default value: `Directly`.
         /// 	- Service `postgres_warehouse`: Connection method. Default value: `Directly`.
@@ -168,7 +179,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: (Immutable) Container to store delta table files
-        /// 	- Service `managed_data_lake`: (Immutable) Container to store delta table files
+        /// 	- Service `managed_data_lake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `onelake`: Workspace name to store delta table files
         /// </summary>
         public readonly string? ContainerName;
@@ -178,6 +189,11 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `databricks`: Whether to create external tables
         /// </summary>
         public readonly bool? CreateExternalTables;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Specifies whether you want Fivetran to create external volumes for unstructured data files.
+        /// </summary>
+        public readonly bool? CreateExternalVolumes;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `confluent_cloud_wh`: Confluent Cloud message format.
@@ -207,6 +223,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `oracle_warehouse`: Database name
         /// 	- Service `panoply`: Database name
         /// 	- Service `periscope_warehouse`: Database name
+        /// 	- Service `postgres_databricks_warehouse`: Database name
         /// 	- Service `postgres_gcp_warehouse`: Database name
         /// 	- Service `postgres_rds_warehouse`: Database name
         /// 	- Service `postgres_warehouse`: Database name
@@ -219,7 +236,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
-        /// 	- Service `managed_data_lake`: Databricks Connection method. Default value: `Directly`.
+        /// 	- Service `managed_data_lake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`. Use this parameter only if you want to use Unity Catalog with your data lake.
         /// 	- Service `new_s3_datalake`: Databricks Connection method. Default value: `Directly`.
         /// 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
         /// </summary>
@@ -278,11 +295,16 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `snowflake`: External storage parent folder URL
         /// </summary>
         public readonly string? ExternalStorageParentFolderUri;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Specifies the external volume path where you want Fivetran to create the unstructured files.
+        /// </summary>
+        public readonly string? ExternalVolumeLocation;
         public readonly string? FivetranGlueRoleArn;
         public readonly string? FivetranMskRoleArn;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `managed_data_lake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
+        /// 	- Service `managed_data_lake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
         /// 	- Service `new_s3_datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
         /// </summary>
         public readonly string? FivetranRoleArn;
@@ -308,6 +330,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `oracle_warehouse`: Server name
         /// 	- Service `panoply`: Server name
         /// 	- Service `periscope_warehouse`: Server name
+        /// 	- Service `postgres_databricks_warehouse`: Server name
         /// 	- Service `postgres_gcp_warehouse`: Server name
         /// 	- Service `postgres_rds_warehouse`: Server name
         /// 	- Service `postgres_warehouse`: Server name
@@ -321,7 +344,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: HTTP path
         /// 	- Service `databricks`: HTTP path
-        /// 	- Service `managed_data_lake`: HTTP path
+        /// 	- Service `managed_data_lake`: HTTP path of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
         /// 	- Service `new_s3_datalake`: HTTP path
         /// 	- Service `onelake`: HTTP path
         /// </summary>
@@ -362,7 +385,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: OAuth 2.0 client ID
         /// 	- Service `databricks`: OAuth 2.0 client ID
-        /// 	- Service `managed_data_lake`: OAuth 2.0 client ID
+        /// 	- Service `managed_data_lake`: The OAuth 2.0 client ID you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
         /// 	- Service `new_s3_datalake`: OAuth 2.0 client ID
         /// 	- Service `onelake`: OAuth 2.0 client ID
         /// </summary>
@@ -371,7 +394,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: OAuth 2.0 secret
         /// 	- Service `databricks`: OAuth 2.0 secret
-        /// 	- Service `managed_data_lake`: OAuth 2.0 secret
+        /// 	- Service `managed_data_lake`: OAuth 2.0 secret you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
         /// 	- Service `new_s3_datalake`: OAuth 2.0 secret
         /// 	- Service `onelake`: OAuth 2.0 secret
         /// </summary>
@@ -398,6 +421,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `oracle_warehouse`: Database user password
         /// 	- Service `panoply`: Database user password
         /// 	- Service `periscope_warehouse`: Database user password
+        /// 	- Service `postgres_databricks_warehouse`: Database user password
         /// 	- Service `postgres_gcp_warehouse`: Database user password
         /// 	- Service `postgres_rds_warehouse`: Database user password
         /// 	- Service `postgres_warehouse`: Database user password
@@ -411,7 +435,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Personal access token
         /// 	- Service `databricks`: Personal access token
-        /// 	- Service `managed_data_lake`: Personal access token
+        /// 	- Service `managed_data_lake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
         /// 	- Service `new_s3_datalake`: Personal access token
         /// 	- Service `onelake`: Personal access token
         /// </summary>
@@ -426,7 +450,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `azure_sql_database`: Server port number
         /// 	- Service `azure_sql_managed_db_warehouse`: Server port number
         /// 	- Service `databricks`: Server port number
-        /// 	- Service `managed_data_lake`: Server port number
+        /// 	- Service `managed_data_lake`: Server port number of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
         /// 	- Service `maria_rds_warehouse`: Server port number
         /// 	- Service `maria_warehouse`: Server port number
         /// 	- Service `mysql_rds_warehouse`: Server port number
@@ -438,6 +462,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `oracle_warehouse`: Server port number
         /// 	- Service `panoply`: Server port number
         /// 	- Service `periscope_warehouse`: Server port number
+        /// 	- Service `postgres_databricks_warehouse`: Server port number
         /// 	- Service `postgres_gcp_warehouse`: Server port number
         /// 	- Service `postgres_rds_warehouse`: Server port number
         /// 	- Service `postgres_warehouse`: Server port number
@@ -450,7 +475,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: (Immutable) path/to/data within the container
-        /// 	- Service `managed_data_lake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+        /// 	- Service `managed_data_lake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
         /// 	- Service `new_s3_datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
         /// 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
         /// </summary>
@@ -489,7 +514,7 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? PublicKey;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `managed_data_lake`: (Immutable) Region of your AWS S3 bucket
+        /// 	- Service `managed_data_lake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
         /// 	- Service `new_s3_datalake`: Region of your AWS S3 bucket
         /// </summary>
         public readonly string? Region;
@@ -536,6 +561,11 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? RoleArn;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
+        /// </summary>
+        public readonly string? S3BucketAuthType;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `confluent_cloud_wh`: Security protocol for Confluent Cloud interaction.
         /// </summary>
         public readonly string? SaslMechanism;
@@ -580,7 +610,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Secret value for service principal
-        /// 	- Service `managed_data_lake`: Secret value for service principal
+        /// 	- Service `managed_data_lake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `onelake`: Secret value for service principal
         /// </summary>
         public readonly string? SecretValue;
@@ -593,7 +623,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Server Host name
         /// 	- Service `databricks`: Server name
-        /// 	- Service `managed_data_lake`: Server host name
+        /// 	- Service `managed_data_lake`: Server host name of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
         /// 	- Service `new_s3_datalake`: Server host name
         /// 	- Service `onelake`: Server Host name
         /// </summary>
@@ -601,20 +631,20 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Should maintain tables in Databricks 
-        /// 	- Service `managed_data_lake`: Should maintain tables in Databricks 
+        /// 	- Service `managed_data_lake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
         /// 	- Service `new_s3_datalake`: Should maintain tables in Databricks 
         /// 	- Service `onelake`: Should maintain tables in Databricks
         /// </summary>
         public readonly bool? ShouldMaintainTablesInDatabricks;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `managed_data_lake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+        /// 	- Service `managed_data_lake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
         /// </summary>
         public readonly bool? ShouldMaintainTablesInGlue;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-        /// 	- Service `managed_data_lake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// 	- Service `managed_data_lake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
         /// 	- Service `new_s3_datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
         /// 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
         /// </summary>
@@ -624,6 +654,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `azure_sql_data_warehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+        /// 	- Service `databricks`: Your storage account key
         /// 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
         /// </summary>
         public readonly string? StorageAccountKey;
@@ -631,16 +662,24 @@ namespace Footholdtech.Fivetran.Outputs
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
         /// 	- Service `azure_sql_data_warehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-        /// 	- Service `managed_data_lake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+        /// 	- Service `databricks`: Your storage account name
+        /// 	- Service `managed_data_lake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
         /// 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
         /// </summary>
         public readonly string? StorageAccountName;
         /// <summary>
         /// Field usage depends on `service` value: 
-        /// 	- Service `managed_data_lake`: Storage Provider
+        /// 	- Service `managed_data_lake`: The cloud storage provider you want to use for your data lake.
         /// </summary>
         public readonly string? StorageProvider;
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `big_query`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+        /// 	- Service `big_query_dts`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+        /// 	- Service `managed_big_query`: Stores JSON columns as JSON instead of STRING. This parameter is applicable only to destinations created before August 1, 2025.
+        /// </summary>
+        public readonly bool? SupportJsonType;
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `new_s3_datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
@@ -649,7 +688,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `adls`: Tenant id of service principal
-        /// 	- Service `managed_data_lake`: Tenant id of service principal
+        /// 	- Service `managed_data_lake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `onelake`: Tenant ID of service principal
         /// </summary>
         public readonly string? TenantId;
@@ -670,6 +709,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `oracle_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `panoply`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `periscope_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_databricks_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_gcp_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -695,6 +735,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `oracle_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `panoply`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `periscope_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_databricks_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_gcp_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -720,6 +761,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `oracle_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `panoply`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `periscope_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// 	- Service `postgres_databricks_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_gcp_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         /// 	- Service `postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -750,6 +792,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// 	- Service `oracle_warehouse`: Database user name
         /// 	- Service `panoply`: Database user name
         /// 	- Service `periscope_warehouse`: Database user name
+        /// 	- Service `postgres_databricks_warehouse`: Database user name
         /// 	- Service `postgres_gcp_warehouse`: Database user name
         /// 	- Service `postgres_rds_warehouse`: Database user name
         /// 	- Service `postgres_warehouse`: Database user name
@@ -787,6 +830,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? awsSecretAccessKey,
 
+            string? azureStorageAccountAuthType,
+
             ImmutableArray<string> bootstrapServers,
 
             string? bucket,
@@ -812,6 +857,8 @@ namespace Footholdtech.Fivetran.Outputs
             string? controllerId,
 
             bool? createExternalTables,
+
+            bool? createExternalVolumes,
 
             string? dataFormat,
 
@@ -842,6 +889,8 @@ namespace Footholdtech.Fivetran.Outputs
             string? externalStorageIntegration,
 
             string? externalStorageParentFolderUri,
+
+            string? externalVolumeLocation,
 
             string? fivetranGlueRoleArn,
 
@@ -903,6 +952,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? roleArn,
 
+            string? s3BucketAuthType,
+
             string? saslMechanism,
 
             string? saslPlainKey,
@@ -943,6 +994,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? storageProvider,
 
+            bool? supportJsonType,
+
             string? tableFormat,
 
             string? tenantId,
@@ -968,6 +1021,7 @@ namespace Footholdtech.Fivetran.Outputs
             AwsAccessKeyId = awsAccessKeyId;
             AwsBucketAuthType = awsBucketAuthType;
             AwsSecretAccessKey = awsSecretAccessKey;
+            AzureStorageAccountAuthType = azureStorageAccountAuthType;
             BootstrapServers = bootstrapServers;
             Bucket = bucket;
             BucketRegion = bucketRegion;
@@ -981,6 +1035,7 @@ namespace Footholdtech.Fivetran.Outputs
             ContainerName = containerName;
             ControllerId = controllerId;
             CreateExternalTables = createExternalTables;
+            CreateExternalVolumes = createExternalVolumes;
             DataFormat = dataFormat;
             DataSetLocation = dataSetLocation;
             Database = database;
@@ -996,6 +1051,7 @@ namespace Footholdtech.Fivetran.Outputs
             ExternalStorageCloudProvider = externalStorageCloudProvider;
             ExternalStorageIntegration = externalStorageIntegration;
             ExternalStorageParentFolderUri = externalStorageParentFolderUri;
+            ExternalVolumeLocation = externalVolumeLocation;
             FivetranGlueRoleArn = fivetranGlueRoleArn;
             FivetranMskRoleArn = fivetranMskRoleArn;
             FivetranRoleArn = fivetranRoleArn;
@@ -1026,6 +1082,7 @@ namespace Footholdtech.Fivetran.Outputs
             ResourceId = resourceId;
             Role = role;
             RoleArn = roleArn;
+            S3BucketAuthType = s3BucketAuthType;
             SaslMechanism = saslMechanism;
             SaslPlainKey = saslPlainKey;
             SaslPlainSecret = saslPlainSecret;
@@ -1046,6 +1103,7 @@ namespace Footholdtech.Fivetran.Outputs
             StorageAccountKey = storageAccountKey;
             StorageAccountName = storageAccountName;
             StorageProvider = storageProvider;
+            SupportJsonType = supportJsonType;
             TableFormat = tableFormat;
             TenantId = tenantId;
             TunnelHost = tunnelHost;

@@ -20,12 +20,12 @@ import * as utilities from "./utilities";
  *     connectors: [
  *         {
  *             connectorId: "test_connector",
- *             role: "Connector Administrator",
+ *             role: "Manage Connection",
  *             createdAt: "2020-05-25T15:26:47.306509Z",
  *         },
  *         {
  *             connectorId: "test_connector",
- *             role: "Connector Administrator",
+ *             role: "Manage Connection",
  *             createdAt: "2020-05-25T15:26:47.306509Z",
  *         },
  *     ],
