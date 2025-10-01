@@ -44,6 +44,15 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
      */
     public readonly connectorId!: pulumi.Output<string>;
     /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your
+     * destination.
+     */
+    public readonly connectorName!: pulumi.Output<string | undefined>;
+    /**
+     * The unique identifier for the Group (Destination) within the Fivetran system.
+     */
+    public readonly groupId!: pulumi.Output<string | undefined>;
+    /**
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */
     public readonly schema!: pulumi.Output<outputs.ConnectorSchemaConfigSchema[] | undefined>;
@@ -74,13 +83,15 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ConnectorSchemaConfigArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ConnectorSchemaConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectorSchemaConfigArgs | ConnectorSchemaConfigState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorSchemaConfigState | undefined;
             resourceInputs["connectorId"] = state ? state.connectorId : undefined;
+            resourceInputs["connectorName"] = state ? state.connectorName : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
             resourceInputs["schemaChangeHandling"] = state ? state.schemaChangeHandling : undefined;
             resourceInputs["schemas"] = state ? state.schemas : undefined;
@@ -89,10 +100,9 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
             resourceInputs["validationLevel"] = state ? state.validationLevel : undefined;
         } else {
             const args = argsOrState as ConnectorSchemaConfigArgs | undefined;
-            if ((!args || args.connectorId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'connectorId'");
-            }
             resourceInputs["connectorId"] = args ? args.connectorId : undefined;
+            resourceInputs["connectorName"] = args ? args.connectorName : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["schemaChangeHandling"] = args ? args.schemaChangeHandling : undefined;
             resourceInputs["schemas"] = args ? args.schemas : undefined;
@@ -113,6 +123,15 @@ export interface ConnectorSchemaConfigState {
      * The unique identifier for the connector within the Fivetran system.
      */
     connectorId?: pulumi.Input<string>;
+    /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your
+     * destination.
+     */
+    connectorName?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the Group (Destination) within the Fivetran system.
+     */
+    groupId?: pulumi.Input<string>;
     /**
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */
@@ -145,7 +164,16 @@ export interface ConnectorSchemaConfigArgs {
     /**
      * The unique identifier for the connector within the Fivetran system.
      */
-    connectorId: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string>;
+    /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your
+     * destination.
+     */
+    connectorName?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the Group (Destination) within the Fivetran system.
+     */
+    groupId?: pulumi.Input<string>;
     /**
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */

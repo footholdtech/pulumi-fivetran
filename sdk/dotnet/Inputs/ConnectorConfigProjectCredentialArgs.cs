@@ -37,6 +37,13 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `amplitude`: The project ID you wish to use with Fivetran.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
         [Input("secretKey")]
         private Input<string>? _secretKey;
 

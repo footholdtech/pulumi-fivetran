@@ -75,7 +75,7 @@ export class Connector extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     public readonly networkingMethod!: pulumi.Output<string>;
     /**
@@ -211,7 +211,7 @@ export interface ConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     networkingMethod?: pulumi.Input<string>;
     /**
@@ -272,7 +272,7 @@ export interface ConnectorArgs {
      */
     hybridDeploymentAgentId?: pulumi.Input<string>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     networkingMethod?: pulumi.Input<string>;
     /**
