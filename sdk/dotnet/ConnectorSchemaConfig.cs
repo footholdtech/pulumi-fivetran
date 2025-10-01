@@ -24,6 +24,19 @@ namespace Footholdtech.Fivetran
         [Output("connectorId")]
         public Output<string> ConnectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your
+        /// destination.
+        /// </summary>
+        [Output("connectorName")]
+        public Output<string?> ConnectorName { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier for the Group (Destination) within the Fivetran system.
+        /// </summary>
+        [Output("groupId")]
+        public Output<string?> GroupId { get; private set; } = null!;
+
         [Output("schema")]
         public Output<ImmutableArray<Outputs.ConnectorSchemaConfigSchema>> Schema { get; private set; } = null!;
 
@@ -64,7 +77,7 @@ namespace Footholdtech.Fivetran
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ConnectorSchemaConfig(string name, ConnectorSchemaConfigArgs args, CustomResourceOptions? options = null)
+        public ConnectorSchemaConfig(string name, ConnectorSchemaConfigArgs? args = null, CustomResourceOptions? options = null)
             : base("fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig", name, args ?? new ConnectorSchemaConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -106,8 +119,21 @@ namespace Footholdtech.Fivetran
         /// <summary>
         /// The unique identifier for the connector within the Fivetran system.
         /// </summary>
-        [Input("connectorId", required: true)]
-        public Input<string> ConnectorId { get; set; } = null!;
+        [Input("connectorId")]
+        public Input<string>? ConnectorId { get; set; }
+
+        /// <summary>
+        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your
+        /// destination.
+        /// </summary>
+        [Input("connectorName")]
+        public Input<string>? ConnectorName { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the Group (Destination) within the Fivetran system.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
 
         [Input("schema")]
         private InputList<Inputs.ConnectorSchemaConfigSchemaArgs>? _schema;
@@ -166,6 +192,19 @@ namespace Footholdtech.Fivetran
         /// </summary>
         [Input("connectorId")]
         public Input<string>? ConnectorId { get; set; }
+
+        /// <summary>
+        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your
+        /// destination.
+        /// </summary>
+        [Input("connectorName")]
+        public Input<string>? ConnectorName { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the Group (Destination) within the Fivetran system.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
 
         [Input("schema")]
         private InputList<Inputs.ConnectorSchemaConfigSchemaGetArgs>? _schema;

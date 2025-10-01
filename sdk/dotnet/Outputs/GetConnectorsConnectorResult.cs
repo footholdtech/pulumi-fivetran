@@ -55,7 +55,7 @@ namespace Footholdtech.Fivetran.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         /// </summary>
         public readonly string NetworkingMethod;
         /// <summary>

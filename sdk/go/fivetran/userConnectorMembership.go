@@ -33,12 +33,12 @@ import (
 //				Connectors: fivetran.UserConnectorMembershipConnectorArray{
 //					&fivetran.UserConnectorMembershipConnectorArgs{
 //						ConnectorId: pulumi.String("test_connector"),
-//						Role:        pulumi.String("Connector Administrator"),
+//						Role:        pulumi.String("Manage Connection"),
 //						CreatedAt:   pulumi.String("2020-05-25T15:26:47.306509Z"),
 //					},
 //					&fivetran.UserConnectorMembershipConnectorArgs{
 //						ConnectorId: pulumi.String("test_connector"),
-//						Role:        pulumi.String("Connector Administrator"),
+//						Role:        pulumi.String("Manage Connection"),
 //						CreatedAt:   pulumi.String("2020-05-25T15:26:47.306509Z"),
 //					},
 //				},

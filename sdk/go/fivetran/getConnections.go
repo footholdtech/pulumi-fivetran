@@ -25,13 +25,21 @@ func GetConnections(ctx *pulumi.Context, args *GetConnectionsArgs, opts ...pulum
 // A collection of arguments for invoking getConnections.
 type GetConnectionsArgs struct {
 	Connections []GetConnectionsConnection `pulumi:"connections"`
+	// The ID of the group (destination) to filter connections by.
+	GroupId *string `pulumi:"groupId"`
+	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	SchemaName *string `pulumi:"schemaName"`
 }
 
 // A collection of values returned by getConnections.
 type GetConnectionsResult struct {
 	Connections []GetConnectionsConnection `pulumi:"connections"`
+	// The ID of the group (destination) to filter connections by.
+	GroupId *string `pulumi:"groupId"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
+	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	SchemaName *string `pulumi:"schemaName"`
 }
 
 func GetConnectionsOutput(ctx *pulumi.Context, args GetConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetConnectionsResultOutput {
@@ -46,6 +54,10 @@ func GetConnectionsOutput(ctx *pulumi.Context, args GetConnectionsOutputArgs, op
 // A collection of arguments for invoking getConnections.
 type GetConnectionsOutputArgs struct {
 	Connections GetConnectionsConnectionArrayInput `pulumi:"connections"`
+	// The ID of the group (destination) to filter connections by.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
 }
 
 func (GetConnectionsOutputArgs) ElementType() reflect.Type {
@@ -71,9 +83,19 @@ func (o GetConnectionsResultOutput) Connections() GetConnectionsConnectionArrayO
 	return o.ApplyT(func(v GetConnectionsResult) []GetConnectionsConnection { return v.Connections }).(GetConnectionsConnectionArrayOutput)
 }
 
+// The ID of the group (destination) to filter connections by.
+func (o GetConnectionsResultOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsResult) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of this resource.
 func (o GetConnectionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+func (o GetConnectionsResultOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsResult) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
 }
 
 func init() {
