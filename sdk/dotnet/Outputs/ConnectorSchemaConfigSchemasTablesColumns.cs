@@ -22,6 +22,9 @@ namespace Footholdtech.Fivetran.Outputs
         /// The boolean value specifying whether a column should be hashed.
         /// </summary>
         public readonly bool? Hashed;
+        /// <summary>
+        /// Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        /// </summary>
         public readonly bool? IsPrimaryKey;
 
         [OutputConstructor]

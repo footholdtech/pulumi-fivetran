@@ -20,15 +20,41 @@ import * as utilities from "./utilities";
  *     users: [
  *         {
  *             email: "mail@example.com",
- *             role: "Destination Analyst",
+ *             role: "Edit Destination",
  *         },
  *         {
  *             email: "another_mail@example.com",
- *             role: "Destination Analyst",
+ *             role: "Edit Destination",
  *         },
  *     ],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * 1. To import an existing `fivetran_group_users` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+ *
+ * To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+ *
+ * 2. Define an empty resource in your `.tf` configuration:
+ *
+ * hcl
+ *
+ * resource "fivetran_group_users" "my_imported_fivetran_group_users" {
+ *
+ * }
+ *
+ * 3. Run the `pulumi import` command:
+ *
+ * ```sh
+ * $ pulumi import fivetran:index/groupUsers:GroupUsers my_imported_fivetran_group_users {your Destination Group ID}
+ * ```
+ *
+ * 4. Use the `terraform state show` command to get the values from the state:
+ *
+ * terraform state show 'fivetran_group_users.my_imported_fivetran_group_users'
+ *
+ * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class GroupUsers extends pulumi.CustomResource {
     /**

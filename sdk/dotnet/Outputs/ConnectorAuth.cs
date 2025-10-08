@@ -208,6 +208,11 @@ namespace Footholdtech.Fivetran.Outputs
         public readonly string? TeamId;
         /// <summary>
         /// Field usage depends on `service` value: 
+        /// 	- Service `share_point`: `Tenant ID` of your Microsoft client application.
+        /// </summary>
+        public readonly string? TenantId;
+        /// <summary>
+        /// Field usage depends on `service` value: 
         /// 	- Service `facebook_ads`: Access Token
         /// </summary>
         public readonly string? UserAccessToken;
@@ -252,6 +257,8 @@ namespace Footholdtech.Fivetran.Outputs
 
             string? teamId,
 
+            string? tenantId,
+
             string? userAccessToken)
         {
             AccessToken = accessToken;
@@ -273,6 +280,7 @@ namespace Footholdtech.Fivetran.Outputs
             RefreshToken = refreshToken;
             RoleArn = roleArn;
             TeamId = teamId;
+            TenantId = tenantId;
             UserAccessToken = userAccessToken;
         }
     }
