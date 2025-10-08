@@ -50,7 +50,7 @@ type Destination struct {
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrOutput `pulumi:"hybridDeploymentAgentId"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod pulumi.StringOutput `pulumi:"networkingMethod"`
 	// The private link ID.
 	PrivateLinkId pulumi.StringPtrOutput `pulumi:"privateLinkId"`
@@ -125,7 +125,7 @@ type destinationState struct {
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
 	// The private link ID.
 	PrivateLinkId *string `pulumi:"privateLinkId"`
@@ -159,7 +159,7 @@ type DestinationState struct {
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrInput
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod pulumi.StringPtrInput
 	// The private link ID.
 	PrivateLinkId pulumi.StringPtrInput
@@ -197,7 +197,7 @@ type destinationArgs struct {
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
 	// The private link ID.
 	PrivateLinkId *string `pulumi:"privateLinkId"`
@@ -230,7 +230,7 @@ type DestinationArgs struct {
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
 	// value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrInput
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod pulumi.StringPtrInput
 	// The private link ID.
 	PrivateLinkId pulumi.StringPtrInput
@@ -360,7 +360,7 @@ func (o DestinationOutput) HybridDeploymentAgentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringPtrOutput { return v.HybridDeploymentAgentId }).(pulumi.StringPtrOutput)
 }
 
-// Possible values: Directly, SshTunnel, ProxyAgent.
+// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 func (o DestinationOutput) NetworkingMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.NetworkingMethod }).(pulumi.StringOutput)
 }

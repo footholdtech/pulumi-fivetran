@@ -273,6 +273,23 @@ namespace Footholdtech.Fivetran.Inputs
         [Input("teamId")]
         public Input<string>? TeamId { get; set; }
 
+        [Input("tenantId")]
+        private Input<string>? _tenantId;
+
+        /// <summary>
+        /// Field usage depends on `service` value: 
+        /// 	- Service `share_point`: `Tenant ID` of your Microsoft client application.
+        /// </summary>
+        public Input<string>? TenantId
+        {
+            get => _tenantId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tenantId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// Field usage depends on `service` value: 
         /// 	- Service `facebook_ads`: Access Token
